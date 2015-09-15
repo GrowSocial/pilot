@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Contact Us</title>
-    <meta name="generator" content="Serif WebPlus Starter Edition 4.0">
+    <meta name="generator" content="Serif WebPlus X7">
     <meta name="viewport" content="width=320">
     <link rel="stylesheet" type="text/css" href="wpscripts/wpstyles.css">
     <style type="text/css">
@@ -42,7 +42,7 @@
     <script type="text/javascript" src="wpscripts/jquery.validate.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-      $("#form_2").validate({ onkeyup: false, showErrors: function(errorMap, errorList) { if (errorList.length) alert(errorList[0].message); }, onclick: false, rules: { 'Email': { required: true, email: true } , 'Comments': { required: true }  }, messages: { 'Email': {  } , 'Comments': {  }  } });
+      $("#form_2").validate({ onkeyup: false, showErrors: function(errorMap, errorList) { if (errorList.length) alert(errorList[0].message); }, onclick: false, rules: { 'Email': { required: true, email: true } , 'Comments': { required: true }  }, onfocusout: false, messages: { 'Email': {  } , 'Comments': {  }  } });
       $("a.ActiveButton").bind({ mousedown:function(){if ( $(this).attr('disabled') === undefined ) $(this).addClass('Activated');}, mouseleave:function(){ if ( $(this).attr('disabled') === undefined ) $(this).removeClass('Activated');}, mouseup:function(){ if ( $(this).attr('disabled') === undefined ) $(this).removeClass('Activated');}});
       });
     </script>
@@ -77,7 +77,7 @@
       <div id="txt_27" style="position:absolute;left:35px;top:813px;width:250px;height:36px;overflow:hidden;">
         <h2 class="Heading-1"><span class="C-4">Pellentesque </span></h2>
       </div>
-      <img alt="" src="wpimages/wpa8bf9bb5_06.png" id="grp_227" style="position:absolute;left:18px;top:1316px;width:43px;height:30px;"><img alt="" src="wpimages/wpe2be33f4_06.png" id="pcrv_611" style="position:absolute;left:30px;top:1255px;width:19px;height:32px;"><img alt="" src="wpimages/wp88a306c0_06.png" id="pcrv_612" style="position:absolute;left:24px;top:1202px;width:30px;height:30px;"><div id="txt_252" style="position:absolute;left:70px;top:1210px;width:231px;height:22px;overflow:hidden;"><p class="Body"><span class="C-1">- Curabitur felis erat, tempus eu,</span></p></div>
+      <img src="wpimages/wpa8bf9bb5_06.png" alt="" width="43" height="30" style="position:absolute;left:18px;top:1316px;width:43px;height:30px;"><img alt="" src="wpimages/wpe2be33f4_06.png" id="pcrv_611" style="position:absolute;left:30px;top:1255px;width:19px;height:32px;"><img alt="" src="wpimages/wp88a306c0_06.png" id="pcrv_612" style="position:absolute;left:24px;top:1202px;width:30px;height:30px;"><div id="txt_252" style="position:absolute;left:70px;top:1210px;width:231px;height:22px;overflow:hidden;"><p class="Body"><span class="C-1">- Curabitur felis erat, tempus eu,</span></p></div>
       <div id="txt_253" style="position:absolute;left:70px;top:1261px;width:231px;height:22px;overflow:hidden;">
         <p class="Body"><span class="C-1">- In hac habitasse platea dictumst.</span></p>
       </div>
