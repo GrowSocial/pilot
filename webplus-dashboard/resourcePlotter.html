@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Interactive Infographic</title>
+		<link rel="stylesheet" type="text/css" href="includes/interactive_map.css" />
+		<script type="text/javascript" src="includes/jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="includes/interactive_map.js"></script>
+	</head>
+	<body>
+
+		<h1 class="grey" style="font-size: 14px;">RESOURCE MAPPING</h1>
+		<div class="map_contianer">
+
+			<a class="dot" style="top:100px; left:120px;" continent="PM" city="PM01" ></a><!-- Saturday Market-->
+			<a class="dot" style="top:140px; left:150px;" continent="PM" city="PM02"></a><!-- Countryside -->
+			<a class="dot" style="top:160px; left:150px;" continent="PM" city="PM03" ></a><!-- Fresh -->
+			<a class="dot" style="top:190px; left:190px;" continent="PM" city="PM04"></a><!-- Village -->			
+			<a class="dot" style="top:100px; left:300px;" continent="PM" city="PM05" ></a><!-- Saturday Market2-->
+			<a class="dot" style="top:140px; left:290px;" continent="PM" city="PM06"></a><!-- Countryside2 -->
+			<a class="dot" style="top:170px; left:195px;" continent="PM" city="PM07" ></a><!-- Fresh2 -->
+			<a class="dot" style="top:205px; left:270px;" continent="PM" city="PM08"></a><!-- Village2 -->			
+
+			<a class="dot" style="top:265px;  left:250px;" continent="FGS" city="FGS01"></a><!-- Ft. Lauder -->
+			<a class="dot" style="top:200px;  left:180px;"  continent="FGS" city="FGS02"></a><!-- Earthstore F-arm and -->
+			
+			<a class="dot" style="top:60px;  left:100px;" continent="FGS" city="FGS03"></a><!--  -->
+			<a class="dot" style="top:80px;  left:110px;" continent="FGS" city="FGS04"></a><!--  -->
+			<a class="dot" style="top:180px;  left:160px;"  continent="FGS" city="FGS05"></a><!--  -->
+			<a class="dot" style="top:200px;  left:280px;" continent="FGS" city="FGS06"></a> <!--  -->
+
+			<a class="dot" style="top:100px; left:180px;" continent="RA" city="RA01"></a>	<!--  -->		
+			<a class="dot" style="top:150px; left:220px;" continent="RA" city="RA02"></a><!--  -->
+			<a class="dot" style="top:140px; left:170px;" continent="RA" city="RA03"></a><!--  -->
+
+			<a class="dot" style="top:80px; left:120px;" continent="AP" city="AP01"></a> <!--  -->
+			<a class="dot" style="top:105px; left:150px;" continent="AP" city="AP02"></a><!--  -->
+			<a class="dot" style="top:220px; left:260px;" continent="AP" city="AP03"></a><!--  -->
+			<a class="dot" style="top:260px; left:260px;" continent="AP" city="AP04"></a><!--  -->
+
+			<a class="dot" style="top:60px; left:100px;" continent="GC" city="GC01"></a><!--  -->
+			<a class="dot" style="top:190px;  left:160px;" continent="GC" city="GC02"></a><!--  -->
+			<a class="dot" style="top:140px;  left:270px;" continent="GC" city="GC03"></a><!--  -->
+			<a class="dot" style="top:170px; left:270px;" continent="GC" city="GC04"></a><!--  -->
+			<a class="dot" style="top:220px;  left:280px;" continent="GC" city="GC05"></a><!--  -->
+			<a class="dot" style="top:280px;  left:270px;" continent="GC" city="GC06"></a> <!--  -->			
+
+			<a class="dot" style="top:100px;  left:120px;" continent="UP" city="UP01"></a> <!-- Port Charl-->
+			<a class="dot" style="top:190px; left:160px;" continent="UP" city="UP02"></a><!-- Naples -->
+			<a class="dot" style="top:250px; left:220px;" continent="UP" city="UP03"></a><!-- Tropics -->
+
+			<a class="dot" style="top:52px;  left:270px;" continent="NU" city="NU01"></a><!--  -->	
+			<a class="dot" style="top:100px;  left:260px;" continent="NU" city="NU02"></a><!--  -->
+			<a class="dot" style="top:236px; left:270px;" continent="NU" city="NU03"></a><!--  -->
+
+			
+			<!-- Form 
+			<form id="mapForm" name="mapForm" class="form_continent" method="post" action="">
+				<select name="continent" id="continent">
+					<option value="AF">Africa</option>
+					<option value="AS">Asia</option>
+					<option value="AU">Australia</option>
+					<option value="EU">Europe</option>
+					<option value="NA">North America</option>
+					<option value="ME">Middle East</option>
+					<option value="SA">South America</option>
+					<option value="ALL" selected="selected">Show all continents</option>
+				</select>
+			</form>
+		-->
+
+			<!-- Form -->
+			<form id="mapForm" name="mapForm" class="form_continent" method="post" action="">
+				<select name="continent" id="continent">
+					<option value="ALL" selected="selected">All Resource Listings</option>
+					<option value="FGS">Farm/Garden Supply</option>
+					<option value="AP">Apiaries</option>
+					<option value="NU">Nursery</option>
+					<option value="PM">Produce Markets</option>
+					<option value="GC">Garden Coop's</option>
+					<option value="UP">U-Pick</option>
+					<option value="RA">Ranch</option>
+
+				</select>
+			</form>
+
+
+			<!-- City details -->
+			<div class="detail_container">				
+				<div class="city_detail"><!-- City -->
+					<h3>Click bullet for listing information</h3>
+					<!-- p>para 2 content</p> <p>para 2 content</p
+					-->
+				</div>
+			</div>
+			
+		</div>
+		<!-- p class="grey">comments</p><p class="grey"> 2</p><p class="grey"> 3</p
+		-->		
+		
+		
+		<div class="city_detail_container">
+
+
+	<!-- Farm/Garden Supply --------------------------------------------------------- -->
+			<div class="city_detail" id="FGS01"> <img class="city_photo" 
+				src="localResources/images/FGSupply0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Farm/Garden Supply1</h3>
+					<h2>FtLaud Farm and Garden</h2><br><p>Serving greater Ft. Lauderdale</p>
+			</div></div>
+			<div class="city_detail" id="FGS02"> <img class="city_photo" 
+				src="localResources/images/FGSupply0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"> <h3>Farm/Garden Supply2</h3>
+					<h2>Earthstore Farm and Garden</h2><br><p>Mon-Sat 9-5pm</p>
+			</div></div>
+			<div class="city_detail" id="FGS03"> <img class="city_photo" 
+				src="localResources/images/FGSupply1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Farm/Garden Supply3</h3>
+					<h2>Garden Needs</h2><br><p>Everything for the Garden!</p>
+			</div></div>
+			<div class="city_detail" id="FGS04"> <img class="city_photo" 
+				src="localResources/images/FGSupply1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Farm/Garden Supply4</h3>
+					<h2>Mulching Etc</h2><br><p>Bulk order Bio-mass</p>
+			</div></div>
+			<div class="city_detail" id="FGS05"> <img class="city_photo" 
+				src="localResources/images/FGSupply2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Farm/Garden Supply5</h3>
+					<h2>GardenSeed Supply</h2><br><p>Seed, Amendments, Supplies</p>
+			</div></div>
+			<div class="city_detail" id="FGS06"> <img class="city_photo" 
+				src="localResources/images/FGSupply2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Farm/Garden Supply6</h3>
+					<h2>Dade County Gardens</h2><br><p>The largest source in Dade County</p>
+			</div></div>
+
+	<!-- Produce Markets --------------------------------------------------------- -->
+			<div class="city_detail" id="PM01"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket3.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets1</h3>
+					<h2>Saturday Market</h2><br><p>Saturday Market, 7:00am</p>
+			</div></div>
+			<div class="city_detail" id="PM02"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket3.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets2</h3>
+					<h2>Countryside Market</h2><br><p>Saturday, Sunday</p>
+			</div></div>
+			<div class="city_detail" id="PM03"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets3</h3>
+					<h2>Fresh Market</h2><br><p>Weekdayday Market, 10-2pm</p>
+			</div></div>
+			<div class="city_detail" id="PM04"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets4</h3>
+					<h2>Village Market</h2><br><p>Farmers Market - Sunday</p>
+			</div></div>		
+			<div class="city_detail" id="PM05"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets5</h3>
+					<h2>Saturday Market2</h2><br><p>Saturday Market, 7:00am</p>
+			</div></div>
+			<div class="city_detail" id="PM06"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets6</h3>
+					<h2>Countryside Market2</h2><br><p>Saturday, Sunday</p>
+			</div></div>
+			<div class="city_detail" id="PM07"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets7</h3>
+					<h2>Fresh Market2</h2><br><p>Weekdayday Market, 10-2pm</p>
+			</div></div>
+			<div class="city_detail" id="PM08"> <img class="city_photo" 
+				src="localResources/images/ProduceMarket0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Produce Markets8</h3>
+					<h2>Village Market2</h2><br><p>Farmers Market - Sunday</p>
+			</div></div>
+
+	<!-- Apiaries --------------------------------------------------------- -->
+			<div class="city_detail" id="AP01"> <img class="city_photo" 
+				src="localResources/images/Apiary0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Apiaries1</h3>
+					<h2>Sweet As It Gets</h2><br><p>Honey and Apiary Supply - Saturdays, 10-6pm</p>
+			</div></div>
+			<div class="city_detail" id="AP02"> <img class="city_photo" 
+				src="localResources/images/Apiary1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Apiaries2</h3>
+					<h2>Bees a Buzz</h2><br><p>Fresh Raw</p>
+			</div></div>
+			<div class="city_detail" id="AP03"> <img class="city_photo" 
+				src="localResources/images/Apiary2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Apiaries3</h3>
+					<h2>Bill and Sue BEE</h2><br><p>Apiary Supply in Dade County</p><p> M-F 7-3pm, Sat 10-12</p>
+			</div></div>			
+			<div class="city_detail" id="AP04"> <img class="city_photo" 
+				src="localResources/images/Apiary0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Apiaries4</h3>
+					<h2>Busy Bee</h2><br><p>Fresh, Raw, Local and SWEET</p>
+			</div></div>
+
+	<!-- Ranch --------------------------------------------------------- -->
+			<div class="city_detail" id="RA01"> <img class="city_photo" 
+				src="localResources/images/Ranch2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>RANCH1</h3>
+					<h2>FREE RANGE BUFFALO</h2><br><p>Water Buffalo</p><p>Milk and Cheese</p><p>Breeding and services</p>
+					<p>Water Buffalo</p><p>Milk and Cheese</p><p>Breeding and services</p>
+			</div></div>			
+			<div class="city_detail" id="RA02"> <img class="city_photo" 
+				src="localResources/images/Ranch1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>RANCH2</h3>
+					<h2>Triple-D-Ranch</h2><br><p>Jeffers Family</p> <p>4th generation ranchers</p>
+					<p>Holsteins and Longhorns</p>
+			</div></div>
+			<div class="city_detail" id="RA03"> <img class="city_photo" 
+				src="localResources/images/Ranch0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>RANCH3</h3>
+					<h2>Daisy Heifer</h2><br><p>Hoof and Hoop</p>
+			</div></div>
+
+	<!-- U-PICK --------------------------------------------------------- -->
+			<div class="city_detail" id="UP01"> <img class="city_photo" 
+				src="localResources/images/Upick0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>U-PICK1</h3>
+					<h2>Port Charlotte U-pick</h2><br><p>Veggies in season</p><p>Year-round</p><p>7 Days, 8am-6pm</p>
+			</div></div>			
+			<div class="city_detail" id="UP02"> <img class="city_photo" 
+				src="localResources/images/Upick1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>U-PICK2</h3>
+					<h2>Organics</h2><br><p>Naples Family Farm</p> <p>4th generation ORGANIC</p>
+					<p>Tomatoes</p>
+			</div></div>
+			<div class="city_detail" id="UP03"> <img class="city_photo" 
+				src="localResources/images/Upick0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>U-PICK3</h3>
+					<h2>Decoratives</h2><br><p>Tropicals</p>
+			</div></div>
+
+	<!-- NURDSERY --------------------------------------------------------- -->
+			<div class="city_detail" id="NU01"> <img class="city_photo" 
+				src="localResources/images/Nursery2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Nursery1</h3>
+					<h2>DEEP ACRE FARM</h2><br><p>Trees and Shrubs</p><p>Year-round</p><p>Mon/Wed 8am-6pm</p>
+			</div></div>			
+			<div class="city_detail" id="NU02"> <img class="city_photo" 
+				src="localResources/images/Nursery0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Nursery2</h3>
+					<h2>FARMERS FRIEND</h2><br><p>Nursery Farm</p> <p>STRICTLY ORGANIC</p>
+					<p>A to Z</p>
+			</div></div>
+			<div class="city_detail" id="NU03"> <img class="city_photo" 
+				src="localResources/images/Nursery1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Nursery3</h3>
+					<h2>Decoratives</h2><br><p>Tropicals</p>
+			</div></div>
+
+	<!-- Garden Coops --------------------------------------------------------- -->
+			<div class="city_detail" id="GC01"> <img class="city_photo" 
+				src="localResources/images/GardenCoop0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Garden Cooperative1</h3>
+					<h2>Our Community Garden</h2><br><p>In our Neighborhood!</p>
+			</div></div>
+			<div class="city_detail" id="GC02"> <img class="city_photo" 
+				src="localResources/images/GardenCoop2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Garden Cooperative2</h3>
+					<h2>Ft Meyers Cooperative</h2><br><p>Sharing Food Security</p>
+			</div></div>
+			<div class="city_detail" id="GC03"> <img class="city_photo" 
+				src="localResources/images/GardenCoop1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Garden Cooperative3</h3>
+					<h2>EVERYBODY GROWS</h2><br><p>Toward Sustainability</p>
+			</div></div>
+			<div class="city_detail" id="GC04"> <img class="city_photo" 
+				src="localResources/images/GardenCoop1.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Garden Cooperative4</h3>
+					<h2>Neighbors Grow</h2><br><p>Vegetable Garden</p>
+			</div></div>
+			<div class="city_detail" id="GC05"> <img class="city_photo" 
+				src="localResources/images/GardenCoop0.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Garden Cooperative5</h3>
+					<h2>Apples+Orange</h2><br><p>Pumpkin Pie</p>
+			</div></div>
+			<div class="city_detail" id="GC06"> <img class="city_photo" 
+				src="localResources/images/GardenCoop2.png" alt="photo" width="75" height="75" />
+				<div class="city_info"><h3>Garden Cooperative6</h3>
+					<h2>The Community Garden</h2><br><p>www.mygardengroup.org</p>
+			</div></div>
+
+
+
+			
+		</div>
+		
+	</body>
+</html>
