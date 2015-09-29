@@ -1,0 +1,23 @@
+<head>
+  <title>map-demo</title>
+</head>
+
+<body>
+  <h1>maps demo</h1>
+  {{> addmarker}}
+  <h2>Google Map</h2>
+  <div class="map-container">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+  </div>
+  {{> leafletmap}}
+</body>
+
+<template name="addmarker">
+  <button>Add marker</button>
+</template>
+
+<template name='leafletmap'>
+  <h2>OpenStreetMap</h2>
+  <div id='map' class="map-container"></div>
+</template>
+
