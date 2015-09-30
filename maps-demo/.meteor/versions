@@ -23,6 +23,7 @@ diff-sequence@1.0.1
 ecmascript@0.1.5
 ecmascript-collections@0.1.6
 ejson@1.0.7
+es5-shim@4.1.13
 fastclick@1.0.7
 geojson-utils@1.0.4
 hot-code-push@1.0.0
@@ -39,7 +40,6 @@ meteor@1.1.9
 meteor-base@1.0.1
 minifiers@1.1.7
 minimongo@1.0.10
-mizzao:build-fetcher@0.2.0
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 mongo@1.1.2
@@ -61,7 +61,6 @@ standard-minifiers@1.0.1
 templating@1.1.4
 templating-tools@1.0.0
 tracker@1.0.9
-trepafi:mapbox@0.1.1
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
