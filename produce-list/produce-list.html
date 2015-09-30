@@ -1,0 +1,43 @@
+<head>  <title>produce-list</title> </head>
+
+<body>
+  <div class="container">
+	 <header> 
+      <h1>Produce List</h1> 
+      {{> loginButtons}}
+
+
+      {{#if currentUser}}
+        <form class="new-task">
+          <input type="text" name="text" placeholder="<Add new item" />
+        </form> 
+
+      {{/if}}
+
+   </header>
+
+      {{#if currentUser}}
+        <label class="hide-selected">  <!--was  "hide-completed"-->
+          <input type="checkbox"  checked="{{hideSelected}}" /> <!-- was "{{hideCompleted}}"-->
+          show/hide selected items
+        </label>
+
+        <ul> {{#each tasks}}  {{> task}} {{/each}} </ul>
+      {{/if}}
+</div>
+
+</body>
+
+
+<template name="task">
+
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+    <span class="text">{{text}}</span>
+    <span class="text"> ~created by <strong>{{username}}</strong></span>
+  </li>
+
+</template>
+
+<!-- -->
