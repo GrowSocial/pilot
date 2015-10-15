@@ -1,8 +1,4 @@
-<template name="layout">
-  {{> header}}
-  <div class="container">
-    {{> yield}}
-  </div>
+<template name="layout"> {{> header}} <div class="container">   {{> yield}} </div>
 </template>
 
 <template name="header">
@@ -19,7 +15,7 @@
           <a class="navbar-brand" href="{{pathFor 'home'}}">Grow Social Pilot ADMIN</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--  -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
 
@@ -34,7 +30,6 @@
             <li class="{{isActiveRoute regex='updateBizaf'}}">
               <a href="{{pathFor 'updateBizaf'}}">Business Listing/Updates</a></li>
  <!--
-
 
 
 -->
