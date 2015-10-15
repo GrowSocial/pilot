@@ -1,0 +1,97 @@
+<template name="quickform">
+  <div class="row">
+    
+
+
+   
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading"> <h4>Business Profile Entry</h4> </div>
+        <div class="panel-body">
+        {{#autoForm id="afInsertDemo" type="insert" collection=Collections.Bizness}}
+
+          <div class="form-group {{#if afFieldIsInvalid name='bizEmail'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='bizEmail'}}</label>
+            {{> afFieldInput name='bizEmail'}}
+            {{#if afFieldIsInvalid name='bizEmail'}}
+            <span class="help-block">{{{afFieldMessage name='bizEmail'}}}</span>
+            {{/if}}
+          </div>
+
+          <div class="form-group {{#if afFieldIsInvalid name='bizName'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='bizName'}}</label>
+            {{> afFieldInput name='bizName'}}
+            {{#if afFieldIsInvalid name='bizName'}}
+            <span class="help-block">{{{afFieldMessage name='bizName'}}}</span>
+            {{/if}}
+          </div>
+
+          <div class="form-group {{#if afFieldIsInvalid name='principalName'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='principalName'}}</label>
+            {{> afFieldInput name='principalName'}}
+            {{#if afFieldIsInvalid name='principalName'}}
+            <span class="help-block">{{{afFieldMessage name='principalName'}}}</span>
+            {{/if}}
+          </div>
+          <div class="form-group {{#if afFieldIsInvalid name='officeStreet'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='officeStreet'}}</label>
+            {{> afFieldInput name='officeStreet'}}
+            {{#if afFieldIsInvalid name='officeStreet'}}
+            <span class="help-block">{{{afFieldMessage name='officeStreet'}}}</span>
+            {{/if}}
+          </div>
+          <div class="form-group {{#if afFieldIsInvalid name='officeStreet2'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='officeStreet2'}}</label>
+            {{> afFieldInput name='officeStreet2'}}
+            {{#if afFieldIsInvalid name='officeStreet2'}}
+            <span class="help-block">{{{afFieldMessage name='officeStreet2'}}}</span>
+            {{/if}}
+          </div>
+          <div class="form-group {{#if afFieldIsInvalid name='officeCity'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='officeCity'}}</label>
+            {{> afFieldInput name='officeCity'}}
+            {{#if afFieldIsInvalid name='officeCity'}}
+            <span class="help-block">{{{afFieldMessage name='officeCity'}}}</span>
+            {{/if}}
+          </div>
+
+          <div class="form-group {{#if afFieldIsInvalid name='officeState'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='officeState'}}</label>
+            {{> afFieldInput name='officeState'}}
+            {{#if afFieldIsInvalid name='officeState'}}
+            <span class="help-block">{{{afFieldMessage name='officeState'}}}</span>
+            {{/if}}
+          </div>
+          <div class="form-group {{#if afFieldIsInvalid name='officeZipcode'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='officeZipcode'}}</label>
+            {{> afFieldInput name='officeZipcode'}}
+            {{#if afFieldIsInvalid name='officeZipcode'}}
+            <span class="help-block">{{{afFieldMessage name='officeZipcode'}}}</span>
+            {{/if}}
+          </div>
+
+         <div class="form-group {{#if afFieldIsInvalid name='officePhone'}}has-error{{/if}}">
+            <label class="control-label">{{afFieldLabelText name='officePhone'}}</label>
+            {{> afFieldInput name='officePhone'}}
+            {{#if afFieldIsInvalid name='officePhone'}}
+            <span class="help-block">{{{afFieldMessage name='officePhone'}}}</span>
+            {{/if}}
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-default">Reset Form</button>
+          </div>
+        {{/autoForm}}
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    
+  </div>
+</template>
