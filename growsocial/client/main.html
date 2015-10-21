@@ -1,0 +1,35 @@
+<head>
+ <title>Growsocial Pilot</title>
+</head>
+
+<template name="main">
+  <div id="background"></div>
+  <div id="background2"></div>
+  <!-- {{> header}} -->
+  {{> navigation}}
+  {{> diagnostic}}
+  {{> yield}}
+</template>
+
+<template name="loading">
+  <p>Loading...</p>
+</template>
+
+<template name="diagnostic">
+  <button id="toggleBackgroundButton">Toggle background</button>
+</template>
+
+<template name="header">
+</template>
+
+<template name="navigation">
+  <div class="navbar">
+    <ul>
+      <li><a href="{{pathFor route='home'}}">Home</a></li>
+      <li><a href="{{pathFor route='memberProfile'}}">Member Profile</a></li>
+      <li><a href="{{pathFor route='localBusiness'}}">Local Business</a></li>
+      <!-- <li>{{#linkTo route="localBusiness"}}Local Business{{/linkTo}}</li> alternative way to write it -->
+    </ul>
+  </div>
+  {{> loginButtons}}
+</template>

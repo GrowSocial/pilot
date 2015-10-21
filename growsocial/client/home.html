@@ -1,0 +1,41 @@
+<template name="home">
+  <h1>Home Page</h1>
+  {{> searchHome}}
+  {{> leafButtons}}
+  {{> centralSection}}
+</template>
+
+<template name="searchHome">
+  <div class="container">
+    <input id="searchText">
+    <button disabled>Search</button>
+    <button disabled>Advanced Search</button>
+  </div>
+</template>
+
+<template name="leafButtons">
+  <button id="membersButton">MEMBERS</button>
+  <button id="localBusinessButton">LOCAL BUSINESS</button>
+  <button id="discussionButton" disabled>DISCUSSIONS</button>
+  <button id="opportunitiesButton" disabled>OPPORTUNITIES</button>
+  <button id="eventsButton" disabled>EVENTS</button>
+  <button id="localPediaButton" disabled>LOCALPEDIA</button>
+  <!-- <p id="resultButton">Leaf button pushed: {{leafPushed}}</p> -->
+</template>
+
+<template name="centralSection">
+  <!-- TODO Initially shows as no user, then shows for user.
+      Should have loading message instead, can we query user to see if it's ready? -->
+  {{#if Template.subscriptionsReady}}
+    {{#if currentUser}}
+      <p>Welcome {{currentUser._id}}</p>
+    {{else}}
+      <input id="username" placeholder="Username">
+      <input id="password" class="password" placeholder="Password">
+      <p>New here? Sign up and grow with us!</p>
+    {{/if}}
+  {{else}}
+    <p>Loading...</p>
+  {{/if}}
+</template>
+
