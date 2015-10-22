@@ -1,7 +1,12 @@
-// http://iron-meteor.github.io/iron-router/
+// guide: http://iron-meteor.github.io/iron-router/
 
-Router.route('/memberProfile');
-Router.route('/localBusiness');
+// router capitalises template name if not defined???
+Router.route('/memberProfile', {
+  template: 'memberProfile',
+});
+Router.route('/localBusiness', {
+  template: 'localBusiness',
+});
 Router.route('/', {
   name: 'home',
   template: 'home'
