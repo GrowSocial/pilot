@@ -9,16 +9,11 @@
   {{> backgrounds}}
   <!-- {{> header}} -->
   {{> navigation}}
-  {{> diagnostic}}
   {{> yield}}
 </template>
 
 <template name="loading">
   <p>Loading...</p>
-</template>
-
-<template name="diagnostic">
-  <button id="toggleBackgroundButton">Toggle background</button>
 </template>
 
 <template name="header">
@@ -121,4 +116,5 @@ TODO navbar signin/logout/etc, mini profile picture
   <li class="{{ activeIfTemplateIs 'home' }}"><a href="{{pathFor route='home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
   <li class="{{ activeIfTemplateIs 'memberProfile' }}"><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Members</a></li>
   <li class="{{ activeIfTemplateIs 'localBusiness' }}"><a href="{{pathFor route='localBusiness'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Business</a></li>
+  <li><a id="toggleBackground" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Toggle Background</a></li>
 </template>
