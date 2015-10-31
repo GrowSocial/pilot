@@ -50,7 +50,7 @@ TODO navbar signin/logout/etc, mini profile picture
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -60,9 +60,17 @@ TODO navbar signin/logout/etc, mini profile picture
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
-            {{ > navItems}}
+            <!-- TODO for small screen, just show search icon -->
+            <form class="navbar-form" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default" aria-label="Submit">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </form>
             <!-- 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -77,17 +85,35 @@ TODO navbar signin/logout/etc, mini profile picture
             </li>
             -->
           </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default" aria-label="Submit">
-              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
-          </form>
           <ul class="nav navbar-nav navbar-right">
-            {{ > navSignUp}}
-            {{ > navNotifications}}
+            {{#if currentUser}}
+              {{ > navProfilePic}}
+              {{ > navNotifications}}
+              {{ > navHelp}}
+              {{ > navLogout}}
+            {{else}}
+              {{ > navHelp}}
+              {{ > navSignIn}}
+            {{/if}}
+              <!-- TODO when too small to show on screen, 
+                    bring the dropdown menu items into the main level, 
+                    so can simply scroll to them -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {{#if currentUser}}
+                  {{ > navMyItems}}
+                  <li role="separator" class="divider"></li>
+                  {{ > navPages}}
+                  <li role="separator" class="divider"></li>
+                  {{ > navSettings}}
+                {{else}}
+                  {{ > navPages}}
+                {{/if}}
+                <li role="separator" class="divider"></li>
+                {{ > navToggleBackground}}
+              </ul>
+            </li>
             <!-- 
             <li><a href="#">Link</a></li>
             <li class="dropdown">
@@ -114,37 +140,61 @@ TODO navbar signin/logout/etc, mini profile picture
   <a class="navbar-brand" href="{{pathFor route='home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">GrowSocial</a>
 </template>
 
-<template name="navItems">
-  <li class="{{ activeIfTemplateIs 'home' }}"><a href="{{pathFor route='home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
-  <li class="{{ activeIfTemplateIs 'memberProfile' }}"><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Members</a></li>
-  <li class="{{ activeIfTemplateIs 'localBusiness' }}"><a href="{{pathFor route='localBusiness'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Business</a></li>
-  <li><a id="toggleBackground" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Toggle Background</a></li>
+<template name="navProfilePic">
+  <li><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Pic Jane</a></li>
 </template>
 
-<template name="navSignUp">
-  {{#if currentUser}}
-    <li><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Pic Jane</a></li>
-  {{else}}
-    <li><a id="signInButton" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Sign In</a></li>
-  {{/if}}
+<template name="navSignIn">
+  <li><a id="signInButton" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Sign In</a></li>
+</template>
+
+<template name="navLogout">
+  <li><a id="logoutButton" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Log Out</a></li>
 </template>
 
 <template name="navNotifications">
-  {{#if currentUser}}
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-        <span class="badge">4</span>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
-    </li>
-  {{/if}}
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+      <span class="badge">4</span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony's beefsteak tomato is sold out.</a></li>
+      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Mary sent you a message.</a></li>
+      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Event Reminder: Yoga on the beach is tomorrow.</a></li>
+      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony sent you a message.</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">See More ></a></li>
+    </ul>
+  </li>
 </template>
 
+<template name="navMyItems">
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Messages</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Events</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">My Marketplace</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Saved Posts</a></li>
+</template>
+  
+<template name="navPages">
+  <li class="{{ activeIfTemplateIs 'home' }}"><a href="{{pathFor route='home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Groups</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Discussions</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">LocalPedia</a></li>
+  <li class="{{ activeIfTemplateIs 'localBusiness' }}"><a href="{{pathFor route='localBusiness'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Opportunities</a></li>
+</template>
+
+<template name="navToggleBackground">
+  <li><a id="toggleBackground" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Toggle Background</a></li>
+</template>
+
+<template name="navSettings">
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Account</a></li>
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
+</template>
+
+<template name="navHelp">
+  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Help</a></li>
+</template>
