@@ -1,6 +1,6 @@
 Session.setDefault('sunbeamBackground', false);
 
-Template.navItems.helpers({
+Template.navPages.helpers({
   activeIfTemplateIs: function (template) {
     var currentRoute = Router.current();
     return currentRoute &&
@@ -8,7 +8,7 @@ Template.navItems.helpers({
   },
 });
 
-Template.navItems.events({
+Template.navToggleBackground.events({
   'click #toggleBackground': function (event) {
     switchBackground();
   },
