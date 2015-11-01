@@ -85,6 +85,7 @@ TODO navbar signin/logout/etc, mini profile picture
             </li>
             -->
           </ul>
+          <!-- TODO notifications and search button show on navbar even on small screens -->
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
@@ -141,15 +142,16 @@ TODO navbar signin/logout/etc, mini profile picture
 </template>
 
 <template name="navProfilePic">
-  <li><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Pic Jane</a></li>
+  <li class="hidden-xs"><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/myprofilepic.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="visible-xs"><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
 <template name="navSignIn">
-  <li><a id="signInButton" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Sign In</a></li>
+  <li class="disabled"><a href="#">Sign In</a></li>
 </template>
 
 <template name="navLogout">
-  <li><a id="logoutButton" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Log Out</a></li>
+  <li class="disabled"><a href="#">Log Out</a></li>
 </template>
 
 <template name="navNotifications">
@@ -170,20 +172,20 @@ TODO navbar signin/logout/etc, mini profile picture
 </template>
 
 <template name="navMyItems">
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Messages</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Events</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">My Marketplace</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Saved Posts</a></li>
+  <li class="disabled"><a href="#">Notifications</a></li>
+  <li class="disabled"><a href="#">Messages</a></li>
+  <li class="disabled"><a href="#">Events</a></li>
+  <li class="disabled"><a href="#">My Marketplace</a></li>
+  <li class="disabled"><a href="#">Saved Posts</a></li>
 </template>
   
 <template name="navPages">
   <li class="{{ activeIfTemplateIs 'home' }}"><a href="{{pathFor route='home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Groups</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Discussions</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">LocalPedia</a></li>
+  <li class="disabled"><a href="#">Groups</a></li>
+  <li class="disabled"><a href="#">Discussions</a></li>
+  <li class="disabled"><a href="#">LocalPedia</a></li>
   <li class="{{ activeIfTemplateIs 'localBusiness' }}"><a href="{{pathFor route='localBusiness'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Opportunities</a></li>
+  <li class="disabled"><a href="#">Opportunities</a></li>
 </template>
 
 <template name="navToggleBackground">
@@ -191,10 +193,10 @@ TODO navbar signin/logout/etc, mini profile picture
 </template>
 
 <template name="navSettings">
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Account</a></li>
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
+  <li class="disabled"><a href="#">Account</a></li>
+  <li class="disabled"><a href="#">Settings</a></li>
 </template>
 
 <template name="navHelp">
-  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Help</a></li>
+  <li class="disabled"><a href="#">Help</a></li>
 </template>
