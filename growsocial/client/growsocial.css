@@ -34,3 +34,15 @@ body {
   background-position: bottom;
   z-index: -1; /* put behind page controls */
 }
+
+/* ------ Navbar customisations ------ */
+
+.navbar-img {
+   max-height: 48px;
+}
+
+/* Relocate the elements to compensate for padding added by responsive media attributes */
+.navbar-img-a {
+  margin-top:  -15px;
+  margin-bottom: -15px;
+}
