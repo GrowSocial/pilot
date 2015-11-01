@@ -85,6 +85,7 @@ TODO navbar signin/logout/etc, mini profile picture
             </li>
             -->
           </ul>
+          <!-- TODO notifications and search button show on navbar even on small screens -->
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
@@ -141,7 +142,8 @@ TODO navbar signin/logout/etc, mini profile picture
 </template>
 
 <template name="navProfilePic">
-  <li><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/myprofilepic.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="hidden-xs"><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/myprofilepic.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="visible-xs"><a href="{{pathFor route='memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
 <template name="navSignIn">
