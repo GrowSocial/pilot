@@ -46,3 +46,40 @@ body {
   margin-top:  -15px;
   margin-bottom: -15px;
 }
+
+/* ------ Homepage ------ */
+
+#homeButtonsContainer {
+  position: relative;
+
+}
+
+#login-buttons {
+  position: absolute;
+  top: 0px;
+}
+
+#myProfileCircle {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  width: 20%;
+  height: auto;
+}
+
+#opportunitiesTextImage {
+  position: absolute;
+  top: 37%;
+  left: 74.6%;
+  width: 12%;
+  height: auto;
+}
+
+#leafStemCircles {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 80%;
+}
