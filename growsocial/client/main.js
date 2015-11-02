@@ -1,13 +1,5 @@
 Session.setDefault('sunbeamBackground', false);
 
-Template.navPages.helpers({
-  activeIfTemplateIs: function (template) {
-    var currentRoute = Router.current();
-    return currentRoute &&
-      template === currentRoute.lookupTemplate() ? 'active' : '';
-  },
-});
-
 Template.navToggleBackground.events({
   'click #toggleBackground': function (event) {
     switchBackground();
