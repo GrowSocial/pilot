@@ -37,14 +37,34 @@ body {
 
 /* ------ Navbar customisations ------ */
 
+.navbar {
+  background-color: rgb(145, 191, 217);
+  -webkit-box-shadow: rgba(24, 24, 24, 0.298039) 0px 9px 9px;
+  box-shadow: rgba(24, 24, 24, 0.298039) 0px 9px 9px;
+  border: 5px rgb(9, 167, 85);
+  border-style: none none solid none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: rgb(0, 0, 0);
+}
+
+#notify-bell {
+  color: rgb(255, 204, 0);
+}
+
+#notify_count {
+  background-color: rgb(255, 0, 0);
+}
+
 .navbar-img {
-   max-height: 48px;
+  max-height: 43px;
 }
 
 /* Relocate the elements to compensate for padding added by responsive media attributes */
 .navbar-img-a {
-  margin-top:  -15px;
-  margin-bottom: -15px;
+  margin-top:  -12px;
+  margin-bottom: -12px;
 }
 
 /* ------ Homepage ------ */
