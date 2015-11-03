@@ -138,7 +138,7 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navProfilePic">
-  <li class="hidden-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/myprofilepic.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="hidden-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/turkey.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
   <li class="visible-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
@@ -153,13 +153,13 @@ http://getbootstrap.com/components/#navbar-brand-image
 <template name="navNotifications">
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-      <span class="badge">4</span>
+      <span class="glyphicon glyphicon-bell" id="notify-bell" aria-hidden="true"></span>
+      <span class="badge" id="notify_count">{{notifyCount}}</span>
     </a>
     <ul class="dropdown-menu">
       <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony's beefsteak tomato is sold out.</a></li>
       <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Mary sent you a message.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Event Reminder: Community garden volunteer day tomorrow.</a></li>
+      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Reminder: Community garden volunteer day tomorrow.</a></li>
       <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony sent you a message.</a></li>
       <li role="separator" class="divider"></li>
       <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">See More ></a></li>

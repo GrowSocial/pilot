@@ -1,4 +1,20 @@
 Session.setDefault('sunbeamBackground', false);
+Session.setDefault('notificationCount', 4);
+
+Meteor.setInterval(function(){
+  var c = Number.parseInt(13 * Random.fraction());
+  if (c > 0 ) {
+    Session.set('notificationCount', c);
+  } else {
+    Session.set('notificationCount', "");
+  }
+}, 5000);
+
+Template.navNotifications.helpers({
+  notifyCount: function () {
+    return Session.get('notificationCount');
+  },
+});
 
 Template.navToggleBackground.events({
   'click #toggleBackground': function (event) {
