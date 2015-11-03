@@ -2,7 +2,7 @@ Session.setDefault('sunbeamBackground', false);
 Session.setDefault('notificationCount', 4);
 
 Meteor.setInterval(function(){
-  var c = Number.parseInt(13 * Random.fraction());
+  var c = Math.floor(13 * Random.fraction() - 3);
   if (c > 0 ) {
     Session.set('notificationCount', c);
   } else {
@@ -10,7 +10,7 @@ Meteor.setInterval(function(){
   }
 }, 5000);
 
-Template.navNotifications.helpers({
+Template.navNotifyCount.helpers({
   notifyCount: function () {
     return Session.get('notificationCount');
   },

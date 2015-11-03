@@ -53,34 +53,20 @@ http://getbootstrap.com/components/#navbar-brand-image
             <span class="icon-bar"></span>
           </button>
           {{> navBrand}}
-          <ul class="nav navbar-nav">
-            {{ > navConnection}}
-          </ul>
+          {{ > navConnection}}
+          {{ > navNotificationsButton}}
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
             {{> navSearch}}
-            <!-- 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            -->
           </ul>
           <!-- TODO notifications and search button show on navbar even on small screens -->
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
-              {{ > navNotifications}}
+              {{ > navNotificationsDropdown}}
               {{ > navHelp}}
               {{ > navLogout}}
             {{else}}
@@ -106,19 +92,6 @@ http://getbootstrap.com/components/#navbar-brand-image
                 {{ > navToggleBackground}}
               </ul>
             </li>
-            <!-- 
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-             -->
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -147,7 +120,7 @@ http://getbootstrap.com/components/#navbar-brand-image
 <template name="navConnection">
   <!-- TODO on connection broken, show glyphicon-alert, and maybe text of status too. -->
   {{#unless connectionStatus.connected}}
-    <li><span class="glyphicon glyphicon-alert" aria-hidden="true"> {{connectionStatus.status}}</span></li>
+    <ul class="nav navbar-nav"><li><span class="glyphicon glyphicon-alert" aria-hidden="true"> {{connectionStatus.status}}</span></li></ul>
   {{/unless}}
 </template>
 
@@ -164,25 +137,35 @@ http://getbootstrap.com/components/#navbar-brand-image
   <li class="disabled"><a href="#">Log Out</a></li>
 </template>
 
-<template name="navNotifications">
-  <li class="dropdown">
+<template name="navNotifyCount">
+  <!-- changes bell colour to bright when notifications -->
+  <span class="glyphicon glyphicon-bell notify-bell {{#if notifyCount}}notify-bell-exciting{{/if}}" aria-hidden="true"></span><span class="badge" id="notify_count">{{notifyCount}}</span>
+</template>
+
+<template name="navNotificationsButton">
+  <!-- For small screen, click notify count opens notifications list -->
+    <a href="{{pathFor 'notifications'}}" class="navbar-toggle nav visible-xs" data-toggle=".navbar-collapse.in" data-target=".navbar-collapse.in">{{> navNotifyCount}}</a>
+</template>
+
+<template name="navNotificationsDropdown">
+  <!-- For large screen, click notify count opens its own dropdown with notifications list -->
+  <li class="dropdown hidden-xs">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <span class="glyphicon glyphicon-bell" id="notify-bell" aria-hidden="true"></span>
-      <span class="badge" id="notify_count">{{notifyCount}}</span>
+      {{> navNotifyCount}}
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony's beefsteak tomato is sold out.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Mary sent you a message.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Reminder: Community garden volunteer day tomorrow.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony's beefsteak tomato is sold out.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Mary sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Reminder: Community garden volunteer day tomorrow.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony sent you a message.</a></li>
       <li role="separator" class="divider"></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">See More ></a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>
     </ul>
   </li>
 </template>
 
 <template name="navMyItems">
-  <li class="disabled"><a href="#">Notifications</a></li>
+  <li class="{{isActiveRoute 'notifications'}}"><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
   <li class="disabled"><a href="#">Messages</a></li>
   <li class="disabled"><a href="#">Events</a></li>
   <li class="disabled"><a href="#">My Marketplace</a></li>
