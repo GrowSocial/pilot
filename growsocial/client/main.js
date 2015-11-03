@@ -16,6 +16,12 @@ Template.navNotifications.helpers({
   },
 });
 
+Template.navConnection.helpers({
+  connectionStatus: function () {
+    return Meteor.status();
+  },
+});
+
 Template.navToggleBackground.events({
   'click #toggleBackground': function (event) {
     switchBackground();
