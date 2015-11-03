@@ -22,3 +22,10 @@ FlowRouter.route('/localBusiness', {
   },
   name: "localBusiness"
 });
+
+FlowRouter.route('/notifications', {
+  action: function() {
+    BlazeLayout.render("main", {content: "notifications"});
+  },
+  name: "notifications"
+});
