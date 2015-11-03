@@ -54,7 +54,9 @@ http://getbootstrap.com/components/#navbar-brand-image
           </button>
           {{> navBrand}}
           {{ > navConnection}}
-          {{ > navNotificationsButton}}
+          {{#if currentUser}}
+            {{ > navNotificationsButton}}
+          {{/if}}
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
