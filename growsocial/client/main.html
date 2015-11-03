@@ -149,15 +149,16 @@ http://getbootstrap.com/components/#navbar-brand-image
 
 <template name="navNotificationsDropdown">
   <!-- For large screen, click notify count opens its own dropdown with notifications list -->
+  <!-- TODO cope with non-square images -->
   <li class="dropdown hidden-xs">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
       {{> navNotifyCount}}
     </a>
     <ul class="dropdown-menu">
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony's beefsteak tomato is sold out.</a></li>
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Mary sent you a message.</a></li>
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Reminder: Community garden volunteer day tomorrow.</a></li>
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony's beefsteak tomato is sold out.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/owl.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Mary sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/kitten.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Reminder: Community garden volunteer day tomorrow.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony sent you a message.</a></li>
       <li role="separator" class="divider"></li>
       <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>
     </ul>

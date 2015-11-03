@@ -71,6 +71,10 @@ body {
   margin-bottom: 5px;
 }
 
+.nav-notify-dropdown-item-img {
+  margin-right: 12px;
+}
+
 /* Relocate the elements to compensate for padding added by responsive media attributes */
 .navbar-img-a {
   margin-top:  -12px;
