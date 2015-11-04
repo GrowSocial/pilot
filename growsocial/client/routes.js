@@ -31,3 +31,17 @@ FlowRouter.route('/notifications', {
   },
   name: "notifications"
 });
+
+FlowRouter.route('/contactUs', {
+  action: function() {
+    BlazeLayout.render("main", {content: "contactUs"});
+  },
+  name: "contactUs"
+});
+
+FlowRouter.route('/help', {
+  action: function() {
+    BlazeLayout.render("main", {content: "help"});
+  },
+  name: "help"
+});

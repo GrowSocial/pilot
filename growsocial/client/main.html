@@ -91,6 +91,7 @@ http://getbootstrap.com/components/#navbar-brand-image
                   {{ > navPages}}
                 {{/if}}
                 <li role="separator" class="divider"></li>
+                {{ > navContactUs}}
                 {{ > navToggleBackground}}
               </ul>
             </li>
@@ -194,5 +195,9 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navHelp">
-  <li class="disabled"><a href="#">Help</a></li>
+  <li class="{{isActiveRoute 'help'}}"><a href="{{pathFor 'help'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Help</a></li>
+</template>
+
+<template name="navContactUs">
+  <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
 </template>
