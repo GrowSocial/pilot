@@ -81,6 +81,11 @@ body {
   margin-bottom: -12px;
 }
 
+#navAlertConnection {
+  position: fixed;
+  margin-top: 32px;
+}
+
 /* ------ Homepage ------ */
 
 #homeButtonsContainer {

@@ -121,9 +121,9 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navConnection">
-  <!-- TODO on connection broken, show glyphicon-alert, and maybe text of status too. -->
+  <!-- On connection broken, show glyphicon-alert and text of status -->
   {{#unless connectionStatus.connected}}
-    <ul class="nav navbar-nav"><li><span class="glyphicon glyphicon-alert" aria-hidden="true"> {{connectionStatus.status}}</span></li></ul>
+    <span class="glyphicon glyphicon-alert" aria-hidden="true" id="navAlertConnection"> {{connectionStatus.status}}</span>
   {{/unless}}
 </template>
 
