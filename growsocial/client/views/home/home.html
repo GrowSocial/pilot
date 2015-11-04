@@ -1,7 +1,7 @@
 <template name="home">
-  <h1>Home Page</h1>
+  <!-- <h1>Home Page</h1> -->
   {{> leafButtons}}
-  {{> centralSection}}
+  <!-- {{> centralSection}} -->
 </template>
 
 <template name="searchHome">
@@ -13,13 +13,17 @@
 </template>
 
 <template name="leafButtons">
-  <button id="myProfileButton">MY PROFILE</button> <!-- TODO when logged in -->
-  <button id="membersButton">MEMBERS</button>
-  <button id="localBusinessButton">LOCAL BUSINESS</button>
-  <button id="discussionButton" disabled>DISCUSSIONS</button>
-  <button id="opportunitiesButton" disabled>OPPORTUNITIES</button>
-  <button id="eventsButton" disabled>EVENTS</button>
-  <button id="localPediaButton" disabled>LOCALPEDIA</button>
+  <!-- TODO do we want bootstraps class "img-responsive" ? -->
+  <div id="homeButtonsContainer" class="container">
+    <img id="leafStemCircles" src="images/leaves_stems_circles.svg" alt="leaves and circles">
+    <div>
+      <img id="opportunitiesTextImage" src="images/OPPORTUNITIES.png" alt="leaves and circles">
+      <a href="{{pathFor 'memberProfile'}}" >
+        <img src="images/beagle.jpg" class="img-circle" id="myProfileCircle" alt="Profile">
+      </a>
+    </div>
+    {{> loginButtons}}
+  </div>
 </template>
 
 <template name="centralSection">

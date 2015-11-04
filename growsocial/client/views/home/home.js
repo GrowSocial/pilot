@@ -1,3 +1,4 @@
+// TODO these events no longer needed
 Template.leafButtons.events({
   'click button': function (event) {
     if (event.target.id === "myProfileButton") {

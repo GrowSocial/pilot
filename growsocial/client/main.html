@@ -53,39 +53,22 @@ http://getbootstrap.com/components/#navbar-brand-image
             <span class="icon-bar"></span>
           </button>
           {{> navBrand}}
+          {{ > navConnection}}
+          {{#if currentUser}}
+            {{ > navNotificationsButton}}
+          {{/if}}
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <!-- TODO for small screen, just show search icon -->
-            <form class="navbar-form" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default" aria-label="Submit">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              </button>
-            </form>
-            <!-- 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            -->
+            {{> navSearch}}
           </ul>
           <!-- TODO notifications and search button show on navbar even on small screens -->
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
-              {{ > navNotifications}}
+              {{ > navNotificationsDropdown}}
               {{ > navHelp}}
               {{ > navLogout}}
             {{else}}
@@ -108,22 +91,10 @@ http://getbootstrap.com/components/#navbar-brand-image
                   {{ > navPages}}
                 {{/if}}
                 <li role="separator" class="divider"></li>
+                {{ > navContactUs}}
                 {{ > navToggleBackground}}
               </ul>
             </li>
-            <!-- 
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-             -->
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -137,8 +108,27 @@ http://getbootstrap.com/components/#navbar-brand-image
   <a class="navbar-brand" href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">GrowSocial</a>
 </template>
 
+<template name="navSearch">
+  <!-- TODO for small screen, just show search icon, which drops down to search form -->
+  <form class="navbar-form" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default" aria-label="Submit">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </button>
+  </form>
+</template>
+
+<template name="navConnection">
+  <!-- On connection broken, show glyphicon-alert and text of status -->
+  {{#unless connectionStatus.connected}}
+    <span class="glyphicon glyphicon-alert" aria-hidden="true" id="navAlertConnection"> {{connectionStatus.status}}</span>
+  {{/unless}}
+</template>
+
 <template name="navProfilePic">
-  <li class="hidden-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/myprofilepic.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="hidden-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/turkey.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
   <li class="visible-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
@@ -150,25 +140,36 @@ http://getbootstrap.com/components/#navbar-brand-image
   <li class="disabled"><a href="#">Log Out</a></li>
 </template>
 
-<template name="navNotifications">
-  <li class="dropdown">
+<template name="navNotifyCount">
+  <!-- changes bell colour to bright when notifications -->
+  <span class="glyphicon glyphicon-bell notify-bell {{#if notifyCount}}notify-bell-exciting{{/if}}" aria-hidden="true"></span><span class="badge" id="notify_count">{{notifyCount}}</span>
+</template>
+
+<template name="navNotificationsButton">
+  <!-- For small screen, click notify count opens notifications list -->
+    <a href="{{pathFor 'notifications'}}" class="navbar-toggle nav visible-xs notifyButton" data-toggle=".navbar-collapse.in" data-target=".navbar-collapse.in">{{> navNotifyCount}}</a>
+</template>
+
+<template name="navNotificationsDropdown">
+  <!-- For large screen, click notify count opens its own dropdown with notifications list -->
+  <!-- TODO cope with non-square images -->
+  <li class="dropdown hidden-xs">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-      <span class="badge">4</span>
+      {{> navNotifyCount}}
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony's beefsteak tomato is sold out.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Mary sent you a message.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Event Reminder: Yoga on the beach is tomorrow.</a></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Anthony sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony's beefsteak tomato is sold out.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/owl.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Mary sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/kitten.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Reminder: Community garden volunteer day tomorrow.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony sent you a message.</a></li>
       <li role="separator" class="divider"></li>
-      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">See More ></a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>
     </ul>
   </li>
 </template>
 
 <template name="navMyItems">
-  <li class="disabled"><a href="#">Notifications</a></li>
+  <li class="{{isActiveRoute 'notifications'}}"><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
   <li class="disabled"><a href="#">Messages</a></li>
   <li class="disabled"><a href="#">Events</a></li>
   <li class="disabled"><a href="#">My Marketplace</a></li>
@@ -194,5 +195,9 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navHelp">
-  <li class="disabled"><a href="#">Help</a></li>
+  <li class="{{isActiveRoute 'help'}}"><a href="{{pathFor 'help'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Help</a></li>
+</template>
+
+<template name="navContactUs">
+  <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
 </template>
