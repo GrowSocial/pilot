@@ -1,6 +1,7 @@
 <template name="profile">
   <h1>Profile</h1>
-  <p>Profile for Jane</p>
-  <img src="images/turkey.jpg" alt="Jane Profile Pic">
+  <p>personId: {{person.personId}}</p>
+  <p>Profile for {{person.name}}</p>
+  <img src="images/{{person.pic}}" alt="{{person.name}} Profile Pic">
 </template>
 
