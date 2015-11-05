@@ -128,8 +128,8 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navProfilePic">
-  <li class="hidden-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/turkey.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
-  <li class="visible-xs"><a href="{{pathFor 'memberProfile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
+  <li class="hidden-xs"><a href="{{pathFor 'profile'}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/turkey.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="visible-xs"><a href="{{pathFor 'profile'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
 <template name="navSignIn">
@@ -175,13 +175,13 @@ http://getbootstrap.com/components/#navbar-brand-image
   <li class="disabled"><a href="#">My Marketplace</a></li>
   <li class="disabled"><a href="#">Saved Posts</a></li>
 </template>
-  
+
 <template name="navPages">
   <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
-  <li class="disabled"><a href="#">Groups</a></li>
+  <li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Groups</a></li>
   <li class="disabled"><a href="#">Discussions</a></li>
-  <li class="{{isActiveRoute 'localpedia'}}"><a href="{{pathFor 'localpedia'}}" data-toggle="collapse" data-target=".navbar-collapse.in">LocalPedia</a></li>
-  <li class="{{isActiveRoute 'localBusiness'}}"><a href="{{pathFor 'localBusiness'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
+  <li class="disabled"><a href="#">LocalPedia</a></li>
+  <li class="{{isActiveRoute 'businesses'}}"><a href="{{pathFor 'businesses'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
   <li class="disabled"><a href="#">Opportunities</a></li>
 </template>
 

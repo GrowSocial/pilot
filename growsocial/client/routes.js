@@ -11,18 +11,32 @@ FlowRouter.route('/', {
   name: "home"
 });
 
-FlowRouter.route('/memberProfile', {
+FlowRouter.route('/people', {
   action: function() {
-    BlazeLayout.render("main", {content: "memberProfile"});
+    BlazeLayout.render("main", {content: "people"});
   },
-  name: "memberProfile"
+  name: "people"
 });
 
-FlowRouter.route('/localBusiness', {
+FlowRouter.route('/profile', {
   action: function() {
-    BlazeLayout.render("main", {content: "localBusiness"});
+    BlazeLayout.render("main", {content: "profile"});
   },
-  name: "localBusiness"
+  name: "profile"
+});
+
+FlowRouter.route('/businesses', {
+  action: function() {
+    BlazeLayout.render("main", {content: "businesses"});
+  },
+  name: "businesses"
+});
+
+FlowRouter.route('/business', {
+  action: function() {
+    BlazeLayout.render("main", {content: "business"});
+  },
+  name: "business"
 });
 
 FlowRouter.route('/notifications', {
