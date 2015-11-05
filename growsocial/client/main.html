@@ -180,7 +180,7 @@ http://getbootstrap.com/components/#navbar-brand-image
   <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
   <li class="disabled"><a href="#">Groups</a></li>
   <li class="disabled"><a href="#">Discussions</a></li>
-  <li class="disabled"><a href="#">LocalPedia</a></li>
+  <li class="{{isActiveRoute 'localpedia'}}"><a href="{{pathFor 'localpedia'}}" data-toggle="collapse" data-target=".navbar-collapse.in">LocalPedia</a></li>
   <li class="{{isActiveRoute 'localBusiness'}}"><a href="{{pathFor 'localBusiness'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
   <li class="disabled"><a href="#">Opportunities</a></li>
 </template>

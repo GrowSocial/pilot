@@ -45,3 +45,10 @@ FlowRouter.route('/help', {
   },
   name: "help"
 });
+
+FlowRouter.route('/localpedia', {
+  action: function() {
+    BlazeLayout.render("main", {content: "localpedia"});
+  },
+  name: "localpedia"
+});
