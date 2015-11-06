@@ -129,7 +129,7 @@ http://getbootstrap.com/components/#navbar-brand-image
 
 <template name="navProfilePic">
   <!-- TODO use pathFor -->
-  <li class="hidden-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="images/turkey.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
+  <li class="hidden-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/beagle.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
   <li class="visible-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
@@ -159,10 +159,10 @@ http://getbootstrap.com/components/#navbar-brand-image
       {{> navNotifyCount}}
     </a>
     <ul class="dropdown-menu">
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony's beefsteak tomato is sold out.</a></li>
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/beagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Mary sent you a message.</a></li>
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/kitten.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Reminder: Community garden volunteer day tomorrow.</a></li>
-      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="/images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony's beefsteak tomato is sold out.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="/images/turkey.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Mary sent you a message.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="/images/kitten.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Reminder: Community garden volunteer day tomorrow.</a></li>
+      <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="/images/eagle.jpg" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">Anthony sent you a message.</a></li>
       <li role="separator" class="divider"></li>
       <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>
     </ul>
