@@ -2,8 +2,6 @@
 // guide: https://kadira.io/academy/meteor-routing-guide/content/rendering-blaze-templates
 // naming each route helps in using "isActiveRoute"
 
-// TODO not allow access to some pages if not logged in, like my profile, notifications.
-
 FlowRouter.route('/', {
   name: "home",
   action: function() {

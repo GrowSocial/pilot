@@ -28,6 +28,13 @@ Template.navToggleBackground.events({
   },
 });
 
+Template.navLogout.events({
+  // TODO error handling on logout
+  'click': function (event) {
+    Accounts.logout();
+  },
+});
+ 
 function switchBackground() {
   if (Session.get('sunbeamBackground')) {
     $("#background").css("background-image", "url('/images/garden.jpg')");
