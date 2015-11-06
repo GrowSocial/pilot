@@ -15,13 +15,17 @@
 <template name="leafButtons">
   <!-- TODO do we want bootstraps class "img-responsive" ? -->
   <div id="homeButtonsContainer" class="container">
-    <img id="leafStemCircles" src="images/leaves_stems_circles.svg" alt="leaves and circles">
+    <img id="leafStemCircles" src="/images/leaves_stems_circles.svg" alt="leaves and circles">
     <div>
-      <img id="opportunitiesTextImage" src="images/OPPORTUNITIES.png" alt="leaves and circles">
+      <img id="opportunitiesTextImage" src="/images/OPPORTUNITIES.png" alt="leaves and circles">
       <!-- TODO use current user data  -->
-      <a href="/profile/1" >
-        <img src="images/turkey.jpg" class="img-circle" id="myProfileCircle" alt="Profile">
-      </a>
+      {{#if currentUser}}
+        <a href="/profile/1" >
+          <img src="/images/beagle.jpg" class="img-circle" id="myProfileCircle" alt="Profile">
+        </a>
+      {{else}}
+        <h2 id="myProfileCircle">Welcome</h2>
+      {{/if}}
     </div>
     {{> loginButtons}}
   </div>

@@ -10,13 +10,13 @@ Template.profile.helpers({
       return {
         personId: personId,
         name: "Jane",
-        pic: "turkey.jpg",
+        pic: "beagle.jpg",
         };
     } else {
       return {
         personId: personId,
         name: "Mary",
-        pic: "beagle.jpg",
+        pic: "turkey.jpg",
         };
     };
   },
