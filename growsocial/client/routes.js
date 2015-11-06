@@ -33,9 +33,9 @@ FlowRouter.route('/businesses', {
   },
 });
 
-FlowRouter.route('/business', {
+FlowRouter.route('/business/:businessId', {
   name: "business",
-  action: function() {
+  action: function(params) {
     BlazeLayout.render("main", {content: "business"});
   },
 });
