@@ -5,64 +5,65 @@
 // TODO not allow access to some pages if not logged in, like my profile, notifications.
 
 FlowRouter.route('/', {
+  name: "home",
   action: function() {
     BlazeLayout.render("main", {content: "home"});
   },
-  name: "home"
 });
 
-FlowRouter.route('/people', {
+FlowRouter.route('/people/', {
+  name: "people",
   action: function() {
     BlazeLayout.render("main", {content: "people"});
   },
-  name: "people"
 });
 
-FlowRouter.route('/profile', {
-  action: function() {
+FlowRouter.route('/profile/:personId', {
+  name: "profile",
+  action: function(params) {
+    console.log("This is my profile: ", params.personId);
     BlazeLayout.render("main", {content: "profile"});
   },
-  name: "profile"
 });
 
 FlowRouter.route('/businesses', {
+  name: "businesses",
   action: function() {
     BlazeLayout.render("main", {content: "businesses"});
   },
-  name: "businesses"
 });
 
-FlowRouter.route('/business', {
-  action: function() {
+FlowRouter.route('/business/:businessId', {
+  name: "business",
+  action: function(params) {
     BlazeLayout.render("main", {content: "business"});
   },
-  name: "business"
 });
 
 FlowRouter.route('/notifications', {
+  name: "notifications",
   action: function() {
     BlazeLayout.render("main", {content: "notifications"});
   },
-  name: "notifications"
 });
 
 FlowRouter.route('/contactUs', {
+  name: "contactUs",
   action: function() {
     BlazeLayout.render("main", {content: "contactUs"});
   },
-  name: "contactUs"
 });
 
 FlowRouter.route('/help', {
+  name: "help",
   action: function() {
     BlazeLayout.render("main", {content: "help"});
   },
-  name: "help"
 });
 
 FlowRouter.route('/localpedia', {
+  name: "localpedia",
   action: function() {
     BlazeLayout.render("main", {content: "localpedia"});
   },
-  name: "localpedia"
 });

@@ -2,8 +2,9 @@
   <h1>People</h1>
   <h2>Individuals</h2>
   <ul>
-    <li><a href="{{pathFor 'profile'}}"><img src="images/turkey.jpg" class="img-circle navbar-img" alt="Profile"> Jane</a></li>
-    <li><a href="{{pathFor 'profile'}}"><img src="images/beagle.jpg" class="img-circle navbar-img" alt="Profile"> Mary</a></li>
+    {{#each peopleList}}
+      <li><a href="{{pathForProfile}}"><img src="images/{{pic}}" class="img-circle navbar-img" alt="Profile"> {{name}}</a></li>
+    {{/each}}
   </ul>
   <h2>Groups</h2>
 </template>

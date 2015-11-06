@@ -1,7 +1,8 @@
 <template name="businesses">
   <h1>Local Business Listings</h1>
   <ul>
-    <li><a href="{{pathFor 'business'}}">ABC Plant Farm</a></li>
-    <li><a href="{{pathFor 'business'}}">XYZ Compost Removal</a></li>
+    {{#each businessList}}
+      <li><a href="{{pathForBusiness}}">{{#if pic}}<img src="images/{{pic}}" class="img-circle navbar-img" alt="Business pic">{{/if}} {{name}}</a></li>
+    {{/each}}
   </ul>
 </template>
