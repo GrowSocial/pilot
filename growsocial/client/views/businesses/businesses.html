@@ -2,7 +2,7 @@
   <h1>Local Business Listings</h1>
   <ul>
     {{#each businessList}}
-      <li><a href="{{pathForBusiness}}">{{#if pic}}<img src="/images/{{pic}}" class="img-circle navbar-img" alt="Business pic">{{/if}} {{name}}</a></li>
+      <li><a href="{{pathForBusiness}}">{{#if pic}}<img src="{{pic}}" class="img-circle navbar-img" alt="Business pic">{{/if}} {{name}}</a></li>
     {{/each}}
   </ul>
 </template>

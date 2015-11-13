@@ -3,20 +3,20 @@ Template.profile.helpers({
     // TODO why is this function run 4 times?
     var personId = FlowRouter.getParam("personId");
     console.log("This is my profile: ", personId);
-    // TODO retrieve person details from database, instead is hard-coded here
-    // var cursor = People.find({personId: personId});
-    // return cursor;
+    // TODO retrieve person details from collection
     if (personId == 1) {
       return {
         personId: personId,
         name: "Jane",
-        pic: "beagle.jpg",
+        pic: "/images/user-images/profile-jane.jpg",
+        coverPhoto: "/images/user-images/cover-jane.jpg",
         };
     } else {
       return {
         personId: personId,
-        name: "Mary",
-        pic: "turkey.jpg",
+        name: "Anthony",
+        pic: "/images/user-images/profile-anthony.jpg",
+        coverPhoto: "/images/user-images/cover-anthony.jpg",
         };
     };
   },
