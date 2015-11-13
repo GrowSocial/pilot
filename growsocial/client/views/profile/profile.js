@@ -26,4 +26,20 @@ Template.profile.helpers({
         };
     };
   },
+  postList: function() {
+    var personId = FlowRouter.getParam("personId");
+    // TODO retrieve person details from collection
+    if (personId == 2) {
+      return [{
+          icon: "/images/user-images/profile-anthony.jpg",
+          datePosted: "Jan 15",
+          message: "Time to grab your shovels, it is composting season!",
+        }, {
+          icon: "/images/user-images/profile-anthony.jpg",
+          datePosted: "Jan 12",
+          message: "Beautiful maggots are in my compost bin, I promise to share a pic, yummy.",
+        }, 
+      ];
+    }
+  },
 });

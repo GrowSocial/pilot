@@ -14,5 +14,10 @@
     <p>Community Roles: {{person.rolesShort}}</p>
     <p>Location: {{person.location}}</p>
     <img src="{{person.pic}}" alt="Profile pic">
+    <ul>
+        {{#each postList}}
+            <li><img src="{{icon}}" class="img-circle postIcon" alt="icon">posted at: {{datePosted}}, message: {{message}}</li>
+        {{/each}}
+    </ul>
 </template>
 
