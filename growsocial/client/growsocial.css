@@ -125,6 +125,10 @@ body {
 
 /* ------ Profile page ------ */
 
+.postIcon {
+  max-height: 43px;
+}
+
 /* parent panel...
  position:relative;   
  child panel  
