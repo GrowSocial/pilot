@@ -10,6 +10,9 @@ Template.profile.helpers({
         name: "Jane",
         pic: "/images/user-images/profile-jane.jpg",
         coverPhoto: "/images/user-images/cover-jane.jpg",
+        rolesShort: "Grape Picker",
+        rolesFull: "Grape Picker",
+        location: "Miami, FL",
         };
     } else {
       return {
@@ -17,6 +20,9 @@ Template.profile.helpers({
         name: "Anthony",
         pic: "/images/user-images/profile-anthony.jpg",
         coverPhoto: "/images/user-images/cover-anthony.jpg",
+        rolesShort: "Farmer, Beekeeper,",
+        rolesFull: "Farmer, Beekeeper, Beechaser, Beefinder, Beefeater",
+        location: "Fort Lauderdale, FL",
         };
     };
   },
