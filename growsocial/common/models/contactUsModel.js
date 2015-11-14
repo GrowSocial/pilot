@@ -13,11 +13,8 @@ ContactUsMessages.helpers({
   },
 });
 
-/* 
- */
-/* 
- */
- 
+// TODO contact us messages to use a collection schema
+
 /* 
 // Feedback model
 Feedback = function(doc) {

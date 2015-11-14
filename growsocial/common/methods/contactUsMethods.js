@@ -1,9 +1,12 @@
 Meteor.methods({
-  addContactUsMessage: function(text) {
+  addContactUsMessage: function(message) {
     ContactUsMessages.insert({
-      text: text,
+      name: message.name,
+      email: message.email,
+      zip: message.zip,
+      text: message.text,
       createdAt: new Date(),
-      authorId: Meteor.userId(),
+      authorId: Meteor.userId(), // can be null, meaning a message from someone not logged in
     });
   },
 });

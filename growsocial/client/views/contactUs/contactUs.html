@@ -1,16 +1,17 @@
 <template name="contactUs">
   <!-- TODO if logged in, prepopulate name and email and zip if have them -->
+  <!-- TODO validate email address format -->
   <h1>Contact Us</h1>
   <div>
     <form action="#" id='contact-us-form'>
       <div class="form-group">
-        <input type="text" name="name" class="form-control" placeholder="Your Name">
+        <input type="text" id="name" class="form-control" placeholder="Your Name">
       </div>
       <div class="form-group">
         <input type="text" id="email" class="form-control" placeholder="Your Email">
       </div>
       <div class="form-group">
-        <input type="text" name="zip" class="form-control" placeholder="Your Zip (optional)">
+        <input type="text" id="zip" class="form-control" placeholder="Your Zip (optional)">
       </div>
       <div class="form-group">
         <textarea id="message" class="form-control" required="required" placeholder="Message"></textarea>
@@ -20,15 +21,18 @@
       </div>
     </form>
   </div>
-  {{> contactUsMessageList}}
+  {{#if currentUser}}
+    {{> contactUsMessageList}}
+  {{/if}}
 </template>
 
 <template name="contactUsMessageList">
   <!-- TODO if logged in, show previous feedback received from the same user -->
-  <h2>List of messages</h2>
+  <!-- TODO if logged in as admin, option to browse all feedback // OR have an admin page for this -->
+  <h2>Messages you have submitted</h2>
   <ul>
     {{#each contactUsMessages}}
-      <li>{{text}} by {{author.emails}}</li>
+      <li>Date: {{createdAt}}, Name: {{name}}, Email: {{email}}, Zip: {{zip}}, Message: {{text}}</li>
     {{/each}}
   </ul>
 </template>
