@@ -16,6 +16,24 @@ Template.navNotifyCount.helpers({
   },
 });
 
+Template.navNotificationsList.helpers({
+  // TODO pull notifications from database
+  notificationList: [{
+      pic: "/images/user-images/profile-anthony.jpg",
+      message: "Anthony's beefsteak tomato is sold out.",
+    }, {
+      pic: "/images/user-images/profile-mary.jpg",
+      message: "Mary sent you a message.",
+    }, {
+      pic: "/images/user-images/event-volunteerday.jpg",
+      message: "Reminder: Community garden volunteer day tomorrow.",
+    }, {
+      pic: "/images/user-images/profile-anthony.jpg",
+      message: "Anthony sent you a message.",
+    }, 
+  ],
+});
+
 Template.navConnection.helpers({
   connectionStatus: function () {
     return Meteor.status();
