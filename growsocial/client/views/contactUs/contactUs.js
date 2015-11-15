@@ -20,6 +20,8 @@ Template.contactUs.events({
     event.preventDefault();
     console.log("submit contact-us-form, event: ", event);
 
+    Template.contactUs.mishaEvent = event;
+    
     $('#button-submit').text("Submitting message...");
     $('#button-submit').prop( "disabled", true );
 
@@ -27,10 +29,10 @@ Template.contactUs.events({
     // TODO re-enable button once message stored.
     
     var message = {
-      name: $('#name').val(),
-      email: $('#email').val(),
-      zip: $('#zip').val(),
-      text: $('#message').val(),
+      name: event.target.name.value,  // alternative: $('#name').val()
+      email: event.target.email.value,
+      zip: event.target.zip.value,
+      text: event.target.message.value,
     };
     Meteor.call("addContactUsMessage", message);
     return false;
