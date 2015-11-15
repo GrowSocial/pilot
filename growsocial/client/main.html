@@ -99,9 +99,6 @@ http://getbootstrap.com/components/#navbar-brand-image
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>    
-<!-- 
-  {{> loginButtons}}
- -->
 </template>
 
 <template name="navBrand">
@@ -135,7 +132,7 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navSignIn">
-  <li class="disabled"><a href="#">Sign In</a></li>
+  <li><a href="/login" data-toggle="collapse" data-target=".navbar-collapse.in">Sign In</a></li>
 </template>
 
 <template name="navLogout">
@@ -175,6 +172,7 @@ http://getbootstrap.com/components/#navbar-brand-image
   <li class="disabled"><a href="#">Events</a></li>
   <li class="disabled"><a href="#">My Marketplace</a></li>
   <li class="disabled"><a href="#">Saved Posts</a></li>
+  <li><a href="/changePassword" data-toggle="collapse" data-target=".navbar-collapse.in">Change Password</a></li>
 </template>
 
 <template name="navPages">
