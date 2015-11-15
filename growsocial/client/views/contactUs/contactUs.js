@@ -20,8 +20,6 @@ Template.contactUs.events({
     event.preventDefault();
     console.log("submit contact-us-form, event: ", event);
 
-    Template.contactUs.mishaEvent = event;
-    
     $('#button-submit').text("Submitting message...");
     $('#button-submit').prop( "disabled", true );
 
