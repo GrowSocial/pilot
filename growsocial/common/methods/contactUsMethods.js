@@ -1,3 +1,5 @@
+// TODO feedback to user when message has reached server, not just mini mongo
+
 Meteor.methods({
   addContactUsMessage: function(message) {
     ContactUsMessages.insert({
