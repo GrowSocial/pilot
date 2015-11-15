@@ -65,3 +65,31 @@ FlowRouter.route('/localpedia', {
     BlazeLayout.render("main", {content: "localpedia"});
   },
 });
+
+FlowRouter.route('/login', {
+  name: "login",
+  action: function() {
+    BlazeLayout.render("main", {content: "login"});
+  },
+});
+
+FlowRouter.route('/register', {
+  name: "register",
+  action: function() {
+    BlazeLayout.render("main", {content: "register"});
+  },
+});
+
+FlowRouter.route('/forgotPassword', {
+  name: "forgotPassword",
+  action: function() {
+    BlazeLayout.render("main", {content: "forgotPassword"});
+  },
+});
+
+FlowRouter.route('/changePassword', {
+  name: "changePassword",
+  action: function() {
+    BlazeLayout.render("main", {content: "changePassword"});
+  },
+});
