@@ -127,9 +127,11 @@ http://getbootstrap.com/components/#navbar-brand-image
 <template name="navProfilePic">
   <!-- TODO use pathFor -->
   <!-- TODO read data from collections -->
-  <li class="hidden-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
-  <li class="visible-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
+  <li class="hidden-xs"><a href="/profile/2" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile">Whoever is logged in</a></li>
+  <li class="visible-xs"><a href="/profile/2" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
+
 </template>
+
 
 <template name="navSignIn">
   <li><a href="/login" data-toggle="collapse" data-target=".navbar-collapse.in">Sign In</a></li>

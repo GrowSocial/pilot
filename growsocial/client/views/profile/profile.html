@@ -1,4 +1,101 @@
+
+
 <template name="profile">
+
+<!-- div id="primaryContainer" class="primaryContainer clearfix" -->
+  <div id="primaryContainer">
+
+    <img id="image" src="/images/headerPicFULL-1576.jpg" class="image" />
+    <!-- "/images/newsfeed-hdr1366-192.jpg"
+     -->
+    <div id="buttons" class="clearfix">
+        <div id="blog" class="clearfix"><p id="View_Blog">View Blog</p>
+        </div>
+        <div id="connect" class="clearfix"><p id="_">&#x2b;</p><p id="Connect">Connect</p>
+        </div>
+        <div id="message" class="clearfix"><img id="Vector_Smart_Object" 
+            src="/images/icons/thoughtBubble-ICON.png" class="image" />
+            <p id="Message">Message</p>
+        </div>
+    </div>
+
+
+    <div id="member" class="clearfix">
+        <img id="membPic" src="/images/user-images/anthony.png" class="image" />
+    </div>
+    <p id="memberName">{{person.name}}</p>
+    <div id="badges" class="clearfix">
+    <div id="award" class="clearfix"><img id="award_icon" src="/images/icons/award%20icon.png" class="image" />
+    </div>
+    <div id="lotus" class="clearfix"><img id="lotus_icon" src="/images/icons/lotus%20icon.png" class="image" />
+    </div>
+    <div id="veggies" class="clearfix"><img id="tomato_icon" src="/images/icons/tomato%20icon.png" class="image" />
+    </div>
+    <div id="sun" class="clearfix"><img id="sun_icon" src="/images/icons/sun%20icon.png" class="image" />
+    </div>
+    </div>
+
+    <p id="What’s_this_">What’s this&#x3f;</p>
+
+    <div id="navbar" class="clearfix">
+
+        <p id="about"></p>
+        <p id="profile"></p>
+        <p id="marketplace">marketplace</p>
+        <p id="more_▼"><span id="textspan">more </span>
+                       <span id="textspan1">▼</span>
+        </p>
+        <p id="more_▼"><span id="textspan"></span>
+                       <span id="textspan1"></span>
+                       
+        </p> 
+
+        <p id="more_▼">
+            <span id="textspan"> {{person.rolesShort}}</span>
+                       <span id="textspan1"></span>
+                       
+        </p> 
+        <p id="more_▼">
+            <span id="textspan"> in {{person.location}}</span>
+                       <span id="textspan1"></span>
+                       
+        </p> 
+
+
+    </div>
+    <!--  div id="navbar" class="clearfix">
+        <p id="photos_videos"></p>
+        <p id="about"> in {{person.location}}</p>
+        <p id="profile">{{person.rolesShort}}</p>
+        <p id="marketplace">marketplace</p>
+        <p id="more_▼"><span id="textspan">more </span>
+                       <span id="textspan1">▼</span>
+        </p>
+        
+    </div -->
+    <!-- div id="navbar" class="clearfix">
+        <p id="photos_videos">photos&#x2f;videos</p>
+        <p id="about"> in {{person.location}}</p>
+        <p id="profile">{{person.rolesShort}}</p>
+        <p id="marketplace">marketplace</p>
+        <p id="more_▼"><span id="textspan">more </span><span id="textspan1">▼</span></p>
+        
+    </div -->
+
+
+  </div>
+
+ <!-- div id="primaryContainer" class="clearfix"> {{> about}} </div -->
+ 
+</template>
+
+
+
+
+
+
+
+<template name="profileOld">
     <!-- TODO do we want class "container"? -->
     <div id="primaryContainer" class="primaryContainer clearfix container">
         <div class="row">
