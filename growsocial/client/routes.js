@@ -73,6 +73,15 @@ FlowRouter.route('/login', {
   },
 });
 
+FlowRouter.route('/logout', {
+  name: "logout",
+  action: function() {
+    // TODO error handling on logout
+    Accounts.logout();
+    BlazeLayout.render("main", {content: "home"});
+  },
+});
+
 FlowRouter.route('/register', {
   name: "register",
   action: function() {
