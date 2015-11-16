@@ -8,8 +8,8 @@ Template.profile.helpers({
       return {
         personId: personId,
         name: "Jane",
-        pic: "/images/user-images/profile-jane.jpg",
-        coverPhoto: "/images/user-images/cover-jane.jpg",
+        pic: "/images/user-images/jane.png",
+        coverPhoto: "/images/newsfeed-hdr1366-192.jpg",
         rolesShort: "Grape Picker",
         rolesFull: "Grape Picker",
         location: "Miami, FL",
@@ -18,14 +18,16 @@ Template.profile.helpers({
       return {
         personId: personId,
         name: "Anthony",
-        pic: "/images/user-images/profile-anthony.jpg",
-        coverPhoto: "/images/user-images/cover-anthony.jpg",
-        rolesShort: "Farmer, Beekeeper,",
+        pic: "/images/user-images/anthony.jpg",
+        coverPhoto: "/images/user-images/owl.jpg",
+        rolesShort: "Farmer, Beekeeper",
         rolesFull: "Farmer, Beekeeper, Beechaser, Beefinder, Beefeater",
         location: "Fort Lauderdale, FL",
         };
     };
   },
+
+
   postList: function() {
     var personId = FlowRouter.getParam("personId");
     // TODO retrieve person details from collection
