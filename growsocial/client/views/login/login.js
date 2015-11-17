@@ -1,21 +1,44 @@
 // TODO on successful login, navigate to page previous to login page in history (if internal)
-// TODO report errors to user in a useful way
+// TODO report errors to server to help support analysis - spam prevention will need to limit storage by IP address
 // TODO email server (mailchimp?)
 // TODO facebook registration, retrieve facebook details
 // TODO edit name, add/remove email, add/remove username, verify email
+// TODO share the same helper code for info/error messages
+// TODO on submit, disable form while submission being handled
+
+Template.login.onCreated(function () {
+  this.messages = new ReactiveDict(); 
+});
+
+Template.login.helpers({
+  infoMessage: function () {
+    return Template.instance().messages.get('infoMessage');
+  },
+  errorMessage: function () {
+    return Template.instance().messages.get('errorMessage');
+  },
+});
 
 Template.login.events({
-  'submit .login-form': function (event) {
+  'submit .login-form': function (event, template) {
     event.preventDefault();
+    
+    // template === Template.instance()
+    
+    template.messages.set('errorMessage', null);
+    template.messages.set('infoMessage', "Logging in ...");
     
     var email = event.target.email.value;
     var password = event.target.password.value;
     
     Meteor.loginWithPassword(email, password, function(err) {
       if (err) {
-        console.log('loginWithPassword error:', err);
         console.log('loginWithPassword error message:', err.message);
+        template.messages.set('infoMessage', null);
+        template.messages.set('errorMessage', err.message);
       } else {
+        template.messages.set('infoMessage', null);
+        // TODO go back to whatever page was on before pressing Login
         FlowRouter.go("home");
       }
     });
@@ -24,18 +47,37 @@ Template.login.events({
     event.preventDefault();
     Meteor.loginWithFacebook(function(err) {
       if (err) {
-        console.log('loginWithFacebook error:', err);
         console.log('loginWithFacebook error message:', err.message);
+        template.messages.set('infoMessage', null);
+        template.messages.set('errorMessage', err.message);
       } else {
+        template.messages.set('infoMessage', null);
+        // TODO go back to whatever page was on before pressing Login
         FlowRouter.go("home");
       }
     });
   }
 });
 
+Template.register.onCreated(function () {
+  this.messages = new ReactiveDict(); 
+});
+
+Template.register.helpers({
+  infoMessage: function () {
+    return Template.instance().messages.get('infoMessage');
+  },
+  errorMessage: function () {
+    return Template.instance().messages.get('errorMessage');
+  },
+});
+
 Template.register.events({
-  'submit .register-form': function (event) {
+  'submit .register-form': function (event, template) {
     event.preventDefault();
+
+    template.messages.set('errorMessage', null);
+    template.messages.set('infoMessage', "Registering new account ...");
 
     var email = event.target.email.value;
     var password = event.target.password.value;
@@ -54,59 +96,67 @@ Template.register.events({
 
     Accounts.createUser(user, function(err) {
       if (err) {
-        // errorClass {error: 403, reason: "Email already exists.", details: undefined, message: "Email already exists. [403]", errorType: "Meteor.Error"}
-        console.log('createUser error:', err);
         console.log('createUser error message:', err.message);
+        template.messages.set('infoMessage', null);
+        template.messages.set('errorMessage', err.message);
         // TODO log the error in the database, unless it's "unable to connect" error
-        // TODO show the error to the user
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
       } else {
-        FlowRouter.go("home");
+        template.messages.set('infoMessage', 'Registered and logged in.');
+        // FlowRouter.go("home");
       }
     });
   }
 });
 
-Template.forgotPassword.events({
-  'submit .forgot-form': function (event) {
-    event.preventDefault();
-    
-    var email = event.target.email.value;
-    
-    Accounts.forgotPassword({
-      email: email,
-    }, function(err) {
-      if (err) {
-        console.log('forgotPassword error:', err);
-        console.log('forgotPassword error message:', err.message);
-      } else {
-        FlowRouter.go("home");
-      }
-    });
+Template.forgotPassword.onCreated(function () {
+  this.messages = new ReactiveDict(); 
+});
+
+Template.forgotPassword.helpers({
+  infoMessage: function () {
+    return Template.instance().messages.get('infoMessage');
+  },
+  errorMessage: function () {
+    return Template.instance().messages.get('errorMessage');
   },
 });
 
-Template.changePassword.events({
-  'submit .change-password-form': function (event) {
+Template.forgotPassword.events({
+  'submit .forgot-form': function (event, template) {
     event.preventDefault();
     
-    var oldPassword = event.target.currentPassword.value;
-    var newPassword = event.target.newPassword.value;
+    template.messages.set('errorMessage', null);
+    template.messages.set('infoMessage', "Resetting password ...");
     
-    Accounts.changePassword(oldPassword, newPassword, function(err) {
-      if (err) {
-        console.log('forgotPassword error:', err);
-        console.log('forgotPassword error message:', err.message);
-      } else {
-        // TODO show user positive response that has changed
-        FlowRouter.go("home");
-      }
-    });
+    var email = event.target.email.value;
+    
+    // As at 2015-11-16 forgotPassword throws an exception if email empty, so either handle it or prevent it
+    // bug raised: https://github.com/meteor/meteor/issues/5664
+    if (email) {
+      Accounts.forgotPassword({
+        email: email,
+      }, function(err) {
+        if (err) {
+          console.log('forgotPassword error message:', err.message);
+          template.messages.set('infoMessage', null);
+          template.messages.set('errorMessage', err.message);
+        } else {
+          template.messages.set('infoMessage', 'Email sent: how to reset your password.');
+          // FlowRouter.go("home");
+        }
+      });
+    } else {
+      template.messages.set('infoMessage', null);
+      template.messages.set('errorMessage', 'Email address needs to be entered.');
+    }
   },
 });
 
 Template.changePassword.onCreated(function() {
   var self = this;
+
+  this.messages = new ReactiveDict(); 
 
   // this will rerun if meteor user changes
   this.autorun(function() {
@@ -115,4 +165,36 @@ Template.changePassword.onCreated(function() {
         FlowRouter.go("home");
     };
   });
+});
+
+Template.changePassword.helpers({
+  infoMessage: function () {
+    return Template.instance().messages.get('infoMessage');
+  },
+  errorMessage: function () {
+    return Template.instance().messages.get('errorMessage');
+  },
+});
+
+Template.changePassword.events({
+  'submit .change-password-form': function (event, template) {
+    event.preventDefault();
+
+    template.messages.set('errorMessage', null);
+    template.messages.set('infoMessage', "Changing password ...");
+    
+    var oldPassword = event.target.currentPassword.value;
+    var newPassword = event.target.newPassword.value;
+    
+    Accounts.changePassword(oldPassword, newPassword, function(err) {
+      if (err) {
+        console.log('changePassword error message:', err.message);
+        template.messages.set('infoMessage', null);
+        template.messages.set('errorMessage', err.message);
+      } else {
+        template.messages.set('infoMessage', 'Password changed.');
+        // FlowRouter.go("home");
+      }
+    });
+  },
 });
