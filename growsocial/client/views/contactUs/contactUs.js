@@ -5,12 +5,17 @@ Template.contactUsMessageList.helpers({
 });
 
 Template.contactUs.onRendered(function () {
+  // TODO why are the forms clearing on refresh page?
   // TODO make reactive based on Meteor.user(), so a logout action causes a clearing of email and other default values?
   if (Meteor.user()) {
     // Set on-screen email address to same as logged-in user
     // TODO pick an "active" email address rather than just the first email address
     $('#email').val(Meteor.user().emails[0].address);
+    if (!!Meteor.user().profile & !!Meteor.user().profile.firstname) {
+      $('#name').val(Meteor.user().profile.firstname + ' ' + Meteor.user().profile.lastname);
+    }
   } else {
+    $('#name').val("");
     $('#email').val("");
   };
 });
