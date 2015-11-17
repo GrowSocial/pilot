@@ -136,6 +136,13 @@ body {
   height: 80%;
 }
 
+/* ------ Marketplace ------ */
+
+.marketplace-product-img {
+    height: 145px;
+    width: 145px;
+}
+
 /* ------ Profile page ------ */
 
 .postIcon {
