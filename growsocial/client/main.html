@@ -25,22 +25,6 @@
   <div id="background2"></div>
 </template>
 
-<!-- 
-TODO navbar replace brand with brand image (logo):
-http://getbootstrap.com/components/#navbar-brand-image 
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="...">
-      </a>
-    </div>
-  </div>
-</nav>
-
--->
-
 <template name="navigation">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -102,7 +86,7 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navBrand">
-  <a class="navbar-brand" href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">GrowSocial</a>
+  <a class="navbar-brand" href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img class="navbar-img" alt="GrowSocial" src="/images/logo.png"></a>
 </template>
 
 <template name="navSearch">
@@ -127,9 +111,8 @@ http://getbootstrap.com/components/#navbar-brand-image
 <template name="navProfilePic">
   <!-- TODO use pathFor -->
   <!-- TODO read data from collections -->
-  <li class="hidden-xs"><a href="/profile/2" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile">Whoever is logged in</a></li>
+  <li class="hidden-xs"><a href="/profile/2" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile"> {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}{{else}}My Profile{{/if}}</a></li>
   <li class="visible-xs"><a href="/profile/2" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
-
 </template>
 
 
