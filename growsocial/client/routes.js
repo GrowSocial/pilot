@@ -38,6 +38,13 @@ FlowRouter.route('/business/:businessId', {
   },
 });
 
+FlowRouter.route('/marketplace/:productId', {
+  name: "marketplace",
+  action: function(params) {
+    BlazeLayout.render("main", {content: "marketplace"});
+  },
+});
+
 FlowRouter.route('/notifications', {
   name: "notifications",
   action: function() {

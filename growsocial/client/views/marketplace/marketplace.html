@@ -1,0 +1,12 @@
+<template name="marketplace">
+    <h1>Marketplace</h1>
+    {{#if selectedProduct}}
+        <p>Selected productId: {{selectedProduct}}</p>
+    {{/if}}
+    <p>Products:</p>
+    <ul>
+    {{#each productList}}
+        <li><img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">{{name}}</li>
+    {{/each}}
+    </ul>
+</template>
