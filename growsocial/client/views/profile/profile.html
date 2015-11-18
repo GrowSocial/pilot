@@ -3,14 +3,13 @@
 <template name="profile">
 
 <!-- div id="primaryContainer" class="primaryContainer clearfix" -->
-  <div id="primaryContainer">
+<div id="primaryContainer">
 
     <img id="image" src="/images/headerPicFULL-1576.jpg" class="image" />
     <!-- "/images/newsfeed-hdr1366-192.jpg"
      -->
     <div id="buttons" class="clearfix">
-        <div id="blog" class="clearfix"><p id="View_Blog">View Blog</p>
-        </div>
+        <div id="blog" class="clearfix"><p id="View_Blog">View Blog</p></div>
         <div id="connect" class="clearfix"><p id="_">&#x2b;</p><p id="Connect">Connect</p>
         </div>
         <div id="message" class="clearfix"><img id="Vector_Smart_Object" 
@@ -25,67 +24,132 @@
     </div>
     <p id="memberName">{{person.name}}</p>
     <div id="badges" class="clearfix">
-    <div id="award" class="clearfix"><img id="award_icon" src="/images/icons/award%20icon.png" class="image" />
-    </div>
-    <div id="lotus" class="clearfix"><img id="lotus_icon" src="/images/icons/lotus%20icon.png" class="image" />
-    </div>
-    <div id="veggies" class="clearfix"><img id="tomato_icon" src="/images/icons/tomato%20icon.png" class="image" />
-    </div>
-    <div id="sun" class="clearfix"><img id="sun_icon" src="/images/icons/sun%20icon.png" class="image" />
-    </div>
+
+        <div id="award" class="clearfix"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
+        </div>
+        <div id="lotus" class="clearfix"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
+        </div>
+        <div id="veggies" class="clearfix"><img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
+        </div>
+        <div id="sun" class="clearfix"><img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
+        </div>
+
     </div>
 
     <p id="What’s_this_">What’s this&#x3f;</p>
 
-    <div id="navbar" class="clearfix">
+    <div id="navbarPROFILE" class="clearfix">
 
-        <p id="about"></p>
-        <p id="profile"></p>
         <p id="marketplace">marketplace</p>
-        <p id="more_▼"><span id="textspan">more </span>
-                       <span id="textspan1">▼</span>
-        </p>
-        <p id="more_▼"><span id="textspan"></span>
-                       <span id="textspan1"></span>
-                       
-        </p> 
-
-        <p id="more_▼">
-            <span id="textspan"> {{person.rolesShort}}</span>
-                       <span id="textspan1"></span>
-                       
-        </p> 
-        <p id="more_▼">
-            <span id="textspan"> in {{person.location}}</span>
-                       <span id="textspan1"></span>
-                       
-        </p> 
-
+        <p id="membrfunct">more ▼</p>
+        <p id="membrfunct"></p> 
+        <p id="membrfunct">{{person.rolesShort}}</p> 
+        <p id="membrfunct">{{person.location}} </p> 
 
     </div>
-    <!--  div id="navbar" class="clearfix">
-        <p id="photos_videos"></p>
-        <p id="about"> in {{person.location}}</p>
-        <p id="profile">{{person.rolesShort}}</p>
-        <p id="marketplace">marketplace</p>
-        <p id="more_▼"><span id="textspan">more </span>
-                       <span id="textspan1">▼</span>
-        </p>
-        
-    </div -->
-    <!-- div id="navbar" class="clearfix">
-        <p id="photos_videos">photos&#x2f;videos</p>
-        <p id="about"> in {{person.location}}</p>
-        <p id="profile">{{person.rolesShort}}</p>
-        <p id="marketplace">marketplace</p>
-        <p id="more_▼"><span id="textspan">more </span><span id="textspan1">▼</span></p>
-        
-    </div -->
 
 
-  </div>
 
- <!-- div id="primaryContainer" class="clearfix"> {{> about}} </div -->
+</div> <!-- div id="primaryContainer" -->
+
+
+
+
+<div id="backgMainPROFL" class="clearfix">
+
+  <div id="zone00PROFL" class="clearfix">
+
+        <div id="commentsPROFL" class="clearfix">
+                    <p id="membrfunct">comment</p>
+                    <div id="commEntryPROFL" class="clearfix">
+                        <p id="promptCommPROFL"> Write something...</p>
+                    </div>
+        </div>
+
+
+
+
+
+
+
+    <div id="marketplaceItems" class="clearfix">
+
+
+        <p id="title"> marketplace</p> <p id="View_All">View All &gt;</p>
+        <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
+
+        <div id="items" class="clearfix">
+
+            <div id="item1" class="clearfix"><p id="qualifierMsg">sold out<br /></p>
+            </div>
+            <div id="item2" class="clearfix"><!-- p id="qualifierMsg1">qualifierMsg<br /></p -->
+            </div>
+            <div id="item3" class="clearfix"><p id="qualifierMsg2">new item<br /></p>
+            </div>
+            <div id="item4" class="clearfix">
+                <!-- img id="Vector_Smart_Object" src="/images/icons/Vector%20Smart%20Object.png" class="image" / -->
+                <!-- p id="qualifierMsg3">qualifierMsg<br /></p -->
+            </div>
+            <div id="item5" class="clearfix">
+                <!-- p id="qualifierMsg4"> qualifierMsg<br /></p -->
+            </div>
+        </div>
+
+        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+
+        <div id="itemDescriptions" class="clearfix">
+            <p id="item1desc">
+                <span id="textspan">Lacinato Luck</span> - &#x24;3.01&#x2f;lb</p>
+            <p id="item2desc">
+                <span id="Span">Beefsteak Tomato&nbsp;</span>- &#x24;2.99&#x2f;lb</p>
+            <p id="item3desc">
+                <span id="textspan1">Scarlet Nantes Carrot </span>
+                <span id="textspan2">- &#x24;1.99&#x2f;lb</span>
+            </p>
+            <p id="item4desc">
+                <span id="textspan3">Blue Lake Bush Beans </span>
+                <span id="textspan4">- &#x24;2.49&#x2f;lb</span>
+            </p>
+            <p id="item5desc">
+                <span id="textspan5">Little Gem Lettuce </span>
+                <span id="textspan6">- &#x24;2.99&#x2f;bunch</span>
+            </p>
+        </div><!-- div id="itemDescriptions" class="clearfix" -->
+
+        <div id="ratingFlags" class="clearfix">
+            <div id="item1flag" class="clearfix">
+                <img id="Favorite_icon" src="/images/icons/Favorite%20icon.png" class="image" />
+                <img id="Watch_icon" src="/images/icons/Watch%20icon.png" class="image" />
+            </div>
+            <div id="item2flag" class="clearfix">
+                <img id="Favorite_icon1" src="/images/icons/Favorite%20icon.png" class="image" />
+                <img id="Watch_icon1" src="/images/icons/Watch%20icon.png" class="image" />
+            </div>
+            <div id="item3flag" class="clearfix">
+                <img id="Favorite_icon2" src="/images/icons/Favorite%20icon.png" class="image" />
+                <img id="Watch_icon2" src="/images/icons/Watch%20icon.png" class="image" />
+            </div>
+            <div id="item4flag" class="clearfix">
+                <img id="Favorite_icon3" src="/images/icons/Favorite%20icon.png" class="image" />
+                <img id="Watch_icon3" src="/images/icons/Watch%20icon.png" class="image" />
+            </div>
+            <div id="item5flag" class="clearfix">
+                <img id="Favorite_icon4" src="/images/icons/Favorite%20icon.png" class="image" />
+                <img id="Watch_icon4" src="/images/icons/Watch%20icon.png" class="image" />
+            </div>
+        </div><!-- div id="ratingFlags" -->
+
+    </div><!-- div id="marketplaceItems" class="clearfix" -->
+
+
+
+
+  </div><!-- div id="zone00PROFL" class="clearfix" -->
+
+            
+</div><!-- div id="backgMainPROFL" class="clearfix" -->
+
+
  
 </template>
 
