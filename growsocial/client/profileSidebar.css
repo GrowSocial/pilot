@@ -1,0 +1,1012 @@
+/* Reflow ~~~~~~     sidebar     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#pictureFrame0,#pictureFrame1,#pictureFrame2,#pictureFrame3{
+    float: left; 
+    clear: both; /*clear: none;*/
+    height: 75px;
+    width: 75px;
+    background-color: rgb(235, 250, 250);
+    position: relative; top: 0px;left: 0px;
+    margin-top: 4%; margin-bottom: 4%;
+    margin-left: 4%; margin-right: 0px;
+    border: 1px solid rgb(225, 225, 225); 
+}
+#pictureFrame1 {  clear: none; /*clear: none;
+    background-color: rgb(235, 250, 250);*/
+}
+#pictureFrame2 {   clear: none;/*clear: none;
+    background-color: rgb(200, 250,250);*/
+}
+#pictureFrame3 {   clear: none;/*clear: none;
+    background-color: rgb(225, 250, 250);*/
+}
+  #photoGroup {
+        float: left;
+        height: auto;
+        margin-left: 6.5%;
+        margin-top: 2%;
+        clear: both;
+        width: 87%;
+       /*background-color: rgb(140, 140, 40);/* magenta*/
+       /*background-color: rgb(140, 40, 140);/* purple*/
+       /*background-color: rgb(40, 140, 140);/* aqua*/
+       /*background-color: rgb(140, 240, 240);/* lightaqua*/
+        background-color: rgb(250, 250, 250);
+    }
+
+
+    #videoGroup {
+        float: left;
+        height: auto;
+        margin-left: 0.07960631%;
+        margin-top: 20px;
+        clear: both;
+        width: 91.735421%;
+        margin-right: 0%;
+    }
+#sidebarPROFL {    z-index: 0;
+    float: left;    position: relative;    clear: none;
+    height: 1765px;width: 24%;
+    background-color: rgb(235, 235, 235);
+    top: 0px; left: 0px;
+    margin-top: .75%; margin-left: 2%; margin-right: auto;
+}
+
+#box,#box1,#box2,#box3,#box4,#box5 { float: left; clear: none; background-color: rgb(255, 255, 255);
+    margin-top: 16px; margin-left: 2%; width: 96%; height: auto;}
+#box1 { margin-top: 1px;}
+#box2 { clear: both;}
+#box4,#box5 { margin-top: 7px;}
+
+#sidebarHDR {z-index: 74;
+    float: left;clear: both;position: relative;top: 0px;left: 0px;
+    
+    width: 33%; height: auto; margin-top: 12px; margin-left: 2%;
+    text-align: left;line-height: normal;
+    font-weight: 600;font-size: 1.125em;font-family: lato;
+    
+    color: rgb(102, 102, 102);  
+    /*background-color: rgb(235, 235, 235);    */
+}
+
+
+
+
+#IconCNONE {    z-index: 88;
+    float: left;    clear: none;    position: relative;    top: 0px; left: 0px;
+    width: auto; 
+    max-width: 100%; margin-top: 4px; margin-left: 1%;
+    height: auto;
+    color: rgb(0, 0, 0);
+}
+#IconCBOTH {    z-index: 88;
+    float: left;    clear: both;    position: relative;    top: 0px; left: 0px;
+    width: auto; 
+    max-width: 100%; margin-top: 4px; margin-left: 1%;
+    height: auto;
+    color: rgb(0, 0, 0);
+}
+
+
+
+
+
+#sidebarcontent {   z-index: 87;
+float: left; clear: none; position: relative; top: 0px; left: 0px;
+    
+text-align: left;line-height: 1em;font-size: 1em;font-weight: normal;
+margin-top: 4px;margin-left: 3%; width: 88%; height: auto;
+/*background-color: rgb(205, 235, 35); */   
+}
+
+
+
+
+#textspan ,#textspan1 ,#textspan2 ,#textspan22,#textspan3{  float: none;
+font-size: 0.875em; color: black;
+font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
+    text-decoration: none;
+    font-family: lato;
+}
+#textspan1{ font-size: 1.125em;}
+#textspan {line-height: 18px; color: rgb(102, 102, 102);}
+#textspan2,#textspan22{ clear : both;}
+#textspan22{ margin-left: 12px;}
+#textspan3{ font-weight: bold; }
+
+
+#aboutContent {z-index: 73;
+    float: left;clear: both;position: relative;top: 0px;left: 0px;  
+    width: 88%; height: auto;
+    
+    font-style: normal; letter-spacing: normal; text-decoration: none;
+    text-align: left;line-height: 18px; color: black;
+    font-weight: normal;font-size: 0.875em;
+    font-family: lato;
+    margin-top: 4px;margin-left: 4%;  
+}
+
+
+#contactIconROW {
+    float: left; clear: both;
+    height: 10%; width: 20px; margin-left:8.5%; margin-top: 4%;
+    background-color: rgb(255, 255, 255);
+}
+#ContactIcon {
+        float: left; clear: both;
+        width: auto; height: auto;
+        max-width: 100%;
+        
+        margin-left: 2px; margin-right: auto; margin-bottom: 32px;
+        
+        color: rgb(0, 0, 0);
+        
+    }
+
+ #socialmediaIcons {float: left; clear: none;
+    height: auto;
+    margin-left: -11.9%;
+    margin-top: 2%;
+    
+    width: 3.591965%;
+}
+
+ 
+
+
+#facebIcon {
+    float: left;
+    width: 15px;margin-left: 0%;
+    max-width: 100%;
+    height: 15px;
+    
+    margin-top: 0%;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0%;
+}
+
+#tweetIcon {
+    float: left;
+    width: 15px;
+    max-width: 100%;
+    height: 12px;
+    margin-left: 17.145224%;
+    margin-top: 0%;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0%;
+}
+
+
+
+    #instagIcon {
+        float: left;
+        width: 13px;
+        max-width: 100%;
+        height: 13px;
+        margin-left: 68%;
+        margin-top: -16%;
+        clear: both;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+        margin-bottom: 6px;
+    }
+
+
+#Read_More_ {z-index: 75;
+    float: left;clear: both;position: relative; top: 0px; left: 0px;   
+    width: 40%; height: auto; margin-top: 6px;margin-left: 60%;margin-bottom: 6px;
+    text-align: left;line-height: 18px;color: rgb(96, 96, 96);
+    font-style: normal; letter-spacing: normal;text-decoration: none;
+    font-size: 0.875em;font-weight: 600;font-family: lato;
+}
+#View_All_ {z-index: 54;
+    float: left; clear: both; position: relative; top: 0px; left: 0px;
+    font-size: 1.125em;
+    
+    height: auto;
+    text-align: left;
+    font-weight: 900;
+    line-height: 18px;
+    color: rgb(96, 96, 96);letter-spacing: 4px;
+    font-style: normal; letter-spacing: normal;text-decoration: none;
+    font-family: lato;     
+    margin-top: 8px; margin-left: 33%;width: 33%;  margin-bottom: 8px;
+}
+
+
+
+
+
+#contactInfo {z-index: 63;
+    float: left;
+    font-size: 1em;
+    width: 88%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;line-height: 1em;
+    position: relative;top: 0px;left: 0px;
+    
+    
+    margin-top: 17px;margin-left: 3%;
+    clear: none;
+}
+
+
+
+
+
+
+
+#Vector_Smart_Object_copy_3 {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 14;
+    margin-top: 3px;
+    margin-left: 8.001667%;
+    clear: none;
+}
+
+
+
+
+
+#Vector_Smart_Object_copy_2 {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 16;
+    margin-top: 3px;
+    margin-left: 6.668056%;
+    clear: none;
+}
+
+
+
+#_5_-_March_1_2015 {
+    float: left;
+    font-size: 1em;
+    width: 12.365316%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 53;
+    margin-top: 81px;
+    margin-left: -12.673166%;
+    clear: none;
+}
+
+
+#Vector_Smart_Object_copy {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 15;
+    margin-top: 3px;
+    margin-left: 8.001667%;
+    clear: none;
+}
+
+
+
+#Vector_Smart_Object {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 11;
+    margin-top: 3px;
+    margin-left: 8.001667%;
+    clear: none;
+}
+
+#Jack_Black-_Nunc_cursus_lectus_sit_amet_mattis_sodales_ex_nib {
+    float: left;
+    font-size: 1em;
+    width: 12.673166%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 52;
+    margin-top: 22px;
+    margin-left: 20.164187%;
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#John_Doe-_In_feugiat_pulvinar_nisi_vel_tempor_neque_aliquam_in {
+    float: left;
+    font-size: 1em;
+    width: 12.673166%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 49;
+    margin-top: 2px;
+    margin-left: 20.164187%;
+    clear: both;
+}
+
+
+
+#widebar { float: left;clear: none;
+    height: 1px;
+    width: 100%;
+    border: 3px solid rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 56;
+    margin-top: 8px;
+    margin-left: auto;
+    
+}
+ #widebar {  clear: both;
+        margin-top: 8px; margin-left: auto;margin-right: auto;     
+        width: 100%; 
+    }
+
+
+
+
+
+#videos {
+    float: left;
+    font-size: 1.125em;
+    width: 5.950968%;
+    height: auto;
+    text-align: left;
+    font-weight: 600;
+    line-height: normal;
+    color: rgb(102, 102, 102);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 8;
+    margin-top: 28px;
+    margin-left: 20.010262%;
+    clear: both;
+}
+
+#contact {
+    float: left;
+    font-size: 1.125em;
+    width: 5.950968%;
+    height: auto;
+    text-align: left;
+    font-weight: 600;
+    line-height: normal;
+    color: rgb(102, 102, 102);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 69;
+    margin-top: 26px;
+    margin-left: 20.010262%;
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
+#photos {
+    float: left;
+    font-size: 1.125em;
+    width: 5.950968%;
+    height: auto;
+    text-align: left;
+    font-weight: 600;
+    line-height: normal;
+    color: rgb(102, 102, 102);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+    margin-top: 27px;
+    margin-left: 20.06157%;
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
+#image {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0%;
+}
+
+#image1 {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 6%;
+    margin-top: 0px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    margin-right: 0%;
+}
+
+#image2 {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 6%;
+    margin-top: 0px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    margin-right: 0%;
+}
+
+#image3 {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 6%;
+    margin-top: 0px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    margin-right: 0%;
+}
+
+#image4 {
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 6%;
+    margin-top: 0px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0%;
+}
+
+
+    #ratingStars {
+        float: left; clear: none;
+        height: auto;
+        margin-left: 1%;margin-top: 12px;
+        
+        width: 33%;
+        margin-right: 0%;
+    }
+#horizonDividr {
+    float: left;
+
+    max-width: 100%;
+    height: auto;
+
+    margin-top: 1px;
+    clear: both;
+    color: rgb(0, 0, 0);
+    display: block;
+    visibility: visible;
+}
+
+
+
+
+
+#View_All_1 {
+    float: left;
+    font-size: 0.89030375em;
+    width: 4.29%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 18px;
+    color: rgb(55, 55, 55);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 38;
+    margin-top: 2.203125px;
+    margin-left: 20.03589%;
+    clear: both;
+    display: block;
+    margin-right: 0%;
+}
+
+
+
+
+#star1 {
+    float: left;
+    width: 18.000000319999998px;
+    max-width: 100%;
+    height: 17px;
+    margin-left: 0%;
+    margin-top: 0%;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0%;
+}
+
+#ratingItems1 {
+    float: left;
+    height: auto;
+    margin-left: 19.999207%;
+    margin-top: 3.734375px;
+    clear: both;
+    width: 13.000674%;
+}
+
+#_4_5_-_June_15_2015 {
+    float: left;
+    font-size: 1em;
+    width: 87.013097%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+    margin-top: 0%;
+    margin-left: 3.952631%;
+    clear: none;
+    display: block;
+    visibility: visible;
+    margin-right: 0%;
+}
+
+
+#star {
+    float: left;
+    width: 18.000000319999998px;
+    max-width: 100%;
+    height: 17px;
+    margin-left: 0%;
+    margin-top: 0%;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0%;
+    display: block;
+    visibility: visible;
+}
+
+#ratingItems {
+    float: left;
+    height: auto;
+    margin-left: 19.999207%;
+    margin-top: 0px;
+    clear: both;
+    width: 12.641775%;
+}
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen and (max-width: 1576px) {
+
+   #body {
+        margin-top: 0%;
+        clear: none;
+        display: block;
+        margin-left: 2%;
+    }
+    #sidebarHDR {
+        margin-top: 6px;
+        margin-left: 2%;
+        clear: both;
+    }
+
+
+
+
+
+
+
+
+    #contact {
+        margin-top: 9px;
+        margin-left: 0.07765071%;
+        clear: both;
+        margin-right: 0%;
+        width: 42.371766%;
+    }
+
+
+
+
+
+
+    #facebIcon {
+        float: left;
+        width: 8px;
+        max-width: 100%;
+        height: 15px;
+        margin-left: 0%;
+        margin-top: 0%;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+    }
+
+    #tweetIcon {
+        float: left;
+        width: 15px;
+        max-width: 100%;
+        height: 12px;
+        margin-left: 17.145224%;
+        margin-top: 3.533959%;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+    }
+
+
+
+
+
+    #image {
+        float: left;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: 0%;
+        margin-top: 0px;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+    }
+
+    #image1 {
+        float: left;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: 6%;
+        margin-top: 0px;
+        clear: none;
+        color: rgb(0, 0, 0);
+        display: block;
+        margin-right: 0%;
+    }
+
+    #image2 {
+        float: left;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: 6%;
+        margin-top: 0px;
+        clear: none;
+        color: rgb(0, 0, 0);
+        display: block;
+        margin-right: 0%;
+    }
+
+    #image3 {
+        float: left;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: 6%;
+        margin-top: 0px;
+        clear: none;
+        color: rgb(0, 0, 0);
+        display: block;
+        margin-right: 0%;
+    }
+
+    #image4 {
+        float: left;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: 6%;
+        margin-top: 0px;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+    }
+
+
+
+    #John_Doe-_In_feugiat_pulvinar_nisi_vel_tempor_neque_aliquam_in {
+        margin-top: 7px;
+        margin-left: 0%;
+        clear: both;
+        margin-right: 0%;
+        width: 92.507325%;
+    }
+
+
+
+    #Jack_Black-_Nunc_cursus_lectus_sit_amet_mattis_sodales_ex_nib {
+        margin-top: 11.296875px;
+        margin-left: 0%;
+        clear: both;
+        margin-right: 0%;
+        width: 92.507325%;
+    }
+
+    #_5_-_March_1_2015 {
+        margin-top: 1.046875px;
+        margin-left: 6.604133%;
+        clear: none;
+        width: 84.610997%;
+        margin-right: 0%;
+    }
+
+    
+
+    #photos {
+        margin-top: 11px;
+        margin-left: 0.44869011%;
+        clear: both;
+        margin-right: 0%;
+        width: 43.438879%;
+    }
+
+
+
+
+    #videos {
+        margin-top: 14px;
+        margin-left: 0.07960631%;
+        clear: both;
+        margin-right: 0%;
+        width: 43.438879%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    #View_All_1 {
+        width: 24.015238%;
+        display: block;
+        margin-top: 209px;
+        margin-right: 0%;
+        margin-left: -24.728615%;
+        clear: none;
+        font-size: 0.69em;
+    }
+
+
+
+  
+
+    #star1 {
+        float: left;
+        width: 18.000000319999998px;
+        max-width: 100%;
+        height: 17px;
+        margin-left: 0%;
+        margin-top: 0%;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+    }
+
+    #ratingItems1 {
+        float: left;
+        height: auto;
+        margin-left: 0%;
+        margin-top: 3.734375px;
+        clear: both;
+        width: 94.897958%;
+        margin-right: 0%;
+    }
+
+    #_4_5_-_June_15_2015 {
+        margin-top: 0%;
+        margin-left: 3.952631%;
+        clear: none;
+        width: 87.013097%;
+        display: block;
+        visibility: visible;
+        margin-right: 0%;
+    }
+
+    #star {
+        float: left;
+        width: 18.000000319999998px;
+        max-width: 100%;
+        height: 17px;
+        margin-left: 0%;
+        margin-top: 0%;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+        display: block;
+        visibility: visible;
+    }
+
+    #ratingItems {
+        float: left;
+        height: auto;
+        margin-left: 0%;
+        margin-top: 0px;
+        clear: both;
+        width: 92.278187%;
+        margin-right: 0%;
+    }
+
+/*~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+#sidebarcontent {  
+/*margin-right: 0%;
+background-color: rgb(235, 235, 235);  */
+}
+
+#sidebarHDR {
+    clear: both; 
+    width: 33%;  margin-top: 12px; margin-left: 2%;
+     
+}
+#horizonDividr {float: left;
+        width: 100%; max-width: 100%;
+        height: auto;
+        margin-left: 0%;margin-top: 0px;margin-right: 0%;
+        clear: none;
+        color: rgb(0, 0, 0);
+        display: block;
+        visibility: visible;   
+    }
+#box,#box1,#box2,#box3,#box4,#box5 { 
+    float: left; clear: both; margin-top: 7px;margin-left: 2%; height: auto;}
+
+#box2 ,#box3{ margin-top: 17px;}
+
+#aboutContent {  margin-right: 0%; width: 90%;}
+#Read_More_ {  width: 40%; margin-left: 60%; }
+#View_All_ {   
+        margin-top: 8px; margin-left: 33%;width: 33%;  margin-bottom: 8px;
+       /* clear: both;margin-top: 8px;margin-right: 0%; width: 36.4973%; */
+    }
+
+
+#contactInfo {
+        margin-top: 11px;
+        margin-left: 3%;
+        clear: none;
+        margin-right: 0%;
+        width: 75%;
+        /*background-color: rgb(240, 240, 240);*/
+    }
+
+#IconCNONE {margin-left: 1%; margin-right: 0%;
+/*background-color: rgb(235, 235, 235); */
+}
+#IconCBOTH {margin-left: 1%; margin-right: 0%;
+/*background-color: rgb(235, 235, 235);  */
+}
+#socialmediaIcons {float: left; clear: both;
+        height: auto;
+        margin-left: 17%;
+        margin-top: -10%;
+        
+        width: 25%;
+        margin-right: 0%;
+    } 
+
+    #instagIcon {
+        float: left;
+        width: 13px;
+        max-width: 100%;
+        height: 13px;
+        margin-left: 68%;
+        margin-top: -16%;
+        clear: both;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;
+        margin-bottom: 6px;
+    }
+
+
+
+
+#ratingStars {
+    float: left;clear: none;
+    height: auto;
+    /*background-color: rgb(235, 235, 235);*/
+}
+
+
+
+
+
+
+
+
+}
