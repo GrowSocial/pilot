@@ -17,11 +17,11 @@
 /*margin-top: 0%; margin-left: 20%;*/
 
 #zone00 {    z-index: 1;
-    float: left;    clear: none;    position: relative;    top: 0px;left: 0px;
-    height: 640px;width: 70%;
+float: left;clear: none; position: relative; top: 0px;left: 0px;
+    height: auto;width: 70%;
     background-color: rgb(226,226,226);
     margin-top: 0%; margin-left: 2%; margin-right: 0px;
-} 
+} /*height: 640px;*/
 
 #backgMainPROFL {    z-index: 0;
     float: left;    position: relative;

@@ -46,11 +46,11 @@
     }
 #sidebarPROFL {    z-index: 0;
     float: left;    position: relative;    clear: none;
-    height: 1765px;width: 24%;
+    height: auto;width: 24%;
     background-color: rgb(235, 235, 235);
     top: 0px; left: 0px;
     margin-top: .75%; margin-left: 2%; margin-right: auto;
-}
+}/*height: 1765px;*/
 
 #box,#box1,#box2,#box3,#box4,#box5 { float: left; clear: none; background-color: rgb(255, 255, 255);
     margin-top: 16px; margin-left: 2%; width: 96%; height: auto;}
@@ -668,12 +668,7 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 @media only screen and (max-width: 1576px) {
 
-   #body {
-        margin-top: 0%;
-        clear: none;
-        display: block;
-        margin-left: 2%;
-    }
+
     #sidebarHDR {
         margin-top: 6px;
         margin-left: 2%;
