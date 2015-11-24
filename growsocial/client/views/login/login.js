@@ -43,9 +43,13 @@ Template.login.events({
       }
     });
   },
-  'click .btn-facebook':function(event) {
+  'click .btn-facebook':function(event, template) {
     event.preventDefault();
-    Meteor.loginWithFacebook(function(err) {
+    var options = {
+      requestPermissions: ['public_profile', 'email'],
+      loginStyle: 'popup',
+    };
+    Meteor.loginWithFacebook(options, function(err) {
       if (err) {
         console.log('loginWithFacebook error message:', err.message);
         template.messages.set('infoMessage', null);
