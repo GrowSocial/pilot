@@ -1,7 +1,7 @@
 
 #newsFeed1,#newsFeed2,#newsFeed3,#newsFeed5 {z-index: 45;
     float: none;clear: none;position: relative; top: 0px;left: 0px;
-    height: 308px; width: 88%;
+    height: 280px; width: 88%;
     /*background-color: rgb(255, 255, 255);*/
     background-color: rgb(245, 245, 245);
 
@@ -10,11 +10,54 @@
 }
 #newsFeed2 { height: 335px;
 }
-#newsFeed3 { height: 303px; 
+#newsFeed3 { height: 280px; 
 }
-#newsFeed5 { height: 196px; 
+#newsFeed5 { height: 160px; 
 }
 
+#profile_pic_copy {z-index: 60;
+    float: left;clear: none;position: relative;top: 0px;left: 0px;
+    width: 9.74478%;height: 83px;
+    color: rgb(0, 0, 0);
+    
+    
+    background-image:url("/images/user-images/anthony75.png");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    margin-top: 16px;margin-left: 1.62413%;
+    
+}
+
+#listing_box {
+    float: left;
+    height: 160px;
+    width: 82%;
+    background-color: rgb(226,226,226);
+    border: 1px solid rgb(115, 115, 115);
+    position: relative;top: 0px;left: 0px;
+    z-index: 50;
+    margin-top: 66px;
+    margin-left: -66%;
+    clear: none;
+
+}
+
+
+
+#newsFeedcontent {
+    float: left;
+    font-size: 1em;
+    width: 66%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;top: 0px;left: 0px;
+    z-index: 57;
+    margin-top: 2%; /*4px;*/
+    margin-left: 1.740139%;
+    clear: none;
+}
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  Meteor integr */
@@ -43,20 +86,7 @@
     clear: both;
 }
 
-#Vector_Smart_Object_copy_47 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 8;
-    margin-top: 18px;
-    margin-left: 2.204176%;
-    clear: none;
-}
+
 
 #_1_favorite {
     float: left;
@@ -80,35 +110,8 @@
     clear: both;
 }
 
-#Vector_Smart_Object_copy_46 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 7;
-    margin-top: 17px;
-    margin-left: 50.696056%;
-    clear: none;
-}
 
-#Vector_Smart_Object_copy_44 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 20;
-    margin-top: 25px;
-    margin-left: 2.204176%;
-    clear: none;
-}
+
 
 #_1_comment_2_shares {
     float: left;
@@ -132,65 +135,10 @@
     clear: both;
 }
 
-#Vector_Smart_Object_copy_48 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 6;
-    margin-top: 16px;
-    margin-left: 2.902045%;
-    clear: none;
-}
 
-#Vector_Smart_Object_copy_43 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 19;
-    margin-top: 24px;
-    margin-left: 50.812065%;
-    clear: none;
-}
 
-#Vector_Smart_Object_copy_41 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 35;
-    margin-top: 13px;
-    margin-left: 2.204176%;
-    clear: none;
-}
 
-#Vector_Smart_Object1 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 48;
-    margin-top: 37px;
-    margin-left: 2.204176%;
-    clear: none;
-}
+
 
 #It_is_almost_gardening_season_again_Looking_forward_to_this_ye {
     float: left;
@@ -214,35 +162,7 @@
     clear: none;
 }
 
-#Vector_Smart_Object_copy_45 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 18;
-    margin-top: 23px;
-    margin-left: 2.902045%;
-    clear: none;
-}
 
-#Vector_Smart_Object_copy_4 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 34;
-    margin-top: 12px;
-    margin-left: 50.581859%;
-    clear: none;
-}
 
 #_1_favorite_2_comments_1_share {
     float: left;
@@ -295,35 +215,10 @@
     clear: none;
 }
 
-#Vector_Smart_Object_copy_42 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 33;
-    margin-top: 11px;
-    margin-left: 2.902045%;
-    clear: none;
-}
 
-#Vector_Smart_Object {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 47;
-    margin-top: 36px;
-    margin-left: 50.581859%;
-    clear: none;
-}
+
+
+
 
 #Anthony_Anderson_Sept_2 {
     float: left;
@@ -398,17 +293,7 @@
     clear: both;
 }
 
-#textspan12 {
-    float: none;
-    font-size: 1.27093125em;
-    line-height: 18px;
-    color: black;
-    font-style: normal;
-    font-weight: bold;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-}
+
 
 #textspan13 {
     float: none;
@@ -422,39 +307,7 @@
     font-family: lato;
 }
 
-#Vector_Smart_Object2 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 46;
-    margin-top: 35px;
-    margin-left: 2.902045%;
-    clear: none;
-}
 
-#Ellipse_1_copy_22 {
-    float: left;
-    height: 67.17999999999984px;
-    width: 80.059524%;
-    background-color: rgb(242, 242, 242);
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 13;
-    margin-top: 7.625px;
-    margin-left: 9.970238%;
-    clear: none;
-}
 
 #Jessica_Jones_Yoga_Instructor_Massage_Therapist_Owner_o {
     float: left;
@@ -548,22 +401,6 @@
     clear: none;
 }
 
-#profile_pic_copy_22 {
-    float: left;
-    width: 9.74478%;
-    height: 83px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 14;
-    background-image:url("img/profile%20pic%20copy%202.png");
-    -webkit-background-size: 100%;
-    background-size: 100%;
-    margin-top: 16px;
-    margin-left: 1.62413%;
-    clear: none;
-}
 
 #listing_box_copy1 {
     float: left;
@@ -660,22 +497,7 @@
     clear: none;
 }
 
-#Anthony_listed_new_item_on_his_Marketplace_2_08_pm {
-    float: left;
-    font-size: 1em;
-    width: 66.241299%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 1em;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 57;
-    margin-top: 28px;
-    margin-left: 1.740139%;
-    clear: none;
-}
+
 
 #textspan {
     float: none;
@@ -713,38 +535,9 @@
     font-family: lato;
 }
 
-#textspan3 {
-    float: none;
-    font-size: 0.875em;
-    line-height: 18px;
-    color: rgb(108, 108, 108);
-    font-style: normal;
-    font-weight: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-}
 
 
 
-#Ellipse_1_copy_2 {
-    float: left;
-    height: 67.17999999999984px;
-    width: 80.059524%;
-    background-color: rgb(242, 242, 242);
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 41;
-    margin-top: 7.625px;
-    margin-left: 9.970238%;
-    clear: none;
-}
 
 #favorite_icon {
     float: left;
@@ -845,22 +638,7 @@
     font-family: lato;
 }
 
-#profile_pic_copy_2 {
-    float: left;
-    width: 9.74478%;
-    height: 83px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 42;
-    background-image:url("img/profile%20pic%20copy%202.png");
-    -webkit-background-size: 100%;
-    background-size: 100%;
-    margin-top: 16px;
-    margin-left: 1.62413%;
-    clear: none;
-}
+
 
 #Aunt_Ruby_s_Green_Tomato_-_2_99_lb_Lorem_ipsum_dolor_sit_amet {
     float: left;
@@ -927,91 +705,13 @@
     font-family: lato;
 }
 
-#profile_pic_copy {
-    float: left;
-    width: 9.74478%;
-    height: 83px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 60;
-    background-image:url("img/profile%20pic%20copy.png");
-    -webkit-background-size: 100%;
-    background-size: 100%;
-    margin-top: 16px;
-    margin-left: 1.62413%;
-    clear: none;
-}
-
-#Ellipse_1_copy_21 {
-    float: left;
-    height: 67.17999999999984px;
-    width: 80.059524%;
-    background-color: rgb(242, 242, 242);
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 28;
-    margin-top: 7.625px;
-    margin-left: 9.970238%;
-    clear: none;
-}
-
-
-#Rectangle_4_copy_5 {
-    float: left;
-    height: 145px;
-    width: 20.584046%;
-    background-color: rgb(224, 224, 224);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 54;
-    margin-top: 14px;
-    margin-left: 2.274751%;
-    clear: none;
-}
-
-
-#profile_pic_copy_21 {
-    float: left;
-    width: 9.74478%;
-    height: 83px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 29;
-    background-image:url("img/profile%20pic%20copy%202.png");
-    -webkit-background-size: 100%;
-    background-size: 100%;
-    margin-top: 16px;
-    margin-left: 1.62413%;
-    clear: none;
-}
 
 
 
-#listing_box {
-    float: left;
-    height: 172px;
-    width: 81.670534%;
-    background-color: rgb(244, 244, 244);
-    border: 1px solid rgb(115, 115, 115);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 50;
-    margin-top: 66px;
-    margin-left: -66.123477%;
-    clear: none;
-}
+
+
+
+
 
 @media only screen and (max-width: 1576px) {
 
@@ -1021,63 +721,11 @@
     }
 
 
-    #Vector_Smart_Object {
-        margin-left: 50%;
-    }
 
-    #Vector_Smart_Object1 {
-        margin-top: 36px;
-        margin-left: 2%;
-        clear: none;
-    }
 
-    #Vector_Smart_Object2 {
-        margin-top: 36px;
-        margin-left: 2%;
-        clear: none;
-    }
 
-    #Vector_Smart_Object_copy_4 {
-        margin-left: 50%;
-    }
 
-    #Vector_Smart_Object_copy_41 {
-        margin-top: 12px;
-        margin-left: 2%;
-    }
 
-    #Vector_Smart_Object_copy_42 {
-        margin-top: 12px;
-        margin-left: 2%;
-    }
-
-    #Vector_Smart_Object_copy_43 {
-        margin-left: 50%;
-    }
-
-    #Vector_Smart_Object_copy_44 {
-        margin-top: 24px;
-        margin-left: 2%;
-    }
-
-    #Vector_Smart_Object_copy_45 {
-        margin-top: 24px;
-        margin-left: 2%;
-    }
-
-    #Vector_Smart_Object_copy_46 {
-        margin-left: 50%;
-    }
-
-    #Vector_Smart_Object_copy_47 {
-        margin-top: 17px;
-        margin-left: 2%;
-    }
-
-    #Vector_Smart_Object_copy_48 {
-        margin-left: 2%;
-        margin-top: 17px;
-    }
 
     #Ellipse_1_copy_22 {
         display: none;
@@ -1091,8 +739,6 @@
         display: none;
     }
 
-    #Ellipse_1_copy {
-        display: none;
-    }
+
 }
 
