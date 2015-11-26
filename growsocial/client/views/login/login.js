@@ -118,15 +118,14 @@ Template.register.events({
         template.messages.set('infoMessage', null);
         template.messages.set('errorMessage', err.message);
 
-        // log the error in the database, unless it's "unable to connect" error
-        if (err.message == "unable to connect") {
-          // Send error to database
-          var error = {
-            tag: "Register",
-            message: err.message,
-          }
-          Meteor.call("addErrorLog", error);
-        };
+        // TODO log the error in the database, unless it's "unable to connect" error
+        
+        // Send error to database
+        var error = {
+          tag: "Register",
+          message: err.message,
+        }
+        Meteor.call("addErrorLog", error);
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
