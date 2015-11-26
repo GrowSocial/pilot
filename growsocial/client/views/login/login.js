@@ -36,6 +36,13 @@ Template.login.events({
         console.log('loginWithPassword error message:', err.message);
         template.messages.set('infoMessage', null);
         template.messages.set('errorMessage', err.message);
+
+        // Send error to database
+        var error = {
+          tag: "LoginWithPassword",
+          message: err.message,
+        }
+        Meteor.call("addErrorLog", error);
       } else {
         template.messages.set('infoMessage', null);
         // TODO go back to whatever page was on before pressing Login
@@ -54,6 +61,13 @@ Template.login.events({
         console.log('loginWithFacebook error message:', err.message);
         template.messages.set('infoMessage', null);
         template.messages.set('errorMessage', err.message);
+
+        // Send error to database
+        var error = {
+          tag: "LoginWithFacebook",
+          message: err.message,
+        }
+        Meteor.call("addErrorLog", error);
       } else {
         template.messages.set('infoMessage', null);
         // TODO go back to whatever page was on before pressing Login
@@ -103,7 +117,15 @@ Template.register.events({
         console.log('createUser error message:', err.message);
         template.messages.set('infoMessage', null);
         template.messages.set('errorMessage', err.message);
+
         // TODO log the error in the database, unless it's "unable to connect" error
+        
+        // Send error to database
+        var error = {
+          tag: "Register",
+          message: err.message,
+        }
+        Meteor.call("addErrorLog", error);
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
@@ -145,6 +167,13 @@ Template.forgotPassword.events({
           console.log('forgotPassword error message:', err.message);
           template.messages.set('infoMessage', null);
           template.messages.set('errorMessage', err.message);
+
+          // Send error to database
+          var error = {
+            tag: "ForgotPassword",
+            message: err.message,
+          }
+          Meteor.call("addErrorLog", error);
         } else {
           template.messages.set('infoMessage', 'Email sent: how to reset your password.');
           // FlowRouter.go("home");
@@ -195,6 +224,13 @@ Template.changePassword.events({
         console.log('changePassword error message:', err.message);
         template.messages.set('infoMessage', null);
         template.messages.set('errorMessage', err.message);
+
+        // Send error to database
+        var error = {
+          tag: "ChangePassword",
+          message: err.message,
+        }
+        Meteor.call("addErrorLog", error);
       } else {
         template.messages.set('infoMessage', 'Password changed.');
         // FlowRouter.go("home");
