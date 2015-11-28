@@ -17,52 +17,58 @@ Meteor.methods({
 	  	};
 
 	  	// Tag (Type of error) (Max 30 characters)
-  		if (error.tag.length > 30) {
-  			err.tag = error.tag.substring(0, 31);
-  		}
-  		else {
-  			err.tag = error.tag;
-  		}
-	  	
-
+	  	if (typeof error.tag !== 'undefined') {
+	  		if (error.tag.length > 30) {
+	  			err.tag = error.tag.substring(0, 31);
+	  		}
+	  		else {
+	  			err.tag = error.tag;
+	  		}
+	  	};
+  		
 	  	// Message (Max 200 characters)
-  		if (error.message.length > 200) {
-  			err.message = error.message.substring(0, 201);
-  		}
-  		else {
-  			err.message = error.message;
-  		}
-	  	
+	  	if (typeof error.message !== 'undefined') {
+	  		if (error.message.length > 200) {
+	  			err.message = error.message.substring(0, 201);
+	  		}
+	  		else {
+	  			err.message = error.message;
+	  		}
+	  	};
 
 	  	// Error Number
 	  	err.errNumber = error.errNumber;
 	  	
 
 	  	// First Name (Max 25 characters)
-  		if (error.firstName.length > 25) {
-  			err.firstName = error.firstName.substring(0, 26);
-  		}
-  		else {
-  			err.firstName = error.firstName;
-  		}
-	  	
+	  	if (typeof error.firstName !== 'undefined') {
+	  		if (error.firstName.length > 25) {
+	  			err.firstName = error.firstName.substring(0, 26);
+	  		}
+	  		else {
+	  			err.firstName = error.firstName;
+	  		}
+	  	};
 
 	  	// Last Name (Max 25 characters)
-  		if (error.lastName.length > 25) {
-  			err.lastName = error.lastName.substring(0, 26);
-  		}
-  		else {
-  			err.lastName = error.lastName;
-  		}
-	  	
+	  	if (typeof error.lastName !== 'undefined') {
+	  		if (error.lastName.length > 25) {
+	  			err.lastName = error.lastName.substring(0, 26);
+	  		}
+	  		else {
+	  			err.lastName = error.lastName;
+	  		}
+	  	};
 
 	  	// Email (Max 254 characters)
-  		if (error.email.length > 254) {
-  			err.email = error.email.substring(0, 255);
-  		}
-  		else {
-  			err.email = error.email;
-  		}
+	  	if (typeof error.email !== 'undefined') {
+	  		if (error.email.length > 254) {
+	  			err.email = error.email.substring(0, 255);
+	  		}
+	  		else {
+	  			err.email = error.email;
+	  		}
+  		};
 	  	
 	  	// Check types
 	  	check(err, {
