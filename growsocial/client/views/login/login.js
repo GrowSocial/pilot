@@ -132,8 +132,8 @@ Template.register.events({
           message: err.message,
           errNumber: err.error,
           email: user.email,
-          fName: user.profile.firstname,
-          lName: user.profile.lastname
+          firstName: user.profile.firstname,
+          lastName: user.profile.lastname
         }
         Meteor.call("addErrorLog", error);
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
