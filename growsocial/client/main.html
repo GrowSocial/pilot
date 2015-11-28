@@ -52,10 +52,12 @@
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
+              {{ > navMyCart}}
               {{ > navNotificationsList}}
               {{ > navHelp}}
               {{ > navLogout}}
             {{else}}
+              {{ > navMyCart}}
               {{ > navHelp}}
               {{ > navSignIn}}
             {{/if}}
@@ -185,4 +187,8 @@
 
 <template name="navContactUs">
   <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
+</template>
+
+<template name="navMyCart">
+  <li class="{{isActiveRoute 'cart'}}"><a href="{{pathFor 'cart'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Cart</a></li>
 </template>
