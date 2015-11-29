@@ -2,21 +2,24 @@
 
 <template name="profile">
 
-<!-- div id="primaryContainer" class="primaryContainer clearfix" -->
-<div id="primaryContainer">
+<div id="headerPROFL">
 
-    <img id="image" src="/images/headerPicFULL-1576.jpg" class="image" />
-    <div id="buttons" class="clearfix">
-        <div id="blog" class="clearfix"><p id="View_Blog">View Blog</p></div>
-        <div id="connect" class="clearfix"><p id="_">&#x2b;</p><p id="Connect">Connect</p>
+    <img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
+    <div id="buttongroupPROFL" class="clearfix">
+        <div id="blog" class="clearfix">
+            <p id="buttonLabels">View Blog</p>
         </div>
-        <div id="message" class="clearfix"><img id="Vector_Smart_Object" 
-            src="/images/icons/thoughtBubble-ICON.png" class="image" />
-            <p id="Message">Message</p>
+        <div id="connect" class="clearfix">
+            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;Connect</p>
+            <img id="buttonIcon" src="/images/icons/+.png" class="image" />
+        </div>
+        <div id="message" class="clearfix">          
+            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;&nbsp;Message</p>
+            <img id="buttonIcon" src="/images/icons/thoughtBubble-ICON.png" class="image" />
         </div>
     </div>
 
-    <div id="member" class="clearfix">
+    <div id="memberPicture" class="clearfix">
         <img id="membPic" src="/images/user-images/anthony.png" class="image" />
     </div>
     <p id="membrfunctXX">{{person.name}}</p>
@@ -34,18 +37,16 @@
         
     </div>
 
-    
-
-    <!--  div id="navbarPROFILE" class="clearfix">{{> nb}}</div -->
-
     <div id="navbarPROFILE" class="clearfix">
-        <p id="membrfunctX">marketplace</p>
-        <p id="membrfunctX">more ▼</p>
-        <p id="membrfunct"></p> 
-        <p id="membrfunct">{{person.rolesShort}}</p> 
-        <p id="membrfunct">{{person.location}} </p> 
+        <p id="membrfunctX">PROFILE</p>
+        <p id="membrfunctX">ABOUT</p>
+        <p id="membrfunct"></p> <p id="membrfunct"></p>
+        <p id="membrfunctX">PHOTOS/VIDEOS</p> 
+        <p id="membrfunctX">MARKETPLACE</p> 
+        <p id="membrfunctX">MORE ▼</p>
+
     </div>
-</div> <!-- div id="primaryContainer" -->
+</div> <!-- div id="headerPROFL" -->
 
 
 <div id="sidebarPROFL" class="clearfix"> <!-- sidebar   `````````````````````````````````````````````````````````   -->
@@ -65,7 +66,7 @@
         <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
         <p id="sidebarHDR">ABOUT</p>
         <p id="aboutContent">
-            I live to farm, I farm to live. But enough about me! What about you? Let me tell you about how we farm. We demonstrate natural farming techniques here. It comes naturally to us. Lispsum fat poo poop ee doo, papadum tooey, roses and cauliflower, lions + tigers too. Don't forget the ivy, the fire ants are OUR FRIENDS!
+            I live to farm, I farm to live. But enough about me! What about you? Let me tell you about how we farm. We demonstrate natural farming techniques here. It comes naturally to us. Lispsum fat poo poop ee doo, papadum tooey, roses and cauliflower, lions + tigers oh my. Don't forget the ivy, the fire ants are OUR FRIENDS!
         </p>
         <p id="Read_More_">Read More ></p>
     </div> <!-- about -->
@@ -110,16 +111,16 @@
         <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
         <p id="sidebarHDR">REVIEWS</p>
           <div id="ratingStars" class="clearfix">
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starGhost.png" class="image" />
+            <img id="star-icon" src="/images/icons/starYellow.png" class="image" />
+            <img id="star-icon" src="/images/icons/starYellow.png" class="image" />
+            <img id="star-icon" src="/images/icons/starYellow.png" class="image" />
+            <img id="star-icon" src="/images/icons/starYellow.png" class="image" />
+            <img id="star-icon" src="/images/icons/starGhost.png" class="image" />
           </div>
         
         <p id="textspan22">4.9 Stars &#x7c; 46 Reviews</p>
 
-        <div id="widebar" class="clearfix"></div>
+        <div id="wideHorizDivdr" class="clearfix"></div>
 
         <p id="contactInfo">
             <span id="textspan3">John Doe</span>
@@ -127,7 +128,7 @@
             Donec quis facilisis ipsum. Ut malesuada libero eu libero vestibulum...</span>         
         </p>
         <p id="sidebarcontent">    
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
+            <img id="star-icon" src="/images/icons/starYellow.png" class="image" />
             <span id="textspan3">4.5 Stars</span>
             <span id="textspan3">&nbsp;- June 15, 2015</span>
             <span id="Read_More_">Read More ></span>
@@ -140,16 +141,13 @@
             Donec quis facilisis ipsum. Ut malesuada libero eu libero vestibulum...</span>         
         </p>
         <p id="sidebarcontent">    
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
+            <img id="star-icon" src="/images/icons/starYellow.png" class="image" />
             <span id="textspan3">4 Stars</span>
             <span id="textspan3">&nbsp;- March 1, 2015</span>
             <span id="Read_More_">Read More ></span>
         </p>
 
-
-
-
-        <p id="View_All_">View All &gt;&gt; </p>
+        <p id="view_all_">View All &gt;&gt; </p>
     </div> <!-- reviews -->
 
     <div id="box" class="clearfix">
@@ -158,36 +156,39 @@
 
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
 
-        <p id="View_All_">View All &gt;</p>
+        <p id="view_all_">View All &gt;</p>
     </div><!-- PHOTOS -->
 
     <div id="box" class="clearfix">
@@ -196,13 +197,13 @@
 
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <!-- div id="pictureFrame2" class="clearfix">
             </div -->
@@ -210,13 +211,13 @@
 
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <!-- div id="pictureFrame2" class="clearfix">
             </div -->
@@ -224,7 +225,7 @@
 
 
 
-        <p id="View_All_">View All &gt;</p>
+        <p id="view_all_">View All &gt;</p>
     </div><!-- videOS -->
 
 
@@ -245,39 +246,44 @@
     </div> <!-- end commentsPROFL -->
 
     <div id="marketplaceItems" class="clearfix"> 
-        <p id="title"> MARKETPLACE</p>  
-        <p id="View_All_">View All &gt;</p>
+        <p id="scrollBoxTitle"> MARKETPLACE</p>  
+        <p id="view_all_">View All &gt;</p>
         <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
-        <div id="marketItemsGroup" class="clearfix">
-            <div id="marketItem1" class="clearfix">
+        <div id="scrollBoxItemsGroup" class="clearfix">
+            <div id="scrollBoxItem1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
                 <p id="itemAlert">sold out<br /></p>
                 <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
+                <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
                 <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />              
             </div>
-            <div id="marketItem2" class="clearfix">
+            <div id="scrollBoxItem2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
                 <p id="itemAlert">weekly special<br /></p>
                 <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
                 <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
                 <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
             </div>
-            <div id="marketItem3" class="clearfix">
+            <div id="scrollBoxItem3" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
                 <p id="itemAlert">new item<br /></p>
                 <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
+                <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
                 <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
             </div>
-            <div id="marketItem4" class="clearfix">
+            <div id="scrollBoxItem4" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
                 <p id="itemAlert">clearance<br /></p>
                 <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
                 <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
+                <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />  
             </div>
-            <div id="marketItem5" class="clearfix">
+            <div id="scrollBoxItem5" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
                 <p id="itemAlert">2-for-one<br /></p>
                 <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
+                <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />  
             </div>
         </div>
         <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
@@ -296,10 +302,9 @@
           <span id="textspan">2&#x3a;08 pm</span>
         </p>
 
-        <div id="listing_box" class="clearfix">
+        <div id="newsfeedBox" class="clearfix">
 
-            <img id="Photo_Object" 
-            src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
 
             <p id="newsFeedcontent">
                 <span id="textspan1">Aunt Ruby&#x27;s Green Tomato </span>
@@ -317,9 +322,9 @@
         </p>
 
         <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
 
     </div>
@@ -336,11 +341,11 @@
           <span id="textspan">11&#x3a;01 am</span>
         </p>
 
-        <div id="listing_box" class="clearfix">
+        <div id="newsfeedBox" class="clearfix">
            <img id="Photo_ObjectFULL" src="/images/user-images/event.png" class="image" /> 
         </div>
-        <p id="Yoga_on_the_Beach_November_14_2015">
-        <span id="textspan12">Yoga on the Beach<br /></span>
+        <p id="newsfeedCalenderEvent">
+        <span id="textspan1">Yoga on the Beach<br /></span>
         <span id="textspan">November 14, 2015</span>
         </p>
 
@@ -349,9 +354,9 @@
         </p>
 
         <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
 
     </div>
@@ -368,17 +373,17 @@
           <span id="textspan">Yesterday</span>
         </p>
 
-        <div id="listing_box" class="clearfix">
+        <div id="newsfeedBox" class="clearfix">
         <img id="Photo_Object" src="/images/user-images/jessica128.png" class="image" /> 
 
             <p id="newsFeedcontent">
-                <span id="textspan18">Jessica Jones<br /></span>
+                <span id="textspan1">Jessica Jones<br /></span>
                 <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
                 <span id="textspan">&nbsp;Yoga Instructor, Massage Therapist, Owner of </span>
-                <span id="textspan21">Ohm Wellness Center<br /></span>
+                <span id="textspan">Ohm Wellness Center<br /></span>
                <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" /> 
                <span id="textspan21"><br /></span>
-               <span id="textspan21">&nbsp;Sunrise, FL<br /></span>
+               <span id="textspan">&nbsp;Sunrise, FL<br /></span>
             </p>
 
         </div>
@@ -388,9 +393,9 @@
         </p>
 
         <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
 
     </div>
@@ -400,7 +405,7 @@
      <div id="profile_pic_copy" class="clearfix"></div>
 
      <p id="newsFeedcontent">
-        <span id="textspan23">Anthony Anderson<br /></span><span id="textspan24">Sept 2<br /></span>
+        <span id="textspan1">Anthony Anderson<br /></span><span id="textspan">Sept 2<br /></span>
       </p>  
       <p id="newsFeedcontent">  
         <span id="textspan1">
@@ -408,9 +413,9 @@
         </span>
      </p>
              <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
     </div>
 
@@ -426,7 +431,7 @@
 
 <template name="profileOld">
     <!-- TODO do we want class "container"? -->
-    <div id="primaryContainer" class="primaryContainer clearfix container">
+    <div id="headerPROFL" class="headerPROFL clearfix container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <img id="image" src="{{person.coverPhoto}}" class="image" />
