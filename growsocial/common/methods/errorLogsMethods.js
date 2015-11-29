@@ -1,30 +1,20 @@
 Meteor.methods({
-	// check: function(object, type){
-	// 	switch(type){
-	// 		case "number":
-	// 		break;
-	// 		case "string":
-	// 		break;
-
-	// 	}
-	// },
-
 	addErrorLog: function(error) {
-
-	  	var err = {
-	  		userId: Meteor.userId(), // null if not logged in
-	  		dateTime: new Date()
-	  	};
 
 	  	// Check types
 	  	check(error, {
 	  		tag: String,
 	  		message: String,
-	  		errNumber: Number,
+	  		errNumber: Match.Optional(Number),
 	  		firstName: Match.Optional(String),
 	  		lastName: Match.Optional(String),
 	  		email: Match.Optional(String)
 	  	});
+
+	  	var err = {
+	  		userId: Meteor.userId(), // null if not logged in
+	  		dateTime: new Date()
+	  	};
 
 	  	// Tag (Type of error) (Max 30 characters)
 	  	if (typeof error.tag !== 'undefined') {
@@ -79,9 +69,7 @@ Meteor.methods({
 	  			err.email = error.email;
 	  		}
   		};
-	  	console.log(err.dateTime);
-	  	
-	  	
+	  	console.log('Error: ' + err.tag + ': ', err.dateTime);
 
 	  	// Store the error
 	    ErrorLogs.insert(err);
