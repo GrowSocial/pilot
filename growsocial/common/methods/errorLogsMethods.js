@@ -16,6 +16,16 @@ Meteor.methods({
 	  		dateTime: new Date()
 	  	};
 
+	  	// Check types
+	  	check(error, {
+	  		tag: String,
+	  		message: String,
+	  		errNumber: Number,
+	  		firstName: Match.Optional(String),
+	  		lastName: Match.Optional(String),
+	  		email: Match.Optional(String)
+	  	});
+
 	  	// Tag (Type of error) (Max 30 characters)
 	  	if (typeof error.tag !== 'undefined') {
 	  		if (error.tag.length > 30) {
@@ -69,19 +79,12 @@ Meteor.methods({
 	  			err.email = error.email;
 	  		}
   		};
+	  	console.log(err.dateTime);
 	  	
-	  	// Check types
-	  	check(err, {
-	  		userId: Number,
-	  		dateTime: Object,
-	  		tag: String,
-	  		message: String,
-	  		firstName: Match.Optional(String),
-	  		lastName: Match.Optional(String),
-	  		email: Match.Optional(String)
-	  	});
+	  	
 
 	  	// Store the error
-	    ErrorLogs.insert(err);
+	  	console.log(err);
+	    // ErrorLogs.insert(err);
 	  },
 });
