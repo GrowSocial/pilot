@@ -84,7 +84,6 @@ Meteor.methods({
 	  	
 
 	  	// Store the error
-	  	console.log(err);
-	    // ErrorLogs.insert(err);
+	    ErrorLogs.insert(err);
 	  },
 });
