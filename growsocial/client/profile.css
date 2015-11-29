@@ -1,7 +1,13 @@
-/* Reflow ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/* design origin: Edge Reflow ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~adapted for application, TEC Nov 2015  ~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.primaryContainer {
+
+
+/* principal containers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.headerPROFL {
     height: auto; min-height: 100%; width: 1366px;
     margin-left: auto; margin-right: auto;  
 }/*width: 1576px;*/
@@ -14,29 +20,147 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
     margin-top: 0%; margin-left: 2%; margin-right: 0px;
 } /*height: 640px;*/
 
+#sidebarPROFL {    z-index: 0;
+    float: left;    position: relative;    clear: none;
+    height: auto;width: 24%;
+    background-color: rgb(235, 235, 235);
+    top: 0px; left: 0px;
+    margin-top: .75%; margin-left: 2%; margin-right: auto;
+    /*margin-top: .75%;*/
+}
 
+#box{ float: left; clear: both;
+    background-color: rgb(255, 255, 255);
+    margin-top: 7px; margin-left: 2%; width: 96%; height: auto;
+   }
+/*#box1,#box2,#box3,#box4,#box5 
+#box1 { margin-top: 1px;}
+#box2 { clear: both;}
+#box3 { background-color: rgb(226,226,226); width: 66%;}
+#box4,#box5 { margin-top: 7px;}
+*/
+
+#newsFeed1,#newsFeed2,#newsFeed3,#newsFeed5 {z-index: 45;
+    float: none;clear: none;position: relative; top: 0px;left: 0px;
+    height: 280px; width: 88%;
+    /*background-color: rgb(255, 255, 255);*/
+    background-color: rgb(245, 245, 245);
+
+    border-width: 1px; 
+    margin-top: 2%; margin-bottom: 2%; margin-left: auto; margin-right: auto;
+}
+#newsFeed2 { height: 335px;
+}
+#newsFeed3 { height: 280px; 
+}
+#newsFeed5 { height: 160px; 
+}
+
+
+/* content containers/frames ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+#newsfeedBox {
+    float: left;
+    height: 160px;
+    width: 82%;
+    background-color: rgb(226,226,226);
+    border: 1px solid rgb(115, 115, 115);
+    position: relative;top: 0px;left: 0px;
+    z-index: 50;
+    margin-top: 66px;
+    margin-left: -66%;
+    clear: none;
+
+}
+#newsFeedcontent {
+    float: left;
+    font-size: 1em;
+    width: 66%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;top: 0px;left: 0px;
+    z-index: 57;
+    margin-top: 2%; /*4px;*/
+    margin-left: 1.740139%;
+    clear: none;
+}
+
+
+#newsfeedCalenderEvent {
+    float: left;
+    font-size: 1em;
+    width: 51.972158%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 38;
+    margin-top: 14px;
+    margin-left: 13.225058%;
+    clear: both;
+}
+#sidebarHDR {z-index: 74;
+    float: left;clear: both; position: relative; top: 0px;left: 0px;
+    
+    width: 33%; height: auto; margin-top: 12px; margin-left: 2%;
+    text-align: left;line-height: normal;
+    font-weight: 600;font-size: 1.125em;font-family: lato;
+    
+    color: rgb(102, 102, 102);  
+    /*background-color: rgb(235, 235, 235);    */
+}
+
+
+
+
+#sidebarcontent {   z-index: 87;
+float: left; clear: none; position: relative; top: 0px; left: 0px;  
+text-align: left;line-height: 1em;font-size: 1em;font-weight: normal;
+margin-top: 4px;margin-left: 3%; width: 88%; height: auto;
+/*background-color: rgb(205, 235, 35); */   
+    }
+#contactInfo {z-index: 63;
+float: left;clear: none;position: relative;top: 0px;left: 0px;  
+height: auto;margin-top: 11px; margin-left: 3%; width: 75%;
+text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
+    }
+
+
+#aboutContent {z-index: 73;
+    float: left;clear: both;position: relative;top: 0px;left: 0px;  
+    width: 88%; height: auto;
+    
+    font-style: normal; letter-spacing: normal; text-decoration: none;
+    text-align: left;line-height: 18px; color: black;
+    font-weight: normal;font-size: 0.875em;
+    font-family: lato;
+    margin-top: 4px;margin-left: 4%;  
+    }
 
 #commentsPROFL {    z-index: 108;
-    float: none;
+    float: none; clear: none;
     height: 128px; width: 88%;
     background-color: rgb(245, 245, 245);
     border-top-left-radius: 10px;border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;
     border: 1px solid rgb(140, 140, 140);
     position: relative; top: 0px;left: 0px;
-
-    margin-top: 23px;
-    margin-left: auto;
-    clear: none;
+    margin-top: 23px; margin-left: auto; 
     margin-right: auto
 }
-
 
 #commEntryPROFL  {
     float: left;
     height: 46px;
     width: 95.37037%;
     background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(136, 136, 136);
     position: relative;
     top: 0px;
     left: 0px;
@@ -45,39 +169,26 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
     margin-left: 2.430556%;
     clear: both;
 }
-#promptCommPROFL  {
-    float: left;
-    font-size: 0.875em;
-    width: 40.898058%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 18px;
-    color: black;
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
+
+
+
+#marketplaceItems {
+    float: none;
+    height: 288px;
+    width: 88%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(145, 145, 145);
     position: relative;
     top: 0px;
     left: 0px;
-    z-index: 111;
-    margin-top: 17px;
-    margin-left: 1.697133%;
+    z-index: 64;
+    margin-top: 14px;
+    margin-left: auto;
     clear: none;
-}
-#marketplaceItems {z-index: 64;
-    float: none;clear: none;
-    height: 250px; width: 88%;
-    background-color: rgb(255, 255, 255);
-    position: relative; top: 0px; left: 0px;
-    
-    margin-top: 14px; margin-left: auto;margin-right: auto;
+    margin-right: auto;
 }
 
-
-
-#title {    z-index: 95;
+#scrollBoxTitle {    z-index: 95;
     float: left;    clear: none;    position: relative;top: 0px;left: 0px;
     font-size: 1.2em;
     width: 20%; height: auto;
@@ -92,48 +203,13 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
 
 }
 
-#IconCNONE,#IconCBOTH,#SelectFavorite,#SelectWatch {    z-index: 88;
-    float: left; clear: none; position: relative; top: 0px; left: 0px;
-    height: auto; width: auto; max-width: 100%; 
-    margin-top: 4px; margin-left: 2%;margin-right: 0%;margin-bottom: 1%;
-    
-    color: rgb(0, 0, 0);
-    /*background-color: rgb(35, 235, 235)*/
-}
-#IconCBOTH {    clear: both;
-    /*background-color: rgb(235, 235, 35)*/
-}
-#right_arrow,#left_arrow {z-index: 77;
-    float: left; clear: both; position: relative;top: 0px;left: 0px;
-    width: auto; max-width: 100%;height: auto;    
-    margin-top: 7.5%;margin-left: 1%;
-    color: rgb(0, 0, 0);
-}
 
-#right_arrow {
-    clear: none;
-}
-
-
-#View_All_ {z-index: 54;
-    float: right; clear: none; position: relative; top: 0px; left: 0px;
-       
-    height: auto; text-align: left;   line-height: 18px;
-    letter-spacing: 4px;
-    font-size: 1.125em;font-style: normal; letter-spacing: normal;text-decoration: none;
-    font-family: lato;  font-weight: 900;   
-    color: rgb(96, 96, 96);
-    margin-top: 8px; margin-right: 2%;  margin-bottom: 8px;
-    /*background-color: rgb(255, 255, 55);*/
-}
-#marketItemsGroup {
+#scrollBoxItemsGroup {
     float: left;   clear: none;
     height: auto;width: 90%;
     margin-left: 2%; margin-top: 7px; 
 }
-
-
-#marketItem1,#marketItem2,#marketItem3,#marketItem4,#marketItem5 {z-index: 65;
+#scrollBoxItem1,#scrollBoxItem2,#scrollBoxItem3,#scrollBoxItem4,#scrollBoxItem5 {z-index: 65;
     float: left;clear: none;position: relative;   top: 0px; left: 0px;
 
     height: 128px; width: 128px;
@@ -141,266 +217,152 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
     margin-top: 0px;  margin-left: 2%;
     background-color: rgb(224, 224, 224); 
 }
-#marketItem5 {  /*background-color: rgb(255, 255, 55);*/ 
+#scrollBoxItem5 {  /*background-color: rgb(255, 255, 55);*/ 
 }
-#marketItem4 {   
+#scrollBoxItem4 {   
 }
-#marketItem3 {    
+#scrollBoxItem3 {    
 }
-#marketItem2 {    
+#scrollBoxItem2 {    
 }
-#marketItem1 { clear :both;    
+#scrollBoxItem1 { clear :both;    
 }
-
-#itemDescriptions {
-    float: left;
-    height: auto;
-    margin-left: 4.286131%;
-    margin-top: 10px;
-    clear: both;
-    width: 91.87832%;
-}
-
 
 #itemDesc { z-index: 79;
     float: left;clear: none;
-    width: 88%;
-    height: auto;
+    width: 88%; height: auto;
     text-align: left;
     font-size: 0.875em; color: black;
-font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
-    text-decoration: none;
+    /*font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
+    text-decoration: none;*/
     font-family: lato;
-/*    line-height: 1em;*/
-    position: relative;
-    top: 0px;left: 0px;
+    position: relative; top: 0px;left: 0px;
    
-    margin-top: 75%; margin-left: 4%;margin-right: 0%;
+    margin-top: 2%; /*margin-top: 75%;*/ 
+    margin-left: 4%;margin-right: 0%;
     /*background-color: rgb(224, 224, 24);*/
 }
 #itemAlert { z-index: 79;
     float: left;clear: none;
-    width: 88%;
-    height: auto;
+    width: 88%;height: auto;
     text-align: left;
-    font-size: 0.875em; color: black;
-font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
+    font-size: 1.2em; color: white;
+    font-style:normal;font-weight: bold;letter-spacing: normal;line-height: normal;
     text-decoration: none;
     font-family: lato;
 /*    line-height: 1em;*/
     position: relative;top: 0px;left: 0px;
    
-    margin-top: 18%; margin-left: 8%;margin-right: 0%;
+    margin-top: -82%; /*margin-top: 18%; */
+    margin-left: 8%;margin-right: 0%;
     /*background-color: rgb(224, 224, 24);*/
 }
 
-
-
-
-/* header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-#buttons {float: left; clear: none;
-          height: auto; width: 25%;
-          margin-left: 50%;  margin-top: 244px;   
-}/*margin-left: 50%;/*/
-
-#blog { z-index: 19; float: left; clear: none; position: relative;background-color: rgb(156, 156, 156);
-        height: 44px; width: 32%;
-        top: 0px;left: 0px; margin-top: 0px;margin-left: 0%; margin-right: 0%;
+#buttongroupPROFL {float: left; clear: none;position: relative;top: 0px; left: 0px;
+          height: auto; width: 27%;margin-right: 0%;
+         margin-top: 14%; margin-left: -52%;  
+         /*background-color: rgb(224, 224, 24);*/
 }
-#connect { z-index: 17; float: left; clear: none; position: relative;background-color: rgb(18, 130, 206);
-        height: 44px; width: 32%;
-        top: 0px;left: 0px; margin-top: 0px;margin-left: 3%;; margin-right: 0%;
+#blog,#connect,#message { z-index: 19; float: left; clear: none; position: relative;top: 0px;left: 0px;
+ height: 44px; width: 30%;margin-top: 0px;margin-left: 3%; margin-right: 0%;
 }
-#message { z-index: 22; float: left; clear: none; position: relative;background-color: rgb(9, 167, 85);
-        height: 44px; width: 32%;
-        top: 0px;left: 0px; margin-top: 0px;margin-left: 3%;; margin-right: 0%;
+#blog { background-color: rgb(156, 156, 156);
 }
-#View_Blog { z-index: 20; float: left; clear: none;     position: relative; color: rgb(255, 255, 255);   
-    width: 65%; height: auto;
-    text-align: left;font-weight: normal;line-height: normal; font-style: normal;
-    letter-spacing: normal;text-decoration: none;
-    font-family: lato; font-size: 1em;
-    top: 0px; left: 0px;margin-top: 15px; margin-left: 31.730268%;
-}/*width: 64.488733%;*/
-
-#Connect { z-index: 18; float: left; clear: none;     position: relative; color: rgb(255, 255, 255);   
-    width: 65%; height: auto;
-    text-align: left;font-weight: normal;line-height: normal; font-style: normal;
-    letter-spacing: normal;text-decoration: none;
-    font-family: lato; font-size: 1em;
-    top: 0px; left: 0px;margin-top: 15px; margin-left: 1.46%;
-}/* margin-top: 16px;*/
-
- #Message {clear: both;
-           margin-top: -15px; margin-left: 36.22%;
-           width: 65%;
-           font-size: 1em;
-           font-family: lato; 
-    }
-
-#membrfunctXX {z-index: 41;float: left;clear: none;position: relative;   
-    width: 14.10382%;height: auto;
-    text-align: left;
-    font-weight: bold;
-    line-height: normal;
-    /*color: black;*/
-    color: rgb(76,76,76);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;font-size: 1.5em;
-    
-    top: 10px;left: 10px;
-    
-    margin-top: 23px; /*23*/
-    margin-left: -27%;
-    
+#connect { background-color: rgb(18, 130, 206);
+}
+#message { background-color: rgb(9, 167, 85);
 }
 
-#navbar {
 
-    float: left;
-    height: 68px;
-    width: 1576px; /*1366px; auto; */
-    background-color: rgb(235, 235, 235);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    margin-top: 4px;
-    margin-left: 0%;
-    clear: both;
-}
-
-#navbarPROFILE {
-    float: left;
-    height: 68px;
-    width: 1576px; /*1366px; auto; */
-    background-color: rgb(235, 235, 235);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    margin-top: 4px;
-    margin-left: 0%;
-    clear: both;
-}
-/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                                                                                                                &&&&                                                                                                                
-                                                                                                                &&&&
-                                                                                                                &&&&*/                                                                                                                
-/* #membrfunct {   font-size: 1.1em; }*/
-/*
-#membrfunct {    z-index: 6;
-    float: left;    position: relative;    clear: none;
-
-    width: 50%; height: auto;
-    text-align: left;    line-height: 1.1em;
-    font-weight: normal; font-size: 1.1em;
-
-    top: 0px;  left: 0px;
-    margin-top: 6px;margin-left: 1%;
-
-} width: 16%;*/
 
 #membrfunct {  z-index: 7;
     float: left;clear: none;position: relative;top: 0px;   left: 0px;
-    font-size: 1.125em;
-    width: 9%;   height: auto;
+    font-size: 1em;
+    width: 1%;   height: auto;
     text-align: left;    font-weight: 600;    line-height: normal;    color: rgb(76, 76, 76);
-    font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato; 
-    margin-top: 8px;    margin-left: 1%;   
+    /*font-style: normal; letter-spacing: normal; text-decoration: none; */
+    font-family: lato; 
+    margin-top: 8px;    margin-left: .5%;   
 }
-/*#membrfunct {  z-index: 7;
-    float: left;
-    font-size: 1.125em;
-    width: 8.744856%;   height: auto;
-    text-align: left;    font-weight: 600;    line-height: normal;    color: rgb(76, 76, 76);
-    font-style: normal;    letter-spacing: normal;    text-decoration: none;    font-family: lato;   position: relative;
-    top: 0px;   left: 0px;      margin-top: 29px;    margin-left: 0.97736626%;   clear: none;
-}*/
-
 #membrfunctX {z-index: 7;
-    float: left;position: relative;clear: none;
-    font-size: 1.3em;font-weight: 600;
-    width: 9%;
-    height: auto;
+    float: left;position: relative;clear: none;top: 0px;left: 0px; 
+    width: 11%; height: auto;
     text-align: left;line-height: normal;
-
     color: rgb(76, 76, 76);
     font-style: normal;letter-spacing: normal; text-decoration: none;
-    font-family: lato;
-    
-    top: 0px;left: 0px; margin-top: 22px;margin-left: 1%;
-   
+    font-size: 1.175em;font-weight: 600;font-family: lato;    
+     margin-top: 22px;margin-left: 1%;  
 }
-
-
-#Message {
-    float: left;
-    font-size: 1.125em;
-    width: 64.488733%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
+#membrfunctXX {z-index: 7;
+    float: left;clear: none;position: relative; top: 10px;left: 10px;  
+    width: 17%;height: auto;
+    text-align: left; line-height: normal;
+    color: rgb(76,76,76);
+    /*font-style: normal;
     letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 23;
-    margin-top: -15px;
-    margin-left: 36.224663%;
-    clear: both;
+    text-decoration: none;*/
+    font-family: lato;font-size: 1.5em;ont-weight: bold;
+    margin-top: 2%;  margin-left: 0%;  
 }
 
-#member {
-    float: left;
-    height: 180px;
-    width: 180px;
+
+#textspan ,#textspan1,#textspan11 ,#textspan111,#textspan12,
+#textspan2 ,#textspan22,#textspan3,#textspan4,
+#buttonLabels
+{ float: none;
+font-style:normal; font-weight: normal;letter-spacing: normal;line-height: normal;
+font-family: lato;font-size: 0.875em; color: black;
+}
+#textspan {line-height: 18px; color: rgb(102, 102, 102);}
+#textspan3{ font-size: 1em;}
+#textspan1,#buttonLabels{ font-size: 1.125em;}
+#textspan11{ margin-top: 12px;}
+#textspan111{ margin-top: 24px;}
+#textspan12 {line-height: 18px;}
+#textspan2,#textspan22{ clear : both;}
+#textspan22{ margin-left: 12px;}
+
+#textspan3,#textspan4,#textspan12{ font-weight: bold; }
+#textspan4,#textspan12{ font-size: 1.3em;}
+
+#buttonLabels{ margin-top: 13px;margin-left: 17px;color:white;}
+
+
+/* graphics contaiers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+#memberPicture {z-index: 42;
+    float: left;clear: none; position: relative; top: 0px; left: 0px;
+    height: 180px; width: 180px;
     background-color: rgb(242, 242, 242);
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;  border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%; border-bottom-left-radius: 50%;
     border: 5px solid rgb(255, 255, 255);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 42;
-    margin-top: 242.765625px;
-    margin-left: 17.922839%;
-    clear: none;
+    /*margin-top: 242.765625px;
+    margin-left: 17.922839%;*/
+    margin-top: -3%; margin-left: 20%;  
 }
 
-#profile {
-    float: left;
-    font-size: 1.125em;
-    width: 8.744856%;
-    height: auto;
-    text-align: left;
-    font-weight: 600;
-    line-height: normal;
-    color: rgb(76, 76, 76);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
-    margin-top: 29px;
-    margin-left: -21.090535%;
-    clear: none;
+
+#membPic { float: left; clear: none; 
+max-width: 100%;width: 178px;height: 178px;
+margin-left: -0%; margin-top: -1.627%; margin-right: 0%; 
+color: rgb(0, 0, 0);  
+}
+#profile_pic_copy {z-index: 60;
+    float: left;clear: none;position: relative;top: 0px;left: 0px;
+    width: 9.74478%;height: 83px;
+    color: rgb(0, 0, 0);
+ 
+    background-image:url("/images/user-images/anthony75.png");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    margin-top: 16px;margin-left: 1.62413%;
+    
 }
 
-#Vector_Smart_Object {z-index: 11;
+#ImageObject {z-index: 11;
     float: left;clear: none;position: relative;top: 0px;left: 0px;
     /*
     width: 26px;height: 19px;
@@ -411,18 +373,66 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
     margin-top: 3px; margin-left: 8%; 
     color: rgb(0, 0, 0);    
 }
+
+#pictureFrame0,#pictureFrame1,#pictureFrame2,#pictureFrame3{
+    float: left; 
+    clear: both; /*clear: none;*/
+    height: 75px;
+    width: 75px;
+    background-color: rgb(235, 250, 250);
+    position: relative; top: 0px;left: 0px;
+    margin-top: 4%; margin-bottom: 4%;
+    margin-left: 4%; margin-right: 0px;
+    border: 1px solid rgb(225, 225, 225); 
+}
+#pictureFrame1 {  clear: none; /*clear: none;
+    background-color: rgb(235, 250, 250);*/
+}
+#pictureFrame2 {   clear: none;/*clear: none;
+    background-color: rgb(200, 250,250);*/
+}
+#pictureFrame3 {   clear: none;/*clear: none;
+    background-color: rgb(225, 250, 250);*/
+}
+#photoGroup {
+        float: left;
+        height: auto;
+        margin-left: 6.5%;
+        margin-top: 2%;
+        clear: both;
+        width: 87%;
+       /*background-color: rgb(140, 140, 40);/* magenta*/
+       /*background-color: rgb(140, 40, 140);/* purple*/
+       /*background-color: rgb(40, 140, 140);/* aqua*/
+       /*background-color: rgb(140, 240, 240);/* lightaqua*/
+        background-color: rgb(250, 250, 250);
+    }
+
+
+#videoGroup {
+        float: left;
+        height: auto;
+        margin-left: 0.07960631%;
+        margin-top: 20px;
+        clear: both;
+        width: 91.735421%;
+        margin-right: 0%;
+    }
+
+#contactIconROW {
+    float: left; clear: both;
+    height: 10%; width: 20px; margin-left:8.5%; margin-top: 4%;
+    background-color: rgb(255, 255, 255);
+}
+
 #Photo_Object,#Photo_ObjectFULL {z-index: 11;
     float: left;clear: none;position: relative;top: 0px;left: 0px;
-
     max-width: 100%; 
     width: auto; height: auto;   
     margin-top: 2%; margin-left: 2%; 
     color: rgb(0, 0, 0);    
 }
-#Photo_ObjectFULL {    
-    margin-top: 0%; margin-left: 0%; 
-   
-}
+#Photo_ObjectFULL {    margin-top: 0%; margin-left: 0%; }
 
 #award_icon,#lotus_icon,#sun_icon,#tomato_icon {
     z-index: 39;position: relative;top: 0px;  left: 0px;
@@ -430,14 +440,10 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
     width: auto;max-width: 100%; height: auto;
     color: rgb(0, 0, 0);  
 }
-#award_icon  { margin-top: 8px; margin-left: 16%;
-    }
-#lotus_icon  { margin-top: 14px; margin-left: 7%;
-}
-#sun_icon    { margin-top: 11px; margin-left: 14%;
-}
-#tomato_icon { margin-top: 9px; margin-left: 15%;
-}
+#award_icon  { margin-top: 8px;  margin-left: 16%;}
+#lotus_icon  { margin-top: 14px; margin-left: 7%; }
+#sun_icon    { margin-top: 11px; margin-left: 14%;}
+#tomato_icon { margin-top: 9px;  margin-left: 15%;}
 
 #badges {
     float: left;clear: none;
@@ -459,12 +465,6 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
     margin-left: 2%;margin-right: 0%;
     /*clear: both;*/
 }
-#badge-frame {
-        margin-top: 0px;
-        clear: none;
-       
- 
-    }
 #badges-help {z-index: 31;
  float: left;clear: none;position: relative;top: 0px;left: 0px;
     font-size: 0.841423125em;
@@ -477,108 +477,41 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
     letter-spacing: normal;
     text-decoration: underline;
     font-family: lato;
-    
-    
-    margin-top:2%;
-    margin-left: 2%;
-    
+    margin-top:2%;margin-left: 2%; 
 }
 
-
-#_ {
-    float: left;
-    font-size: 2.309355em;
-    width: 20.280829%;
-    height: auto;
-    text-align: left;
-    font-weight: 900;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 21;
-    margin-top: 13px;
-    margin-left: 10.859472%;
-    clear: none;
-}
-
-
-
-#sun {    z-index: 32;
-    float: left;    clear: none;
-    height: 56px; width: 5%;
-    background-color: rgb(225, 225, 225);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    position: relative;
-    top: 0px;left: 0px;
-
-    margin-top: 11px;
-    margin-left: 0.49124633%;
-
-}
-#veggies {
-    float: left;
-    height: 56px;
-    width: 2.741644%;
-    background-color: rgb(225, 225, 225);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 34;
-    margin-top: 11px;
-    margin-left: 0.49124633%;
-    clear: none;
-}
-
-
-
-#lotus {
-    float: left;
-    height: 56px;
-    width: 2.741644%;
-    background-color: rgb(225, 225, 225);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    position: relative;
-    top: 0px; left: 0px;
-    z-index: 36;
-    margin-top: 11px;
-    margin-left: 0.49153009%;
-    clear: none;
-}
-
-
-
-
-#membPic {
-    float: left;
-    width: 178px;
-    max-width: 100%;
-    height: 178px;
-    margin-left: -0.56985294%;
-    margin-top: -2.765625px;
-    clear: none;
+#IconCNONE,#IconCBOTH,#SelectFavorite,#SelectWatch {    z-index: 88;
+    float: left; clear: none; position: relative; top: 0px; left: 0px;
+    height: auto; width: auto; max-width: 100%; 
+    margin-top: 4px; margin-left: 2%;margin-right: 0%;margin-bottom: 1%; 
     color: rgb(0, 0, 0);
-    margin-right: 0%;
+    /*background-color: rgb(35, 235, 235)*/
 }
+#IconCBOTH {    clear: both; /*background-color: rgb(235, 235, 35)*/
+}
+#buttonIcon{margin-top: -20px; margin-left: 4px;
+}
+#right_arrow,#left_arrow {z-index: 77;
+    float: left; clear: both; position: relative;top: 0px;left: 0px;
+    width: auto; max-width: 100%;height: auto;    
+    margin-top: 7.5%;margin-left: 1%;
+    color: rgb(0, 0, 0);
+}
+#right_arrow { clear: none; }
 
 
-
-#image {
+#view_all_ {z-index: 54;
+    float: right; clear: none; position: relative; top: 0px; left: 0px;
+       
+    height: auto; text-align: left;   line-height: 18px;
+    letter-spacing: 4px;
+    font-size: 1.125em;font-style: normal; letter-spacing: normal;text-decoration: none;
+    font-family: lato;  font-weight: 900;   
+    color: rgb(96, 96, 96);
+    margin-top: 8px; margin-right: 2%;  margin-bottom: 8px;
+    /*background-color: rgb(255, 255, 55);*/
+}
+#star-icon {
     float: left;
     width: auto;
     max-width: 100%;
@@ -587,158 +520,150 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
     margin-top: 0px;
     clear: none;
     color: rgb(0, 0, 0);
+    margin-right: 0%;
 }
 
-
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-@media only screen and (max-width: 1576px) {
-
-
-
-#commEntryPROFL  {
-        border: 1px solid rgb(136, 136, 136);
-    }
-#promptCommPROFL  {
-        border: 1px none rgb(136, 136, 136);
-        margin-top: 12px;
-        margin-left: 1.695348%;
-        clear: none;
-        width: 96%;
-    }
-
-#marketplaceItems {
-        border: 1px solid rgb(145, 145, 145);
+#ratingStars {
+        float: left; clear: none;
+        height: auto;
+        margin-left: 1%;margin-top: 12px;
+        
+        width: 33%;
+        margin-right: 0%;
     }
 
 
-    #Watch_icon {
-        margin-left: 42%;
-    }
 
-    #Watch_icon1 {
-        margin-left: 15%;
-    }
-
-    #Watch_icon2 {
-        margin-left: 15%;
-    }
-
-    #Watch_icon3 {
-        margin-left: 15%;
-    }
-
-    #Watch_icon4 {
-        margin-left: 15%;
-    }
-
-    #item2flag {
-        margin-left: 13%;
-        width: 8.5%;
-    }
-
-    #item3flag {
-        margin-left: 13%;
-        width: 8.5%;
-    }
-
-    #item4flag {
-        margin-left: 13%;
-        width: 8.5%;
-    }
-
-    #item5flag {
-        margin-left: 13%;
-        width: 8.5%;
-    }
-
-    #item1flag {
-        width: 8.5%;
-    }
-
-   #Watch_icon {
-        margin-left: 42%;
-    }
-
-    #Watch_icon1 {
-        margin-left: 15%;
-    }
-
-    #Watch_icon2 {
-        margin-left: 15%;
-    }
-
-    #Watch_icon3 {
-        margin-left: 15%;
-    }
-
-    #Watch_icon4 {
-        margin-left: 15%;
-    }
-/* header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-#image {
+#headerImage {
         float: left;
         width: auto;
         max-width: 100%;
         height: auto;
-        margin-left: 0%;
-        margin-top: 0px;
+        margin-left: 0%; margin-top: 0px;
         clear: none;
         color: rgb(0, 0, 0);
         margin-right: 0%;
     }
 
-    #member {
-        margin-top: -3%;
-        margin-left: 20%;
+
+
+#wideHorizDivdr { float: left;clear: none;
+    height: 1px;
+    width: 100%;
+    border: 3px solid rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 56;
+    margin-top: 8px;
+    margin-left: auto;
+    
+}
+
+
+
+#horizonDividr {
+    float: left;
+
+    max-width: 100%;
+    height: auto;
+
+    color: rgb(0, 0, 0);
+    display: block;
+    visibility: visible;
+
+        margin-top: 0px;margin-right: 0%;
         clear: none;
-        margin-right: 0px;
-        float: left;
+
+    }
+#ContactIcon {
+        float: left; clear: both;
+        width: auto; height: auto;
+        max-width: 100%;
+        margin-left: 2px; margin-right: auto; margin-bottom: 32px;             
     }
 
-    #buttons {
-        margin-top: 13.767053%;
-        margin-left: -45.000198%;
-        clear: none;
-        width: 26.239293%;
+
+ #statusIcons {float: left; clear: both;
+        height: auto;
+        margin-left: 82%;
+        margin-top: -4%;
+        
+        width: 20%;
         margin-right: 0%;
-        position: relative;
-        top: 0px;
-        left: 0px;
+    } 
+ #responseIcons {float: left; clear: both;
+        height: auto;
+        margin-left: 80%;
+        margin-top: -2.5%;
+        
+        width: 15%;
+        margin-right: 0%;
+    } 
+ #socialmediaIcons {float: left; clear: both;
+    height: auto; width: 25%;
+    margin-left: 17%;margin-top: -8%;   
+}
+
+
+#facebIcon,#tweetIcon,#instagIcon {
+    float: left;clear: none;
+    height: 15px;width: 15px;margin-left: 17%;;margin-top: 0%;
+    max-width: 100%;   
+    color: rgb(0, 0, 0);
+    
+}
+#facebIcon { width: 8px; margin-left: 0%;
+}
+#tweetIcon ,#instagIcon{ margin-top: 3.5%;
     }
 
-    #navbar {
-        margin-top: -2.3%;
-        margin-left: 0%;
-        clear: both;
-        background-image:-webkit-linear-gradient(270deg, white 72%, rgb(226, 226, 226) 100%);
-        background-image: linear-gradient(180deg, white 72%, rgb(226, 226, 226) 100%);
-        background-attachment: scroll;
-        -webkit-background-size: auto;
-        background-size: auto;
-        background-color: rgb(235, 235, 235);
-        background-position: 0% 0%;
-        background-repeat: repeat repeat;
+
+
+#Read_More_ {z-index: 75;
+    float: left;clear: both;position: relative; top: 0px; left: 0px;   
+    width: 40%; height: auto; margin-top: 6px;margin-left: 60%;margin-bottom: 6px;
+    text-align: left;line-height: 18px;color: rgb(96, 96, 96);
+    font-style: normal; letter-spacing: normal;text-decoration: none;
+    font-size: 0.875em;font-weight: 600;font-family: lato;
+}
+
+/* UI areas~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+#navbarPROFILE {z-index: 1;
+    float: left;clear: both; position: relative; top: 0px;left: 0px;
+    height: 68px; width: 1576px; 
+    background-color: rgb(235, 235, 235);
+    /*margin-top: 4px;*/
+     margin-top: -3%; margin-left: 0%;    
+
+    background-image:-webkit-linear-gradient(270deg, white 72%, rgb(226, 226, 226) 100%);
+    background-image: linear-gradient(180deg, white 72%, rgb(226, 226, 226) 100%);
+    background-attachment: scroll;
+    -webkit-background-size: auto; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;
     }
-    #navbarPROFILE {
-        margin-top: -2.3%;
-        margin-left: 0%;
-        clear: both;
-        background-image:-webkit-linear-gradient(270deg, white 72%, rgb(226, 226, 226) 100%);
-        background-image: linear-gradient(180deg, white 72%, rgb(226, 226, 226) 100%);
-        background-attachment: scroll;
-        -webkit-background-size: auto;
-        background-size: auto;
-        background-color: rgb(235, 235, 235);
-        background-position: 0% 0%;
-        background-repeat: repeat repeat;
-    }
+
+#promptCommPROFL  {
+    float: left;clear: none;
+    
+    width: 96%; height: auto;
+    text-align: left; font-weight: normal; line-height: 18px;
+    color: black;
+    font-size: 0.875em;
+    /*font-style: normal; letter-spacing: normal; text-decoration: none; */
+    font-family: lato;
+    position: relative;top: 0px;left: 0px;
+    z-index: 111;
+    margin-top: 12px;margin-left: 1.697133%;
+    
+    border: 1px none rgb(136, 136, 136);
+}
+
+
+@media only screen and (max-width: 1576px) {
+
 
 
  }
@@ -746,80 +671,3 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
 
 
 
-
-    #membrfunctXX {
-        margin-top: 2%;
-        margin-left: 0%;
-        clear: none;
-        width: 17.1%;
-    }
-
-
-
-    #View_Blog {
-        margin-top: 10px;
-        margin-left: 20.154563%;
-        clear: none;
-        width: 64.487242%;
-    }
-
-    #Connect {
-        margin-top: 11px;
-        margin-left: 2.232581%;
-        clear: none;
-        width: 64.487242%;
-    }
-    #Message {
-        margin-top: -16px;
-        margin-left: 36.218425%;
-        clear: both;
-        width: 64.48737%;
-    }
-
-    #_ {
-        margin-top: -3px;
-        margin-left: 10.071148%;
-        clear: none;
-        width: 20.277233%;
-    }
-
-
-
-
-#membrfunctX {
-        margin-top: 22px;
-        margin-left: 0.9765625%;
-        clear: none;
-        font-size: 1.3em;
-    }
-#membrfunct {
-        margin-top: 8px;
-        margin-left: 0.5%;
-        clear: none;
-        font-size: 1.125em;
-    }
-
-
-
-
-
-    #blog {
-        width: 30.801783%;
-        height: 44px;
-    }
-
-    #connect {
-        width: 30.801783%;
-        height: 44px;
-    }
-
-    #message {
-        width: 30.514623%;
-        height: 44px;
-    }
-
-    #membPic {
-        margin-left: -0.37%;
-        margin-top: -1.626838%;
-    }
-}
