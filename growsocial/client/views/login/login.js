@@ -6,6 +6,7 @@
 // TODO share the same helper code for info/error messages
 // TODO on submit, disable form while submission being handled
 
+// Log In
 Template.login.onCreated(function () {
   this.messages = new ReactiveDict(); 
 });
@@ -41,6 +42,8 @@ Template.login.events({
         var error = {
           tag: "LoginWithPassword",
           message: err.message,
+          errNumber: err.error,
+          email: email
         }
         Meteor.call("addErrorLog", error);
       } else {
@@ -64,8 +67,10 @@ Template.login.events({
 
         // Send error to database
         var error = {
-          tag: "LoginWithFacebook",
+          tag: "loginWithFacebook",
           message: err.message,
+          errNumber: err.error,
+          email: email
         }
         Meteor.call("addErrorLog", error);
       } else {
@@ -77,6 +82,7 @@ Template.login.events({
   }
 });
 
+// Register
 Template.register.onCreated(function () {
   this.messages = new ReactiveDict(); 
 });
@@ -124,6 +130,10 @@ Template.register.events({
         var error = {
           tag: "Register",
           message: err.message,
+          errNumber: err.error,
+          email: user.email,
+          firstName: user.profile.firstname,
+          lastName: user.profile.lastname
         }
         Meteor.call("addErrorLog", error);
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
@@ -135,6 +145,7 @@ Template.register.events({
   }
 });
 
+// Forgot Password
 Template.forgotPassword.onCreated(function () {
   this.messages = new ReactiveDict(); 
 });
@@ -172,6 +183,8 @@ Template.forgotPassword.events({
           var error = {
             tag: "ForgotPassword",
             message: err.message,
+            errNumber: err.error,
+            email: email
           }
           Meteor.call("addErrorLog", error);
         } else {
@@ -186,6 +199,7 @@ Template.forgotPassword.events({
   },
 });
 
+// Change Password
 Template.changePassword.onCreated(function() {
   var self = this;
 
@@ -229,6 +243,7 @@ Template.changePassword.events({
         var error = {
           tag: "ChangePassword",
           message: err.message,
+          errNumber: err.error
         }
         Meteor.call("addErrorLog", error);
       } else {
