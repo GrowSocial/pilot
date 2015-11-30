@@ -1,3 +1,7 @@
+<template name="CartAddItemButton">
+	<button class="add-item">Add To Cart</button>
+</template>
+
 <template name="cart">
   <h1>Shopping cart</h1>
   <ul>
@@ -8,9 +12,15 @@
           <li>Quantity: {{quantity}} ({{unitType}})</li>
           <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
           <li>itemTotalPrice: {{itemTotalPrice}} {{currency}}</li>
-          <li><a href="#">Vendor: {{vendorName}}</a></li>
+          <li><a href="{{vendorLink}}">Vendor: {{vendorName}}</a></li>
         </ul>
       </li>
     {{/each}}
   </ul>
+  {{>CartPayNow}}
 </template>
+
+<template name="CartPayNow">
+	<button id="pay-now">Pay Now</button>
+</template>
+

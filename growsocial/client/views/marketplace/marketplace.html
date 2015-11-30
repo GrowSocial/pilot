@@ -6,7 +6,16 @@
     <p>Products:</p>
     <ul>
     {{#each productList}}
-        <li><img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">{{name}}</li>
+<!--         <li><img class="marketplace-product-img" src="{{pic}}" alt="{{description}} product pic">{{description}}{{> CartAddItemButton}}</li>
+ -->
+        <li><img class="marketplace-product-img" src="{{pic}}" alt="{{description}} product pic">
+          <ul>
+            <li>{{> CartAddItemButton}}</li>
+            <li>Description: {{description}}</li>
+            <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
+            <li><a href="{{vendorLink}}">Vendor: {{vendorName}}</a></li>
+          </ul>
+        </li>
     {{/each}}
     </ul>
 </template>
