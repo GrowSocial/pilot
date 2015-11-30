@@ -53,6 +53,7 @@ Template.login.events({
       }
     });
   },
+  
   'click .btn-facebook':function(event, template) {
     event.preventDefault();
     var options = {
