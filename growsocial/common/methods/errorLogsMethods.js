@@ -20,7 +20,7 @@ Meteor.methods({
 	  	check(error, {
 	  		tag: String,
 	  		message: String,
-	  		errNumber: Number,
+	  		errNumber: Match.Optional(Number),
 	  		firstName: Match.Optional(String),
 	  		lastName: Match.Optional(String),
 	  		email: Match.Optional(String)
