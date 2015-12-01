@@ -6,15 +6,6 @@
     margin-left: auto; margin-right: auto;  
 }/*width: 1576px;*/
  
-#zone00PROFL {    z-index: 1;
-    float: left;    clear: none;    position: relative;
-    height: 640px;width: 800px;
-    background-color: rgb(250,250,250);
-
-    top: 0px;left: 0px;
-    margin-top: 0%; margin-left: 20%; margin-right: 0px;
-}
-/*margin-top: 0%; margin-left: 20%;*/
 
 #zone00 {    z-index: 1;
 float: left;clear: none; position: relative; top: 0px;left: 0px;
@@ -23,16 +14,7 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
     margin-top: 0%; margin-left: 2%; margin-right: 0px;
 } /*height: 640px;*/
 
-#backgMainPROFL {    z-index: 0;
-    float: left;    position: relative;
-    height: 800px; width: 100%;
- top: 0px;left: 0px;
-background-color: rgb(145, 191, 217); 
-} /*/     height: 1800px;
-background-color: rgb(145, 191, 217); depth blue
-background-color: rgb(188, 225, 246); light blue
 
-*/
 
 #commentsPROFL {    z-index: 108;
     float: none;
@@ -40,14 +22,16 @@ background-color: rgb(188, 225, 246); light blue
     background-color: rgb(245, 245, 245);
     border-top-left-radius: 10px;border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;
-    position: relative;
-    top: 0px;left: 0px;
+    border: 1px solid rgb(140, 140, 140);
+    position: relative; top: 0px;left: 0px;
 
     margin-top: 23px;
     margin-left: auto;
     clear: none;
     margin-right: auto
 }
+
+
 #commEntryPROFL  {
     float: left;
     height: 46px;
@@ -82,27 +66,21 @@ background-color: rgb(188, 225, 246); light blue
     margin-left: 1.697133%;
     clear: none;
 }
-#marketplaceItems {
-    float: none;
-    height: 288px;
-    width: 88%;
+#marketplaceItems {z-index: 64;
+    float: none;clear: none;
+    height: 250px; width: 88%;
     background-color: rgb(255, 255, 255);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 64;
-    margin-top: 14px;
-    margin-left: auto;
-    clear: none;
-    margin-right: auto;
+    position: relative; top: 0px; left: 0px;
+    
+    margin-top: 14px; margin-left: auto;margin-right: auto;
 }
-/* market items ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
 
 #title {    z-index: 95;
-    float: left;    clear: none;    position: relative;
-    font-size: 1.125em;
-    width: 19.721578%; height: auto;
+    float: left;    clear: none;    position: relative;top: 0px;left: 0px;
+    font-size: 1.2em;
+    width: 20%; height: auto;
     text-align: left;
     font-weight: 600;
     line-height: normal;
@@ -110,141 +88,70 @@ background-color: rgb(188, 225, 246); light blue
     font-style: normal; letter-spacing: normal; text-decoration: none;
     font-family: lato;
 
-    top: 0px;left: 0px;
-
-    margin-top: 19px; margin-left: 2.550392%;
+    margin-top: 8px; margin-left: 2%;
 
 }
 
-#View_All {
-    float: left;
-    font-size: 0.89030375em;
-    width: 8.12065%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 18px;
-    color: rgb(55, 55, 55);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 94;
-    margin-top: 19px;
-    margin-left: 68.21527%;
-    clear: none;
+#IconCNONE,#IconCBOTH,#SelectFavorite,#SelectWatch {    z-index: 88;
+    float: left; clear: none; position: relative; top: 0px; left: 0px;
+    height: auto; width: auto; max-width: 100%; 
+    margin-top: 4px; margin-left: 2%;margin-right: 0%;margin-bottom: 1%;
+    
+    color: rgb(0, 0, 0);
+    /*background-color: rgb(35, 235, 235)*/
 }
+#IconCBOTH {    clear: both;
+    /*background-color: rgb(235, 235, 35)*/
+}
+#right_arrow,#left_arrow {z-index: 77;
+    float: left; clear: both; position: relative;top: 0px;left: 0px;
+    width: auto; max-width: 100%;height: auto;    
+    margin-top: 7.5%;margin-left: 1%;
+    color: rgb(0, 0, 0);
+}
+
 #right_arrow {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 77;
-    margin-top: 70px;
-    margin-left: 1%;
     clear: none;
-}/*margin-left: 1.044632%;*/
-
-#left_arrow {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 78;
-    margin-top: 70px;
-    margin-left: 1%;
-    clear: both;
-}/*   margin-left: 1.042391%;*/
-
-#items {
-    float: left;    clear: none;
-    height: auto;
-    margin-left: 1.389854%;
-    margin-top: 9px;
-
-    width: 91.985922%;
 }
 
 
-#item5 {    z-index: 72;
-    float: left;    clear: both;     position: relative;
-    height: 145px; width: 18.223811%;
-    background-color: rgb(224, 224, 224);
-
-    top: 0px;left: 0px;
-    margin-top: -145px; margin-left: 81.780962%; margin-right: 0%;
+#View_All_ {z-index: 54;
+    float: right; clear: none; position: relative; top: 0px; left: 0px;
+       
+    height: auto; text-align: left;   line-height: 18px;
+    letter-spacing: 4px;
+    font-size: 1.125em;font-style: normal; letter-spacing: normal;text-decoration: none;
+    font-family: lato;  font-weight: 900;   
+    color: rgb(96, 96, 96);
+    margin-top: 8px; margin-right: 2%;  margin-bottom: 8px;
+    /*background-color: rgb(255, 255, 55);*/
+}
+#marketItemsGroup {
+    float: left;   clear: none;
+    height: auto;width: 90%;
+    margin-left: 2%; margin-top: 7px; 
 }
 
-#item4 {
-    float: left;
-    height: 145px;
-    width: 18.223811%;
-    background-color: rgb(224, 224, 224);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 71;
-    margin-top: 0px;
-    margin-left: 1.964225%;
-    clear: none;
-    margin-right: 0%;
+
+#marketItem1,#marketItem2,#marketItem3,#marketItem4,#marketItem5 {z-index: 65;
+    float: left;clear: none;position: relative;   top: 0px; left: 0px;
+
+    height: 128px; width: 128px;
+    /*  height: 145px; width: 18%;*/ 
+    margin-top: 0px;  margin-left: 2%;
+    background-color: rgb(224, 224, 224); 
+}
+#marketItem5 {  /*background-color: rgb(255, 255, 55);*/ 
+}
+#marketItem4 {   
+}
+#marketItem3 {    
+}
+#marketItem2 {    
+}
+#marketItem1 { clear :both;    
 }
 
-#item3 {
-    float: left;
-    height: 145px;
-    width: 18.223811%;
-    background-color: rgb(224, 224, 224);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 69;
-    margin-top: 0px;
-    margin-left: 2.312716%;
-    clear: none;
-    margin-right: 0%;
-}
-
-#item2 {
-    float: left;
-    height: 145px;
-    width: 18.22184%;
-    background-color: rgb(224, 224, 224);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 67;
-    margin-top: 0px;
-    margin-left: 2.312716%;
-    clear: none;
-    margin-right: 0%;
-}
-
-#item1 {
-    float: left;
-    height: 145px;
-    width: 18.223811%;
-    background-color: rgb(224, 224, 224);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 65;
-    margin-top: 0px;
-    margin-left: 0.002437%;
-    clear: none;
-    margin-right: 0%;
-}
 #itemDescriptions {
     float: left;
     height: auto;
@@ -254,228 +161,40 @@ background-color: rgb(188, 225, 246); light blue
     width: 91.87832%;
 }
 
-#item5desc {
-    float: left;
-    font-size: 1em;
-    width: 18.055758%;
+
+#itemDesc { z-index: 79;
+    float: left;clear: none;
+    width: 88%;
     height: auto;
     text-align: left;
-    font-weight: normal;
-    line-height: 1em;
+    font-size: 0.875em; color: black;
+font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
+    text-decoration: none;
+    font-family: lato;
+/*    line-height: 1em;*/
     position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 93;
-    margin-top: 0px;
-    margin-left: 2.527692%;
-    clear: none;
-    margin-right: 0%;
+    top: 0px;left: 0px;
+   
+    margin-top: 75%; margin-left: 4%;margin-right: 0%;
+    /*background-color: rgb(224, 224, 24);*/
 }
-#item4desc {
-    float: left;
-    font-size: 1em;
-    width: 18.055758%;
+#itemAlert { z-index: 79;
+    float: left;clear: none;
+    width: 88%;
     height: auto;
     text-align: left;
-    font-weight: normal;
-    line-height: 1em;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 92;
-    margin-top: 0px;
-    margin-left: 2.149514%;
-    clear: none;
-    margin-right: 0%;
-}
-#item3desc {
-    float: left;
-    font-size: 1em;
-    width: 18.055758%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 1em;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 91;
-    margin-top: 0px;
-    margin-left: 2.525253%;
-    clear: none;
-    margin-right: 0%;
-}
-#item2desc {
-    float: left;
-    font-size: 1em;
-    width: 18.055758%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 1em;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 90;
-    margin-top: 0px;
-    margin-left: 2.525253%;
-    clear: none;
-    margin-right: 0%;
-}
-#item1desc {
-    float: left;
-    font-size: 1em;
-    width: 18.055758%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 1em;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 79;
-    margin-top: 0px;
-    margin-left: 0%;
-    clear: none;
-    margin-right: 0%;
+    font-size: 0.875em; color: black;
+font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
+    text-decoration: none;
+    font-family: lato;
+/*    line-height: 1em;*/
+    position: relative;top: 0px;left: 0px;
+   
+    margin-top: 18%; margin-left: 8%;margin-right: 0%;
+    /*background-color: rgb(224, 224, 24);*/
 }
 
-#ratingFlags {
-    float: left;
-    height: auto;
-    margin-left: 4.868973%;
-    margin-top: 4px;
-    clear: both;
-    width: 87.515973%;
-}
-#item1flag {
-    float: left;
-    height: auto;
-    margin-left: 0%;
-    margin-top: 0px;
-    clear: none;
-    width: 8.865266%;
-    margin-right: 0%;
-}
 
-#item2flag {
-    float: left;
-    height: auto;
-    margin-left: 13.260758%;
-    margin-top: 0px;
-    clear: none;
-    width: 8.865266%;
-    margin-right: 0%;
-}
-
-#item3flag {
-    float: left;
-    height: auto;
-    margin-left: 14.449283%;
-    margin-top: 0px;
-    clear: none;
-    width: 8.865266%;
-    margin-right: 0%;
-}
-
-#item4flag {
-    float: left;
-    height: auto;
-    margin-left: 13.788422%;
-    margin-top: 0px;
-    clear: none;
-    width: 8.865266%;
-    margin-right: 0%;
-}
-
-#item5flag {
-    float: left;
-    height: auto;
-    margin-left: 14.185451%;
-    margin-top: 0px;
-    clear: none;
-    width: 8.865266%;
-    margin-right: 0%;
-}
-#Favorite_icon4 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 88;
-    margin-top: 0px;
-    margin-left: 0%;
-    clear: none;
-    margin-right: 0%;
-}
-
-#Favorite_icon3 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 86;
-    margin-top: 0px;
-    margin-left: 0%;
-    clear: none;
-    margin-right: 0%;
-}
-
-#Favorite_icon2 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 84;
-    margin-top: 0px;
-    margin-left: 0%;
-    clear: none;
-    margin-right: 0%;
-}
-
-#Favorite_icon1 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 82;
-    margin-top: 0px;
-    margin-left: 0%;
-    clear: none;
-    margin-right: 0%;
-}
-
-#Favorite_icon {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 80;
-    margin-top: 0px;
-    margin-left: 0.02889338%;
-    clear: none;
-    margin-right: 0%;
-}
 
 
 /* header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -618,28 +337,6 @@ background-color: rgb(188, 225, 246); light blue
 }
 
 
-#What’s_this_ {
-    float: left;
-    font-size: 0.841423125em;
-    width: 10.479922%;
-    height: auto;
-    text-align: left;
-    font-weight: 300;
-    line-height: normal;
-    color: rgb(76, 76, 76);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: underline;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 31;
-    margin-top: 42px;
-    margin-left: 0.68713271%;
-    clear: none;
-}
-
 #Message {
     float: left;
     font-size: 1.125em;
@@ -703,87 +400,90 @@ background-color: rgb(188, 225, 246); light blue
     clear: none;
 }
 
-#lotus_icon {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 37;
-    margin-top: 14px;
-    margin-left: 8.933557%;
-    clear: none;
+#Vector_Smart_Object {z-index: 11;
+    float: left;clear: none;position: relative;top: 0px;left: 0px;
+    /*
+    width: 26px;height: 19px;
+    margin-top: 9px; margin-left: 10%;
+    */
+    max-width: 100%; 
+    width: auto; height: auto;   
+    margin-top: 3px; margin-left: 8%; 
+    color: rgb(0, 0, 0);    
+}
+#Photo_Object,#Photo_ObjectFULL {z-index: 11;
+    float: left;clear: none;position: relative;top: 0px;left: 0px;
+
+    max-width: 100%; 
+    width: auto; height: auto;   
+    margin-top: 2%; margin-left: 2%; 
+    color: rgb(0, 0, 0);    
+}
+#Photo_ObjectFULL {    
+    margin-top: 0%; margin-left: 0%; 
+   
 }
 
-
-
-
-
-#sun_icon {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 33;
-    margin-top: 11px;
-    margin-left: 16.080402%;
-    clear: none;
+#award_icon,#lotus_icon,#sun_icon,#tomato_icon {
+    z-index: 39;position: relative;top: 0px;  left: 0px;
+    float: left;clear: none;
+    width: auto;max-width: 100%; height: auto;
+    color: rgb(0, 0, 0);  
+}
+#award_icon  { margin-top: 8px; margin-left: 16%;
+    }
+#lotus_icon  { margin-top: 14px; margin-left: 7%;
+}
+#sun_icon    { margin-top: 11px; margin-left: 14%;
+}
+#tomato_icon { margin-top: 9px; margin-left: 15%;
 }
 
-
-
-
-#tomato_icon {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 35;
-    margin-top: 9px;
-    margin-left: 16.080402%;
-    clear: none;
+#badges {
+    float: left;clear: none;
+    height: auto;width: 27%;
+    margin-left: 0%;  margin-top: 2%;
+    /*background-color: rgb(225, 225, 25);*/
+}
+#badge-frame {
+    float: left; clear: none; position: relative; top: 0px; left: 0px;
+    height: 56px;width: 14%;
+    background-color: rgb(225, 225, 225);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
+    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
+    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
+    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
+    
+    z-index: 38;
+    margin-top: 0px; /*11px;*/
+    margin-left: 2%;margin-right: 0%;
+    /*clear: both;*/
+}
+#badge-frame {
+        margin-top: 0px;
+        clear: none;
+       
+ 
+    }
+#badges-help {z-index: 31;
+ float: left;clear: none;position: relative;top: 0px;left: 0px;
+    font-size: 0.841423125em;
+    width: 22%;height: auto;
+    text-align: left;
+    font-weight: 300;
+    line-height: normal;
+    color: rgb(76, 76, 76);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: underline;
+    font-family: lato;
+    
+    
+    margin-top:2%;
+    margin-left: 2%;
+    
 }
 
-#Vector_Smart_Object {
-    float: left;
-    width: 26px;
-    max-width: 100%;
-    height: 19px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 24;
-    margin-top: 13px;
-    margin-left: 11.595516%;
-    clear: none;
-}
-
-#award_icon {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 39;
-    margin-top: 8px;
-    margin-left: 21.440536%;
-    clear: none;
-}
 
 #_ {
     float: left;
@@ -861,22 +561,8 @@ background-color: rgb(188, 225, 246); light blue
     clear: none;
 }
 
-#award {
-    float: left;
-    height: 56px;
-    width: 3%;
-    background-color: rgb(225, 225, 225);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    position: relative;
-    top: 0px; left: 0px;
-    z-index: 38;
-    margin-top: 11px;
-    margin-left: 41.232724%;
-    clear: both;
-}
+
+
 
 #membPic {
     float: left;
@@ -903,14 +589,7 @@ background-color: rgb(188, 225, 246); light blue
     color: rgb(0, 0, 0);
 }
 
-#badges {
-    float: left;
-    height: auto;
-    margin-left: 0%;
-    margin-top: 2.5%;
-    clear: none;
-    width: 17%;
-}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -919,23 +598,9 @@ background-color: rgb(188, 225, 246); light blue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 @media only screen and (max-width: 1576px) {
-#zone00PROFL {
-        width: 66%;
-        height: 80%;
-        margin-left: auto; margin-right: auto;
-        float: none;
-        clear: none;
-    }/*        height: 97.36%;*/
-#backgMainPROFL {
-        width: 1576px;
-        margin-top: 24px;
-        margin-left: 0%;
-        clear: none;
-    }/*        margin-top: 54px;*/
-#commentsPROFL {
-        border: 1px solid rgb(140, 140, 140);
-        width: 88%;
-    }
+
+
+
 #commEntryPROFL  {
         border: 1px solid rgb(136, 136, 136);
     }
@@ -951,9 +616,6 @@ background-color: rgb(188, 225, 246); light blue
         border: 1px solid rgb(145, 145, 145);
     }
 
-    #Favorite_icon {
-        margin-left: 0%;
-    }
 
     #Watch_icon {
         margin-left: 42%;
@@ -1077,47 +739,13 @@ background-color: rgb(188, 225, 246); light blue
         background-position: 0% 0%;
         background-repeat: repeat repeat;
     }
-    #badges {
-        float: left;
-        height: auto;
-        margin-left: 0%;
-        margin-top: 1.6%;
-        clear: none;
-        width: 17%;
-    }
+
 
  }
-    #award {
-        margin-top: 0px;
-        margin-left: 0;
-        clear: none;
-        margin-right: 0%;
-        width: 23%;
-    }
 
-    #lotus {
-        margin-top: 0px;
-        margin-left: 3.945795%;
-        clear: none;
-        margin-right: 0%;
-        width: 24%;
-    }
 
-    #veggies {
-        margin-top: 0px;
-        margin-left: 3.945795%;
-        clear: none;
-        margin-right: 0%;
-        width: 24%;
-    }
 
-    #sun {
-        margin-top: 0px;
-        margin-left: 3.945795%;
-        clear: none;
-        margin-right: 0%;
-        width: 22%;
-    }
+
 
     #membrfunctXX {
         margin-top: 2%;
@@ -1126,11 +754,7 @@ background-color: rgb(188, 225, 246); light blue
         width: 17.1%;
     }
 
-    #What’s_this_ {
-        margin-top: 3.298501%;
-        margin-left: 0.31725888%;
-        clear: none;
-    }
+
 
     #View_Blog {
         margin-top: 10px;
@@ -1151,6 +775,7 @@ background-color: rgb(188, 225, 246); light blue
         clear: both;
         width: 64.48737%;
     }
+
     #_ {
         margin-top: -3px;
         margin-left: 10.071148%;
@@ -1160,13 +785,6 @@ background-color: rgb(188, 225, 246); light blue
 
 
 
-    #Vector_Smart_Object {
-        margin-top: 9px;
-        margin-left: 9.99%;
-        clear: none;
-        width: 26px;
-        height: 19px;
-    }
 
 #membrfunctX {
         margin-top: 22px;
@@ -1182,25 +800,8 @@ background-color: rgb(188, 225, 246); light blue
     }
 
 
-    #sun_icon {
-        margin-left: 4%;
-        margin-top: 11px;
-        clear: none;
-    }
 
-    #tomato_icon {
-        margin-left: 8%;
-        margin-top: 9px;
-        clear: none;
-    }
 
-    #lotus_icon {
-        margin-left: 0%;
-    }
-
-    #award_icon {
-        margin-left: 14.74%;
-    }
 
     #blog {
         width: 30.801783%;

@@ -20,7 +20,7 @@
 #pictureFrame3 {   clear: none;/*clear: none;
     background-color: rgb(225, 250, 250);*/
 }
-  #photoGroup {
+#photoGroup {
         float: left;
         height: auto;
         margin-left: 6.5%;
@@ -35,7 +35,7 @@
     }
 
 
-    #videoGroup {
+#videoGroup {
         float: left;
         height: auto;
         margin-left: 0.07960631%;
@@ -52,10 +52,12 @@
     margin-top: .75%; margin-left: 2%; margin-right: auto;
 }/*height: 1765px;*/
 
-#box,#box1,#box2,#box3,#box4,#box5 { float: left; clear: none; background-color: rgb(255, 255, 255);
+#box,#box1,#box2,#box3,#box4,#box5 { float: left; clear: none; 
+    background-color: rgb(255, 255, 255);
     margin-top: 16px; margin-left: 2%; width: 96%; height: auto;}
 #box1 { margin-top: 1px;}
 #box2 { clear: both;}
+#box3 { background-color: rgb(226,226,226); width: 66%;}
 #box4,#box5 { margin-top: 7px;}
 
 #sidebarHDR {z-index: 74;
@@ -72,22 +74,6 @@
 
 
 
-#IconCNONE {    z-index: 88;
-    float: left;    clear: none;    position: relative;    top: 0px; left: 0px;
-    width: auto; 
-    max-width: 100%; margin-top: 4px; margin-left: 1%;
-    height: auto;
-    color: rgb(0, 0, 0);
-}
-#IconCBOTH {    z-index: 88;
-    float: left;    clear: both;    position: relative;    top: 0px; left: 0px;
-    width: auto; 
-    max-width: 100%; margin-top: 4px; margin-left: 1%;
-    height: auto;
-    color: rgb(0, 0, 0);
-}
-
-
 
 
 
@@ -102,17 +88,26 @@ margin-top: 4px;margin-left: 3%; width: 88%; height: auto;
 
 
 
-#textspan ,#textspan1 ,#textspan2 ,#textspan22,#textspan3{  float: none;
+#textspan ,#textspan1,#textspan11 ,#textspan111,
+#textspan2 ,#textspan22,#textspan3,#textspan4,#textspan12
+{  float: none;
 font-size: 0.875em; color: black;
-font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
+font-style:normal; font-weight: normal;letter-spacing: normal;line-height: normal;
     text-decoration: none;
     font-family: lato;
 }
-#textspan1{ font-size: 1.125em;}
 #textspan {line-height: 18px; color: rgb(102, 102, 102);}
+#textspan3{ font-size: 1em;}
+#textspan1{ font-size: 1.125em;}
+#textspan11{ margin-top: 12px;}
+#textspan111{ margin-top: 24px;}
 #textspan2,#textspan22{ clear : both;}
 #textspan22{ margin-left: 12px;}
-#textspan3{ font-weight: bold; }
+
+#textspan3,#textspan4,#textspan12{ font-weight: bold; }
+#textspan4,#textspan12{ font-size: 1.3em;}
+#textspan12 {line-height: 18px;}
+
 
 
 #aboutContent {z-index: 73;
@@ -143,15 +138,29 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
         
     }
 
- #socialmediaIcons {float: left; clear: none;
-    height: auto;
-    margin-left: -11.9%;
-    margin-top: 2%;
-    
-    width: 3.591965%;
-}
 
- 
+ #statusIcons {float: left; clear: both;
+        height: auto;
+        margin-left: 82%;
+        margin-top: -4%;
+        
+        width: 20%;
+        margin-right: 0%;
+    } 
+ #responseIcons {float: left; clear: both;
+        height: auto;
+        margin-left: 80%;
+        margin-top: -2.5%;
+        
+        width: 15%;
+        margin-right: 0%;
+    } 
+ #socialmediaIcons {float: left; clear: both;
+    height: auto;
+    margin-left: 17%;
+    margin-top: -8%; 
+    width: 25%;
+}
 
 
 #facebIcon {
@@ -201,19 +210,6 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
     font-style: normal; letter-spacing: normal;text-decoration: none;
     font-size: 0.875em;font-weight: 600;font-family: lato;
 }
-#View_All_ {z-index: 54;
-    float: left; clear: both; position: relative; top: 0px; left: 0px;
-    font-size: 1.125em;
-    
-    height: auto;
-    text-align: left;
-    font-weight: 900;
-    line-height: 18px;
-    color: rgb(96, 96, 96);letter-spacing: 4px;
-    font-style: normal; letter-spacing: normal;text-decoration: none;
-    font-family: lato;     
-    margin-top: 8px; margin-left: 33%;width: 33%;  margin-bottom: 8px;
-}
 
 
 
@@ -239,39 +235,6 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
 
 
 
-#Vector_Smart_Object_copy_3 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 14;
-    margin-top: 3px;
-    margin-left: 8.001667%;
-    clear: none;
-}
-
-
-
-
-
-#Vector_Smart_Object_copy_2 {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 16;
-    margin-top: 3px;
-    margin-left: 6.668056%;
-    clear: none;
-}
 
 
 
@@ -293,37 +256,9 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
 }
 
 
-#Vector_Smart_Object_copy {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 15;
-    margin-top: 3px;
-    margin-left: 8.001667%;
-    clear: none;
-}
 
 
 
-#Vector_Smart_Object {
-    float: left;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 11;
-    margin-top: 3px;
-    margin-left: 8.001667%;
-    clear: none;
-}
 
 #Jack_Black-_Nunc_cursus_lectus_sit_amet_mattis_sodales_ex_nib {
     float: left;
@@ -566,29 +501,6 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
 
 
 
-#View_All_1 {
-    float: left;
-    font-size: 0.89030375em;
-    width: 4.29%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 18px;
-    color: rgb(55, 55, 55);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 38;
-    margin-top: 2.203125px;
-    margin-left: 20.03589%;
-    clear: both;
-    display: block;
-    margin-right: 0%;
-}
 
 
 
@@ -837,29 +749,6 @@ font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal
 
 
 
-
-
-
-
-
-
-
-
-
-    #View_All_1 {
-        width: 24.015238%;
-        display: block;
-        margin-top: 209px;
-        margin-right: 0%;
-        margin-left: -24.728615%;
-        clear: none;
-        font-size: 0.69em;
-    }
-
-
-
-  
-
     #star1 {
         float: left;
         width: 18.000000319999998px;
@@ -945,10 +834,7 @@ background-color: rgb(235, 235, 235);  */
 
 #aboutContent {  margin-right: 0%; width: 90%;}
 #Read_More_ {  width: 40%; margin-left: 60%; }
-#View_All_ {   
-        margin-top: 8px; margin-left: 33%;width: 33%;  margin-bottom: 8px;
-       /* clear: both;margin-top: 8px;margin-right: 0%; width: 36.4973%; */
-    }
+
 
 
 #contactInfo {
@@ -960,20 +846,8 @@ background-color: rgb(235, 235, 235);  */
         /*background-color: rgb(240, 240, 240);*/
     }
 
-#IconCNONE {margin-left: 1%; margin-right: 0%;
-/*background-color: rgb(235, 235, 235); */
-}
-#IconCBOTH {margin-left: 1%; margin-right: 0%;
-/*background-color: rgb(235, 235, 235);  */
-}
-#socialmediaIcons {float: left; clear: both;
-        height: auto;
-        margin-left: 17%;
-        margin-top: -10%;
-        
-        width: 25%;
-        margin-right: 0%;
-    } 
+
+
 
     #instagIcon {
         float: left;

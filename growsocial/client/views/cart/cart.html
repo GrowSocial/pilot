@@ -1,0 +1,16 @@
+<template name="cart">
+  <h1>Shopping cart</h1>
+  <ul>
+    {{#each cartItems}}
+      <li>
+        <ul>
+          <li>Description: {{description}}</li>
+          <li>Quantity: {{quantity}} ({{unitType}})</li>
+          <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
+          <li>itemTotalPrice: {{itemTotalPrice}} {{currency}}</li>
+          <li><a href="#">Vendor: {{vendorName}}</a></li>
+        </ul>
+      </li>
+    {{/each}}
+  </ul>
+</template>

@@ -109,3 +109,10 @@ FlowRouter.route('/changePassword', {
     BlazeLayout.render("main", {content: "changePassword"});
   },
 });
+
+FlowRouter.route('/cart', {
+  name: "cart",
+  action: function() {
+    BlazeLayout.render("main", {content: "cart"});
+  },
+});
