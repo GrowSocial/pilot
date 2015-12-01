@@ -17,6 +17,7 @@ Template.marketplace.helpers({
     vendorUserId: '2',
     vendorName: 'Anthony Apple',
     vendorLink: '/profile/2',
+    vendorEmail: 'anthonyapple@notarealemail.com',
   }, {
     productId: '2',
     description: "Scarlet Nantes Carrot",
@@ -27,6 +28,7 @@ Template.marketplace.helpers({
     vendorBusinessId: '2',
     vendorName: 'XYZ Compost Removal',
     vendorLink: '/business/2',
+    vendorEmail: 'xyz@notarealemail.com',
   }, {
     productId: '3',
     description: "Little Gem Lettuce",
@@ -37,6 +39,7 @@ Template.marketplace.helpers({
     vendorBusinessId: '2',
     vendorName: 'XYZ Compost Removal',
     vendorLink: '/business/2',
+    vendorEmail: 'xyz@notarealemail.com',
   }],
   
   selectedProduct: function() {
