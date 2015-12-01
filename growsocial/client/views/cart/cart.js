@@ -10,6 +10,7 @@ Template.cart.helpers({
     vendorUserId: '2',
     vendorName: 'Anthony Apple',
     vendorLink: '/profile/2',
+    vendorEmail: 'anthonyapple@notarealemail.com',
     quantity: 3,
     itemTotalPrice: 6.60,
   }, {
@@ -22,6 +23,7 @@ Template.cart.helpers({
     vendorBusinessId: '2',
     vendorName: 'XYZ Compost Removal',
     vendorLink: '/business/2',
+    vendorEmail: 'xyz@notarealemail.com',
     quantity: 2,
     itemTotalPrice: 3.00,
   }, {
@@ -34,6 +36,7 @@ Template.cart.helpers({
     vendorBusinessId: '2',
     vendorName: 'XYZ Compost Removal',
     vendorLink: '/business/2',
+    vendorEmail: 'xyz@notarealemail.com',
     quantity: 4,
     itemTotalPrice: 42.00,
   }],
