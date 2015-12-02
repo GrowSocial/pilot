@@ -8,11 +8,13 @@
     {{#each cartItems}}
       <li>
         <ul>
+          <li><a href="#">Vendor: {{vendorName}}</a></li>
           <li>Description: {{description}}</li>
           <li>Quantity: {{quantity}} ({{unitType}})</li>
           <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
           <li>itemTotalPrice: {{itemTotalPrice}} {{currency}}</li>
-          <li><a href="#">Vendor: {{vendorName}}</a></li>
+          <li><input type="button" class="btn btn-default" value="+" /></li>
+          <li><input type="button" class="btn btn-default" value="-" /></li>
         </ul>
       </li>
     {{/each}}

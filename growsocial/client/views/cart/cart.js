@@ -23,8 +23,7 @@ Template.cart.helpers({
 
   cartItems: function() {
     return ShoppingCart.find({});
-  }
-
+  },
 });
 
 //Remove this
