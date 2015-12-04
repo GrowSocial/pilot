@@ -7,6 +7,20 @@
     <ul>
     {{#each productList}}
         <li><img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">{{name}}</li>
+        <a class="addToCart" data-toggle="popover" title="Add to cart" data-content="">Add to cart</a>
     {{/each}}
+    <form id="quantity" class="hide addToCartForm">
+        Quantity: 
+        <input type="number" id="quantityNum"/>
+        <input type="submit" value="Add to Cart" class="addToCartBrn btn btn-submit" />
+    </form>
+    <script>
+        $(".addToCart").popover({
+            html: true,
+            content: function(){
+                return $('#quantity').html();
+            }
+        });
+    </script>
     </ul>
 </template>

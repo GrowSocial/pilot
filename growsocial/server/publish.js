@@ -22,17 +22,21 @@ Meteor.publish("contactUsMessages", function () {
 
 // Shopping Cart
 Meteor.publish("shoppingCart", function() {
-  return ShoppingCart.find({
+  return ShoppingCart.find({}, {
     fields: {
-      quantity: 1,
-      description: 1,
-      unitType: 1,
-      unitPrice: 1,
-      currency: 1,
-      itemTotalPrice: 1,
-      // vendorUserId: 1,
-      // vendorBusinessId: 1,
       vendorName: 1,
+      vendorUserId: 1,
+      vendorBusinessId: 1,
+      products: 1,
+      // quantity: 1,
+      // description: 1,
+      // unitType: 1,
+      // unitPrice: 1,
+      // currency: 1,
+      // itemTotalPrice: 1,
+      // // vendorUserId: 1,
+      // // vendorBusinessId: 1,
+      // vendorName: 1,
     }
   });
 });

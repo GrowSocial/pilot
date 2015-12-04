@@ -24,18 +24,31 @@ Template.cart.helpers({
   cartItems: function() {
     return ShoppingCart.find({});
   },
+
+  items: function() {
+    return ShoppingCart.find({});
+  },
+
+  test: [{v: 1, p: [{c: 11}]}, {v: 2, p: [{c: 22}]}, {v: 3, p: [{c: 33}]}, {v: 4, p: [{c: 44}]}]
+
 });
 
-//Remove this
 Template.cart.events({
   'click .addSample': function(event) {
     event.preventDefault();
 
     Meteor.call('addCartItem');
-  }
+  },
 
-  // 'click .removeSample': function() {
-  //   ShoppingCart.remove({});
-  // }
+  // Pay to specific vendor
+  'click .payVendor': function(event) {
+    var email = {
+      to: "email@example.com",
+      from: "email@growsocial.com",
+      subject: "This item has been p1aid",
+      text: "The item has been paid!",
+    }
+    Meteor.call('sendEmail', email);
+  },
+
 });
-//Remove this
