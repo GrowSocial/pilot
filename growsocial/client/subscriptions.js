@@ -1,2 +1,9 @@
-Meteor.subscribe("contactUsMessages");
+Meteor.subscribe(
+	"contactUsMessages",
+	"MarketItems",
+	"Videos",
+	"Pictures",
+	"Reviews",
+	"People"
+	);
 

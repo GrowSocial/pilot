@@ -8,7 +8,9 @@ Template.people.helpers({
   'selectedPersonDoc:' and 'isSelectedPerson:' used to convey which 
   profile is selected, to profile.html
 */
-  people: function () { return People.find();
+  member: function () { return 
+    People.find();
+    //People.find({member_key: {$gt: ""}}).fetch();
   },
   selectedPersonDoc: function () {
     return People.findOne(Session.get("selectedPersonId"));
@@ -16,8 +18,7 @@ Template.people.helpers({
   isSelectedPerson: function () {
     return Session.equals("selectedPersonId", this._id);
   },
-/* end 
-    ~ helpers added by TEC Dec 2015 *************************/
+/* end ~ helpers added by TEC Dec 2015 *************************/
 
 
 

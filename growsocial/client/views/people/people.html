@@ -14,14 +14,14 @@
   </ul>
   </div>
 
-  <!-- TEC Attempting to introduce Meteor.People to the app
+  <!-- TEC: attempting to introduce Meteor.People to the app
   ****************************************************************************** -->
   <div class="col-md-6">
     <h1>Members (People)</h1> <h4>( to be read from Meteor.People collection )</h4> 
     <table class="table table-bordered table-condensed"><!-- TABLE LIST -->
       <thead><tr> <td>Name</td><td>Email</td><td>Location</td> <td>Zip</td> </tr> </thead>
         <tbody>        
-          {{#each people}}
+          {{#each member}}
             <tr class="person-row {{#if isSelectedPerson}}selected{{/if}}">   
   
               <td>{{fullname}}</td><td>{{email}}</td><td>{{location}}</td><td>{{zipcode}}</td>

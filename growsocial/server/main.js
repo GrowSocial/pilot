@@ -1,6 +1,6 @@
 Meteor.startup(function () {
 
-//  var sData  for 'seed data'
+//  var sData for seed data
 
 /**
  * Initialize if empty.
@@ -66,7 +66,6 @@ if (MarketItems.find().count() === 0) {
 }
 
 
-
 //Member_Videos.remove({});
 var sData = [
 {member_key:'pseudo_1',submission_date:Date(),caption:'vid 1',
@@ -80,7 +79,6 @@ if (Member_Videos.find().count() === 0) {
 }
 
 
-
 //Member_Pictures.remove({});
 var sData = [
 {member_key:'pseudo_1',submission_date:Date(),caption:'pic 1',
@@ -92,7 +90,6 @@ if (Member_Pictures.find().count() === 0) {
     _.each(sData, function(sItem) 
    	{ Member_Pictures.insert(sItem);}     );
 }
-
 
 
 //Member_Reviews.remove({});
@@ -122,7 +119,7 @@ lastname: 'pseudo_2',
 fullname:'Jessica pseudo_2',
 occupations: [  {vocation: 'Owner', descript: 'Om Wellness Center'},    
    				{vocation: 'Yoga Instructor'},   
-   				{vocation: 'Massage Therapist','LMT'}
+   				{vocation: 'Massage Therapist', descript:'LMT'}
    			 ],
 zipcode:'39000',
 about:'~ Whynot doYoga!'
@@ -158,17 +155,6 @@ if (People.find().count() === 0) {
     _.each(sData, function(sItem) 
    	{ People.insert(sItem);}     );
 }
-
-//if (Items.find().count() === 0) {
-//    _.each([ "Hat","Shoes", "Coat", "Gloves", "Socks", "Sweater", "T-shirt"],
-//    	    function (name) {   Items.insert({name: name});}
-//    		);
-// }
-
-Buisness.remove({})
-Buisness.insert({bizEmail: 'bb@moo2.com', bizName: 'BarnNails' });
-//alert(Bizness.find().count());
-
 
 
 }); //Meteor.startup(function ()

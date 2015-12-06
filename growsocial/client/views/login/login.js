@@ -105,7 +105,7 @@ Template.register.events({
         template.messages.set('infoMessage', 'Registered and logged in.');
 
     // TEC introducing a new registration, create cooresponding record in Meteor.People -->
-      alert(Accounts.userId() + '*' + firstname + " " + lastname + "*" + Accounts.onCreated +"*");
+      alert(Accounts.userId() + '*' + firstname + " " + lastname + "*" +"*");
         People.insert({
               member_key: Accounts.userId(),
                    email: email,

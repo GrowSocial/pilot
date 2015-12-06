@@ -16,12 +16,3 @@ Member_Reviews.attachSchema(Schemas.Member_Reviews);
 
 People = Collections.People = new Mongo.Collection("People");
 People.attachSchema(Schemas.Person);
-
-
-Buisness = Collections.Buisness = new Mongo.Collection("Buisness");
-Buisness.attachSchema(Schemas.Biz);
-
-
-
-
-

@@ -29,12 +29,8 @@ Meteor.publish("contactUsMessages", function () {
 
     Member_Reviews.find(),
 
-    People.find(),
+    People.find()    
 
-    Buisness.find(),
-
-    Items.find()
-
-    // end TEC
+// end TEC
 
 ;
