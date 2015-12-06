@@ -1,4 +1,26 @@
 Template.people.helpers({
+
+/* TEC 
+  Attempting to introduce Meteor.People to the app, 
+  Helper 'people:' to be called by 'people.html', for loading the list of 
+  profile collections from DB for viewing by logged-in member.
+
+  'selectedPersonDoc:' and 'isSelectedPerson:' used to convey which 
+  profile is selected, to profile.html
+*/
+  people: function () { return People.find();
+  },
+  selectedPersonDoc: function () {
+    return People.findOne(Session.get("selectedPersonId"));
+  },
+  isSelectedPerson: function () {
+    return Session.equals("selectedPersonId", this._id);
+  },
+/* end 
+    ~ helpers added by TEC Dec 2015 *************************/
+
+
+
   // TODO pull list of people from database
   peopleList: [{
       personId: 1,
@@ -19,4 +41,5 @@ Template.people.helpers({
     var path = FlowRouter.path("profile", params);
     return path;
   }
+
 });

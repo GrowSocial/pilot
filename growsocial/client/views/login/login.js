@@ -103,6 +103,18 @@ Template.register.events({
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
+
+    // TEC introducing a new registration, create cooresponding record in Meteor.People -->
+      alert(Accounts.userId() + '*' + firstname + " " + lastname + "*" + Accounts.onCreated +"*");
+        People.insert({
+              member_key: Accounts.userId(),
+                   email: email,
+               firstname: firstname,
+                lastname: lastname,
+                fullname: name,
+                   about:"~ Welcome to GROW SOCIAL ~ "
+        });
+
         // FlowRouter.go("home");
       }
     });

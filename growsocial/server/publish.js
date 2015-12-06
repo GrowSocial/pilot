@@ -16,4 +16,25 @@ Meteor.publish("contactUsMessages", function () {
   } else {
     return [];
   }
-});
+})
+
+
+// begin TEC
+    ,
+    MarketItems.find(),
+    
+    Member_Videos.find(),
+
+    Member_Pictures.find(),
+
+    Member_Reviews.find(),
+
+    People.find(),
+
+    Buisness.find(),
+
+    Items.find()
+
+    // end TEC
+
+;
