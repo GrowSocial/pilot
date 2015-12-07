@@ -16,21 +16,15 @@ Meteor.publish("contactUsMessages", function () {
   } else {
     return [];
   }
-})
+});
 
 
-// begin TEC
-    ,
-    MarketItems.find(),
-    
+Meteor.publish(null, function () {
+  return [
+    MarketItems.find(),    
     Member_Videos.find(),
-
     Member_Pictures.find(),
-
     Member_Reviews.find(),
-
     People.find()    
-
-// end TEC
-
-;
+  ];
+});
