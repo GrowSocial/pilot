@@ -2,7 +2,58 @@
 <template name="people">
 
   <div class="row">
-  
+
+
+<!--
+    <div class="col-md-6">
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>Panel</h4></div>
+        <div class="panel-body">
+          <pre class="pre-scrollable">[panel content]</pre>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>Panel</h4> </div>
+        <div class="panel-body">
+          <pre class="pre-scrollable">[panel content]</pre>
+        </div>
+      </div>
+
+    </div>
+-->
+
+<!-- for collections with array fields (TEC future)
+    <div class="col-md-6">
+
+      <div class="panel panel-default">
+        <div class="panel-heading"> <h4>Rendered Form</h4> </div>
+        <div class="panel-body">
+          {{> quickForm id="updatePushForm" type="update-pushArray" collection=Collections.PeopleWithContacts doc=exampleDoc scope="contacts"}}
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading"> <h4>The Form Document</h4> </div>
+        <div class="panel-body">
+          {{#with exampleDoc}}
+          <p><strong>First Name:</strong> {{firstName}}</p>
+          <p><strong>Last Name:</strong> {{lastName}}</p>
+          <p><strong>Age:</strong> {{age}}</p>
+          <p><strong>Contacts:</strong></p>
+          {{#each contacts}}
+            <p>{{name}} ({{phone}})</p>
+          {{/each}}
+          {{/with}}
+        </div>
+      </div>
+
+    </div>
+-->
+
+
+<!--   original load of coded literals, pre Dec 2015/TEC
   <div class="col-md-6">
   <h1>People </h1> <h4>(original test data as literals coded @ people\people.js.peopleList: )</h4>
   <ul>
@@ -13,15 +64,30 @@
     {{/each}}
   </ul>
   </div>
+-->
 
-  <!-- TEC: attempting to introduce Meteor.People to the app
+
+  <div class="col-md-6">
+  <h1>People </h1> <h4>(Meteor.People collection record set )</h4>
+  <ul>
+    {{#each people}}
+      <li>
+        <a href="{{pathForProfile}}"> 
+          {{fullname}} * {{location}} * {{email}} 
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+  </div>
+
+  <!-- TEC Attempting to introduce Meteor.People to the app
   ****************************************************************************** -->
   <div class="col-md-6">
     <h1>Members (People)</h1> <h4>( to be read from Meteor.People collection )</h4> 
     <table class="table table-bordered table-condensed"><!-- TABLE LIST -->
       <thead><tr> <td>Name</td><td>Email</td><td>Location</td> <td>Zip</td> </tr> </thead>
         <tbody>        
-          {{#each member}}
+          {{#each people}}
             <tr class="person-row {{#if isSelectedPerson}}selected{{/if}}">   
   
               <td>{{fullname}}</td><td>{{email}}</td><td>{{location}}</td><td>{{zipcode}}</td>

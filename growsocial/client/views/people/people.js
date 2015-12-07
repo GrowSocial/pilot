@@ -1,5 +1,11 @@
 Template.people.helpers({
 
+  exampleDoc: function () {
+    return PeopleWithContacts.findOne({firstName: 'Albert'});
+  },
+
+
+
 /* TEC 
   Attempting to introduce Meteor.People to the app, 
   Helper 'people:' to be called by 'people.html', for loading the list of 
@@ -8,9 +14,7 @@ Template.people.helpers({
   'selectedPersonDoc:' and 'isSelectedPerson:' used to convey which 
   profile is selected, to profile.html
 */
-  member: function () { return 
-    People.find();
-    //People.find({member_key: {$gt: ""}}).fetch();
+  people: function () { return People.find();
   },
   selectedPersonDoc: function () {
     return People.findOne(Session.get("selectedPersonId"));
@@ -18,7 +22,8 @@ Template.people.helpers({
   isSelectedPerson: function () {
     return Session.equals("selectedPersonId", this._id);
   },
-/* end ~ helpers added by TEC Dec 2015 *************************/
+/* end 
+    ~ helpers added by TEC Dec 2015 *************************/
 
 
 
@@ -34,13 +39,15 @@ Template.people.helpers({
       name: "Anthony",
     },
   ],
+
+
   pathForProfile: function() {
     var person = this;
     var params = {
-      personId: person.personId
+      personId: person.member_key //personId: person.personId
     };
     var path = FlowRouter.path("profile", params);
+    //alert(path);
     return path;
   }
-
 });
