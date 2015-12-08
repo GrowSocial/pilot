@@ -45,10 +45,18 @@ Template.cart.events({
     var email = {
       to: "email@example.com",
       from: "email@growsocial.com",
-      subject: "This item has been p1aid",
+      subject: "This item has been paid",
       text: "The item has been paid!",
     }
     Meteor.call('sendEmail', email);
   },
 
+});
+
+Template.marketplace.events({
+  'submit form': function(event) {
+    event.preventDefault();
+    
+    console.log(event);
+  }
 });
