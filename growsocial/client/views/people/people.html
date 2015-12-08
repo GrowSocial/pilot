@@ -53,7 +53,7 @@
 -->
 
 
-<!--   original load of coded literals, pre Dec 2015/TEC
+<!--   original load of coded literals
   <div class="col-md-6">
   <h1>People </h1> <h4>(original test data as literals coded @ people\people.js.peopleList: )</h4>
   <ul>
@@ -67,68 +67,32 @@
 -->
 
 
-  <div class="col-md-6">
-  <h1>People </h1> <h4>(Meteor.People collection record set )</h4>
-  <ul>
-    {{#each people}}
-      <li>
-        <a href="{{pathForProfile}}"> 
-          {{fullname}} * {{location}} * {{email}} 
-        </a>
-      </li>
-    {{/each}}
-  </ul>
-  </div>
-
-  <!-- TEC Attempting to introduce Meteor.People to the app
+  <!-- People 
   ****************************************************************************** -->
-  <div class="col-md-6">
-    <h1>People</h1> <h4>( from Meteor.People collection )</h4> 
-    <table class="table table-bordered table-condensed"><!-- TABLE LIST -->
-      <thead><tr> <td>Name</td><td>Email</td><td>Location</td> <td>Zip</td> </tr> </thead>
-        <tbody>        
+  <div class="col-md-6"><h1><b>People</b></h1> 
+    <table class="table table-bordered table-condensed">
+      <thead><tr> <td><b>member_key * Fullname</b></td> </tr> </thead>
+        <tbody>       
           {{#each people}}
-            <tr class="person-row {{#if isSelectedPerson}}selected{{/if}}">   
-  
-              <td>{{fullname}}</td><td>{{email}}</td><td>{{location}}</td><td>{{zipcode}}</td>
-
-                <!-- \common\schemas.js: * * * * * * * * * * * * * * * * * * * * * * * * * -->
-                <!-- Schemas.Person = new SimpleSchema({
-                  member_key: {type: String, index: 1, unique: true },
-                       email: {type: String, optional: false, unique: true },
-                   firstname: {type: String, optional: true},
-                    lastname: {type: String, optional: true},
-                    fullname: {type: String, optional: true},
-                      street: {type: String, optional: true },
-                     street2: {type: String, optional: true },
-                        city: {type: String, optional: true },
-                       state: {type: String, optional: true ,
-                              allowedValues: ["AL", etc..], 
-                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
-                      zipcode:{ type:   String, optional: true },
-                  occupations:{ type: Array, optional: true },    
-                              'occupations.$': {          type: Object },
-                              'occupations.$.vocation': { type: String },
-                              'occupations.$.descript': { type: String , optional:true } ,
-                     location:{type: String,   optional: true },
-                        phone:{type: String,   optional: true },
-                      website:{type: String,   optional: true },
-                        links:{type: String,   optional: true },
-                   facebookID:{type: String,   optional: true },
-                    twitterID:{type: String,   optional: true },
-                  instagramID:{type: String,   optional: true },
-                        about:{type: String,   optional: true }
-                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-           </tr>
+            <tr class="person-row">
+              <td><a href="{{pathForProfile}}">{{member_key}} * {{fullname}}</a></td>
+            </tr>
           {{/each}}      
         </tbody>
     </table>
-
   </div>
+
 
   <div class="col-md-6">
-  <h1><br>Groups</h1>
+
+
   </div>
+
+
+
+  <div class="col-md-6"><h1><br>Groups</h1></div>
+
+
 
 </div> <!-- end row -->
 

@@ -1,8 +1,31 @@
 Template.profile.helpers({
-  person: function() {
+  profile_data: function() {
+
     // TODO why is this function run 4 times?
     var personId = FlowRouter.getParam("personId");
-    console.log("This is my profile: ", personId);
+
+    //console.log("This is my profile: ", personId);
+    //alert( People.findOne({member_key: personId}).count());
+    //alert(CollectionName.findOne({_id: documenteId}));
+      //alert(People.find({member_key: personId}).count());
+      //{fields: {fullname: 1, email: 1, location:1 }}
+     //alert(People.find({member_key: personId}));
+
+    //return personId
+    return People.find({member_key: personId})
+
+  },
+
+
+  formData:function(){
+    var personId = FlowRouter.getParam("personId");
+    alert(personId + People.find({member_key: personId}).count());
+    return People.find({member_key: personId});
+  }
+,
+
+
+/*
     // TODO retrieve person details from collection
     if (personId == 1) {
       return {
@@ -17,15 +40,16 @@ Template.profile.helpers({
     } else {
       return {
         personId: personId,
-        name: "Anthony",
+        name: "Anyone at all",
         pic: "/images/user-images/anthony.jpg",
         coverPhoto: "/images/user-images/owl.jpg",
-        rolesShort: "Farmer, Beekeeper",
-        rolesFull: "Farmer, Beekeeper, Beechaser, Beefinder, Beefeater",
-        location: "Fort Lauderdale, FL",
+        rolesShort: "Local Occupation",
+        rolesFull: "",
+        location: "Yourtown, Earth",
         };
     };
-  },
+
+*/
 
 
   postList: function() {

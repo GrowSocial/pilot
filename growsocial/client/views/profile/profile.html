@@ -1,7 +1,33 @@
 
 
 <template name="profile">
-
+                <!-- \common\schemas.js: * * * * * * * * * * * * * * * * * * * * * * * * * -->
+                <!-- Schemas.Person = new SimpleSchema({
+                  member_key: {type: String, index: 1, unique: true },
+                       email: {type: String, optional: false, unique: true },
+                   firstname: {type: String, optional: true},
+                    lastname: {type: String, optional: true},
+                    fullname: {type: String, optional: true},
+                      street: {type: String, optional: true },
+                     street2: {type: String, optional: true },
+                        city: {type: String, optional: true },
+                       state: {type: String, optional: true ,
+                              allowedValues: ["AL", etc..], 
+                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
+                      zipcode:{ type:   String, optional: true },
+                  occupations:{ type: Array, optional: true },    
+                              'occupations.$': {          type: Object },
+                              'occupations.$.vocation': { type: String },
+                              'occupations.$.descript': { type: String , optional:true } ,
+                     location:{type: String,   optional: true },
+                        phone:{type: String,   optional: true },
+                      website:{type: String,   optional: true },
+                        links:{type: String,   optional: true },
+                   facebookID:{type: String,   optional: true },
+                    twitterID:{type: String,   optional: true },
+                  instagramID:{type: String,   optional: true },
+                        about:{type: String,   optional: true }
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <div id="headerPROFL">
 
     <img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
@@ -22,7 +48,7 @@
     <div id="memberPicture" class="clearfix">
         <img id="membPic" src="/images/user-images/anthony.png" class="image" />
     </div>
-    <p id="membrfunctXX">{{person.name}}</p>
+    <p id="membrfunctXX">{{profile_data.fullname}}</p>
 
     <div id="badges" class="clearfix">
         <div id="badge-frame" class="clearfix"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
@@ -46,20 +72,21 @@
         <p id="membrfunctX">MORE ▼</p>
 
     </div>
-</div> <!-- div id="headerPROFL" -->
+</div> <!-- headerPROFL -->
 
 
 <div id="sidebarPROFL" class="clearfix"> <!-- sidebar   `````````````````````````````````````````````````````````   -->
 
     <div id="box" class="clearfix">
+        
         <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
         <p id="sidebarcontent">
-          <span id="textspan1">{{person.rolesShort}}</span>
+          <span id="textspan1">my occupation</span>
           <span id="textspan1">, (+ 2 more)<br /></span>
         </p>
 
         <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" />
-        <p id="sidebarcontent"><span id="textspan1">{{person.location}}</span></p>
+        <p id="sidebarcontent"><span id="textspan1">my location</span></p>
     </div> <!-- header-->
 
     <div id="box" class="clearfix"> 
@@ -83,8 +110,8 @@
         </div>
 
         <p id="contactInfo">           
-            <span id="textspan">Email<br /></span>
-            <span id="textspan3">anthony@anthonysfarm.com<br /></span>
+            <span id="textspan">{{profile_data.email}}<br /></span>
+            <span id="textspan3">person<br /></span>
         </p>
         <p id="contactInfo">
             <span id="textspan">Phone<br /></span>
@@ -92,11 +119,11 @@
         </p>
         <p id="contactInfo">
             <span id="textspan">Website<br /></span>
-            <span id="textspan3">anth&#x40;anthonysfarm.com<br /></span>
+            <span id="textspan3">my website<br /></span>
         </p>
         <p id="contactInfo">
             <span id="textspan">Links<br /></span>
-            <span id="textspan3">blog.anthonysfarm.com<br /></span>
+            <span id="textspan3">my links<br /></span>
         </p>
         <p id="contactInfo"><span id="textspan">Social<br /></span> </p>
 
@@ -298,7 +325,7 @@
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} listed a new item on his Marketplace.<br /></span>
+          <span id="textspan1">{{People.name}} listed a new item on his Marketplace.<br /></span>
           <span id="textspan">2&#x3a;08 pm</span>
         </p>
 
@@ -336,7 +363,7 @@
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} is going to the event </span>
+          <span id="textspan1">{{People.name}} is going to the event </span>
           <span id="textspan3"> Yoga on the Beach<br /></span>
           <span id="textspan">11&#x3a;01 am</span>
         </p>
@@ -368,7 +395,7 @@
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} is now connected with </span>
+          <span id="textspan1">{{People.name}} is now connected with </span>
           <span id="textspan3"> Jessica Jones<br /></span>
           <span id="textspan">Yesterday</span>
         </p>
