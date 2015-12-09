@@ -28,3 +28,21 @@ Template.marketplace.helpers({
     }
   },
 });
+
+Template.marketplace.onRendered(function() {
+  $('.popoverThis').popover({
+      html: true,
+      title: 'Add to Cart <a class="close");">&times;</a>',
+      content: $('.popoverContent').html(),
+  });
+  
+  $('.popoverThis').click(function (e) {
+      e.stopPropagation();
+  });
+  
+  $(document).click(function (e) {
+      if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
+          $('.popoverThis').popover('hide');
+      }
+  });
+});

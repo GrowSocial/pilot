@@ -21,15 +21,9 @@ Template.cart.helpers({
   //   }, 
   // ],
 
-  cartItems: function() {
-    return ShoppingCart.find({});
-  },
-
   items: function() {
     return ShoppingCart.find({});
   },
-
-  test: [{v: 1, p: [{c: 11}]}, {v: 2, p: [{c: 22}]}, {v: 3, p: [{c: 33}]}, {v: 4, p: [{c: 44}]}]
 
 });
 
@@ -44,7 +38,7 @@ Template.cart.events({
   'click .payVendor': function(event) {
     var email = {
       to: "email@example.com",
-      from: "email@growsocial.com",
+      from: "email@growsocial.org",
       subject: "This item has been paid",
       text: "The item has been paid!",
     }
@@ -53,10 +47,10 @@ Template.cart.events({
 
 });
 
-Template.marketplace.events({
-  'submit form': function(event) {
-    event.preventDefault();
-    
+Template.addQtyToCart.events({
+  'click .addToCart': function(event) {
+    console.log("a");
     console.log(event);
-  }
+  },
+
 });
