@@ -6,20 +6,25 @@ Meteor.methods({
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
-
-    //Send email
-    try {
-      Email.send({
-        to: email.to,
-        from: email.from,
-        subject: email.subject,
-        text: email.text,
-      });
-    }
-    // Catch any errors
-    catch(err) {
-      console.log("error");
-      Meteor.call('addErrorLog', err);
-    }
+    if (Meteor.isServer) {
+      //Send email
+      try {
+        Email.send({
+          to: email.to,
+          from: email.from,
+          subject: email.subject,
+          text: email.text,
+        });
+        console.log("Email sent");
+      }
+      // Catch any errors
+      catch(err) {
+        console.log("Error: ", err);
+        Meteor.call('addErrorLog', {
+          tag: 'sendEmail',
+          message: err.message
+        });
+      }
+    };
   }
 });

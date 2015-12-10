@@ -32,7 +32,7 @@ Template.marketplace.helpers({
 Template.marketplace.onRendered(function() {
   $('.popoverThis').popover({
       html: true,
-      title: 'Add to Cart <a class="close");">&times;</a>',
+      title: 'Add to Cart <a class="close">&times;</a>',
       content: $('.popoverContent').html(),
   });
   

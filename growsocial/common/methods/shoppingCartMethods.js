@@ -1,5 +1,4 @@
 Meteor.methods({
-
 	// Add to shopping cart collection
 	addCartItem: function() {
 

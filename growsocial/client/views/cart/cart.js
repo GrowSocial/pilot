@@ -1,26 +1,4 @@
 Template.cart.helpers({
-  // TODO pull cart items from database
-  // cartItems: [{
-  //     quantity: 3,
-  //     description: "Beefsteak tomato",
-  //     unitType: "each",
-  //     unitPrice: 2.20,
-  //     currency: 'USD',
-  //     itemTotalPrice: 6.60,
-  //     vendorUserId: 1,
-  //     vendorName: 'Anthony',
-  //   }, {
-  //     quantity: 3,
-  //     description: "Big Millet",
-  //     unitType: "pounds",
-  //     unitPrice: 2.20,
-  //     currency: 'USD',
-  //     itemTotalPrice: 6.60,
-  //     vendorBusinessId: 2,
-  //     vendorName: 'Grains R Us',
-  //   }, 
-  // ],
-
   items: function() {
     return ShoppingCart.find({});
   },
@@ -28,11 +6,15 @@ Template.cart.helpers({
 });
 
 Template.cart.events({
+  // remove this
+  // ***********************************
   'click .addSample': function(event) {
     event.preventDefault();
 
     Meteor.call('addCartItem');
   },
+  // ***********************************
+  // remove this
 
   // Pay to specific vendor
   'click .payVendor': function(event) {
@@ -47,10 +29,13 @@ Template.cart.events({
 
 });
 
-Template.addQtyToCart.events({
-  'click .addToCart': function(event) {
-    console.log("a");
-    console.log(event);
+Template.marketplace.events({
+  'submit .addToCartForm': function(event) {
+    // Prevent browser from restarting
+    event.preventDefault();
+
+
+    console.log(event.target.quantityNum.value);
   },
 
 });
