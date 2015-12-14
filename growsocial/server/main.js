@@ -109,52 +109,6 @@ if (Member_Reviews.find().count() === 0) {
 }
 
 
-//People.remove({});
-var sData = [
-{
-member_key: 'pseudo_2',
-email: 'jessie@me.com',
-firstname:'Jessica',
-lastname: 'pseudo_2',
-fullname:'Jessica pseudo_2',
-occupations: [  {vocation: 'Owner', descript: 'Om Wellness Center'},    
-   				{vocation: 'Yoga Instructor'},   
-   				{vocation: 'Massage Therapist', descript:'LMT'}
-   			 ],
-zipcode:'39000',
-about:'~ Whynot doYoga!'
-},
-
-{
-member_key: 'pseudo_1', 
-email: 'tony@me.com',
-firstname:'Anthony',
-lastname: 'pseudo_2',
-fullname:'Anthony pseudo_2',
-  	street:'89 High Cliff Dr.', 
-  	street2:'',
-  	city:'Ft. Lauderdale',
-  	state:'FL',
- 	zipcode:'39000',
-	occupations: [  {vocation: 'Farmer', descript: ''},    
-   				    {vocation: 'Beekeeper'},   
-   					{vocation: 'Massage Therapist'}
-   				 ],
-	location:'Ft. Lauderdale, FL',
-	phone:'704 999-0000',
-	website:'www.tonyAfarmer.com',
-	links:'',
-	facebookID:'',
-	twitterID:'@tonyA',
-	instagramID:'',
-	about:'Natural farming, baby!'
-}
-];
-
-if (People.find().count() === 0) {
-    _.each(sData, function(sItem) 
-   	{ People.insert(sItem);}     );
-}
 
 
 }); //Meteor.startup(function ()

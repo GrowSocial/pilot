@@ -105,13 +105,13 @@ Template.register.events({
         template.messages.set('infoMessage', 'Registered and logged in.');
 
     // TEC introducing a new registration, create cooresponding record in Meteor.People -->
-      alert(Accounts.userId() + '*' + firstname + " " + lastname + "*" +"*");
+   //   alert(Accounts.userId() + '*' + firstname + "*" + lastname + "*" +user.name +"*");
         People.insert({
               member_key: Accounts.userId(),
                    email: email,
                firstname: firstname,
                 lastname: lastname,
-                fullname: name,
+                fullname: firstname + " " + lastname,
                    about:"~ Welcome to GROW SOCIAL ~ "
         });
 

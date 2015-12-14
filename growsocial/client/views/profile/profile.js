@@ -1,29 +1,19 @@
+
+Template.profile.onCreated(function() { var self = this;
+  self.autorun(function() { var member_Key = FlowRouter.getParam('personId');
+  self.subscribe('oneProfileRec', member_Key); 
+  //alert('Template.profile.onCreated('+ member_Key); 
+  });
+});
+
 Template.profile.helpers({
-  profile_data: function() {
 
-    // TODO why is this function run 4 times?
-    var personId = FlowRouter.getParam("personId");
-
-    //console.log("This is my profile: ", personId);
-    //alert( People.findOne({member_key: personId}).count());
-    //alert(CollectionName.findOne({_id: documenteId}));
-      //alert(People.find({member_key: personId}).count());
-      //{fields: {fullname: 1, email: 1, location:1 }}
-     //alert(People.find({member_key: personId}));
-
-    //return personId
-    return People.find({member_key: personId})
-
+    selectProfile: function() {
+    var mKey = FlowRouter.getParam('personId');
+    var member = People.findOne({member_key: mKey}) || {};
+    //alert('Template.profile.helpers('+ mKey);
+    return member;
   },
-
-
-  formData:function(){
-    var personId = FlowRouter.getParam("personId");
-    alert(personId + People.find({member_key: personId}).count());
-    return People.find({member_key: personId});
-  }
-,
-
 
 /*
     // TODO retrieve person details from collection
@@ -67,5 +57,7 @@ Template.profile.helpers({
         }, 
       ];
     }
-  },
+  }
+
+
 });

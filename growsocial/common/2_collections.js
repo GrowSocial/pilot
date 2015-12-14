@@ -14,5 +14,4 @@ Member_Pictures.attachSchema(Schemas.Member_Pictures);
 Member_Reviews = Collections.Member_Reviews = new Mongo.Collection("Member_Reviews");
 Member_Reviews.attachSchema(Schemas.Member_Reviews);
 
-People = Collections.People = new Mongo.Collection("People");
-People.attachSchema(Schemas.Person);
+
