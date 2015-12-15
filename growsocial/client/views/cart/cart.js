@@ -33,9 +33,12 @@ Template.marketplace.events({
   'submit .addToCartForm': function(event) {
     // Prevent browser from restarting
     event.preventDefault();
-
-
-    console.log(event.target.quantityNum.value);
+    console.log("item: " + this.name + " " + this.productId)
+    var item = {
+      name: this.name,
+      productId: this.productId,
+    }
+    Meteor.call('addCartItem', item);
   },
 
 });
