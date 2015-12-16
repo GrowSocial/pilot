@@ -1,13 +1,6 @@
-Template.marketplace.helpers({
-  // "selectedProduct" is the currently selected product, could be none selected.
-  
-  // TODO There will also be a list of other available products,
-  // depending on whether showing general marketplace, or storefront for
-  // a particular business or a particular person.
-  
-  // TODO pull product list from the database
-  
-  productList : [{
+Template.cart.helpers({
+  // TODO pull cart items from database
+  cartItems: [{
     productId: '1',
     description: "Aunt Ruby's Green Tomato",
     pic: "/images/user-images/AuntRubyTomato.png",
@@ -18,6 +11,8 @@ Template.marketplace.helpers({
     vendorName: 'Anthony Apple',
     vendorLink: '/profile/2',
     vendorEmail: 'anthonyapple@notarealemail.com',
+    quantity: 3,
+    itemTotalPrice: 6.60,
   }, {
     productId: '2',
     description: "Scarlet Nantes Carrot",
@@ -29,26 +24,20 @@ Template.marketplace.helpers({
     vendorName: 'XYZ Compost Removal',
     vendorLink: '/business/2',
     vendorEmail: 'xyz@notarealemail.com',
+    quantity: 2,
+    itemTotalPrice: 3.00,
   }, {
     productId: '3',
     description: "Little Gem Lettuce",
     pic: "/images/user-images/LittleGemLettuce.png",
-    unitType: "5 pound bag",
+    unitType: "5 pound bags",
     unitPrice: 10.50,
     currency: 'USD',
     vendorBusinessId: '2',
     vendorName: 'XYZ Compost Removal',
     vendorLink: '/business/2',
     vendorEmail: 'xyz@notarealemail.com',
+    quantity: 4,
+    itemTotalPrice: 42.00,
   }],
-  
-  selectedProduct: function() {
-    var productId = FlowRouter.getParam("productId");
-    console.log("This is my selected product: ", productId);
-    if (productId && productId !== '0') {
-      return productId;
-    } else {
-      return [];
-    }
-  },
 });

@@ -38,6 +38,13 @@ FlowRouter.route('/business/:businessId', {
   },
 });
 
+FlowRouter.route('/marketplace/:productId', {
+  name: "marketplace",
+  action: function(params) {
+    BlazeLayout.render("main", {content: "marketplace"});
+  },
+});
+
 FlowRouter.route('/notifications', {
   name: "notifications",
   action: function() {
@@ -100,5 +107,12 @@ FlowRouter.route('/changePassword', {
   name: "changePassword",
   action: function() {
     BlazeLayout.render("main", {content: "changePassword"});
+  },
+});
+
+FlowRouter.route('/cart', {
+  name: "cart",
+  action: function() {
+    BlazeLayout.render("main", {content: "cart"});
   },
 });
