@@ -1,9 +1,84 @@
+
 <template name="people">
-  <h1>People</h1>
+
+  <div class="row">
+
+
+<!--
+    <div class="col-md-6">
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>Panel</h4></div>
+        <div class="panel-body">
+          <pre class="pre-scrollable">[panel content]</pre>
+        </div>
+      </div>
+-->
+
+<!-- for collections with array fields (TEC future)
+    <div class="col-md-6">
+
+      <div class="panel panel-default">
+        <div class="panel-heading"> <h4>Rendered Form</h4> </div>
+        <div class="panel-body">
+          {{> quickForm id="updatePushForm" type="update-pushArray" collection=Collections.PeopleWithContacts doc=exampleDoc scope="contacts"}}
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading"> <h4>The Form Document</h4> </div>
+        <div class="panel-body">
+          {{#with exampleDoc}}
+          <p><strong>First Name:</strong> {{firstName}}</p>
+          <p><strong>Last Name:</strong> {{lastName}}</p>
+          <p><strong>Age:</strong> {{age}}</p>
+          <p><strong>Contacts:</strong></p>
+          {{#each contacts}}
+            <p>{{name}} ({{phone}})</p>
+          {{/each}}
+          {{/with}}
+        </div>
+      </div>
+
+    </div>
+-->
+
+
+<!--   original load of coded literals
+  <div class="col-md-6">
+  <h1>People </h1> <h4>(original test data as literals coded @ people\people.js.peopleList: )</h4>
   <ul>
     {{#each peopleList}}
-      <li><a href="{{pathForProfile}}"><img src="{{pic}}" class="img-circle navbar-img" alt="Profile"> {{name}}</a></li>
+      <li><a href="{{pathForProfile}}">
+        <img src="{{pic}}" class="img-circle navbar-img" alt="Profile"> {{name}}</a>
+      </li>
     {{/each}}
   </ul>
-  <h1>Groups</h1>
+  </div>
+-->
+
+
+  <!-- People 
+  ****************************************************************************** -->
+  <div class="col-md-6"><h1><b>People</b></h1> 
+    <table class="table table-bordered table-condensed">
+      <thead><tr> <td><b>member_key * Fullname</b></td> </tr> </thead>
+        <tbody>       
+          {{#each people}}
+            <tr class="person-row">
+              <td><a href="{{pathForProfile}}">{{member_key}} * {{fullname}}</a></td>
+            </tr>
+          {{/each}}      
+        </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-md-6"><h1><br>Groups</h1></div>
+
+</div> <!-- end row -->
+
+
 </template>
+
+

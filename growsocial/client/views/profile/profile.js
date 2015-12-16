@@ -1,8 +1,21 @@
+
+Template.profile.onCreated(function() { var self = this;
+  self.autorun(function() { var member_Key = FlowRouter.getParam('personId');
+  self.subscribe('oneProfileRec', member_Key); 
+  //alert('Template.profile.onCreated('+ member_Key); 
+  });
+});
+
 Template.profile.helpers({
-  person: function() {
-    // TODO why is this function run 4 times?
-    var personId = FlowRouter.getParam("personId");
-    console.log("This is my profile: ", personId);
+
+    selectProfile: function() {
+    var mKey = FlowRouter.getParam('personId');
+    var member = People.findOne({member_key: mKey}) || {};
+    //alert('Template.profile.helpers('+ mKey);
+    return member;
+  },
+
+/*
     // TODO retrieve person details from collection
     if (personId == 1) {
       return {
@@ -17,15 +30,16 @@ Template.profile.helpers({
     } else {
       return {
         personId: personId,
-        name: "Anthony",
+        name: "Anyone at all",
         pic: "/images/user-images/anthony.jpg",
         coverPhoto: "/images/user-images/owl.jpg",
-        rolesShort: "Farmer, Beekeeper",
-        rolesFull: "Farmer, Beekeeper, Beechaser, Beefinder, Beefeater",
-        location: "Fort Lauderdale, FL",
+        rolesShort: "Local Occupation",
+        rolesFull: "",
+        location: "Yourtown, Earth",
         };
     };
-  },
+
+*/
 
 
   postList: function() {
@@ -43,5 +57,7 @@ Template.profile.helpers({
         }, 
       ];
     }
-  },
+  }
+
+
 });

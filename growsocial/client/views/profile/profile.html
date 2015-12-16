@@ -1,6 +1,36 @@
 
-
 <template name="profile">
+                <!-- \common\schemas.js: * * * * * * * * * * * * * * * * * * * * * * * * * -->
+                <!-- Schemas.Person = new SimpleSchema({
+                  member_key: {type: String, index: 1, unique: true },
+                       email: {type: String, optional: false, unique: true },
+                   firstname: {type: String, optional: true},
+                    lastname: {type: String, optional: true},
+                    fullname: {type: String, optional: true},
+                      street: {type: String, optional: true },
+                     street2: {type: String, optional: true },
+                        city: {type: String, optional: true },
+                       state: {type: String, optional: true ,
+                              allowedValues: ["AL", etc..], 
+                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
+                      zipcode:{ type:   String, optional: true },
+                  occupations:{ type: Array, optional: true },    
+                              'occupations.$': {          type: Object },
+                              'occupations.$.vocation': { type: String },
+                              'occupations.$.descript': { type: String , optional:true } ,
+                     location:{type: String,   optional: true },
+                        phone:{type: String,   optional: true },
+                      website:{type: String,   optional: true },
+                        links:{type: String,   optional: true },
+                   facebookID:{type: String,   optional: true },
+                    twitterID:{type: String,   optional: true },
+                  instagramID:{type: String,   optional: true },
+                        about:{type: String,   optional: true }
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+{{#if Template.subscriptionsReady}} 
+{{#with selectProfile}} 
+
 
 <div id="headerPROFL">
 
@@ -22,7 +52,7 @@
     <div id="memberPicture" class="clearfix">
         <img id="membPic" src="/images/user-images/anthony.png" class="image" />
     </div>
-    <p id="membrfunctXX">{{person.name}}</p>
+    <p id="membrfunctXX">{{selectProfile.fullname}}</p>
 
     <div id="badges" class="clearfix">
         <div id="badge-frame" class="clearfix"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
@@ -46,28 +76,29 @@
         <p id="membrfunctX">MORE ▼</p>
 
     </div>
-</div> <!-- div id="headerPROFL" -->
+</div> <!-- headerPROFL -->
 
 
 <div id="sidebarPROFL" class="clearfix"> <!-- sidebar   `````````````````````````````````````````````````````````   -->
 
     <div id="box" class="clearfix">
+        
         <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
         <p id="sidebarcontent">
-          <span id="textspan1">{{person.rolesShort}}</span>
+          <span id="textspan1">my occupation</span>
           <span id="textspan1">, (+ 2 more)<br /></span>
         </p>
 
         <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" />
-        <p id="sidebarcontent"><span id="textspan1">{{person.location}}</span></p>
+        <p id="sidebarcontent"><span id="textspan1">{{selectProfile.location}}</span></p>
     </div> <!-- header-->
 
     <div id="box" class="clearfix"> 
         <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
         <p id="sidebarHDR">ABOUT</p>
-        <p id="aboutContent">
-            I live to farm, I farm to live. But enough about me! What about you? Let me tell you about how we farm. We demonstrate natural farming techniques here. It comes naturally to us. Lispsum fat poo poop ee doo, papadum tooey, roses and cauliflower, lions + tigers oh my. Don't forget the ivy, the fire ants are OUR FRIENDS!
-        </p>
+        <p id="aboutContent">{{selectProfile.firstname}}</p>
+        <p id="aboutContent">{{selectProfile.lastname}}</p>
+        <p id="aboutContent">{{selectProfile.about}}</p>
         <p id="Read_More_">Read More ></p>
     </div> <!-- about -->
 
@@ -84,19 +115,19 @@
 
         <p id="contactInfo">           
             <span id="textspan">Email<br /></span>
-            <span id="textspan3">anthony@anthonysfarm.com<br /></span>
+            <span id="textspan3">{{selectProfile.email}}<br /></span>
         </p>
         <p id="contactInfo">
             <span id="textspan">Phone<br /></span>
-            <span id="textspan3">Request Info<br /></span>
+            <span id="textspan3">{{selectProfile.phone}}<br /></span>
         </p>
         <p id="contactInfo">
             <span id="textspan">Website<br /></span>
-            <span id="textspan3">anth&#x40;anthonysfarm.com<br /></span>
+            <span id="textspan3">{{selectProfile.website}}<br /></span>
         </p>
         <p id="contactInfo">
             <span id="textspan">Links<br /></span>
-            <span id="textspan3">blog.anthonysfarm.com<br /></span>
+            <span id="textspan3">{{selectProfile.links}}<br /></span>
         </p>
         <p id="contactInfo"><span id="textspan">Social<br /></span> </p>
 
@@ -298,7 +329,7 @@
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} listed a new item on his Marketplace.<br /></span>
+          <span id="textspan1">{{selectProfile.fullname}} listed a new item on his Marketplace.<br /></span>
           <span id="textspan">2&#x3a;08 pm</span>
         </p>
 
@@ -336,7 +367,7 @@
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} is going to the event </span>
+          <span id="textspan1">{{selectProfile.fullname}} is going to the event </span>
           <span id="textspan3"> Yoga on the Beach<br /></span>
           <span id="textspan">11&#x3a;01 am</span>
         </p>
@@ -368,7 +399,7 @@
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} is now connected with </span>
+          <span id="textspan1">{{selectProfile.fullname}} is now connected with </span>
           <span id="textspan3"> Jessica Jones<br /></span>
           <span id="textspan">Yesterday</span>
         </p>
@@ -385,7 +416,6 @@
                <span id="textspan21"><br /></span>
                <span id="textspan">&nbsp;Sunrise, FL<br /></span>
             </p>
-
         </div>
 
         <p id="newsFeedcontent">
@@ -405,7 +435,7 @@
      <div id="profile_pic_copy" class="clearfix"></div>
 
      <p id="newsFeedcontent">
-        <span id="textspan1">Anthony Anderson<br /></span><span id="textspan">Sept 2<br /></span>
+        <span id="textspan1">{{selectProfile.fullname}}<br /></span><span id="textspan">Sept 2<br /></span>
       </p>  
       <p id="newsFeedcontent">  
         <span id="textspan1">
@@ -420,35 +450,11 @@
     </div>
 
 
-
-
 </div> <!-- zone00 -->
 
 
+
+{{/with}} 
+{{else}} <p>Loading...</p>
+{{/if}}
 </template>
-
-
-
-<template name="profileOld">
-    <!-- TODO do we want class "container"? -->
-    <div id="headerPROFL" class="headerPROFL clearfix container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <img id="image" src="{{person.coverPhoto}}" class="image" />
-            </div>
-        </div>
-    </div>
-    
-    <h1>Profile</h1>
-    <p>personId: {{person.personId}}</p>
-    <p>Profile for {{person.name}}</p>
-    <p>Community Roles: {{person.rolesShort}}</p>
-    <p>Location: {{person.location}}</p>
-    <img src="{{person.pic}}" alt="Profile pic">
-    <ul>
-        {{#each postList}}
-            <li><img src="{{icon}}" class="img-circle postIcon" alt="icon">posted at: {{datePosted}}, message: {{message}}</li>
-        {{/each}}
-    </ul>
-</template>
-
