@@ -1,0 +1,61 @@
+<template name="dbAdmin">
+  <div class="row">
+
+
+
+  <div class="col-md-6"><h2>Members</h2><p></p><!-- TABLE LIST -->
+
+
+    <table class="table table-bordered table-condensed">
+      <thead><tr> <td><b>member_key * Fullname</b></td> </tr> </thead>
+        <tbody>       
+          {{#each people}}
+            <tr class="person-row">
+              <td><a href="{{pathForProfile}}">{{member_key}} * {{fullname}}</a></td>
+            </tr>
+          {{/each}}      
+        </tbody>
+    </table>
+
+
+  </div> <!-- class="col-md-6"-->
+
+  </div><!-- class="row" -->
+
+</template>
+<template name="dbAdminEDITOR">
+{{#if Template.subscriptionsReady}} 
+{{#with selectProfile}} 
+    <div class="col-md-6"><!-- SELECTED DOCUMENT -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading"> <h4>Selected Profile</h4> </div>
+      <div class="panel-body">
+          {{#autoForm id="afUpdateDemo" type=formType 
+          collection=Collections.People  doc=selectedPersonDoc autosave=autoSaveMode}}
+            {{> afQuickField name="firstname"}}
+            {{> afQuickField name="lastname"}}
+            {{> afQuickField name="email"}}
+            {{> afQuickField name="street"}}  
+            {{> afQuickField name="street2"}}
+            {{> afQuickField name="city"}}
+            {{> afQuickField name="state"}}
+            {{> afQuickField name="zipcode"}}
+            {{#unless autoSaveMode}}
+             <div class="form-group">
+              <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
+             </div>
+            {{/unless}}
+
+          {{/autoForm}}
+      </div><!-- class="panel-body" -->
+    </div> <!-- class="panel panel-default" -->
+
+    <div class="alert alert-info">  Blue panel stuff</div>
+
+  </div> <!-- div class="col-md-6" -->
+{{/with}} 
+{{else}} <p>Loading...</p>
+{{/if}}
+</template>
+

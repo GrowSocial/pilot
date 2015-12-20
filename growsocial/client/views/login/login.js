@@ -104,7 +104,7 @@ Template.register.events({
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
 
-    // TEC introducing a new registration, create cooresponding record in Meteor.People -->
+  // Introducing a new registration, create cooresponding record in Meteor.People /TEC -->
    //   alert(Accounts.userId() + '*' + firstname + "*" + lastname + "*" +user.name +"*");
         People.insert({
               member_key: Accounts.userId(),
@@ -112,8 +112,20 @@ Template.register.events({
                firstname: firstname,
                 lastname: lastname,
                 fullname: firstname + " " + lastname,
-                   about:"~ Welcome to GROW SOCIAL ~ "
+                   about: firstname + " " + lastname +
+                " has just become a member at Grow Social! "
         });
+    // also incude an initial member review, by Grow Social, with 1 stars
+        Member_Reviews.insert({
+                member_key: Accounts.userId(),
+                review_by: "pseudo_0",
+                review_date: Date(),
+                review_text: "~ Welcome to GROW SOCIAL ~" ,
+                review_rating: 1,
+});
+
+
+
 
         // FlowRouter.go("home");
       }

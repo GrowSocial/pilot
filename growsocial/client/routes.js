@@ -102,3 +102,25 @@ FlowRouter.route('/changePassword', {
     BlazeLayout.render("main", {content: "changePassword"});
   },
 });
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+//FlowRouter.route('/', {
+FlowRouter.route('/dbAdmin/', {
+  action: function() {
+    BlazeLayout.render("main", {content: "dbAdmin"});
+  }
+});
+FlowRouter.route('/dbAdminEDITOR/:personId', {
+  action: function() {
+    BlazeLayout.render("main", {content: "dbAdminEDITOR"});
+  }
+});
+/*
+FlowRouter.route('/profile/:personId', {
+  name: "profile",
+  action: function(params) {
+    console.log("This is my profile: ", params.personId);
+    BlazeLayout.render("main", {content: "profile"});
+  },
+});
+*/
