@@ -40,8 +40,10 @@ Schemas.Person = new SimpleSchema({
 
 
 
-
-People.remove({});
+// When deployed to meteor.com, the following remove() causes these errors and breaks the app:
+// Uncaught Error: Not permitted. Untrusted code may only remove documents by ID. [403]
+// There is no route for the path: /
+// People.remove({});
 var sData = [
 {
 member_key: 'pseudo_3', 
