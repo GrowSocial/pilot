@@ -4,8 +4,24 @@ Template.people.helpers({
 /* for loading the list of 
    profile collections from DB for viewing by logged-in member.
 */
-  people: function () { return People.find();
-  },
+people: function () { return People.find();
+},
+
+notAdmin: function(){ var Iam = this.member_key; //alert('people test '+ Iam);
+if (Iam == 'pseudo_0') { return false } else { return true;}
+},
+
+/*  
+  used to convey which profile is selected, to profile.html
+  */
+  pathForProfile: function() {
+    var person = this;
+    var params = {
+      personId: person.member_key //personId: person.personId
+    };
+    var path = FlowRouter.path("profile", params);
+    return path;
+  }
 
 
 /*
@@ -24,16 +40,6 @@ Template.people.helpers({
 */
 
 
-/*  
-  used to convey which profile is selected, to profile.html
-  */
-  pathForProfile: function() {
-    var person = this;
-    var params = {
-      personId: person.member_key //personId: person.personId
-    };
-    var path = FlowRouter.path("profile", params);
-    return path;
-  }
+
   
 });
