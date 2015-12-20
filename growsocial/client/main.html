@@ -52,10 +52,12 @@
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
+              {{ > navMyCart}}
               {{ > navNotificationsList}}
               {{ > navHelp}}
               {{ > navLogout}}
             {{else}}
+              {{ > navMyCart}}
               {{ > navHelp}}
               {{ > navSignIn}}
             {{/if}}
@@ -155,26 +157,18 @@
   <li class="{{isActiveRoute 'notifications'}}"><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
   <li class="disabled"><a href="#">Messages</a></li>
   <li class="disabled"><a href="#">Events</a></li>
-  <li class="disabled"><a href="#">My Marketplace</a></li>
+  <li><a href="/marketplace/1" data-toggle="collapse" data-target=".navbar-collapse.in">My Storefront</a></li>
   <li class="disabled"><a href="#">Saved Posts</a></li>
   <li><a href="/changePassword" data-toggle="collapse" data-target=".navbar-collapse.in">Change Password</a></li>
 </template>
 
 <template name="navPages">
   <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
-
-
-  <!-- originally for Groups? but we are using it as primary access to list for People /TEC
-  li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Groups</a></li
-  -->
-  <li class="{{isActiveRoute 'people'}}">
-    <a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">People</a>
-  </li>
-
-
+  <li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Groups</a></li>
   <li class="disabled"><a href="#">Discussions</a></li>
   <li class="disabled"><a href="#">LocalPedia</a></li>
   <li class="{{isActiveRoute 'businesses'}}"><a href="{{pathFor 'businesses'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
+  <li class="{{isActiveRoute 'marketplace'}}"><a href="/marketplace/0" data-toggle="collapse" data-target=".navbar-collapse.in">Marketplace</a></li>
   <li class="disabled"><a href="#">Opportunities</a></li>
 </template>
 
@@ -193,4 +187,8 @@
 
 <template name="navContactUs">
   <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
+</template>
+
+<template name="navMyCart">
+  <li class="{{isActiveRoute 'cart'}}"><a href="{{pathFor 'cart'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Cart</a></li>
 </template>

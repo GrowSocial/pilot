@@ -27,6 +27,7 @@ aldeed:autoform
 aldeed:collection2
 dburles:collection-helpers
 reactive-dict
+accounts-facebook
+sewdn:facebook-connect
 check
-mrt:moment
-meteorhacks:aggregate
+force-ssl

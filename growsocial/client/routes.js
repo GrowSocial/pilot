@@ -38,6 +38,13 @@ FlowRouter.route('/business/:businessId', {
   },
 });
 
+FlowRouter.route('/marketplace/:productId', {
+  name: "marketplace",
+  action: function(params) {
+    BlazeLayout.render("main", {content: "marketplace"});
+  },
+});
+
 FlowRouter.route('/notifications', {
   name: "notifications",
   action: function() {
@@ -102,25 +109,10 @@ FlowRouter.route('/changePassword', {
     BlazeLayout.render("main", {content: "changePassword"});
   },
 });
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
-//FlowRouter.route('/', {
-FlowRouter.route('/dbAdmin/', {
+
+FlowRouter.route('/cart', {
+  name: "cart",
   action: function() {
-    BlazeLayout.render("main", {content: "dbAdmin"});
-  }
-});
-FlowRouter.route('/dbAdminEDITOR/:personId', {
-  action: function() {
-    BlazeLayout.render("main", {content: "dbAdminEDITOR"});
-  }
-});
-/*
-FlowRouter.route('/profile/:personId', {
-  name: "profile",
-  action: function(params) {
-    console.log("This is my profile: ", params.personId);
-    BlazeLayout.render("main", {content: "profile"});
+    BlazeLayout.render("main", {content: "cart"});
   },
 });
-*/
