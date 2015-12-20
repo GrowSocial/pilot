@@ -10,7 +10,7 @@ Schemas.MarketItems = new SimpleSchema({
    'items.$.type': {         type: String , optional:true },
    'items.$.salesAlert': {   type: String , optional:true },
    'items.$.unitType': {     type: String , optional:true },
-   'items.$.unitPrice': {    type: Number , optional:true },
+   'items.$.unitPrice': {    type: Number , optional:true, decimal: true },
     'items.$.currency': {    type: String , optional:true },
     'items.$.photo': {       type: Object , optional:true }
 });
