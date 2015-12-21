@@ -1,5 +1,21 @@
 Meteor.startup(function () {
 
+return; // remaining code below, for seeding test collections 
+
+
+
+/* Code block::
+   will empty these collections:
+    People.remove({});
+    Member_Reviews.remove();
+    MarketItems.remove({});
+    Member_Videos.remove({});
+    Member_Pictures.remove({});
+
+and seed database with initial documents for each
+
+                                                                   */
+
 Member_Videos.remove({});
 var sData = [
 {member_key:'pseudo_1',submission_date:Date(),caption:'vid 1',
@@ -7,11 +23,10 @@ var sData = [
 {member_key:'pseudo_1',submission_date:Date(),caption:'vid 2',
  video:''},
 ];
-if (Member_Videos.find().count() === 0) {
-    _.each(sData, function(sItem) 
-    { Member_Videos.insert(sItem);}     );
-}
+_.each(sData, function(sItem) 
+  { Member_Videos.insert(sItem);
 
+  }     );
 
 Member_Pictures.remove({});
 var sData = [
@@ -20,27 +35,12 @@ var sData = [
 {member_key:'pseudo_1',submission_date:Date(),caption:'pic 2',
  picture:''},
 ];
-if (Member_Pictures.find().count() === 0) {
-    _.each(sData, function(sItem) 
-    { Member_Pictures.insert(sItem);}     );
-}
+_.each(sData, function(sItem) 
+  { Member_Pictures.insert(sItem);
+
+  }     );
 
 
-
-return; // remaining code below, for seeding test collections 
-
-
-/* Code block::
-	 will empty these collections:
-		People.remove({});
-		Member_Reviews.remove();
-		MarketItems.remove({});
-		Member_Videos.remove({});
-		Member_Pictures.remove({});
-
-and seed database with initial documents for each
-
-                                                                   */
 
 People.remove({});
 var sData = [

@@ -139,9 +139,30 @@
 
 
     <div id="box" class="clearfix">
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        <p id="sidebarHDR"> PHOTOS </p>
-
+    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+    <p id="sidebarHDR"> PHOTOS </p>
+    <!--
+    Schemas.Member_Pictures = new SimpleSchema({
+      member_key: { type: String, index: 1},
+      submission_date: { type: Date, optional: true },
+      album: {type: String, optional: true},
+      caption: {type:String,optional:true},
+      picture: {type: Object, optional:true }
+    });
+    -->
+    {{#if there_are_items "pictures"}}
+        <div id="photoGroup" class="clearfix">
+            <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+        </div>
+        <!--
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
                 <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
@@ -164,25 +185,28 @@
                 <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
         </div>
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-        </div>
-
+        -->
         <p id="view_all_">View All &gt;</p>
+
+    {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Pictures yet..</p>
+    {{/if}}
     </div><!-- PHOTOS -->
 
+
     <div id="box" class="clearfix">
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        <p id="sidebarHDR"> VIDEOS </p>
+    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+    <p id="sidebarHDR"> VIDEOS </p>
+        <!--
+        Schemas.Member_Videos = new SimpleSchema({
+          member_key: { type: String, index: 1},
+          submission_date: { type: String, optional: true },
+          album: {type: String, optional: true},
+          caption: {type:String,optional:true},
+          video: {type: Object, optional: true }
+        });
+        -->
 
+    {{#if there_are_items "videos"}}
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
                 <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
@@ -193,10 +217,8 @@
             <div id="pictureFrame2" class="clearfix">
                 <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
-
+        <!--
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
                 <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
@@ -207,13 +229,11 @@
             <div id="pictureFrame2" class="clearfix">
                 <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
-
-
-
+        -->
         <p id="view_all_">View All &gt;</p>
+    {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Videos yet..</p>
+    {{/if}}
     </div><!-- videOS -->
 
 
@@ -234,7 +254,7 @@
     </div> <!-- end commentsPROFL -->
 
 
-    {{#if thereRmarketItems}}
+    {{#if there_are_items "marketItems"}}
     <div id="marketplaceItems" class="clearfix"> 
         <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
         {{#if itemsOverflow}}
@@ -290,7 +310,6 @@
 
     </div>
 
-
     <div id="newsFeed2" class="clearfix">
         <div id="profile_pic_copy" class="clearfix"></div>
 
@@ -319,8 +338,6 @@
         </div>
 
     </div>
-
-
 
     <div id="newsFeed3" class="clearfix">
 
@@ -357,7 +374,6 @@
         </div>
 
     </div>
-
 
     <div id="newsFeed5" class="clearfix">
      <div id="profile_pic_copy" class="clearfix"></div>

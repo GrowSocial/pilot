@@ -118,14 +118,12 @@ latestReviews: function () {
     return mSet;
 },
 
-
 ReviewedBy: function() {
     var review = this;
     var member = People.findOne({member_key: review.review_by}) || {};
     //alert('Template.MemberReviews.helpers('+ member.fullname);
     return member.fullname;
   },
-
 
 starburst: function (rating) {  //var rating = this.review_rating;
     switch (rating)
@@ -140,14 +138,6 @@ starburst: function (rating) {  //var rating = this.review_rating;
     return {  id : "star-icon", src : filespec, class:"image" }
   }
 });
-
-
-
-
-
-
-
-
 
 
 
@@ -169,11 +159,27 @@ selectProfile: function() {
     return member;
   },
 
-thereRmarketItems: function(){
+there_are_items: function(caller){
     var mKey = FlowRouter.getParam('personId');
-    var count= MarketItems.find({vendor_key: mKey}).count();
-    if (count) { return true } else { return false;}
+    switch (caller)
+    {
+      case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
+        break;
+      case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
+        break;
+      case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
+        break;
+      default: var count=0;
+    }
+    //alert(mKey + caller + count);
+    if (count) { 
+      //alert('true');
+      return true } else { 
+      //alert('false'); 
+        return false;}
   },
+
+
 itemsOverflow: function(){
     var mKey = FlowRouter.getParam('personId');
     var count= MarketItems.find({vendor_key: mKey}).count();
