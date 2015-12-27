@@ -1,0 +1,310 @@
+#main_image_block {
+    float: left;
+    height: 695px;
+    width: 44%;
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 59;
+    margin-top: 0px; /*120px;*/
+    margin-left: 28%;
+    clear: none;
+}
+
+#business_image_block,#localpedia_image_block,
+#opportunities_image_block,#events_image_block,
+#discussion_image_block,#member_image_block {
+    float: left; clear: none;
+    position: relative;top: 0px;left: 0px;z-index: 69;
+    height: 220px; width: 26.8%;
+    /*background-color: rgb(0, 0, 0); */
+}
+#member_image_block { margin-top: 0px; /*120px;*/ 
+    margin-left: -71.4%;
+}
+#events_image_block { margin-top: -695px; margin-left: 72.6%;
+}
+#business_image_block{ margin-top: -230px; margin-left: .6%;    
+}
+#localpedia_image_block { margin-top: -230px;   margin-left: 72.6%;
+}
+#opportunities_image_block { margin-top: -462px; margin-left: 72.6%;
+}
+#discussion_image_block { margin-top: -462px; margin-left: .6%;
+}
+
+
+#imageMain,#imageMember,#imageEvents,#imageDiscussions,
+#imageOpportunities,#imageBusiness,#imageLocalpedia {
+        float: left;
+        width: auto;max-width: 100%; height: 222px;
+        margin-left: 0%;   
+        margin-top: -48px;
+        clear: none;
+        color: rgb(0, 0, 0);
+        margin-right: 0%;      
+}
+   
+#imageMain {  height: auto;  margin-top: -690px;            
+}
+
+
+#Main_header {
+    float: left;
+    font-size: 2em;
+    width: 88%;
+    height: auto;
+    text-align: left;
+    font-weight: 600;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal; letter-spacing: normal;  text-decoration: none; font-family: lato;
+    position: relative; top: 0px; left: 0px;
+    z-index: 66;
+    margin-top: 36px; margin-left: 7%;
+    clear: none;
+}
+#Main_header2 {
+    float: left;
+    font-size: 1.2em;
+    width: 88%;
+    height: auto;
+    text-align: center;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal; letter-spacing: normal;  text-decoration: none; font-family: lato;
+    position: relative; top: 0px; left: 0px;
+    z-index: 66;
+    margin-top: 16px; margin-left: 7%;
+    clear: none;
+}
+#Learn_More_button {
+    float: left;
+    height: 49px;
+    width: 26.433607%;
+    background-color: rgb(18, 130, 206);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 63;
+    margin-top: 19px;
+    margin-left: 36.026936%;
+    clear: both;
+}
+#Learn_More {
+    float: left;
+    font-size: 1.252845em;
+    width: 64.324808%;
+    height: auto;
+    text-align: center;font-weight: normal;line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal; letter-spacing: normal;text-decoration: none; font-family: lato;
+    position: relative;
+    top: 0px;left: 0px; z-index: 64;
+    margin-top: 10px; margin-left: 18.469499%;
+    clear: none;
+}
+
+
+
+
+
+#Localpedia {
+    float: left;
+    font-size: 1.3692625em;
+    width: 42.364309%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 40;
+    margin-top: 17.65625px;
+    margin-left: 6.315789%;
+    clear: none;
+}
+
+
+
+#Businesses {
+    float: left;
+    font-size: 1.3692625em;
+    width: 41.315789%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 74;
+    margin-top: 17.65625px;
+    margin-left: 0%;
+    clear: none;
+}
+
+
+
+
+
+
+#Opportunities {
+    float: left;
+    font-size: 1.3692625em;
+    width: 48.684211%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 48;
+    margin-top: 20.234375px;
+    margin-left: 6.052632%;
+    clear: none;
+}
+
+
+
+
+#Discussions {
+    float: left;
+    font-size: 1.3692625em;
+    width: 45.526316%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 82;
+    margin-top: 20.234375px;
+    margin-left: 0%;
+    clear: none;
+}
+
+
+
+
+#Events {
+    float: left;
+    font-size: 1.3692625em;
+    width: 43.684211%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 56;
+    margin-top: 21.78125px;
+    margin-left: 6.315789%;
+    clear: none;
+}
+
+#Members {
+    float: left;
+    font-size: 1.3692625em;
+    width: 47.105263%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 90;
+    margin-top: 20.78125px;
+    margin-left: 0%;
+    clear: none;
+}
+
+#Phoenix_Farms_Lakeland_Florida {
+    float: left;
+    font-size: 1em;
+    width: 23.063973%;
+    height: auto;
+    text-align: right;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 62;
+    margin-top: 442px;
+    margin-left: 73.905724%;
+    clear: both;
+}
+
+#txtHOME01 {
+    float: none;
+    font-size: 1.09541em;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+}
+
+#txtHOME02 {
+    float: none;
+    font-size: 1.09541em;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
