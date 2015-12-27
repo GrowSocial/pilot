@@ -52,6 +52,16 @@ Template.navLogout.events({
     Accounts.logout();
   },
 });
+
+Template.navProfilePic.helpers({
+  pathForProfile: function() {
+    var params = {
+      personId: Meteor.userId(),
+    };
+    var path = FlowRouter.path("profile", params);
+    return path;
+  },
+});
  
 function switchBackground() {
   if (Session.get('sunbeamBackground')) {
