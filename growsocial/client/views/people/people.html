@@ -62,11 +62,13 @@
   ****************************************************************************** -->
   <div class="col-md-6"><h1><b>People</b></h1> 
     <table class="table table-bordered table-condensed">
-      <thead><tr> <td><b>member_key * Fullname</b></td> </tr> </thead>
+      <thead><tr> <td><b>member_key * Fullname * email</b></td> </tr> </thead>
         <tbody>       
           {{#each people}}
             <tr class="person-row">
-              <td><a href="{{pathForProfile}}">{{member_key}} * {{fullname}}</a></td>
+              {{#if notAdmin}}
+              <td><a href="{{pathForProfile}}">{{member_key}} * {{fullname}} * {{email}}</a></td>
+              {{/if}}
             </tr>
           {{/each}}      
         </tbody>
