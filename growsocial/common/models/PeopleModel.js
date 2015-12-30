@@ -1,6 +1,4 @@
-
-People = new Mongo.Collection('People');
-
+// People collection moved to lib to load index before views
 
 /* schemas not implimented yet, but confirming code can be located here , 
   to test as working once collectionsTest_02 is integrated with pilot app 
