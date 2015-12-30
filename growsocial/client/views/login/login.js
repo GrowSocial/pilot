@@ -161,12 +161,12 @@ Template.register.events({
                 review_rating: 1,
         });
 
-
-
-
-
-
-        // FlowRouter.go("home");
+        // navigate to new current user's profile page
+        var params = {
+          personId: Meteor.userId(),
+        };
+        var path = FlowRouter.path("profile", params);
+        FlowRouter.go(path);
       }
     });
   }
