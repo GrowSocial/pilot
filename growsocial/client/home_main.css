@@ -20,8 +20,7 @@
     height: 220px; width: 26.8%;
     /*background-color: rgb(0, 0, 0); */
 }
-#member_image_block { margin-top: 0px; /*120px;*/ 
-    margin-left: -71.4%;
+#member_image_block { margin-top: 0px; margin-left: -71.4%;
 }
 #events_image_block { margin-top: -695px; margin-left: 72.6%;
 }
@@ -35,8 +34,9 @@
 }
 
 
-#imageMain,#imageMember,#imageEvents,#imageDiscussions,
-#imageOpportunities,#imageBusiness,#imageLocalpedia {
+/*#imageMain,#imageMember,#imageEvents,#imageDiscussions,
+#imageOpportunities,#imageBusiness,#imageLocalpedia*/
+#featureImg,#imageMain {
         float: left;
         width: auto;max-width: 100%; height: 222px;
         margin-left: 0%;   
@@ -49,7 +49,18 @@
 #imageMain {  height: auto;  margin-top: -690px;            
 }
 
-
+/*#Members,#Discussions,#Events,
+#Opportunities,#Businesses,#Localpedia 
+*/
+#featureHdr{
+    float: left;clear: none;
+    width: 50%;   height: auto;
+    margin-top: 20px; margin-left: 6%;
+    font-size: 1.4em; color: rgb(255, 255, 255);
+    position: relative;  top: 0px; left: 0px; z-index: 90;
+    text-align: left;   font-weight: normal; line-height: normal;
+    font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;   
+}
 #Main_header {
     float: left;
     font-size: 2em;
@@ -110,150 +121,6 @@
 
 
 
-#Localpedia {
-    float: left;
-    font-size: 1.3692625em;
-    width: 42.364309%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 40;
-    margin-top: 17.65625px;
-    margin-left: 6.315789%;
-    clear: none;
-}
-
-
-
-#Businesses {
-    float: left;
-    font-size: 1.3692625em;
-    width: 41.315789%;
-    height: auto;
-    text-align: center;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 74;
-    margin-top: 17.65625px;
-    margin-left: 0%;
-    clear: none;
-}
-
-
-
-
-
-
-#Opportunities {
-    float: left;
-    font-size: 1.3692625em;
-    width: 48.684211%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 48;
-    margin-top: 20.234375px;
-    margin-left: 6.052632%;
-    clear: none;
-}
-
-
-
-
-#Discussions {
-    float: left;
-    font-size: 1.3692625em;
-    width: 45.526316%;
-    height: auto;
-    text-align: center;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 82;
-    margin-top: 20.234375px;
-    margin-left: 0%;
-    clear: none;
-}
-
-
-
-
-#Events {
-    float: left;
-    font-size: 1.3692625em;
-    width: 43.684211%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 56;
-    margin-top: 21.78125px;
-    margin-left: 6.315789%;
-    clear: none;
-}
-
-#Members {
-    float: left;
-    font-size: 1.3692625em;
-    width: 47.105263%;
-    height: auto;
-    text-align: center;
-    font-weight: normal;
-    line-height: normal;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    font-family: lato;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 90;
-    margin-top: 20.78125px;
-    margin-left: 0%;
-    clear: none;
-}
 
 #Phoenix_Farms_Lakeland_Florida {
     float: left;
@@ -294,6 +161,197 @@
     letter-spacing: normal;
     text-decoration: none;
     font-family: lato;
+}
+
+
+
+
+#About_block {
+    float: left;clear: none;
+    height: 890px; width: 100%;
+    background-color: rgb(145, 191, 217);
+    position: relative; top: 0px; left: 0px; z-index: 15;
+    margin-top: 0px; /*799px;*/
+    margin-left: 0%;
+    
+}
+#AboutMSG  {
+    float: left;clear: both;   
+    position: relative;top: 0px; left: 0px; z-index: 30;
+    margin-top: 7px; margin-left: 15.541031%;
+    width: 66.158315%; height: auto;
+    color: rgb(57, 57, 57);
+    font-size: 1.09541em; line-height: 24px; text-align: center;font-weight: normal;
+    font-style: normal; letter-spacing: normal;text-decoration: none;font-family: lato;
+}
+
+
+#About_GrowSocial,#Members {
+    float: left;clear: none;
+    font-size: 2em;
+    width: 35%;height: auto;
+    text-align: center;font-weight: 600;line-height: normal;
+    color: rgb(57, 57, 57);
+    font-style: normal;letter-spacing: normal;
+    text-decoration: none;font-family: lato;
+    position: relative; top: 0px;left: 0px; z-index: 31;
+    margin-top: 40px;
+    margin-left: 31.735657%;    
+}
+#Members {
+    color: rgb(255, 255, 255);
+    margin-top: 376px;
+    margin-left: -64.5%;
+    clear: none;
+}
+#MembershipMSG {
+    float: left;
+    font-size: 1.09541em;
+    width: 35.875091%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 24px;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 27;
+    margin-top: 431px;
+    margin-left: -64%;
+    clear: none;
+}
+
+
+.primaryContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+}
+
+#Join_GrowSocial {
+    float: left;
+    font-size: 1.1505712499999998em;
+    width: 87.977116%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal; text-decoration: none; font-family: lato;
+    position: relative; top: 0px; left: 0px; z-index: 26;
+    margin-top: 16px;
+    margin-left: 4.363419%;
+    clear: none;
+}
+
+#Join_GrowSocial_button {
+    float: left;
+    height: 45px;
+    width: 13.288626%;
+    background-color: rgb(18, 130, 206);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 25;
+    margin-top: 40px;
+    margin-left: 27%;
+    clear: both;
+}
+
+
+
+#FeatureMember {
+    float: left;
+    font-size: 1em;
+    width: 24%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 23;
+    margin-top: 14px; margin-left: 21%;
+    clear: none;
+}
+#tspanHOME01,#tspanHOME02,#tspanHOME03 {
+    float: none;
+    font-size: 1.09541em;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+}
+#tspanHOME02 {
+    font-style: italic;
+    font-weight: normal;
+}
+#tspanHOME03 {
+    font-style: normal;
+    font-weight: normal;
+}
+
+#garden_graphic {
+    float: left;
+    width: 100%;
+    height: 890px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 18;
+    background-image:url("/images/1-sky.jpg");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+#sky {
+    float: left;
+    width: 100%;
+    height: 890px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 17;
+    /*background-image:url("/images/sky.png");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    */
+}
+
+#profile_pic_circle {
+    float: left;
+    height: 208px;
+    width: 208px;;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border: 5px solid rgb(255, 255, 255);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 21;
+    margin-top: 343px;
+    margin-left: 65.068991%;
+    clear: both;
+    background-image:url("/images/user-images/anthony.png");
+    -webkit-background-size: 100%;
+    background-size: 100%;
 }
 
 
