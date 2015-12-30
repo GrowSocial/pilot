@@ -1,0 +1,14 @@
+
+<template name="search">
+
+    {{> EasySearch.Input index=peopleIndex }}
+
+    <ul>
+        {{#EasySearch.Each index=peopleIndex }}
+            <li>Name of the person: {{fullname}}</li>
+        {{/EasySearch.Each}}
+    </ul>
+
+</template>
+
+
