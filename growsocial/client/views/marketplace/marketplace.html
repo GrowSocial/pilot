@@ -6,16 +6,20 @@
     <p>Products:</p>
     <ul>
     {{#each productList}}
-<!--         <li><img class="marketplace-product-img" src="{{pic}}" alt="{{description}} product pic">{{description}}{{> CartAddItemButton}}</li>
- -->
-        <li><img class="marketplace-product-img" src="{{pic}}" alt="{{description}} product pic">
+        <li>
+          <img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">
           <ul>
-            <li>{{> CartAddItemButton}}</li>
+            <button class="popoverThis btn btn-large btn-danger">Buy</button>
+            <li>Name: {{name}}</li>
             <li>Description: {{description}}</li>
             <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
-            <li><a href="{{vendorLink}}">Vendor: {{vendorName}}</a></li>
+            <li><a href="{{vendorLink}}">Sold by: {{vendorName}}</a></li>
           </ul>
         </li>
     {{/each}}
+    
+    <div class="popoverContent hide">
+        {{> addQtyToCart}}
+    </div>
     </ul>
 </template>

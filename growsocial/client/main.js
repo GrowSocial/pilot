@@ -52,6 +52,23 @@ Template.navLogout.events({
     Accounts.logout();
   },
 });
+
+Template.navSearch.events({
+  // TODO pass the search string typed into navbar
+  'submit': function (event) {
+    FlowRouter.go("search");
+  },
+});
+
+Template.navProfilePic.helpers({
+  pathForProfile: function() {
+    var params = {
+      personId: Meteor.userId(),
+    };
+    var path = FlowRouter.path("profile", params);
+    return path;
+  },
+});
  
 function switchBackground() {
   if (Session.get('sunbeamBackground')) {

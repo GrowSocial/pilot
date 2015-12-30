@@ -1,26 +1,71 @@
-<template name="CartAddItemButton">
-	<button class="add-item">Add To Cart</button>
-</template>
-
 <template name="cart">
-  <h1>Shopping cart</h1>
-  <ul>
-    {{#each cartItems}}
-      <li>
-        <ul>
-          <li>Description: {{description}}</li>
-          <li>Quantity: {{quantity}} ({{unitType}})</li>
-          <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
-          <li>itemTotalPrice: {{itemTotalPrice}} {{currency}}</li>
-          <li><a href="{{vendorLink}}">Vendor: {{vendorName}}</a></li>
-        </ul>
-      </li>
-    {{/each}}
-  </ul>
-  {{>CartPayNow}}
+  <h1 class="title">Shopping cart</h1>
+  
+  <!-- Remove this -->
+  <input type="button" class="addSample btn btn-default" value="Add Sample Data" />
+  <!-- Remove this -->
+  
+  <div class="container">
+    <div class="col-md-9">
+      <ul>
+        {{#each items}}
+          <li>
+            <div class="cartOrder">
+              <div class="vendor">
+                <p>{{vendorName}}</p>
+              </div>
+              <ul>
+                {{#each products}}
+                  <li class="row">
+                    <span class="quantityBtns">
+                      <input type="button" class="btn btn-default" value="+" /><br>
+                      <input type="button" class="btn btn-default" value="-" />
+                    </span>
+                    <span class="quantity">
+                      <input type="number" class="quantityVal" value="{{quantity}}" />   
+                      <p class="unitType">{{unitType}}</p>
+                    </span>
+                    <span class="itemName">{{name}}</span>
+                    <span class="removeAll">
+                      <a class="glyphicon glyphicon-trash"></a>
+                    </span>
+                    <span class="price">
+                      ${{unitPrice}} / Total: ${{itemTotalPrice}}
+                      <p class="currency">{{currency}}</p>
+                    </span>
+                  </li>
+                {{/each}}
+                <li class="row totals">
+                  <span class="itemName">Total:</span>
+                  <span class="price">{{vendorTotal}}</span>
+                  <span class="order">
+                    <a class="payVendor" data-toggle="popover" data-trigger="focus" title="Pay {{vendor.vendorName}}" data-content="Payment gateway will be live in phase 1. Your order is being emailed to {{vendorName}}.">Pay this vendor</a>
+                  </span>
+                  <script>
+                    $(document).ready(function(){
+                      $('[data-toggle="popover"]').popover();
+                    });
+                  </script>
+                </li>
+              </ul>
+            </div>
+          </li>
+        {{/each}}
+        <li class="row totals">
+          <span class="itemName">Total:</span>
+          <span class="price">$1694.43</span>
+          <span class="order"> <a class="">Pay all vendors</a></span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
-<template name="CartPayNow">
-	<button id="pay-now">Pay Now</button>
+<template name="addQtyToCart">
+  <form class="addToCartForm">
+      Quantity:
+      <input type="number" name="quantityNum" value="1"/>
+      <input type="submit" class="addToCart btn btn-default" value="Add Quantity" />
+  </form>
 </template>
 

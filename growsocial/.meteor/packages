@@ -31,3 +31,6 @@ accounts-facebook
 sewdn:facebook-connect
 check
 force-ssl
+email
+mrt:moment
+easy:search
