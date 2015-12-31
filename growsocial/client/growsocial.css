@@ -43,6 +43,7 @@ body {
   box-shadow: rgba(24, 24, 24, 0.298039) 0px 9px 9px;
   border: 5px rgb(9, 167, 85);
   border-style: none none solid none;
+  margin-bottom: 5px;
 }
 
 .navbar-default .navbar-nav > li > a {
