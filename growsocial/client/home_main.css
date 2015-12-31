@@ -312,7 +312,7 @@
     top: 0px;
     left: 0px;
     z-index: 18;
-    background-image:url("/images/1-sky.jpg");
+    background-image:url("/images/soil-sky.png");
     -webkit-background-size: 100%;
     background-size: 100%;
 }
@@ -354,6 +354,172 @@
     background-size: 100%;
 }
 
+
+#View_Localpedia {
+    float: left;
+    font-size: 1.1505712499999998em;
+    width: 81.595092%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    margin-top: 16px;
+    margin-left: 7.352377%;
+    clear: none;
+}
+
+#localpedia_button {
+    float: left;
+    height: 45px;
+    width: 11.950147%;
+    background-color: rgb(18, 130, 206);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 9;
+    margin-top: 51px;
+    margin-left: 38.049853%;
+    clear: both;
+}
+
+#localPediaMSG {
+    float: left;
+    font-size: 1em;
+    width: 33%;
+    height: auto;
+    text-align: right;
+    font-weight: normal;
+    line-height: 24px;
+    color: rgb(57, 57, 57);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 11;
+    margin-top: 25px;
+    margin-left: 17%;
+    clear: both;
+}
+#localPediaMAP {
+    float: left;clear: both;
+
+    width: 419px; height: 355px;
+    margin-top: -350px; margin-left: 55%; 
+    background-image:url("/images/localPediaMAP.png");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+
+    /*color: rgb(57, 57, 57);*/
+
+    position: relative; top: 0px; left: 0px;z-index: 11;
+
+
+}
+#Connect_Locally_Share_Globally_ {
+    float: left;
+    font-size: 1.85em;
+    width: 34%;
+    height: auto;
+    text-align: right;
+    font-weight: 600;
+    line-height: normal;
+    color: rgb(57, 57, 57);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 12;
+    margin-top: 49px;
+    margin-left: 17.595308%;
+    clear: none;
+}
+
+#localpedia_block {
+    float: left;
+    height: 416px;
+    width: 100%;
+    background-color: rgb(237, 237, 237);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 7;
+    margin-top: 0px;
+    margin-left: 0%;
+    clear: none;
+}
+
+#GrowSocial2015 {
+    float: left;
+    font-size: 1em;
+    width: 12%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 4;
+    margin-top: 22px;
+    margin-left: 4%;
+    clear: none;
+}
+
+#About_FAQ_Privacy_ {
+    float: left;
+    font-size: 1em;
+    width: 35%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    margin-top: 22px;
+    margin-left: 45%;
+    clear: none;
+}
+
+#homefooter_background {
+    float: left;
+    height: 72px;
+    width: 100%;
+    background-color: rgb(9, 167, 85);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    margin-top: 0px;
+    margin-left: 0%;
+    clear: none;
+}
 
 
 
