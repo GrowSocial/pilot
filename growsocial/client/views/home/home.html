@@ -1,6 +1,9 @@
 <template name="home">
   <!-- <h1>Home Page</h1> -->
-  {{> leafButtons}}
+  <!--{{> leafButtons}} -->
+
+  {{> homeNew}}
+
   <!-- {{> centralSection}} -->
 </template>
 
@@ -48,5 +51,52 @@
   {{else}}
     <p>Loading...</p>
   {{/if}}
+</template>
+
+<template name="homeNew">
+
+<div id="main_image_block" class="clearfix">
+    <p id="Main_header">Connect. Share. Learn. GrowSocial!</p>
+    <p id="Main_header2">Join the fast-growing network of people dedicated to local food growing and creating a sustainable economy.<br />
+    </p>
+    <div id="Learn_More_button" class="clearfix">
+        <p id="Learn_More">Learn More</p>
+    </div>
+    <p id="Phoenix_Farms_Lakeland_Florida">
+        <span id="txtHOME01">Phoenix Farms<br /></span><span id="txtHOME02">Lakeland, Florida</span>
+    </p>
+    <img id="imageMain" src="/images/main image block.png" class="image" />
+</div>
+
+<div id="member_image_block" class="clearfix">
+    <p id="Members"> Members </p>
+<img id="imageMember" src="/images/Member image block.png" class="image" />
+</div>
+
+<div id="events_image_block" class="clearfix">
+    <p id="Events">Events</p>
+    <img id="imageEvents" src="/images/events image block.png" class="image" />   
+</div>
+
+<div id="discussion_image_block" class="clearfix">
+    <p id="Discussions"> Discussions </p>
+    <img id="imageDiscussions" src="/images/Discussion image block.png" class="image" />
+</div>
+
+<div id="opportunities_image_block" class="clearfix">
+    <p id="Opportunities">Opportunities</p>
+    <img id="imageOpportunities" src="/images/opportunities image block.png" class="image" />
+</div>
+
+<div id="business_image_block" class="clearfix">
+    <p id="Businesses"> Businesses</p>
+    <img id="imageBusiness" src="/images/business image block.png" class="image" />
+</div>
+
+<div id="localpedia_image_block" class="clearfix">
+    <p id="Localpedia"> Localpedia </p>
+    <img id="imageLocalpedia" src="/images/2015-12-26_16-58-40.jpg" class="image" />
+</div>
+
 </template>
 

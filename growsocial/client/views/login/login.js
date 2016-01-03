@@ -53,6 +53,7 @@ Template.login.events({
       }
     });
   },
+  
   'click .btn-facebook':function(event, template) {
     event.preventDefault();
     var options = {
@@ -139,6 +140,32 @@ Template.register.events({
         // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
+
+  // Introducing a new registration, create cooresponding record in Meteor.People /TEC -->
+   //   alert(Accounts.userId() + '*' + firstname + "*" + lastname + "*" +user.name +"*");
+        People.insert({
+              member_key: Accounts.userId(),
+                   email: email,
+               firstname: firstname,
+                lastname: lastname,
+                fullname: firstname + " " + lastname,
+                   about: firstname + " " + lastname +
+                " has just become a member at Grow Social! "
+        });
+    // also incude an initial member review, by Grow Social, with 1 stars
+        Member_Reviews.insert({
+                member_key: Accounts.userId(),
+                review_by: "pseudo_0",
+                review_date: Date(),
+                review_text: "~ Welcome to GROW SOCIAL ~" ,
+                review_rating: 1,
+        });
+
+
+
+
+
+
         // FlowRouter.go("home");
       }
     });

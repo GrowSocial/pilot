@@ -6,8 +6,11 @@
     <p>Products:</p>
     <ul>
     {{#each productList}}
-        <li><img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">{{name}}</li>
-        <button class="popoverThis btn btn-large btn-danger">Buy</button>
+        <li>
+            <img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">
+            {{name}}
+            <button class="popoverThis btn btn-large btn-danger">Buy</button>            
+        </li>
     {{/each}}
     
     <div class="popoverContent hide">

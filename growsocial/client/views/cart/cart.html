@@ -25,7 +25,8 @@
                       <input type="number" class="quantityVal" value="{{quantity}}" />   
                       <p class="unitType">{{unitType}}</p>
                     </span>
-                    <span class="itemName">{{description}}</span>
+                    <span class="itemName">{{name}}</span>
+                    <span class="itemDesc itemName">{{description}}</span>
                     <span class="removeAll">
                       <a class="glyphicon glyphicon-trash"></a>
                     </span>
@@ -37,7 +38,7 @@
                 {{/each}}
                 <li class="row totals">
                   <span class="itemName">Total:</span>
-                  <span class="price">$1694.43</span>
+                  <span class="price">$1212</span>
                   <span class="order">
                     <a class="payVendor" data-toggle="popover" data-trigger="focus" title="Pay {{vendor.vendorName}}" data-content="Payment gateway will be live in phase 1. Your order is being emailed to {{vendorName}}.">Pay this vendor</a>
                   </span>

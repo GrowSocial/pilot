@@ -1,25 +1,59 @@
 
-
 <template name="profile">
+                <!-- \common\schemas.js: * * * * * * * * * * * * * * * * * * * * * * * * * -->
+                <!-- Schemas.Person = new SimpleSchema({
+                  member_key: {type: String, index: 1, unique: true },
+                       email: {type: String, optional: false, unique: true },
+                   firstname: {type: String, optional: true},
+                    lastname: {type: String, optional: true},
+                    fullname: {type: String, optional: true},
+                      street: {type: String, optional: true },
+                     street2: {type: String, optional: true },
+                        city: {type: String, optional: true },
+                       state: {type: String, optional: true ,
+                              allowedValues: ["AL", etc..], 
+                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
+                      zipcode:{ type:   String, optional: true },
+                  occupations:{ type: Array, optional: true },    
+                              'occupations.$': {          type: Object },
+                              'occupations.$.vocation': { type: String },
+                              'occupations.$.descript': { type: String , optional:true } ,
+                     location:{type: String,   optional: true },
+                        phone:{type: String,   optional: true },
+                      website:{type: String,   optional: true },
+                        links:{type: String,   optional: true },
+                   facebookID:{type: String,   optional: true },
+                    twitterID:{type: String,   optional: true },
+                  instagramID:{type: String,   optional: true },
+                        about:{type: String,   optional: true }
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+            -->
 
-<!-- div id="primaryContainer" class="primaryContainer clearfix" -->
-<div id="primaryContainer">
+{{#if Template.subscriptionsReady}} 
+{{#with selectProfile}} 
 
-    <img id="image" src="/images/headerPicFULL-1576.jpg" class="image" />
-    <div id="buttons" class="clearfix">
-        <div id="blog" class="clearfix"><p id="View_Blog">View Blog</p></div>
-        <div id="connect" class="clearfix"><p id="_">&#x2b;</p><p id="Connect">Connect</p>
+
+<div id="headerPROFL">
+
+    <img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
+    <div id="buttongroupPROFL" class="clearfix">
+        <div id="blog" class="clearfix">
+            <p id="buttonLabels">View Blog</p>
         </div>
-        <div id="message" class="clearfix"><img id="Vector_Smart_Object" 
-            src="/images/icons/thoughtBubble-ICON.png" class="image" />
-            <p id="Message">Message</p>
+        <div id="connect" class="clearfix">
+            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;Connect</p>
+            <img id="buttonIcon" src="/images/icons/+.png" class="image" />
+        </div>
+        <div id="message" class="clearfix">          
+            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;&nbsp;Message</p>
+            <img id="buttonIcon" src="/images/icons/thoughtBubble-ICON.png" class="image" />
         </div>
     </div>
 
-    <div id="member" class="clearfix">
-        <img id="membPic" src="/images/user-images/anthony.png" class="image" />
+    <div id="memberPicture" class="clearfix">
+        <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
     </div>
-    <p id="membrfunctXX">{{person.name}}</p>
+    <p id="membrfunctXX">{{fullname}}  </p>
 
     <div id="badges" class="clearfix">
         <div id="badge-frame" class="clearfix"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
@@ -34,40 +68,38 @@
         
     </div>
 
-    
-
-    <!--  div id="navbarPROFILE" class="clearfix">{{> nb}}</div -->
-
     <div id="navbarPROFILE" class="clearfix">
-        <p id="membrfunctX">marketplace</p>
-        <p id="membrfunctX">more ▼</p>
-        <p id="membrfunct"></p> 
-        <p id="membrfunct">{{person.rolesShort}}</p> 
-        <p id="membrfunct">{{person.location}} </p> 
+        <p id="membrfunctX">PROFILE</p>
+        <p id="membrfunctX">ABOUT</p>
+        <p id="membrfunct"></p> <p id="membrfunct"></p>
+        <p id="membrfunctX">PHOTOS/VIDEOS</p> 
+        <p id="membrfunctX">MARKETPLACE</p> 
+        <p id="membrfunctX">MORE ▼</p>
+
     </div>
-</div> <!-- div id="primaryContainer" -->
+</div> <!-- headerPROFL -->
 
 
 <div id="sidebarPROFL" class="clearfix"> <!-- sidebar   `````````````````````````````````````````````````````````   -->
 
     <div id="box" class="clearfix">
+        
         <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
         <p id="sidebarcontent">
-          <span id="textspan1">{{person.rolesShort}}</span>
-          <span id="textspan1">, (+ 2 more)<br /></span>
+            {{#each occupations}}
+            <span id="txtSp1">{{vocation}}</span>
+            <span id="txtSp1">*{{descript}}<br /></span>
+            {{/each}}       
         </p>
 
         <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" />
-        <p id="sidebarcontent"><span id="textspan1">{{person.location}}</span></p>
+        <p id="sidebarcontent"><span id="txtSp1">{{location}}</span></p>
     </div> <!-- header-->
 
     <div id="box" class="clearfix"> 
         <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        <p id="sidebarHDR">ABOUT</p>
-        <p id="aboutContent">
-            I live to farm, I farm to live. But enough about me! What about you? Let me tell you about how we farm. We demonstrate natural farming techniques here. It comes naturally to us. Lispsum fat poo poop ee doo, papadum tooey, roses and cauliflower, lions + tigers too. Don't forget the ivy, the fire ants are OUR FRIENDS!
-        </p>
-        <p id="Read_More_">Read More ></p>
+        <p id="sidebarHDR">ABOUT</p><p id="aboutContent">{{about}}</p>
+        <p id="Read_More_">Read More </p>
     </div> <!-- about -->
 
     <div id="box" class="clearfix"> 
@@ -82,22 +114,18 @@
         </div>
 
         <p id="contactInfo">           
-            <span id="textspan">Email<br /></span>
-            <span id="textspan3">anthony@anthonysfarm.com<br /></span>
+            <span id="txtSp">Email<br /></span> <span id="txtSp3">{{email}}<br /></span>
         </p>
         <p id="contactInfo">
-            <span id="textspan">Phone<br /></span>
-            <span id="textspan3">Request Info<br /></span>
+            <span id="txtSp">Phone<br /></span><span id="txtSp3">{{phone}}<br /></span>
         </p>
         <p id="contactInfo">
-            <span id="textspan">Website<br /></span>
-            <span id="textspan3">anth&#x40;anthonysfarm.com<br /></span>
+            <span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
         </p>
         <p id="contactInfo">
-            <span id="textspan">Links<br /></span>
-            <span id="textspan3">blog.anthonysfarm.com<br /></span>
+            <span id="txtSp">Links<br /></span><span id="txtSp3">{{links}}<br /></span>
         </p>
-        <p id="contactInfo"><span id="textspan">Social<br /></span> </p>
+        <p id="contactInfo"><span id="txtSp">Social<br /></span> </p>
 
         <div id="socialmediaIcons" class="clearfix">
             <img id="facebIcon" src="/images/icons/facebookIcon.png" class="image" />
@@ -106,125 +134,106 @@
         </div>
     </div><!-- contact -->
 
-    <div id="box" class="clearfix">
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        <p id="sidebarHDR">REVIEWS</p>
-          <div id="ratingStars" class="clearfix">
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <img id="image" src="/images/icons/starGhost.png" class="image" />
-          </div>
-        
-        <p id="textspan22">4.9 Stars &#x7c; 46 Reviews</p>
 
-        <div id="widebar" class="clearfix"></div>
+    {{> MemberReviews}}
 
-        <p id="contactInfo">
-            <span id="textspan3">John Doe</span>
-            <span id="textspan">- In feugiat pulvinar nisi, vel tempor neque aliquam in. 
-            Donec quis facilisis ipsum. Ut malesuada libero eu libero vestibulum...</span>         
-        </p>
-        <p id="sidebarcontent">    
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <span id="textspan3">4.5 Stars</span>
-            <span id="textspan3">&nbsp;- June 15, 2015</span>
-            <span id="Read_More_">Read More ></span>
-        </p>
-
-
-        <p id="contactInfo">
-            <span id="textspan3">Billie Black</span>
-            <span id="textspan">- In feugiat pulvinar nisi, vel tempor neque aliquam in. 
-            Donec quis facilisis ipsum. Ut malesuada libero eu libero vestibulum...</span>         
-        </p>
-        <p id="sidebarcontent">    
-            <img id="image" src="/images/icons/starYellow.png" class="image" />
-            <span id="textspan3">4 Stars</span>
-            <span id="textspan3">&nbsp;- March 1, 2015</span>
-            <span id="Read_More_">Read More ></span>
-        </p>
-
-
-
-
-        <p id="View_All_">View All &gt;&gt; </p>
-    </div> <!-- reviews -->
 
     <div id="box" class="clearfix">
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        <p id="sidebarHDR"> PHOTOS </p>
+    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+    <p id="sidebarHDR"> PHOTOS </p>
+    <!--
+    Schemas.Member_Pictures = new SimpleSchema({
+      member_key: { type: String, index: 1},
+      submission_date: { type: Date, optional: true },
+      album: {type: String, optional: true},
+      caption: {type:String,optional:true},
+      picture: {type: Object, optional:true }
+    });
+    -->
+    {{#if there_are_items "pictures"}}
+        <div id="photoGroup" class="clearfix">
+            <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+        </div>
+        <!--
+        <div id="photoGroup" class="clearfix">
+            <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+        </div>
+        <div id="photoGroup" class="clearfix">
+            <div id="pictureFrame0" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame1" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+            <div id="pictureFrame2" class="clearfix">
+                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+            </div>
+        </div>
+        -->
+        <p id="view_all_">View All &gt;</p>
 
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-            </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
-        </div>
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-            </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
-        </div>
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-            </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
-        </div>
-
-        <p id="View_All_">View All &gt;</p>
+    {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Pictures yet..</p>
+    {{/if}}
     </div><!-- PHOTOS -->
 
+
     <div id="box" class="clearfix">
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        <p id="sidebarHDR"> VIDEOS </p>
+    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+    <p id="sidebarHDR"> VIDEOS </p>
+        <!--
+        Schemas.Member_Videos = new SimpleSchema({
+          member_key: { type: String, index: 1},
+          submission_date: { type: String, optional: true },
+          album: {type: String, optional: true},
+          caption: {type:String,optional:true},
+          video: {type: Object, optional: true }
+        });
+        -->
 
+    {{#if there_are_items "videos"}}
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
-
+        <!--
         <div id="photoGroup" class="clearfix">
             <div id="pictureFrame0" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame1" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
             <div id="pictureFrame2" class="clearfix">
-                <img id="Vector_Smart_Object" src="/images/icons/videoStart.png" class="image" />
+                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
-            <!-- div id="pictureFrame2" class="clearfix">
-            </div -->
         </div>
-
-
-
-        <p id="View_All_">View All &gt;</p>
+        -->
+        <p id="view_all_">View All &gt;</p>
+    {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Videos yet..</p>
+    {{/if}}
     </div><!-- videOS -->
 
 
@@ -244,67 +253,44 @@
         </div>
     </div> <!-- end commentsPROFL -->
 
+
+    {{#if there_are_items "marketItems"}}
     <div id="marketplaceItems" class="clearfix"> 
-        <p id="title"> MARKETPLACE</p>  
-        <p id="View_All_">View All &gt;</p>
-        <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
-        <div id="marketItemsGroup" class="clearfix">
-            <div id="marketItem1" class="clearfix">
-                <p id="itemAlert">sold out<br /></p>
-                <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />              
-            </div>
-            <div id="marketItem2" class="clearfix">
-                <p id="itemAlert">weekly special<br /></p>
-                <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
-            </div>
-            <div id="marketItem3" class="clearfix">
-                <p id="itemAlert">new item<br /></p>
-                <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
-            </div>
-            <div id="marketItem4" class="clearfix">
-                <p id="itemAlert">clearance<br /></p>
-                <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
-            </div>
-            <div id="marketItem5" class="clearfix">
-                <p id="itemAlert">2-for-one<br /></p>
-                <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-                <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
-            </div>
+        <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+        {{#if itemsOverflow}}
+            <p id="view_all_">View All &gt;</p>
+            <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
+        {{/if}}
+        <div id="scrollBoxItemsGroup" class="clearfix"> <!--     --> 
+            {{> MyMarketItems}}
         </div>
-        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
-
-
-
-    </div> <!-- div id="marketplaceItems" class="clearfix" -->
-
+        {{#if itemsOverflow}}
+            <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+        {{/if}}
+    </div> <!--  -->
+    {{else}}
+    <div id="marketplaceEMPTY" class="clearfix"> 
+        <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
+    </div> <!--  -->
+    {{/if}}
 
 
     <div id="newsFeed1" class="clearfix">
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} listed a new item on his Marketplace.<br /></span>
-          <span id="textspan">2&#x3a;08 pm</span>
+          <span id="txtSp1">{{fullname}} listed a new item on his Marketplace.<br /></span>
+          <span id="txtSp">2&#x3a;08 pm</span>
         </p>
 
-        <div id="listing_box" class="clearfix">
+        <div id="newsfeedBox" class="clearfix">
 
-            <img id="Photo_Object" 
-            src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
 
             <p id="newsFeedcontent">
-                <span id="textspan1">Aunt Ruby&#x27;s Green Tomato </span>
-                <span id="textspan1">- &#x24;2.99&#x2f;lb<br /><br /></span>
-                <span id="textspan2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non nibh lobortis, laoreet nulla eu, scelerisque lorem. Class aptent...</span>
+                <span id="txtSp1">Aunt Ruby&#x27;s Green Tomato </span>
+                <span id="txtSp1">- &#x24;2.99&#x2f;lb<br /><br /></span>
+                <span id="txtSp2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non nibh lobortis, laoreet nulla eu, scelerisque lorem. Class aptent...</span>
             </p>
             <div id="statusIcons" class="clearfix">
                 <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
@@ -313,137 +299,251 @@
         </div>
 
         <p id="newsFeedcontent">
-            <span id="textspan">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+            <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
         </p>
 
         <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
 
     </div>
-
-
-
 
     <div id="newsFeed2" class="clearfix">
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} is going to the event </span>
-          <span id="textspan3"> Yoga on the Beach<br /></span>
-          <span id="textspan">11&#x3a;01 am</span>
+          <span id="txtSp1">{{fullname}} is going to the event </span>
+          <span id="txtSp3"> Yoga on the Beach<br /></span>
+          <span id="txtSp">11&#x3a;01 am</span>
         </p>
 
-        <div id="listing_box" class="clearfix">
+        <div id="newsfeedBox" class="clearfix">
            <img id="Photo_ObjectFULL" src="/images/user-images/event.png" class="image" /> 
         </div>
-        <p id="Yoga_on_the_Beach_November_14_2015">
-        <span id="textspan12">Yoga on the Beach<br /></span>
-        <span id="textspan">November 14, 2015</span>
+        <p id="newsfeedCalenderEvent">
+        <span id="txtSp1">Yoga on the Beach<br /></span>
+        <span id="txtSp">November 14, 2015</span>
         </p>
 
         <p id="newsFeedcontent">
-            <span id="textspan">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+            <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
         </p>
 
         <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
 
     </div>
-
-
 
     <div id="newsFeed3" class="clearfix">
 
         <div id="profile_pic_copy" class="clearfix"></div>
 
         <p id="newsFeedcontent">
-          <span id="textspan1">{{person.name}} is now connected with </span>
-          <span id="textspan3"> Jessica Jones<br /></span>
-          <span id="textspan">Yesterday</span>
+          <span id="txtSp1">{{fullname}} is now connected with </span>
+          <span id="txtSp3"> Jessica Jones<br /></span>
+          <span id="txtSp">Yesterday</span>
         </p>
 
-        <div id="listing_box" class="clearfix">
+        <div id="newsfeedBox" class="clearfix">
         <img id="Photo_Object" src="/images/user-images/jessica128.png" class="image" /> 
 
             <p id="newsFeedcontent">
-                <span id="textspan18">Jessica Jones<br /></span>
+                <span id="txtSp1">Jessica Jones<br /></span>
                 <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
-                <span id="textspan">&nbsp;Yoga Instructor, Massage Therapist, Owner of </span>
-                <span id="textspan21">Ohm Wellness Center<br /></span>
+                <span id="txtSp">&nbsp;Yoga Instructor, Massage Therapist, Owner of </span>
+                <span id="txtSp">Ohm Wellness Center<br /></span>
                <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" /> 
-               <span id="textspan21"><br /></span>
-               <span id="textspan21">&nbsp;Sunrise, FL<br /></span>
+               <span id="txtSp21"><br /></span>
+               <span id="txtSp">&nbsp;Sunrise, FL<br /></span>
             </p>
-
         </div>
 
         <p id="newsFeedcontent">
-            <span id="textspan">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+            <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
         </p>
 
         <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
 
     </div>
-
 
     <div id="newsFeed5" class="clearfix">
      <div id="profile_pic_copy" class="clearfix"></div>
 
      <p id="newsFeedcontent">
-        <span id="textspan23">Anthony Anderson<br /></span><span id="textspan24">Sept 2<br /></span>
+        <span id="txtSp1">{{fullname}}<br /></span><span id="txtSp">Sept 2<br /></span>
       </p>  
       <p id="newsFeedcontent">  
-        <span id="textspan1">
+        <span id="txtSp1">
         It is almost gardening season again&#x21; Looking forward to this year’s harvest. If you have any requests on what you would like to see us grow please leave a comment or message me&#x21;
         </span>
      </p>
              <div id="responseIcons" class="clearfix">
-            <img id="Vector_Smart_Object" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/comment-icon.png" class="image" />
-            <img id="Vector_Smart_Object" src="/images/icons/share-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
     </div>
-
-
 
 
 </div> <!-- zone00 -->
 
 
+
+{{/with}}
+{{else}} <p>Loading...</p>
+{{/if}}
 </template>
 
 
 
-<template name="profileOld">
-    <!-- TODO do we want class "container"? -->
-    <div id="primaryContainer" class="primaryContainer clearfix container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <img id="image" src="{{person.coverPhoto}}" class="image" />
-            </div>
-        </div>
-    </div>
+
+
+<template name="MemberReviews">
+    <!--    Schemas.Member_Reviews = new SimpleSchema({
+    member_key:{ type: String,index: 1},
+    review_by:{ type: String, optional: true },
+    review_date:{ type: Date, optional: true },
+    review_text:{ type: String, optional: true },
+    review_rating:{ type: Number, optional: true }
+
     
-    <h1>Profile</h1>
-    <p>personId: {{person.personId}}</p>
-    <p>Profile for {{person.name}}</p>
-    <p>Community Roles: {{person.rolesShort}}</p>
-    <p>Location: {{person.location}}</p>
-    <img src="{{person.pic}}" alt="Profile pic">
-    <ul>
-        {{#each postList}}
-            <li><img src="{{icon}}" class="img-circle postIcon" alt="icon">posted at: {{datePosted}}, message: {{message}}</li>
-        {{/each}}
-    </ul>
+    -->
+    {{#if Template.subscriptionsReady}}
+    <div id="box" class="clearfix">
+        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+        <p id="sidebarHDR">REVIEWS</p>
+          <div id="ratingStars" class="clearfix">
+            <img id="star-icon" src="/images/icons/5starYellow.png" class="image" />
+          </div>  
+        <p id="txtSp22"><br />{{summrizeStats}}</p>
+        <p id="view_all_">View All &gt;&gt; </p>
+        <div id="wideHorizDivdr" class="clearfix"></div>
+
+        {{#with selectLatest_Review}}   
+            <p id="contactInfo">
+                <span id="txtSp3">{{ReviewedBy}}  said:<br /></span>
+                <span id="txtSp"> {{review_text}}</span>         
+            </p>
+            <p id="sidebarcontent">   
+                <img {{starburst(this.review_rating)}} />
+                <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
+                <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
+                <span id="Read_More_">Read More ></span>
+            </p>
+            <div id="wideHorizDivdr" class="clearfix"></div>
+        {{/with}}
+
+
+        {{#if reviewCount }} <!-- coding not finished [Dec 2015]- 
+        what we want here is to have the second-most recent review display
+         if there is one in collection -->
+        {{#with selectNext_Review latestReviewID}}          
+            <p id="contactInfo">
+                <span id="txtSp3">{{ReviewedBy}}  said:</span>
+                <span id="txtSp"> {{review_text}}</span>         
+            </p>
+
+            <p id="sidebarcontent">   
+                <img {{starburst(this.review_rating)}} />
+                <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
+                <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
+
+                <span id="Read_More_">Read More ></span>
+            </p>
+        {{/with}}
+        {{/if}}
+
+        
+
+    </div> 
+    {{/if}} 
+<!-- 
+
+     -->  
+
 </template>
+
+<template name="MyMarketItems">
+    <!-- Schemas.MarketItems = new SimpleSchema({
+      vendor_key:{ type: String,index: 1},
+      items: {  type: Array,    optional: false  },    
+       'items.$': {    type: Object  },
+       'items.$.description': {  type: String , optional:false},
+       'items.$.type': {         type: String , optional:true },
+       'items.$.salesAlert': {   type: String , optional:true },
+       'items.$.unitType': {     type: String , optional:true },
+       'items.$.unitPrice': {    type: Number , decimal: true , optional:true },
+        'items.$.currency': {    type: String , optional:true },
+        'items.$.photo': {       type: Object , optional:true }
+    });
+
+    -->
+    {{#if Template.subscriptionsReady}}
+     {{#with selectMarketItems}}
+
+        {{#each items}}
+        <div id="scrollBoxItem" class="clearfix">
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <p id="itemAlert">{{salesAlert}}<br /></p>
+            <p id="itemDesc">{{description}}<br />
+                Sold by: {{unitType}}<br />
+                {{currency}}${{unitPrice}}</p>
+            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+        </div>
+        {{/each}}
+
+
+        <!-- Automated , no longer necessary explicit as 5 item boxes
+        *
+        *
+        <div id="scrollBoxItem2" class="clearfix">
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <p id="itemAlert">weekly special<br /></p>
+            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
+            <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
+            <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
+        </div>
+        <div id="scrollBoxItem3" class="clearfix">
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <p id="itemAlert">new item<br /></p>
+            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
+            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+            <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
+        </div>
+        <div id="scrollBoxItem4" class="clearfix">
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <p id="itemAlert">clearance<br /></p>
+            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
+            <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
+            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />  
+        </div>
+        <div id="scrollBoxItem5" class="clearfix">
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <p id="itemAlert">2-for-one<br /></p>
+            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
+            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />  
+        </div>
+
+        -->
+    
+    
+        {{/with}}
+    {{/if}}
+<!-- 
+
+     -->   
+</template>
+
+
 
