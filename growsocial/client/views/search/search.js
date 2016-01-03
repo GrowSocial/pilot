@@ -1,9 +1,10 @@
-// TODO searchbox helper to prompt for suggestions
-// TODO filters based on location, search type (person/product/all?)
+// TODO multiple search indexes for different search entities (person/product/event)
+// TODO filter based on range from map location
+// TODO filter based on area (township name) or postcode (zipcode)
 // TODO list result and map result, linked
 // TODO link to navbar search
-// TODO add sample data to help test search
 // TODO autosuggest, rather than autosearch, on paused typing
+// TODO pagination, more results than limit, etc.
 
 Template.search.helpers({
   peopleIndex: () => PeopleIndex,
@@ -20,12 +21,20 @@ Template.search.events({
     console.log('selected location-filter: ', $(e.target).val());
     PeopleIndex.getComponentMethods().addProps('locationFilter', $(e.target).val());
   },
-  'click .addSample': function(event) {
+  'click .addSample': function(event, template) {
     event.preventDefault();
     var addedList = Meteor.call('addSearchSamplePeople', function (error, result) { 
       console.log('addedList:', result);
+      var index;
+      var html='<ul>';
+      for (index = 0; index < result.length; ++index) {
+          console.log(result[index]);
+          html = html + '<li>' + result[index] + '</li>';
+      }
+      html = html + '</ul>';
+      var div = '<div class="row"><div class="alert alert-info alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>People added.' + html + '</div></div>';
+      $(".addSample").after(div);
     });
-    // see here for an example of how to create a popover with the result? http://jsbin.com/zopod/1/edit
   },
 });
 

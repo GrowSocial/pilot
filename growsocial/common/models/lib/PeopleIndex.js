@@ -5,7 +5,7 @@ People = new Mongo.Collection('People');
 PeopleIndex = new EasySearch.Index({
   engine: new EasySearch.MongoDB({
     sort: function () {
-      return { lastname: 1 };
+      return { lastname: 1, firstname: 1 };
     },
     selector: function (searchObject, options, aggregation) {
       // console.log('selector function run');

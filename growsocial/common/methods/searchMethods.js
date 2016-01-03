@@ -39,7 +39,7 @@ Meteor.methods({
         about: "Random test user created for testing search.",
         location: Random.choice(locations),
       };
-      person.email = person.member_key + "@sample.com";
+      person.email = person.member_key + "@test.t";
       person.fullname = person.firstname + ' ' + person.lastname;
       addedList.push(person.fullname);
       console.log('for search, adding sample person:', person);

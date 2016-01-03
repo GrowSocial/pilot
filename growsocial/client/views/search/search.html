@@ -1,9 +1,8 @@
 
 <template name="search">
 
-    <input type="button" class="addSample btn btn-default" value="Add Sample People" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" />
+    <button type="button" class="addSample btn btn-default" >Add Sample People</button>
 
-    <!-- TODO placeholder text -->
     {{> EasySearch.Input index=peopleIndex timeout=500 attributes=inputAttributes}}
 
     {{> searchFilters}}
@@ -21,7 +20,7 @@
                 <!-- TODO pagination, more results than limit, etc. -->
                 <ul>
                     {{#EasySearch.Each index=peopleIndex }}
-                        <li>Name of the person: {{fullname}}</li>
+                        <li>Name: {{fullname}}, Location: {{location}}</li>
                     {{/EasySearch.Each}}
                 </ul>
             {{/if}}
@@ -33,9 +32,9 @@
 
 <template name="searchFilters">
     <p>Filters:</p>
-    <select class="category-filter">
+    <select class="category-filter disabled" disabled>
         <option value="">All</option>
-        <option value="People">People</option>
+        <option value="People" selected>People</option>
         <option value="Products">Products</option>
         <option value="Events">Events</option>
     </select>
