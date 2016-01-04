@@ -1,11 +1,11 @@
 <template name="cart">
-  <h1 class="title">Shopping cart</h1>
+  <h1 class="title cart-title">Shopping cart</h1>
   
   <!-- Remove this -->
   <input type="button" class="addSample btn btn-default" value="Add Sample Data" />
   <!-- Remove this -->
   
-  <div class="container">
+  <div class="container cart-container">
     <div class="col-md-9">
       <ul>
         {{#each items}}
@@ -25,7 +25,7 @@
                       <input type="number" class="quantityVal" value="{{quantity}}" />   
                       <p class="unitType">{{unitType}}</p>
                     </span>
-                    <span class="itemName">{{description}}</span>
+                    <span class="itemName">{{name}}</span>
                     <span class="removeAll">
                       <a class="glyphicon glyphicon-trash"></a>
                     </span>
@@ -37,7 +37,7 @@
                 {{/each}}
                 <li class="row totals">
                   <span class="itemName">Total:</span>
-                  <span class="price">$1694.43</span>
+                  <span class="price">{{vendorTotal}}</span>
                   <span class="order">
                     <a class="payVendor" data-toggle="popover" data-trigger="focus" title="Pay {{vendor.vendorName}}" data-content="Payment gateway will be live in phase 1. Your order is being emailed to {{vendorName}}.">Pay this vendor</a>
                   </span>
@@ -68,3 +68,4 @@
       <input type="submit" class="addToCart btn btn-default" value="Add Quantity" />
   </form>
 </template>
+

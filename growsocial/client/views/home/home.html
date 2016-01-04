@@ -1,6 +1,11 @@
 <template name="home">
   <!-- <h1>Home Page</h1> -->
-  {{> leafButtons}}
+  <!--{{> leafButtons}} -->
+
+  {{> homeNew}}
+  {{> homeAbout}}
+  {{> homeLocalPedia}}
+  {{> homeFootr}}
   <!-- {{> centralSection}} -->
 </template>
 
@@ -50,3 +55,109 @@
   {{/if}}
 </template>
 
+<template name="homeNew">
+
+<div id="main_image_block" class="clearfix">
+    <p id="Main_header">Connect. Share. Learn. GrowSocial!</p>
+    <p id="Main_header2">Join the fast-growing network of people dedicated to local food growing and creating a sustainable economy.<br />
+    </p>
+    <div id="Learn_More_button" class="clearfix">
+        <p id="Learn_More">Learn More</p>
+    </div>
+    <p id="Phoenix_Farms_Lakeland_Florida">
+        <span id="txtHOME01">Phoenix Farms<br /></span><span id="txtHOME02">Lakeland, Florida</span>
+    </p>
+    <img id="imageMain" src="/images/main image block.png" class="image" />
+</div>
+
+<div id="member_image_block" class="clearfix">
+    <p id="featureHdr"> Members </p>
+<img id="featureImg" src="/images/Member image block.png" class="image" />
+</div>
+
+<div id="events_image_block" class="clearfix">
+    <p id="featureHdr">Events</p>
+    <img id="featureImg" src="/images/events image block.png" class="image" />   
+</div>
+
+<div id="discussion_image_block" class="clearfix">
+    <p id="featureHdr"> Discussions </p>
+    <img id="featureImg" src="/images/Discussion image block.png" class="image" />
+</div>
+
+<div id="opportunities_image_block" class="clearfix">
+    <p id="featureHdr">Opportunities</p>
+    <img id="featureImg" src="/images/opportunities image block.png" class="image" />
+</div>
+
+<div id="business_image_block" class="clearfix">
+    <p id="featureHdr"> Businesses</p>
+    <img id="featureImg" src="/images/business image block.png" class="image" />
+</div>
+
+<div id="localpedia_image_block" class="clearfix">
+    <p id="featureHdr"> Localpedia </p>
+    <img id="featureImg" src="/images/2015-12-26_16-58-40.jpg" class="image" />
+</div>
+
+</template>
+
+<template name="homeAbout">
+
+<div id="About_block" class="clearfix">
+    <div id="garden_graphic" class="clearfix">
+        <div id="sky" class="clearfix">
+            <p id="About_GrowSocial"> About GrowSocial</p>
+            <p id="AboutMSG">
+            GrowSocial connects people and businesses based on where they live. We promote local food growing and sustainable economies with marketplace page options for each member along with their profile. We are a hybrid of social media and marketplace web platforms helping to create vibrant local communities.
+            </p>
+            <div id="profile_pic_circle" class="clearfix"></div>
+            <p id="Members">Members</p>
+            <p id="MembershipMSG">
+            Our members are the growers, producers, teachers, artisans and foodies that are the heart of your local food economy. Join the community and find your place in your local food web.  Whether you produce a little or a lot, like to eat local, buy local, or want to participate in the local food economy, GrowSocial is the place to be.
+            </p>
+            <div id="Join_GrowSocial_button" class="clearfix">
+                <p id="Join_GrowSocial">Join GrowSocial</p>
+            </div>
+            <p id="FeatureMember">
+            <span id="txtHOME01">Anthony Anderson<br /></span>
+            <span id="txtHOME02">Farmer, Beekeeper, &#x2b;2 more<br /></span>
+            <span id="txtHOME01">Fort Lauderdale, FL</span>
+            </p>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+</template>
+
+<template name="homeLocalPedia">
+
+<div id="localpedia_block" class="clearfix">
+    <p id="Connect_Locally_Share_Globally_">
+    Connect Locally. Share Globally.
+    </p>
+    <p id="localPediaMSG">
+    Growing conditions, plants and soils and everything else related to food production in your local area. Localpedia is your Wikipedia on a local level and lets you find and share information that’s relevant to your area.
+    </p>
+    <div id="localpedia_button" class="clearfix">
+        <p id="View_Localpedia">View Localpedia </p>
+    </div>
+    <div id="localPediaMAP" class="clearfix"></div>
+</div>
+
+
+
+</template>
+<template name="homeFootr">
+  <div id="homefooter_background" class="clearfix">
+    <p id="GrowSocial2015">Grow Social &copy; 2015</p>
+    <p id="About_FAQ_Privacy_">
+    About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FAQ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Privacy &nbsp; &nbsp; &nbsp; &nbsp; 
+    </p>
+  </div>
+
+</template>

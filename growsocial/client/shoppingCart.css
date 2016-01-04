@@ -2,16 +2,16 @@
 	General Styles
 -----------------------------------*/
 
-ul{
+.cart-container ul {
 	list-style-type: none;
 	padding-left: 0;
 }
 
-a:hover {
+.cart-container a:hover {
 	text-decoration:none;
 }
 
-input[type='number'] {
+.cart-container input[type='number'] {
     -moz-appearance:textfield;
 }
 
@@ -20,7 +20,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-.title{
+.cart-title {
 	margin-top: 30px;
 	text-align: center;
 }
@@ -29,11 +29,11 @@ input::-webkit-inner-spin-button {
 	Cart items list
 -----------------------------------*/
 
-.container{
+.cart-container {
 	padding: 30px;
 }
 
-.col-md-9{
+.cart-container .col-md-9{
 	margin: 0 auto;
 	float: none;
 	border: 1px solid gray;
@@ -41,18 +41,18 @@ input::-webkit-inner-spin-button {
 	background-color: white;
 }
 
-.row{
+.cart-container .row{
 	background-color: #E3F3FF;
 	margin-bottom: 11px;
 	margin-right: 0;
 	margin-left: 0;
 }
 
-.row:hover{
+.cart-container .row:hover{
 	background-color: #C7E6FC;
 }
 
-.cartOrder{
+.cart-container .cartOrder{
 	margin: 30px 0;
 	border: 1px solid black;
 	padding: 15px 5px;
@@ -60,14 +60,14 @@ input::-webkit-inner-spin-button {
 
 /* Items */
 
-.vendor{
+.cart-container .vendor{
 	color: rgb(102, 102, 102);
 	font-size: 30px;
 	text-align: center;
 	font-weight: bold;
 }
 
-.itemName{	
+.cart-container .itemName{	
 	color: #727578;
 	font-size :16px;
 	font-weight: bold;
@@ -77,7 +77,7 @@ input::-webkit-inner-spin-button {
 	margin-top: 15px;
 }
 
-.quantity{
+.cart-container .quantity{
 	color: #45799F;
 	background-color: #e6edf3;
 	font-size :25px;
@@ -87,7 +87,7 @@ input::-webkit-inner-spin-button {
 	padding-top: 10px;	
 }
 
-.quantityVal{
+.cart-container .quantityVal{
 	border: transparent;
 	background-color: transparent;
 	color: #45799F;
@@ -96,32 +96,32 @@ input::-webkit-inner-spin-button {
 	margin: auto;
 }
 
-.quantityVal:hover, :focus{
+.cart-container .quantityVal:hover, .cart-container :focus{
 	background-color: #C6DEE9;
 	margin: auto;
 	cursor: text;
 }
 
-.quantity .unitType{
+.cart-container .quantity .unitType{
 	font-size: 12px;
 	text-transform: uppercase;
 	padding: 7px 10px;
 	font-weight: bold;	
 }
 
-.quantityBtns{
+.cart-container .quantityBtns{
 	float : left;
 	background-color: transparent;
 	margin: auto;
 }
 
-.quantityBtns .btn{
+.cart-container .quantityBtns .btn{
 	width: 30px;
 	height: 30px;
 	padding: 0;
 }
 
-.removeAll{
+.cart-container .removeAll{
 	color: darkslategray;
 	margin-left: 25px;
 	padding: 10px;
@@ -129,11 +129,11 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 }
 
-.removeAll:hover{
+.cart-container .removeAll:hover{
 	color: red;	
 }
 
-.arrow{
+.cart-container .arrow{
 	width: 0; 
 	height: 0; 
 	border-left: 6px solid transparent;
@@ -141,7 +141,7 @@ input::-webkit-inner-spin-button {
 	border-top: 6px solid #858e97;
 }
 
-.price{
+.cart-container .price{
 	color: #f06953;
 	font-size :18px;
 	font-weight: bold;
@@ -150,34 +150,34 @@ input::-webkit-inner-spin-button {
 	
 }
 
-.price .currency{
+.cart-container .price .currency{
 	text-align: right;
 }
 
 
 /* Totals */
 
-.totals{
+.cart-container .totals{
 	background-color: #f2f6f9;
 }
 
-.totals:hover{
+.cart-container .totals:hover{
 	background-color: #f2f6f9;
 }
 
-.totals span{
+.cart-container .totals span{
 	padding: 40px 15px 40px 0;
 }
 
-.totals .price{
+.cart-container .totals .price{
 	float: left;
 }
 
-.totals .itemName{
+.cart-container .totals .itemName{
 	margin-top: 1px;
 }
 
-.totals .order{
+.cart-container .totals .order{
 	float: right;
 	padding: 0;
 	margin-top: 40px; 
@@ -185,7 +185,7 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 }
 
-.order a{
+.cart-container .order a{
 	background-color: #64AAD1;
 	color: #fbfffa;
 	font-weight: bold;
@@ -193,7 +193,7 @@ input::-webkit-inner-spin-button {
 	padding: 20px 30px;
 }
 
-.order a:hover{
+.cart-container .order a:hover{
 	background-color: #4B95BF;
 }
 
@@ -205,7 +205,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 992px) {
 
-	.totals{
+	.cart-container .totals{
 		box-shadow: 0 0 0;
 	}
 
@@ -216,32 +216,32 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 768px) {
 	
-	.row{
+	.cart-container .row{
 		padding-bottom:10px;
 	}
 
-	.quantity{	
+	.cart-container .quantity{	
 		width: 23px;
 		padding-right: 40px !important;
 	}
 
-	.popbtn{
+	.cart-container .popbtn{
 		background-color: white;
 		position: absolute;
 		height:40px;
 		right: 0;
 	}
 
-	.price{	
+	.cart-container .price{	
 		position: absolute;
 		right: 42px;
 	}
 
-	.totals{
+	.cart-container .totals{
 		padding: 0;
 	}
 
-	.totals .price{
+	.cart-container .totals .price{
 		position: static;
 	}
 

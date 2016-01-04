@@ -11,7 +11,7 @@ Template.cart.events({
   'click .addSample': function(event) {
     event.preventDefault();
 
-    Meteor.call('addCartItem');
+    Meteor.call('addCartSampleItems');
   },
   // ***********************************
   // remove this
@@ -33,10 +33,23 @@ Template.marketplace.events({
   'submit .addToCartForm': function(event) {
     // Prevent browser from restarting
     event.preventDefault();
-    console.log("item: " + this.name + " " + this.productId)
+
+    console.log('this.name = ', this.name); // aunt ruby tomato
+    console.log('this.productId = ', this.productId); // 1
+    console.log('quantityNum.value = ', event.target.quantityNum.value); // 17
+
+    // TODO add session id or userId
     var item = {
-      name: this.name,
+      quantity: event.target.quantityNum.value,
       productId: this.productId,
+      name: this.name,
+      pic: this.pic,
+      unitType: this.unitType,
+      unitPrice: this.unitPrice,
+      currency: this.currency,
+      vendorName: this.vendorName,
+      vendorLink: this.vendorLink,
+      vendorEmail: this.vendorEmail,
     }
     Meteor.call('addCartItem', item);
   },
