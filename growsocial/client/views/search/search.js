@@ -16,10 +16,29 @@ Template.search.helpers({
   },
 });
 
+var circle;
+
 Template.search.events({
   'change .location-filter': function (e) {
-    console.log('selected location-filter: ', $(e.target).val());
+    // console.log('selected location-filter: ', $(e.target).val());
     PeopleIndex.getComponentMethods().addProps('locationFilter', $(e.target).val());
+  },
+  'change .range-filter': function (e) {
+    // console.log('selected range-filter: ', $(e.target).val());
+    // PeopleIndex.getComponentMethods().addProps('rangeFilter', $(e.target).val());
+    if ($(e.target).val()) {
+      // alter size of circle
+      circle.setRadius($(e.target).val());
+      // TODO if was removed from map, re-add it
+      // TODO if changed from previous radius, change map zoom/position
+      // TODO requery by altering range filter
+      // TODO attempt to set zoom to fit the circle nicely
+      //      depends on size of map (reactive) and size of circle!
+      var radiusToZoom = {500: 15, 1000: 14, 2000: 13, 5000: 12,};
+      leafletmapp.setZoom(radiusToZoom[$(e.target).val()]);
+    } else {
+      // TODO remove circle
+    }
   },
   'click .addSample': function(event, template) {
     event.preventDefault();
@@ -67,12 +86,28 @@ Template.searchMap.rendered = function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
   // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
   /////////////
-  leafletmapp = L.map('map').setView([-37.8136, 144.9631], 8);
-  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  var osmAttrib='Map data © OpenStreetMap contributors';
-  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});   
+  leafletmapp = L.map('map').setView([-37.8136, 144.9631], 12);
+  // var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+  // var osmAttrib='Map data © OpenStreetMap contributors';
+  var osmAttrib='&copy; OpenStreetMap contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 15, attribution: osmAttrib});   
   // leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
   leafletmapp.addLayer(osm);
   /////////////
   var marker = L.marker([-37.8136, 144.9631]).addTo(leafletmapp);
+  
+  // circle to indicate range
+  circle = L.circle([-37.8136, 144.9631], 5000, {
+      color: 'blue',
+      fillColor: '#31d',
+      fillOpacity: 0.2
+  }).addTo(leafletmapp);
+  console.log('circle:',circle);
+
+  // popup to highlight when click item in list, or click marker
+  marker.bindPopup("<b>Mary Jane</b><br>Has been selected.").openPopup();
+
+  // TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
+  
 }

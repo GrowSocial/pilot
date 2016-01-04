@@ -1,7 +1,6 @@
 /* TODO responsive styling */
 
 .searchMap-container {
-  max-width: 100%;
-  width: 80%;
+/* width is set by bootstrap columns in html */
   height: 300px;
 }
