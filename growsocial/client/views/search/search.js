@@ -59,3 +59,20 @@ Template.search.events({
   // }
   // console.log('try search, cursor.count(): ', cursor.count()); // log count of all found documents
 // });
+
+var leafletmapp;
+
+Template.searchMap.rendered = function() {
+  //map code 
+  L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
+  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
+  /////////////
+  leafletmapp = L.map('map').setView([-37.8136, 144.9631], 8);
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAttrib='Map data © OpenStreetMap contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});   
+  // leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
+  leafletmapp.addLayer(osm);
+  /////////////
+  var marker = L.marker([-37.8136, 144.9631]).addTo(leafletmapp);
+}

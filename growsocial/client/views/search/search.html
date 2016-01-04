@@ -28,6 +28,7 @@
     {{/EasySearch.IfInputEmpty}}
     <hr/>
     <!-- {{> awesomeAutosuggest}} -->
+    {{> searchMap}}
 </template>
 
 <template name="searchFilters">
@@ -48,8 +49,15 @@
 </template>
 
 <!-- <template name="awesomeAutosuggest"> -->
+<!-- Meteor package: easysearch:autosuggest -->
     <!-- searchIndex typeof EasySearch.Index -->
     <!-- {{> EasySearch.Autosuggest index=peopleIndex }} -->
     <!-- bug?  repeats the suggest values to about four times each ??? is there a default create config? -->
     <!-- bug? timeout not working for auto suggest? think it is configured differently to search -->
 <!-- </template> -->
+
+<template name="searchMap">
+    <div class="row">
+        <div id='map' class="searchMap-container col-md-6 col-xs-12"></div>
+    </div>
+</template>
