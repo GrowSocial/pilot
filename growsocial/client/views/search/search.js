@@ -86,10 +86,9 @@ Template.searchMap.rendered = function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
   // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
   /////////////
-  leafletmapp = L.map('map').setView([-37.8136, 144.9631], 12);
+  leafletmapp = L.map('map').setView([-37.8136, 144.9631], 13);
   // var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-  // var osmAttrib='Map data © OpenStreetMap contributors';
   var osmAttrib='&copy; OpenStreetMap contributors';
   var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 15, attribution: osmAttrib});   
   // leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
@@ -98,7 +97,7 @@ Template.searchMap.rendered = function() {
   var marker = L.marker([-37.8136, 144.9631]).addTo(leafletmapp);
   
   // circle to indicate range
-  circle = L.circle([-37.8136, 144.9631], 5000, {
+  circle = L.circle([-37.8136, 144.9631], 2000, {
       color: 'blue',
       fillColor: '#31d',
       fillOpacity: 0.2
