@@ -62,11 +62,11 @@ Template.search.events({
   'click .addSample': function(event, template) {
     event.preventDefault();
     var addedList = Meteor.call('addSearchSamplePeople', function (error, result) { 
-      console.log('addedList:', result);
+      // console.log('addedList:', result);
       var index;
       var html='<ul>';
       for (index = 0; index < result.length; ++index) {
-          console.log(result[index]);
+          // console.log(result[index]);
           html = html + '<li>' + result[index] + '</li>';
       }
       html = html + '</ul>';
@@ -138,8 +138,6 @@ Template.searchMap.rendered = function() {
       fillColor: '#31d',
       fillOpacity: 0.2
   }).addTo(leafletmapp);
-  console.log('circle:',circle);
-  console.log('circle.getBounds():',circle.getBounds());
   leafletmapp.fitBounds(circle.getBounds(), {maxZoom: 19});
   // DEBUG show the bounding rectangle of the circle
   circleBox = L.rectangle(circle.getBounds(), {color: "#ff7800", weight: 1}).addTo(leafletmapp);
