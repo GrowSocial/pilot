@@ -42,7 +42,7 @@ Meteor.methods({
       person.email = person.member_key + "@test.t";
       person.fullname = person.firstname + ' ' + person.lastname;
       addedList.push(person.fullname);
-      console.log('for search, adding sample person:', person);
+      // console.log('for search, adding sample person:', person);
       People.insert(person);
     }
     // console.log('method, addedList:', addedList);
