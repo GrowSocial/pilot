@@ -33,6 +33,7 @@ Meteor.methods({
     var addedList = [];
     for (var i = 0; i < 3; i++) {
       var person = {
+        searchSamplePerson: true,
         'member_key': Random.id(),
         firstname: Random.choice(first_names),
         lastname: Random.choice(last_names),
@@ -47,5 +48,9 @@ Meteor.methods({
     }
     // console.log('method, addedList:', addedList);
     return addedList; // passed through client callback
+  },
+  
+  removeSearchSamplePeople: function() {
+    People.remove({searchSamplePerson: true});
   },
 });
