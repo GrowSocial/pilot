@@ -59,7 +59,7 @@ Template.search.events({
       }
     }
   },
-  'click .addSample': function(event, template) {
+  'click #addSamplePeopleButton': function(event, template) {
     event.preventDefault();
     var addedList = Meteor.call('addSearchSamplePeople', function (error, result) { 
       // console.log('addedList:', result);
@@ -71,10 +71,10 @@ Template.search.events({
       }
       html = html + '</ul>';
       var div = '<div class="row"><div class="alert alert-info alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>People added.' + html + '</div></div>';
-      $(".addSample").after(div);
+      $('#addSamplePeopleButton').after(div);
     });
   },
-  'click .locateButton': function(event) {
+  'click #setMapLocationButton': function(event) {
     event.preventDefault();
     // not alter the zoom by locate()
     leafletmapp.locate({setView: true, maxZoom: leafletmapp.getZoom()});
@@ -90,7 +90,7 @@ function onLocationFound(e) {
 
 function onLocationError(e) {
     var div = '<div class="row"><div class="alert alert-warning alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + e.message + '</div></div>';
-    $(".locateButton").after(div);
+    $('#setMapLocationButton').after(div);
 }
 
 // easysearch:autosuggest has issues, maybe needing config changes to fix?
