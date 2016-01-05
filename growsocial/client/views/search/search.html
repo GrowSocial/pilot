@@ -2,9 +2,11 @@
 <template name="search">
 
     <div id="#searchContainer" class="container">
-        <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add Sample People</button>
+        <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button>
+        <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button>
         <button type="button" id="setMapLocationButton" class="btn btn-default" >View map at my location</button>
-
+        <div id="searchNotifyDiv"></div>
+        
         {{> EasySearch.Input index=peopleIndex timeout=500 attributes=inputAttributes}}
 
         {{> searchFilters}}

@@ -19,6 +19,15 @@ Template.search.helpers({
 var circle;
 var circleBox;
 
+function searchNotify(alertType, message) {
+  var div = '<div class="row"><div class="alert ' + 
+    alertType + 
+    ' alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + 
+    message + 
+    '</div></div>';
+  $('#searchNotifyDiv').after(div);
+}
+
 Template.search.events({
   'change .location-filter': function (e) {
     // console.log('selected location-filter: ', $(e.target).val());
@@ -70,8 +79,17 @@ Template.search.events({
           html = html + '<li>' + result[index] + '</li>';
       }
       html = html + '</ul>';
-      var div = '<div class="row"><div class="alert alert-info alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>People added.' + html + '</div></div>';
-      $('#addSamplePeopleButton').after(div);
+      searchNotify('alert-info', 'People added.' + html);
+    });
+  },
+  'click #removeSamplePeopleButton': function(event) {
+    event.preventDefault();
+    var addedList = Meteor.call('removeSearchSamplePeople', function (error, result) { 
+      if (error) {
+        searchNotify('alert-danger', error.message);
+      } else {
+        searchNotify('alert-info', 'Sample people removed.');
+      }
     });
   },
   'click #setMapLocationButton': function(event) {
@@ -82,15 +100,14 @@ Template.search.events({
 });
 
 function onLocationFound(e) {
-    var radius = e.accuracy / 2;
-    L.marker(e.latlng).addTo(leafletmapp)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
-    L.circle(e.latlng, radius).addTo(leafletmapp);
+  var radius = e.accuracy / 2;
+  L.marker(e.latlng).addTo(leafletmapp)
+      .bindPopup("You are within " + radius + " meters from this point").openPopup();
+  L.circle(e.latlng, radius).addTo(leafletmapp);
 }
 
 function onLocationError(e) {
-    var div = '<div class="row"><div class="alert alert-warning alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + e.message + '</div></div>';
-    $('#setMapLocationButton').after(div);
+  searchNotify('alert-warning', e.message);
 }
 
 // easysearch:autosuggest has issues, maybe needing config changes to fix?
