@@ -28,7 +28,7 @@ Meteor.methods({
       "Gaga",
       "Franklin"
     ];
-    var locations = ["Davie", "Fort Lauderdale", "Tampa"];
+    var towns = ["Davie", "Fort Lauderdale", "Tampa"];
 
     var addedList = [];
     for (var i = 0; i < 3; i++) {
@@ -38,7 +38,11 @@ Meteor.methods({
         firstname: Random.choice(first_names),
         lastname: Random.choice(last_names),
         about: "Random test user created for testing search.",
-        location: Random.choice(locations),
+        town: Random.choice(towns),
+        latlng: {
+          lat: 0.04 * Random.fraction() - 37.82, 
+          lng: 0.04 * Random.fraction() + 144.97,
+        },
       };
       person.email = person.member_key + "@test.t";
       person.fullname = person.firstname + ' ' + person.lastname;
