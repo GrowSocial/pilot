@@ -10,10 +10,10 @@ PeopleIndex = new EasySearch.Index({
     selector: function (searchObject, options, aggregation) {
       // console.log('selector function run');
       let selector = this.defaultConfiguration().selector(searchObject, options, aggregation);
-      let locationFilter = options.search.props.locationFilter;
-      if (_.isString(locationFilter) && !_.isEmpty(locationFilter)) {
-        selector.location = locationFilter;
-        // console.log('setting selector.location to locationFilter: ', locationFilter);
+      let townFilter = options.search.props.townFilter;
+      if (_.isString(townFilter) && !_.isEmpty(townFilter)) {
+        selector.town = townFilter;
+        // console.log('setting selector.town to townFilter: ', townFilter);
       }
       return selector;
     },

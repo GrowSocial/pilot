@@ -53,7 +53,7 @@ Template.navLogout.events({
   },
 });
 
-Template.navSearch.events({
+Template.navSearchForm.events({
   // TODO pass the search string typed into navbar
   'submit': function (event) {
     FlowRouter.go("search");

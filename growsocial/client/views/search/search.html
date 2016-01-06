@@ -24,7 +24,7 @@
                     <!-- TODO pagination, more results than limit, etc. -->
                     <ul>
                         {{#EasySearch.Each index=peopleIndex }}
-                            <li>Name: {{fullname}}, Location: {{location}}</li>
+                            <li>{{fullname}}{{#if town}}, {{town}}{{/if}}</li>
                         {{/EasySearch.Each}}
                     </ul>
                 {{/if}}
@@ -45,7 +45,7 @@
         <option value="Events">Events</option>
     </select>
 
-    <select class="location-filter">
+    <select class="town-filter">
         <option value="">(Any town)</option>
         <option value="Davie">Davie</option>
         <option value="Fort Lauderdale">Fort Lauderdale</option>
