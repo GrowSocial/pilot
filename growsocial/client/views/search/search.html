@@ -24,7 +24,7 @@
                     <!-- TODO pagination, more results than limit, etc. -->
                     <ul>
                         {{#EasySearch.Each index=peopleIndex }}
-                            <li>Name: {{fullname}}, Town: {{town}}</li>
+                            <li>{{fullname}}{{#if town}}, {{town}}{{/if}}</li>
                         {{/EasySearch.Each}}
                     </ul>
                 {{/if}}
