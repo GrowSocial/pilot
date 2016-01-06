@@ -1,5 +1,7 @@
 
 <template name="profile">
+
+
                 <!-- \common\schemas.js: * * * * * * * * * * * * * * * * * * * * * * * * * -->
                 <!-- Schemas.Person = new SimpleSchema({
                   member_key: {type: String, index: 1, unique: true },
@@ -28,6 +30,7 @@
                         about:{type: String,   optional: true }
                 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
             -->
+
 
 {{#if Template.subscriptionsReady}} 
 {{#with selectProfile}} 
@@ -254,6 +257,8 @@
     </div> <!-- end commentsPROFL -->
 
 
+
+
     {{#if there_are_items "marketItems"}}
     <div id="marketplaceItems" class="clearfix"> 
         <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
@@ -399,6 +404,25 @@
 
 
 {{/with}}
+
+
+
+
+<!-- allows a member to edit their core profile data, 
+     if logged in and navigate to the profile page
+    * minimal formatting, 
+    * (yet: important to eliminate member_key from this quickForm setting, 
+        if member alters this field will break established link to all other profile collections)
+-->
+{{#if myProfile}}
+<div id="editorPROFL" class="clearfix">
+{{> quickForm collection="People" doc=selectProfile id="updateBookForm" type="update"}}
+</div> <!--  -->
+{{/if}}
+
+
+
+
 {{else}} <p>Loading...</p>
 {{/if}}
 </template>
@@ -469,7 +493,6 @@
 <!-- 
 
      -->  
-
 </template>
 
 <template name="MyMarketItems">
@@ -544,6 +567,5 @@
 
      -->   
 </template>
-
 
 
