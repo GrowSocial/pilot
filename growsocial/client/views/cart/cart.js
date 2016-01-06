@@ -3,6 +3,11 @@ Template.cart.helpers({
     return ShoppingCart.find({});
   },
 
+  // totalPrice: function() {
+  //   ShoppingCart.find({})
+  //   return;
+  // },
+
 });
 
 Template.cart.events({
@@ -43,14 +48,18 @@ Template.marketplace.events({
       quantity: event.target.quantityNum.value,
       productId: this.productId,
       name: this.name,
+      description: this.description,
       pic: this.pic,
       unitType: this.unitType,
       unitPrice: this.unitPrice,
       currency: this.currency,
+      vendorUserId: this.vendorUserId,
+      vendorBusinessId: this.vendorBusinessId,
       vendorName: this.vendorName,
       vendorLink: this.vendorLink,
       vendorEmail: this.vendorEmail,
     }
+    
     Meteor.call('addCartItem', item);
   },
 
