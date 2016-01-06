@@ -38,6 +38,8 @@
           </button>
           {{> navBrand}}
           {{ > navConnection}}
+          {{> navSearchForm}}
+          {{> navSearchButton}}
           {{#if currentUser}}
             {{ > navNotificationsButton}}
           {{/if}}
@@ -45,9 +47,6 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            {{> navSearch}}
-          </ul>
           <!-- TODO notifications and search button show on navbar even on small screens -->
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
@@ -91,9 +90,11 @@
   <a class="navbar-brand" href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img class="navbar-img hidden-xs" alt="GrowSocial" src="/images/logo.png"><img class="navbar-img visible-xs" alt="GrowSocial" src="/images/logo_icon.png"></a>
 </template>
 
-<template name="navSearch">
+<template name="navSearchForm">
+  <ul class="nav navbar-nav hidden-xs">
+
   <!-- For small screen, just show search icon, which drops down to search form -->
-  <form class="navbar-form hidden-xs" role="search">
+  <form class="navbar-form" role="search">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search">
     </div>
@@ -101,9 +102,15 @@
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </button>
   </form>
-  <a href="{{pathFor 'search'}}" class="btn btn-default visible-xs" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  </a>
+  </ul>
+</template>
+
+<template name="navSearchButton">
+  <div class="visible-xs">
+    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </a>
+  </div>
 </template>
 
 <template name="navConnection">
