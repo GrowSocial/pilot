@@ -1,28 +1,3 @@
-// People collection moved to lib to load index before views
-//
-// tec, Jan 5: but that is a problem, 
-// because Schemas won't attach now to use for Autoform
-//
-
-
-
-/* Dec 2015: schemas not implimented yet, but confirming code can be located here , 
-  to test as working once collectionsTest_02 is integrated with pilot app 
-
-
-  Jan 2016: Now we need Schemas object to use Autoform
-  **********************************************************************  */
-/*
-
-moving everything that was here down to  common\models\lib\
-
-and renaming PreopleIndex.js to PeopleModel.js, 
-with all necessary procedures included there
-
-
-
-
-old:
 
 Schemas = {};
 Meteor.isClient && Template.registerHelper("Schemas", Schemas);
@@ -68,15 +43,18 @@ Meteor.isClient && Template.registerHelper("Collections", Collections);
 People = Collections.People = new Mongo.Collection("People");
 People.attachSchema(Schemas.Person);
 
+//People = new Mongo.Collection('People');
 
-*/
-
-
-
-
-
-
-
-
-
+PeopleIndex = new EasySearch.Index({
+  engine: new EasySearch.MongoDB({
+    sort: function () {
+      return { lastname: 1 };
+    },
+  }),
+  collection: People,
+  fields: ['firstname', 'lastname'],   // fields: ['fullname'],
+  defaultSearchOptions: {
+    limit: 8
+  },
+});
 

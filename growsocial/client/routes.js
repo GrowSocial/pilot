@@ -116,3 +116,10 @@ FlowRouter.route('/cart', {
     BlazeLayout.render("main", {content: "cart"});
   },
 });
+
+FlowRouter.route('/search', {
+  name: "search",
+  action: function() {
+    BlazeLayout.render("main", {content: "search"});
+  },
+});

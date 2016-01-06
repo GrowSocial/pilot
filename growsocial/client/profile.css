@@ -20,13 +20,15 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
     margin-top: 0%; margin-left: 2%; margin-right: 0px;
 } /*height: 640px;*/
 
-#sidebarPROFL {    z-index: 0;
+#sidebarPROFL,#editorPROFL {    z-index: 0;
     float: left;    position: relative;    clear: none;
     height: auto;width: 24%;
     background-color: rgb(235, 235, 235);
     top: 0px; left: 0px;
     margin-top: .75%; margin-left: 2%; margin-right: auto;
     /*margin-top: .75%;*/
+}
+#editorPROFL {   width: 33%; margin-left: 28%; 
 }
 
 #box{ float: left; clear: both;

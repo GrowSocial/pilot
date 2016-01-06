@@ -142,15 +142,82 @@ starburst: function (rating) {  //var rating = this.review_rating;
 
 
 
-Template.profile.onCreated(function() { var self = this;
-  self.autorun(function() { var member_Key = FlowRouter.getParam('personId');
-  self.subscribe('oneProfileRec', member_Key); 
+Template.profile.onCreated(function() 
+  { var self = this;
+
+  self.autorun(function() 
+    { var member_Key = FlowRouter.getParam('personId');
+      self.subscribe('oneProfileRec', member_Key); 
 
   //alert('Template.profile.onCreated('+ member_Key); 
-  });
-});
+  }
+  );
+
+
+
+
+
+
+
+//see  /server/main.js for documentation
+//  We need to be sure this document is present in People collection
+//
+var AdminInitialized = People.find({member_key: 'pseudo_0'}).count();
+
+//alert('AdminInitialized finding:' + AdminInitialized);
+
+if (AdminInitialized == 0) { //alert('Admin assessed & initializing:');
+var sData = [
+{
+member_key: 'pseudo_0', 
+email: 'admin@growsocial.com',
+firstname:'Grow',
+lastname: 'Social',
+fullname:'Grow Social',
+    street:'123 Main St..', 
+    street2:'',
+    city:'Wilmington',
+    state:'DE',
+  zipcode:'02001',
+
+  location:'Davie, FL',
+  phone:'700 999-0000',
+  website:'www.growsocial.com',
+  links:'gg.web.site',
+  facebookID:'',
+  twitterID:'@grow',
+  instagramID:'',
+  about:"The Locavore's friend"
+}
+];
+
+
+_.each(sData, function(sItem) 
+  { People.insert(sItem);
+
+  }     );
+
+} // end if
+
+
+
+
+
+}); //on created 'profile'
+
 
 Template.profile.helpers({
+
+
+myProfile: function(){
+//Will return NULL if no member is logged in, 
+//            FALSE if another member is here to view 
+//
+var mKey = FlowRouter.getParam('personId');
+//alert(Accounts.userId()+'~'+mKey);
+    if (Accounts.userId() == mKey) { return true }      
+                              else { return false;}    
+},
 
 selectProfile: function() {
     var mKey = FlowRouter.getParam('personId');
@@ -172,11 +239,8 @@ there_are_items: function(caller){
       default: var count=0;
     }
     //alert(mKey + caller + count);
-    if (count) { 
-      //alert('true');
-      return true } else { 
-      //alert('false'); 
-        return false;}
+    if (count) { return true }       //alert('true');
+          else { return false;}      //alert('false');
   },
 
 
@@ -187,7 +251,7 @@ itemsOverflow: function(){
   },
 
 
-/*
+/* ver 00.01 /Misha
     // TODO retrieve person details from collection
     if (personId == 1) {
       return {
@@ -213,6 +277,7 @@ itemsOverflow: function(){
 
 */
 
+/* ver 00.01 /Misha
   postList: function() {
     var personId = FlowRouter.getParam("personId");
     // TODO retrieve person details from collection
@@ -229,6 +294,7 @@ itemsOverflow: function(){
       ];
     }
   }
+*/
 
 
 });
