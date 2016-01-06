@@ -92,8 +92,8 @@
 </template>
 
 <template name="navSearch">
-  <!-- TODO for small screen, just show search icon, which drops down to search form -->
-  <form class="navbar-form" role="search">
+  <!-- For small screen, just show search icon, which drops down to search form -->
+  <form class="navbar-form hidden-xs" role="search">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search">
     </div>
@@ -101,6 +101,9 @@
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </button>
   </form>
+  <a href="{{pathFor 'search'}}" class="btn btn-default visible-xs" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  </a>
 </template>
 
 <template name="navConnection">
