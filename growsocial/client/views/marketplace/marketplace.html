@@ -1,0 +1,25 @@
+<template name="marketplace">
+    <h1>Marketplace</h1>
+    {{#if selectedProduct}}
+        <p>Selected productId: {{selectedProduct}}</p>
+    {{/if}}
+    <p>Products:</p>
+    <ul>
+    {{#each productList}}
+        <li>
+          <img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">
+          <ul>
+            <button class="popoverThis btn btn-large btn-danger">Buy</button>
+            <li>Name: {{name}}</li>
+            <li>Description: {{description}}</li>
+            <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
+            <li><a href="{{vendorLink}}">Sold by: {{vendorName}}</a></li>
+          </ul>
+        </li>
+    {{/each}}
+    
+    <div class="popoverContent hide">
+        {{> addQtyToCart}}
+    </div>
+    </ul>
+</template>
