@@ -414,7 +414,32 @@
 -->
 {{#if myProfile}}
 <div id="editorPROFL" class="clearfix">
-{{> quickForm collection="People" doc=selectProfile id="updateBookForm" type="update"}}
+
+
+
+{{> quickForm collection="People"  doc=selectProfile id="updateBookForm" type="update"}}
+<!--
+for testing~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+{{> quickForm id="fields1" schema=Schemas.FieldsExamples}}
+~
+{{#autoForm id="demo" schema=schema}}
+  {{> afQuickFields}}
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+{{/autoForm}}
+~
+{{#autoForm id="demo" schema=schema}}
+  {{#each afFieldNames}}
+    {{> afQuickField name=this options="auto"}}
+  {{/each}}
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+{{/autoForm}}
+--> 
+
 
 
 </div> <!--  -->
