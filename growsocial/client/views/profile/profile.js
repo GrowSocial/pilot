@@ -158,7 +158,7 @@ Template.profile.onCreated(function()
 //see  /server/main.js for documentation
 //  We need to be sure Admin document is present in database
 // If not present (first time this is run on a server without data collections
-// initialization module )
+// initialization module ) insert record to collection People
 // 
 var AdminInitialized = People.find({member_key: "pseudo_0"}).count();
 //alert('AdminInitialized finding:' + AdminInitialized);
@@ -235,7 +235,7 @@ itemsOverflow: function(){
     var mKey = FlowRouter.getParam('personId');
     var count= MarketItems.find({vendor_key: mKey}).count();
     if (count>5) { return true } else { return false;}
-  },
+  }
 
 
 /* v.0.01 (Misha) 

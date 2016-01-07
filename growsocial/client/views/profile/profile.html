@@ -141,9 +141,8 @@
     {{> MemberReviews}}
 
 
-    <div id="box" class="clearfix">
-    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-    <p id="sidebarHDR"> PHOTOS </p>
+    <div id="box" class="clearfix"><img id="horizonDividr" 
+        src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> PHOTOS </p>
     <!--
     Schemas.Member_Pictures = new SimpleSchema({
       member_key: { type: String, index: 1},
@@ -196,9 +195,8 @@
     </div><!-- PHOTOS -->
 
 
-    <div id="box" class="clearfix">
-    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-    <p id="sidebarHDR"> VIDEOS </p>
+    <div id="box" class="clearfix"><img id="horizonDividr" 
+        src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> VIDEOS </p>
         <!--
         Schemas.Member_Videos = new SimpleSchema({
           member_key: { type: String, index: 1},
@@ -417,6 +415,8 @@
 {{#if myProfile}}
 <div id="editorPROFL" class="clearfix">
 {{> quickForm collection="People" doc=selectProfile id="updateBookForm" type="update"}}
+
+
 </div> <!--  -->
 {{/if}}
 
