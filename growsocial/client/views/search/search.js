@@ -23,16 +23,16 @@ var peopleMarkersGroup;
 function searchNotify(alertType, message) {
   var div = '<div class="row"><div class="alert ' + 
     alertType + 
-    ' alert-dismissible col-md-3 col-xs-6" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + 
+    ' alert-dismissible col-md-6 col-sm-6 col-xs-12" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + 
     message + 
     '</div></div>';
   $('#searchNotifyDiv').after(div);
 }
 
 Template.search.events({
-  'change .town-filter': function (e) {
-    // console.log('selected town-filter: ', $(e.target).val());
-    PeopleIndex.getComponentMethods().addProps('townFilter', $(e.target).val());
+  'change .city-filter': function (e) {
+    // console.log('selected city-filter: ', $(e.target).val());
+    PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
   },
   'change .range-filter': function (e) {
     // If changed from previous radius, change map zoom/position
@@ -80,7 +80,7 @@ Template.search.events({
           // console.log("latlng: ", person.latlng);
           if (person.latlng) {
             var marker = L.marker(person.latlng);
-            marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.town);
+            marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.city);
             // add marker to marker group for search results
             peopleMarkersGroup.addLayer(marker);
           }

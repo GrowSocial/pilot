@@ -32,7 +32,11 @@ Schemas.Person = new SimpleSchema({
   facebookID:{ type: String,   optional: true },
   twitterID:{  type: String,   optional: true },
   instagramID:{type: String,   optional: true },
-  about:{      type: String,   optional: true }
+  about:{      type: String,   optional: true },
+  latlng: {    type: Object,    optional: true  },    
+        'latlng.lat': {type: Number, decimal: true },
+        'latlng.lng': {type: Number, decimal: true },
+  testDataSearch:{ type: Boolean, optional: true },
 });
 
 
@@ -55,10 +59,10 @@ PeopleIndex = new EasySearch.Index({
     selector: function (searchObject, options, aggregation) {
       // console.log('selector function run');
       let selector = this.defaultConfiguration().selector(searchObject, options, aggregation);
-      let townFilter = options.search.props.townFilter;
-      if (_.isString(townFilter) && !_.isEmpty(townFilter)) {
-        selector.town = townFilter;
-        // console.log('setting selector.town to townFilter: ', townFilter);
+      let cityFilter = options.search.props.cityFilter;
+      if (_.isString(cityFilter) && !_.isEmpty(cityFilter)) {
+        selector.city = cityFilter;
+        // console.log('setting selector.city to cityFilter: ', cityFilter);
       }
       return selector;
     },
