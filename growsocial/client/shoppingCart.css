@@ -121,7 +121,7 @@ input::-webkit-inner-spin-button {
 	padding: 0;
 }
 
-.cart-container .removeAll{
+.cart-container .removeItem{
 	color: darkslategray;
 	margin-left: 25px;
 	padding: 10px;
@@ -129,7 +129,7 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 }
 
-.cart-container .removeAll:hover{
+.cart-container .removeItem:hover{
 	color: red;	
 }
 
