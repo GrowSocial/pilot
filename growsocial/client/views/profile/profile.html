@@ -408,36 +408,80 @@
 
 <!-- allows a member to edit their core profile data, 
      if logged in and navigate to the profile page
-    * minimal formatting, 
-    * (yet: important to eliminate member_key from this quickForm setting, 
-        if member alters this field will break established link to all other profile collections)
 -->
 {{#if myProfile}}
 <div id="editorPROFL" class="clearfix">
 
+{{> quickForm 
+    id="updatePROFILE" 
+    type="update"
 
+    collection="People" 
 
-{{> quickForm collection="People"  doc=selectProfile id="updateBookForm" type="update"}}
+    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"
+    
+    doc=selectProfile
+}}
+
 <!--
-for testing~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+for testing, to impliment Autoform ~ quickForm ~ afQuickField
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://autoform.meteor.com/qfdetails
 
-{{> quickForm id="fields1" schema=Schemas.FieldsExamples}}
-~
-{{#autoForm id="demo" schema=schema}}
-  {{> afQuickFields}}
-  <div>
-    <button type="submit">Submit</button>
+simplest option, WORKS but renders all fields in schema:
+{{> quickForm collection="People"  doc=selectProfile id="updateBookForm" type="update"}}
+
+extended option, WORKS (with notes on variation )
+{{> quickForm 
+    id="updatePROFILE" 
+    type="update"
+    collection="People" 
+    * ignored: 
+        schema=Schemas.Person|profileEdit
+    ** effectively, 
+        autoform/quickForm uses a pool of all loaded schema fields
+    doc=selectProfile 
+    fields="fname,lastname" !WORKS
+}}
+
+
+DOESN'T WORK: omitfields is ignored
+{{> quickForm 
+    id="updateBookForm" 
+    type="update"
+    collection="People" 
+    *with or without: schema=Schemas.Person
+    doc=selectProfile 
+    omitfields="member_key"
+}}
+
+*no update committed to collection!!!!!!!!!!!!
+{{#autoForm id="updatePROFILE" 
+    *including or excluding schema, does not matter
+    *including schema without collection returns 'undefined' errors
+
+    collection="People"
+    schema=Schemas.Person
+    doc=selectProfile 
+    fields="firstname,lastname"
+    }}
+    {{> afQuickFields}}
+    <div><br><button type="submit">Submit</button><br></div>
+{{/autoForm}}
+
+
+*many varied attempts, not able to get around  'undefined' errors, 
+*   placing schema and collection definitions at various load orders
+    http://autoform.meteor.com/updateaf
+{{#autoForm id="afUpdateDemo" type="update" collection=Collections.People doc=selectProfile }}
+  {{> afQuickField name="firstName"}}
+  {{> afQuickField name="lastName"}}
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
+    <button type="reset" class="btn btn-default" disabled="{{disableButtons}}">Reset Form</button>
   </div>
 {{/autoForm}}
-~
-{{#autoForm id="demo" schema=schema}}
-  {{#each afFieldNames}}
-    {{> afQuickField name=this options="auto"}}
-  {{/each}}
-  <div>
-    <button type="submit">Submit</button>
-  </div>
-{{/autoForm}}
+
 --> 
 
 
