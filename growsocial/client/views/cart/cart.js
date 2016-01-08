@@ -3,10 +3,14 @@ Template.cart.helpers({
     return ShoppingCart.find({});
   },
 
-  // totalPrice: function() {
-  //   ShoppingCart.find({})
-  //   return;
-  // },
+  totalPrice: function() {
+    var total = 0;
+    var valueList = ShoppingCart.find({ }, { fields: { vendorTotal: 1 }}).fetch();
+    for (var i = 0, len = valueList.length; i < len; i++) {
+      total += valueList[i].vendorTotal;
+    }
+    return total;
+  },
 
 });
 
@@ -26,10 +30,28 @@ Template.cart.events({
     var email = {
       to: "email@example.com",
       from: "email@growsocial.org",
-      subject: "This item has been paid",
+      subject: "Item paid",
       text: "The item has been paid!",
     }
-    Meteor.call('sendEmail', email);
+
+    Meteor.call('sendEmail', email, function(error, result) {
+
+    });
+  },
+
+  'click .removeItem': function(event) {
+    var item = {
+      quantity: this.quantity,
+      productId: this.productId,
+      name: this.name,
+      description: this.description,
+      pic: this.pic,
+      unitType: this.unitType,
+      unitPrice: this.unitPrice,
+      currency: this.currency,
+    }
+    
+    Meteor.call('removeFromCart', item);
   },
 
 });
