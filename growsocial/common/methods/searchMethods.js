@@ -28,21 +28,25 @@ Meteor.methods({
       "Gaga",
       "Franklin"
     ];
-    var locations = ["Davie", "Fort Lauderdale", "Tampa"];
+    var cities = ["Davie", "Fort Lauderdale", "Tampa"];
 
     var addedList = [];
     for (var i = 0; i < 3; i++) {
       var person = {
-        searchSamplePerson: true,
+        testDataSearch: true,
         'member_key': Random.id(),
         firstname: Random.choice(first_names),
         lastname: Random.choice(last_names),
-        about: "Random test user created for testing search.",
-        location: Random.choice(locations),
+        about: "Test user created for search.",
+        city: Random.choice(cities),
+        latlng: {
+          lat: 0.04 * Random.fraction() - 37.82, 
+          lng: 0.04 * Random.fraction() + 144.97,
+        },
       };
       person.email = person.member_key + "@test.t";
       person.fullname = person.firstname + ' ' + person.lastname;
-      addedList.push(person.fullname);
+      addedList.push(person.fullname + ', ' + person.city);
       // console.log('for search, adding sample person:', person);
       People.insert(person);
     }
@@ -51,6 +55,6 @@ Meteor.methods({
   },
   
   removeSearchSamplePeople: function() {
-    People.remove({searchSamplePerson: true});
+    People.remove({testDataSearch: true});
   },
 });

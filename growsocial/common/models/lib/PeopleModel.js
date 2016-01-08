@@ -1,28 +1,3 @@
-// (misha) Dec 2015: People collection moved to lib to load index before views
-//
-// tec, Jan 2016: but that is a problem, 
-// because Schemas won't attach now to use for Autoform
-//
-
-
-
-/* Dec 2015: schemas not implimented yet, but confirming code can be located here , 
-  to test as working once collectionsTest_02 is integrated with pilot app 
-
-
-  Jan 2016: Now we need Schemas object to use Autoform
-  **********************************************************************  */
-/*
-
-moving everything that was here down to  common\models\lib\
-
-and renaming PeopleIndex.js to PeopleModel.js, 
-with all necessary procedures included there
-
-
-
-
-old:
 
 Schemas = {};
 Meteor.isClient && Template.registerHelper("Schemas", Schemas);
@@ -57,7 +32,11 @@ Schemas.Person = new SimpleSchema({
   facebookID:{ type: String,   optional: true },
   twitterID:{  type: String,   optional: true },
   instagramID:{type: String,   optional: true },
-  about:{      type: String,   optional: true }
+  about:{      type: String,   optional: true },
+  latlng: {    type: Object,    optional: true  },    
+        'latlng.lat': {type: Number, decimal: true },
+        'latlng.lng': {type: Number, decimal: true },
+  testDataSearch:{ type: Boolean, optional: true },
 });
 
 
@@ -68,15 +47,32 @@ Meteor.isClient && Template.registerHelper("Collections", Collections);
 People = Collections.People = new Mongo.Collection("People");
 People.attachSchema(Schemas.Person);
 
+//People = new Mongo.Collection('People');
 
-*/
+// TODO test engine minimongo vs MongoDB
 
-
-
-
-
-
-
-
-
+PeopleIndex = new EasySearch.Index({
+  engine: new EasySearch.MongoDB({
+    sort: function () {
+      return { lastname: 1, firstname: 1 };
+    },
+    selector: function (searchObject, options, aggregation) {
+      // console.log('selector function run');
+      let selector = this.defaultConfiguration().selector(searchObject, options, aggregation);
+      let cityFilter = options.search.props.cityFilter;
+      if (_.isString(cityFilter) && !_.isEmpty(cityFilter)) {
+        selector.city = cityFilter;
+        // console.log('setting selector.city to cityFilter: ', cityFilter);
+      }
+      return selector;
+    },
+  }),
+  collection: People,
+  // fields: ['firstname', 'lastname'], // disadvantage: cannot type fullname to match
+  fields: ['fullname'],
+  name: 'fullnameIndex',
+  defaultSearchOptions: {
+    limit: 8
+  },
+});
 
