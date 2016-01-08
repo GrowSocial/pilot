@@ -58,7 +58,9 @@ Template.navSearchForm.events({
     // Prevent browser from restarting
     event.preventDefault();
     var text = event.target.navSearchText.value;
-    FlowRouter.go("search", {searchText: text});
+    // TODO pass search the context of which screen is on before searching
+    // search text into queryParams
+    FlowRouter.go("search", {}, {searchText: text});
     return false; // Prevent default form submit
   },
 });

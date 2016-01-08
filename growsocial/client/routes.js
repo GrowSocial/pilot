@@ -117,7 +117,8 @@ FlowRouter.route('/cart', {
   },
 });
 
-FlowRouter.route('/search/:searchText?', {
+// FlowRouter.route('/search/:searchOption?', {
+FlowRouter.route('/search', {
   name: "search",
   action: function(params, queryParams) {
     BlazeLayout.render("main", {content: "search"});
