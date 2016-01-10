@@ -1,25 +1,41 @@
 <template name="marketplace">
-    <h1>Marketplace</h1>
-    {{#if selectedProduct}}
-        <p>Selected productId: {{selectedProduct}}</p>
-    {{/if}}
-    <p>Products:</p>
-    <ul>
-    {{#each productList}}
-        <li>
-          <img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">
-          <ul>
+    <div id="#marketContainer" class="container">
+        <h1>Marketplace</h1>
+        <button type="button" id="addSampleProductsButton" class="btn btn-default" >Add sample products</button>
+        <button type="button" id="removeSampleProductsButton" class="btn btn-default" >Remove all sample products</button>
+        <div id="marketNotifyDiv"></div>
+<!-- 
+        {{#if selectedProduct}}
+            <p>Selected productId: {{selectedProduct}}</p>
+        {{/if}}
+ -->
+        <ul>
+        {{#each vendorList}}
+            <li>
+                <p>Vendor: {{vendorName}}</p>
+                <ul>
+                {{#each items}}
+                    {{> marketplaceItem}}
+                    <div class="popoverContent hide">
+                        {{> addQtyToCart}}
+                    </div>
+                {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="marketplaceItem">
+    <li>
+        <img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">
+        <ul>
             <button class="popoverThis btn btn-large btn-danger">Buy</button>
             <li>Name: {{name}}</li>
             <li>Description: {{description}}</li>
             <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
-            <li><a href="{{vendorLink}}">Sold by: {{vendorName}}</a></li>
-          </ul>
-        </li>
-    {{/each}}
-    
-    <div class="popoverContent hide">
-        {{> addQtyToCart}}
-    </div>
-    </ul>
+            <li><a href="{{../vendorLink}}">Sold by: {{../vendorName}}</a></li>
+        </ul>
+    </li>
 </template>

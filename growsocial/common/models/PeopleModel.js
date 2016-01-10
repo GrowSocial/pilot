@@ -1,10 +1,33 @@
-// People collection moved to lib to load index before views
+// (misha) Dec 2015: People collection moved to lib to load index before views
+//
+// tec, Jan 2016: but that is a problem, 
+// because Schemas won't attach now to use for Autoform
+//
 
-/* schemas not implimented yet, but confirming code can be located here , 
+
+
+/* Dec 2015: schemas not implimented yet, but confirming code can be located here , 
   to test as working once collectionsTest_02 is integrated with pilot app 
+
+
+  Jan 2016: Now we need Schemas object to use Autoform
   **********************************************************************  */
+/*
+
+moving everything that was here down to  common\models\lib\
+
+and renaming PeopleIndex.js to PeopleModel.js, 
+with all necessary procedures included there
+
+
+
+
+old:
+
 Schemas = {};
 Meteor.isClient && Template.registerHelper("Schemas", Schemas);
+
+
 Schemas.Person = new SimpleSchema({
   member_key: {type: String, index: 1,  unique: true },
   email: {     type: String, optional: false,  unique: true },
@@ -38,11 +61,19 @@ Schemas.Person = new SimpleSchema({
 });
 
 
+var Collections = {};
 
-// When deployed to meteor.com, the following remove() causes these errors and breaks the app:
+Meteor.isClient && Template.registerHelper("Collections", Collections);
 
-// There is no route for the path: /
-// People.remove({});
+People = Collections.People = new Mongo.Collection("People");
+People.attachSchema(Schemas.Person);
+
+
+*/
+
+
+
+
 
 
 

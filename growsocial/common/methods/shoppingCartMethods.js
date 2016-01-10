@@ -39,38 +39,119 @@ Meteor.methods({
 	// Add to shopping cart collection
 	addCartItem: function(item) {
 
-		console.log('adding cart item:', item);
-    
-    // TODO update current order if there is one
-    // TODO vendorEmail won't be exposed to the client (browser)
-    // TODO when not logged in, add session id
+	    // TODO update current order if there is one
+	    // TODO vendorEmail won't be exposed to the client (browser)
+	    // TODO when not logged in, add session id
 
-    // create the product structure
-    var product = {
-      productId: item.productId,
-  		name: item.name,
-      name: item.name,
-      pic: item.pic,
-      currency: item.currency,
-      unitType: item.unitType,
-      quantity: item.quantity,
-      unitPrice: item.unitPrice,
-  		itemTotalPrice: item.quantity * item.unitPrice,
-    }
-    
-    // TODO add up product totals for vendorTotal
-    var vendorTotal = product.itemTotalPrice;
-    
-    // create the order structure
-    var order = {
-      userId: Meteor.userId(),
-      vendorName: item.vendorName,
-      vendorLink: item.vendorLink,
-      vendorEmail: item.vendorEmail,
-      vendorTotal: vendorTotal,
-      products: [ product, ],
-    }
-    
-		ShoppingCart.insert(order);
+		// If vendor doesn't exist in collection
+    	if (!Meteor.call('checkForVendor', item)) {
+    		// Create the product structure
+		    var product = {
+				productId: item.productId,
+				name: item.name,
+				description: item.description,
+				pic: item.pic,
+				currency: item.currency,
+				unitType: item.unitType,
+				quantity: item.quantity,
+				unitPrice: item.unitPrice,
+				itemTotalPrice: item.quantity * item.unitPrice,
+		    }
+
+		    var vendorTotal = product.itemTotalPrice;
+
+    		// Create the order structure
+		    var order = {
+				userId: Meteor.userId(),
+				vendorUserId: item.vendorUserId,
+				vendorBusinessId: item.vendorBusinessId,
+				vendorName: item.vendorName,
+				vendorLink: item.vendorLink,
+				vendorEmail: item.vendorEmail,
+				vendorTotal: vendorTotal,
+				products: [ product, ],
+		    }
+
+		    // Add to collection
+    		ShoppingCart.insert(order);
+    	}
+    	else {
+    		// Check if the product exists inside the order and if it does update it with new quantity.
+    		// If product doesnt exist, add it to the products array
+
+	    	var orderProducts = ShoppingCart.find({
+	    		vendorBusinessId: item.vendorBusinessId, 
+				vendorUserId: item.vendorUserId,
+			}, { 
+				fields: { products: 1 }
+			}).fetch()[0].products;
+
+	    	for (var i = 0, len = orderProducts.length; i < len; i++) {
+	    		if (orderProducts[i].productId == item.productId) {
+	    			// TODO: Update quantity and vendorTotal
+
+	     			// ShoppingCart.update({
+					// 	vendorBusinessId: order.vendorBusinessId,
+					// 	vendorUserId: order.vendorUserId,
+					// }, {
+					// 	$set: {
+
+					// 	}
+					// });
+					console.log("TODO: Update quantity");
+					break;
+	    		}
+	    		else {
+	    			// Calculate the total price of the item
+	    			var itemTotalPrice = item.quantity * item.unitPrice;
+
+	    			// Add the product to the array
+	    			ShoppingCart.update({
+	    				vendorBusinessId: item.vendorBusinessId,
+    					vendorUserId: item.vendorUserId,
+    				}, {
+    					$addToSet: {
+    						products: { 
+								productId: item.productId,
+								name: item.name,
+								descrpition: item.description,
+								pic: item.pic,
+								currency: item.currency,
+								unitType: item.unitType,
+								quantity: item.quantity,
+								unitPrice: item.unitPrice,
+								itemTotalPrice: itemTotalPrice,
+							}
+						},
+						$inc: {
+							vendorTotal: itemTotalPrice,
+						}
+					});
+					break;
+	    		}
+	    	}
+    	}
+	},
+
+	checkForVendor: function(_order) {
+		
+		if (ShoppingCart.findOne({vendorUserId: _order.vendorUserId}) ||
+			ShoppingCart.findOne({vendorBusinessId: _order.vendorBusinessId})) {
+			return true;
+		}
+		return false;
+	},
+
+	removeFromCart: function(item) {
+
+		// Remove the item from the cart
+		ShoppingCart.update(
+			{ },
+			{ $pull: { products: item }},
+			{ multi: true },
+			function() { console.log("Item removed") }
+		);
+
+		//TODO: If products array has 0 items, remove vendor from collection
 	},
 });

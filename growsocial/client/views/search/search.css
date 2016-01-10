@@ -1,0 +1,6 @@
+/* TODO responsive styling */
+
+.searchMap-container {
+/* width is set by bootstrap columns in html */
+  height: 300px;
+}
