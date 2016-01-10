@@ -5,46 +5,12 @@ Template.marketplace.helpers({
   // depending on whether showing general marketplace, or storefront for
   // a particular business or a particular person.
   
-  // TODO pull product list from the database
+  // pull vendor/product list from the database
+  vendorList: function () { 
+    return MarketItems.find();
+  },
   
-  productList : [{
-    productId: '1',
-    name: "Aunt Ruby's Green Tomato",
-    description: "Aunt Ruby's Green Tomato, grown with care in Aunt Ruby's bathtub",
-    pic: "/images/user-images/AuntRubyTomato.png",
-    unitType: "each",
-    unitPrice: 2.20,
-    currency: 'USD',
-    vendorUserId: '2',
-    vendorName: 'Anthony Apple',
-    vendorLink: '/profile/2',
-    vendorEmail: 'anthonyapple@notarealemail.com',
-  }, {
-    productId: '2',
-    name: "Scarlet Nantes Carrot",
-    description: "Scarlet Nantes Carrot, seeded by throwing seeds in the air at random",
-    pic: "/images/user-images/ScarletNantesCarrot.png",
-    unitType: "pound",
-    unitPrice: 1.50,
-    currency: 'USD',
-    vendorBusinessId: '2',
-    vendorName: 'XYZ Compost Removal',
-    vendorLink: '/business/2',
-    vendorEmail: 'xyz@notarealemail.com',
-  }, {
-    productId: '3',
-    name: "Little Gem Lettuce",
-    description: "Little Gem Lettuce, sparkles like emeralds",
-    pic: "/images/user-images/LittleGemLettuce.png",
-    unitType: "5 pound bag",
-    unitPrice: 10.50,
-    currency: 'USD',
-    vendorBusinessId: '2',
-    vendorName: 'XYZ Compost Removal',
-    vendorLink: '/business/2',
-    vendorEmail: 'xyz@notarealemail.com',
-  }],
-  
+/*
   selectedProduct: function() {
     var productId = FlowRouter.getParam("productId");
     console.log("This is my selected product: ", productId);
@@ -54,6 +20,7 @@ Template.marketplace.helpers({
       return [];
     }
   },
+*/
 });
 
 Template.marketplace.onRendered(function() {
@@ -73,3 +40,39 @@ Template.marketplace.onRendered(function() {
       }
   });
 });
+
+Template.marketplace.events({
+  'click #addSampleProductsButton': function(event, template) {
+    event.preventDefault();
+    var addedList = Meteor.call('addMarketSampleProducts', function (error, result) { 
+      // console.log('addedList:', result);
+      var index;
+      var html='<ul>';
+      for (index = 0; index < result.length; ++index) {
+          // console.log(result[index]);
+          html = html + '<li>' + result[index] + '</li>';
+      }
+      html = html + '</ul>';
+      marketNotify('alert-info', 'Products added.' + html);
+    });
+  },
+  'click #removeSampleProductsButton': function(event) {
+    event.preventDefault();
+    var addedList = Meteor.call('removeMarketSampleProducts', function (error, result) { 
+      if (error) {
+        marketNotify('alert-danger', error.message);
+      } else {
+        marketNotify('alert-info', 'Sample products removed.');
+      }
+    });
+  },
+});
+
+function marketNotify(alertType, message) {
+  var div = '<div class="row"><div class="alert ' + 
+    alertType + 
+    ' alert-dismissible col-md-6 col-sm-6 col-xs-12" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + 
+    message + 
+    '</div></div>';
+  $('#marketNotifyDiv').after(div);
+}
