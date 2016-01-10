@@ -16,6 +16,7 @@
 // TODO delete or edit filters; easily add filters;
 // TODO configurable units km / miles, default to florida units
 // TODO store search text and filters and location, for session or for userId
+// TODO tidy up use of global vars
 
 Template.search.helpers({
   peopleIndex: () => PeopleIndex,
@@ -25,7 +26,7 @@ Template.search.helpers({
       'placeholder': 'Start searching...',
       // value from navbar search
       'value': FlowRouter.getQueryParam("searchText"), 
-      // TODO could replace the 'value' with a function that has an autorun, checks flowrouter, then invokes search on the Index.
+      // TODO could replace the 'value' with a function that has an autorun, checks flowrouter param, then invokes search on the Index.
     };
   },
   resultsCount: function () {
