@@ -36,8 +36,8 @@ Schemas.Person = new SimpleSchema({
   latlng: {    type: Object,    optional: true  },    
         'latlng.lat': {type: Number, decimal: true },
         'latlng.lng': {type: Number, decimal: true },
-  lat: {type: Number, decimal: true, optional: true },
-  lng: {type: Number, decimal: true, optional: true },
+  // lat: {type: Number, decimal: true, optional: true },
+  // lng: {type: Number, decimal: true, optional: true },
   testDataSearch:{ type: Boolean, optional: true },
 });
 
