@@ -30,7 +30,20 @@
                         about:{type: String,   optional: true }
                 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
             -->
+<head>
+    <!-- for popups ..  Jan 2016
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 
+    <style>
+      .popover { border: 2px; }
+      .popover-title { background-color: #73AD21; color: #FFFFFF; font-size: 14px; text-align:center; }
+      .popover-content { background-color: white; color: #004D00; padding: 15px;  text-align:center; }
+      .arrow { border-right-color: ##b3ffcc !important; }
+    </style>
+
+</head>
 
 {{#if Template.subscriptionsReady}} 
 {{#with selectProfile}} 
@@ -40,17 +53,21 @@
 
     <img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
     <div id="buttongroupPROFL" class="clearfix">
-        <div id="blog" class="clearfix">
-            <p id="buttonLabels">View Blog</p>
-        </div>
-        <div id="connect" class="clearfix">
-            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;Connect</p>
-            <img id="buttonIcon" src="/images/icons/+.png" class="image" />
-        </div>
-        <div id="message" class="clearfix">          
-            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;&nbsp;Message</p>
-            <img id="buttonIcon" src="/images/icons/thoughtBubble-ICON.png" class="image" />
-        </div>
+    <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
+
+    <div id="blog" class="clearfix">
+        <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+        title="Member Blog" data-content="View latest blog and archives">View Blog</button>
+    </div>
+    <div id="connect" class="clearfix">
+        <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+        title="Connect with Member" data-content="Include this member in your circles">Co n n e c t</button>
+    </div> 
+    <div id="message" class="clearfix">
+        <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+        title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
+    </div>
+
     </div>
 
     <div id="memberPicture" class="clearfix">

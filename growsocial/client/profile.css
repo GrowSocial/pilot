@@ -261,20 +261,20 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     /*background-color: rgb(224, 224, 24);*/
 }
 
-#buttongroupPROFL {float: left; clear: none;position: relative;top: 0px; left: 0px;
-          height: auto; width: 27%;margin-right: 0%;
-         margin-top: 14%; margin-left: -52%;  
-         /*background-color: rgb(224, 224, 24);*/
+#buttongroupPROFL {float: left; clear: none; position: relative; top: 0px; left: 0px;
+          height: auto; width: 35%; margin-right: 0%; margin-top: 12%; margin-left: -58%;  
+         /* 
+         background-color: rgb(224, 224, 24);*/
 }
 #blog,#connect,#message { z-index: 19; float: left; clear: none; position: relative;top: 0px;left: 0px;
- height: 44px; width: 30%;margin-top: 0px;margin-left: 3%; margin-right: 0%;
+ height: 54px; width: 30%;margin-top: 0px;margin-left: 3%; margin-right: 0%;
 }
-#blog { background-color: rgb(156, 156, 156);
+#blog { background-color: rgb(229, 242, 255);
 }
-#connect { background-color: rgb(18, 130, 206);
+#connect { background-color: rgb(179, 217, 255);
 }
-#message { background-color: rgb(9, 167, 85);
-}
+#message { background-color: rgb(179, 255, 204);
+} /*9, 167, 85*/
 
 
 
