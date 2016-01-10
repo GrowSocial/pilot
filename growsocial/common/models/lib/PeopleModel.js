@@ -36,6 +36,8 @@ Schemas.Person = new SimpleSchema({
   latlng: {    type: Object,    optional: true  },    
         'latlng.lat': {type: Number, decimal: true },
         'latlng.lng': {type: Number, decimal: true },
+  // lat: {type: Number, decimal: true, optional: true },
+  // lng: {type: Number, decimal: true, optional: true },
   testDataSearch:{ type: Boolean, optional: true },
 });
 
@@ -51,6 +53,8 @@ People.attachSchema(Schemas.Person);
 
 // TODO test engine minimongo vs MongoDB
 
+// TODO use MongoDB Geospatial "near" function
+
 PeopleIndex = new EasySearch.Index({
   engine: new EasySearch.MongoDB({
     sort: function () {
@@ -64,6 +68,16 @@ PeopleIndex = new EasySearch.Index({
         selector.city = cityFilter;
         // console.log('setting selector.city to cityFilter: ', cityFilter);
       }
+      let rangeFilter = options.search.props.rangeFilter;
+      if (rangeFilter) {
+        selector["latlng.lat"] = {$gte: rangeFilter._southWest.lat, $lte: rangeFilter._northEast.lat};
+        selector["latlng.lng"] = {$gte: rangeFilter._southWest.lng, $lte: rangeFilter._northEast.lng};
+        // console.log('setting selector.latlng to rangeFilter: ', rangeFilter);
+        // console.log('searchObject: ', searchObject);
+        // console.log('options: ', options);
+        // console.log('aggregation: ', aggregation);
+        // console.log('selector: ', selector);
+      }
       return selector;
     },
   }),
@@ -75,4 +89,3 @@ PeopleIndex = new EasySearch.Index({
     limit: 8
   },
 });
-

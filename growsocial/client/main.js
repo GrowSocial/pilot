@@ -54,9 +54,14 @@ Template.navLogout.events({
 });
 
 Template.navSearchForm.events({
-  // TODO pass the search string typed into navbar
   'submit': function (event) {
-    FlowRouter.go("search");
+    // Prevent browser from restarting
+    event.preventDefault();
+    var text = event.target.navSearchText.value;
+    // TODO pass search the context of which screen is on before searching
+    // search text into queryParams
+    FlowRouter.go("search", {}, {searchText: text});
+    return false; // Prevent default form submit
   },
 });
 
