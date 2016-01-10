@@ -44,6 +44,8 @@ Meteor.methods({
           lng: 0.04 * Random.fraction() + 144.97,
         },
       };
+      person.lat = person.latlng.lat;
+      person.lng = person.latlng.lng;
       person.email = person.member_key + "@test.t";
       person.fullname = person.firstname + ' ' + person.lastname;
       addedList.push(person.fullname + ', ' + person.city);

@@ -36,6 +36,8 @@ Schemas.Person = new SimpleSchema({
   latlng: {    type: Object,    optional: true  },    
         'latlng.lat': {type: Number, decimal: true },
         'latlng.lng': {type: Number, decimal: true },
+  lat: {type: Number, decimal: true, optional: true },
+  lng: {type: Number, decimal: true, optional: true },
   testDataSearch:{ type: Boolean, optional: true },
 });
 
@@ -51,6 +53,8 @@ People.attachSchema(Schemas.Person);
 
 // TODO test engine minimongo vs MongoDB
 
+// TODO use MongoDB Geospatial "near" function
+
 PeopleIndex = new EasySearch.Index({
   engine: new EasySearch.MongoDB({
     sort: function () {
@@ -63,6 +67,61 @@ PeopleIndex = new EasySearch.Index({
       if (_.isString(cityFilter) && !_.isEmpty(cityFilter)) {
         selector.city = cityFilter;
         // console.log('setting selector.city to cityFilter: ', cityFilter);
+      }
+      let rangeFilter = options.search.props.rangeFilter;
+      if (rangeFilter) {
+        // selector.firstname = 'Carl';
+//////////////
+/*
+        emails: {
+          $elemMatch: {
+            address: { '$regex' : '.*' + searchString + '.*', '$options' : 'i' }
+          }
+        }
+*/
+//////////////
+/*
+{ '$or': [ { fullname: /Carl/ } ],
+  city: 'Tampa',
+  "latlng.lat": {$gte: -888, $lte: -22},
+  "latlng.lng": {$gte: 22, $lte: 888} }
+*/
+//////////////
+/*
+{ '$or': [ { fullname: /Carl/ } ],
+  city: 'Tampa',
+  lat: {$gte: -888, $lte: -22},
+  lng: {$gte: 22, $lte: 888} }
+*/
+//////////////
+//////////////
+// lets make it easier by having lat & long in a separate field! then try combining them...
+        // selector.latlng = .lat within????? = rangeFilter._southWest.lat  and rangeFilter._northEast.lat;
+        // selector.latlng = {
+          // $elemMatch: {
+            // lat: {$lte: rangeFilter._southWest.lat}
+          // }
+        // };
+        // selector.latlng.lat = {$gte: rangeFilter._southWest.lat, $lte: rangeFilter._northEast.lat};
+        // selector.latlng.lng = {$gte: rangeFilter._southWest.lng, $lte: rangeFilter._northEast.lng};
+        selector["latlng.lat"] = {$gte: rangeFilter._southWest.lat, $lte: rangeFilter._northEast.lat};
+        selector["latlng.lng"] = {$gte: rangeFilter._southWest.lng, $lte: rangeFilter._northEast.lng};
+        // console.log('setting selector.latlng to rangeFilter: ', rangeFilter);
+        // console.log('searchObject: ', searchObject);
+        // console.log('options: ', options);
+        // console.log('aggregation: ', aggregation);
+        // console.log('selector: ', selector);
+/*
+rangeFilter: {
+  _southWest: {
+    lat: -37.81807526693631, 
+    lng: 144.95743517456054
+  },
+  _northEast: {
+    lat: -37.80912473504468,
+    lng: 144.96876482543942
+  }}
+*/
       }
       return selector;
     },
