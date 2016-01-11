@@ -1,3 +1,5 @@
+
+
 UI.registerHelper('formatTime', function(context, options) {
   if(context)
     return moment(context).format('MM/DD/YYYY, hh:mm');
@@ -146,28 +148,41 @@ Template.profile.onCreated(function()
   self.autorun(function() 
     { var member_Key = FlowRouter.getParam('personId');
       self.subscribe('oneProfileRec', member_Key); 
-
-  //alert('Template.profile.onCreated('+ member_Key); 
   }
   );
-
-//alert('logged in? '+ Accounts.userId());
-
 
 
 //see  /server/main.js for documentation
 //  We need to be sure Admin document is present in database
 // If not present (first time this is run on a server without data collections
-// initialization module )
+// initialization module ) insert record to collection People
 // 
 var AdminInitialized = People.find({member_key: "pseudo_0"}).count();
-//alert('AdminInitialized finding:' + AdminInitialized);
+
+/*ERROR:
+"" insert failed: MongoError: insertDocument :: caused by :: 11000 E11000 duplicate key error index: meteor.People.$c2_member_key  dup key: { : "pseudo_0" }
+
+Will occur if the Meteor session is interrupted, and resumed while the profile page is the current browser view.
+I believe it is because the 'People' instance has not been initialized 
+-- which normally happens when the application commences with the localhost:3000 root path
+Once a user navigates to 'People' from the navbar menu, 'People' is instanced.
+
+The error : follows the test to see if the 'pseudo_o' user (admin) is present in the database. 
+The JS returns a null as a result of :  AdminInitialized = People.find({member_key: "pseudo_0"}).count();
+if People has not been instanced..  
+
+This will only happen if the app starts with this template as the startup view
+We can revise the JS here, include error trapping perhaps, or test to be sure of the state of the session.
+OR: we turn to another approach altogether for being certain admin, 'psuedo_0' is present in database
+
+*/
+
+
 if (AdminInitialized == 0) { 
 // Will be TRUE if People has not been loaded until now
 // irregardless of admin record present.
-// Can happen if the app restarts from the profile page 
-// and will cause a record insert exception.
-// No error handling is coded here, for now. 
+// Can happen if the app restarts from the profile page and will cause a record insert exception.
+// No error handling is coded here, for now. Not sure if it is important, is not tested at deployed server
 var sData = [
   {
   member_key: 'pseudo_0', 
@@ -190,8 +205,7 @@ var sData = [
     about:"The Locavore's friend"
   }
 ];
-_.each(sData, function(sItem) 
-  { People.insert(sItem); }     
+_.each(sData, function(sItem)  { People.insert(sItem); }     
   );
 
 } // end if -- Admin check
@@ -200,6 +214,11 @@ _.each(sData, function(sItem)
 
 
 }); //on created 'profile'
+
+
+
+
+
 
 Template.profile.helpers({
 myProfile: function(){
@@ -235,7 +254,7 @@ itemsOverflow: function(){
     var mKey = FlowRouter.getParam('personId');
     var count= MarketItems.find({vendor_key: mKey}).count();
     if (count>5) { return true } else { return false;}
-  },
+  }
 
 
 /* v.0.01 (Misha) 
