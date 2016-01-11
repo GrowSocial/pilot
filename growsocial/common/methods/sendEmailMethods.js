@@ -15,7 +15,7 @@ Meteor.methods({
           subject: email.subject,
           text: email.text,
         });
-        console.log("Email sent");
+        console.log("email sent");
       }
       // Catch any errors
       catch(err) {
@@ -25,6 +25,6 @@ Meteor.methods({
           message: err.message
         });
       }
-    };
+    }
   }
 });

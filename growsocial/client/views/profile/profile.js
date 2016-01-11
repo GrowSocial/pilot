@@ -140,22 +140,79 @@ starburst: function (rating) {  //var rating = this.review_rating;
 });
 
 
+Template.profile.onCreated(function() 
+  { var self = this;
 
-
-Template.profile.onCreated(function() { var self = this;
-  self.autorun(function() { var member_Key = FlowRouter.getParam('personId');
-  self.subscribe('oneProfileRec', member_Key); 
+  self.autorun(function() 
+    { var member_Key = FlowRouter.getParam('personId');
+      self.subscribe('oneProfileRec', member_Key); 
 
   //alert('Template.profile.onCreated('+ member_Key); 
-  });
-});
+  }
+  );
+
+//alert('logged in? '+ Accounts.userId());
+
+
+
+//see  /server/main.js for documentation
+//  We need to be sure Admin document is present in database
+// If not present (first time this is run on a server without data collections
+// initialization module )
+// 
+var AdminInitialized = People.find({member_key: "pseudo_0"}).count();
+//alert('AdminInitialized finding:' + AdminInitialized);
+if (AdminInitialized == 0) { 
+// Will be TRUE if People has not been loaded until now
+// irregardless of admin record present.
+// Can happen if the app restarts from the profile page 
+// and will cause a record insert exception.
+// No error handling is coded here, for now. 
+var sData = [
+  {
+  member_key: 'pseudo_0', 
+  email: 'admin@growsocial.com',
+  firstname:'Grow',
+  lastname: 'Social',
+  fullname:'Grow Social',
+      street:'123 Main St..', 
+      street2:'',
+      city:'Wilmington',
+      state:'DE',
+    zipcode:'02001',
+    location:'Davie, FL',
+    phone:'700 999-0000',
+    website:'www.growsocial.com',
+    links:'gg.web.site',
+    facebookID:'',
+    twitterID:'@grow',
+    instagramID:'',
+    about:"The Locavore's friend"
+  }
+];
+_.each(sData, function(sItem) 
+  { People.insert(sItem); }     
+  );
+
+} // end if -- Admin check
+
+
+
+
+}); //on created 'profile'
 
 Template.profile.helpers({
+myProfile: function(){
+  //Will return NULL if no member is logged in, 
+  //            FALSE if another member is here to view selected profile
+  //            TRUE if a logged in member is navigating to their profile page
+  var mKey = FlowRouter.getParam('personId');
+  if (Accounts.userId() == mKey) { return true }  else { return false;}    
+},
 
 selectProfile: function() {
     var mKey = FlowRouter.getParam('personId');
     var member = People.findOne({member_key: mKey}) || {};
-    //alert('Template.profile.helpers('+ mKey);
     return member;
   },
 
@@ -170,15 +227,9 @@ there_are_items: function(caller){
       case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
         break;
       default: var count=0;
-    }
-    //alert(mKey + caller + count);
-    if (count) { 
-      //alert('true');
-      return true } else { 
-      //alert('false'); 
-        return false;}
+    }  //alert(mKey + caller + count);
+    if (count) { return true } else { return false;}
   },
-
 
 itemsOverflow: function(){
     var mKey = FlowRouter.getParam('personId');
@@ -187,7 +238,7 @@ itemsOverflow: function(){
   },
 
 
-/*
+/* v.0.01 (Misha) 
     // TODO retrieve person details from collection
     if (personId == 1) {
       return {
@@ -211,8 +262,6 @@ itemsOverflow: function(){
         };
     };
 
-*/
-
   postList: function() {
     var personId = FlowRouter.getParam("personId");
     // TODO retrieve person details from collection
@@ -229,6 +278,6 @@ itemsOverflow: function(){
       ];
     }
   }
-
+****************************************************************************** */
 
 });

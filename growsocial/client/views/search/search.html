@@ -1,39 +1,49 @@
 
 <template name="search">
-
     <div id="#searchContainer" class="container">
         <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button>
         <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button>
         <button type="button" id="setMapLocationButton" class="btn btn-default" >View map at my location</button>
+        <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
         <div id="searchNotifyDiv"></div>
-        
-        {{> EasySearch.Input index=peopleIndex timeout=500 attributes=inputAttributes}}
+        <!-- <p>search for: {{searchText}}</p> -->
+        {{> EasySearch.Input index=peopleIndex event='enter' attributes=inputAttributes}}
+        <!-- timeout=500  -->
 
         {{> searchFilters}}
         
         <hr/>
-        {{#EasySearch.IfInputEmpty index=peopleIndex}}
-            <div class="no-results">Enter a search word</div>
-        {{else}}
-            {{#EasySearch.IfSearching index=peopleIndex }}
-                <div>Searching ...</div>
-            {{else}}
-                <div class="padded count-results">{{resultsCount}} results found.</div>
-                {{#if resultsCount}}
-                    <!-- TODO multiple indexes, to search products and people, conditionally on filters/context -->
-                    <!-- TODO pagination, more results than limit, etc. -->
-                    <ul>
-                        {{#EasySearch.Each index=peopleIndex }}
-                            <li>{{fullname}}{{#if town}}, {{town}}{{/if}}</li>
-                        {{/EasySearch.Each}}
-                    </ul>
-                {{/if}}
-            {{/EasySearch.IfSearching }}
-        {{/EasySearch.IfInputEmpty}}
+        <div class="row">
+            <div class="col-sm-6 col-xs-12">
+                {{#EasySearch.IfInputEmpty index=peopleIndex}}
+                    <div class="no-results">Enter a search word</div>
+                {{else}}
+                    {{#EasySearch.IfSearching index=peopleIndex }}
+                        <div>Searching ...</div>
+                    {{else}}
+                        <div class="padded count-results">{{resultsCount}} results found.</div>
+                        {{#if resultsCount}}
+                            <!-- TODO multiple indexes, to search products and people, conditionally on filters/context -->
+                            <!-- TODO pagination, more results than limit, etc. -->
+                            <ul>
+                                {{#EasySearch.Each index=peopleIndex }}
+                                    <li>{{fullname}}{{#if city}}, {{city}}{{/if}}</li>
+                                {{/EasySearch.Each}}
+                            </ul>
+                        {{/if}}
+                    {{/EasySearch.IfSearching }}
+                {{/EasySearch.IfInputEmpty}}
+            </div> <!-- search result column -->
+            <div class="col-sm-6 col-xs-12">
+                {{> searchMap}}
+            </div> <!-- map column -->
+        </div> <!-- row -->
         <hr/>
         <!-- {{> awesomeAutosuggest}} -->
-        {{> searchMap}}
     </div>
+</template>
+
+<template name="searchResults">
 </template>
 
 <template name="searchFilters">
@@ -45,8 +55,8 @@
         <option value="Events">Events</option>
     </select>
 
-    <select class="town-filter">
-        <option value="">(Any town)</option>
+    <select class="city-filter">
+        <option value="">(Any city)</option>
         <option value="Davie">Davie</option>
         <option value="Fort Lauderdale">Fort Lauderdale</option>
         <option value="Tampa">Tampa</option>
@@ -56,8 +66,13 @@
         <option value="">(Any range)</option>
         <option value="500">500m</option>
         <option value="1000">1km</option>
-        <option value="2000" selected>2km</option>
-        <option value="5000">5km</option>
+        <option value="2000">2km</option>
+        <option value="5000" selected>5km</option>
+        <option value="10000">10km</option>
+        <option value="15000">15km</option>
+        <option value="20000">20km</option>
+        <option value="25000">25km</option>
+        <option value="30000">30km</option>
     </select>
 </template>
 
@@ -70,7 +85,5 @@
 <!-- </template> -->
 
 <template name="searchMap">
-    <div class="row">
-        <div id='map' class="searchMap-container col-md-6 col-xs-12"></div>
-    </div>
+    <div id='SearchResultMap' class="searchMap-container"></div>
 </template>

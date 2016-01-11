@@ -14,21 +14,25 @@
               <div class="vendor">
                 <p>{{vendorName}}</p>
               </div>
-              <ul>
+              <ul class="allProducts">
                 {{#each products}}
                   <li class="row">
                     <span class="quantityBtns">
                       <input type="button" class="btn btn-default" value="+" /><br>
                       <input type="button" class="btn btn-default" value="-" />
                     </span>
+                    
                     <span class="quantity">
                       <input type="number" class="quantityVal" value="{{quantity}}" />   
                       <p class="unitType">{{unitType}}</p>
                     </span>
+                    
                     <span class="itemName">{{name}}</span>
-                    <span class="removeAll">
+                    
+                    <span class="removeItem">
                       <a class="glyphicon glyphicon-trash"></a>
                     </span>
+                    
                     <span class="price">
                       ${{unitPrice}} / Total: ${{itemTotalPrice}}
                       <p class="currency">{{currency}}</p>
@@ -37,9 +41,9 @@
                 {{/each}}
                 <li class="row totals">
                   <span class="itemName">Total:</span>
-                  <span class="price">{{vendorTotal}}</span>
+                  <span class="price">${{vendorTotal}}</span>
                   <span class="order">
-                    <a class="payVendor" data-toggle="popover" data-trigger="focus" title="Pay {{vendor.vendorName}}" data-content="Payment gateway will be live in phase 1. Your order is being emailed to {{vendorName}}.">Pay this vendor</a>
+                    <a class="payVendor">Pay this vendor</a>
                   </span>
                   <script>
                     $(document).ready(function(){
@@ -53,7 +57,7 @@
         {{/each}}
         <li class="row totals">
           <span class="itemName">Total:</span>
-          <span class="price">$1694.43</span>
+          <span class="price">${{totalPrice}}</span>
           <span class="order"> <a class="">Pay all vendors</a></span>
         </li>
       </ul>
@@ -65,6 +69,14 @@
   <form class="addToCartForm">
       Quantity:
       <input type="number" name="quantityNum" value="1"/>
+      <!-- TODO find a better way to pass vendor details to the event handler -->
+      <input type="hidden" name="vendor_key" value="{{../vendor_key}}"/>
+      <input type="hidden" name="vendorUserId" value="{{../vendorUserId}}"/>
+      <input type="hidden" name="vendorBusinessId" value="{{../vendorBusinessId}}"/>
+      <input type="hidden" name="vendorName" value="{{../vendorName}}"/>
+      <input type="hidden" name="vendorLink" value="{{../vendorLink}}"/>
+      <input type="hidden" name="vendorEmail" value="{{../vendorEmail}}"/>
+      {{unitType}}
       <input type="submit" class="addToCart btn btn-default" value="Add Quantity" />
   </form>
 </template>
