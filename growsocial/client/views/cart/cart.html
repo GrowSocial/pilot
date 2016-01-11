@@ -1,0 +1,83 @@
+<template name="cart">
+  <h1 class="title cart-title">Shopping cart</h1>
+  
+  <!-- Remove this -->
+  <input type="button" class="addSample btn btn-default" value="Add Sample Data" />
+  <!-- Remove this -->
+  
+  <div class="container cart-container">
+    <div class="col-md-9">
+      <ul>
+        {{#each items}}
+          <li>
+            <div class="cartOrder">
+              <div class="vendor">
+                <p>{{vendorName}}</p>
+              </div>
+              <ul class="allProducts">
+                {{#each products}}
+                  <li class="row">
+                    <span class="quantityBtns">
+                      <input type="button" class="btn btn-default" value="+" /><br>
+                      <input type="button" class="btn btn-default" value="-" />
+                    </span>
+                    
+                    <span class="quantity">
+                      <input type="number" class="quantityVal" value="{{quantity}}" />   
+                      <p class="unitType">{{unitType}}</p>
+                    </span>
+                    
+                    <span class="itemName">{{name}}</span>
+                    
+                    <span class="removeItem">
+                      <a class="glyphicon glyphicon-trash"></a>
+                    </span>
+                    
+                    <span class="price">
+                      ${{unitPrice}} / Total: ${{itemTotalPrice}}
+                      <p class="currency">{{currency}}</p>
+                    </span>
+                  </li>
+                {{/each}}
+                <li class="row totals">
+                  <span class="itemName">Total:</span>
+                  <span class="price">${{vendorTotal}}</span>
+                  <span class="order">
+                    <a class="payVendor">Pay this vendor</a>
+                  </span>
+                  <script>
+                    $(document).ready(function(){
+                      $('[data-toggle="popover"]').popover();
+                    });
+                  </script>
+                </li>
+              </ul>
+            </div>
+          </li>
+        {{/each}}
+        <li class="row totals">
+          <span class="itemName">Total:</span>
+          <span class="price">${{totalPrice}}</span>
+          <span class="order"> <a class="">Pay all vendors</a></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template name="addQtyToCart">
+  <form class="addToCartForm">
+      Quantity:
+      <input type="number" name="quantityNum" value="1"/>
+      <!-- TODO find a better way to pass vendor details to the event handler -->
+      <input type="hidden" name="vendor_key" value="{{../vendor_key}}"/>
+      <input type="hidden" name="vendorUserId" value="{{../vendorUserId}}"/>
+      <input type="hidden" name="vendorBusinessId" value="{{../vendorBusinessId}}"/>
+      <input type="hidden" name="vendorName" value="{{../vendorName}}"/>
+      <input type="hidden" name="vendorLink" value="{{../vendorLink}}"/>
+      <input type="hidden" name="vendorEmail" value="{{../vendorEmail}}"/>
+      {{unitType}}
+      <input type="submit" class="addToCart btn btn-default" value="Add Quantity" />
+  </form>
+</template>
+

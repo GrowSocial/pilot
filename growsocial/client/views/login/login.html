@@ -19,13 +19,19 @@
                         </div>
                     </div>
                     <div class="panel-footer">
+                        {{#if infoMessage}}
+                            <div class="alert alert-info" role="alert">{{infoMessage}}</div>
+                        {{/if}}
+                        {{#if errorMessage}}
+                            <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                        {{/if}}
                         <button type="submit" class="btn btn-primary">Login</button>                       
-                        <button  class="btn btn-primary btn-facebook">Facebook Login</button>
+                        <!-- <button  class="btn btn-primary btn-facebook" disabled>Facebook Login</button> -->
+                        <a href="/forgotPassword" class="btn btn-default" role="button">Forgot password</a>
+                        <a href="/register" class="btn btn-default" role="button">Create account</a>
                     </div>
                 </div>
             </form>
-            <a href="/forgotPassword">Forgot password</a>
-            <a href="/register">Create account</a>
         </div>
     </div>
 </template>
@@ -60,11 +66,17 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        {{#if infoMessage}}
+                            <div class="alert alert-info" role="alert">{{infoMessage}}</div>
+                        {{/if}}
+                        {{#if errorMessage}}
+                            <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                        {{/if}}
+                        <button type="submit" class="btn btn-primary">Register</button>                       
+                        <a href="/login" class="btn btn-default" role="button">Login</a>
                     </div>
                 </div>
             </form>
-            <a href="/login">Login</a>
         </div>
     </div>
 </template>
@@ -84,12 +96,18 @@
                         </div>
                     </div>
                     <div class="panel-footer">
+                        {{#if infoMessage}}
+                            <div class="alert alert-info" role="alert">{{infoMessage}}</div>
+                        {{/if}}
+                        {{#if errorMessage}}
+                            <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                        {{/if}}
                         <button type="submit" class="btn btn-primary">Reset Password</button>                       
+                        <a href="/login" class="btn btn-default" role="button">Login</a>
+                        <a href="/register" class="btn btn-default" role="button">Create account</a>
                     </div>
                 </div>
             </form>
-            <a href="/login">Login</a>
-            <a href="/register">Create account</a>
         </div>
     </div>
 </template>
@@ -113,6 +131,12 @@
                         </div>
                     </div>
                     <div class="panel-footer">
+                        {{#if infoMessage}}
+                            <div class="alert alert-info" role="alert">{{infoMessage}}</div>
+                        {{/if}}
+                        {{#if errorMessage}}
+                            <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                        {{/if}}
                         <button type="submit" class="btn btn-primary">Change Password</button>                       
                     </div>
                 </div>

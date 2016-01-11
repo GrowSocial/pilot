@@ -1,10 +1,33 @@
+
 <template name="people">
-  <h1>People</h1>
-  <h2>Individuals</h2>
-  <ul>
-    {{#each peopleList}}
-      <li><a href="{{pathForProfile}}"><img src="{{pic}}" class="img-circle navbar-img" alt="Profile"> {{name}}</a></li>
-    {{/each}}
-  </ul>
-  <h2>Groups</h2>
+
+<div class="row">
+
+  <!-- People 
+  ****************************************************************************** -->
+  <div class="col-md-6"><h1><b>People</b></h1> 
+    <table class="table table-bordered table-condensed">
+      <thead><tr> <td><b> Fullname * email</b></td> </tr> </thead>
+        <tbody>       
+          {{#each people}}
+            <tr class="person-row">
+              {{#if notAdmin}}
+              <td><a href="{{pathForProfile}}"> {{fullname}} * {{email}}</a></td>
+              {{/if}}
+            </tr>
+          {{/each}}      
+        </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-md-6"><h1><br>Groups</h1></div>
+
+
+
+</div> <!-- end row -->
+
+
 </template>
+
+

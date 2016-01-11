@@ -38,6 +38,13 @@ FlowRouter.route('/business/:businessId', {
   },
 });
 
+FlowRouter.route('/marketplace/:productId', {
+  name: "marketplace",
+  action: function(params) {
+    BlazeLayout.render("main", {content: "marketplace"});
+  },
+});
+
 FlowRouter.route('/notifications', {
   name: "notifications",
   action: function() {
@@ -73,6 +80,15 @@ FlowRouter.route('/login', {
   },
 });
 
+FlowRouter.route('/logout', {
+  name: "logout",
+  action: function() {
+    // TODO error handling on logout
+    Accounts.logout();
+    BlazeLayout.render("main", {content: "home"});
+  },
+});
+
 FlowRouter.route('/register', {
   name: "register",
   action: function() {
@@ -91,5 +107,20 @@ FlowRouter.route('/changePassword', {
   name: "changePassword",
   action: function() {
     BlazeLayout.render("main", {content: "changePassword"});
+  },
+});
+
+FlowRouter.route('/cart', {
+  name: "cart",
+  action: function() {
+    BlazeLayout.render("main", {content: "cart"});
+  },
+});
+
+// FlowRouter.route('/search/:searchOption?', {
+FlowRouter.route('/search', {
+  name: "search",
+  action: function(params, queryParams) {
+    BlazeLayout.render("main", {content: "search"});
   },
 });

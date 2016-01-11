@@ -25,22 +25,6 @@
   <div id="background2"></div>
 </template>
 
-<!-- 
-TODO navbar replace brand with brand image (logo):
-http://getbootstrap.com/components/#navbar-brand-image 
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="...">
-      </a>
-    </div>
-  </div>
-</nav>
-
--->
-
 <template name="navigation">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -54,6 +38,8 @@ http://getbootstrap.com/components/#navbar-brand-image
           </button>
           {{> navBrand}}
           {{ > navConnection}}
+          {{> navSearchForm}}
+          {{> navSearchButton}}
           {{#if currentUser}}
             {{ > navNotificationsButton}}
           {{/if}}
@@ -61,17 +47,16 @@ http://getbootstrap.com/components/#navbar-brand-image
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            {{> navSearch}}
-          </ul>
           <!-- TODO notifications and search button show on navbar even on small screens -->
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{ > navProfilePic}}
+              {{ > navMyCart}}
               {{ > navNotificationsList}}
               {{ > navHelp}}
               {{ > navLogout}}
             {{else}}
+              {{ > navMyCart}}
               {{ > navHelp}}
               {{ > navSignIn}}
             {{/if}}
@@ -102,19 +87,30 @@ http://getbootstrap.com/components/#navbar-brand-image
 </template>
 
 <template name="navBrand">
-  <a class="navbar-brand" href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">GrowSocial</a>
+  <a class="navbar-brand" href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img class="navbar-img hidden-xs" alt="GrowSocial" src="/images/logo.png"><img class="navbar-img visible-xs" alt="GrowSocial" src="/images/logo_icon.png"></a>
 </template>
 
-<template name="navSearch">
-  <!-- TODO for small screen, just show search icon, which drops down to search form -->
+<template name="navSearchForm">
+  <ul class="nav navbar-nav hidden-xs">
+
+  <!-- For small screen, just show search icon, which drops down to search form -->
   <form class="navbar-form" role="search">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" id="navSearchText" class="form-control" placeholder="Search">
     </div>
     <button type="submit" class="btn btn-default" aria-label="Submit">
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </button>
   </form>
+  </ul>
+</template>
+
+<template name="navSearchButton">
+  <div class="visible-xs">
+    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </a>
+  </div>
 </template>
 
 <template name="navConnection">
@@ -127,9 +123,10 @@ http://getbootstrap.com/components/#navbar-brand-image
 <template name="navProfilePic">
   <!-- TODO use pathFor -->
   <!-- TODO read data from collections -->
-  <li class="hidden-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile"> Jane</a></li>
-  <li class="visible-xs"><a href="/profile/1" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
+  <li class="hidden-xs"><a href="{{pathForProfile}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile"> {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}{{else}}My Profile{{/if}}</a></li>
+  <li class="visible-xs"><a href="{{pathForProfile}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
+
 
 <template name="navSignIn">
   <li><a href="/login" data-toggle="collapse" data-target=".navbar-collapse.in">Sign In</a></li>
@@ -170,17 +167,18 @@ http://getbootstrap.com/components/#navbar-brand-image
   <li class="{{isActiveRoute 'notifications'}}"><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
   <li class="disabled"><a href="#">Messages</a></li>
   <li class="disabled"><a href="#">Events</a></li>
-  <li class="disabled"><a href="#">My Marketplace</a></li>
+  <li><a href="/marketplace/1" data-toggle="collapse" data-target=".navbar-collapse.in">My Storefront</a></li>
   <li class="disabled"><a href="#">Saved Posts</a></li>
   <li><a href="/changePassword" data-toggle="collapse" data-target=".navbar-collapse.in">Change Password</a></li>
 </template>
 
 <template name="navPages">
   <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
-  <li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Groups</a></li>
+  <li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">People</a></li>
   <li class="disabled"><a href="#">Discussions</a></li>
   <li class="disabled"><a href="#">LocalPedia</a></li>
   <li class="{{isActiveRoute 'businesses'}}"><a href="{{pathFor 'businesses'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
+  <li class="{{isActiveRoute 'marketplace'}}"><a href="/marketplace/0" data-toggle="collapse" data-target=".navbar-collapse.in">Marketplace</a></li>
   <li class="disabled"><a href="#">Opportunities</a></li>
 </template>
 
@@ -199,4 +197,8 @@ http://getbootstrap.com/components/#navbar-brand-image
 
 <template name="navContactUs">
   <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
+</template>
+
+<template name="navMyCart">
+  <li class="{{isActiveRoute 'cart'}}"><a href="{{pathFor 'cart'}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Cart</a></li>
 </template>
