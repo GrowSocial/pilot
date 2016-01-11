@@ -367,8 +367,8 @@ Template.searchMap.rendered = function() {
   // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
   /////////////
   leafletmapp = L.map('SearchResultMap').setView([-37.8136, 144.9631], 13);
-  // var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+  var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
   var osmAttrib='&copy; OpenStreetMap contributors';
   var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 19, attribution: osmAttrib});   
   leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
