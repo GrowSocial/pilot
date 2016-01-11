@@ -1,85 +1,83 @@
 
 <template name="profile">
 
+<head>
+    <!-- for popups ..  Jan 2016
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 
-                <!-- \common\schemas.js: * * * * * * * * * * * * * * * * * * * * * * * * * -->
-                <!-- Schemas.Person = new SimpleSchema({
-                  member_key: {type: String, index: 1, unique: true },
-                       email: {type: String, optional: false, unique: true },
-                   firstname: {type: String, optional: true},
-                    lastname: {type: String, optional: true},
-                    fullname: {type: String, optional: true},
-                      street: {type: String, optional: true },
-                     street2: {type: String, optional: true },
-                        city: {type: String, optional: true },
-                       state: {type: String, optional: true ,
-                              allowedValues: ["AL", etc..], 
-                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
-                      zipcode:{ type:   String, optional: true },
-                  occupations:{ type: Array, optional: true },    
-                              'occupations.$': {          type: Object },
-                              'occupations.$.vocation': { type: String },
-                              'occupations.$.descript': { type: String , optional:true } ,
-                     location:{type: String,   optional: true },
-                        phone:{type: String,   optional: true },
-                      website:{type: String,   optional: true },
-                        links:{type: String,   optional: true },
-                   facebookID:{type: String,   optional: true },
-                    twitterID:{type: String,   optional: true },
-                  instagramID:{type: String,   optional: true },
-                        about:{type: String,   optional: true }
-                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-            -->
+    <style>
+      .popover { border: 2px; }
+      .popover-title { background-color: #73AD21; color: #FFFFFF; font-size: 14px; text-align:center; }
+      .popover-content { background-color: white; color: #004D00; padding: 15px;  text-align:center; }
+      .arrow { border-right-color: ##b3ffcc !important; }
+    </style>
 
+</head>
 
 {{#if Template.subscriptionsReady}} 
 {{#with selectProfile}} 
 
 
 <div id="headerPROFL">
+<script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
+<img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
+<div id="buttongroupPROFL" class="clearfix">
+    <div id="blog" class="clearfix">
+        <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+        title="Member Blog" data-content="View latest blog and archives">View Blog</button>
+    </div>
+    <div id="connect" class="clearfix">
+        <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+        title="Connect with Member" data-content="Include this member in your circles">Co n n e c t</button>
+    </div> 
+    <div id="message" class="clearfix">
+        <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+        title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
+    </div>
+</div>
 
-    <img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
-    <div id="buttongroupPROFL" class="clearfix">
-        <div id="blog" class="clearfix">
-            <p id="buttonLabels">View Blog</p>
-        </div>
-        <div id="connect" class="clearfix">
-            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;Connect</p>
-            <img id="buttonIcon" src="/images/icons/+.png" class="image" />
-        </div>
-        <div id="message" class="clearfix">          
-            <p id="buttonLabels">&nbsp;&nbsp;&nbsp;&nbsp;Message</p>
-            <img id="buttonIcon" src="/images/icons/thoughtBubble-ICON.png" class="image" />
-        </div>
+<div id="memberPicture" class="clearfix">
+    <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
+</div>
+
+<p id="membrfunctXX">{{fullname}}  </p>
+
+
+<div id="badges" class="clearfix">
+
+    <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+    title="Community Achievement" data-content="Honorary Mention"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
+    </div>
+    <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+    title="Community Achievement" data-content="ABOVE THE MUD"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
+    </div>
+    <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+    title="Community Achievement" data-content="Skilled Gardener">
+    <img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
+    </div>
+    <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+    title="Community Achievement" data-content="Sunny Disposition!">
+    <img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
     </div>
 
-    <div id="memberPicture" class="clearfix">
-        <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
-    </div>
-    <p id="membrfunctXX">{{fullname}}  </p>
+</div>
 
-    <div id="badges" class="clearfix">
-        <div id="badge-frame" class="clearfix"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
-        </div>
-        <div id="badge-frame" class="clearfix"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
-        </div>
-        <div id="badge-frame" class="clearfix"><img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
-        </div>
-        <div id="badge-frame" class="clearfix"><img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
-        </div>
-        <p id="badges-help"> What’s this&#x3f;</p >
-        
-    </div>
+<div id="navbarPROFILE" class="clearfix">
+    <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+    title="Navigation" data-content="Return to PROFILE from other views">PROFILE</p>
+    <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto left" 
+    title="Navigation" data-content="More about this member">ABOUT</p>
+    <p id="membrfunct"></p> <p id="membrfunct"></p>
+    <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+    title="Navigation" data-content="See all Photos and Videos">PHOTOS/VIDEOS</p> 
+    <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+    title="Navigation" data-content="Go to this member's marketplace">MARKETPLACE</p> 
+    <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
+    title="Navigation" data-content="More activity for this member">MORE ▼</p>
 
-    <div id="navbarPROFILE" class="clearfix">
-        <p id="membrfunctX">PROFILE</p>
-        <p id="membrfunctX">ABOUT</p>
-        <p id="membrfunct"></p> <p id="membrfunct"></p>
-        <p id="membrfunctX">PHOTOS/VIDEOS</p> 
-        <p id="membrfunctX">MARKETPLACE</p> 
-        <p id="membrfunctX">MORE ▼</p>
-
-    </div>
+</div>
 </div> <!-- headerPROFL -->
 
 
@@ -87,15 +85,16 @@
 
     <div id="box" class="clearfix">
         
-        <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
-        <p id="sidebarcontent">
+        <img id="IconCNONE"  src="/images/icons/category-icon.png" class="image" />
+        <p id="sidebarcontent" >
             {{#each occupations}}
             <span id="txtSp1">{{vocation}}</span>
             <span id="txtSp1">*{{descript}}<br /></span>
             {{/each}}       
         </p>
 
-        <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" />
+        <img id="IconCBOTH" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
+            title="Location" data-content="" src="/images/icons/location-icon.png" class="image" />
         <p id="sidebarcontent"><span id="txtSp1">{{location}}</span></p>
     </div> <!-- header-->
 
@@ -141,9 +140,8 @@
     {{> MemberReviews}}
 
 
-    <div id="box" class="clearfix">
-    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-    <p id="sidebarHDR"> PHOTOS </p>
+    <div id="box" class="clearfix"><img id="horizonDividr" 
+        src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> PHOTOS </p>
     <!--
     Schemas.Member_Pictures = new SimpleSchema({
       member_key: { type: String, index: 1},
@@ -196,9 +194,8 @@
     </div><!-- PHOTOS -->
 
 
-    <div id="box" class="clearfix">
-    <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-    <p id="sidebarHDR"> VIDEOS </p>
+    <div id="box" class="clearfix"><img id="horizonDividr" 
+        src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> VIDEOS </p>
         <!--
         Schemas.Member_Videos = new SimpleSchema({
           member_key: { type: String, index: 1},
@@ -410,13 +407,84 @@
 
 <!-- allows a member to edit their core profile data, 
      if logged in and navigate to the profile page
-    * minimal formatting, 
-    * (yet: important to eliminate member_key from this quickForm setting, 
-        if member alters this field will break established link to all other profile collections)
 -->
 {{#if myProfile}}
 <div id="editorPROFL" class="clearfix">
-{{> quickForm collection="People" doc=selectProfile id="updateBookForm" type="update"}}
+
+{{> quickForm 
+    id="updatePROFILE" 
+    type="update"
+
+    collection="People" 
+
+    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"
+    
+    doc=selectProfile
+}}
+
+<!--
+for testing, to impliment Autoform ~ quickForm ~ afQuickField
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://autoform.meteor.com/qfdetails
+
+simplest option, WORKS but renders all fields in schema:
+{{> quickForm collection="People"  doc=selectProfile id="updateBookForm" type="update"}}
+
+extended option, WORKS (with notes on variation )
+{{> quickForm 
+    id="updatePROFILE" 
+    type="update"
+    collection="People" 
+    * ignored: 
+        schema=Schemas.Person|profileEdit
+    ** effectively, 
+        autoform/quickForm uses a pool of all loaded schema fields
+    doc=selectProfile 
+    fields="fname,lastname" !WORKS
+}}
+
+
+DOESN'T WORK: omitfields is ignored
+{{> quickForm 
+    id="updateBookForm" 
+    type="update"
+    collection="People" 
+    *with or without: schema=Schemas.Person
+    doc=selectProfile 
+    omitfields="member_key"
+}}
+
+*no update committed to collection!!!!!!!!!!!!
+{{#autoForm id="updatePROFILE" 
+    *including or excluding schema, does not matter
+    *including schema without collection returns 'undefined' errors
+
+    collection="People"
+    schema=Schemas.Person
+    doc=selectProfile 
+    fields="firstname,lastname"
+    }}
+    {{> afQuickFields}}
+    <div><br><button type="submit">Submit</button><br></div>
+{{/autoForm}}
+
+
+*many varied attempts, not able to get around  'undefined' errors, 
+*   placing schema and collection definitions at various load orders
+    http://autoform.meteor.com/updateaf
+{{#autoForm id="afUpdateDemo" type="update" collection=Collections.People doc=selectProfile }}
+  {{> afQuickField name="firstName"}}
+  {{> afQuickField name="lastName"}}
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
+    <button type="reset" class="btn btn-default" disabled="{{disableButtons}}">Reset Form</button>
+  </div>
+{{/autoForm}}
+
+--> 
+
+
+
 </div> <!--  -->
 {{/if}}
 
@@ -498,16 +566,7 @@
 <template name="MyMarketItems">
     <!-- Schemas.MarketItems = new SimpleSchema({
       vendor_key:{ type: String,index: 1},
-      items: {  type: Array,    optional: false  },    
-       'items.$': {    type: Object  },
-       'items.$.description': {  type: String , optional:false},
-       'items.$.type': {         type: String , optional:true },
-       'items.$.salesAlert': {   type: String , optional:true },
-       'items.$.unitType': {     type: String , optional:true },
-       'items.$.unitPrice': {    type: Number , decimal: true , optional:true },
-        'items.$.currency': {    type: String , optional:true },
-        'items.$.photo': {       type: Object , optional:true }
-    });
+
 
     -->
     {{#if Template.subscriptionsReady}}
@@ -569,3 +628,30 @@
 </template>
 
 
+                <!-- Schemas.Person = new SimpleSchema({
+                  member_key: {type: String, index: 1, unique: true },
+                       email: {type: String, optional: false, unique: true },
+                   firstname: {type: String, optional: true},
+                    lastname: {type: String, optional: true},
+                    fullname: {type: String, optional: true},
+                      street: {type: String, optional: true },
+                     street2: {type: String, optional: true },
+                        city: {type: String, optional: true },
+                       state: {type: String, optional: true ,
+                              allowedValues: ["AL", etc..], 
+                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
+                      zipcode:{ type:   String, optional: true },
+                  occupations:{ type: Array, optional: true },    
+                              'occupations.$': {          type: Object },
+                              'occupations.$.vocation': { type: String },
+                              'occupations.$.descript': { type: String , optional:true } ,
+                     location:{type: String,   optional: true },
+                        phone:{type: String,   optional: true },
+                      website:{type: String,   optional: true },
+                        links:{type: String,   optional: true },
+                   facebookID:{type: String,   optional: true },
+                    twitterID:{type: String,   optional: true },
+                  instagramID:{type: String,   optional: true },
+                        about:{type: String,   optional: true }
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+            -->

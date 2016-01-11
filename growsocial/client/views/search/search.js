@@ -46,6 +46,7 @@ var circleSearch;
 var circleDisplay;
 var circleBox;
 var peopleMarkersGroup;
+var locationMarker;
 
 Template.search.onCreated(function() {
   // console.log("search.onCreated, Template.instance():", Template.instance());
@@ -148,43 +149,11 @@ Template.search.events({
       }
       peopleMarkersGroup.clearLayers();
       
-      console.log("PeopleIndex.getComponentDict().get('count'): ",PeopleIndex.getComponentDict().get('count'));
-      console.log("PeopleIndex.getComponentDict().get('currentCount'): ",PeopleIndex.getComponentDict().get('currentCount'));
-      if (PeopleIndex.getComponentDict().get('count')) {
-        // TODO for each person in search results cursor, get latlng, add marker to map
-        var peopleCursor = PeopleIndex.getComponentMethods().getCursor();
-        console.log('peopleCursor before fetch', peopleCursor);
-        var peopleList = peopleCursor.fetch();  // TODO FIXME  this is the wrong place to do the fetch!
-        console.log('peopleCursor after fetch', peopleCursor);
-        console.log('peopleList after fetch', peopleList);
-        peopleList.forEach(function (person) {
-          console.log("Name of person: ", person.firstname);
-          console.log("latlng: ", person.latlng);
-          if (person.latlng) {
-            var marker = L.marker(person.latlng);
-            marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.city);
-            // add marker to marker group for search results
-            peopleMarkersGroup.addLayer(marker);
-          }
-        });
-        peopleMarkersGroup.addTo(leafletmapp);
-      }
   */
       // show latlong of circle centre and latlong of bounds:
       // console.log('circle: ', circle);
       // console.log('circle.getBounds(): ', circle.getBounds());
-/*
-lat: -37.8136
-lng: 144.9631
-_mRadius: "1000"
 
-LatLngBounds _northEast: L.LatLng
-  lat: -37.80464947213092
-  lng: 144.97442965087888
-_southWest: L.LatLng
-  lat: -37.82255053579303
-  lng: 144.95177034912106
-*/
       // TODO if circle was removed from map, re-add it
       // TODO requery by altering range filter
       
@@ -300,10 +269,24 @@ _southWest: L.LatLng
 });
 
 function onLocationFound(e) {
+  // remove or initialise marker and circle
+  if (locationMarker) {
+    leafletmapp.removeLayer(locationMarker).closePopup();
+    leafletmapp.removeLayer(locationCircle);
+  } else {
+    locationMarker = L.marker().bindPopup('');
+    locationCircle = L.circle();
+  }
+  // new position
   var radius = e.accuracy / 2;
-  L.marker(e.latlng).addTo(leafletmapp)
-      .bindPopup("You are within " + radius + " meters from this point").openPopup();
-  L.circle(e.latlng, radius).addTo(leafletmapp);
+  locationMarker.setPopupContent("You are within " + radius + " meters from this point");
+  locationMarker.setLatLng(e.latlng).addTo(leafletmapp).openPopup();
+  locationCircle = L.circle(e.latlng, radius).addTo(leafletmapp);
+  // timer to close popup and remove circle
+  Meteor.setTimeout(function () {
+    locationMarker.closePopup();
+    leafletmapp.removeLayer(locationCircle);
+  }, 2000);
 }
 
 function onLocationError(e) {
