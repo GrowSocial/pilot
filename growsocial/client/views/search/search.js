@@ -398,8 +398,9 @@ Template.searchMap.rendered = function() {
   circleSearch = L.circle([-37.8136, 144.9631], 2000);
   circleDisplay = L.circle([-37.8136, 144.9631], 2000, {
       color: 'blue',
-      fillColor: '#31d',
-      fillOpacity: 0.2
+      fill: false,
+      // fillColor: '#31d',
+      // fillOpacity: 0.2,
   });
   // }).addTo(leafletmapp);
   // leafletmapp.fitBounds(circleDisplay.getBounds(), {maxZoom: 19});
