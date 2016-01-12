@@ -12,7 +12,7 @@ s0.parentNode.insertBefore(s1,s0);
 // </script>
 // <!--End of Tawk.to Script-->
 
-Session.setDefault('sunbeamBackground', false);
+Session.setDefault('backgroundMainStyle1', true);
 Session.setDefault('notificationCount', 4);
 
 Meteor.setInterval(function(){
@@ -90,17 +90,13 @@ Template.navProfilePic.helpers({
 });
  
 function switchBackground() {
-  if (Session.get('sunbeamBackground')) {
-    $("#background").css("background-image", "url('/images/garden.jpg')");
-    $("#background").css("opacity", 0.2);
-    $("#background").css("filter", "alpha(opacity=20)"); // TODO test on IE8
+  if (Session.get('backgroundMainStyle1')) {
+    $("#backgroundMain").removeClass("backgroundMainStyle1").addClass("backgroundMainStyle2");
     // $(window).resize(); // TODO is resize needed?
-    Session.set('sunbeamBackground', false);
+    Session.set('backgroundMainStyle1', false);
   } else {
-    $("#background").css("background-image", "url('/images/sunbeams.png')");
-    $("#background").css("opacity", 1.0);
-    $("#background").css("filter", "alpha(opacity=100)"); // TODO test on IE8
+    $("#backgroundMain").removeClass("backgroundMainStyle2").addClass("backgroundMainStyle1");
     // $(window).resize(); // TODO is resize needed?
-    Session.set('sunbeamBackground', true);
+    Session.set('backgroundMainStyle1', true);
   }
 };
