@@ -1,20 +1,33 @@
-Template.contactUsMessageList.helpers({
-  contactUsMessages: function() {
-    return ContactUsMessages.find({}, {sort: {createdAt: -1}});
-  },
-  someDate: function() {
-    return moment(Template.currentData().createdAt).format('YYYY-MMM-DD HH:mm:ss');
+Template.contactUs.helpers({
+  person: function() {
+    return People.findOne({
+      member_key: Meteor.userId()
+    }, {
+      fields: {
+        fullname: 1,
+        email: 1,
+        zipcode: 1
+      }
+    });
   },
 });
 
+Template.contactUsMessageList.helpers({
+  contactUsMessages: function() {
+    // relies on the published messages filtering by author = this userId
+    return ContactUsMessages.find({}, {sort: {createdAt: -1}});
+  },
+  // someDate: function() {
+    // works okay, but now using formatTime() helper defined in profile.js
+    // return moment(Template.currentData().createdAt).format('YYYY-MMM-DD HH:mm:ss');
+  // },
+});
+
+/*
 Template.contactUs.onRendered(function () {
-  // TODO why are the forms clearing on refresh page?
-  // TODO make reactive based on Meteor.user(), so a logout action causes a clearing of email and other default values?
+  // This way of setting form defaults is not reactive, so form defaults clear out when page is refreshed
   if (Meteor.user()) {
     // Set on-screen email address to same as logged-in user
-    // TODO pick an "active" email address rather than just the first email address
-    // TODO pick from People collection rather than Meteor.user
-    // TODO pick zip from People collection
     $('#email').val(Meteor.user().emails[0].address);
     if (!!Meteor.user().profile & !!Meteor.user().profile.firstname) {
       $('#name').val(Meteor.user().profile.firstname + ' ' + Meteor.user().profile.lastname);
@@ -24,6 +37,7 @@ Template.contactUs.onRendered(function () {
     $('#email').val("");
   };
 });
+*/
 
 Template.contactUs.events({
   'submit #contact-us-form': function (event) {
@@ -36,9 +50,9 @@ Template.contactUs.events({
     // TODO alter visible styling on disabled button
     
     var message = {
-      name: event.target.name.value,  // alternative: $('#name').val()
+      name: event.target.name.value,
       email: event.target.email.value,
-      zip: event.target.zip.value,
+      zipcode: event.target.zipcode.value,
       text: event.target.message.value,
     };
     Meteor.call("addContactUsMessage", message, function(error, result) {
