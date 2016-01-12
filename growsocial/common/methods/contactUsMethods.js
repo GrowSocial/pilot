@@ -16,11 +16,11 @@ Meteor.methods({
       '\nzip: ' + message.zip +
       '\ntext: ' + message.text;
 
-    // send an email containing the message
+    // send an email to ourselves containing the message
     var email = {
-      to: "growsocial.org@gmail.com",
-      from: "email@growsocial.org",
-      subject: "GrowSocial website message - Contact Us",
+      to: "GrowSocial Pilot Coordinator <growsocial.org@gmail.com>",
+      from: "GrowSocial Pilot Website <email@growsocial.org>",
+      subject: "GrowSocial pilot message - Contact Us",
       text: text,
     };
     // TODO handle errors -> log into database, already done in email function?
