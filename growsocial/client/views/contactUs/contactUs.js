@@ -1,6 +1,9 @@
 Template.contactUsMessageList.helpers({
   contactUsMessages: function() {
-    return ContactUsMessages.find();
+    return ContactUsMessages.find({}, {sort: {createdAt: -1}});
+  },
+  someDate: function() {
+    return moment(Template.currentData().createdAt).format('YYYY-MMM-DD HH:mm:ss');
   },
 });
 

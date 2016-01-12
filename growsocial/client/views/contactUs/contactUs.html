@@ -1,38 +1,41 @@
 <template name="contactUs">
-  <!-- TODO if logged in, prepopulate name and email and zip if have them -->
+  <!-- if logged in, prepopulates name and email and zip if have them -->
   <!-- TODO validate email address format -->
-  <h1>Contact Us</h1>
-  <div>
-    <form action="#" id='contact-us-form'>
-      <div class="form-group">
-        <input type="text" id="name" class="form-control" placeholder="Your Name">
+  <div class="container">
+      <h1>Contact Us</h1>
+      <div class="row">
+        <form class="col-sm-6 col-xs-10" action="#" id='contact-us-form'>
+          <div class="form-group">
+            <input type="text" id="name" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="form-group">
+            <input type="text" id="email" class="form-control" placeholder="Your Email">
+          </div>
+          <div class="form-group">
+            <input type="text" id="zip" class="form-control" placeholder="Your Zip (optional)">
+          </div>
+          <div class="form-group">
+            <textarea name="message" class="form-control" required="required" placeholder="Message"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn" id="button-submit">Submit message</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <input type="text" id="email" class="form-control" placeholder="Your Email">
-      </div>
-      <div class="form-group">
-        <input type="text" id="zip" class="form-control" placeholder="Your Zip (optional)">
-      </div>
-      <div class="form-group">
-        <textarea name="message" class="form-control" required="required" placeholder="Message"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn" id="button-submit">Submit message</button>
-      </div>
-    </form>
+      {{#if currentUser}}
+        {{> contactUsMessageList}}
+      {{/if}}
   </div>
-  {{#if currentUser}}
-    {{> contactUsMessageList}}
-  {{/if}}
 </template>
 
 <template name="contactUsMessageList">
-  <!-- TODO if logged in, show previous feedback received from the same user -->
+  <!-- if logged in, show previous messages received from the same user -->
   <!-- TODO if logged in as admin, option to browse all feedback // OR have an admin page for this -->
-  <h2>Messages you have submitted</h2>
+  <h2>Messages Submitted</h2>
   <ul>
     {{#each contactUsMessages}}
-      <li>Date: {{createdAt}}, Name: {{name}}, Email: {{email}}, Zip: {{zip}}, Message: {{text}}</li>
+      <!-- <li>Date: {{createdAt}}, Name: {{name}}, Email: {{email}}, Zip: {{zip}}, Message: {{text}}</li> -->
+      <li><span class="hidden-xs">{{someDate}} </span>{{text}}</li>
     {{/each}}
   </ul>
 </template>
