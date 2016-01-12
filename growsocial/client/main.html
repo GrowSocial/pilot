@@ -6,10 +6,17 @@
 </head>
 
 <template name="main">
-  {{> backgrounds}}
-  <!-- {{> header}} -->
-  {{> navigation}}
-  {{> Template.dynamic template=content}}
+<!-- Uncomment the divs here to hide everything from smaller screens -->
+<!--   <div class="visible-xs visible-sm">
+      <h1 style="text-align: center">Only suitable for larger screens</h1>
+      <p style="text-align: center">Please view on a screen resolution of 1366&nbsp;x&nbsp;768 pixels or larger.</p>
+  </div>
+  <div class="visible-md visible-lg"> -->
+      {{> backgrounds}}
+      <!-- {{> header}} -->
+      {{> navigation}}
+      {{> Template.dynamic template=content}}
+<!--   </div> -->
 </template>
 
 <!-- TODO loading? -->
