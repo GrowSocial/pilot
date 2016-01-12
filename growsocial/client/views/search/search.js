@@ -239,13 +239,13 @@ Template.search.events({
       if (PeopleIndex.getComponentDict().get('count')) {
         // TODO for each person in search results cursor, get latlng, add marker to map
         var peopleCursor = PeopleIndex.getComponentMethods().getCursor();
-        console.log('peopleCursor before fetch', peopleCursor);
+        // console.log('peopleCursor before fetch', peopleCursor);
         var peopleList = peopleCursor.fetch();  // TODO FIXME  this is the wrong place to do the fetch!
-        console.log('peopleCursor after fetch', peopleCursor);
-        console.log('peopleList after fetch', peopleList);
+        // console.log('peopleCursor after fetch', peopleCursor);
+        // console.log('peopleList after fetch', peopleList);
         peopleList.forEach(function (person) {
-          console.log("Name of person: ", person.firstname);
-          console.log("latlng: ", person.latlng);
+          // console.log("Name of person: ", person.firstname);
+          // console.log("latlng: ", person.latlng);
           if (person.latlng) {
             var marker = L.marker(person.latlng);
             marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.city);
