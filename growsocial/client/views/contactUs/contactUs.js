@@ -10,6 +10,8 @@ Template.contactUs.onRendered(function () {
   if (Meteor.user()) {
     // Set on-screen email address to same as logged-in user
     // TODO pick an "active" email address rather than just the first email address
+    // TODO pick from People collection rather than Meteor.user
+    // TODO pick zip from People collection
     $('#email').val(Meteor.user().emails[0].address);
     if (!!Meteor.user().profile & !!Meteor.user().profile.firstname) {
       $('#name').val(Meteor.user().profile.firstname + ' ' + Meteor.user().profile.lastname);
@@ -23,13 +25,12 @@ Template.contactUs.onRendered(function () {
 Template.contactUs.events({
   'submit #contact-us-form': function (event) {
     event.preventDefault();
-    console.log("submit contact-us-form, event: ", event);
+    // console.log("submit contact-us-form, event: ", event);
 
     $('#button-submit').text("Submitting message...");
     $('#button-submit').prop( "disabled", true );
 
-    // TODO let user know message stored.
-    // TODO re-enable button once message stored.
+    // TODO alter visible styling on disabled button
     
     var message = {
       name: event.target.name.value,  // alternative: $('#name').val()
@@ -37,7 +38,15 @@ Template.contactUs.events({
       zip: event.target.zip.value,
       text: event.target.message.value,
     };
-    Meteor.call("addContactUsMessage", message);
+    Meteor.call("addContactUsMessage", message, function(error, result) {
+      if (error) {
+        $('#button-submit').text("Submission error, retry");
+      } else {
+        event.target.message.value = "";
+        $('#button-submit').text("Message submitted. Send another?");
+      }
+      $('#button-submit').prop( "disabled", false );
+    });
     return false;
   }
 });

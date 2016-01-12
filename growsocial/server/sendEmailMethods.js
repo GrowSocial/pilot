@@ -1,11 +1,11 @@
 Meteor.methods({
-  // TODO use callback to pass error/result to method caller (client or server)
   // TODO limit how many sent per period per type
   // TODO !!!!!!!! generic sendMail method not to be accessible from client !!!!!!!!
   //         have it as a server function, and called by various server activities:
   //          shopping cart, contactUs, etc.
   
-  sendEmail: function (email, callback) {
+  sendEmail: function (email) {
+
     //Check to make sure fields are strings
     check([email.to, email.from, email.subject, email.text], [String]);
 
@@ -21,9 +21,9 @@ Meteor.methods({
         subject: email.subject,
         text: email.text,
       });
-      callback && callback();
+      return;
     }
-    // Catch any errors
+    // Catch, report, and rethrow errors
     catch(err) {
       console.log("Email.send error: ", err);
       console.log("Email that was attempted: ", email);
@@ -31,7 +31,7 @@ Meteor.methods({
         tag: 'sendEmail',
         message: err.message + ', mail: ' + EJSON.stringify(email)
       });
-      callback && callback(err);
+      throw(err);
     }
   }
 });
