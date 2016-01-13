@@ -36,14 +36,13 @@ Meteor.methods({
 		ShoppingCart.insert(order);
   },
 
-	// Add to shopping cart collection
+	// Adds an item to the shopping cart collection
 	addCartItem: function(item) {
 
-	    // TODO update current order if there is one
 	    // TODO vendorEmail won't be exposed to the client (browser)
 	    // TODO when not logged in, add session id
 
-		// If vendor doesn't exist in collection
+			// If vendor doesn't exist in collection
     	if (!Meteor.call('checkForVendor', item)) {
     		// Create the product structure
 		    var product = {
@@ -76,30 +75,35 @@ Meteor.methods({
     		ShoppingCart.insert(order);
     	}
     	else {
-    		// Check if the product exists inside the order and if it does update it with new quantity.
-    		// If product doesnt exist, add it to the products array
 
-	    	var orderProducts = ShoppingCart.find({
+    		// Get the product array
+	    	var completeOrder = ShoppingCart.find({
 	    		vendorBusinessId: item.vendorBusinessId, 
-				vendorUserId: item.vendorUserId,
-			}, { 
-				fields: { products: 1 }
-			}).fetch()[0].products;
+					vendorUserId: item.vendorUserId,
+				}, { 
+					fields: { products: 1, }
+				}).fetch();
+
+	    	var orderProducts = completeOrder[0].products;
 
 	    	for (var i = 0, len = orderProducts.length; i < len; i++) {
 	    		if (orderProducts[i].productId == item.productId) {
-	    			// TODO: Update quantity and vendorTotal
 
-	     			// ShoppingCart.update({
-					// 	vendorBusinessId: order.vendorBusinessId,
-					// 	vendorUserId: order.vendorUserId,
-					// }, {
-					// 	$set: {
+	    			// Calculate the item's total price and vendor total
+	    			var itp = orderProducts[i].itemTotalPrice + (item.quantity * item.unitPrice);
 
-					// 	}
-					// });
-					console.log("TODO: Update quantity");
-					break;
+	    			// Update document with new quantity
+	     			ShoppingCart.update({
+						vendorBusinessId: item.vendorBusinessId,
+						vendorUserId: item.vendorUserId,
+						"products.productId": item.productId,
+						}, {
+							$set: {
+								"products.$.quantity": item.quantity,
+								"products.$.itemTotalPrice": itp,
+							}
+						});
+						break;
 	    		}
 	    		else {
 	    			// Calculate the total price of the item
@@ -133,6 +137,27 @@ Meteor.methods({
     	}
 	},
 
+	// Increases or decreases the quantity and item's total price by 1
+	// Increase: True, Decrease: False
+	increaseOrDecrease: function(incOrDec, item) {
+		var multiplier;
+		if (incOrDec) {
+			multiplier = 1;
+		}
+		else {
+			multiplier = -1;
+		}
+
+		ShoppingCart.update(
+				{"products.productId": item.productId},
+				{$inc: {
+					"products.$.quantity": (1 * multiplier), 
+					"products.$.itemTotalPrice": (item.unitPrice * multiplier)
+				}},
+			);
+	},
+
+	// Checks if vendor exists in collection
 	checkForVendor: function(_order) {
 		
 		if (ShoppingCart.findOne({vendorUserId: _order.vendorUserId}) ||
@@ -142,9 +167,16 @@ Meteor.methods({
 		return false;
 	},
 
-	removeFromCart: function(item) {
+	// Assigns the userId to all the carts
+	assignUserId: function(user) {
+		ShoppingCart.update(
+			{userId: null},
+			{$set: {userId: Meteor.userId()}},
+		);
+	},
 
-		// Remove the item from the cart
+	// Removes the item from the cart
+	removeFromCart: function(item) {
 		ShoppingCart.update(
 			{ },
 			{ $pull: { products: item }},
