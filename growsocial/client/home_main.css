@@ -1,67 +1,42 @@
-#main_image_block {
-    float: left;
-    height: 695px;
-    width: 44%;
-    background-color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 59;
-    margin-top: 0px; /*120px;*/
-    margin-left: 28%;
-    clear: none;
-}
 
-#business_image_block,#localpedia_image_block,
-#opportunities_image_block,#events_image_block,
-#discussion_image_block,#member_image_block {
-    float: left; clear: none;
-    position: relative;top: 0px;left: 0px;z-index: 69;
-    height: 220px; width: 26.8%;
-    /*background-color: rgb(0, 0, 0); */
-}
-#member_image_block { margin-top: 0px; margin-left: -71.4%;
-}
-#events_image_block { margin-top: -695px; margin-left: 72.6%;
-}
-#business_image_block{ margin-top: -230px; margin-left: .6%;    
-}
-#localpedia_image_block { margin-top: -230px;   margin-left: 72.6%;
-}
-#opportunities_image_block { margin-top: -462px; margin-left: 72.6%;
-}
-#discussion_image_block { margin-top: -462px; margin-left: .6%;
-}
-
-
-/*#imageMain,#imageMember,#imageEvents,#imageDiscussions,
-#imageOpportunities,#imageBusiness,#imageLocalpedia*/
-#featureImg,#imageMain {
+#HomecentralImg {
         float: left;
-        width: auto;max-width: 100%; height: 222px;
+        width: auto;max-width: 100%; height: 100%;
         margin-left: 0%;   
-        margin-top: -48px;
+        margin-top: -260px;
         clear: none;
         color: rgb(0, 0, 0);
-        margin-right: 0%;      
-}
-   
-#imageMain {  height: auto;  margin-top: -690px;            
+        margin-right: 0%;       
 }
 
-/*#Members,#Discussions,#Events,
-#Opportunities,#Businesses,#Localpedia 
-*/
-#featureHdr{
+#main_image_blockxx,#business_image_block,#localpedia_image_block,
+#opportunities_image_block,#events_image_block,
+#discussion_image_block,#member_image_block {
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+}
+#featureImg {
+    margin: 0px;
+}
+#overlayText {
     float: left;clear: none;
-    width: 50%;   height: auto;
-    margin-top: 20px; margin-left: 6%;
-    font-size: 1.4em; color: rgb(255, 255, 255);
+    height: auto;
     position: relative;  top: 0px; left: 0px; z-index: 90;
+    margin-top: -200px; margin-left: 6%;
+}
+  
+.thumbnail {  
+    position:relative;
+    height: auto; 
+}
+
+#featureHdr{
+    font-size: 1.4em; color: rgb(255, 255, 255);
     text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;   
 }
-#Main_header {
+#Main_headerx {
     float: left;
     font-size: 2em;
     width: 88%;
@@ -76,7 +51,7 @@
     margin-top: 36px; margin-left: 7%;
     clear: none;
 }
-#Main_header2 {
+#Main_header2x {
     float: left;
     font-size: 1.2em;
     width: 88%;
@@ -92,8 +67,6 @@
 }
 #Learn_More_button {
     float: left;
-    height: 49px;
-    width: 26.433607%;
     background-color: rgb(18, 130, 206);
     position: relative;
     top: 0px;
@@ -119,9 +92,6 @@
 
 
 
-
-
-
 #Phoenix_Farms_Lakeland_Florida {
     float: left;
     font-size: 1em;
@@ -134,7 +104,7 @@
     top: 0px;
     left: 0px;
     z-index: 62;
-    margin-top: 442px;
+    margin-top: 2px;
     margin-left: 73.905724%;
     clear: both;
 }
@@ -254,12 +224,7 @@
 
 #Join_GrowSocial_button {
     float: left;
-    height: 45px;
-    width: 13.288626%;
-    background-color: rgb(18, 130, 206);
     position: relative;
-    top: 0px;
-    left: 0px;
     z-index: 25;
     margin-top: 40px;
     margin-left: 27%;
@@ -379,15 +344,13 @@
 
 #localpedia_button {
     float: left;
-    height: 45px;
-    width: 11.950147%;
     background-color: rgb(18, 130, 206);
     position: relative;
     top: 0px;
     left: 0px;
     z-index: 9;
-    margin-top: 51px;
-    margin-left: 38.049853%;
+    margin-top: 41px;
+    margin-left: 30%;
     clear: both;
 }
 
