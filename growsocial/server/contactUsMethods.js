@@ -19,7 +19,7 @@ Meteor.methods({
         '\ntext: ' + message.text;
       var email = {
         to: "GrowSocial Pilot Coordinator <growsocial.org@gmail.com>",
-        from: "GrowSocial Pilot Website <email@growsocial.org>",
+        from: "GrowSocial Pilot Website <growsocial.org@gmail.com>",
         subject: "GrowSocial pilot message - Contact Us",
         text: text,
       };
