@@ -6,7 +6,7 @@ Meteor.methods({
       ContactUsMessages.insert({
         name: message.name,
         email: message.email,
-        zip: message.zip,
+        zipcode: message.zipcode,
         text: message.text,
         createdAt: new Date(),
         authorId: Meteor.userId(), // can be null, meaning a message from someone not logged in
@@ -15,11 +15,11 @@ Meteor.methods({
       // send an email to ourselves containing the message
       var text = 'name: ' + message.name + 
         '\nemail: ' + message.email +
-        '\nzip: ' + message.zip +
+        '\nzipcode: ' + message.zipcode +
         '\ntext: ' + message.text;
       var email = {
         to: "GrowSocial Pilot Coordinator <growsocial.org@gmail.com>",
-        from: "GrowSocial Pilot Website <email@growsocial.org>",
+        from: "GrowSocial Pilot Website <growsocial.org@gmail.com>",
         subject: "GrowSocial pilot message - Contact Us",
         text: text,
       };
