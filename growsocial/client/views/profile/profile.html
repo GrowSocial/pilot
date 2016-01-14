@@ -254,64 +254,70 @@
     </div> <!-- end commentsPROFL -->
 
 
-
-
     {{#if there_are_items "marketItems"}}
-    <div id="marketplaceItems" class="clearfix"> 
-        <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
-        {{#if itemsOverflow}}
-            <p id="view_all_">View All &gt;</p>
-            <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
-        {{/if}}
-        <div id="scrollBoxItemsGroup" class="clearfix"> <!--     --> 
-            {{> MyMarketItems}}
-        </div>
-        {{#if itemsOverflow}}
-            <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
-        {{/if}}
-    </div> <!--  -->
+            <div id="marketplaceItems" class="clearfix"> 
+                <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+                {{#if itemsOverflow}}
+                    <p id="view_all_">View All &gt;</p>
+                    <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
+                {{/if}}
+                <div id="scrollBoxItemsGroup" class="clearfix"> {{> MyMarketItems}}</div>
+                {{#if itemsOverflow}}
+                    <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+                {{/if}}
+            </div> <!--  -->
+
+            <div id="newsFeed1" class="clearfix">
+                <div id="profile_pic_copy" class="clearfix"></div>
+
+                <p id="newsFeedcontent">
+                  <span id="txtSp1">{{fullname}} listed new items in the Marketplace:<br /></span>
+                  <span id="txtSp">2&#x3a;08 pm</span>
+                </p>
+
+
+                <div id="newsfeedBox" class="clearfix">
+                    {{#if Template.subscriptionsReady}}
+                    {{#with myMarketItems}}
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+
+                    <p id="newsFeedcontent">
+                        {{#each item in items}}
+                        <span id="txtSp1">{{item.description}}</span>
+                        <span id="txtSp1">Sold by:{{item.unitType}}{{item.currency}}${{item.price}}</span>
+                        <span id="txtSp2">~Lorem BOO<br /></span>
+                        {{/each}}
+                    </p>
+                    {{/with}}
+                    {{/if}}
+                    <div id="statusIcons" class="clearfix">
+                        <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                        <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
+                    </div>
+                    
+                </div>
+
+                <p id="newsFeedcontent">
+                    <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                </p>
+
+                <div id="responseIcons" class="clearfix">
+                    <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                    <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                    <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                </div>
+
+            </div>
+
     {{else}}
-    <div id="marketplaceEMPTY" class="clearfix"> 
+    <div id="wallItemEMPTY" class="clearfix"> 
         <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
     </div> <!--  -->
     {{/if}}
 
 
-    <div id="newsFeed1" class="clearfix">
-        <div id="profile_pic_copy" class="clearfix"></div>
 
-        <p id="newsFeedcontent">
-          <span id="txtSp1">{{fullname}} listed a new item on his Marketplace.<br /></span>
-          <span id="txtSp">2&#x3a;08 pm</span>
-        </p>
-
-        <div id="newsfeedBox" class="clearfix">
-
-            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-
-            <p id="newsFeedcontent">
-                <span id="txtSp1">Aunt Ruby&#x27;s Green Tomato </span>
-                <span id="txtSp1">- &#x24;2.99&#x2f;lb<br /><br /></span>
-                <span id="txtSp2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non nibh lobortis, laoreet nulla eu, scelerisque lorem. Class aptent...</span>
-            </p>
-            <div id="statusIcons" class="clearfix">
-                <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
-            </div>
-        </div>
-
-        <p id="newsFeedcontent">
-            <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
-        </p>
-
-        <div id="responseIcons" class="clearfix">
-            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-        </div>
-
-    </div>
-
+{{#if there_are_items "calendarEvents"}}
     <div id="newsFeed2" class="clearfix">
         <div id="profile_pic_copy" class="clearfix"></div>
 
@@ -340,7 +346,13 @@
         </div>
 
     </div>
+    {{else}}
+    <div id="wallItemEMPTY" class="clearfix"> 
+        <p id="scrollBoxTitle"> CALENDAR EVENTS </p><p id="view_all_">Nothing doing!</p>
+    </div> <!--  -->
+{{/if}}
 
+{{#if there_are_items "memberContacts"}}
     <div id="newsFeed3" class="clearfix">
 
         <div id="profile_pic_copy" class="clearfix"></div>
@@ -376,7 +388,13 @@
         </div>
 
     </div>
+    {{else}}
+    <div id="wallItemEMPTY" class="clearfix"> 
+        <p id="scrollBoxTitle"> NO CONTACTS YET </p><p id="view_all_"></p>
+    </div> <!--  -->
+    {{/if}}
 
+{{#if there_are_items "blogItems"}}
     <div id="newsFeed5" class="clearfix">
      <div id="profile_pic_copy" class="clearfix"></div>
 
@@ -384,9 +402,7 @@
         <span id="txtSp1">{{fullname}}<br /></span><span id="txtSp">Sept 2<br /></span>
       </p>  
       <p id="newsFeedcontent">  
-        <span id="txtSp1">
-        It is almost gardening season again&#x21; Looking forward to this year’s harvest. If you have any requests on what you would like to see us grow please leave a comment or message me&#x21;
-        </span>
+        <span id="txtSp1">  Ipsum bugga boo;</span>
      </p>
              <div id="responseIcons" class="clearfix">
             <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
@@ -394,7 +410,11 @@
             <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
         </div>
     </div>
-
+    {{else}}
+    <div id="wallItemEMPTY" class="clearfix"> 
+        <p id="scrollBoxTitle"> NO BLOG YET </p><p id="view_all_">Being quiet!</p>
+    </div> <!--  -->
+    {{/if}}
 
 </div> <!-- zone00 -->
 
@@ -410,17 +430,28 @@
 -->
 {{#if myProfile}}
 <div id="editorPROFL" class="clearfix">
+<p><br><br> Profile scrub ~<br><br></p>
+{{> quickForm   id="updatePROFILE" 
+    type="update" collection="People" doc=selectProfile
 
-{{> quickForm 
-    id="updatePROFILE" 
-    type="update"
-
-    collection="People" 
-
-    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"
-    
-    doc=selectProfile
+    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
 }}
+</div> <!--  -->
+
+<div id="editorPROFL" class="clearfix">
+<p><br> Market Items ~(do not alter vendor_key or vendor user id)<br></p>
+
+{{#if there_are_items "marketItems"}}
+
+{{> quickForm  id="updateMARKETITEMS" 
+    type="update" collection="MarketItems" doc=myMarketItems  
+    fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
+    omitfields="vendor_key"  
+}}
+
+{{else}} 
+{{initMarketItems}}
+{{/if}}
 
 <!--
 for testing, to impliment Autoform ~ quickForm ~ afQuickField
@@ -485,6 +516,7 @@ DOESN'T WORK: omitfields is ignored
 
 
 
+
 </div> <!--  -->
 {{/if}}
 
@@ -495,6 +527,7 @@ DOESN'T WORK: omitfields is ignored
 {{/if}}
 </template>
 
+        
 
 
 
@@ -564,12 +597,9 @@ DOESN'T WORK: omitfields is ignored
 </template>
 
 <template name="MyMarketItems">
-    <!-- Schemas.MarketItems = new SimpleSchema({
-      vendor_key:{ type: String,index: 1},
 
-
-    -->
     {{#if Template.subscriptionsReady}}
+
      {{#with selectMarketItems}}
 
         {{#each items}}
@@ -583,43 +613,7 @@ DOESN'T WORK: omitfields is ignored
             <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
         </div>
         {{/each}}
-
-
-        <!-- Automated , no longer necessary explicit as 5 item boxes
-        *
-        *
-        <div id="scrollBoxItem2" class="clearfix">
-            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-            <p id="itemAlert">weekly special<br /></p>
-            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-            <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-            <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
-        </div>
-        <div id="scrollBoxItem3" class="clearfix">
-            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-            <p id="itemAlert">new item<br /></p>
-            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-            <img id="SelectWatch" src="/images/icons/watch-icon.png" class="image" />  
-        </div>
-        <div id="scrollBoxItem4" class="clearfix">
-            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-            <p id="itemAlert">clearance<br /></p>
-            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-            <img id="SelectFavorite" src="/images/icons/favorite-icon.png" class="image" />
-            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />  
-        </div>
-        <div id="scrollBoxItem5" class="clearfix">
-            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-            <p id="itemAlert">2-for-one<br /></p>
-            <p id="itemDesc">Lacinato Luck&nbsp;&#x24;3.01&#x2f;lb</p>
-            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />  
-        </div>
-
-        -->
-    
-    
+   
         {{/with}}
     {{/if}}
 <!-- 
@@ -655,3 +649,27 @@ DOESN'T WORK: omitfields is ignored
                         about:{type: String,   optional: true }
                 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
             -->
+<!--
+ Schemas.MarketItems = new SimpleSchema({
+  vendor_key:{ type: String,index: 1},
+  vendorUserId: { type: String, optional:true },
+  vendorBusinessId: { type: String, optional:true },
+  vendorLink: { type: String, optional:true },
+  vendorName: { type: String, optional:true },
+  vendorEmail: { type: String, optional:true },
+  testDataMarket: { type: Boolean, optional:true },
+  items: {  type: Array,    optional: false  },    
+   'items.$': {    type: Object  },
+   'items.$.productId': {  type: String , optional:true},
+   'items.$.name': {  type: String , optional:false},
+   'items.$.description': {  type: String , optional:true},
+   'items.$.type': {         type: String , optional:true },
+   'items.$.salesAlert': {   type: String , optional:true },
+   'items.$.unitType': {     type: String , optional:true },
+   'items.$.unitPrice': {    type: Number , optional:true, decimal: true },
+    'items.$.currency': {    type: String , optional:true },
+    'items.$.photo': {       type: Object , optional:true },  // url
+    'items.$.pic': {    type: String , optional:true },
+    'items.$.date_entered': { type: Date. optional:true,}
+});
+-->

@@ -27,7 +27,7 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
     top: 0px; left: 0px;
     margin-top: .75%; margin-left: 2%; margin-right: auto;
 }
-#editorPROFL {   width: 33%; margin-left: 28%; 
+#editorPROFL {   width: 33%; margin-left: 28%; margin-top: 2.5%;
 }
 
 #box{ float: left; clear: both;
@@ -173,7 +173,7 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 
 
 
-#marketplaceItems,#marketplaceEMPTY  {
+#marketplaceItems,#wallItemEMPTY  {
     float: none;
     height: 288px;
     width: 88%;
@@ -188,7 +188,7 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     clear: none;
     margin-right: auto;
 }
-#marketplaceEMPTY { height: 72px; }
+#wallItemEMPTY { height: 72px; }
 
 #scrollBoxTitle {    z-index: 95;
     float: left;    clear: none;    position: relative;top: 0px;left: 0px;
