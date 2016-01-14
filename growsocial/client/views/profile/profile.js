@@ -16,8 +16,7 @@ formatRevDate: function() {
 UI.registerHelper('reviewCount', function(context, options) {
   var mKey = FlowRouter.getParam('personId');
   var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
-  if(context)
-    return myCount;
+  if(context) return myCount;
 });
 
 
@@ -30,11 +29,10 @@ You can just sort that in reverse order without having to add another field.
 Template.MyMarketItems.helpers({
 
 selectMarketItems: function() {
+
   /* BIG LESSON .  find() does not work;   findOne() works. Why?
     According to Weldon, .fetch() is needed ..  
-    but that does not qualify find() to work. Not here anyway 
-   GO AHEAD try for yourself.  This is some of the ENORMOUS time necessary to
-    understand Meteor well enough to put it to work, in even an intermediately simple app.
+    but that does not qualify find() to work. Not here anyway  
   ~
   find() will read the DB and provide information here in the helper ;  
   but it does not provide to a spacebars client in a template.
@@ -44,7 +42,7 @@ selectMarketItems: function() {
     var mKey = FlowRouter.getParam('personId');
     var count= MarketItems.find({vendor_key: mKey}).count();
     var items = MarketItems.findOne({vendor_key: mKey}) || {};
-    //alert('selectMarketItems: function() {'+ mKey+ "~"+count);
+  //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
     return items;
   },
 });
@@ -210,9 +208,6 @@ _.each(sData, function(sItem)  { People.insert(sItem); }
 
 } // end if -- Admin check
 
-
-
-
 }); //on created 'profile'
 
 
@@ -245,8 +240,13 @@ there_are_items: function(caller){
         break;
       case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
         break;
+
+      case 'blogEntries': var count=0;
+      case 'calendarEvents': var count=0;
+      case 'memberContacts': var count=0;      
       default: var count=0;
-    }  //alert(mKey + caller + count);
+    }  
+    //alert(mKey + caller + count);
     if (count) { return true } else { return false;}
   },
 
@@ -254,7 +254,37 @@ itemsOverflow: function(){
     var mKey = FlowRouter.getParam('personId');
     var count= MarketItems.find({vendor_key: mKey}).count();
     if (count>5) { return true } else { return false;}
-  }
+  },
+
+myMarketItems: function() {
+
+    var mKey = FlowRouter.getParam('personId');
+    var items = MarketItems.findOne({vendor_key: mKey}) || {};
+  //alert('myMarketItems: function() {'+ mKey );
+    return items;
+  },
+
+initMarketItems: function(){
+
+var mKey = FlowRouter.getParam('personId');
+var member = People.findOne({member_key: mKey}) || {};
+alert("intiial MItem for " + member.fullname + Date());
+var sData = [{vendor_key: mKey, 
+            vendorUserId: mKey,
+              vendorName: member.fullname,
+             vendorEmail: member.email,
+          testDataMarket: false,
+  items: [   {name:'Market Item', description:'', 
+              type:'',
+        salesAlert:'',
+          unitType:'',
+         unitPrice: 0,
+          currency:'',
+      date_entered: Date()
+      }]
+}];  
+_.each(sData, function(sItem) { MarketItems.insert(sItem);});
+}
 
 
 /* v.0.01 (Misha) 

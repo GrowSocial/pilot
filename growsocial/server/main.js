@@ -18,26 +18,18 @@ and seed database with initial documents for each
 
 Member_Videos.remove({});
 var sData = [
-{member_key:'pseudo_1',submission_date:Date(),caption:'vid 1',
- video:''}, 
-{member_key:'pseudo_1',submission_date:Date(),caption:'vid 2',
- video:''},
+{member_key:'pseudo_1',submission_date:Date(),caption:'vid 1', video:''}, 
+{member_key:'pseudo_1',submission_date:Date(),caption:'vid 2', video:''},
 ];
-_.each(sData, function(sItem) 
-  { Member_Videos.insert(sItem);
-
+_.each(sData, function(sItem)  { Member_Videos.insert(sItem);
   }     );
 
 Member_Pictures.remove({});
 var sData = [
-{member_key:'pseudo_1',submission_date:Date(),caption:'pic 1',
- picture:''}, 
-{member_key:'pseudo_1',submission_date:Date(),caption:'pic 2',
- picture:''},
+{member_key:'pseudo_1',submission_date:Date(),caption:'pic 1', picture:''}, 
+{member_key:'pseudo_1',submission_date:Date(),caption:'pic 2', picture:''},
 ];
-_.each(sData, function(sItem) 
-  { Member_Pictures.insert(sItem);
-
+_.each(sData, function(sItem)   { Member_Pictures.insert(sItem);
   }     );
 
 
@@ -107,8 +99,30 @@ fullname:'Anthony Anderson',
   about:'Natural farming, baby!'
 },
 
-
-
+{
+member_key: 'ZBACnsZ5XjyKEGwi4', 
+email: 'dls@me.com',
+firstname:'Anthony',
+lastname: 'Anderson',
+fullname:'Ant',
+    street:'89 High Cliff Dr.', 
+    street2:'',
+    city:'Ft. Lauderdale',
+    state:'FL',
+  zipcode:'39000',
+  occupations: [ {vocation: 'Governor', descript: 'Missouri'},    
+                 {vocation: 'Beekeeper'},   
+                 {vocation: 'Massage Therapist', descript: 'ThaiTraind'}
+           ],  
+  location:'Ft. Bragg, FL',
+  phone:'704 909-0000',
+  website:'www.tupelo.com',
+  links:'gg.web.hob.nog{',
+  facebookID:'',
+  twitterID:'@tc',
+  instagramID:'',
+  about:'Natural faker!'
+},
 
 
 /* member_key pseudo_0  *********************************
@@ -149,26 +163,21 @@ _.each(sData, function(sItem)
 Member_Reviews.remove({});;
 var sData = [
 // first timestamp```````````````````````````````````````````````
-{
-member_key:'pseudo_1',review_by:'pseudo_2',
+{member_key:'pseudo_1',review_by:'pseudo_2',
 review_date:Date(),review_text:'sample from P2 for P1 (older post) ',review_rating:4
 },
-{
-member_key:'pseudo_1',review_by:'pseudo_3',
+{member_key:'pseudo_1',review_by:'pseudo_3',
 review_date:Date(),review_text:'sample from P3 for P1 (older post) ',review_rating:3
 }
 ,
-{
-member_key:'pseudo_2',review_by:'pseudo_3',
+{member_key:'pseudo_2',review_by:'pseudo_3',
 review_date:Date(),review_text:'sample from P3 for P2 (older post)  -Jessie floats my boat',review_rating:4
 },
-{
-member_key:'pseudo_2',review_by:'pseudo_1',
+{member_key:'pseudo_2',review_by:'pseudo_1',
 review_date:Date(),review_text:'sample from P1 for P2 (older post) ',review_rating:1
 }
 ,
-{
-member_key:'pseudo_3',review_by:'pseudo_2',
+{member_key:'pseudo_3',review_by:'pseudo_2',
 review_date:Date(),review_text:"sample from P2 for P3 (older post) ",review_rating:5
 }
 ];
@@ -223,61 +232,80 @@ _.each(sData, function(sItem)
 
 
 MarketItems.remove({});
+
+      var timeObject = new Date()     
+         var seconds = timeObject.getSeconds() + 10;
+ var timeObjectLater = timeObject + seconds;
+var timeObjectLatest = timeObjectLater + seconds;
+/*
+console.log(timeObject);
+console.log("~");console.log(seconds);
+console.log(timeObjectLater);
+console.log(timeObjectLatest);
+*/
+
 var sData = [
  { vendor_key: 'pseudo_3', 
     items: [ 
-			{description:'Mustards', 
+			{name:'dont know',description:'Mustards', 
 					type:'Produce',
 			  salesAlert:'only 10 left',
 				unitType:'bunch',
 			   unitPrice: 3.00,
 				currency:'USD',
+        date_entered: timeObject
 			},  
-			{description:'Collards', 
+			{name:'dont know',description:'Collards', 
 					type:'Produce',
 			  salesAlert:'only 20 left',
 				unitType:'bunch',
 			   unitPrice: 2.00,
 				currency:'USD',
+        date_entered: timeObjectLater
 			}, 
-			{description:'Turnips', 
+			{name:'dont know',description:'Turnips', 
 					type:'Produce',
 			  salesAlert:'only 700 left',
 				unitType:'Ea.',
 			   unitPrice: 2.00,
 				currency:'USD',
+        date_entered: timeObjectLatest
 			}, 
-			{description:'Carrots', 
+			{name:'dont know',description:'Carrots', 
 					type:'Produce',
 			  salesAlert:'',
 				unitType:'Lb.',
 			   unitPrice: 1.00,
 				currency:'USD',
+        date_entered: timeObject
 			} 
    		]
 } ,
-{vendor_key: 'pseudo_1', 
+{vendor_key: 'ZBACnsZ5XjyKEGwi4', 
   items: [ 
-			{description:'String Beans', 
+			{name:'dont know',description:'String Beans', 
 					type:'Produce',
 			  salesAlert:'only 10 left',
 				unitType:'basket',
 			   unitPrice: 3.00,
 				currency:'USD',
+        date_entered: timeObjectLater
 			},  
-			{description:'Cucumbers', 
+			{name:'dont know',description:'Cucumbers', 
 					type:'Produce',
 			  salesAlert:'only 20 lbs. left',
 				unitType:'Lb.',
 			   unitPrice: 2.00,
 				currency:'USD',
+        date_entered: timeObjectLatest
 			}, 
-			{description:'Cilantro', 
+			{name:'dont know',description:'Cilantro', 
 					type:'Herbs',
 			  salesAlert:'',
 				unitType:'Lb.',
 			   unitPrice: 1.82,
 				currency:'USD',
+        date_entered: timeObject
 			} 
    		]
   } 		
@@ -287,7 +315,6 @@ var sData = [
 
 _.each(sData, function(sItem) 
   { MarketItems.insert(sItem);
-
   }     );
 
 

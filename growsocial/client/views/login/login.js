@@ -161,6 +161,22 @@ Template.register.events({
                 review_rating: 1,
         });
 
+/*
+ // and an initial MarketItems
+var sData = [{vendor_key: Accounts.userId(), 
+  items: [ 
+      {name:'Market Item',description:'', 
+              type:'',
+        salesAlert:'',
+          unitType:'',
+         unitPrice: 0,
+          currency:'',
+      date_entered: Date()
+}]}];  
+_.each(sData, function(sItem) { MarketItems.insert(sItem);});
+*/
+
+        
         // navigate to new current user's profile page
         var params = {
           personId: Meteor.userId(),
