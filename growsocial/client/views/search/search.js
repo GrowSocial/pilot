@@ -239,13 +239,13 @@ Template.search.events({
       if (PeopleIndex.getComponentDict().get('count')) {
         // TODO for each person in search results cursor, get latlng, add marker to map
         var peopleCursor = PeopleIndex.getComponentMethods().getCursor();
-        console.log('peopleCursor before fetch', peopleCursor);
+        // console.log('peopleCursor before fetch', peopleCursor);
         var peopleList = peopleCursor.fetch();  // TODO FIXME  this is the wrong place to do the fetch!
-        console.log('peopleCursor after fetch', peopleCursor);
-        console.log('peopleList after fetch', peopleList);
+        // console.log('peopleCursor after fetch', peopleCursor);
+        // console.log('peopleList after fetch', peopleList);
         peopleList.forEach(function (person) {
-          console.log("Name of person: ", person.firstname);
-          console.log("latlng: ", person.latlng);
+          // console.log("Name of person: ", person.firstname);
+          // console.log("latlng: ", person.latlng);
           if (person.latlng) {
             var marker = L.marker(person.latlng);
             marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.city);
@@ -367,8 +367,8 @@ Template.searchMap.rendered = function() {
   // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
   /////////////
   leafletmapp = L.map('SearchResultMap').setView([-37.8136, 144.9631], 13);
-  // var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+  var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
   var osmAttrib='&copy; OpenStreetMap contributors';
   var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 19, attribution: osmAttrib});   
   leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
@@ -398,8 +398,9 @@ Template.searchMap.rendered = function() {
   circleSearch = L.circle([-37.8136, 144.9631], 2000);
   circleDisplay = L.circle([-37.8136, 144.9631], 2000, {
       color: 'blue',
-      fillColor: '#31d',
-      fillOpacity: 0.2
+      fill: false,
+      // fillColor: '#31d',
+      // fillOpacity: 0.2,
   });
   // }).addTo(leafletmapp);
   // leafletmapp.fitBounds(circleDisplay.getBounds(), {maxZoom: 19});

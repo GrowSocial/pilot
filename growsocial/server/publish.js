@@ -9,7 +9,7 @@ Meteor.publish("contactUsMessages", function () {
       fields: {
         name: 1, 
         email: 1, 
-        zip: 1, 
+        zipcode: 1, 
         text: 1,
         createdAt: 1,
         authorId: 1,
