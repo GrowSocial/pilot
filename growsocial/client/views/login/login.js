@@ -46,7 +46,9 @@ Template.login.events({
           email: email
         }
         Meteor.call("addErrorLog", error);
-      } else {
+      } 
+      else {
+        Meteor.call('assignUserId');
         template.messages.set('infoMessage', null);
         // TODO go back to whatever page was on before pressing Login
         FlowRouter.go("home");
