@@ -121,6 +121,16 @@ Template.search.onRendered(function() {
     }
   });
   template.autorun(function() {
+    var zipcode = FlowRouter.getQueryParam("z");
+    console.log('change in router param z: ', zipcode);
+    template.$('[name=zipcode]').val(zipcode);
+    if (zipcode) {
+      PeopleIndex.getComponentMethods().addProps('zipcodeFilter', zipcode);
+    } else {
+      PeopleIndex.getComponentMethods().removeProps('zipcodeFilter');
+    }
+  });
+  template.autorun(function() {
     var range = FlowRouter.getQueryParam("r");
     var rangeUnits = FlowRouter.getQueryParam("ru");
     console.log('change in router param r / ru: ', range + rangeUnits);
@@ -138,19 +148,24 @@ Template.search.onRendered(function() {
 
 Template.search.events({
   'change .easy-search-input': function (e) { // submit?
-    // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
     console.log('easy-search-input change event: update router query params');
-    FlowRouter.setQueryParams({q: $(e.target).val()});
+    var searchText = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({q: searchText});
   },
   'change [name=city]': function (e) {
-    // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
     console.log('city change event: update router query params');
-    FlowRouter.setQueryParams({c: $(e.target).val()});
+    var city = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({c: city});
+  },
+  'change [name=zipcode]': function (e) {
+    console.log('zipcode change event: update router query params');
+    var zipcode = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({z: zipcode});
   },
   'change [name=range]': function (e) {
-    // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
     console.log('range change event: update router query params');
-    FlowRouter.setQueryParams({r: $(e.target).val()});
+    var range = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({r: range});
   },
   'change .range-units': function (e) {
     console.log('range-units change event: update router query params');

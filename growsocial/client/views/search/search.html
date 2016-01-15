@@ -27,7 +27,7 @@
                             <!-- TODO pagination, more results than limit, etc. -->
                             <ul>
                                 {{#EasySearch.Each index=peopleIndex }}
-                                    <li>{{fullname}}, {{city}} {{latlng.lat}} {{latlng.lng}}</li>
+                                    <li>{{fullname}}, {{city}} {{zipcode}} {{latlng.lat}} {{latlng.lng}}</li>
                                 {{/EasySearch.Each}}
                             </ul>
                         {{/if}}
@@ -52,6 +52,8 @@
     </select>
 
     <input type="text" name="city" class="form-control" placeholder="city...">
+
+    <input type="text" name="zipcode" class="form-control" placeholder="zip code...">
     
     <input type="text" name="range" class="form-control" placeholder="range...">
     
