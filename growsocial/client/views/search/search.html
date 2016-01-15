@@ -7,8 +7,17 @@
         <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
         <div id="searchNotifyDiv"></div>
         <!-- <p>search for: {{searchText}}</p> -->
-        {{> EasySearch.Input index=peopleIndex event='enter' attributes=inputAttributes}}
         <!-- timeout=500  -->
+        <form class="search-form" action="#">
+            <div class="form-group">
+                <div class="input-group">
+                    {{> EasySearch.Input index=peopleIndex event='enter' attributes=inputAttributes}}
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                </div><!-- /input-group -->        
+            </div><!-- /form-group -->  
+        </form>        
 
         {{> searchFilters}}
         
@@ -27,7 +36,7 @@
                             <!-- TODO pagination, more results than limit, etc. -->
                             <ul>
                                 {{#EasySearch.Each index=peopleIndex }}
-                                    <li>{{fullname}}{{#if city}}, {{city}}{{/if}}</li>
+                                    <li>{{fullname}}, {{city}} {{zipcode}} {{latlng.lat}} {{latlng.lng}}</li>
                                 {{/EasySearch.Each}}
                             </ul>
                         {{/if}}
@@ -39,11 +48,7 @@
             </div> <!-- map column -->
         </div> <!-- row -->
         <hr/>
-        <!-- {{> awesomeAutosuggest}} -->
     </div>
-</template>
-
-<template name="searchResults">
 </template>
 
 <template name="searchFilters">
@@ -55,24 +60,15 @@
         <option value="Events">Events</option>
     </select>
 
-    <select class="city-filter">
-        <option value="">(Any city)</option>
-        <option value="Davie">Davie</option>
-        <option value="Fort Lauderdale">Fort Lauderdale</option>
-        <option value="Tampa">Tampa</option>
-    </select>
+    <input type="text" name="city" class="form-control" placeholder="city...">
 
-    <select class="range-filter">
-        <option value="">(Any range)</option>
-        <option value=  "805">half mile</option>
-        <option value= "1609">1 mile</option>
-        <option value= "3219">2 miles</option>
-        <option value= "8047" selected>5 miles</option>
-        <option value="16093">10 miles</option>
-        <option value="24140">15 miles</option>
-        <option value="32187">20 miles</option>
-        <option value="40233">25 miles</option>
-        <option value="48280">30 miles</option>
+    <input type="text" name="zipcode" class="form-control" placeholder="zip code...">
+    
+    <input type="text" name="range" class="form-control" placeholder="range...">
+    
+    <select class="range-units">
+        <option value="" selected>mi</option>
+        <option value="km">km</option>
     </select>
 </template>
 
@@ -80,7 +76,7 @@
 <!-- Meteor package: easysearch:autosuggest -->
     <!-- searchIndex typeof EasySearch.Index -->
     <!-- {{> EasySearch.Autosuggest index=peopleIndex }} -->
-    <!-- bug?  repeats the suggest values to about four times each ??? is there a default create config? -->
+    <!-- bug in easy:search 2.0.6 - duplicates the suggest values, fixed in 2.0.7 (not tested by me)  -->
     <!-- bug? timeout not working for auto suggest? think it is configured differently to search -->
 <!-- </template> -->
 

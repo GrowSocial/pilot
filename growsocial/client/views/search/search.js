@@ -25,6 +25,7 @@ var circleDisplay;
 var circleBox;
 var peopleMarkersGroup;
 var locationMarker;
+var locationLatLng = new L.LatLng(26.076477, -80.252113); // Davie
 
 // add notify message to page
 function searchNotify(alertType, message) {
@@ -61,80 +62,125 @@ function onLocationError(e) {
   searchNotify('alert-warning', e.message);
 }
 
+function calcBoundsByRange(centerLatLng, range, rangeUnits) {
+  console.log('calcBoundsByRange(centerLatLng: ', centerLatLng);
+  console.log('calcBoundsByRange(range: ' + range + ', rangeUnits: ' + rangeUnits);
+  // approximation:
+  // Latitude: 1 deg = 110.574 km
+  // Longitude: 1 deg = 111.320*cos(latitudeRadians) km
+  var rangeKm;
+  if (rangeUnits) {
+    rangeKm = range;
+  } else { // convert from miles
+    rangeKm = range * 1.60934;
+  }
+  console.log('calcBoundsByRange(range in km: ', rangeKm);
+  var latRadians = centerLatLng.lat * Math.PI / 180;
+  var deltaLat = rangeKm / 110.574;
+  var deltaLng = rangeKm / (111.320 * Math.cos(latRadians));
+  var southWest = L.latLng(centerLatLng.lat - deltaLat, centerLatLng.lng - deltaLng);
+  var northEast = L.latLng(centerLatLng.lat + deltaLat, centerLatLng.lng + deltaLng);
+  var bounds = L.latLngBounds(southWest, northEast);
+  console.log('calcBoundsByRange(new bounds: ', bounds);
+  return bounds;
+}
+
 Template.search.helpers({
   peopleIndex: () => PeopleIndex,
   inputAttributes: function () {
     return { 
-      'class': 'easy-search-input', 
+      'class': 'easy-search-input form-control',
       'placeholder': 'Start searching...',
-      'value': FlowRouter.getQueryParam("searchText"), 
+      'value': FlowRouter.getQueryParam("q"), 
     };
   },
   resultsCount: function () {
-    return PeopleIndex.getComponentDict().get('count');
+    return PeopleIndex.getComponentDict().get('currentCount');
   },
 });
 
-Template.searchMap.onRendered(function() {
-  console.log('Template.searchMap.onRendered');
-  //map code 
-  L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
-  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
-  /////////////
-  leafletmapp = L.map('SearchResultMap').setView([-37.8136, 144.9631], 13);
-  var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
-  var osmAttrib='&copy; OpenStreetMap contributors';
-  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 19, attribution: osmAttrib});   
-  leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
-  leafletmapp.addLayer(osm);
-  /////////////
-  
-  // TODO custom icons:
-  //        location
-  //        people found
-  //        plants in area
-  //        business
-  //        product
-  // smaller icon to make it distinct from the others
-  var locationIcon = new L.Icon.Default({
-    iconSize: [20, 32],    // default [25, 41]
-    iconAnchor: [10, 32],    // default [12, 41]
-    popupAnchor: [1, -26],    // default [1, -34]
-    shadowSize: [32, 32],    // default [41, 41]
-    });
-  var marker = L.marker([-37.8136, 144.9631], {icon: locationIcon}).addTo(leafletmapp);
-  
-  marker.bindPopup("Search location");
+Template.search.onRendered(function() {
+  console.log('Template.search.onRendered');
 
-  // TODO popup to highlight when click item in list, or click marker
-  
-  // circle to indicate range
-  circleSearch = L.circle([-37.8136, 144.9631], 2000);
-  circleDisplay = L.circle([-37.8136, 144.9631], 2000, {
-      color: 'blue',
-      fill: false,
-      // fillColor: '#31d',
-      // fillOpacity: 0.2,
+  var template = this;
+  template.autorun(function() {
+    var searchText = FlowRouter.getQueryParam("q");
+    console.log('change in router param q: ', searchText);
+    template.$('.easy-search-input').val(searchText);
+    // update PeopleIndex search? No, because:
+    // submitted search text is listened to, by the easy search component
   });
-  
-  // TODO simplest approximation is rectangular bounds of circle
-    // ? could use to approx the circle range, example 3 rectangles:
-      // - north/south, length = diameter, width=radius
-      // - east/west, length = diameter, width=radius
-      // - square, side = 3/4 diameter  
-
-  // TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
-  
-  leafletmapp.on('locationerror', onLocationError);
-  leafletmapp.on('locationfound', onLocationFound);
+  template.autorun(function() {
+    var city = FlowRouter.getQueryParam("c");
+    console.log('change in router param c: ', city);
+    template.$('[name=city]').val(city);
+    if (city) {
+      PeopleIndex.getComponentMethods().addProps('cityFilter', city);
+    } else {
+      PeopleIndex.getComponentMethods().removeProps('cityFilter');
+    }
+  });
+  template.autorun(function() {
+    var zipcode = FlowRouter.getQueryParam("z");
+    console.log('change in router param z: ', zipcode);
+    template.$('[name=zipcode]').val(zipcode);
+    if (zipcode) {
+      PeopleIndex.getComponentMethods().addProps('zipcodeFilter', zipcode);
+    } else {
+      PeopleIndex.getComponentMethods().removeProps('zipcodeFilter');
+    }
+  });
+  template.autorun(function() {
+    var range = FlowRouter.getQueryParam("r");
+    var rangeUnits = FlowRouter.getQueryParam("ru");
+    console.log('change in router param r / ru: ', range + rangeUnits);
+    template.$('[name=range]').val(range);
+    template.$('.range-units').val(rangeUnits);
+    console.log('update search index filter');
+    if (range && range > 0.01 && range < 20000 ) { // limit the range
+      PeopleIndex.getComponentMethods().addProps('rangeFilter', calcBoundsByRange(locationLatLng, range, rangeUnits));
+    } else {
+      PeopleIndex.getComponentMethods().removeProps('rangeFilter');
+    }
+    // in browser console, look for: PeopleIndex.components.__default.keys.searchOptions
+  });
 });
 
 Template.search.events({
-  'change .city-filter': function (e) {
-    PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
+  'change .easy-search-input': function (e) { // submit?
+    console.log('easy-search-input change event: update router query params');
+    var searchText = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({q: searchText});
   },
-  'change .range-filter': function (e) {
+  'submit .search-form': function(e) {
+    console.log('easy-search-input submit event: send key up: enter');
+    e.preventDefault();
+    // send Enter key to trigger search on input
+    var newEvent = $.Event('keyup');
+    newEvent.keyCode = 13;
+    $('.easy-search-input').trigger(newEvent);
+  },
+  'change [name=city]': function (e) {
+    console.log('city change event: update router query params');
+    var city = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({c: city});
+  },
+  'change [name=zipcode]': function (e) {
+    console.log('zipcode change event: update router query params');
+    var zipcode = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({z: zipcode});
+  },
+  'change [name=range]': function (e) {
+    console.log('range change event: update router query params');
+    var range = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({r: range});
+  },
+  'change .range-units': function (e) {
+    console.log('range-units change event: update router query params');
+    var ru = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({ru: ru});
+  },
+  'change .range-filter': function (e) { // no longer needed?
     var rangeSelected = $(e.target).val();
     // If changed from previous radius, change map zoom/position
     // console.log('selected range-filter: ', $(e.target).val());
@@ -248,6 +294,62 @@ Template.search.events({
       }
     } // range / no range
   },
+});
+
+Template.searchMap.onRendered(function() {
+  console.log('Template.searchMap.onRendered');
+
+  //map code 
+  L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
+  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
+  /////////////
+  leafletmapp = L.map('SearchResultMap').setView([-37.8136, 144.9631], 13);
+  var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
+  var osmAttrib='&copy; OpenStreetMap contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 19, attribution: osmAttrib});   
+  leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
+  leafletmapp.addLayer(osm);
+  /////////////
+  
+  // TODO custom icons:
+  //        location
+  //        people found
+  //        plants in area
+  //        business
+  //        product
+  // smaller icon to make it distinct from the others
+  var locationIcon = new L.Icon.Default({
+    iconSize: [20, 32],    // default [25, 41]
+    iconAnchor: [10, 32],    // default [12, 41]
+    popupAnchor: [1, -26],    // default [1, -34]
+    shadowSize: [32, 32],    // default [41, 41]
+    });
+  var marker = L.marker([-37.8136, 144.9631], {icon: locationIcon}).addTo(leafletmapp);
+  
+  marker.bindPopup("Search location");
+
+  // TODO popup to highlight when click item in list, or click marker
+  
+  // circle to indicate range
+  circleSearch = L.circle([-37.8136, 144.9631], 2000);
+  circleDisplay = L.circle([-37.8136, 144.9631], 2000, {
+      color: 'blue',
+      fill: false,
+      // fillColor: '#31d',
+      // fillOpacity: 0.2,
+  });
+  
+  // TODO simplest approximation is rectangular bounds of circle
+    // ? could use to approx the circle range, example 3 rectangles:
+      // - north/south, length = diameter, width=radius
+      // - east/west, length = diameter, width=radius
+      // - square, side = 3/4 diameter  
+
+  // TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
+  
+  leafletmapp.on('locationerror', onLocationError);
+  leafletmapp.on('locationfound', onLocationFound);
 });
 
 // easysearch:autosuggest has issues, maybe needing config changes to fix?
