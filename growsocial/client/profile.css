@@ -17,7 +17,7 @@
 float: left;clear: none; position: relative; top: 0px;left: 0px;
     height: auto;width: 70%;
     background-color: rgb(226,226,226);
-    margin-top: 0%; margin-left: 2%; margin-right: 0px;
+    margin-top: 0%; margin-left: 2%; margin-right: 0px; 
 } /*height: 640px;*/
 
 #sidebarPROFL,#editorPROFL {    z-index: 0;
@@ -188,7 +188,7 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     clear: none;
     margin-right: auto;
 }
-#wallItemEMPTY { height: 72px; }
+#wallItemEMPTY { height: 72px; margin-top: 5px; margin-bottom: 10px}
 
 #scrollBoxTitle {    z-index: 95;
     float: left;    clear: none;    position: relative;top: 0px;left: 0px;
@@ -644,22 +644,14 @@ color: rgb(0, 0, 0);
     -webkit-background-size: auto; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;
     }
 
-#promptCommPROFL  {
-    float: left;clear: none;
-    
-    width: 96%; height: auto;
+#promptCommPROFL ,#buttonCommPROFL {float: left;clear: none;position: relative;top: 0px;left: 0px;z-index: 111;
+    width: 85%; height: auto;
     text-align: left; font-weight: normal; line-height: 18px;
-    color: black;
-    font-size: 0.875em;
-    /*font-style: normal; letter-spacing: normal; text-decoration: none; */
-    font-family: lato;
-    position: relative;top: 0px;left: 0px;
-    z-index: 111;
-    margin-top: 12px;margin-left: 1.697133%;
-    
+    color: black; font-size: 0.875em; font-family: lato;   
+    margin-top: 12px;margin-left: 2%;
     border: 1px none rgb(136, 136, 136);
 }
-
+#buttonCommPROFL {width: 10%;margin-left: 1%; text-align: center;}
 
 @media only screen and (max-width: 1576px) {
 
