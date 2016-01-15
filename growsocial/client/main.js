@@ -74,7 +74,9 @@ Template.navSearchForm.events({
     var text = event.target.navSearchText.value;
     // TODO pass search the context of which screen is on before searching
     // search text into queryParams
-    FlowRouter.go("search", {}, {q: text});
+    var queryParams = {q: text};
+    if (!text) queryParams = null;
+    FlowRouter.go("search", {}, queryParams);
     return false; // Prevent default form submit
   },
 });
