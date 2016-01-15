@@ -26,6 +26,33 @@ The default _id field is already keyed by creation time
 You can just sort that in reverse order without having to add another field.
 */
 
+
+Template.addComment.helpers({
+
+
+
+});
+Template.addComment.events({
+'submit form': function(){ event.preventDefault();
+  var mKey = FlowRouter.getParam('personId');
+  var commentTEXT = event.target.comment.value;
+    console.log(commentTEXT);
+  Comments.insert({        
+    member_key: mKey,
+    commentBy: Accounts.userId(),
+       comment: commentTEXT,
+     timestamp: Date(),
+     commentSource:"PROFILE PAGE",
+    });
+  $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
+}
+
+
+});
+
+
+
+
 Template.MyMarketItems.helpers({
 
 selectMarketItems: function() {
@@ -268,7 +295,7 @@ initMarketItems: function(){
 
 var mKey = FlowRouter.getParam('personId');
 var member = People.findOne({member_key: mKey}) || {};
-alert("intiial MItem for " + member.fullname + Date());
+//alert("intiial MItem for " + member.fullname + Date());
 var sData = [{vendor_key: mKey, 
             vendorUserId: mKey,
               vendorName: member.fullname,
@@ -285,6 +312,11 @@ var sData = [{vendor_key: mKey,
 }];  
 _.each(sData, function(sItem) { MarketItems.insert(sItem);});
 }
+
+
+
+
+
 
 
 /* v.0.01 (Misha) 
@@ -330,3 +362,18 @@ _.each(sData, function(sItem) { MarketItems.insert(sItem);});
 ****************************************************************************** */
 
 });
+
+
+
+
+
+/*
+'submit form': function(event){
+    event.preventDefault();
+    var playerNameVar = event.target.playerName.value;
+    PlayersList.insert({
+        name: playerNameVar,
+        score: 0
+    });
+}
+*/

@@ -163,30 +163,7 @@
                 <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
             </div>
         </div>
-        <!--
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-        </div>
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-                <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-            </div>
-        </div>
-        -->
+  
         <p id="view_all_">View All &gt;</p>
 
     {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Pictures yet..</p>
@@ -218,19 +195,8 @@
                 <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
             </div>
         </div>
-        <!--
-        <div id="photoGroup" class="clearfix">
-            <div id="pictureFrame0" class="clearfix">
-                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
-            </div>
-            <div id="pictureFrame1" class="clearfix">
-                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
-            </div>
-            <div id="pictureFrame2" class="clearfix">
-                <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
-            </div>
-        </div>
-        -->
+
+
         <p id="view_all_">View All &gt;</p>
     {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Videos yet..</p>
     {{/if}}
@@ -247,12 +213,12 @@
 
 <div id="zone00" class="clearfix">
 
-    <div id="commentsPROFL" class="clearfix">
-        <p id="membrfunct">comment</p>
-        <div id="commEntryPROFL" class="clearfix"><p id="promptCommPROFL"> Write something...</p>
-        </div>
-    </div> <!-- end commentsPROFL -->
-
+    {{#if myProfile}}
+    {{else}}
+        <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">comment</p>
+            <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
+        </div> <!-- end commentsPROFL -->
+    {{/if}}
 
     {{#if there_are_items "marketItems"}}
             <div id="marketplaceItems" class="clearfix"> 
@@ -430,23 +396,22 @@
 -->
 {{#if myProfile}}
 <div id="editorPROFL" class="clearfix">
-<p><br><br> Profile scrub ~<br><br></p>
+<h3> Profile scrub ~<br></h3>
 {{> quickForm   id="updatePROFILE" 
     type="update" collection="People" doc=selectProfile
-
     fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
 }}
 </div> <!--  -->
 
 <div id="editorPROFL" class="clearfix">
-<p><br> Market Items ~(do not alter vendor_key or vendor user id)<br></p>
+<h3><br> Market Items ~<br>(do not alter vendor_key or vendor user id)<br></h3>
 
 {{#if there_are_items "marketItems"}}
 
 {{> quickForm  id="updateMARKETITEMS" 
     type="update" collection="MarketItems" doc=myMarketItems  
     fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
-    omitfields="vendor_key"  
+    omitfields="vendor_key, vendorUserId,items.$.productId"  
 }}
 
 {{else}} 
@@ -621,6 +586,18 @@ DOESN'T WORK: omitfields is ignored
      -->   
 </template>
 
+<template name="addComment">
+
+    <form class="form-horizontal add-post-form" role="form">
+        <input id="promptCommPROFL" type="text" name="comment" placeholder="Write something" autofocus>
+        <input id="buttonCommPROFL" type="submit" value="enter">
+    </form>
+
+
+</template>  
+
+
+
 
                 <!-- Schemas.Person = new SimpleSchema({
                   member_key: {type: String, index: 1, unique: true },
@@ -672,4 +649,15 @@ DOESN'T WORK: omitfields is ignored
     'items.$.pic': {    type: String , optional:true },
     'items.$.date_entered': { type: Date. optional:true,}
 });
+
+Schemas.comment = new SimpleSchema({
+member_key:{ type: String,index: 1,optional: false },
+commentBy:{ type: String, optional: false },
+comment:{ type: String, optional: false },
+timestamp:{ type: Date, optional: false },
+commentSource:{ type: String, optional: false },
+
+});
+
+
 -->
