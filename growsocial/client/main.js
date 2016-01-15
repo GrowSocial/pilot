@@ -71,11 +71,12 @@ Template.navSearchForm.events({
   'submit': function (event) {
     // Prevent browser from restarting
     event.preventDefault();
-    var text = event.target.navSearchText.value;
-    // TODO pass search the context of which screen is on before searching
+    var queryParams = {};
     // search text into queryParams
-    var queryParams = {q: text};
-    if (!text) queryParams = null;
+    var text = event.target.navSearchText.value;
+    if (text) queryParams['q'] = text;
+    // pass search the context of which screen is on before searching
+    if (FlowRouter.current().route.name != "search") queryParams['p'] = FlowRouter.current().route.name;
     FlowRouter.go("search", {}, queryParams);
     return false; // Prevent default form submit
   },
