@@ -27,7 +27,7 @@
                             <!-- TODO pagination, more results than limit, etc. -->
                             <ul>
                                 {{#EasySearch.Each index=peopleIndex }}
-                                    <li>{{fullname}}{{#if city}}, {{city}}{{/if}}</li>
+                                    <li>{{fullname}}, {{city}} {{latlng.lat}} {{latlng.lng}}</li>
                                 {{/EasySearch.Each}}
                             </ul>
                         {{/if}}
@@ -39,11 +39,7 @@
             </div> <!-- map column -->
         </div> <!-- row -->
         <hr/>
-        <!-- {{> awesomeAutosuggest}} -->
     </div>
-</template>
-
-<template name="searchResults">
 </template>
 
 <template name="searchFilters">
@@ -55,24 +51,13 @@
         <option value="Events">Events</option>
     </select>
 
-    <select class="city-filter">
-        <option value="">(Any city)</option>
-        <option value="Davie">Davie</option>
-        <option value="Fort Lauderdale">Fort Lauderdale</option>
-        <option value="Tampa">Tampa</option>
-    </select>
-
-    <select class="range-filter">
-        <option value="">(Any range)</option>
-        <option value=  "805">half mile</option>
-        <option value= "1609">1 mile</option>
-        <option value= "3219">2 miles</option>
-        <option value= "8047" selected>5 miles</option>
-        <option value="16093">10 miles</option>
-        <option value="24140">15 miles</option>
-        <option value="32187">20 miles</option>
-        <option value="40233">25 miles</option>
-        <option value="48280">30 miles</option>
+    <input type="text" name="city" class="form-control" placeholder="city...">
+    
+    <input type="text" name="range" class="form-control" placeholder="range...">
+    
+    <select class="range-units">
+        <option value="" selected>mi</option>
+        <option value="km">km</option>
     </select>
 </template>
 

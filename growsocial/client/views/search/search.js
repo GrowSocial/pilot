@@ -25,6 +25,7 @@ var circleDisplay;
 var circleBox;
 var peopleMarkersGroup;
 var locationMarker;
+var locationLatLng = new L.LatLng(-37.8136, 144.9631);
 
 // add notify message to page
 function searchNotify(alertType, message) {
@@ -61,6 +62,29 @@ function onLocationError(e) {
   searchNotify('alert-warning', e.message);
 }
 
+function calcBoundsByRange(centerLatLng, range, rangeUnits) {
+  console.log('calcBoundsByRange(centerLatLng: ', centerLatLng);
+  console.log('calcBoundsByRange(range: ' + range + ', rangeUnits: ' + rangeUnits);
+  // approximation:
+  // Latitude: 1 deg = 110.574 km
+  // Longitude: 1 deg = 111.320*cos(latitudeRadians) km
+  var rangeKm;
+  if (rangeUnits) {
+    rangeKm = range;
+  } else { // convert from miles
+    rangeKm = range * 1.60934;
+  }
+  console.log('calcBoundsByRange(range in km: ', rangeKm);
+  var latRadians = centerLatLng.lat * Math.PI / 180;
+  var deltaLat = rangeKm / 110.574;
+  var deltaLng = rangeKm / (111.320 * Math.cos(latRadians));
+  var southWest = L.latLng(centerLatLng.lat - deltaLat, centerLatLng.lng - deltaLng);
+  var northEast = L.latLng(centerLatLng.lat + deltaLat, centerLatLng.lng + deltaLng);
+  var bounds = L.latLngBounds(southWest, northEast);
+  console.log('calcBoundsByRange(new bounds: ', bounds);
+  return bounds;
+}
+
 Template.search.helpers({
   peopleIndex: () => PeopleIndex,
   inputAttributes: function () {
@@ -83,29 +107,57 @@ Template.search.onRendered(function() {
     var searchText = FlowRouter.getQueryParam("q");
     console.log('change in router param q: ', searchText);
     template.$('.easy-search-input').val(searchText);
-    // PeopleIndex.getComponentMethods().addProps('cityFilter', searchText); ????????
-    // submitted search text listened to by the easy search component
+    // update PeopleIndex search? No, because:
+    // submitted search text is listened to, by the easy search component
   });
   template.autorun(function() {
     var city = FlowRouter.getQueryParam("c");
     console.log('change in router param c: ', city);
-    template.$('.city-filter').val(city);
-    PeopleIndex.getComponentMethods().addProps('cityFilter', city);
+    template.$('[name=city]').val(city);
+    if (city) {
+      PeopleIndex.getComponentMethods().addProps('cityFilter', city);
+    } else {
+      PeopleIndex.getComponentMethods().removeProps('cityFilter');
+    }
+  });
+  template.autorun(function() {
+    var range = FlowRouter.getQueryParam("r");
+    var rangeUnits = FlowRouter.getQueryParam("ru");
+    console.log('change in router param r / ru: ', range + rangeUnits);
+    template.$('[name=range]').val(range);
+    template.$('.range-units').val(rangeUnits);
+    console.log('update search index filter');
+    if (range && range > 0.01 && range < 20000 ) { // limit the range
+      PeopleIndex.getComponentMethods().addProps('rangeFilter', calcBoundsByRange(locationLatLng, range, rangeUnits));
+    } else {
+      PeopleIndex.getComponentMethods().removeProps('rangeFilter');
+    }
+    // in browser console, look for: PeopleIndex.components.__default.keys.searchOptions
   });
 });
-  
+
 Template.search.events({
   'change .easy-search-input': function (e) { // submit?
     // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
     console.log('easy-search-input change event: update router query params');
     FlowRouter.setQueryParams({q: $(e.target).val()});
   },
-  'change .city-filter': function (e) {
+  'change [name=city]': function (e) {
     // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
-    console.log('city-filter change event: update router query params');
+    console.log('city change event: update router query params');
     FlowRouter.setQueryParams({c: $(e.target).val()});
   },
-  'change .range-filter': function (e) {
+  'change [name=range]': function (e) {
+    // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
+    console.log('range change event: update router query params');
+    FlowRouter.setQueryParams({r: $(e.target).val()});
+  },
+  'change .range-units': function (e) {
+    console.log('range-units change event: update router query params');
+    var ru = $(e.target).val() ? $(e.target).val() : null;
+    FlowRouter.setQueryParams({ru: ru});
+  },
+  'change .range-filter': function (e) { // no longer needed?
     var rangeSelected = $(e.target).val();
     // If changed from previous radius, change map zoom/position
     // console.log('selected range-filter: ', $(e.target).val());
