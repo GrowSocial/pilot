@@ -25,7 +25,7 @@ var circleDisplay;
 var circleBox;
 var peopleMarkersGroup;
 var locationMarker;
-var locationLatLng = new L.LatLng(-37.8136, 144.9631);
+var locationLatLng = new L.LatLng(26.076477, -80.252113); // Davie
 
 // add notify message to page
 function searchNotify(alertType, message) {
@@ -95,7 +95,7 @@ Template.search.helpers({
     };
   },
   resultsCount: function () {
-    return PeopleIndex.getComponentDict().get('count');
+    return PeopleIndex.getComponentDict().get('currentCount');
   },
 });
 

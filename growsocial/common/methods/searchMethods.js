@@ -31,18 +31,21 @@ Meteor.methods({
     // TODO add state, etc.
     var locations = [{
       city: "Davie",
+      state: "FL",
       zipcode: 33328,
       latlng: {
         lat: 26.076477,
         lng: -80.252113,
     }}, {
       city: "Fort Lauderdale",
+      state: "FL",
       zipcode: 33301,
       latlng: {
         lat: 26.139412,
         lng: -80.133591,
     }}, {
       city: "Tampa",
+      state: "FL",
       zipcode: 33602,
       latlng: {
         lat: 27.964157,
@@ -61,6 +64,7 @@ Meteor.methods({
         lastname: Random.choice(last_names),
         about: "Test user created for search.",
         city: location.city,
+        state: location.state,
         zipcode: location.zipcode,
         latlng: {
           lat: 0.04 * Random.fraction() + location.latlng.lat, 
