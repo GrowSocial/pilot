@@ -67,7 +67,7 @@ Template.search.helpers({
     return { 
       'class': 'easy-search-input', 
       'placeholder': 'Start searching...',
-      'value': FlowRouter.getQueryParam("searchText"), 
+      'value': FlowRouter.getQueryParam("q"), 
     };
   },
   resultsCount: function () {
@@ -75,64 +75,35 @@ Template.search.helpers({
   },
 });
 
-Template.searchMap.onRendered(function() {
-  console.log('Template.searchMap.onRendered');
-  //map code 
-  L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
-  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
-  /////////////
-  leafletmapp = L.map('SearchResultMap').setView([-37.8136, 144.9631], 13);
-  var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
-  var osmAttrib='&copy; OpenStreetMap contributors';
-  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 19, attribution: osmAttrib});   
-  leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
-  leafletmapp.addLayer(osm);
-  /////////////
-  
-  // TODO custom icons:
-  //        location
-  //        people found
-  //        plants in area
-  //        business
-  //        product
-  // smaller icon to make it distinct from the others
-  var locationIcon = new L.Icon.Default({
-    iconSize: [20, 32],    // default [25, 41]
-    iconAnchor: [10, 32],    // default [12, 41]
-    popupAnchor: [1, -26],    // default [1, -34]
-    shadowSize: [32, 32],    // default [41, 41]
-    });
-  var marker = L.marker([-37.8136, 144.9631], {icon: locationIcon}).addTo(leafletmapp);
-  
-  marker.bindPopup("Search location");
+Template.search.onRendered(function() {
+  console.log('Template.search.onRendered');
 
-  // TODO popup to highlight when click item in list, or click marker
-  
-  // circle to indicate range
-  circleSearch = L.circle([-37.8136, 144.9631], 2000);
-  circleDisplay = L.circle([-37.8136, 144.9631], 2000, {
-      color: 'blue',
-      fill: false,
-      // fillColor: '#31d',
-      // fillOpacity: 0.2,
+  var template = this;
+  template.autorun(function() {
+    var searchText = FlowRouter.getQueryParam("q");
+    console.log('change in router param q: ', searchText);
+    template.$('.easy-search-input').val(searchText);
+    // PeopleIndex.getComponentMethods().addProps('cityFilter', searchText); ????????
+    // submitted search text listened to by the easy search component
   });
-  
-  // TODO simplest approximation is rectangular bounds of circle
-    // ? could use to approx the circle range, example 3 rectangles:
-      // - north/south, length = diameter, width=radius
-      // - east/west, length = diameter, width=radius
-      // - square, side = 3/4 diameter  
-
-  // TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
-  
-  leafletmapp.on('locationerror', onLocationError);
-  leafletmapp.on('locationfound', onLocationFound);
+  template.autorun(function() {
+    var city = FlowRouter.getQueryParam("c");
+    console.log('change in router param c: ', city);
+    template.$('.city-filter').val(city);
+    PeopleIndex.getComponentMethods().addProps('cityFilter', city);
+  });
 });
-
+  
 Template.search.events({
+  'change .easy-search-input': function (e) { // submit?
+    // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
+    console.log('easy-search-input change event: update router query params');
+    FlowRouter.setQueryParams({q: $(e.target).val()});
+  },
   'change .city-filter': function (e) {
-    PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
+    // PeopleIndex.getComponentMethods().addProps('cityFilter', $(e.target).val());
+    console.log('city-filter change event: update router query params');
+    FlowRouter.setQueryParams({c: $(e.target).val()});
   },
   'change .range-filter': function (e) {
     var rangeSelected = $(e.target).val();
@@ -248,6 +219,62 @@ Template.search.events({
       }
     } // range / no range
   },
+});
+
+Template.searchMap.onRendered(function() {
+  console.log('Template.searchMap.onRendered');
+
+  //map code 
+  L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
+  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
+  /////////////
+  leafletmapp = L.map('SearchResultMap').setView([-37.8136, 144.9631], 13);
+  var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
+  var osmAttrib='&copy; OpenStreetMap contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 19, attribution: osmAttrib});   
+  leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
+  leafletmapp.addLayer(osm);
+  /////////////
+  
+  // TODO custom icons:
+  //        location
+  //        people found
+  //        plants in area
+  //        business
+  //        product
+  // smaller icon to make it distinct from the others
+  var locationIcon = new L.Icon.Default({
+    iconSize: [20, 32],    // default [25, 41]
+    iconAnchor: [10, 32],    // default [12, 41]
+    popupAnchor: [1, -26],    // default [1, -34]
+    shadowSize: [32, 32],    // default [41, 41]
+    });
+  var marker = L.marker([-37.8136, 144.9631], {icon: locationIcon}).addTo(leafletmapp);
+  
+  marker.bindPopup("Search location");
+
+  // TODO popup to highlight when click item in list, or click marker
+  
+  // circle to indicate range
+  circleSearch = L.circle([-37.8136, 144.9631], 2000);
+  circleDisplay = L.circle([-37.8136, 144.9631], 2000, {
+      color: 'blue',
+      fill: false,
+      // fillColor: '#31d',
+      // fillOpacity: 0.2,
+  });
+  
+  // TODO simplest approximation is rectangular bounds of circle
+    // ? could use to approx the circle range, example 3 rectangles:
+      // - north/south, length = diameter, width=radius
+      // - east/west, length = diameter, width=radius
+      // - square, side = 3/4 diameter  
+
+  // TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
+  
+  leafletmapp.on('locationerror', onLocationError);
+  leafletmapp.on('locationfound', onLocationFound);
 });
 
 // easysearch:autosuggest has issues, maybe needing config changes to fix?
