@@ -89,7 +89,7 @@ Template.search.helpers({
   peopleIndex: () => PeopleIndex,
   inputAttributes: function () {
     return { 
-      'class': 'easy-search-input', 
+      'class': 'easy-search-input form-control',
       'placeholder': 'Start searching...',
       'value': FlowRouter.getQueryParam("q"), 
     };
@@ -151,6 +151,14 @@ Template.search.events({
     console.log('easy-search-input change event: update router query params');
     var searchText = $(e.target).val() ? $(e.target).val() : null;
     FlowRouter.setQueryParams({q: searchText});
+  },
+  'submit .search-form': function(e) {
+    console.log('easy-search-input submit event: send key up: enter');
+    e.preventDefault();
+    // send Enter key to trigger search on input
+    var newEvent = $.Event('keyup');
+    newEvent.keyCode = 13;
+    $('.easy-search-input').trigger(newEvent);
   },
   'change [name=city]': function (e) {
     console.log('city change event: update router query params');
