@@ -58,7 +58,6 @@
 <template name="homeNew">
 <div id="hometemplateContainer" class="container">
 <div class="row">
-
 <div class="col-md-4">
 <div  class="thumbnail" id="member_image_block">
     <a href="#"> <img id="featureImg" src="/images/Member image block.png" class="image" /></a>
@@ -82,7 +81,6 @@
     </div>
 </div>
 </div>
-    
 <div class="col-md-4">
 <div class="thumbnail" id="main_image_blockxx">
     <a href="#"> <img id="featureImgxx" src="/images/main image block.png" class="image" /></a>
@@ -97,7 +95,6 @@
         </div>
     </div>
     </div>
-    
 <div class="col-md-4">
 <div class="thumbnail" id="opportunities_image_block">
     <a href="#">  <img id="featureImg" src="/images/opportunities image block.png" class="image" /></a>
@@ -122,16 +119,15 @@
 </div>
 </div>
 </div>
-    </div>
+</div>
 </template>
 
 <template name="homeAbout">
-  <div class="container">
-       <div id="About_block" class="clearfix">
-    <div id="garden_graphic" class="clearfix">
+  <div class="container" id="relativeAboutContainer">
+    <div id="About_block" >
+    <div id="garden_graphic">
       <div class="row">
-<div class="col-md-12" >
-
+          <div class="col-md-12" >
             <p id="About_GrowSocial"> About GrowSocial</p>
             <div class="blockquote" id="AboutMSG">
            <p> GrowSocial connects people and businesses based on where they live. We promote local food growing and sustainable economies with marketplace page options for each member along with their profile. We are a hybrid of social media and marketplace web platforms helping to create vibrant local communities.
@@ -140,73 +136,60 @@
           </div>
       </div>
      <div class="row">
-     <div class=".col-xs-6 col-md-6" >         
+        <div class="col-xs-6 col-md-6" >   
             <p id="Members">Members</p>
-            
-                <div class="blockquote" id="MembershipMSG">
-            <p >Our members are the growers, producers, teachers, artisans and foodies that are the heart of your local food economy. Join the community and find your place in your local food web.  Whether you produce a little or a lot, like to eat local, buy local, or want to participate in the local food economy, GrowSocial is the place to be.
-            </p>
+            <div class="blockquote" id="MembershipMSG">
+            <p >Our members are the growers, producers, teachers, artisans and foodies that are the heart of your local food economy. Join the community and find your place in your local food web.  Whether you produce a little or a lot, like to eat local, buy local, or want to participate in the local food economy, GrowSocial is the place to be. </p>
+            </div>
+         <div id="Join_GrowSocial_button">
+             <button type="button"  class="btn btn-primary">Join GrowSocial </button>
          </div>
-             <button type="button" id="Join_GrowSocial_button" class="btn btn-primary">Join GrowSocial </button>
         </div>
-         <div class=".col-xs-6 col-md-6" >
-             <div id="profile_pic_circle" class="clearfix"></div>
+        <div class="col-xs-6 col-md-6" >
+             <div id="profile_pic_circle"></div>
              <p id="FeatureMember">
             <span id="txtHOME01">Anthony Anderson<br /></span>
             <span id="txtHOME02">Farmer, Beekeeper, &#x2b;2 more<br /></span>
             <span id="txtHOME01">Fort Lauderdale, FL</span>
             </p>
+        </div>
     </div>
     </div>
-                </div>
     </div>
     </div>
 </template>
 
-<template name="homeLocalPedia">
-  <div class="container">
-      <div class="row" id="localpedia_block">
-<div class="col-md-5" >
+<template name="homeLocalPedia" >
+<div class="container" id="relativeLocalPediaContainer">
+<div class="row" id="localpedia_block">
+<div class="col-xs-5 col-md-5" >
     <p id="Connect_Locally_Share_Globally_"> Connect Locally. Share Globally. </p>
     <div class="blockquote"  id="localPediaMSG">
    <p> Growing conditions, plants and soils and everything else related to food production in your local area. Localpedia is your Wikipedia on a local level and lets you find and share information that’s relevant to your area.
     </p>
-          </div>
-    <button type="button" id="localpedia_button" class="btn btn-primary">View Localpedia </button>
+    </div>
+    <div><button type="button" id="localpedia_button" class="btn btn-primary">View Localpedia    </button></div>
 </div>
-<div class="col-md-5" >
-    <!--<div class="media">
-         <div class="media-right  media-middle">-->
- <img  id="localPediaMAP" src="/images/localPediaMAP.png" class="img-responsive" /> 
-        </div>
-        <!--<div class="media-body">
-             <h4 class="media-heading">Connect Locally. Share Globally.</h4>-->
-         <!--     <p id="Connect_Locally_Share_Globally_"> Connect Locally. Share Globally. </p>
-    <div class="blockquote"  id="localPediaMSG">
-   <p> Growing conditions, plants and soils and everything else related to food production in your local area. Localpedia is your Wikipedia on a local level and lets you find and share information that’s relevant to your area.
-    </p>-->
-        <!--  </div>
-    <button type="button" id="localpedia_button" class="btn btn-primary">View Localpedia </button>-->
+<div class="col-xs-5 col-md-5" >
+ <img id="localPediaMAP"  src="/images/localPediaMAP.png" class="img-thumbnail" /> 
         </div>
         </div>
-<!--          </div>
-      </div>
-    </div>-->
+        </div>
 </template>
 
 <template name="homeFootr">
-      <div class="container">
+      <div class="container" id="relativefooterContainer">
       <div class="row" id="homefooter_background">
-     <div class="col-md-5" id="GrowSocial2015" >
+     <div class="col-md-4" id="GrowSocial2015" >
       <a href="#" >Grow Social &copy; 2015</a>
          </div>
-  <div class="col-md-1" id="About_FAQ_Privacy_">
+  <div class="col-md-2" id="About_FAQ_Privacy_">
     <a href="#">About</a>
       </div>
-  <div class="col-md-1" id="About_FAQ_Privacy_">
+  <div class="col-md-2" id="About_FAQ_Privacy_">
     <a href="#">FAQ</a>
       </div>
-  <div class="col-md-3" id="About_FAQ_Privacy_">
+  <div class="col-md-2" id="About_FAQ_Privacy_">
     <a href="#">Privacy</a>
 </div>
   </div>
