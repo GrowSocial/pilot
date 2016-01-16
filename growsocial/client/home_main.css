@@ -164,13 +164,13 @@
     color: rgb(57, 57, 57);
     font-style: normal;letter-spacing: normal;
     text-decoration: none;font-family: lato;
-    position: relative; top: 0px;left: 0px; z-index: 31;
+    position: relative; left: 0px; z-index: 31;
 
     margin-left: 31.735657%;    
 }
 #Members {
     color: rgb(255, 255, 255);
-    margin-top: 40%;
+    margin-top: 220px;
     margin-left: 25%;
     clear: none;
     
@@ -392,7 +392,7 @@
     left: 0px;
     z-index: 12;
     margin-top: 5%;
-    margin-left: 17.595308%;
+    margin-left: 10px;
     clear: none;
 }
 
