@@ -63,24 +63,30 @@
 </template>
 
 <template name="searchFilters">
-    <p>Filters:</p>
+    <h5>Filters: <span class="label label-default">People</span></h5>
+    
+<!--     
     <select class="category-filter disabled" disabled>
         <option value="">All</option>
         <option value="People" selected>People</option>
         <option value="Products">Products</option>
         <option value="Events">Events</option>
     </select>
-
+ -->
     <input type="text" name="city" class="form-control" placeholder="city...">
 
     <input type="text" name="zipcode" class="form-control" placeholder="zip code...">
     
-    <input type="text" name="range" class="form-control" placeholder="range...">
-    
+    <div class="input-group">
+      <input type="text" name="range" class="form-control" aria-label="range" placeholder="range...">
+      <span class="input-group-addon" id="rangeUnits" aria-label="range units">mi</span>
+    </div><!-- /input-group -->
+<!--     
     <select class="range-units">
         <option value="" selected>mi</option>
         <option value="km">km</option>
     </select>
+ -->
 </template>
 
 <!-- <template name="awesomeAutosuggest"> -->
