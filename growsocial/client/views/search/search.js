@@ -11,24 +11,39 @@
 //        radius, town, search entity type person/product/business/etc, search word (if navsearch is blank use last search)
 // TODO to simplify vendor search, each product can have vendorLink? and vendorName?
 // TODO delete or edit filters; easily add filters;
-// TODO configurable units km / miles, default to florida units
+// TODO configurable units km / miles, default to miles (will work for km too, need to be set in settings)
 // TODO store search text and filters and location, for session or for userId
 // TODO tidy up use of global vars
 
-  // TODO ISSUE circle flying to corner and back when zooming
-  // L.Circle.prototype._checkIfEmpty = function () { return false; }; // Didn't fix my issue
-  // Issue with circle is not showing on here: http://codepen.io/kad3nce/pen/ZQYNrq
-  // next steps:
-  // 1. try a jsfiddle or a codepen and see if I can reproduce my problem.
-  // 2. pull out my map from meteor and see if it works
-  // 3. Try set to Canvas  vs SVG ?
+// TODO custom icons:
+//        location
+//        people found
+//        plants in area
+//        business
+//        product
 
-  // TODO alter leaflet control containers from z-index: 1000 to something lower, example, navbar is also set to 1000
-  // trying to prevent some display issues: TODO more specific issues before solving them!
-  // #SearchResultMap > div.leaflet-control-container > div.leaflet-top.leaflet-left
-  // #SearchResultMap > div.leaflet-control-container > div.leaflet-top.leaflet-right
-  // #SearchResultMap > div.leaflet-control-container > div.leaflet-bottom.leaflet-left
-  // #SearchResultMap > div.leaflet-control-container > div.leaflet-bottom.leaflet-right
+// TODO ISSUE circle flying to corner and back when zooming
+// L.Circle.prototype._checkIfEmpty = function () { return false; }; // Didn't fix my issue
+// Issue with circle is not showing on here: http://codepen.io/kad3nce/pen/ZQYNrq
+// next steps:
+// 1. try a jsfiddle or a codepen and see if I can reproduce my problem.
+// 2. pull out my map from meteor and see if it works
+// 3. Try set to Canvas  vs SVG ?
+
+// TODO alter leaflet control containers from z-index: 1000 to something lower, example, navbar is also set to 1000
+// trying to prevent some display issues: TODO more specific issues before solving them!
+// #SearchResultMap > div.leaflet-control-container > div.leaflet-top.leaflet-left
+// #SearchResultMap > div.leaflet-control-container > div.leaflet-top.leaflet-right
+// #SearchResultMap > div.leaflet-control-container > div.leaflet-bottom.leaflet-left
+// #SearchResultMap > div.leaflet-control-container > div.leaflet-bottom.leaflet-right
+  
+// TODO simplest approximation is rectangular bounds of circle
+  // ? could use to approx the circle range, example 3 rectangles:
+    // - north/south, length = diameter, width=radius
+    // - east/west, length = diameter, width=radius
+    // - square, side = 3/4 diameter  
+
+// TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
   
   
 // map vars
@@ -62,7 +77,6 @@ function searchNotify(alertType, message) {
 }
 
 function onLocationFound(e) {
-  // TODO cleanup this
   // remove or initialise marker and circle
   if (myLocationMarker) {
     leafletmapp.removeLayer(myLocationMarker).closePopup();
@@ -208,27 +222,6 @@ Template.search.events({
     var ru = $(e.target).val() ? $(e.target).val() : null;
     FlowRouter.setQueryParams({ru: ru});
   },
-  'change .range-filter': function (e) { // no longer needed?
-    var rangeSelected = $(e.target).val();
-    // If changed from previous radius, change map zoom/position
-    // console.log('selected range-filter: ', $(e.target).val());
-    // PeopleIndex.getComponentMethods().addProps('rangeFilter', $(e.target).val());
-    if (rangeSelected) {
-      // alter size of circle
-      circleSearch.setRadius(rangeSelected);
-
-      // to work out bounds, circle needs to be on the map!
-      leafletmapp.addLayer(circleSearch);
-      var searchBounds = circleSearch.getBounds();
-      leafletmapp.removeLayer(circleSearch);
-      
-      // filter people index by the bounds of the circle
-      PeopleIndex.getComponentMethods().addProps('rangeFilter', searchBounds);
-    } else {
-      // "no range" selected...
-      PeopleIndex.getComponentMethods().addProps('rangeFilter', null);
-    }
-  },
   'click #addSamplePeopleButton': function(event, template) {
     event.preventDefault();
     var addedList = Meteor.call('addSearchSamplePeople', function (error, result) { 
@@ -346,49 +339,18 @@ Template.searchMap.onRendered(function() {
   //map code 
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
   // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
-  /////////////
   leafletmapp = L.map('SearchResultMap');
-  // leafletmapp.setView([-37.8136, 144.9631], 13);
   var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
   var osmAttrib='&copy; OpenStreetMap contributors';
   var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 19, attribution: osmAttrib});   
-  // leafletmapp.setView(new L.LatLng(-37.8136, 144.9631),8);
   leafletmapp.addLayer(osm);
-  /////////////
-  
-  // TODO custom icons:
-  //        location
-  //        people found
-  //        plants in area
-  //        business
-  //        product
-  // smaller icon to make it distinct from the others
-  
-  // circle to indicate range
-  // circleSearch = L.circle([-37.8136, 144.9631], 2000);
-  // circleDisplay = L.circle(locationLatLng, 6000, {
-      // color: 'blue',
-      // fill: false,
-      // fillColor: '#31d',
-      // fillOpacity: 0.2,
-  // });
-  
-  // TODO simplest approximation is rectangular bounds of circle
-    // ? could use to approx the circle range, example 3 rectangles:
-      // - north/south, length = diameter, width=radius
-      // - east/west, length = diameter, width=radius
-      // - square, side = 3/4 diameter  
 
-  // TODO getCurrentPosition() is supposed to be used on a secure website, i.e. with https
-  
+  // map won't show much until view is set
+
   leafletmapp.on('locationerror', onLocationError);
   leafletmapp.on('locationfound', onLocationFound);
 });
-
-// easysearch:autosuggest has issues, maybe needing config changes to fix?
-// bug?  repeats the suggest values to about four times each ??? is there a default create config?
-// bug? timeout not working for auto suggest? think it is configured differently to search.
 
 // Template.awesomeAutosuggest.helpers({
   // peopleIndex: () => PeopleIndex,
