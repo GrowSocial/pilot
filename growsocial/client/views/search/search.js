@@ -136,7 +136,7 @@ Template.search.helpers({
     };
   },
   resultsCount: function () {
-    return PeopleIndex.getComponentDict().get('currentCount');
+    return PeopleIndex.getComponentDict().get('count'); // currentCount only for already shown?
   },
 });
 
