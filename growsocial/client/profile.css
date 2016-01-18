@@ -1,44 +1,142 @@
 /* design origin: Edge Reflow ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~adapted for application, TEC Nov 2015  ~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+~~~~~~~~~~~~~~~~~~ adapted for application, TEC Nov 2015  ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~ modified to include MOBILE Jan 2016 ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
-/* principal containers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/* revised as top-down for mobile ver ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+.primaryDiv_MOB { /*https://www.w3.org/Style/Examples/007/center.en.html*/
+   height: auto;width:auto; margin-left: auto;margin-right: auto;
+   position: relative }
 
-.headerPROFL {
+.headerPROFL,.headerPROFL_MOB {
     height: auto; min-height: 100%; width: 1366px;
     margin-left: auto; margin-right: auto;  
 }/*width: 1576px;*/
- 
+.headerPROFL_MOB {width: 480px;}/*width: 1576px;*/ 
 
-#zone00 {    z-index: 1;
-float: left;clear: none; position: relative; top: 0px;left: 0px;
+#headerImag,#headerImage_MOB{ float: left;clear: none;
+        width: auto;height: auto; max-width: 100%;        
+        margin-right: 0%;margin-left: 0%; margin-top: 0px;    
+        color: rgb(0, 0, 0);
+    }
+#headerImage_MOB {z-index: 10;float: none;width: auto; margin-left: auto; margin-right: auto;}
+
+#buttongroupPROFL,#buttongroupPROFL_MOB {float: left; clear: none; position: relative; top: 0px; left: 0px;
+          height: auto; width: 35%; margin-right: 0%; margin-top: 12%; margin-left: -59%;  
+         /*      background-color: rgb(224, 224, 24);*/
+}
+#buttongroupPROFL_MOB { z-index: 20;float: none; width: 480px;  margin-top: -15.5%;  margin-left: auto; margin-right: auto;
+}
+
+#blog,#connect,#message,#blog_MOB,#connect_MOB,#message_MOB  { z-index: 25; float: left; clear: none; position: relative;top: 0px;left: 0px;
+ height: 54px; width: 30%;margin-top: 0px;margin-left: 3%; margin-right: 0%;
+     border-top-left-radius: 6.5%;  border-top-right-radius: 6.5%;
+    border-bottom-right-radius: 6.5%; border-bottom-left-radius: 6.5%;
+}
+#blog_MOB,#connect_MOB,#message_MOB  { height: 44px; width: 30%;margin-top: 0px;margin-left: 3%; margin-right: 0%;}
+#blog { background-color: rgb(229, 242, 255);}
+#connect { background-color: rgb(179, 217, 255);z-index: 26;}
+#message { background-color: rgb(179, 255, 204);} /*9, 167, 85*/
+
+#memberPicture ,#memberPicture_MOB{z-index: 15;
+    float: left;clear: none; position: relative; top: 0px; left: 0px;
+    height: 180px; width: 180px;margin-top: -3%; margin-left: 20%;
+    background-color: rgb(242, 242, 242);
+    border-top-left-radius: 50%;  border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%;
+    border: 5px solid rgb(255, 255, 255);
+      
+}
+#memberPicture_MOB{ z-index: 35; height: 170px; width: 170px; margin-left: auto; margin-right: auto;float: none;
+    border: 2px solid rgb(255, 255, 255);
+    margin-top: 4%;   
+}
+#membrName_MOB{  color: rgb(50,50,50); font-family: lato; 
+    text-align: center;/*position:absolute;*/
+    letter-spacing:2px; height: auto;   
+   width: auto;font-size: 1.4em; margin-top: .75%;  margin-left: auto; margin-right: auto;float: none;
+/*background-color: rgb(224, 224, 224); width: 25%;font-size: 1.4em;margin-top: 25%;  margin-left: 9%;
+*/
+}
+
+#badges,#badges_MOB {  float: left;clear: none;
+    height: auto;width: 27%; margin-left: 0%;  margin-top: 2%;    /*background-color: rgb(225, 225, 25);*/
+}
+#badges_MOB{width: 276px; margin-top: 1%;margin-left: auto; margin-right: auto;float: none;}
+#award_icon,#lotus_icon,#sun_icon,#tomato_icon {z-index: 39;position: relative;top: 0px;  left: 0px;
+    float: left;clear: none;width: auto;max-width: 100%; height: auto; color: rgb(0, 0, 0);  
+}
+#award_icon  { margin-top: 8px;  margin-left: 16%;}
+#lotus_icon  { margin-top: 14px; margin-left: 7%; }
+#sun_icon    { margin-top: 11px; margin-left: 14%;}
+#tomato_icon { margin-top: 9px;  margin-left: 15%;}
+
+#navbarPROFILE,#navbarPROFILE_MOB {z-index: 41; float: left;clear: both; position: relative; top: 0px;left: 0px;
+    height: 68px; width: 1576px; margin-top: -3%; margin-left: 0%; 
+    background-color: rgb(235, 235, 235); /*margin-top: 4px;*/     
+    background-image:-webkit-linear-gradient(270deg, white 72%, rgb(226, 226, 226) 100%);
+    background-image: linear-gradient(180deg, white 72%, rgb(226, 226, 226) 100%);
+    background-attachment: scroll;
+    -webkit-background-size: auto; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;
+    }
+#navbarPROFILE_MOB { width: 480px;height: 56px; margin-top: 0%; margin-left: auto; margin-right: auto; float: none;}
+
+#box,#box_MOB{ float: left; clear: both;
+    background-color: rgb(255, 255, 255);
+    margin-top: 7px; margin-left: 2%; width: 96%; height: auto;
+   }
+#box_MOB{  margin-top: 0px;  width: 480px; height: auto;margin-left: auto; margin-right: auto; float: none; }
+
+#commentsPROFL,#commentsPROFL_MOB {    z-index: 108;
+    float: none; clear: none;
+    height: 128px; width: 88%;
+    background-color: rgb(245, 245, 245);
+    border-top-left-radius: 10px;border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;
+    border: 1px solid rgb(140, 140, 140);
+    position: relative; top: 0px;left: 0px;
+    margin-top: 23px; margin-left: auto; 
+    margin-right: auto
+}
+#commentsPROFL_MOB { height: 108px; width: 480px; margin-top:-4px;margin-left: auto; margin-right: auto; float: none;
+clear: both;}
+
+#zone00 ,#zone00_MOB { z-index: 1; float: left;clear: none; position: relative; top: 0px;left: 0px;
     height: auto;width: 70%;
     background-color: rgb(226,226,226);
     margin-top: 0%; margin-left: 2%; margin-right: 0px; 
 } /*height: 640px;*/
+#zone00_MOB {  width: 480px;clear: both; margin-top:-2px;margin-left: auto; margin-right: auto; float: none;} 
 
-#sidebarPROFL,#editorPROFL {    z-index: 0;
-    float: left;    position: relative;    clear: none;
+
+#sidebarPROFL,#sidebarPROFL_MOB,#editorPROFL ,#editorPROFL_MOB{ z-index: 0;float: left;    position: relative;    clear: none;
     height: auto;width: 24%;
     background-color: rgb(235, 235, 235);
     top: 0px; left: 0px;
     margin-top: .75%; margin-left: 2%; margin-right: auto;
 }
-#editorPROFL {   width: 33%; margin-left: 28%; margin-top: 2.5%;
+#editorPROFL,#editorPROFL_MOB {   width: 33%; margin-left: 28%; margin-top: 2.5%;
 }
+#editorPROFL_MOB {   width: 480px; margin-top: 2%;margin-left: auto; margin-right: auto; float: none;
+}
+#sidebarPROFL_MOB{width: 480px; margin-top: 2%; margin-left: auto; margin-right: auto; float: none;}
 
-#box{ float: left; clear: both;
-    background-color: rgb(255, 255, 255);
-    margin-top: 7px; margin-left: 2%; width: 96%; height: auto;
-   }
-/*#box1,#box2,#box3,#box4,#box5 
-#box1 { margin-top: 1px;}
-#box2 { clear: both;}
-#box3 { background-color: rgb(226,226,226); width: 66%;}
-#box4,#box5 { margin-top: 7px;}
+
+   /*
+
+
+
+
+
+
+
+
+
+
+
+
+
 */
 
 #newsFeed1,#newsFeed2,#newsFeed3,#newsFeed5 {z-index: 45;
@@ -62,31 +160,21 @@ float: left;clear: none; position: relative; top: 0px;left: 0px;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 #newsfeedBox {
-    float: left;
-    height: 160px;
-    width: 82%;
+    float: left;clear: none;z-index: 50;
+    height: 160px;width: 82%; 
+    margin-top: 66px;
+    margin-left: -66%;   
     background-color: rgb(226,226,226);
     border: 1px solid rgb(115, 115, 115);
     position: relative;top: 0px;left: 0px;
-    z-index: 50;
-    margin-top: 66px;
-    margin-left: -66%;
-    clear: none;
-
 }
 #newsFeedcontent {
-    float: left;
+    float: left;clear: none;
     font-size: 1em;
-    width: 66%;
-    height: auto;
-    text-align: left;
-    font-weight: normal;
-    line-height: 1em;
-    position: relative;top: 0px;left: 0px;
-    z-index: 57;
-    margin-top: 2%; /*4px;*/
-    margin-left: 1.740139%;
-    clear: none;
+    width: 66%;  height: auto;
+    text-align: left; font-weight: normal;line-height: 1em;
+    position: relative;top: 0px;left: 0px; z-index: 57;
+    margin-top: 2%; /*4px;*/ margin-left: 1.740139%;   
 }
 
 
@@ -144,53 +232,32 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     margin-top: 4px;margin-left: 4%;  
     }
 
-#commentsPROFL {    z-index: 108;
-    float: none; clear: none;
-    height: 128px; width: 88%;
-    background-color: rgb(245, 245, 245);
-    border-top-left-radius: 10px;border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;
-    border: 1px solid rgb(140, 140, 140);
-    position: relative; top: 0px;left: 0px;
-    margin-top: 23px; margin-left: auto; 
-    margin-right: auto
-}
 
-#commEntryPROFL  {
-    float: left;
-    height: 46px;
-    width: 95.37037%;
+
+#commEntryPROFL ,#commEntryPROFL_MOB {
+    float: left;clear: both;
+    height: 46px; width: 95%;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(136, 136, 136);
     position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 110;
-    margin-top: 14px;
-    margin-left: 2.430556%;
-    clear: both;
+    top: 0px; left: 0px; z-index: 110;
+    margin-top: 14px;  margin-left: 2.430556%; 
+}
+#commEntryPROFL_MOB { margin-left: 2%; 
 }
 
-
-
 #marketplaceItems,#wallItemEMPTY  {
-    float: none;
-    height: 288px;
-    width: 88%;
+    float: none;clear: none;
+    height: 288px; width: 88%;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(145, 145, 145);
-    position: relative;
-    top: 0px;
-    left: 0px;
+    position: relative;top: 0px; left: 0px;
     z-index: 64;
-    margin-top: 14px;
-    margin-left: auto;
-    clear: none;
-    margin-right: auto;
+    margin-top: 14px;   margin-left: auto;   margin-right: auto;
 }
 #wallItemEMPTY { height: 72px; margin-top: 5px; margin-bottom: 10px}
 
-#scrollBoxTitle {    z-index: 95;
+#scrollBoxTitle{    z-index: 95;
     float: left;    clear: none;    position: relative;top: 0px;left: 0px;
     font-size: 1.2em;
     width: 33%; height: auto;
@@ -214,22 +281,15 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 #scrollBoxItem,
 #scrollBoxItem1,#scrollBoxItem2,#scrollBoxItem3,#scrollBoxItem4,#scrollBoxItem5 {z-index: 65;
     float: left;clear: none;position: relative;   top: 0px; left: 0px;
-
-    height: 128px; width: 128px;
-    /*  height: 145px; width: 18%;*/ 
+    height: 128px; width: 128px;    /*  height: 145px; width: 18%;*/ 
     margin-top: 0px;  margin-left: 2%;
     background-color: rgb(224, 224, 224); 
 }
-#scrollBoxItem5 {  /*background-color: rgb(255, 255, 55);*/ 
-}
-#scrollBoxItem4 {   
-}
-#scrollBoxItem3 {    
-}
-#scrollBoxItem2 {    
-}
-#scrollBoxItem1 { clear :both;    
-}
+#scrollBoxItem5 {  /*background-color: rgb(255, 255, 55);*/ }
+#scrollBoxItem4 {   }
+#scrollBoxItem3 {    }
+#scrollBoxItem2 {    }
+#scrollBoxItem1 { clear :both;    }
 
 #itemDesc { z-index: 79;
     float: left;clear: none;
@@ -260,20 +320,9 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     /*background-color: rgb(224, 224, 24);*/
 }
 
-#buttongroupPROFL {float: left; clear: none; position: relative; top: 0px; left: 0px;
-          height: auto; width: 35%; margin-right: 0%; margin-top: 12%; margin-left: -59%;  
-         /*      background-color: rgb(224, 224, 24);*/
-}
-#blog,#connect,#message { z-index: 19; float: left; clear: none; position: relative;top: 0px;left: 0px;
- height: 54px; width: 30%;margin-top: 0px;margin-left: 3%; margin-right: 0%;
-}
-#blog { background-color: rgb(229, 242, 255);}
-#connect { background-color: rgb(179, 217, 255);}
-#message { background-color: rgb(179, 255, 204);} /*9, 167, 85*/
 
 
-
-#membrfunct {  z-index: 7;
+#membrfunct,#membrfunctX ,#membrfunctXX ,#membrfunctX_MOB{  z-index: 7;
     float: left;clear: none;position: relative;top: 0px;   left: 0px;
     font-size: 1em;
     width: 1%;   height: auto;
@@ -282,26 +331,16 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     font-family: lato; 
     margin-top: 8px;    margin-left: .5%;   
 }
-#membrfunctX {z-index: 77;
-    float: left;position: relative;clear: none;top: 0px;left: 0px; 
-    width: 11%; height: auto;
-    text-align: left;line-height: normal;
-    color: rgb(76, 76, 76);
-    font-style: normal;letter-spacing: normal; text-decoration: none;
-    font-size: 1.175em;font-weight: 600;font-family: lato;    
+#membrfunctX ,#membrfunctX_MOB {z-index: 77; width: 11%; 
+    font-size: 1.175em;font-weight: 600;  
      margin-top: 22px;margin-left: 1%;  
-
 }
-#membrfunctXX {z-index: 7;
-    float: left;clear: none;position: relative; top: 10px;left: 10px;  
-    width: 17%;height: auto;
-    text-align: left; line-height: normal;
-    color: rgb(76,76,76);
-    /*font-style: normal;
-    letter-spacing: normal;
-    text-decoration: none;*/
-    font-family: lato;font-size: 1.5em;ont-weight: bold;
-    margin-top: 2%;  margin-left: 0%;  
+#membrfunctX_MOB { z-index: 50; width: 24%;  font-size: 1em; margin-top: 12px;margin-left: 1%;  
+}
+#membrfunctXX{
+    float: left;clear: none;position: relative;  
+    width: 17%;font-size: 1.2em;
+    margin-top: 1%;  margin-left: 1%;  
 }
 
 
@@ -327,21 +366,8 @@ font-family: lato;font-size: 0.875em; color: black;
 #buttonLabels{ margin-top: 13px;margin-left: 17px;color:white;}
 
 
-/* graphics contaniers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
 
-#memberPicture {z-index: 40;
-    float: left;clear: none; position: relative; top: 0px; left: 0px;
-    height: 180px; width: 180px;
-    background-color: rgb(242, 242, 242);
-    border-top-left-radius: 50%;  border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%; border-bottom-left-radius: 50%;
-    border: 5px solid rgb(255, 255, 255);
-    /*margin-top: 242.765625px;
-    margin-left: 17.922839%;*/
-    margin-top: -3%; margin-left: 20%;  
-}
+
 
 
 #membPic { float: left; clear: none; 
@@ -349,6 +375,25 @@ max-width: 100%;width: 178px;height: 178px;
 margin-left: -0%; margin-top: -1.627%; margin-right: 0%; 
 color: rgb(0, 0, 0);  
 }
+
+
+
+
+
+#badge-frame { float: left; clear: none; position: relative; top: 0px; left: 0px;
+    height: 56px;width: 54px;
+    background-color: rgb(225, 225, 225);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
+    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
+    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
+    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
+    
+    z-index: 38;
+    margin-top: 0px; /*11px;*/
+    margin-left: 12px;
+    /*width: 15%; 66 4 24 240.. 480 276 204 102 */
+}
+
 #profile_pic_copy {z-index: 60;
     float: left;clear: none;position: relative;top: 0px;left: 0px;
     width: 9.74478%;height: 83px;
@@ -357,10 +402,8 @@ color: rgb(0, 0, 0);
     background-image:url("/images/user-images/noAvatarSMALL.jpg");
     -webkit-background-size: 100%;
     background-size: 100%;
-    margin-top: 16px;margin-left: 1.62413%;
-    
+    margin-top: 16px;margin-left: 1.62413%; 
 }
-
 #ImageObject {z-index: 11;
     float: left;clear: none;position: relative;top: 0px;left: 0px;
     /*
@@ -433,51 +476,8 @@ color: rgb(0, 0, 0);
 }
 #Photo_ObjectFULL {    margin-top: 0%; margin-left: 0%; }
 
-#award_icon,#lotus_icon,#sun_icon,#tomato_icon {
-    z-index: 39;position: relative;top: 0px;  left: 0px;
-    float: left;clear: none;
-    width: auto;max-width: 100%; height: auto;
-    color: rgb(0, 0, 0);  
-}
-#award_icon  { margin-top: 8px;  margin-left: 16%;}
-#lotus_icon  { margin-top: 14px; margin-left: 7%; }
-#sun_icon    { margin-top: 11px; margin-left: 14%;}
-#tomato_icon { margin-top: 9px;  margin-left: 15%;}
 
-#badges {
-    float: left;clear: none;
-    height: auto;width: 27%;
-    margin-left: 0%;  margin-top: 2%;
-    /*background-color: rgb(225, 225, 25);*/
-}
-#badge-frame {
-    float: left; clear: none; position: relative; top: 0px; left: 0px;
-    height: 56px;width: 14%;
-    background-color: rgb(225, 225, 225);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    box-shadow: rgba(0, 0, 0, 0.317647) -1px -5px 8px;
-    background-image:-webkit-linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    background-image: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(216, 216, 216) 100%);
-    
-    z-index: 38;
-    margin-top: 0px; /*11px;*/
-    margin-left: 2%;margin-right: 0%;
-    /*clear: both;*/
-}
-#badges-help {z-index: 31;
- float: left;clear: none;position: relative;top: 0px;left: 0px;
-    font-size: 0.841423125em;
-    width: 22%;height: auto;
-    text-align: left;
-    font-weight: 300;
-    line-height: normal;
-    color: rgb(76, 76, 76);
-    font-style: normal;
-    letter-spacing: normal;
-    text-decoration: underline;
-    font-family: lato;
-    margin-top:2%;margin-left: 2%; 
-}
+
 
 #IconCNONE,#IconCBOTH,#SelectFavorite,#SelectWatch {    z-index: 88;
     float: left; clear: none; position: relative; top: 0px; left: 0px;
@@ -532,17 +532,6 @@ color: rgb(0, 0, 0);
     }
 
 
-
-#headerImage {
-        float: left;
-        width: auto;
-        max-width: 100%;
-        height: auto;
-        margin-left: 0%; margin-top: 0px;
-        clear: none;
-        color: rgb(0, 0, 0);
-        margin-right: 0%;
-    }
 
 
 
@@ -631,18 +620,9 @@ color: rgb(0, 0, 0);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-#navbarPROFILE {z-index: 39;
-    float: left;clear: both; position: relative; top: 0px;left: 0px;
-    height: 68px; width: 1576px; 
-    background-color: rgb(235, 235, 235);
-    /*margin-top: 4px;*/
-     margin-top: -3%; margin-left: 0%;    
 
-    background-image:-webkit-linear-gradient(270deg, white 72%, rgb(226, 226, 226) 100%);
-    background-image: linear-gradient(180deg, white 72%, rgb(226, 226, 226) 100%);
-    background-attachment: scroll;
-    -webkit-background-size: auto; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;
-    }
+
+
 
 #promptCommPROFL ,#buttonCommPROFL {float: left;clear: none;position: relative;top: 0px;left: 0px;z-index: 111;
     width: 85%; height: auto;
