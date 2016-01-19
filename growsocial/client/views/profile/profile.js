@@ -31,19 +31,19 @@ Template.addComment.helpers({
 
 });
 Template.addComment.events({
-'submit form': function(){ event.preventDefault();
-  var mKey = FlowRouter.getParam('personId');
-  var commentTEXT = event.target.comment.value;
-    console.log(commentTEXT);
-  Comments.insert({        
-    member_key: mKey,
-    commentBy: Accounts.userId(),
-       comment: commentTEXT,
-     timestamp: Date(),
-     commentSource:"PROFILE PAGE",
-    });
-  $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
-}
+  'submit form': function(){ event.preventDefault();
+    var mKey = FlowRouter.getParam('personId');
+    var commentTEXT = event.target.comment.value;
+      console.log(commentTEXT);
+    Comments.insert({        
+      member_key: mKey,
+      commentBy: Accounts.userId(),
+         comment: commentTEXT,
+       timestamp: Date(),
+       commentSource:"PROFILE PAGE",
+      });
+    $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
+  }
 
 });
 
@@ -52,112 +52,110 @@ Template.addComment.events({
 
 Template.MyMarketItems.helpers({
 
-selectMarketItems: function() {
-  /* BIG LESSON .  find() does not work;   findOne() works. Why?
-    According to Weldon, .fetch() is needed ..  
-    but that does not qualify find() to work. Not here anyway  
-  ~
-  find() will read the DB and provide information here in the helper ;  
-  but it does not provide to a spacebars client in a template.
-  findOne() is the only way I have been able to do this.
-  */
+  selectMarketItems: function() {
+    /* BIG LESSON .  find() does not work;   findOne() works. Why?
+      According to Weldon, .fetch() is needed ..  
+      but that does not qualify find() to work. Not here anyway  
+    ~
+    find() will read the DB and provide information here in the helper ;  
+    but it does not provide to a spacebars client in a template.
+    findOne() is the only way I have been able to do this.
+    */
 
-    var mKey = FlowRouter.getParam('personId');
-    var count= MarketItems.find({vendor_key: mKey}).count();
-    var items = MarketItems.findOne({vendor_key: mKey}) || {};
-  //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
-    return items;
-  },
+      var mKey = FlowRouter.getParam('personId');
+      var count= MarketItems.find({vendor_key: mKey}).count();
+      var items = MarketItems.findOne({vendor_key: mKey}) || {};
+    //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
+      return items;
+    },
 });
-
-
 
 
 Template.MemberReviews.onCreated(function() { var self = this;
   self.autorun(function() { 
 
   var member_Key = FlowRouter.getParam('personId');
-//alert('Template.MemberReviews.onCreated('+ member_Key);
+  //alert('Template.MemberReviews.onCreated('+ member_Key);
 
-/*  if getLatestReviews is called , 
-#if Template.subscriptionsReady   is never true. ?!
-self.subscribe('getLatestReviews', member_Key);
+  /*  if getLatestReviews is called , 
+  #if Template.subscriptionsReady   is never true. ?!
+  self.subscribe('getLatestReviews', member_Key);
 
 
-// thisdoesn't matter either: 
-// although it does not halt @ Template.subscriptionsReady status
- self.subscribe('Member_Reviews-Set', member_Key);
+  // thisdoesn't matter either: 
+  // although it does not halt @ Template.subscriptionsReady status
+   self.subscribe('Member_Reviews-Set', member_Key);
 
-*/
+  */
 
   });
 });
 Template.MemberReviews.helpers({
-summrizeStats: function() { //http://stackoverflow.com/questions/28052666/summing-a-column-in-a-table-in-meteor
-  var mKey = FlowRouter.getParam('personId');
-  var myCount = Member_Reviews.find({member_key: mKey}).count();
-  var myRevws = Member_Reviews.find({member_key: mKey});
-  var mappedItems = myRevws.map((function(myRevws) {return myRevws.review_rating;}));
-  var total = _.reduce(mappedItems, function(memo, num){ return memo + num; }, 0);
-  var myAvg = total / myCount; //alert("allReviews"+total);
-  //Session.set("avgRating", myAvg); // for testing 
-  //alert(mKey +" reviews "+  myCount + " scoreTot "+total);
-  return myAvg + ' Stars | in ' + myCount + ' Reviews';
-},
-
-
-/* for loading lastest member reviews
-*/
-selectLatest_Review: function() {
+  summrizeStats: function() { //http://stackoverflow.com/questions/28052666/summing-a-column-in-a-table-in-meteor
     var mKey = FlowRouter.getParam('personId');
-    var member = Member_Reviews.findOne({member_key: mKey}, {sort: {review_date: -1} }) || {};
-    latestReviewID=member._id; //global?
-    //alert("latest review hash id " + member._id);
-    return member;
+    var myCount = Member_Reviews.find({member_key: mKey}).count();
+    var myRevws = Member_Reviews.find({member_key: mKey});
+    var mappedItems = myRevws.map((function(myRevws) {return myRevws.review_rating;}));
+    var total = _.reduce(mappedItems, function(memo, num){ return memo + num; }, 0);
+    var myAvg = total / myCount; //alert("allReviews"+total);
+    //Session.set("avgRating", myAvg); // for testing 
+    //alert(mKey +" reviews "+  myCount + " scoreTot "+total);
+    return myAvg + ' Stars | in ' + myCount + ' Reviews';
   },
-selectNext_Review: function(current) {
-//alert("select second review " + latestReviewID);
-//var current=this._id;
-    //var mKey = FlowRouter.getParam('personId');
-    var member = Member_Reviews.findOne({_id: {$ne: latestReviewID} }, {sort: {review_date: -1} }) || {};
-    //var count = Member_Reviews.findOne({_id: {$ne: current} }, {sort: {review_date: -1} }) || {};
-  //alert('next count '+count);
-    return member;
-  },
-reviewCount: function() {
+
+
+  /* for loading lastest member reviews
+  */
+  selectLatest_Review: function() {
+      var mKey = FlowRouter.getParam('personId');
+      var member = Member_Reviews.findOne({member_key: mKey}, {sort: {review_date: -1} }) || {};
+      latestReviewID=member._id; //global?
+      //alert("latest review hash id " + member._id);
+      return member;
+    },
+  selectNext_Review: function(current) {
+  //alert("select second review " + latestReviewID);
+  //var current=this._id;
+      //var mKey = FlowRouter.getParam('personId');
+      var member = Member_Reviews.findOne({_id: {$ne: latestReviewID} }, {sort: {review_date: -1} }) || {};
+      //var count = Member_Reviews.findOne({_id: {$ne: current} }, {sort: {review_date: -1} }) || {};
+    //alert('next count '+count);
+      return member;
+    },
+  reviewCount: function() {
+      var mKey = FlowRouter.getParam('personId');
+      var count = Member_Reviews.find({member_key: mKey}).count();
+      //alert(count);
+      return false;
+    },
+  latestReviews: function () { 
+    var MAX_RESULTS = 2;
     var mKey = FlowRouter.getParam('personId');
-    var count = Member_Reviews.find({member_key: mKey}).count();
-    //alert(count);
-    return false;
-  },
-latestReviews: function () { 
-  var MAX_RESULTS = 2;
-  var mKey = FlowRouter.getParam('personId');
-  var mSet=Member_Reviews.find( {member_key: mKey}, 
-                        {limit: limit || MAX_RESULTS, 
-                          sort: {review_date: -1} }     );
-    return mSet;
-},
-
-ReviewedBy: function() {
-    var review = this;
-    var member = People.findOne({member_key: review.review_by}) || {};
-    //alert('Template.MemberReviews.helpers('+ member.fullname);
-    return member.fullname;
+    var mSet=Member_Reviews.find( {member_key: mKey}, 
+                          {limit: limit || MAX_RESULTS, 
+                            sort: {review_date: -1} }     );
+      return mSet;
   },
 
-starburst: function (rating) {  //var rating = this.review_rating;
-    switch (rating)
-    {
-      case 2: var rated="2"; break;
-      case 3: var rated="3"; break;
-      case 4: var rated="4"; break;
-      case 5: var rated="5"; break;
-      default: var rated="";
+  ReviewedBy: function() {
+      var review = this;
+      var member = People.findOne({member_key: review.review_by}) || {};
+      //alert('Template.MemberReviews.helpers('+ member.fullname);
+      return member.fullname;
+    },
+
+  starburst: function (rating) {  //var rating = this.review_rating;
+      switch (rating)
+      {
+        case 2: var rated="2"; break;
+        case 3: var rated="3"; break;
+        case 4: var rated="4"; break;
+        case 5: var rated="5"; break;
+        default: var rated="";
+      }
+      var filespec="/images/icons/" + rated + "starYellow.png";
+      return {  id : "star-icon", src : filespec, class:"image" }
     }
-    var filespec="/images/icons/" + rated + "starYellow.png";
-    return {  id : "star-icon", src : filespec, class:"image" }
-  }
 });
 
 
@@ -304,10 +302,6 @@ Template.profile.helpers({
   }
 
 });
-
-
-
-
 
 
 // for now, replicating profile onCreated & helpers to impliment mobile/desktop verion; 
