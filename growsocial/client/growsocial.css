@@ -54,6 +54,10 @@ body {
 
 /* ------ Navbar customisations ------ */
 
+.navbar .dropdown-menu {
+  z-index: 1001; /* put over the top of leaflet (osm) controls which have z-index 1000 */
+}
+
 .navbar {
   background-color: rgb(145, 191, 217);
   -webkit-box-shadow: rgba(24, 24, 24, 0.298039) 0px 9px 9px;
