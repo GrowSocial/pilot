@@ -39,17 +39,17 @@ Meteor.methods({
           productId: '1',
           name: "Aunt Ruby's Green Tomato",
           description: "Aunt Ruby's Green Tomato, grown with care in Aunt Ruby's bathtub",
-          pic: "/images/user-images/AuntRubyTomato.png",
+          photo: {src: "/images/user-images/AuntRubyTomato.png"},
         }, {
           productId: '2',
           name: "Scarlet Nantes Carrot",
           description: "Scarlet Nantes Carrot, seeded by throwing seeds in the air at random",
-          pic: "/images/user-images/ScarletNantesCarrot.png",
+          photo: {src: "/images/user-images/ScarletNantesCarrot.png"},
         }, {
           productId: '3',
           name: "Little Gem Lettuce",
           description: "Little Gem Lettuce, sparkles like emeralds",
-          pic: "/images/user-images/LittleGemLettuce.png",
+          photo: {src: "/images/user-images/LittleGemLettuce.png"},
         },
       ]);
 

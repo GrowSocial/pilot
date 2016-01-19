@@ -11,28 +11,34 @@ Meteor.methods({
       vendorTotal: 75.10,
 			products: [{
 				quantity: 3,
-				description: "Grandma's Heirloom Tomato",
+				name: "Grandma's Heirloom Tomato",
+				description: "Grandma went to great lengths to weave her heir on this loom",
         unitType: "pound",
 				unitPrice: 4.20,
+        photo: {src: "/images/user-images/AuntRubyTomato.png"},
 				currency: 'USD',
 				itemTotalPrice: 63.60,
 			}, {
 				quantity: 0.5,
-				description: "Dad's Ghost Chilies",
+				name: "Dad's Ghost Chilies",
+				description: "Ask Dad why he is shivering",
 				unitType: "pound",
 				unitPrice: 3.00,
 				currency: 'USD',
+        photo: {src: "/images/user-images/ScarletNantesCarrot.png"},
 				itemTotalPrice: 1.50,
 			}, {
 				quantity: 2,
-				description: "Louise's Famous Strawberry Jam",
+				name: "Louise's Famous Strawberry Jam",
+				description: "Mmmmm so sweet and fruity",
 				unitType: "bottle",
 				unitPrice: 5.00,
 				currency: 'USD',
+        photo: {src: "/images/user-images/LittleGemLettuce.png"},
 				itemTotalPrice: 10.00,
 			}]
 		}
-		console.log('adding cart sample order:', order);
+		// console.log('adding cart sample order:', order);
 		ShoppingCart.insert(order);
   },
 
@@ -49,7 +55,7 @@ Meteor.methods({
 				productId: item.productId,
 				name: item.name,
 				description: item.description,
-				pic: item.pic,
+				photo: item.photo,
 				currency: item.currency,
 				unitType: item.unitType,
 				quantity: item.quantity,
@@ -119,7 +125,7 @@ Meteor.methods({
 								productId: item.productId,
 								name: item.name,
 								descrpition: item.description,
-								pic: item.pic,
+								photo: item.photo,
 								currency: item.currency,
 								unitType: item.unitType,
 								quantity: item.quantity,
