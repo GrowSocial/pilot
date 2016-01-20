@@ -20,9 +20,24 @@ Meteor.publish("contactUsMessages", function () {
   }
 });
 
+// Notifications
+Meteor.publish("notifications", function () {
+  if (this.userId) {
+    return Notifications.find({
+      targetUserId: this.userId
+    }, {
+      sort: {dateTime: -1}
+    },
+    // TODO temporarily returning all fields
+    );
+  } else {
+    return [];
+  }
+});
+
 // Shopping Cart
 Meteor.publish("shoppingCart", function() {
-  // temporarily retrieving all fields
+  // TODO temporarily retrieving all fields
   return ShoppingCart.find({});
 /*
   return ShoppingCart.find({}, {

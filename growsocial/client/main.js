@@ -26,7 +26,13 @@ Meteor.setInterval(function(){
 
 Template.navNotifyCount.helpers({
   notifyCount: function () {
-    return Session.get('notificationCount');
+    // return Session.get('notificationCount');
+    var c = Notifications.find().count();
+    if (c > 0) {
+      return c;
+    } else {
+      return '';
+    }
   },
 });
 
