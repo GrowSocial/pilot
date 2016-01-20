@@ -14,7 +14,7 @@
               TODO user can delete message -> flag as deleted in collection with deletion date
               TODO user can undelete messages, if not purged yet -->
               {{#each notifications}}
-                  <li><img src="{{imageUrl}}" class="img-circle message-image" alt="msg">{{fromUserFirstName}} | {{header}} | {{formatTime(dateTime)}}</li>
+                  <li><img src="{{imageUrl}}" class="img-circle message-image" alt="msg">{{fromUserFirstName}} | {{header}} | {{formatTime(dateTime)}} | {{message}}</li>
               {{/each}}
             </ul>
         {{else}}
