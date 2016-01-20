@@ -31,37 +31,6 @@
     {{/with}}
 
 
-    <!-- allows a member to edit their core profile data, 
-         if logged in and navigate to the profile page
-    *****EITHER mobile or desktop
-    -->
-    {{#if myProfile}}
-        <div id="primaryDiv_MOB" class="primaryContainer clearfix">
-            <div id="editorPROFL_MOB" class="clearfix">
-                <h3> Profile scrub ~<br></h3>
-                {{> quickForm   id="updatePROFILE" 
-                    type="update" collection="People" doc=selectProfile
-                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
-                }}
-            </div> <!--  -->
-
-            <div id="editorPROFL_MOB" class="clearfix">
-                <h3><br> Market Items ~<br>(do not alter vendor_key or vendor user id)<br></h3>
-
-                {{#if there_are_items "marketItems"}}
-
-                    {{> quickForm  id="updateMARKETITEMS" 
-                        type="update" collection="MarketItems" doc=myMarketItems  
-                        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
-                        omitfields="vendor_key, vendorUserId,items.$.productId"  
-                    }}
-
-                {{else}} 
-                    {{initMarketItems}}
-                {{/if}}
-            </div>
-        </div>
-    {{/if}}<!-- MyProfile editor -->
 
 
 {{else}} <p>Loading...</p>
@@ -69,6 +38,20 @@
 
 
 </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <template name="profile_MOB" >
     <div id="primaryDiv_MOB" class="primaryContainer clearfix"> <!-- for float:none centering in children -->
@@ -95,7 +78,12 @@
             <div id="memberPicture_MOB" class="clearfix">
                 <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
             </div>
-            <div id="membrName_MOB">{{fullname}}  </div>
+
+            <!-- div id="membrName_MOB">{{fullname}}  </div -->
+            <div id="navbarPROFILE_MOB" class="clearfix">
+                <p id="membrName_MOB">{{fullname}}</p>
+            </div>
+
             <div id="badges_MOB" class="clearfix">
 
                 <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
@@ -140,7 +128,7 @@
 
             {{#if myProfile}}
             {{else}}
-                <div id="commentsPROFL_MOB" class="clearfix"><p id="membrfunctXX">comment</p>
+                <div id="commentsPROFL_MOB" class="clearfix"><p id="membrfunct_MOB">COMMENT</p>
                     <div id="commEntryPROFL_MOB" class="clearfix"> {{> addComment}} </div>
                 </div> <!-- end commentsPROFL -->
             {{/if}}
@@ -162,7 +150,7 @@
                 </div> <!--  -->
 
                 <div id="newsFeed1" class="clearfix">
-                    <div id="profile_pic_copy" class="clearfix"></div>
+                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
 
                     <p id="newsFeedcontent">
                       <span id="txtSp1">{{fullname}} listed new items in the Marketplace:<br /></span>
@@ -406,7 +394,45 @@
         </div><!-- sidebar -->
 
     </div> <!-- primary -->
+
+    <!-- allows a member to edit their core profile data, 
+         if logged in and navigate to the profile page
+    *****EITHER mobile or desktop
+    -->
+    {{#if myProfile}}
+        <div id="primaryDiv_MOB" class="primaryContainer clearfix">
+            <div id="editorPROFL_MOB" class="clearfix">
+                <h3> Profile scrub ~<br></h3>
+                {{> quickForm   id="updatePROFILE" 
+                    type="update" collection="People" doc=selectProfile
+                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
+                }}
+            </div> <!--  -->
+
+            <div id="editorPROFL_MOB" class="clearfix">
+                <h3><br> Market Items ~<br>(do not alter vendor_key or vendor user id)<br></h3>
+
+                {{#if there_are_items "marketItems"}}
+
+                    {{> quickForm  id="updateMARKETITEMS" 
+                        type="update" collection="MarketItems" doc=myMarketItems  
+                        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
+                        omitfields="vendor_key, vendorUserId,items.$.productId"  
+                    }}
+
+                {{else}} 
+                    {{initMarketItems}}
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}<!-- MyProfile editor -->
+
 </template>       
+
+
+
+
+
 
 <template name="profile_DESKTOP">
     <div id="headerPROFL">
@@ -596,7 +622,7 @@
 
         {{#if myProfile}}
         {{else}}
-            <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">comment</p>
+            <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
                 <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
             </div> <!-- end commentsPROFL -->
         {{/if}}
@@ -615,7 +641,7 @@
                 </div> <!--  -->
 
                 <div id="newsFeed1" class="clearfix">
-                    <div id="profile_pic_copy" class="clearfix"></div>
+                    <!--out until time avbl to debug ::Jan 2016:: div id="profile_pic_copy" class="clearfix"></div -->
 
                     <p id="newsFeedcontent">
                       <span id="txtSp1">{{fullname}} listed new items in the Marketplace:<br /></span>
@@ -664,7 +690,7 @@
 
     {{#if there_are_items "calendarEvents"}}
         <div id="newsFeed2" class="clearfix">
-            <div id="profile_pic_copy" class="clearfix"></div>
+            <!-- div id="profile_pic_copy" class="clearfix"></div -->
 
             <p id="newsFeedcontent">
               <span id="txtSp1">{{fullname}} is going to the event </span>
@@ -700,7 +726,7 @@
     {{#if there_are_items "memberContacts"}}
         <div id="newsFeed3" class="clearfix">
 
-            <div id="profile_pic_copy" class="clearfix"></div>
+            <!-- div id="profile_pic_copy" class="clearfix"></div -->
 
             <p id="newsFeedcontent">
               <span id="txtSp1">{{fullname}} is now connected with </span>
@@ -741,7 +767,7 @@
 
     {{#if there_are_items "blogItems"}}
         <div id="newsFeed5" class="clearfix">
-         <div id="profile_pic_copy" class="clearfix"></div>
+         <!-- div id="profile_pic_copy" class="clearfix"></div -->
 
          <p id="newsFeedcontent">
             <span id="txtSp1">{{fullname}}<br /></span><span id="txtSp">Sept 2<br /></span>
@@ -762,7 +788,52 @@
         {{/if}}
 
     </div> <!-- zone00 --> 
-</template>
+
+        <!-- allows a member to edit their core profile data, 
+         if logged in and navigate to the profile page
+    *****EITHER mobile or desktop
+    -->
+    {{#if myProfile}}
+        <!-- div id="primaryDiv_MOB" class="primaryContainer clearfix" -->
+            <div id="editorPROFL" class="clearfix">
+                <h3> Profile scrub ~<br></h3>
+                {{> quickForm   id="updatePROFILE" 
+                    type="update" collection="People" doc=selectProfile
+                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
+                }}
+            </div> <!--  -->
+
+            <div id="editorPROFL" class="clearfix">
+                <h3><br> Market Items ~<br>(do not alter vendor_key or vendor user id)<br></h3>
+
+                {{#if there_are_items "marketItems"}}
+
+                    {{> quickForm  id="updateMARKETITEMS" 
+                        type="update" collection="MarketItems" doc=myMarketItems  
+                        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
+                        omitfields="vendor_key, vendorUserId,items.$.productId"  
+                    }}
+
+                {{else}} 
+                    {{initMarketItems}}
+                {{/if}}
+            </div>
+        <!-- /div -->
+    {{/if}}<!-- MyProfile editor -->
+
+
+</template><!-- template name="profile_DESKTOP" -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 <template name="MemberReviews">
@@ -816,9 +887,6 @@
 
     </div> 
     {{/if}} 
-<!-- 
-
-     --> 
 
 </template>
 
@@ -842,9 +910,7 @@
    
         {{/with}}
     {{/if}}
-<!-- 
-
-     -->   
+   
 </template>
 
 <template name="addComment">
