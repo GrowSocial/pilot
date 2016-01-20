@@ -3,6 +3,9 @@ Template.notifications.helpers({
     // relies on the published messages filtering by targetUserId = this userId
     return Notifications.find({}, {sort: {dateTime: -1}});
   },
+  notifyCount: function () {
+    return Notifications.find().count();
+  },
 });
 
 Template.notifications.events({
