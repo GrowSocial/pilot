@@ -13,8 +13,8 @@ s0.parentNode.insertBefore(s1,s0);
 // <!--End of Tawk.to Script-->
 
 Session.setDefault('backgroundMainStyle1', true);
-Session.setDefault('notificationCount', 4);
-
+// Session.setDefault('notificationCount', 4);
+/* 
 Meteor.setInterval(function(){
   var c = Math.floor(13 * Random.fraction() - 3);
   if (c > 0 ) {
@@ -23,6 +23,7 @@ Meteor.setInterval(function(){
     Session.set('notificationCount', "");
   }
 }, 5000);
+ */
 
 Template.navNotifyCount.helpers({
   notifyCount: function () {
@@ -37,21 +38,10 @@ Template.navNotifyCount.helpers({
 });
 
 Template.navNotificationsList.helpers({
-  // TODO pull notifications from database
-  notificationList: [{
-      pic: "/images/user-images/profile-anthony.jpg",
-      message: "Anthony's beefsteak tomato is sold out.",
-    }, {
-      pic: "/images/user-images/profile-mary.jpg",
-      message: "Mary sent you a message.",
-    }, {
-      pic: "/images/user-images/event-volunteerday.jpg",
-      message: "Reminder: Community garden volunteer day tomorrow.",
-    }, {
-      pic: "/images/user-images/profile-anthony.jpg",
-      message: "Anthony sent you a message.",
-    }, 
-  ],
+  notificationList: function() {
+    // relies on the published messages filtering by targetUserId = this userId
+    return Notifications.find({}, {sort: {dateTime: -1}, limit: 4});
+  },
 });
 
 Template.navConnection.helpers({
