@@ -10,4 +10,8 @@ Template.notifications.events({
     event.preventDefault();
     Meteor.call('addSampleNotification');
   },
+  'click #clearMyNotificationsButton': function(event, template) {
+    event.preventDefault();
+    Meteor.call('clearMyNotifications');
+  },
 });

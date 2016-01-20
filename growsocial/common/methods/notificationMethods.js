@@ -49,26 +49,30 @@ Meteor.methods({
 
 	addNotification: function(notification) {
 
-	  	// Check types
-	  	check(notification, {
-        targetUserId: String,
-        fromUserId: Match.Optional(String),
-        fromUserFirstName: Match.Optional(String),
-        fromUserLastName: Match.Optional(String),
-	  		tag: String, // category / type
-	  		header: String,
-	  		message: String,
-        imageUrl: Match.Optional(String),
-        expireDate: Match.Optional(Date),
-	  	});
+    // Check types
+    check(notification, {
+      targetUserId: String,
+      fromUserId: Match.Optional(String),
+      fromUserFirstName: Match.Optional(String),
+      fromUserLastName: Match.Optional(String),
+      tag: String, // category / type
+      header: String,
+      message: String,
+      imageUrl: Match.Optional(String),
+      expireDate: Match.Optional(Date),
+    });
 
-      if (notification.tag === "System") {
-        notification.imageUrl = "/images/logo_icon.png";
-      }
-	  	notification.dateTime = new Date();
+    if (notification.tag === "System") {
+      notification.imageUrl = "/images/logo_icon.png";
+    }
+    notification.dateTime = new Date();
 
-	  	console.log('addNotification: ', notification);
+    // console.log('addNotification: ', notification);
 
-	    Notifications.insert(notification);
-	  },
+    Notifications.insert(notification);
+  },
+    
+	clearMyNotifications: function() {
+    Notifications.remove({targetUserId: Accounts.userId()});
+  }
 });
