@@ -1,29 +1,13 @@
-Template.notifications.onCreated(function() {
-  var self = this;
-
-  // this will rerun if meteor user changes
-  this.autorun(function() {
-    // No point showing notifications when not logged in
-    if (!Meteor.user()) {
-        FlowRouter.go("home");
-    };
-  });
+Template.notifications.helpers({
+  notifications: function() {
+    // relies on the published messages filtering by targetUserId = this userId
+    return Notifications.find({}, {sort: {dateTime: -1}});
+  },
 });
 
-Template.notifications.helpers({
-  // TODO pull notifications from database
-  notificationList: [{
-      pic: "/images/user-images/profile-anthony.jpg",
-      message: "Anthony's beefsteak tomato is sold out.",
-    }, {
-      pic: "/images/user-images/profile-mary.jpg",
-      message: "Mary sent you a message.",
-    }, {
-      pic: "/images/user-images/event-volunteerday.jpg",
-      message: "Reminder: Community garden volunteer day tomorrow.",
-    }, {
-      pic: "/images/user-images/profile-anthony.jpg",
-      message: "Anthony sent you a message.",
-    }, 
-  ],
+Template.notifications.events({
+  'click #addSampleNotificationButton': function(event, template) {
+    event.preventDefault();
+    Meteor.call('addSampleNotification');
+  },
 });
