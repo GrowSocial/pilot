@@ -24,7 +24,6 @@ Template.cart.events({
   },
   // ***********************************
   // remove this
-
   // Pay to specific vendor
   'click .payVendor': function(event) {
     var itemsPaid = "";
@@ -32,13 +31,58 @@ Template.cart.events({
       itemsPaid += "- " + this.products[i].name + " (" + this.products[i].quantity + " " + this.products[i].unitType + ")\n";
     }
     var email = {
-      to: "buyer@example.com",
+      to: this.vendorEmail,  // "seller@example.com",
       from: "email@growsocial.org",
       subject: "You have received a payment",
-      text: "The following items have been paid:\n" + itemsPaid,
+      text: "Buyer: " + Meteor.user().profile.firstname + " " +
+        Meteor.user().profile.lastname + 
+        ".\nThe following items have been paid:\n" + itemsPaid,
     }
     
     Meteor.call('sendEmail', email);
+
+    Meteor.call("addNotification", {
+      targetUserId: this.vendorUserId,
+      fromUserId: Meteor.userId(),
+      fromUserFirstName: Meteor.user().profile.firstname,
+      fromUserLastName: Meteor.user().profile.lastname,
+      tag: "Order",
+      imageUrl: "/images/icons/dollar.png",
+      header: "Order placed for my market items",
+      message: "The following items have been paid:\n" + itemsPaid,
+    }, function(err, result) {
+      if (err) {
+        Meteor.call("addErrorLog", {
+          tag: "PayVendorOrderNotification",
+          message: err.message,
+          errNumber: err.error,
+          email: Meteor.user().emails[0].address,
+          firstName: Meteor.user().profile.firstname,
+          lastName: Meteor.user().profile.firstname,
+        });
+      }
+    });
+    
+    Meteor.call("addNotification", {
+      targetUserId: Meteor.userId(),
+      fromUserFirstName: "System",
+      tag: "Order",
+      imageUrl: "/images/icons/dollar.png",
+      header: "My order placed for market items",
+      message: "Seller: " + this.vendorName + ".\nThe following items have been paid:\n" + itemsPaid,
+    }, function(err, result) {
+      if (err) {
+        Meteor.call("addErrorLog", {
+          tag: "MyOrderNotification",
+          message: err.message,
+          errNumber: err.error,
+          email: Meteor.user().emails[0].address,
+          firstName: Meteor.user().profile.firstname,
+          lastName: Meteor.user().profile.firstname,
+        });
+      }
+    });
+    
   },
 
   'click .increase': function(event) {

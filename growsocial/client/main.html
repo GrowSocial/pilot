@@ -164,7 +164,7 @@
     </a>
     <ul class="dropdown-menu">
       {{#each notificationList}}
-        <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="{{pic}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{message}}</a></li>
+        <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="{{imageUrl}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{fromUserFirstName}} | {{header}}</a></li>
       {{/each}}
       <li role="separator" class="divider"></li>
       <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>

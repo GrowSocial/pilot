@@ -152,12 +152,12 @@ Template.register.events({
         }, function(err, result) {
           if (err) {
             Meteor.call("addErrorLog", {
-              tag: "RegisterWelcomeMessage",
+              tag: "NewUserWelcomeNotification",
               message: err.message,
               errNumber: err.error,
               email: user.email,
               firstName: user.profile.firstname,
-              lastName: user.profile.lastname
+              lastName: user.profile.lastname,
             });
           }
         });
