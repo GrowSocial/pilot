@@ -34,55 +34,72 @@ Template.cart.events({
       to: this.vendorEmail,  // "seller@example.com",
       from: "email@growsocial.org",
       subject: "You have received a payment",
-      text: "Buyer: " + Meteor.user().profile.firstname + " " +
+      text: "The following items have been paid:\n" + itemsPaid,
+    }
+
+    if (Meteor.user()) {
+      email.text = "Buyer: " + Meteor.user().profile.firstname + " " +
         Meteor.user().profile.lastname + 
-        ".\nThe following items have been paid:\n" + itemsPaid,
+        ".\n" + email.text;
     }
     
     Meteor.call('sendEmail', email);
 
-    Meteor.call("addNotification", {
+    // prepare notification object
+    var notification = {
       targetUserId: this.vendorUserId,
-      fromUserId: Meteor.userId(),
-      fromUserFirstName: Meteor.user().profile.firstname,
-      fromUserLastName: Meteor.user().profile.lastname,
       tag: "Order",
       imageUrl: "/images/icons/dollar.png",
       header: "Order placed for my market items",
       message: "The following items have been paid:\n" + itemsPaid,
-    }, function(err, result) {
+    };
+    var error = {};
+    
+    // account for when buyer is not logged in
+    if (Meteor.user()) {
+      notification.fromUserId = Meteor.userId();
+      notification.fromUserFirstName = Meteor.user().profile.firstname;
+      notification.fromUserLastName = Meteor.user().profile.lastname;
+      error.email = Meteor.user().emails[0].address;
+      error.firstName = Meteor.user().profile.firstname;
+      error.lastName = Meteor.user().profile.lastname;
+    } else {
+      notification.fromUserFirstName = 'Anonymous';
+      error.firstName = 'Anonymous';
+    }
+    
+    console.log('first notification', notification);
+    // first notification to the seller    
+    Meteor.call("addNotification", notification, function(err, result) {
       if (err) {
-        Meteor.call("addErrorLog", {
-          tag: "PayVendorOrderNotification",
-          message: err.message,
-          errNumber: err.error,
-          email: Meteor.user().emails[0].address,
-          firstName: Meteor.user().profile.firstname,
-          lastName: Meteor.user().profile.firstname,
-        });
+        error.tag = "PayVendorOrderNotification";
+        error.message = err.message;
+        error.errNumber = err.error;
+        Meteor.call("addErrorLog", error);
       }
     });
-    
-    Meteor.call("addNotification", {
-      targetUserId: Meteor.userId(),
-      fromUserFirstName: "System",
-      tag: "Order",
-      imageUrl: "/images/icons/dollar.png",
-      header: "My order placed for market items",
-      message: "Seller: " + this.vendorName + ".\nThe following items have been paid:\n" + itemsPaid,
-    }, function(err, result) {
-      if (err) {
-        Meteor.call("addErrorLog", {
-          tag: "MyOrderNotification",
-          message: err.message,
-          errNumber: err.error,
-          email: Meteor.user().emails[0].address,
-          firstName: Meteor.user().profile.firstname,
-          lastName: Meteor.user().profile.firstname,
-        });
-      }
-    });
-    
+
+    // prepare second notification    
+    if (Meteor.user()) {  // only notify if logged in!
+      notification.targetUserId = Meteor.userId();
+      notification.fromUserId = Meteor.userId();
+      notification.fromUserFirstName = Meteor.user().profile.firstname;
+      notification.fromUserLastName = Meteor.user().profile.lastname;
+
+      // second notification to the buyer    
+      notification.header = "My order placed for market items";
+      notification.fromUserFirstName = "System";
+      notification.message = "Seller: " + this.vendorName + ".\nThe following items have been paid:\n" + itemsPaid;
+      console.log('second notification', notification);
+      Meteor.call("addNotification", notification, function(err, result) {
+        if (err) {
+          error.tag = "MyOrderNotification";
+          error.message = err.message;
+          error.errNumber = err.error;
+          Meteor.call("addErrorLog", error);
+        }
+      });
+    }
   },
 
   'click .increase': function(event) {
