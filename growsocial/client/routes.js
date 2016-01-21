@@ -124,3 +124,10 @@ FlowRouter.route('/search', {
     BlazeLayout.render("main", {content: "search"});
   },
 });
+
+FlowRouter.route('/discuss', {
+  name: "discuss",
+  action: function() {
+    BlazeLayout.render("main", {content: "discuss"});
+  },
+});

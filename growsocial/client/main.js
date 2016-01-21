@@ -13,8 +13,8 @@ s0.parentNode.insertBefore(s1,s0);
 // <!--End of Tawk.to Script-->
 
 Session.setDefault('backgroundMainStyle1', true);
-Session.setDefault('notificationCount', 4);
-
+// Session.setDefault('notificationCount', 4);
+/* 
 Meteor.setInterval(function(){
   var c = Math.floor(13 * Random.fraction() - 3);
   if (c > 0 ) {
@@ -23,29 +23,25 @@ Meteor.setInterval(function(){
     Session.set('notificationCount', "");
   }
 }, 5000);
+ */
 
 Template.navNotifyCount.helpers({
   notifyCount: function () {
-    return Session.get('notificationCount');
+    // return Session.get('notificationCount');
+    var c = Notifications.find().count();
+    if (c > 0) {
+      return c;
+    } else {
+      return '';
+    }
   },
 });
 
 Template.navNotificationsList.helpers({
-  // TODO pull notifications from database
-  notificationList: [{
-      pic: "/images/user-images/profile-anthony.jpg",
-      message: "Anthony's beefsteak tomato is sold out.",
-    }, {
-      pic: "/images/user-images/profile-mary.jpg",
-      message: "Mary sent you a message.",
-    }, {
-      pic: "/images/user-images/event-volunteerday.jpg",
-      message: "Reminder: Community garden volunteer day tomorrow.",
-    }, {
-      pic: "/images/user-images/profile-anthony.jpg",
-      message: "Anthony sent you a message.",
-    }, 
-  ],
+  notificationList: function() {
+    // relies on the published messages filtering by targetUserId = this userId
+    return Notifications.find({}, {sort: {dateTime: -1}, limit: 4});
+  },
 });
 
 Template.navConnection.helpers({
@@ -71,10 +67,13 @@ Template.navSearchForm.events({
   'submit': function (event) {
     // Prevent browser from restarting
     event.preventDefault();
-    var text = event.target.navSearchText.value;
-    // TODO pass search the context of which screen is on before searching
+    var queryParams = {};
     // search text into queryParams
-    FlowRouter.go("search", {}, {searchText: text});
+    var text = event.target.navSearchText.value;
+    if (text) queryParams['q'] = text;
+    // pass search the context of which screen is on before searching
+    if (FlowRouter.current().route.name != "search") queryParams['p'] = FlowRouter.current().route.name;
+    FlowRouter.go("search", {}, queryParams);
     return false; // Prevent default form submit
   },
 });

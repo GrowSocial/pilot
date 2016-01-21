@@ -21,8 +21,8 @@ Meteor.isClient && Template.registerHelper("Schemas", Schemas);
       'items.$.unitType': { type: String , optional:true },
      'items.$.unitPrice': { type: Number , optional:true, decimal: true },
       'items.$.currency': { type: String , optional:true },
-         'items.$.photo': { type: Object , optional:true },  // url
-           'items.$.pic': { type: String , optional:true },
+         'items.$.photo': { type: Object , optional:true },
+         'items.$.photo.src': { type: String , optional:true },  // url
   'items.$.date_entered': { type: Date, optional:true},
 });
 MarketItems.attachSchema(Schemas.MarketItems);

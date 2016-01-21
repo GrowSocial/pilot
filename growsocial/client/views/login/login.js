@@ -143,6 +143,25 @@ Template.register.events({
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
 
+        Meteor.call("addNotification", {
+          targetUserId: Accounts.userId(),
+          fromUserFirstName: "System",
+          tag: "System",
+          header: "Welcome to GrowSocial",
+          message: "Welcome to GrowSocial, " + firstname + "!  Your new account is ready to use.",
+        }, function(err, result) {
+          if (err) {
+            Meteor.call("addErrorLog", {
+              tag: "NewUserWelcomeNotification",
+              message: err.message,
+              errNumber: err.error,
+              email: user.email,
+              firstName: user.profile.firstname,
+              lastName: user.profile.lastname,
+            });
+          }
+        });
+
   // Introducing a new registration, create cooresponding record in Meteor.People /TEC -->
    //   alert(Accounts.userId() + '*' + firstname + "*" + lastname + "*" +user.name +"*");
         People.insert({
