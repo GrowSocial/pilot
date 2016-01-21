@@ -304,6 +304,9 @@ Template.profile.helpers({
 });
 
 
+
+
+
 // for now, replicating profile onCreated & helpers to impliment mobile/desktop verion; 
 //  Eventually, we should consolidate this and not repeat the functions in librbary
 //
@@ -377,6 +380,44 @@ Template.profile_DESKTOP.onCreated(function()
     } // end if -- Admin check
 
 }); //on created 'profile'
+
+
+Template.profile_DESKTOP.events({
+
+'click .connectSelect': function(){ console.log("You clicked CONNECT"); }
+/*
+  var mKey = FlowRouter.getParam('personId');//alert("intiial MItem for " + member.fullname + Date());
+  var sData = [{member_key: mKey, 
+                 connected: [{member_id:Accounts.userId(), 
+                              timestamp:Date(),
+                              descript:'invitation'
+                            }]
+              }];  
+  _.each(sData, function(sItem) { Connections.insert(sItem);}
+        );
+  }
+*/
+
+/*
+Schemas.connection = new SimpleSchema({
+member_key:{ type: String,index: 1,optional: false },
+connected: {  type: Array,    optional: false  },    
+    'connected.$': {       type: Object  },
+    'connected.$.member_id': {type: String ,optional:false},
+    'connected.$.timestamp': {type: Date, optional:false },
+    'connected.$.descript': {type: String, optional:true },
+
+*/
+
+});
+
+
+
+
+
+
+
+
 
 Template.profile_DESKTOP.helpers({
   myProfile: function(){
@@ -522,7 +563,16 @@ Template.profile_MOB.onCreated(function()
 
 }); //on created 'profile'
 
+Template.profile_MOB.events({
 
+'click .connectSelect': function(){
+    console.log("clicked CONNECT button");
+
+
+
+}
+
+});
 Template.profile_MOB.helpers({
   myProfile: function(){
     //Will return NULL if no member is logged in, 

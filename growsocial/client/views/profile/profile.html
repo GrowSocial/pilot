@@ -47,387 +47,11 @@
 
 
 
+      
 
 
 
 
-
-
-<template name="profile_MOB" >
-    <div id="primaryDiv_MOB" class="primaryContainer clearfix"> <!-- for float:none centering in children -->
-
-
-        <div id="headerPROFL_MOB">
-            <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
-            <img id="headerImage_MOB" src="/images/headerPic-480.png" class="image" />
-            <div id="buttongroupPROFL_MOB" class="clearfix">
-                <div id="blog" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
-                    title="Member Blog" data-content="View latest blog and archives">View Blog</button>
-                </div>
-                <div id="connect" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="right" data-trigger="hover"
-                    title="Connect with Member" data-content="Include this member in your circles">Co n n e c t</button>
-                </div> 
-                <div id="message" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
-                    title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
-                </div>
-            </div>
-
-            <div id="memberPicture_MOB" class="clearfix">
-                <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
-            </div>
-
-            <!-- div id="membrName_MOB">{{fullname}}  </div -->
-            <div id="navbarPROFILE_MOB" class="clearfix">
-                <p id="membrName_MOB">{{fullname}}</p>
-            </div>
-
-            <div id="badges_MOB" class="clearfix">
-
-                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
-                title="Community Achievement" data-content="Honorary Mention"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
-                </div>
-                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
-                title="Community Achievement" data-content="ABOVE THE MUD"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
-                </div>
-                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
-                title="Community Achievement" data-content="Skilled Gardener">
-                <img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
-                </div>
-                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
-                title="Community Achievement" data-content="Sunny Disposition!">
-                <img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
-                </div>
-            </div>
-
-            <div id="navbarPROFILE_MOB" class="clearfix">
-                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="auto above" 
-                title="Navigation" data-content="This is the current view">PROFILE</p>
-                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
-                title="Navigation" data-content="More about this member">ABOUT</p>
-                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
-                title="Navigation" data-content="Go to this member's marketplace">MARKET</p> 
-                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
-                title="Navigation" data-content="More activity for this member">MORE ▼</p>
-            </div>
-
-            <div id="box_MOB" class="clearfix">    
-                <img id="IconCNONE"  src="/images/icons/category-icon.png" class="image" />
-                <p id="sidebarcontent" >
-                    {{#each occupations}}
-                    <span id="txtSp1">{{vocation}}</span>
-                    <span id="txtSp1">*{{descript}}<br /></span>
-                    {{/each}}       
-                </p>
-                <img id="IconCBOTH" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
-                    title="Location" data-content="" src="/images/icons/location-icon.png" class="image" />
-                <p id="sidebarcontent"><span id="txtSp1">{{location}}</span></p>
-            </div> <!-- header-->
-
-            {{#if myProfile}}
-            {{else}}
-                <div id="commentsPROFL_MOB" class="clearfix"><p id="membrfunct_MOB">COMMENT</p>
-                    <div id="commEntryPROFL_MOB" class="clearfix"> {{> addComment}} </div>
-                </div> <!-- end commentsPROFL -->
-            {{/if}}
-        </div> <!-- headerPROFL -->
-
-        <div id="zone00_MOB" class="clearfix">
-
-            {{#if there_are_items "marketItems"}}
-                <div id="marketplaceItems" class="clearfix"> 
-                    <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
-                    {{#if itemsOverflow}}
-                        <p id="view_all_">View All &gt;</p>
-                        <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
-                    {{/if}}
-                    <div id="scrollBoxItemsGroup" class="clearfix"> {{> MyMarketItems}}</div>
-                    {{#if itemsOverflow}}
-                        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
-                    {{/if}}
-                </div> <!--  -->
-
-                <div id="newsFeed1" class="clearfix">
-                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
-
-                    <p id="newsFeedcontent">
-                      <span id="txtSp1">{{fullname}} listed new items in the Marketplace:<br /></span>
-                      <span id="txtSp">2&#x3a;08 pm</span>
-                    </p>
-
-
-                    <div id="newsfeedBox" class="clearfix">
-                        {{#if Template.subscriptionsReady}}
-                        {{#with myMarketItems}}
-                        <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-
-                        <p id="newsFeedcontent">
-                            {{#each item in items}}
-                            <span id="txtSp1">{{item.description}}</span>
-                            <span id="txtSp1">Sold by:{{item.unitType}}{{item.currency}}${{item.price}}</span>
-                            <span id="txtSp2">~Lorem BOO<br /></span>
-                            {{/each}}
-                        </p>
-                        {{/with}}
-                        {{/if}}
-                        <div id="statusIcons" class="clearfix">
-                            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
-                        </div>
-                        
-                    </div>
-
-                    <p id="newsFeedcontent">
-                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
-                    </p>
-
-                    <div id="responseIcons" class="clearfix">
-                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-                    </div>
-                </div>
-
-            {{else}}
-            <div id="wallItemEMPTY" class="clearfix"> 
-                <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
-            </div> <!--  -->
-            {{/if}}
-
-            {{#if there_are_items "calendarEvents"}}
-                <div id="newsFeed2" class="clearfix">
-                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
-
-                    <p id="newsFeedcontent">
-                      <span id="txtSp1">{{fullname}} is going to the event </span>
-                      <span id="txtSp3"> Yoga on the Beach<br /></span>
-                      <span id="txtSp">11&#x3a;01 am</span>
-                    </p>
-
-                    <div id="newsfeedBox" class="clearfix">
-                       <img id="Photo_ObjectFULL" src="/images/user-images/event.png" class="image" /> 
-                    </div>
-                    <p id="newsfeedCalenderEvent">
-                    <span id="txtSp1">Yoga on the Beach<br /></span>
-                    <span id="txtSp">November 14, 2015</span>
-                    </p>
-
-                    <p id="newsFeedcontent">
-                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
-                    </p>
-
-                    <div id="responseIcons" class="clearfix">
-                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-                    </div>
-
-                </div>
-                {{else}}
-                <div id="wallItemEMPTY" class="clearfix"> 
-                    <p id="scrollBoxTitle"> CALENDAR EVENTS </p><p id="view_all_">Nothing doing!</p>
-                </div> <!--  -->
-            {{/if}}
-
-            {{#if there_are_items "memberContacts"}}
-                <div id="newsFeed3" class="clearfix">
-
-                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
-                    <p id="newsFeedcontent">
-                      <span id="txtSp1">{{fullname}} is now connected with </span>
-                      <span id="txtSp3"> Jessica Jones<br /></span>
-                      <span id="txtSp">Yesterday</span>
-                    </p>
-
-                    <div id="newsfeedBox" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/jessica128.png" class="image" /> 
-
-                        <p id="newsFeedcontent">
-                            <span id="txtSp1">Jessica Jones<br /></span>
-                            <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
-                            <span id="txtSp">&nbsp;Yoga Instructor, Massage Therapist, Owner of </span>
-                            <span id="txtSp">Ohm Wellness Center<br /></span>
-                           <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" /> 
-                           <span id="txtSp21"><br /></span>
-                           <span id="txtSp">&nbsp;Sunrise, FL<br /></span>
-                        </p>
-                    </div>
-
-                    <p id="newsFeedcontent">
-                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
-                    </p>
-
-                    <div id="responseIcons" class="clearfix">
-                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-                    </div>
-
-                </div>
-                {{else}}
-                <div id="wallItemEMPTY" class="clearfix"> 
-                    <p id="scrollBoxTitle"> NO CONTACTS YET </p><p id="view_all_"></p>
-                </div> <!--  -->
-            {{/if}}
-
-            {{#if there_are_items "blogItems"}}
-                <div id="newsFeed5" class="clearfix">
-                <!-- div id="profile_pic_copy" class="clearfix"></div -->
-
-                 <p id="newsFeedcontent">
-                    <span id="txtSp1">{{fullname}}<br /></span><span id="txtSp">Sept 2<br /></span>
-                  </p>  
-                  <p id="newsFeedcontent">  
-                    <span id="txtSp1">  Ipsum bugga boo;</span>
-                 </p>
-                         <div id="responseIcons" class="clearfix">
-                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-                    </div>
-                </div>
-                {{else}}
-                    <div id="wallItemEMPTY" class="clearfix"> 
-                        <p id="scrollBoxTitle"> NO BLOG YET </p><p id="view_all_">Being quiet!</p>
-                    </div> <!--  -->
-            {{/if}}
-        </div> <!-- zone00 -->
-
-        <div id="sidebarPROFL_MOB" class="clearfix"> <!-- sidebar  -->
-
-            <div id="box" class="clearfix"> 
-                <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-                <p id="sidebarHDR">ABOUT</p><p id="aboutContent">{{about}}</p>
-                <p id="Read_More_">Read More </p>
-            </div> <!-- about -->
-
-            <div id="box" class="clearfix"> 
-                <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-                <p id="sidebarHDR">CONTACT</p>
-                <div id="contactIconROW" class="clearfix">
-                    <img id="ContactIcon" src="/images/icons/emailIcon.png" class="image" />
-                    <img id="ContactIcon" src="/images/icons/phoneIcon.png" class="image" />
-                    <img id="ContactIcon" src="/images/icons/websiteIcon.png" class="image" />
-                    <img id="ContactIcon" src="/images/icons/linksIcon.png" class="image" />
-                    <img id="ContactIcon" src="/images/icons/socialIcon.png" class="image" />
-                </div>
-
-                <p id="contactInfo">           
-                    <span id="txtSp">Email<br /></span> <span id="txtSp3">{{email}}<br /></span>
-                </p>
-                <p id="contactInfo">
-                    <span id="txtSp">Phone<br /></span><span id="txtSp3">{{phone}}<br /></span>
-                </p>
-                <p id="contactInfo">
-                    <span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
-                </p>
-                <p id="contactInfo">
-                    <span id="txtSp">Links<br /></span><span id="txtSp3">{{links}}<br /></span>
-                </p>
-                <p id="contactInfo"><span id="txtSp">Social<br /></span> </p>
-
-                <div id="socialmediaIcons" class="clearfix">
-                    <img id="facebIcon" src="/images/icons/facebookIcon.png" class="image" />
-                    <img id="tweetIcon" src="/images/icons/tweetIcon.png" class="image" />
-                    <img id="instagIcon" src="/images/icons/instagIcon.png" class="image" />
-                </div>
-            </div><!-- contact -->
-
-            {{> MemberReviews}}
-
-            <div id="box" class="clearfix"><img id="horizonDividr" 
-                src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> PHOTOS </p>
-
-            {{#if there_are_items "pictures"}}
-                <div id="photoGroup" class="clearfix">
-                    <div id="pictureFrame0" class="clearfix">
-                        <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-                    </div>
-                    <div id="pictureFrame1" class="clearfix">
-                        <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-                    </div>
-                    <div id="pictureFrame2" class="clearfix">
-                        <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
-                    </div>
-                </div> 
-                <p id="view_all_">View All &gt;</p>
-
-            {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Pictures yet..</p>
-            {{/if}}
-            </div><!-- PHOTOS -->
-
-
-            <div id="box" class="clearfix"><img id="horizonDividr" 
-                src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> VIDEOS </p>
-                <!--
-                Schemas.Member_Videos = new SimpleSchema({
-                  member_key: { type: String, index: 1},
-                  submission_date: { type: String, optional: true },
-                  album: {type: String, optional: true},
-                  caption: {type:String,optional:true},
-                  video: {type: Object, optional: true }
-                });
-                -->
-
-                {{#if there_are_items "videos"}}
-                    <div id="photoGroup" class="clearfix">
-                        <div id="pictureFrame0" class="clearfix">
-                            <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
-                        </div>
-                        <div id="pictureFrame1" class="clearfix">
-                            <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
-                        </div>
-                        <div id="pictureFrame2" class="clearfix">
-                            <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
-                        </div>
-                    </div>
-
-
-                    <p id="view_all_">View All &gt;</p>
-                {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Videos yet..</p>
-                {{/if}}
-            </div><!-- videOS -->
-
-            <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
-        </div><!-- sidebar -->
-
-    </div> <!-- primary -->
-
-    <!-- allows a member to edit their core profile data, 
-         if logged in and navigate to the profile page
-    *****EITHER mobile or desktop
-    -->
-    {{#if myProfile}}
-        <div id="primaryDiv_MOB" class="primaryContainer clearfix">
-            <div id="editorPROFL_MOB" class="clearfix">
-                <h3> Profile scrub ~<br></h3>
-                {{> quickForm   id="updatePROFILE" 
-                    type="update" collection="People" doc=selectProfile
-                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
-                }}
-            </div> <!--  -->
-
-            <div id="editorPROFL_MOB" class="clearfix">
-                <h3><br> Market Items ~<br>(do not alter vendor_key or vendor user id)<br></h3>
-
-                {{#if there_are_items "marketItems"}}
-
-                    {{> quickForm  id="updateMARKETITEMS" 
-                        type="update" collection="MarketItems" doc=myMarketItems  
-                        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
-                        omitfields="vendor_key, vendorUserId,items.$.productId"  
-                    }}
-
-                {{else}} 
-                    {{initMarketItems}}
-                {{/if}}
-            </div>
-        </div>
-    {{/if}}<!-- MyProfile editor -->
-
-</template>       
 
 
 
@@ -436,66 +60,84 @@
 
 <template name="profile_DESKTOP">
     <div id="headerPROFL">
-    <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
-    <img id="headerImage" src="/images/headerPicFULL-1576.jpg" class="image" />
-    <div id="buttongroupPROFL" class="clearfix">
-        <div id="blog" class="clearfix">
-            <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
-            title="Member Blog" data-content="View latest blog and archives">View Blog</button>
-        </div>
-        <div id="connect" class="clearfix">
-            <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
-            title="Connect with Member" data-content="Include this member in your circles">Co n n e c t</button>
-        </div> 
-        <div id="message" class="clearfix">
-            <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
-            title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
-        </div>
-    </div>
+        <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
+        <img id="headerImage" src="/images/headerPicFULL-1576-.jpg" class="image" />
+        <div id="buttongroupPROFL" class="clearfix">
+            {{#if myProfile}}
 
-    <div id="memberPicture" class="clearfix">
-        <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
-    </div>
+                <!-- div id="connect" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled">   
+                        My <br />Connections
+                    </button>
+                </div --> 
+                <div id="connect" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    title="Connections" data-content="View connections and invites">   
+                        My <br />Connections
+                    </button>
+                </div> 
+            {{else}}
+                <div id="blog" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    title="Member Blog" data-content="View latest blog and archives">View Blog</button>
+                </div>
 
-    <p id="membrfunctXX">{{fullname}}  </p>
+                <div id="connect" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
+                    data-trigger="select" title="Invitation" data-content="Sent to this member">Connection<br />Invite</button>
+                </div> 
+                <div id="message" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
+                </div>
 
-    <div id="badges" class="clearfix">
+            {{/if}}
 
-        <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
-        title="Community Achievement" data-content="Honorary Mention"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
         </div>
-        <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
-        title="Community Achievement" data-content="ABOVE THE MUD"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
-        </div>
-        <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
-        title="Community Achievement" data-content="Skilled Gardener">
-        <img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
-        </div>
-        <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
-        title="Community Achievement" data-content="Sunny Disposition!">
-        <img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
-        </div>
-    </div>
 
-    <div id="navbarPROFILE" class="clearfix">
-        <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
-        title="Navigation" data-content="Return to PROFILE from other views">PROFILE</p>
-        <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto left" 
-        title="Navigation" data-content="More about this member">ABOUT</p>
-        <p id="membrfunct"></p> <p id="membrfunct"></p>
-        <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
-        title="Navigation" data-content="See all Photos and Videos">PHOTOS/VIDEOS</p> 
-        <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
-        title="Navigation" data-content="Go to this member's marketplace">MARKETPLACE</p> 
-        <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
-        title="Navigation" data-content="More activity for this member">MORE ▼</p>
-    </div>
+        <div id="memberPicture" class="clearfix">
+            <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
+        </div>
+
+        <p id="membrfunctXX">{{fullname}}  </p>
+
+        <div id="badges" class="clearfix">
+
+            <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+            title="Community Achievement" data-content="Honorary Mention"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
+            </div>
+            <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+            title="Community Achievement" data-content="ABOVE THE MUD"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
+            </div>
+            <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+            title="Community Achievement" data-content="Skilled Gardener">
+            <img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
+            </div>
+            <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+            title="Community Achievement" data-content="Sunny Disposition!">
+            <img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
+            </div>
+        </div>
+
+        <div id="navbarPROFILE" class="clearfix">
+            <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+            title="Navigation" data-content="Return to PROFILE from other views">PROFILE</p>
+            <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto left" 
+            title="Navigation" data-content="More about this member">ABOUT</p>
+            <p id="membrfunct"></p> <p id="membrfunct"></p>
+            <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+            title="Navigation" data-content="See all Photos and Videos">PHOTOS/VIDEOS</p> 
+            <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+            title="Navigation" data-content="Go to this member's marketplace">MARKETPLACE</p> 
+            <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
+            title="Navigation" data-content="More activity for this member">MORE ▼</p>
+        </div>
     </div> <!-- headerPROFL -->
 
     <div id="sidebarPROFL" class="clearfix"> <!-- sidebar   `````````````````````````````````````````````````````````   -->
 
         <div id="box" class="clearfix">
-            
+
             <img id="IconCNONE"  src="/images/icons/category-icon.png" class="image" />
             <p id="sidebarcontent" >
                 {{#each occupations}}
@@ -510,13 +152,13 @@
         </div> <!-- header-->
 
         <div id="box" class="clearfix"> 
-            <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+            <div id="wideHorizDivdr" class="clearfix"></div>
             <p id="sidebarHDR">ABOUT</p><p id="aboutContent">{{about}}</p>
-            <p id="Read_More_">Read More </p>
+            <!-- p id="Read_More_">Read More </p -->
         </div> <!-- about -->
 
         <div id="box" class="clearfix"> 
-            <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+            <div id="wideHorizDivdr" class="clearfix"></div>
             <p id="sidebarHDR">CONTACT</p>
             <div id="contactIconROW" class="clearfix">
                 <img id="ContactIcon" src="/images/icons/emailIcon.png" class="image" />
@@ -526,17 +168,13 @@
                 <img id="ContactIcon" src="/images/icons/socialIcon.png" class="image" />
             </div>
 
-            <p id="contactInfo">           
-                <span id="txtSp">Email<br /></span> <span id="txtSp3">{{email}}<br /></span>
+            <p id="contactInfo"><span id="txtSp">Email<br /></span><span id="txtSp3">{{email}}<br /></span>
             </p>
-            <p id="contactInfo">
-                <span id="txtSp">Phone<br /></span><span id="txtSp3">{{phone}}<br /></span>
+            <p id="contactInfo"><span id="txtSp">Phone<br /></span><span id="txtSp3">{{phone}}<br /></span>
             </p>
-            <p id="contactInfo">
-                <span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
+            <p id="contactInfo"><span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
             </p>
-            <p id="contactInfo">
-                <span id="txtSp">Links<br /></span><span id="txtSp3">{{links}}<br /></span>
+            <p id="contactInfo"><span id="txtSp">Links<br /></span><span id="txtSp3">{{links}}<br /></span>
             </p>
             <p id="contactInfo"><span id="txtSp">Social<br /></span> </p>
 
@@ -551,8 +189,9 @@
         {{> MemberReviews}}
 
 
-        <div id="box" class="clearfix"><img id="horizonDividr" 
-            src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> PHOTOS </p>
+        <div id="box" class="clearfix">
+        <div id="wideHorizDivdr" class="clearfix"></div>
+        <p id="sidebarHDR"> PHOTOS </p>
         <!--
         Schemas.Member_Pictures = new SimpleSchema({
           member_key: { type: String, index: 1},
@@ -582,8 +221,7 @@
         </div><!-- PHOTOS -->
 
 
-        <div id="box" class="clearfix"><img id="horizonDividr" 
-            src="/images/icons/horizontalDivider.png" class="image" /><p id="sidebarHDR"> VIDEOS </p>
+        <div id="box" class="clearfix"><div id="wideHorizDivdr" class="clearfix"></div><p id="sidebarHDR"> VIDEOS </p>
             <!--
             Schemas.Member_Videos = new SimpleSchema({
               member_key: { type: String, index: 1},
@@ -613,9 +251,6 @@
         {{/if}}
         </div><!-- videOS -->
 
-
-
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
     </div><!-- sidebar -->
 
     <div id="zone00" class="clearfix">
@@ -763,7 +398,7 @@
         <div id="wallItemEMPTY" class="clearfix"> 
             <p id="scrollBoxTitle"> NO CONTACTS YET </p><p id="view_all_"></p>
         </div> <!--  -->
-        {{/if}}
+    {{/if}}
 
     {{#if there_are_items "blogItems"}}
         <div id="newsFeed5" class="clearfix">
@@ -785,7 +420,7 @@
         <div id="wallItemEMPTY" class="clearfix"> 
             <p id="scrollBoxTitle"> NO BLOG YET </p><p id="view_all_">Being quiet!</p>
         </div> <!--  -->
-        {{/if}}
+    {{/if}}
 
     </div> <!-- zone00 --> 
 
@@ -804,7 +439,7 @@
             </div> <!--  -->
 
             <div id="editorPROFL" class="clearfix">
-                <h3><br> Market Items ~<br>(do not alter vendor_key or vendor user id)<br></h3>
+                <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
 
                 {{#if there_are_items "marketItems"}}
 
@@ -821,14 +456,393 @@
         <!-- /div -->
     {{/if}}<!-- MyProfile editor -->
 
-
 </template><!-- template name="profile_DESKTOP" -->
 
 
 
 
+<template name="profile_MOB" >
+    <div id="primaryDiv_MOB" class="primaryContainer clearfix"> <!-- for float:none centering in children -->
 
 
+        <div id="headerPROFL_MOB">
+            <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
+            <img id="headerImage_MOB" src="/images/headerPic-480.png" class="image" />
+            <div id="buttongroupPROFL_MOB" class="clearfix">
+
+
+            {{#if myProfile}}
+
+                <div id="connect" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    title="Connections" data-content="View connections and invites">   
+                        My <br />Connections
+                    </button>
+                </div> 
+
+            {{else}}
+                <div id="blog" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    title="Member Blog" data-content="View latest blog and archives">View Blog</button>
+                </div>
+
+                <div id="connect" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
+                    data-trigger="select" title="Invitation" data-content="Sent to this member">Connection<br />Invite</button>
+                </div> 
+                <div id="message" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
+                </div>
+
+            {{/if}}
+
+            </div>
+
+
+
+
+            <div id="memberPicture_MOB" class="clearfix">
+                <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
+            </div>
+
+            <!-- div id="membrName_MOB">{{fullname}}  </div -->
+            <div id="navbarPROFILE_MOB" class="clearfix">
+                <p id="membrName_MOB">{{fullname}}</p>
+            </div>
+
+            <div id="badges_MOB" class="clearfix">
+
+                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
+                title="Community Achievement" data-content="Honorary Mention"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
+                </div>
+                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
+                title="Community Achievement" data-content="ABOVE THE MUD"><img id="lotus_icon" src="/images/icons/lotus-icon.png" class="image" />
+                </div>
+                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
+                title="Community Achievement" data-content="Skilled Gardener">
+                <img id="tomato_icon" src="/images/icons/tomato-icon.png" class="image" />
+                </div>
+                <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="above" 
+                title="Community Achievement" data-content="Sunny Disposition!">
+                <img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
+                </div>
+            </div>
+
+            <div id="navbarPROFILE_MOB" class="clearfix">
+                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="auto above" 
+                title="Navigation" data-content="This is the current view">PROFILE</p>
+                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
+                title="Navigation" data-content="More about this member">ABOUT</p>
+                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
+                title="Navigation" data-content="Go to this member's marketplace">MARKET</p> 
+                <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
+                title="Navigation" data-content="More activity for this member">MORE ▼</p>
+            </div>
+
+            <div id="box_MOB" class="clearfix">    
+                <img id="IconCNONE"  src="/images/icons/category-icon.png" class="image" />
+                <p id="sidebarcontent" >
+                    {{#each occupations}}
+                    <span id="txtSp1">{{vocation}}</span>
+                    <span id="txtSp1">*{{descript}}<br /></span>
+                    {{/each}}       
+                </p>
+                <img id="IconCBOTH" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
+                    title="Location" data-content="" src="/images/icons/location-icon.png" class="image" />
+                <p id="sidebarcontent"><span id="txtSp1">{{location}}</span></p>
+            </div> <!-- header-->
+
+            {{#if myProfile}}
+            {{else}}
+                <div id="commentsPROFL_MOB" class="clearfix"><p id="membrfunct_MOB">COMMENT</p>
+                    <div id="commEntryPROFL_MOB" class="clearfix"> {{> addComment}} </div>
+                </div> <!-- end commentsPROFL -->
+            {{/if}}
+        </div> <!-- headerPROFL -->
+
+        <div id="zone00_MOB" class="clearfix">
+
+            {{#if there_are_items "marketItems"}}
+                <div id="marketplaceItems" class="clearfix"> 
+                    <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+                    {{#if itemsOverflow}}
+                        <!-- p id="view_all_">View All &gt;</p -->
+                        <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
+                    {{/if}}
+                    <div id="scrollBoxItemsGroup" class="clearfix"> {{> MyMarketItems}}</div>
+                    {{#if itemsOverflow}}
+                        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+                    {{/if}}
+                </div> <!--  -->
+
+                <div id="newsFeed1" class="clearfix">
+                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
+
+                    <p id="newsFeedcontent">
+                      <span id="txtSp1">{{fullname}} listed new items in the Marketplace:<br /></span>
+                      <span id="txtSp">2&#x3a;08 pm</span>
+                    </p>
+
+
+                    <div id="newsfeedBox" class="clearfix">
+                        {{#if Template.subscriptionsReady}}
+                        {{#with myMarketItems}}
+                        <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+
+                        <p id="newsFeedcontent">
+                            {{#each item in items}}
+                            <span id="txtSp1">{{item.description}}</span>
+                            <span id="txtSp1">Sold by:{{item.unitType}}{{item.currency}}${{item.price}}</span>
+                            <span id="txtSp2">~Lorem BOO<br /></span>
+                            {{/each}}
+                        </p>
+                        {{/with}}
+                        {{/if}}
+                        <!-- div id="statusIcons" class="clearfix">
+                            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
+                        </div -->
+                        
+                    </div>
+
+                    <p id="newsFeedcontent">
+                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                    </p>
+
+                    <!-- div id="responseIcons" class="clearfix">
+                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                    </div -->
+                </div>
+
+            {{else}}
+            <div id="wallItemEMPTY" class="clearfix"> 
+                <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
+            </div> <!--  -->
+            {{/if}}
+
+            {{#if there_are_items "calendarEvents"}}
+                <div id="newsFeed2" class="clearfix">
+                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
+
+                    <p id="newsFeedcontent">
+                      <span id="txtSp1">{{fullname}} is going to the event </span>
+                      <span id="txtSp3"> Yoga on the Beach<br /></span>
+                      <span id="txtSp">11&#x3a;01 am</span>
+                    </p>
+
+                    <div id="newsfeedBox" class="clearfix">
+                       <img id="Photo_ObjectFULL" src="/images/user-images/event.png" class="image" /> 
+                    </div>
+                    <p id="newsfeedCalenderEvent">
+                    <span id="txtSp1">Yoga on the Beach<br /></span>
+                    <span id="txtSp">November 14, 2015</span>
+                    </p>
+
+                    <p id="newsFeedcontent">
+                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                    </p>
+
+                    <div id="responseIcons" class="clearfix">
+                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                    </div>
+
+                </div>
+                {{else}}
+                <div id="wallItemEMPTY" class="clearfix"> 
+                    <p id="scrollBoxTitle"> CALENDAR EVENTS </p><p id="view_all_">Nothing doing!</p>
+                </div> <!--  -->
+            {{/if}}
+
+            {{#if there_are_items "memberContacts"}}
+                <div id="newsFeed3" class="clearfix">
+
+                    <!-- div id="profile_pic_copy" class="clearfix"></div -->
+                    <p id="newsFeedcontent">
+                      <span id="txtSp1">{{fullname}} is now connected with </span>
+                      <span id="txtSp3"> Jessica Jones<br /></span>
+                      <span id="txtSp">Yesterday</span>
+                    </p>
+
+                    <div id="newsfeedBox" class="clearfix">
+                    <img id="Photo_Object" src="/images/user-images/jessica128.png" class="image" /> 
+
+                        <p id="newsFeedcontent">
+                            <span id="txtSp1">Jessica Jones<br /></span>
+                            <img id="IconCNONE" src="/images/icons/category-icon.png" class="image" />
+                            <span id="txtSp">&nbsp;Yoga Instructor, Massage Therapist, Owner of </span>
+                            <span id="txtSp">Ohm Wellness Center<br /></span>
+                           <img id="IconCBOTH" src="/images/icons/location-icon.png" class="image" /> 
+                           <span id="txtSp21"><br /></span>
+                           <span id="txtSp">&nbsp;Sunrise, FL<br /></span>
+                        </p>
+                    </div>
+
+                    <p id="newsFeedcontent">
+                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                    </p>
+
+                    <div id="responseIcons" class="clearfix">
+                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                    </div>
+
+                </div>
+                {{else}}
+                <div id="wallItemEMPTY" class="clearfix"> 
+                    <p id="scrollBoxTitle"> NO CONTACTS YET </p><p id="view_all_"></p>
+                </div> <!--  -->
+            {{/if}}
+
+            {{#if there_are_items "blogItems"}}
+                <div id="newsFeed5" class="clearfix">
+                <!-- div id="profile_pic_copy" class="clearfix"></div -->
+
+                 <p id="newsFeedcontent">
+                    <span id="txtSp1">{{fullname}}<br /></span><span id="txtSp">Sept 2<br /></span>
+                  </p>  
+                  <p id="newsFeedcontent">  
+                    <span id="txtSp1">  Ipsum bugga boo;</span>
+                 </p>
+                         <div id="responseIcons" class="clearfix">
+                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                    </div>
+                </div>
+                {{else}}
+                    <div id="wallItemEMPTY" class="clearfix"> 
+                        <p id="scrollBoxTitle"> NO BLOG YET </p><p id="view_all_">Being quiet!</p>
+                    </div> <!--  -->
+            {{/if}}
+        </div> <!-- zone00 -->
+
+        <div id="sidebarPROFL_MOB" class="clearfix"> <!-- sidebar  -->
+
+            <div id="box" class="clearfix"> 
+                <div id="wideHorizDivdr" class="clearfix"></div>
+                <p id="sidebarHDR">ABOUT</p><p id="aboutContent">{{about}}</p>
+                <!-- p id="Read_More_">Read More </p -->
+            </div> <!-- about -->
+
+            <div id="box" class="clearfix"> 
+                <div id="wideHorizDivdr" class="clearfix"></div>
+                <p id="sidebarHDR">CONTACT</p>
+                <div id="contactIconROW" class="clearfix">
+                    <img id="ContactIcon" src="/images/icons/emailIcon.png" class="image" />
+                    <img id="ContactIcon" src="/images/icons/phoneIcon.png" class="image" />
+                    <img id="ContactIcon" src="/images/icons/websiteIcon.png" class="image" />
+                    <img id="ContactIcon" src="/images/icons/linksIcon.png" class="image" />
+                    <img id="ContactIcon" src="/images/icons/socialIcon.png" class="image" />
+                </div>
+
+                <p id="contactInfo">           
+                    <span id="txtSp">Email<br /></span> <span id="txtSp3">{{email}}<br /></span>
+                </p>
+                <p id="contactInfo">
+                    <span id="txtSp">Phone<br /></span><span id="txtSp3">{{phone}}<br /></span>
+                </p>
+                <p id="contactInfo">
+                    <span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
+                </p>
+                <p id="contactInfo">
+                    <span id="txtSp">Links<br /></span><span id="txtSp3">{{links}}<br /></span>
+                </p>
+                <p id="contactInfo"><span id="txtSp">Social<br /></span> </p>
+
+                <div id="socialmediaIcons" class="clearfix">
+                    <img id="facebIcon" src="/images/icons/facebookIcon.png" class="image" />
+                    <img id="tweetIcon" src="/images/icons/tweetIcon.png" class="image" />
+                    <img id="instagIcon" src="/images/icons/instagIcon.png" class="image" />
+                </div>
+            </div><!-- contact -->
+
+            {{> MemberReviews}}
+
+            <div id="box" class="clearfix"><div id="wideHorizDivdr" class="clearfix"></div><p id="sidebarHDR"> PHOTOS </p>
+
+            {{#if there_are_items "pictures"}}
+                <div id="photoGroup" class="clearfix">
+                    <div id="pictureFrame0" class="clearfix">
+                        <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+                    </div>
+                    <div id="pictureFrame1" class="clearfix">
+                        <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+                    </div>
+                    <div id="pictureFrame2" class="clearfix">
+                        <img id="Photo_Object" src="/images/user-images/Carrots75.png" class="image" />
+                    </div>
+                </div> 
+                <p id="view_all_">View All &gt;</p>
+
+            {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Pictures yet..</p>
+            {{/if}}
+            </div><!-- PHOTOS -->
+
+
+            <div id="box" class="clearfix"><div id="wideHorizDivdr" class="clearfix"></div><p id="sidebarHDR"> VIDEOS </p>
+
+                {{#if there_are_items "videos"}}
+                    <div id="photoGroup" class="clearfix">
+                        <div id="pictureFrame0" class="clearfix">
+                            <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
+                        </div>
+                        <div id="pictureFrame1" class="clearfix">
+                            <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
+                        </div>
+                        <div id="pictureFrame2" class="clearfix">
+                            <img id="ImageObject" src="/images/icons/videoStart.png" class="image" />
+                        </div>
+                    </div>
+
+
+                    <p id="view_all_">View All &gt;</p>
+                {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Videos yet..</p>
+                {{/if}}
+            </div><!-- videOS -->
+
+        </div><!-- sidebar -->
+
+    </div> <!-- primary -->
+
+    <!-- allows a member to edit their core profile data, 
+         if logged in and navigate to the profile page
+    *****EITHER mobile or desktop
+    -->
+    {{#if myProfile}}
+        <div id="primaryDiv_MOB" class="primaryContainer clearfix">
+            <div id="editorPROFL_MOB" class="clearfix">
+                <h3> Profile scrub ~<br></h3>
+                {{> quickForm   id="updatePROFILE" 
+                    type="update" collection="People" doc=selectProfile
+                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
+                }}
+            </div> <!--  -->
+
+            <div id="editorPROFL_MOB" class="clearfix">
+                <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
+
+                {{#if there_are_items "marketItems"}}
+
+                    {{> quickForm  id="updateMARKETITEMS" 
+                        type="update" collection="MarketItems" doc=myMarketItems  
+                        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
+                        omitfields="vendor_key, vendorUserId,items.$.productId"  
+                    }}
+
+                {{else}} 
+                    {{initMarketItems}}
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}<!-- MyProfile editor -->
+
+</template>
 
 
 
@@ -839,15 +853,15 @@
 <template name="MemberReviews">
 
     {{#if Template.subscriptionsReady}}
-    <div id="box" class="clearfix">
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+    <div id="box" class="clearfix"><div id="wideHorizDivdr" class="clearfix"></div>
+        
         <p id="sidebarHDR">REVIEWS</p>
           <div id="ratingStars" class="clearfix">
             <img id="star-icon" src="/images/icons/5starYellow.png" class="image" />
           </div>  
         <p id="txtSp22"><br />{{summrizeStats}}</p>
-        <p id="view_all_">View All &gt;&gt; </p>
-        <div id="wideHorizDivdr" class="clearfix"></div>
+        <!-- p id="view_all_">View All &gt;&gt; </p -->
+        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
 
         {{#with selectLatest_Review}}   
             <p id="contactInfo">
@@ -858,9 +872,10 @@
                 <img {{starburst(this.review_rating)}} />
                 <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
                 <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
-                <span id="Read_More_">Read More ></span>
+                <!-- span id="Read_More_">Read More ></span -->
             </p>
-            <div id="wideHorizDivdr" class="clearfix"></div>
+            <div id="wideHorizDivdrWHITE" class="clearfix"></div>
+
         {{/with}}
 
 
@@ -878,7 +893,7 @@
                 <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
                 <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
 
-                <span id="Read_More_">Read More ></span>
+                <!-- span id="Read_More_">Read More ></span -->
             </p>
         {{/with}}
         {{/if}}

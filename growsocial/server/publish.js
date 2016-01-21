@@ -102,6 +102,8 @@ Meteor.publish(null, function () {
     Member_Videos.find(),
     Member_Pictures.find(),
     Member_Reviews.find(),
-    People.find()    
+    People.find(),
+    Connections.find(),
+    Comments.find()   
   ];
 });
