@@ -30,11 +30,11 @@
 
 #Help_Join_Button {
     top: 0px; left: 0px; z-index: 90;
-    margin-top: 5%; margin-left: 6%;
+    margin-top: 5%; margin-left: 60%;
 }
 
 #Help_About {
-    height: 700px;
+    height: 100px;
     background-size: cover;
     position: relative;
     top: 0px;
@@ -44,7 +44,7 @@
     margin-right: 0px;
     margin-left: 0%;
     clear: none;
-    font-size: 1.4em;
+    font-size: 1.8em;
     color: rgb(0, 0, 0);
     text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;
@@ -78,10 +78,10 @@
 #Help_Features {
     clear: both;   
     top: 540px; left: 0px; z-index: 30;
-    margin-top: 7px; margin-left: 15.541031%;
+    margin-top: 7px; margin-left: 5%;
     height: auto;
-     font-size: 1.4em;
-    color: rgb(255, 255, 255);
+     font-size: 1.8em;
+    color: rgb(0, 0, 0);
     text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;
 }
@@ -91,6 +91,3 @@
     
 }
 
-#Help_Join_Button { 
-   position: relative;top: -30px; left: 70px; z-index: 30; 
-}
