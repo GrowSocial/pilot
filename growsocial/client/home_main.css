@@ -117,7 +117,7 @@
 #Phoenix_Farms_Lakeland_Florida {
     float: left;
     font-size: 1em;
-    width: 23.063973%;
+    width: 23%;
     height: auto;
     text-align: right;
     font-weight: normal;
@@ -126,8 +126,8 @@
     top: 0px;
     left: 0px;
     z-index: 62;
-    margin-top: 2px;
-    margin-left: 73.905724%;
+    margin-top: -40%;
+    margin-left: 60%;
     clear: both;
 }
 
@@ -143,7 +143,7 @@
 #relativeAboutContainer {
     position: relative;
     width: auto;
-    height: 900px;
+    height: 750px;
 }
 #garden_graphic {
     position: relative;
@@ -154,16 +154,16 @@
     z-index: 18;
     background-image:url("/images/soil-sky.png");
     -webkit-background-size: 100%;
-    background-size: 100%;
-    height: 900px; 
+    height: 850px; 
     width: auto; 
     max-width: 1440px; 
-    max-height: 900px;
+    max-height: 750px;
 }
 #About_GrowSocial {
     font-size: 2em;
     height: auto;
     width:auto;
+    margin-top: 2%;
     text-align: center;font-weight: 600;line-height: normal;
     color: rgb(57, 57, 57);
     font-style: normal;letter-spacing: normal;
@@ -171,12 +171,11 @@
     z-index: 31; 
 }
 #AboutMSG  {
-    background-color:rgba(0,0,50,.3);
     float: left;clear: both;   
     top: 0px; left: 0px; z-index: 30;
-    margin-top: 7px; margin-left: 15%;
-    width: 66%; height: 150px;
-    color: rgb(256, 256, 256);
+    margin-top: 2%; margin-left: 15%;
+    width: 66%; height: 100px;
+    color: rgb(0, 0, 0);
     font-size: 1.09541em; line-height: 24px; text-align: center;font-weight: normal;
     font-style: normal; letter-spacing: normal;text-decoration: none;font-family: lato;
     overflow: auto;
@@ -184,7 +183,7 @@
 #Members {
     color: rgb(255, 255, 255);
     position: relative;
-    margin-top: 260px;
+    margin-top: 200px;
     margin-left: 20px;
     clear: none;
     font-size: 2em;
@@ -218,8 +217,8 @@
 #Join_GrowSocial_button {
     position: relative;
     z-index: 25;
-    margin-top: 10%;
-    margin-left: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
     clear: both;
 }
 #profile_pic_circle {
@@ -235,8 +234,8 @@
     top: 0px;
     left: 0px;
     z-index: 21;
-    margin-top: 40%;
-    margin-left: 20%;
+    margin-top: 30%;
+    margin-left: 10%;
     clear: both;
     background-image:url("/images/user-images/anthony.png");
     -webkit-background-size: 100%;
@@ -304,13 +303,13 @@
     clear: none;
 }*/
 #About_block {
-    height: 900px;
+    height: 750px;
     background-size: cover;
     position: relative;
     top: 0px;
     left: 0px;
     z-index: 1;
-    margin-top: 0px;
+    margin-top: 2%;
     margin-right: 0px;
     margin-left: 0%;
     clear: none;
@@ -320,7 +319,7 @@
 #relativeLocalPediaContainer {
     position: relative;
     width: auto;
-    height: 600px;
+    height: 550px;
 }
 #View_Localpedia {
     float: left;
@@ -348,12 +347,12 @@
     left: 0px;
     z-index: 9;
     margin-top: 10%;
-    margin-left: 65%;
+    margin-left: 60%;
     clear: both;
 }
 #localPediaMSG {
     font-size: 1em;
-    height: 300px;
+    height: 100px;
     text-align: right;
     font-weight: normal;
     line-height: 24px;
@@ -371,10 +370,11 @@
     overflow: auto;
 }
 #localPediaMAP {
-    margin-top: 25px;
-    margin-left: 25px;
-    max-width: 99%;
-    max-height: 99%;
+    margin-top: 5%;
+    margin-left: 5%;
+    max-width: 80%;
+    max-height: 80%;
+     background-color: transparent;
 }
 #Connect_Locally_Share_Globally_ {
     font-size: 1.85em;
@@ -395,14 +395,14 @@
     clear: none;
 }
 #localpedia_block {
-    height: 600px;
+    height: 550px;
     background-color: rgb(237, 237, 237);
     background-size: cover;
     position: relative;
     top: 0px;
     left: 0px;
     z-index: 1;
-    margin-top: 0px;
+    margin-top: 2%;
     margin-right: 0px;
     margin-left: 0%;
     clear: none;
@@ -469,9 +469,14 @@ float: left;
     z-index: 4;
 }
 
+.popover-content{
+    color: #000000 !important;/*black color*/
+    font-size: 12px
+}
 
-
-
+a[rel=popover] {
+    display: inline-block;
+}
 
 
 

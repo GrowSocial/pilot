@@ -6,9 +6,11 @@
         clear: none;
         color: rgb(0, 0, 0);
         margin-right: 0%;     
-      
+      background-color: transparent;
 }
-   
+#featureImgHelp{
+    background-color: transparent;
+}
 #featureHdr2{
     font-size: 1.4em; color: rgb(255, 255, 255);
     text-align: left;   font-weight: normal; line-height: normal;
@@ -17,7 +19,7 @@
 
 
 .thumbnail{
- 
+    background-color: transparent;
     position:relative;
     height: auto;
 }
@@ -25,7 +27,7 @@
     float: left;clear: none;
     width: 50%;   height: auto;
     position: relative;  top: 0px; left: 0px; z-index: 90;
-    margin-top: -200px; margin-left: 6%;
+    margin-top: -190px; margin-left: 6%;
 }
 
 #Help_Join_Button {
@@ -40,7 +42,7 @@
     top: 0px;
     left: 0px;
     z-index: 1;
-    margin-top: 0px;
+    margin-top: 2%;
     margin-right: 0px;
     margin-left: 0%;
     clear: none;
@@ -87,7 +89,15 @@
 }
 
 #Help_Tutorial_Button {
-  top: 60px; margin-left: 20%; z-index: 30;  
+  top: 60px; margin-left: 20%; margin-top: 2%; z-index: 30;  
     
 }
 
+.popover-content{
+    color: #000000 !important;/*black color*/
+    font-size: 12px
+}
+
+a[rel=popover-container] {
+    display: inline-block;
+}
