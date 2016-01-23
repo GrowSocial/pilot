@@ -105,7 +105,7 @@
           <div class="input-group">
               <input type="text" id="navSearchText" class="form-control" placeholder="Search">
               <span class="input-group-btn">
-                  <button type="submit" aria-label="Submit" class="btn btn-default"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
+                  <button type="submit" aria-label="Submit" class="btn btn-default navSearchButton"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
               </span>
           </div>
       </div>
@@ -116,7 +116,7 @@
 <template name="navSearchButton">
   <div class="visible-xs">
     <!-- For small screen, just show search button -->
-    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
+    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small navSearchButton" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </a>
   </div>

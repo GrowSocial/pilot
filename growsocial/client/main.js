@@ -63,6 +63,22 @@ Template.navLogout.events({
   },
 });
 
+// Disable nav search input and button when route is search
+Template.main.onRendered(function() {
+  this.autorun(function() {
+    var routeName = FlowRouter.getRouteName(); // reactive
+    if (routeName === "search") {
+      // clear and disable search input and button
+      $('#navSearchText').val("");
+      $('#navSearchText').attr('disabled','disabled');
+      $('.navSearchButton').attr('disabled','disabled');
+    } else {
+      $('#navSearchText').attr('disabled', null);
+      $('.navSearchButton').attr('disabled', null);
+    }
+  });
+});
+
 Template.navSearchForm.events({
   'submit': function (event) {
     // Prevent browser from restarting
