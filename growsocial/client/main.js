@@ -1,6 +1,6 @@
 // <!--Start of Tawk.to Script-->
 // <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+// var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
@@ -11,6 +11,45 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 // </script>
 // <!--End of Tawk.to Script-->
+
+// clear or show the tawk widget
+function showTawk(toShow, countdown, foundTawk) {
+  if (countdown < 0) return;
+  if (typeof(Tawk_API) != "undefined" && Tawk_API.toggle) {
+    if (toShow) {
+      Tawk_API.toggle();
+      Tawk_API.toggle();
+      Tawk_API.showWidget();
+      Tawk_API.showWidget();
+    } else {
+      Tawk_API.hideWidget();
+      Tawk_API.hideWidget();
+    }
+    if (!foundTawk) {  // do yet another delay and another attempt
+      Meteor.setTimeout(function() {
+        showTawk(toShow, countdown-1, true);
+      }, 600);
+    }
+  } else {
+    Meteor.setTimeout(function() {
+      showTawk(toShow, countdown-1, false);
+    }, 300);
+  }
+}
+
+// Only show tawk chat when route is "help"
+Meteor.startup(function() {
+  Meteor.autorun(function() {
+    var routeName = FlowRouter.getRouteName(); // reactive
+    console.log("route for showTawk: ", routeName);
+    if (routeName === "help") {
+      showTawk(true, 1000);
+    } else {
+      showTawk(false, 1000);
+    }
+  });
+});
+
 
 Session.setDefault('backgroundMainStyle1', true);
 // Session.setDefault('notificationCount', 4);
@@ -61,6 +100,22 @@ Template.navLogout.events({
   'click': function (event) {
     Accounts.logout();
   },
+});
+
+// Disable nav search input and button when route is search
+Template.main.onRendered(function() {
+  this.autorun(function() {
+    var routeName = FlowRouter.getRouteName(); // reactive
+    if (routeName === "search") {
+      // clear and disable search input and button
+      $('#navSearchText').val("");
+      $('#navSearchText').attr('disabled','disabled');
+      $('.navSearchButton').attr('disabled','disabled');
+    } else {
+      $('#navSearchText').attr('disabled', null);
+      $('.navSearchButton').attr('disabled', null);
+    }
+  });
 });
 
 Template.navSearchForm.events({
