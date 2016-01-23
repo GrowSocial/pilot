@@ -48,8 +48,10 @@ function onLocationFound(e) {
   // timer to close popup and remove circle
   Meteor.setTimeout(function () {
     myLocationMarker.closePopup();
+    myLocationMarker.unbindPopup();
     leafletmapp.removeLayer(myLocationCircle);
   }, 2000);
+  locationNotify('alert-info', '<p>Loaded from browser ...</p><p>Lat: ' + e.latlng.lat + ' </p><p>Long: ' + e.latlng.lng + '</p>');
 }
 
 function onLocationError(e) {
@@ -82,137 +84,39 @@ function calcBoundsByRange(centerLatLng, range, rangeUnits) {
   return bounds;
 }
 
-Template.location.helpers({
-  // TODO item in list to have link to view map marker
-  peopleIndex: () => PeopleIndex,
-  inputAttributes: function () {
-    return { 
-      'class': 'easy-search-input form-control',
-      'placeholder': 'Start searching...',
-      'value': FlowRouter.getQueryParam("q"), 
-    };
-  },
-  resultsCount: function () {
-    return PeopleIndex.getComponentDict().get('count'); // currentCount only for already shown?
-  },
-});
-
 Template.location.onRendered(function() {
-  // console.log('Template.search.onRendered');
+  // console.log('Template.location.onRendered');
   
     if(Session.get('lat')) {
       locationLatLng.lat = Session.get('lat');
       locationLatLng.lng = Session.get('lng');
       console.log('loading lat/lng from session: ', locationLatLng);
     }
-  
-
-  var template = this;
-  template.autorun(function() {
-    var searchText = FlowRouter.getQueryParam("q");
-    // console.log('change in router param q: ', searchText);
-    template.$('.easy-search-input').val(searchText);
-    // update PeopleIndex search? No, because:
-    // submitted search text is listened to, by the easy search component
-  });
-  template.autorun(function() {
-    var city = FlowRouter.getQueryParam("c");
-    // console.log('change in router param c: ', city);
-    template.$('[name=city]').val(city);
-    if (city) {
-      // PeopleIndex.getComponentMethods().addProps('cityFilter', city);
-    } else {
-      // PeopleIndex.getComponentMethods().removeProps('cityFilter');
-    }
-  });
-  template.autorun(function() {
-    var zipcode = FlowRouter.getQueryParam("z");
-    // console.log('change in router param z: ', zipcode);
-    template.$('[name=zipcode]').val(zipcode);
-    if (zipcode) {
-      // PeopleIndex.getComponentMethods().addProps('zipcodeFilter', zipcode);
-    } else {
-      // PeopleIndex.getComponentMethods().removeProps('zipcodeFilter');
-    }
-  });
-  template.autorun(function() {
-    var range = FlowRouter.getQueryParam("r");
-    var rangeUnits = FlowRouter.getQueryParam("ru");
-    // console.log('change in router param r / ru: ', range + rangeUnits);
-    template.$('[name=range]').val(range);
-    template.$('.range-units').val(rangeUnits);
-    // console.log('update search index filter');
-    if (range && range > 0.01 && range < 20000 ) { // limit the range
-      // PeopleIndex.getComponentMethods().addProps('rangeFilter', calcBoundsByRange(locationLatLng, range, rangeUnits));
-    } else {
-      locationRange = 0;
-      // PeopleIndex.getComponentMethods().removeProps('rangeFilter');
-    }
-    // in browser console, look for: PeopleIndex.components.__default.keys.searchOptions
-  });
 });
 
 Template.location.events({
-  'change .easy-search-input': function (e) { // submit?
-    // console.log('easy-search-input change event: update router query params');
-    var searchText = $(e.target).val() ? $(e.target).val() : null;
-    FlowRouter.setQueryParams({q: searchText});
-  },
-  'submit .search-form': function(e) {
-    // console.log('easy-search-input submit event: send key up: enter');
-    e.preventDefault();
-    // send Enter key to trigger search on input
-    var newEvent = $.Event('keyup');
-    newEvent.keyCode = 13;
-    $('.easy-search-input').trigger(newEvent);
-  },
-  'change [name=city]': function (e) {
-    // console.log('city change event: update router query params');
-    var city = $(e.target).val() ? $(e.target).val() : null;
-    FlowRouter.setQueryParams({c: city});
-  },
-  'change [name=zipcode]': function (e) {
-    // console.log('zipcode change event: update router query params');
-    var zipcode = $(e.target).val() ? $(e.target).val() : null;
-    FlowRouter.setQueryParams({z: zipcode});
-  },
-  'change [name=range]': function (e) {
-    // console.log('range change event: update router query params');
-    var range = $(e.target).val() ? $(e.target).val() : null;
-    FlowRouter.setQueryParams({r: range});
-  },
-  'change .range-units': function (e) {
-    // console.log('range-units change event: update router query params');
-    var ru = $(e.target).val() ? $(e.target).val() : null;
-    FlowRouter.setQueryParams({ru: ru});
-  },
-  'click #addSamplePeopleButton': function(event, template) {
+  'click #setFromBrowserButton': function(event) {
     event.preventDefault();
-    var addedList = Meteor.call('addSearchSamplePeople', function (error, result) { 
-      // console.log('addedList:', result);
-      var index;
-      var html='<ul>';
-      for (index = 0; index < result.length; ++index) {
-          // console.log(result[index]);
-          html = html + '<li>' + result[index] + '</li>';
-      }
-      html = html + '</ul>';
-      locationNotify('alert-info', 'People added.' + html);
-    });
+    leafletmapp.locate({setView: true, maxZoom: 17});
   },
-  'click #removeSamplePeopleButton': function(event) {
+  'click #loadLocationButton': function(event) {
     event.preventDefault();
-    var addedList = Meteor.call('removeSearchSamplePeople', function (error, result) { 
+    Meteor.call('loadLatLng', function(error, newLatLng) {
       if (error) {
+        // TODO log the error
         locationNotify('alert-danger', error.message);
       } else {
-        locationNotify('alert-info', 'Sample people removed.');
+        locationNotify('alert-info', '<p>Loaded from collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+        // view on map
+        if (myLocationMarker) {
+          leafletmapp.removeLayer(myLocationMarker).closePopup();
+          leafletmapp.removeLayer(myLocationCircle);
+        }
+        myLocationMarker = L.marker(newLatLng, {draggable: true});
+        myLocationMarker.addTo(leafletmapp);
+        leafletmapp.setView(newLatLng, 17);
       }
     });
-  },
-  'click #setMapLocationButton': function(event) {
-    event.preventDefault();
-    leafletmapp.locate({setView: true, maxZoom: 18});
   },
   'click #saveLocationButton': function(event) {
     event.preventDefault();
@@ -223,7 +127,7 @@ Template.location.events({
     if (newLatLng.lng > 180.0) {
       newLatLng.lng = newLatLng.lng - 360;
     }
-    console.log("LATLNG:", newLatLng);
+    // console.log("LATLNG:", newLatLng);
     if (Meteor.user()) {
       
     } else { // anonymous user
@@ -234,7 +138,15 @@ Template.location.events({
       lat: newLatLng.lat,
       lng: newLatLng.lng,
     });
-    locationNotify('alert-info', '<p>Saved to Session ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+    // save into collection
+    Meteor.call('saveLatLng', newLatLng, function(error) {
+      if (error) {
+        // TODO log the error
+        locationNotify('alert-danger', error.message);
+      } else {
+        locationNotify('alert-info', '<p>Saved to collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+      }
+    });
     
   },
 });

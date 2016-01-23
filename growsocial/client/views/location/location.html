@@ -1,9 +1,12 @@
 
 <template name="location">
     <div id="#locationContainer" class="container">
+      {{#if currentUser}}
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <button type="button" id="setMapLocationButton" class="btn btn-default" >View map at my location</button>
+                <p>Setting my default map location for notifications and searches</p>
+                <button type="button" id="setFromBrowserButton" class="btn btn-default" >Set location from browser</button>
+                <button type="button" id="loadLocationButton" class="btn btn-default" >Load current default location</button>
                 <label>Drag position to fine-tune</label>
 <!-- 
                 <div class="checkbox">
@@ -24,6 +27,9 @@
                 {{> locationMap}}
             </div> <!-- map column -->
         </div> <!-- row -->
+      {{else}}
+        <p>Setting map location is only used when logged in.</p>
+      {{/if}}
     </div>
 </template>
 

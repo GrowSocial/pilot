@@ -255,7 +255,7 @@ Template.search.events({
       }
     });
   },
-  'click #setMapLocationButton': function(event) {
+  'click #viewCurrentLocationButton': function(event) {
     event.preventDefault();
     leafletmapp.locate({setView: true, maxZoom: 18});
   },
@@ -295,7 +295,11 @@ Template.search.events({
         if (person.latlng) {
           var marker = L.marker(person.latlng);
           // TODO popup to have: picture, link back to item in list
-          marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.city);
+          var popupText = "<b>" + person.fullname + "</b>";
+          if (person.city) {
+            popupText = popupText + "<br>" + person.city;
+          }
+          marker.bindPopup(popupText);
           // add marker to marker group for search results
           peopleMarkersGroup.addLayer(marker);
           // add latlng to a list
