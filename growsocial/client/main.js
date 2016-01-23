@@ -41,7 +41,6 @@ function showTawk(toShow, countdown, foundTawk) {
 Meteor.startup(function() {
   Meteor.autorun(function() {
     var routeName = FlowRouter.getRouteName(); // reactive
-    console.log("route for showTawk: ", routeName);
     if (routeName === "help") {
       showTawk(true, 1000);
     } else {
