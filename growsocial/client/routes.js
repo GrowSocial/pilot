@@ -131,3 +131,10 @@ FlowRouter.route('/discuss', {
     BlazeLayout.render("main", {content: "discuss"});
   },
 });
+
+FlowRouter.route('/location', {
+  name: "location",
+  action: function() {
+    BlazeLayout.render("main", {content: "location"});
+  },
+});

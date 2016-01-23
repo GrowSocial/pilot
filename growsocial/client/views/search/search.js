@@ -172,6 +172,15 @@ Template.search.onRendered(function() {
     }
   });
   template.autorun(function() {
+    if(Session.get('lat')) {
+      locationLatLng.lat = Session.get('lat');
+    }
+    if(Session.get('lng')) {
+      locationLatLng.lng = Session.get('lng');
+      console.log('loading lat/lng from session: ', locationLatLng);
+    }
+  });
+  template.autorun(function() {
     var range = FlowRouter.getQueryParam("r");
     var rangeUnits = FlowRouter.getQueryParam("ru");
     // console.log('change in router param r / ru: ', range + rangeUnits);
