@@ -172,6 +172,15 @@ Template.search.onRendered(function() {
     }
   });
   template.autorun(function() {
+    if(Session.get('lat')) {
+      locationLatLng.lat = Session.get('lat');
+    }
+    if(Session.get('lng')) {
+      locationLatLng.lng = Session.get('lng');
+      console.log('loading lat/lng from session: ', locationLatLng);
+    }
+  });
+  template.autorun(function() {
     var range = FlowRouter.getQueryParam("r");
     var rangeUnits = FlowRouter.getQueryParam("ru");
     // console.log('change in router param r / ru: ', range + rangeUnits);
@@ -246,7 +255,7 @@ Template.search.events({
       }
     });
   },
-  'click #setMapLocationButton': function(event) {
+  'click #viewCurrentLocationButton': function(event) {
     event.preventDefault();
     leafletmapp.locate({setView: true, maxZoom: 18});
   },
@@ -286,7 +295,11 @@ Template.search.events({
         if (person.latlng) {
           var marker = L.marker(person.latlng);
           // TODO popup to have: picture, link back to item in list
-          marker.bindPopup("<b>" + person.fullname + "</b><br>" + person.city);
+          var popupText = "<b>" + person.fullname + "</b>";
+          if (person.city) {
+            popupText = popupText + "<br>" + person.city;
+          }
+          marker.bindPopup(popupText);
           // add marker to marker group for search results
           peopleMarkersGroup.addLayer(marker);
           // add latlng to a list

@@ -5,8 +5,11 @@
             <div class="col-sm-6 col-xs-12">
                 <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button>
                 <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button>
-                <button type="button" id="setMapLocationButton" class="btn btn-default" >View map at my location</button>
+                <button type="button" id="viewCurrentLocationButton" class="btn btn-default" >View map at my current location</button>
                 <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
+                {{#if currentUser}}
+                    <a href="{{pathFor 'location'}}" class="btn btn-default" role="button">Set my default map location</a>
+                {{/if}}
                 <div id="searchNotifyDiv"></div>
         
                 <form class="search-form" action="#">

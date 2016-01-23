@@ -197,7 +197,7 @@
 
 <template name="navSettings">
   <li class="disabled"><a href="#">Account</a></li>
-  <li class="disabled"><a href="#">Settings</a></li>
+  <li class="{{isActiveRoute 'location'}}"><a href="/location" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
 </template>
 
 <template name="navHelp">
