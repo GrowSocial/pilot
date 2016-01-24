@@ -306,7 +306,6 @@ Template.profile.helpers({
 
 
 
-
 // for now, replicating profile onCreated & helpers to impliment mobile/desktop verion; 
 //  Eventually, we should consolidate this and not repeat the functions in librbary
 //
@@ -382,44 +381,67 @@ Template.profile_DESKTOP.onCreated(function()
 }); //on created 'profile'
 
 
-Template.profile_DESKTOP.events({
+Template.profile_DESKTOP.events(
+{
 
-'click .connectSelect': function(){ console.log("You clicked CONNECT"); }
-/*
-  var mKey = FlowRouter.getParam('personId');//alert("intiial MItem for " + member.fullname + Date());
-  var sData = [{member_key: mKey, 
-                 connected: [{member_id:Accounts.userId(), 
-                              timestamp:Date(),
-                              descript:'invitation'
-                            }]
-              }];  
-  _.each(sData, function(sItem) { Connections.insert(sItem);}
-        );
-  }
-*/
+'click .connectSelect': function()
+{ //console.log("You clicked CONNECT"); 
+  var viewedMembr = FlowRouter.getParam('personId');//alert("initial MItem for " + member.fullname + Date());
+  var loggedInMembr = Accounts.userId()
+  var count =Connections.find({member_key: viewedMembr}).count();
+  if ( count )
+      {
+        //alert("push new connection record into array within member's connections document");
+      var sData = [{ contact: [{member_id:loggedInMembr, 
+                                timestamp:Date(),
+                                descript:'invitation'
+                                }]
+                  }];
 
-/*
-Schemas.connection = new SimpleSchema({
-member_key:{ type: String,index: 1,optional: false },
-connected: {  type: Array,    optional: false  },    
-    'connected.$': {       type: Object  },
-    'connected.$.member_id': {type: String ,optional:false},
-    'connected.$.timestamp': {type: Date, optional:false },
-    'connected.$.descript': {type: String, optional:true },
+  // not working , untrusted code error. Requires further code & design decisions to impliment, as well
+  //      Connections.update({  member_key: viewedMembr }, { $push: sData }        );
 
-*/
+ } else { 
+  //alert("first record, establish document with first connection record "+viewedMembr+" by "+loggedInMembr );
 
-});
+        var sData = [
+ { member_key: viewedMembr, 
+    contact: [ 
+      {member_id:loggedInMembr, 
+       timestamp:Date(),
+       descript:'invitation'
+      }]
+  }];
+_.each(sData, function(sItem)  { Connections.insert(sItem); }     );
+ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`Connections.insert(sData);
 
 
 
 
+}; // if
 
+} //function
 
+});  //template
 
 
 
 Template.profile_DESKTOP.helpers({
+  connectionActive: function(){
+    var viewedMembr = FlowRouter.getParam('personId');
+    var loggedInMembr = Accounts.userId()
+    var count =Connections.find({member_key: viewedMembr}).count();
+    return count;
+  },
+
+  connectionPending: function(){
+    var viewedMembr = FlowRouter.getParam('personId');
+    var loggedInMembr = Accounts.userId()
+    var pending = Connections.find({member_key: viewedMembr, "contact.descript": 'invitation'}).count();
+    //alert("connectionPending " + pending);
+    return pending;
+  },
+
   myProfile: function(){
     //Will return NULL if no member is logged in, 
     //            FALSE if another member is here to view selected profile
@@ -444,7 +466,8 @@ Template.profile_DESKTOP.helpers({
           break;
         case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
           break;
-
+        case 'connections': var count= Connections.find({member_key: mKey}).count();
+          break;
         case 'blogEntries': var count=0;
         case 'calendarEvents': var count=0;
         case 'memberContacts': var count=0;      
@@ -491,6 +514,21 @@ Template.profile_DESKTOP.helpers({
   }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Template.profile_MOB.onCreated(function() 
@@ -565,15 +603,31 @@ Template.profile_MOB.onCreated(function()
 
 Template.profile_MOB.events({
 
-'click .connectSelect': function(){
-    console.log("clicked CONNECT button");
+  'click .connectSelect': function(){
+      console.log("clicked CONNECT button");
 
 
 
-}
+    }
 
 });
+
 Template.profile_MOB.helpers({
+    connectionActive: function(){
+    var viewedMembr = FlowRouter.getParam('personId');
+    var loggedInMembr = Accounts.userId()
+    var count =Connections.find({member_key: viewedMembr}).count();
+    return count;
+  },
+
+  connectionPending: function(){
+    var viewedMembr = FlowRouter.getParam('personId');
+    var loggedInMembr = Accounts.userId()
+    var pending = Connections.find({member_key: viewedMembr, "contact.descript": 'invitation'}).count();
+    //alert("connectionPending " + pending);
+    return pending;
+  },
+
   myProfile: function(){
     //Will return NULL if no member is logged in, 
     //            FALSE if another member is here to view selected profile

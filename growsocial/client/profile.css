@@ -552,16 +552,22 @@ color: rgb(0, 0, 0);
 #right_arrow { clear: none; }
 
 
-#view_all_ {z-index: 54;
-    float: right; clear: none; position: relative; top: 0px; left: 0px;
-       
-    height: auto; text-align: left;   line-height: 18px;
-    letter-spacing: 4px;
+#statusMsg, #view_all_  {z-index: 54;
+    float: right; clear: none; position: relative; top: 0px; left: 0px;     
+    height: auto; text-align: left;   line-height: 18px;letter-spacing: 4px;   
     font-size: 1.125em;font-style: normal; letter-spacing: normal;text-decoration: none;
     font-family: lato;  font-weight: 900;   
     color: rgb(96, 96, 96);
     margin-top: 8px; margin-right: 2%;  margin-bottom: 8px;
     /*background-color: rgb(255, 255, 55);*/
+}
+#statusMsg {text-align: center;  letter-spacing: 0px;  
+    color: rgb(0, 127, 255);
+    margin-top: 8px;  
+    margin-left: 25px; 
+    position: absolute;
+    /*margin-bottom: 8px;
+    background-color: rgb(255, 255, 55);*/
 }
 #star-icon {
     float: left;

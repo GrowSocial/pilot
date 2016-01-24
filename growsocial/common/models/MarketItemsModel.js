@@ -1,5 +1,4 @@
 MarketItems = new Mongo.Collection("MarketItems");
-
  
 Schemas = {};
 Meteor.isClient && Template.registerHelper("Schemas", Schemas);
@@ -26,8 +25,3 @@ Meteor.isClient && Template.registerHelper("Schemas", Schemas);
   'items.$.date_entered': { type: Date, optional:true},
 });
 MarketItems.attachSchema(Schemas.MarketItems);
-
-
-
-
-

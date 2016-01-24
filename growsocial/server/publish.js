@@ -104,6 +104,7 @@ Meteor.publish(null, function () {
     Member_Reviews.find(),
     People.find(),
     Connections.find(),
-    Comments.find()   
+    Comments.find()  ,
+ 
   ];
 });

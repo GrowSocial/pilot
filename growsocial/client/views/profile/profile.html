@@ -82,10 +82,26 @@
                     title="Member Blog" data-content="View latest blog and archives">View Blog</button>
                 </div>
 
+
+
                 <div id="connect" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
-                    data-trigger="select" title="Invitation" data-content="Sent to this member">Connection<br />Invite</button>
+                    {{#if connectionActive}}
+
+                        {{#if connectionPending}}                         
+                            <p id="statusMsg">Connection<br />pending</p>
+                        {{else}}
+                            <p id="statusMsg">Connected</p>
+
+                        {{/if}}
+                    {{else}}
+
+                        <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
+                        data-trigger="select" title="Invitation" data-content="Sent to this member" >Connection<br />Invite</button>
+                    {{/if}}
+
                 </div> 
+
+
                 <div id="message" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
@@ -486,10 +502,25 @@
                     title="Member Blog" data-content="View latest blog and archives">View Blog</button>
                 </div>
 
+
                 <div id="connect" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
-                    data-trigger="select" title="Invitation" data-content="Sent to this member">Connection<br />Invite</button>
+                    {{#if connectionActive}}
+
+                        {{#if connectionPending}}                         
+                            <p id="statusMsg">Connection<br />pending</p>
+                        {{else}}
+                            <p id="statusMsg">Connected</p>
+
+                        {{/if}}
+                    {{else}}
+
+                        <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
+                        data-trigger="select" title="Invitation" data-content="Sent to this member" >Connection<br />Invite</button>
+                    {{/if}}
+
                 </div> 
+
+
                 <div id="message" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
