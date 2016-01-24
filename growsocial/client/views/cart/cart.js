@@ -47,7 +47,7 @@ Template.cart.events({
 
     // prepare notification object
     var notification = {
-      targetUserId: this.vendorUserId,
+      targetUserId: '' + this.vendorUserId, // ensure a string
       tag: "Order",
       imageUrl: "/images/icons/dollar.png",
       header: "Order placed for my market items",
@@ -69,15 +69,17 @@ Template.cart.events({
     }
     
     console.log('first notification', notification);
-    // first notification to the seller    
-    Meteor.call("addNotification", notification, function(err, result) {
-      if (err) {
-        error.tag = "PayVendorOrderNotification";
-        error.message = err.message;
-        error.errNumber = err.error;
-        Meteor.call("addErrorLog", error);
-      }
-    });
+    // first notification to the seller
+    if (this.vendorUserId) { // no point sending a notification to a null person
+      Meteor.call("addNotification", notification, function(err, result) {
+        if (err) {
+          error.tag = "PayVendorOrderNotification";
+          error.message = err.message;
+          error.errNumber = err.error;
+          Meteor.call("addErrorLog", error);
+        }
+      });
+    }
 
     // prepare second notification    
     if (Meteor.user()) {  // only notify if logged in!

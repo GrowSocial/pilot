@@ -6,7 +6,7 @@ Meteor.methods({
       userId: Meteor.userId(),
 			vendorName: "Missy's Backyard Pride",
       vendorEmail: 'email@vendor.sample',
-			vendorUserId: 1,
+			vendorUserId: '1',
 			vendorBusinessId: null,
       vendorTotal: 75.10,
 			products: [{
