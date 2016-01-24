@@ -47,7 +47,7 @@ Template.cart.events({
 
     // prepare notification object
     var notification = {
-      targetUserId: this.vendorUserId,
+      targetUserId: '' + this.vendorUserId, // ensure a string
       tag: "Order",
       imageUrl: "/images/icons/dollar.png",
       header: "Order placed for my market items",
