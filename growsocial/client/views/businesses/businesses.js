@@ -2,7 +2,7 @@ Template.businesses.helpers({
   // TODO pull list of businesses from database
   businessList: [{
       businessId: 1,
-      pic: "/images/user-images/business-abc.jpg",
+      pic: "/images/user-images/business-abc.jpg?v=2",
       name: "ABC Farm Hands United",
     }, 
     {

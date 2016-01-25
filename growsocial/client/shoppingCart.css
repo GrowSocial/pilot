@@ -77,6 +77,11 @@ input::-webkit-inner-spin-button {
 	margin-top: 15px;
 }
 
+.cart-container .itemPhoto {
+  width: 20px;
+  height: 20px;
+}
+
 .cart-container .quantity{
 	color: #45799F;
 	background-color: #e6edf3;

@@ -1,8 +1,24 @@
 <template name="notifications">
-  <h1>Notifications</h1>
-  <ul>
-    {{#each notificationList}}
-      <li><a href="#"><img src="{{pic}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{message}}</a></li>
-    {{/each}}
-  </ul>
+    <div class="container notification-container">
+        <h1>Notifications</h1>
+        {{#if currentUser}}
+            <button type="button" id="addSampleNotificationButton" class="btn btn-default" >Add sample notification</button>
+            <button type="button" id="clearMyNotificationsButton" class="btn btn-default" >Clear my notifications</button>
+        
+            {{#unless notifyCount}}<p>No notifications.</p>{{/unless}}
+            
+            <ul>
+              <!-- show image, header, date/time -->
+              <!-- TODO user can expand to see: message, tag, expireDate
+              TODO flag message as "have read" once expanded
+              TODO user can delete message -> flag as deleted in collection with deletion date
+              TODO user can undelete messages, if not purged yet -->
+              {{#each notifications}}
+                  <li><img src="{{imageUrl}}" class="img-circle message-image" alt="msg">{{fromUserFirstName}} | {{header}} | {{formatTime(dateTime)}} | {{message}}</li>
+              {{/each}}
+            </ul>
+        {{else}}
+            <p>Notifications will show here when you are signed in.</p>
+        {{/if}}
+    </div>
 </template>

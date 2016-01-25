@@ -105,7 +105,7 @@
           <div class="input-group">
               <input type="text" id="navSearchText" class="form-control" placeholder="Search">
               <span class="input-group-btn">
-                  <button type="submit" aria-label="Submit" class="btn btn-default"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
+                  <button type="submit" aria-label="Submit" class="btn btn-default navSearchButton"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
               </span>
           </div>
       </div>
@@ -116,7 +116,7 @@
 <template name="navSearchButton">
   <div class="visible-xs">
     <!-- For small screen, just show search button -->
-    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
+    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small navSearchButton" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </a>
   </div>
@@ -164,7 +164,7 @@
     </a>
     <ul class="dropdown-menu">
       {{#each notificationList}}
-        <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="{{pic}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{message}}</a></li>
+        <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="{{imageUrl}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{fromUserFirstName}} | {{header}}</a></li>
       {{/each}}
       <li role="separator" class="divider"></li>
       <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>
@@ -184,7 +184,7 @@
 <template name="navPages">
   <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
   <li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">People</a></li>
-  <li class="disabled"><a href="#">Discussions</a></li>
+  <li class="{{isActiveRoute 'discuss'}}"><a href="{{pathFor 'discuss'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Discussions</a></li>
   <li class="disabled"><a href="#">LocalPedia</a></li>
   <li class="{{isActiveRoute 'businesses'}}"><a href="{{pathFor 'businesses'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
   <li class="{{isActiveRoute 'marketplace'}}"><a href="/marketplace/0" data-toggle="collapse" data-target=".navbar-collapse.in">Marketplace</a></li>
@@ -197,7 +197,7 @@
 
 <template name="navSettings">
   <li class="disabled"><a href="#">Account</a></li>
-  <li class="disabled"><a href="#">Settings</a></li>
+  <li class="{{isActiveRoute 'location'}}"><a href="/location" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
 </template>
 
 <template name="navHelp">

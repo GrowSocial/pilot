@@ -1,22 +1,26 @@
 <template name="help">
+    {{> helpMain}}
+    {{> homeFootr}}
+</template>
+<template name="helpMain">
  <div id="helptemplateContainer" class="container">
 <div class="row">
     <div class="col-md-4">
 <div id="thumbnail" >
-    <img id="featureImg2" src="/images/Member image block.png" class="img-thumbnail" />
+    <a href="#"> <img id="featureImgHelp" src="/images/Member image block.png" class="img-thumbnail"   data-toggle="popover" title="Future release feature" data-content="This feature will be available in the Phase 1 release"></a>
      <div class="details">
          <p id="featureHdr2"> Online Chat Help </p>
     </div>
 </div>
 
 <div id="thumbnail" >
-    <img id="featureImg2" src="/images/events image block.png" class="img-thumbnail" /> 
+    <a href="#"> <img id="featureImgHelp" src="/images/events image block.png" class="img-thumbnail" /> </a>
     <div class="details">
         <p id="featureHdr2"> Contact Us</p>
     </div>
 </div>
 <div id="thumbnail" >
-    <img id="featureImg2" src="/images/Discussion image block.png" class="img-thumbnail" />
+    <a href="#"> <img id="featureImgHelp" src="/images/Discussion image block.png" class="img-thumbnail" /></a>
     <div class="details">
         <p id="featureHdr2"> Walk Through Site Tutorial </p>
     </div>
@@ -25,31 +29,31 @@
 <div class="col-md-4">
     <div id="help_image_block" >
     <div class="thumbnail">
-  <img src="/images/main image block.png" alt="..."   />
+  <a href="#"> <img src="/images/main image block.png" alt="..."   /></a>
   <div class="centralImg">
     <h3> Tutorial Videos for GrowSocial!</h3>
     <p>Learn how to use the fast-growing network of people dedicated to local food growing and creating a sustainable economy</p>  
-      <button type="button" id="Help_Tutorial_Button" class="btn btn-primary">Tutorial Videos</button>
+      <div><button type="button" id="Help_Tutorial_Button" class="btn btn-primary">Tutorial Videos</button></div>
   </div>  
 </div>
 </div>
     </div>
 <div class="col-md-4">
     <div id="thumbnail" >
-        <img id="featureImg2" src="/images/2015-12-26_16-58-40.jpg" class="img-thumbnail" />
+        <a href="#"> <img id="featureImgHelp" src="/images/2015-12-26_16-58-40.jpg" class="img-thumbnail" /></a>
         <div class="details"> 
     <p id="featureHdr2"> Site Map </p>
         </div>
 </div>
     <div id="thumbnail" >
-     <img id="featureImg2" src="/images/opportunities image block.png" class="img-thumbnail" />
+     <a href="#"> <img id="featureImgHelp" src="/images/opportunities image block.png" class="img-thumbnail" /></a>
     <div class="details">
         <p id="featureHdr2"> Community Pages Help</p>
     </div>
 </div>
 
 <div id="thumbnail" >
-      <img id="featureImg2" src="/images/business image block.png" class="img-thumbnail" />
+      <a href="#"> <img id="featureImgHelp" src="/images/business image block.png" class="img-thumbnail" /></a>
     <div class="details">
         <p id="featureHdr2"> Donate</p>
     </div>
@@ -57,23 +61,553 @@
 </div>
     </div>
      </div>
-
-
 <div class="row">
-<div id="About_block" class="clearfix">
-    <div id="garden_graphic" class="clearfix">
-        <div id="sky" class="clearfix">
-            <p id="Help_About"> About GrowSocial Pilot</p>
-            <p id="Help_Explanation">
+<div>
+<!--    <div id="Help_garden_graphic">-->
+<!--        <div id="sky" >-->
+            <h2 id="Help_About"> About GrowSocial Pilot</h2>
+     <div><button id="Help_Join_Button" type="button" class="btn btn-primary">Join GrowSocial</button> </div>   
+    
+           <!-- <p id="Help_Explanation">
             Explanation of GrowSocial Pilot
-            </p>
-            <p id="Help_Features">
-            List of Features
-            </p>
-             <button id="Help_Join_Button" type="button" class="btn btn-primary">Join GrowSocial</button>
-        </div>
+            </p>-->
+<!--        </div>-->
+<!--    </div>-->
+     </div>
+     </div>
+<div class="row">
+ <h2 id="Help_Features"> List of Features </h2>     
+ <ul class="nav nav-tabs" data-tabs="tabs" id="feature-table">
+  <li class="active">
+      <a href="#1" data-toggle="tab">Shown in pilot</a>
+  </li>
+  <li><a href="#2" data-toggle="tab">Active in Phase 1</a>
+  </li>
+  <li><a href="#3" data-toggle="tab">Later Phase</a>
+  </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="1">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Y</td>
+            <td>Overview of what is available, and highlight new activity.</td>
+          </tr>
+          <tr>
+            <td>Member Profile</td>
+            <td>Y</td>
+            <td>Let people know what you are doing, list your produce for sale.</td>
+          </tr>
+          <tr>
+            <td>Shopping Cart</td>
+            <td>Y</td>
+            <td>Ordering products for purchase.</td>
+          </tr>
+          <tr>
+            <td>Farm Business page</td>
+            <td></td>
+            <td>Promote your farm business with its own page.</td>
+          </tr>
+          <tr>
+            <td>Small Business page</td>
+            <td></td>
+            <td>Promote your business with its own page.</td>
+          </tr>
+            <tr>
+            <td>Marketplace / Storefront</td>
+            <td>Partial</td>
+            <td>Storefront is a view of the marketplace, showing only products for a particular business or member.</td>
+          </tr>
+              <tr>
+            <td>Payment gateway</td>
+            <td></td>
+            <td>Paying for purchase online with credit card or paypal.</td>
+          </tr>
+              <tr>
+            <td>Delivery options</td>
+            <td></td>
+            <td>Delivery options.</td>
+          </tr>
+              <tr>
+            <td>Search people</td>
+            <td>Y</td>
+            <td>Find people in your area.</td>
+          </tr>
+            <tr>
+            <td>Define own location</td>
+            <td></td>
+            <td>Define on a map your own location, to be used for local searches and notifications.</td>
+          </tr>
+                    <tr>
+            <td>Search produce</td>
+            <td></td>
+            <td>Find produce in your area</td>
+          </tr>
+                        <tr>
+            <td>Login with facebook</td>
+            <td></td>
+            <td>Convenient way to login</td>
+          </tr>
+                        <tr>
+            <td>Notifications</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Discussions</td>
+            <td>Y</td>
+            <td>Discuss topics with other members on the site. Yet to put in "single-sign-on".</td>
+          </tr>
+                        <tr>
+            <td>Business listings</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Privacy Settings</td>
+            <td></td>
+            <td>Choose who can see your details</td>
+          </tr>
+                        <tr>
+            <td>Ratings</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Calendar</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Business Blog</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Blogs</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community News</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Feedback</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Garage Sale</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Town Hall</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Job Opportunities</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Community Services</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Giveaways</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Wanted items</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Recreation Center</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Ourpedia / localpedia</td>
+            <td></td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>Local information</td>
+            <td></td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>People / Groups</td>
+            <td></td>
+            <td>Create networks of people</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="2">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+         <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Y</td>
+            <td>Overview of what is available, and highlight new activity.</td>
+          </tr>
+          <tr>
+            <td>Member Profile</td>
+            <td>Y</td>
+            <td>Let people know what you are doing, list your produce for sale.</td>
+          </tr>
+          <tr>
+            <td>Shopping Cart</td>
+            <td>Y</td>
+            <td>Ordering products for purchase.</td>
+          </tr>
+          <tr>
+            <td>Farm Business page</td>
+            <td>Y</td>
+            <td>Promote your farm business with its own page.</td>
+          </tr>
+          <tr>
+            <td>Small Business page</td>
+            <td>Y</td>
+            <td>Promote your business with its own page.</td>
+          </tr>
+            <tr>
+            <td>Marketplace / Storefront</td>
+            <td>Y</td>
+            <td>Storefront is a view of the marketplace, showing only products for a particular business or member.</td>
+          </tr>
+              <tr>
+            <td>Payment gateway</td>
+            <td>Y</td>
+            <td>Paying for purchase online with credit card or paypal.</td>
+          </tr>
+              <tr>
+            <td>Delivery options</td>
+            <td>Y</td>
+            <td>Delivery options.</td>
+          </tr>
+              <tr>
+            <td>Search people</td>
+            <td>Y</td>
+            <td>Find people in your area</td>
+          </tr>
+                       <tr>
+            <td>Define own location</td>
+            <td>Y</td>
+            <td>Define on a map your own location, to be used for local searches and notifications.</td>
+          </tr>
+                    <tr>
+            <td>Search produce</td>
+            <td>Y</td>
+            <td>Find produce in your area</td>
+          </tr>
+                        <tr>
+            <td>Login with facebook</td>
+            <td>Y</td>
+            <td>Convenient way to login</td>
+          </tr>
+                        <tr>
+            <td>Notifications</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Discussions</td>
+            <td>Y</td>
+            <td>Discuss topics with other members on the site. Yet to put in "single-sign-on".</td>
+          </tr>
+                        <tr>
+            <td>Business listings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Privacy Settings</td>
+            <td>Y</td>
+            <td>Choose who can see your details</td>
+          </tr>
+                        <tr>
+            <td>Ratings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Calendar</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Business Blog</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Blogs</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community News</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Feedback</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Garage Sale</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Town Hall</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Job Opportunities</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Community Services</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Giveaways</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Wanted items</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Recreation Center</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Ourpedia / localpedia</td>
+            <td></td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>Local information</td>
+            <td></td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>People / Groups</td>
+            <td></td>
+            <td>Create networks of people</td>
+          </tr>
+           </tbody>
+           </table> 
+    </div>
+  <div class="tab-pane" id="3">
+      <table class="table table-condensed table-bordered table-striped volumes">
+         <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Y</td>
+            <td>Overview of what is available, and highlight new activity.</td>
+          </tr>
+          <tr>
+            <td>Member Profile</td>
+            <td>Y</td>
+            <td>Let people know what you are doing, list your produce for sale.</td>
+          </tr>
+          <tr>
+            <td>Shopping Cart</td>
+            <td>Y</td>
+            <td>Ordering products for purchase.</td>
+          </tr>
+          <tr>
+            <td>Farm Business page</td>
+            <td>Y</td>
+            <td>Promote your farm business with its own page.</td>
+          </tr>
+         <tr>
+            <td>Small Business page</td>
+            <td>Y</td>
+            <td>Promote your business with its own page.</td>
+          </tr>
+            <tr>
+            <td>Marketplace / Storefronte</td>
+            <td>Y</td>
+            <td>Storefront is a view of the marketplace, showing only products for a particular business or member.</td>
+          </tr>
+              <tr>
+            <td>Payment gateway</td>
+            <td>Y</td>
+            <td>Paying for purchase online with credit card or paypal.</td>
+          </tr>
+              <tr>
+            <td>Delivery options</td>
+            <td>Y</td>
+            <td>Delivery options.</td>
+          </tr>
+                          <tr>
+            <td>Search people</td>
+            <td>Y</td>
+            <td>Find people in your area.</td>
+          </tr>
+            <tr>
+            <td>Define own location</td>
+            <td>Y</td>
+            <td>Define on a map your own location, to be used for local searches and notifications.</td>
+          </tr>
+                    <tr>
+            <td>Search produce</td>
+            <td>Y</td>
+            <td>Find produce in your area</td>
+          </tr>
+                        <tr>
+            <td>Login with facebook</td>
+            <td>Y</td>
+            <td>Convenient way to login</td>
+          </tr>
+                        <tr>
+            <td>Notifications</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Discussions</td>
+            <td>Y</td>
+            <td>Discuss topics with other members on the site. Yet to put in "single-sign-on".</td>
+          </tr>
+                        <tr>
+            <td>Business listings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Privacy Settings</td>
+            <td>Y</td>
+            <td>Choose who can see your details</td>
+          </tr>
+                        <tr>
+            <td>Ratings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Calendar</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Business Blog</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Blogs</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community News</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Feedback</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Garage Sale</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Town Hall</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Job Opportunities</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Community Services</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Giveaways</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Wanted items</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Recreation Center</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Ourpedia / localpedia</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>Local information</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>People / Groups</td>
+            <td>Y</td>
+            <td>Create networks of people</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </div>
-     </div>
+    
+    </div>
     </div>
 </template>
