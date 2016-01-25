@@ -363,6 +363,27 @@ Template.searchMap.onRendered(function() {
 
   leafletmapp.on('locationerror', onLocationError);
   leafletmapp.on('locationfound', onLocationFound);
+
+  // defaults to show map...
+  // 1. loaded latlng from collection
+  // 2. system default (Davie)
+  Meteor.call('loadLatLng', function(error, newLatLng) {
+    if (error) {
+      // okay that it's not available, use system default
+      newLatLng = {lat: 26.064975195273117, lng: -80.2321028709411}; // busy traffic!
+      searchNotify('alert-info', '<p>Using default location in Davie.</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+    } else {
+      searchNotify('alert-info', '<p>Loaded from collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+    }
+    // view on map
+    if (myLocationMarker) {
+      leafletmapp.removeLayer(myLocationMarker).closePopup();
+      leafletmapp.removeLayer(myLocationCircle);
+    }
+    myLocationMarker = L.marker(newLatLng, {draggable: true});
+    myLocationMarker.addTo(leafletmapp);
+    leafletmapp.setView(newLatLng, 17);
+  });
 });
 
 // Template.awesomeAutosuggest.helpers({

@@ -31,7 +31,7 @@ Meteor.methods({
       msg = {
         tag: "System",
         subject: "Web site upgrade scheduled for Thursday",
-        message: "New version incoming!!",
+        message: "New version incoming, <a href='/help'>click here for help</a>.",
       }
     }
     

@@ -15,7 +15,7 @@
               TODO user can undelete messages, if not purged yet -->
               <!-- TODO curtail security risk allowing html in message, sanitise user input -->
               {{#each notifications}}
-                  <li><img src="{{imageUrl}}" class="img-circle message-image" alt="msg">{{sender}} | {{formatTime(dateTime)}} | {{subject}} | {{{message}}}</li>
+                  <li><img src="{{imageUrl}}" class="img-circle message-image" alt="msg">{{sender}} | {{formatTime(dateTime)}} | {{subject}} | {{#if senderUserId}}{{message}}{{else}}{{{message}}}{{/if}}</li>
               {{/each}}
             </ul>
         {{else}}

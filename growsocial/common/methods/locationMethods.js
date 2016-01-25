@@ -16,12 +16,14 @@ Meteor.methods({
   },
     
 	loadLatLng: function() {
-    if (Accounts.userId()) {
-      var personStuff = People.findOne({member_key: Accounts.userId()}, {fields: {latlng: 1}});
-      if(personStuff.latlng) {
-        return personStuff.latlng;
-      } else {
-        throw new Meteor.Error("latlng-not-found", "Latlng not yet defined");
+    if (Meteor.isServer) {
+      if (Accounts.userId()) {
+        var personStuff = People.findOne({member_key: Accounts.userId()}, {fields: {latlng: 1}});
+        if(personStuff && personStuff.latlng) {
+          return personStuff.latlng;
+        } else {
+          throw new Meteor.Error("latlng-not-found", "Latlng not yet defined");
+        }
       }
     }
   },

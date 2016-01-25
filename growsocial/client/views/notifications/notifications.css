@@ -8,3 +8,7 @@
   max-height: 43px;
   margin-right: 12px;
 }
+
+.notification-container a {
+  text-decoration: underline;
+}
