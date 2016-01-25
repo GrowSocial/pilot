@@ -50,21 +50,21 @@ Template.cart.events({
       targetUserId: '' + this.vendorUserId, // ensure a string
       tag: "Order",
       imageUrl: "/images/icons/dollar.png",
-      header: "Order placed for my market items",
+      subject: "Order placed for my market items",
       message: "The following items have been paid:\n" + itemsPaid,
     };
     var error = {};
     
     // account for when buyer is not logged in
     if (Meteor.user()) {
-      notification.fromUserId = Meteor.userId();
-      notification.fromUserFirstName = Meteor.user().profile.firstname;
-      notification.fromUserLastName = Meteor.user().profile.lastname;
+      notification.senderUserId = Meteor.userId();
+      notification.sender = Meteor.user().profile.firstname;
+      notification.senderLastName = Meteor.user().profile.lastname;
       error.email = Meteor.user().emails[0].address;
       error.firstName = Meteor.user().profile.firstname;
       error.lastName = Meteor.user().profile.lastname;
     } else {
-      notification.fromUserFirstName = 'Anonymous';
+      notification.sender = 'Anonymous';
       error.firstName = 'Anonymous';
     }
     
@@ -84,13 +84,13 @@ Template.cart.events({
     // prepare second notification    
     if (Meteor.user()) {  // only notify if logged in!
       notification.targetUserId = Meteor.userId();
-      notification.fromUserId = Meteor.userId();
-      notification.fromUserFirstName = Meteor.user().profile.firstname;
-      notification.fromUserLastName = Meteor.user().profile.lastname;
+      notification.senderUserId = Meteor.userId();
+      notification.sender = Meteor.user().profile.firstname;
+      notification.senderLastName = Meteor.user().profile.lastname;
 
       // second notification to the buyer    
-      notification.header = "My order placed for market items";
-      notification.fromUserFirstName = "System";
+      notification.subject = "My order placed for market items";
+      notification.sender = "System";
       notification.message = "Seller: " + this.vendorName + ".\nThe following items have been paid:\n" + itemsPaid;
       console.log('second notification', notification);
       Meteor.call("addNotification", notification, function(err, result) {
