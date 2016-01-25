@@ -110,7 +110,6 @@ Template.locationMap.onRendered(function() {
   // defaults to show map...
   // 1. loaded latlng from collection
   // 2. system default (Davie)
-  try {
   Meteor.call('loadLatLng', function(error, newLatLng) {
     if (error) {
       // okay that it's not available, use system default
@@ -128,7 +127,4 @@ Template.locationMap.onRendered(function() {
     myLocationMarker.addTo(leafletmapp);
     leafletmapp.setView(newLatLng, 17);
   });
-  } catch(e) {
-    console.log('caught exception');
-  }
 });
