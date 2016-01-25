@@ -145,9 +145,9 @@ Template.register.events({
 
         Meteor.call("addNotification", {
           targetUserId: Accounts.userId(),
-          fromUserFirstName: "System",
+          sender: "System",
           tag: "System",
-          header: "Welcome to GrowSocial",
+          subject: "Welcome to GrowSocial",
           message: "Welcome to GrowSocial, " + firstname + "!  Your new account is ready to use.",
         }, function(err, result) {
           if (err) {
