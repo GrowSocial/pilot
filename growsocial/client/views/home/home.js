@@ -11,6 +11,6 @@ Template.leafButtons.events({
   }
 });
 
-$(document).ready(function(){
+Template.home.onRendered(function() {
     $('[data-toggle="popover"]').popover(); 
 });

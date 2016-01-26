@@ -45,7 +45,7 @@ Template.contactUs.events({
     // console.log("submit contact-us-form, event: ", event);
 
     $('#button-submit').text("Submitting message...");
-    $('#button-submit').prop( "disabled", true );
+    $('#button-submit').prop( "disabled", "disabled" );
 
     // TODO alter visible styling on disabled button
     
