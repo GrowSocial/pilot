@@ -5,24 +5,28 @@
 
   <!-- People 
   ****************************************************************************** -->
-  <div class="col-md-6"><h1><b>People</b></h1> 
+  <div class="col-md-6"><h1><b>People </b><small><span class="label label-default">Phase 1 will enable forming groups and browsing by area</span></small></h1> 
+  {{#if currentUser}}
     <table class="table table-bordered table-condensed">
-      <thead><tr> <td><b> Fullname * email * </b>{internal key}</td> </tr> </thead>
+      <!-- <thead><tr> <td><b> Fullname * email * </b>{internal key}</td> </tr> </thead> -->
         <tbody>       
-          {{#each people}}
+          {{#each person in people}}
             <tr class="person-row">
-              {{#if notAdmin}}
-              <td><a href="{{pathForProfile}}"><b> {{fullname}} * {{email}} * </b> <em> {{member_key}}</em></a></td>
+              {{#if notAdmin person}}
+              <td><a href="{{pathForProfile person}}"><b>{{person.fullname}}</b> | {{person.city}} {{person.zipcode}}{{#if person.latlng}} <em>(map location)</em>{{/if}}{{#if person.testDataSearch}} <em>(test user)</em>{{/if}}</a></td>
               {{/if}}
             </tr>
           {{/each}}      
         </tbody>
     </table>
+  {{else}}
+    <p>Login to see other members.</p>
+  {{/if}}
   </div>
 
 </div> <!-- end row -->
 
-<div class="col-md-6"><h1><br>Groups</h1></div>
+<!-- <div class="col-md-6"><h1><br>Groups</h1></div> -->
 
 </template>
 
