@@ -29,7 +29,7 @@
 
 <template name="marketplaceItem">
     <li>
-        <img class="marketplace-product-img" src="{{photo.src}}" alt="{{name}} product photo">
+        <img class="marketplace-product-img" src="{{#if photo.src}}{{photo.src}}{{else}}{{randomPhotoSrc}}{{/if}}" alt="{{name}} product photo">
         <ul>
             <button class="popoverThis btn btn-large btn-danger" data-toggle="popover">Buy</button>
             <li>Name: {{name}}</li>
