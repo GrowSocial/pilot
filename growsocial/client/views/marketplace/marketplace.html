@@ -32,7 +32,11 @@
     <li>
         <img class="marketplace-product-img" src="{{#if photo.src}}{{photo.src}}{{else}}{{randomPhotoSrc}}{{/if}}" alt="{{name}} product photo">
         <ul>
-            <button class="popoverThis btn btn-large btn-danger" data-toggle="popover">Buy</button>
+            {{#if currentUser}}
+                <button class="popoverThis btn btn-large btn-danger" data-toggle="popover">Buy</button>
+            {{else}}
+                <span class="label label-default">Login to buy items.</span>
+            {{/if}}
             <li>Name: {{name}}</li>
             <li>Description: {{description}}</li>
             <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
