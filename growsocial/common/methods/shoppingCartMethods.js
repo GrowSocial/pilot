@@ -10,6 +10,7 @@ Meteor.methods({
 			vendorBusinessId: null,
       vendorTotal: 75.10,
 			products: [{
+				productId: Random.id(),
 				quantity: 3,
 				name: "Grandma's Heirloom Tomato",
 				description: "Grandma went to great lengths to weave her heir on this loom",
@@ -19,6 +20,7 @@ Meteor.methods({
 				currency: 'USD',
 				itemTotalPrice: 63.60,
 			}, {
+				productId: Random.id(),
 				quantity: 0.5,
 				name: "Dad's Ghost Chilies",
 				description: "Ask Dad why he is shivering",
@@ -28,6 +30,7 @@ Meteor.methods({
         photo: {src: "/images/user-images/ScarletNantesCarrot.png"},
 				itemTotalPrice: 1.50,
 			}, {
+				productId: Random.id(),
 				quantity: 2,
 				name: "Louise's Famous Strawberry Jam",
 				description: "Mmmmm so sweet and fruity",
