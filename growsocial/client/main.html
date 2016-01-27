@@ -84,6 +84,7 @@
                 {{/if}}
                 <li role="separator" class="divider"></li>
                 {{ > navContactUs}}
+                {{ > navTutorials}}
                 <!-- {{ > navToggleBackground}} -->
               </ul>
             </li>
@@ -206,6 +207,10 @@
 
 <template name="navContactUs">
   <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
+</template>
+
+<template name="navTutorials">
+  <li class="{{isActiveRoute 'tutorials'}}"><a href="{{pathFor 'tutorials'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Tutorials</a></li>
 </template>
 
 <template name="navMyCart">

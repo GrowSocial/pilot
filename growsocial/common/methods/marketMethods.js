@@ -18,12 +18,12 @@ Meteor.methods({
         vendorName: 'Barnaby Banana',
         vendorLink: '/profile/3',
         vendorEmail: 'barneyb@notarealemail.com',
-      }, {
-        vendor_key: '4',
-        vendorBusinessId: '4',
-        vendorName: 'XYZ Compost Removal',
-        vendorLink: '/business/2',
-        vendorEmail: 'xyz@notarealemail.com',
+      // }, {
+        // vendor_key: '4',
+        // vendorBusinessId: '4',
+        // vendorName: 'XYZ Compost Removal',
+        // vendorLink: '/business/2',
+        // vendorEmail: 'xyz@notarealemail.com',
       },
     ]);
     
