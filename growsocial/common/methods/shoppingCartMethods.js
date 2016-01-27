@@ -6,10 +6,11 @@ Meteor.methods({
       userId: Meteor.userId(),
 			vendorName: "Missy's Backyard Pride",
       vendorEmail: 'email@vendor.sample',
-			vendorUserId: '1',
+			vendorUserId: Random.id(),
 			vendorBusinessId: null,
       vendorTotal: 75.10,
 			products: [{
+				productId: Random.id(),
 				quantity: 3,
 				name: "Grandma's Heirloom Tomato",
 				description: "Grandma went to great lengths to weave her heir on this loom",
@@ -19,6 +20,7 @@ Meteor.methods({
 				currency: 'USD',
 				itemTotalPrice: 63.60,
 			}, {
+				productId: Random.id(),
 				quantity: 0.5,
 				name: "Dad's Ghost Chilies",
 				description: "Ask Dad why he is shivering",
@@ -28,6 +30,7 @@ Meteor.methods({
         photo: {src: "/images/user-images/ScarletNantesCarrot.png"},
 				itemTotalPrice: 1.50,
 			}, {
+				productId: Random.id(),
 				quantity: 2,
 				name: "Louise's Famous Strawberry Jam",
 				description: "Mmmmm so sweet and fruity",
@@ -191,15 +194,21 @@ Meteor.methods({
 			{ userId: Accounts.userId(), },
 			{ $pull: { products: item }},
 			{ multi: true },
-			function() { console.log("Item removed") }
+			function() {
+        // console.log("Item removed"); 
+        // If any products array has 0 items, remove vendor from collection
+        ShoppingCart.remove({ 
+            userId: Accounts.userId(),
+            products: [],
+          },
+          // function(err,count) {
+            // if (count) {
+              // console.log("Order removed");
+            // }
+          // }
+        );
+      }
 		);
 
-		// If any products array has 0 items, remove vendor from collection
-    ShoppingCart.remove({ 
-        userId: Accounts.userId(),
-        products: [],
-      },
-			function() { console.log("Order removed") }
-    );
 	},
 });
