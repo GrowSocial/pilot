@@ -1,0 +1,11 @@
+.tutorialsContainer a {
+  text-decoration: underline;
+}
+
+.tutorialsContainer a img {
+  max-height: 30px;
+}
+
+.tutorialsContainer .notify_count {
+  background-color: rgb(0, 0, 255);
+}

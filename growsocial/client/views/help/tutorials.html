@@ -1,0 +1,77 @@
+<template name="tutorials">
+    <div class="container-fluid tutorialsContainer">
+        <h2>Tutorials</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Home page</h3>
+                <p>Click <a href="/home"><img src="/images/logo.png"/> the logo</a> on the menu to return to the home page.</p>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>People</h3>
+                <p><a href="/people">People</a> on the menu takes you to a list of members that have joined, with some details of their location.</p>
+                <p>Click on one person to see their profile page.</p>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>Marketplace items</h3>
+                <ol>
+                    <li><a href="/marketplace">Marketplace</a> items are edited and added on the bottom of your profile page.</li>
+                    <li>Once they have a price set, in the marketplace page the "Buy" button should allow a quantity to be entered.</li>
+                    <li>Then the <a href="/cart">shopping cart ("My Cart")</a> should show the items you've selected as an order.</li>
+                    <li>"Pay this vendor" will then send a <a href="/notifications">notification</a> and an email to the seller, as well as create a notification for yourself.</li>
+                    <li>The marketplace page has a button to add samples to see what they will look like.</li>
+                    <li>The shopping cart page has a button to add samples to see what they will look like.</li>
+                </ol>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>Sign In</h3>
+                <p>Currently we can:</p>
+                <ul>
+                    <li><a href="/register">create</a> an account</li>
+                    <li><a href="/login">login</a> to an account</li>
+                    <li><a href="/logout">logout</a> from an account</li>
+                    <li><a href="/changePassword">change the password</a></li>
+                    <li><a href="/forgotPassword">reset the password</a> which sends an email.</li>
+                </ul>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>Search and show members on a map</h3>
+                <ol>
+                    <li>City and zipcode are edited on the bottom section of the profile page.</li>
+                    <li>Map location (stored as latitude and longitude) are set on the <a href="/location">Settings</a> menu.</li>
+                    <li>Once there are people with their locations set, <a href="/search">Search</a> can find them by name, and additionally filter by range / city / zipcode.</li>
+                    <li>Show search results on the map with the "Update search results on map" button.  (This will eventually be automatic).</li>
+                    <li>Click on the (profile) part of the search results to jump to that person's profile page.</li>
+                    <li>There are buttons to add and remove sample people, to test the search feature.  The people added have a name, city, zipcode and latitude/longitude location defined.</li>
+                </ol>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>Contact Us</h3>
+                <ol>
+                    <li>On the <a href="/contactUs">Contact Us</a> page, Enter your details, and a message, it will be stored in the database and sent to GrowSocial.</li>
+                    <li>If you are logged in, your name and email and zipcode are filled in for you.</li>
+                    <li>If you are logged in, messages you have previously sent will show at the bottom.</li>
+                </ol>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>Notifications</h3>
+                <ol>
+                    <li>As you receive <a href="/notifications">notifications</a>, the notification count <span class="glyphicon glyphicon-bell notify-bell notify-bell-exciting" aria-hidden="true"></span><span class="badge notify_count">1</span> increases in the menu (navigation bar).</li>
+                    <li>Clicking the notification bell in the menu shows a preview of your notifications and clicking one of them takes you to the notifications page.</li>
+                    <li>Currently notifications are sent when:</li>
+                    <ul>
+                        <li>You create a new account (you may have created a user before this was implemented),</li>
+                        <li>When an order is "paid"</li>
+                    </ul>
+                    <li>There is a button to create sample notifications, to see what they will look like.</li>
+                </ol>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+                <h3>Navigation Bar</h3>
+                <p>Clicking the dog "profile picture" takes you to your own profile page, where you can edit some items.</p>
+                <p>We haven't yet added the feature to upload our own picture.</p>
+                <p>Some menu items such as "LocalPedia" are disabled, they will be featured in Phase&nbsp;1.</p>
+            </div>   <!-- column -->
+        </div>   <!-- row -->
+    </div>  <!-- container -->
+
+</template>
