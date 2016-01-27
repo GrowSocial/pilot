@@ -192,13 +192,17 @@ Meteor.methods({
 			{ $pull: { products: item }},
 			{ multi: true },
 			function() {
-        console.log("Item removed"); 
+        // console.log("Item removed"); 
         // If any products array has 0 items, remove vendor from collection
         ShoppingCart.remove({ 
             userId: Accounts.userId(),
             products: [],
           },
-          function() { console.log("Order removed") }
+          // function(err,count) {
+            // if (count) {
+              // console.log("Order removed");
+            // }
+          // }
         );
       }
 		);
