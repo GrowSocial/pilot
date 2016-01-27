@@ -36,17 +36,14 @@ Meteor.methods({
       // choose a set of product details
       var product = Random.choice([
         {
-          productId: '1',
           name: "Aunt Ruby's Green Tomato",
           description: "Aunt Ruby's Green Tomato, grown with care in Aunt Ruby's bathtub",
           photo: {src: "/images/user-images/AuntRubyTomato.png"},
         }, {
-          productId: '2',
           name: "Scarlet Nantes Carrot",
           description: "Scarlet Nantes Carrot, seeded by throwing seeds in the air at random",
           photo: {src: "/images/user-images/ScarletNantesCarrot.png"},
         }, {
-          productId: '3',
           name: "Little Gem Lettuce",
           description: "Little Gem Lettuce, sparkles like emeralds",
           photo: {src: "/images/user-images/LittleGemLettuce.png"},
@@ -54,6 +51,7 @@ Meteor.methods({
       ]);
 
       // add other product details
+      productId = Random.id();
       product.type = 'produce';
       product.currency = 'USD';
       product.unitType = Random.choice(["each", "5 pound bag", "pound", "gallon jar"]);
