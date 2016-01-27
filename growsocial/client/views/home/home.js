@@ -14,3 +14,8 @@ Template.leafButtons.events({
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover(); 
 });
+
+
+Template.homeNew.onRendered(function() {
+    $('[data-toggle="popover"]').popover(); 
+});

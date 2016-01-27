@@ -36,7 +36,7 @@
         color: rgb(0, 0, 0);
         margin-right: 0%;       
 }
-#main_image_blockxx,#business_image_block,#localpedia_image_block,
+#main_image_block,#business_image_block,#localpedia_image_block,
 #opportunities_image_block,#events_image_block,
 #discussion_image_block,#member_image_block {
     background-color: transparent;
@@ -132,14 +132,6 @@
 }
 
 /*HomeAbout Styles*/
-/*#About_block {
-    float: left;clear: none;
-    height: 890px; width: 100%;
-    background-color: rgb(145, 191, 217);
-    position: relative; top: 0px; left: 0px; z-index: 15;
-    margin-top: 0px; 799px;
-    margin-left: 0%;
-}*/
 #relativeAboutContainer {
     position: relative;
     width: auto;
@@ -279,29 +271,6 @@
     text-decoration: none;
     font-family: lato;
 }
-/*#sky {
-    float: left;
-    width: 100%;
-    height: 890px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    z-index: 17;
-}*/
-/*#Join_GrowSocial {
-    font-size: 1.1505712499999998em;
-    height: auto;
-    text-align: center;
-    font-weight: normal;
-    line-height: normal;
-    font-style: normal;
-    letter-spacing: normal; text-decoration: none; font-family: lato;
-    position: absolute; top: 0px; left: 0px; z-index: 26;
-    margin-top: 300px;
-    margin-left: 5px;
-    clear: none;
-}*/
 #About_block {
     height: 750px;
     background-size: cover;
@@ -469,14 +438,7 @@ float: left;
     z-index: 4;
 }
 
-.popover-content{
-    color: #000000 !important;/*black color*/
-    font-size: 12px
-}
 
-a[rel=popover] {
-    display: inline-block;
-}
 
 
 
