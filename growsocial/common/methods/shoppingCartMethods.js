@@ -199,7 +199,6 @@ Meteor.methods({
         userId: Accounts.userId(),
         products: [],
       },
-			{ multi: true },
 			function() { console.log("Order removed") }
     );
 	},
