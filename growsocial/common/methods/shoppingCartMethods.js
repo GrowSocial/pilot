@@ -84,6 +84,7 @@ Meteor.methods({
 
     		// Get the product array
 	    	var completeOrder = ShoppingCart.find({
+          userId: Accounts.userId(), 
 	    		vendorBusinessId: item.vendorBusinessId, 
 					vendorUserId: item.vendorUserId,
 				}, { 
@@ -100,6 +101,7 @@ Meteor.methods({
 
 	    			// Update document with new quantity
 	     			ShoppingCart.update({
+            userId: Accounts.userId(), 
 						vendorBusinessId: item.vendorBusinessId,
 						vendorUserId: item.vendorUserId,
 						"products.productId": item.productId,
@@ -117,6 +119,7 @@ Meteor.methods({
 
 	    			// Add the product to the array
 	    			ShoppingCart.update({
+              userId: Accounts.userId(), 
 	    				vendorBusinessId: item.vendorBusinessId,
     					vendorUserId: item.vendorUserId,
     				}, {
@@ -154,8 +157,9 @@ Meteor.methods({
 			multiplier = -1;
 		}
 
-		ShoppingCart.update(
-				{"products.productId": item.productId},
+		ShoppingCart.update({
+          userId: Accounts.userId(), 
+          "products.productId": item.productId},
 				{$inc: {
 					"products.$.quantity": (1 * multiplier), 
 					"products.$.itemTotalPrice": (item.unitPrice * multiplier)
@@ -166,8 +170,8 @@ Meteor.methods({
 	// Checks if vendor exists in collection
 	checkForVendor: function(_order) {
 		
-		if (ShoppingCart.findOne({vendorUserId: _order.vendorUserId}) ||
-			ShoppingCart.findOne({vendorBusinessId: _order.vendorBusinessId})) {
+		if (ShoppingCart.findOne({userId: Accounts.userId(), vendorUserId: _order.vendorUserId}) ||
+			ShoppingCart.findOne({userId: Accounts.userId(), vendorBusinessId: _order.vendorBusinessId})) {
 			return true;
 		}
 		return false;
@@ -177,14 +181,14 @@ Meteor.methods({
 	assignUserId: function(user) {
 		ShoppingCart.update(
 			{userId: null},
-			{$set: {userId: Meteor.userId()}},
+			{$set: {userId: Accounts.userId()}},
 		);
 	},
 
 	// Removes the item from the cart
 	removeFromCart: function(item) {
 		ShoppingCart.update(
-			{ },
+			{ userId: Accounts.userId(), },
 			{ $pull: { products: item }},
 			{ multi: true },
 			function() { console.log("Item removed") }
