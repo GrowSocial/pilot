@@ -68,7 +68,7 @@ Template.cart.events({
       error.firstName = 'Anonymous';
     }
     
-    console.log('first notification', notification);
+    // console.log('first notification', notification);
     // first notification to the seller
     if (this.vendorUserId) { // no point sending a notification to a null person
       Meteor.call("addNotification", notification, function(err, result) {
@@ -92,7 +92,7 @@ Template.cart.events({
       notification.subject = "My order placed for market items";
       notification.sender = "System";
       notification.message = "Seller: " + this.vendorName + ".\nThe following items have been paid:\n" + itemsPaid;
-      console.log('second notification', notification);
+      // console.log('second notification', notification);
       Meteor.call("addNotification", notification, function(err, result) {
         if (err) {
           error.tag = "MyOrderNotification";
