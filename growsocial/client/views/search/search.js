@@ -138,6 +138,10 @@ Template.search.helpers({
   resultsCount: function () {
     return PeopleIndex.getComponentDict().get('count'); // currentCount only for already shown?
   },
+  maxShown: 8,
+  greaterMax: function(numResults) {
+    return numResults > 8; 
+  },
 });
 
 Template.search.onRendered(function() {

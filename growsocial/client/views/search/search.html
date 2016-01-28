@@ -33,7 +33,7 @@
                     {{#EasySearch.IfSearching index=peopleIndex }}
                         <div>Searching ...</div>
                     {{else}}
-                        <div class="padded count-results">{{resultsCount}} results found.</div>
+                        <div class="padded count-results">{{resultsCount}} results found{{#if greaterMax resultsCount}}, showing max of {{maxShown}}.{{/if}}</div>
                         {{#if resultsCount}}
                             <!-- TODO multiple indexes, to search products and people, conditionally on filters/context -->
                             <!-- TODO pagination, more results than limit, etc. -->
