@@ -95,6 +95,7 @@ PeopleIndex = new EasySearch.Index({
         selector["latlng.lat"] = {$gte: rangeFilter._southWest.lat, $lte: rangeFilter._northEast.lat};
         selector["latlng.lng"] = {$gte: rangeFilter._southWest.lng, $lte: rangeFilter._northEast.lng};
       }
+      selector.member_key = {$ne: "pseudo_0"} ; // dont include system user
       return selector;
     },
   }),
