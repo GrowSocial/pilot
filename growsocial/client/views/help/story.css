@@ -6,3 +6,7 @@
   text-indent: 30px;
   padding-bottom: 10px;
 }
+
+.storyContainer a {
+  text-decoration: underline;
+}
