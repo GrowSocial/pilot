@@ -275,9 +275,7 @@ Template.profile_DESKTOP.events({
 
        return; 
       }
-
     Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
-
 
   } //function
 

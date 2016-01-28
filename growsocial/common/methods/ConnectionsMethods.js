@@ -34,8 +34,6 @@ if (count)
     upsert: true
 })*/
 
-
-
 /*
    Connections.update( { member_key: viewedMembr },
    {
