@@ -6,33 +6,42 @@ Meteor.methods({
       userId: Meteor.userId(),
 			vendorName: "Missy's Backyard Pride",
       vendorEmail: 'email@vendor.sample',
-			vendorUserId: 1,
+			vendorUserId: Random.id(),
 			vendorBusinessId: null,
       vendorTotal: 75.10,
 			products: [{
+				productId: Random.id(),
 				quantity: 3,
-				description: "Grandma's Heirloom Tomato",
+				name: "Grandma's Heirloom Tomato",
+				description: "Grandma went to great lengths to weave her heir on this loom",
         unitType: "pound",
 				unitPrice: 4.20,
+        photo: {src: "/images/user-images/AuntRubyTomato.png"},
 				currency: 'USD',
 				itemTotalPrice: 63.60,
 			}, {
+				productId: Random.id(),
 				quantity: 0.5,
-				description: "Dad's Ghost Chilies",
+				name: "Dad's Ghost Chilies",
+				description: "Ask Dad why he is shivering",
 				unitType: "pound",
 				unitPrice: 3.00,
 				currency: 'USD',
+        photo: {src: "/images/user-images/ScarletNantesCarrot.png"},
 				itemTotalPrice: 1.50,
 			}, {
+				productId: Random.id(),
 				quantity: 2,
-				description: "Louise's Famous Strawberry Jam",
+				name: "Louise's Famous Strawberry Jam",
+				description: "Mmmmm so sweet and fruity",
 				unitType: "bottle",
 				unitPrice: 5.00,
 				currency: 'USD',
+        photo: {src: "/images/user-images/LittleGemLettuce.png"},
 				itemTotalPrice: 10.00,
 			}]
 		}
-		console.log('adding cart sample order:', order);
+		// console.log('adding cart sample order:', order);
 		ShoppingCart.insert(order);
   },
 
@@ -49,7 +58,7 @@ Meteor.methods({
 				productId: item.productId,
 				name: item.name,
 				description: item.description,
-				pic: item.pic,
+				photo: item.photo,
 				currency: item.currency,
 				unitType: item.unitType,
 				quantity: item.quantity,
@@ -78,6 +87,7 @@ Meteor.methods({
 
     		// Get the product array
 	    	var completeOrder = ShoppingCart.find({
+          userId: Accounts.userId(), 
 	    		vendorBusinessId: item.vendorBusinessId, 
 					vendorUserId: item.vendorUserId,
 				}, { 
@@ -94,6 +104,7 @@ Meteor.methods({
 
 	    			// Update document with new quantity
 	     			ShoppingCart.update({
+            userId: Accounts.userId(), 
 						vendorBusinessId: item.vendorBusinessId,
 						vendorUserId: item.vendorUserId,
 						"products.productId": item.productId,
@@ -111,6 +122,7 @@ Meteor.methods({
 
 	    			// Add the product to the array
 	    			ShoppingCart.update({
+              userId: Accounts.userId(), 
 	    				vendorBusinessId: item.vendorBusinessId,
     					vendorUserId: item.vendorUserId,
     				}, {
@@ -119,7 +131,7 @@ Meteor.methods({
 								productId: item.productId,
 								name: item.name,
 								descrpition: item.description,
-								pic: item.pic,
+								photo: item.photo,
 								currency: item.currency,
 								unitType: item.unitType,
 								quantity: item.quantity,
@@ -148,8 +160,9 @@ Meteor.methods({
 			multiplier = -1;
 		}
 
-		ShoppingCart.update(
-				{"products.productId": item.productId},
+		ShoppingCart.update({
+          userId: Accounts.userId(), 
+          "products.productId": item.productId},
 				{$inc: {
 					"products.$.quantity": (1 * multiplier), 
 					"products.$.itemTotalPrice": (item.unitPrice * multiplier)
@@ -160,8 +173,8 @@ Meteor.methods({
 	// Checks if vendor exists in collection
 	checkForVendor: function(_order) {
 		
-		if (ShoppingCart.findOne({vendorUserId: _order.vendorUserId}) ||
-			ShoppingCart.findOne({vendorBusinessId: _order.vendorBusinessId})) {
+		if (ShoppingCart.findOne({userId: Accounts.userId(), vendorUserId: _order.vendorUserId}) ||
+			ShoppingCart.findOne({userId: Accounts.userId(), vendorBusinessId: _order.vendorBusinessId})) {
 			return true;
 		}
 		return false;
@@ -171,19 +184,31 @@ Meteor.methods({
 	assignUserId: function(user) {
 		ShoppingCart.update(
 			{userId: null},
-			{$set: {userId: Meteor.userId()}},
+			{$set: {userId: Accounts.userId()}},
 		);
 	},
 
 	// Removes the item from the cart
 	removeFromCart: function(item) {
 		ShoppingCart.update(
-			{ },
+			{ userId: Accounts.userId(), },
 			{ $pull: { products: item }},
 			{ multi: true },
-			function() { console.log("Item removed") }
+			function() {
+        // console.log("Item removed"); 
+        // If any products array has 0 items, remove vendor from collection
+        ShoppingCart.remove({ 
+            userId: Accounts.userId(),
+            products: [],
+          },
+          // function(err,count) {
+            // if (count) {
+              // console.log("Order removed");
+            // }
+          // }
+        );
+      }
 		);
 
-		//TODO: If products array has 0 items, remove vendor from collection
 	},
 });

@@ -84,7 +84,9 @@
                 {{/if}}
                 <li role="separator" class="divider"></li>
                 {{ > navContactUs}}
-                {{ > navToggleBackground}}
+                {{ > navTutorials}}
+                {{ > navStory}}
+                <!-- {{ > navToggleBackground}} -->
               </ul>
             </li>
           </ul>
@@ -105,7 +107,7 @@
           <div class="input-group">
               <input type="text" id="navSearchText" class="form-control" placeholder="Search">
               <span class="input-group-btn">
-                  <button type="submit" aria-label="Submit" class="btn btn-default"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
+                  <button type="submit" aria-label="Submit" class="btn btn-default navSearchButton"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></button>
               </span>
           </div>
       </div>
@@ -116,7 +118,7 @@
 <template name="navSearchButton">
   <div class="visible-xs">
     <!-- For small screen, just show search button -->
-    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
+    <a href="{{pathFor 'search'}}" class="nav navbar-toggle nav-search-button-small navSearchButton" data-toggle="collapse" data-target=".navbar-collapse.in" aria-label="Search">
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </a>
   </div>
@@ -164,7 +166,7 @@
     </a>
     <ul class="dropdown-menu">
       {{#each notificationList}}
-        <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="{{pic}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{message}}</a></li>
+        <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in"><img src="{{imageUrl}}" class="img-circle navbar-img nav-notify-dropdown-item-img" alt="message">{{sender}} | {{subject}}</a></li>
       {{/each}}
       <li role="separator" class="divider"></li>
       <li><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">See More</a></li>
@@ -176,7 +178,7 @@
   <li class="{{isActiveRoute 'notifications'}}"><a href="{{pathFor 'notifications'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Notifications</a></li>
   <li class="disabled"><a href="#">Messages</a></li>
   <li class="disabled"><a href="#">Events</a></li>
-  <li><a href="/marketplace/1" data-toggle="collapse" data-target=".navbar-collapse.in">My Storefront</a></li>
+  <li class="disabled"><a href="#">My Storefront</a></li>
   <li class="disabled"><a href="#">Saved Posts</a></li>
   <li><a href="/changePassword" data-toggle="collapse" data-target=".navbar-collapse.in">Change Password</a></li>
 </template>
@@ -184,10 +186,10 @@
 <template name="navPages">
   <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
   <li class="{{isActiveRoute 'people'}}"><a href="{{pathFor 'people'}}" data-toggle="collapse" data-target=".navbar-collapse.in">People</a></li>
-  <li class="disabled"><a href="#">Discussions</a></li>
+  <li class="{{isActiveRoute 'discuss'}}"><a href="{{pathFor 'discuss'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Discussions</a></li>
   <li class="disabled"><a href="#">LocalPedia</a></li>
-  <li class="{{isActiveRoute 'businesses'}}"><a href="{{pathFor 'businesses'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Businesses</a></li>
-  <li class="{{isActiveRoute 'marketplace'}}"><a href="/marketplace/0" data-toggle="collapse" data-target=".navbar-collapse.in">Marketplace</a></li>
+  <li class="disabled"><a href="#">Businesses</a></li>
+  <li class="{{isActiveRoute 'marketplace'}}"><a href="/marketplace" data-toggle="collapse" data-target=".navbar-collapse.in">Marketplace</a></li>
   <li class="disabled"><a href="#">Opportunities</a></li>
 </template>
 
@@ -197,7 +199,7 @@
 
 <template name="navSettings">
   <li class="disabled"><a href="#">Account</a></li>
-  <li class="disabled"><a href="#">Settings</a></li>
+  <li class="{{isActiveRoute 'location'}}"><a href="/location" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
 </template>
 
 <template name="navHelp">
@@ -206,6 +208,14 @@
 
 <template name="navContactUs">
   <li class="{{isActiveRoute 'contactUs'}}"><a href="{{pathFor 'contactUs'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Contact Us</a></li>
+</template>
+
+<template name="navTutorials">
+  <li class="{{isActiveRoute 'tutorials'}}"><a href="{{pathFor 'tutorials'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Tutorials</a></li>
+</template>
+
+<template name="navStory">
+  <li class="{{isActiveRoute 'story'}}"><a href="{{pathFor 'story'}}" data-toggle="collapse" data-target=".navbar-collapse.in">GrowSocial Story</a></li>
 </template>
 
 <template name="navMyCart">

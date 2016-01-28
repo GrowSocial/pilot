@@ -9,7 +9,6 @@ Template.marketplace.helpers({
   vendorList: function () { 
     return MarketItems.find();
   },
-  
 /*
   selectedProduct: function() {
     var productId = FlowRouter.getParam("productId");
@@ -21,6 +20,16 @@ Template.marketplace.helpers({
     }
   },
 */
+});
+
+Template.marketplaceItem.helpers({
+  randomPhotoSrc: function () {
+    return Random.choice([
+      "/images/user-images/AuntRubyTomato128.png",
+      // "/images/user-images/Carrots128.png",
+      // "/images/user-images/LittleGemLettuce.png",
+      ]);
+  },
 });
 
 Template.marketplace.onRendered(function() {

@@ -1,0 +1,14 @@
+/* Styles for notification page */
+
+.notification-container {
+	padding: 30px;
+}
+
+.notification-container .message-image {
+  max-height: 43px;
+  margin-right: 12px;
+}
+
+.notification-container a {
+  text-decoration: underline;
+}

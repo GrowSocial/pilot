@@ -1,46 +1,57 @@
 #centralImg {
         float: left;
-        width: auto;max-width: 100%; height: 100%;
+        width: auto;max-width: 100%; height: 550px;
         margin-left: 0%;   
-        margin-top: -260px;
         clear: none;
         color: rgb(0, 0, 0);
-        margin-right: 0%;     
-      
+        margin-right: 0%;      
 }
-   
+#featureImgHelp{
+ margin: 0px;
+}
 #featureHdr2{
     font-size: 1.4em; color: rgb(255, 255, 255);
     text-align: left;   font-weight: normal; line-height: normal;
-    font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;   
+    font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;  
 }
-
+#help_block{
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+   
+}
 
 .thumbnail{
- 
     position:relative;
-    height: auto;
+    height: auto; 
 }
 .details {
-    float: left;clear: none;
-    width: 50%;   height: auto;
-    position: relative;  top: 0px; left: 0px; z-index: 90;
-    margin-top: -200px; margin-left: 6%;
+    float: left;clear: none;height: auto;
+    position: relative;  top: 20px; left: 0px; z-index: 90;
+    margin-top: -190px; margin-left: 6%;
 }
 
 #Help_Join_Button {
-    position: relative;  top: 0px; left: 0px; z-index: 90;
-    margin-top: 200px; margin-left: 6%;
+    top: 0px; left: 0px; z-index: 90;
+    margin-top: 1%; margin-left: 25%; margin-bottom: 1%;
 }
 
 #Help_About {
-    float: left;clear: both;   
-    position: relative;top: 40px; left: 0px; z-index: 30;
-    margin-top: 7px; margin-left: 15.541031%;
-    height: auto;
-     font-size: 1.4em; color: rgb(57, 57, 57);
-    text-align: center;   font-weight: normal; line-height: normal;
+    height: 100px;
+    background-size: cover;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    margin-top: 2%;
+    margin-right: 0px;
+    margin-left: 0%;
+    clear: none;
+    font-size: 1.8em;
+    color: rgb(0, 0, 0);
+    text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;
+    text-align: center;
 }
 
 #Help_Explanation {
@@ -52,23 +63,41 @@
     text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;
 }
-
+#Help_garden_graphic {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 0px;
+    left: 0px;
+    z-index: 18;
+    background-image:url("/images/soil-sky.png");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    height: 700px; 
+    width: auto; 
+    max-width: 1440px; 
+    max-height: 900px;
+}
 #Help_Features {
-    float: left;clear: both;   
-    position: relative;top: 540px; left: 0px; z-index: 30;
-    margin-top: 7px; margin-left: 15.541031%;
+    clear: both;   
+    top: 540px; left: 0px; z-index: 30;
+    margin-top: 7px; margin-left: 5%;
     height: auto;
-     font-size: 1.4em;
-    color: rgb(255, 255, 255);
+     font-size: 1.8em;
+    color: rgb(0, 0, 0);
     text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;
 }
 
 #Help_Tutorial_Button {
-  position: relative;top: 60px; left: 200px; z-index: 30;  
+  top: 60px; margin-left: 30%; margin-top: 2%; z-index: 30;  
     
 }
 
-#Help_Join_Button { 
-   position: relative;top: -30px; left: 70px; z-index: 30; 
+.popover{display: inline-block !important;}
+.popover-content{
+    color: #000000 !important;/*black color*/
+    font-size: 12px !important;
+    display: inline-block !important;
 }
+

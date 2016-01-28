@@ -28,20 +28,47 @@ Meteor.methods({
       "Gaga",
       "Franklin"
     ];
+    // TODO add state, etc.
+    var locations = [{
+      city: "Davie",
+      state: "FL",
+      zipcode: 33328,
+      latlng: {
+        lat: 26.076477,
+        lng: -80.252113,
+    }}, {
+      city: "Fort Lauderdale",
+      state: "FL",
+      zipcode: 33301,
+      latlng: {
+        lat: 26.139412,
+        lng: -80.133591,
+    }}, {
+      city: "Tampa",
+      state: "FL",
+      zipcode: 33602,
+      latlng: {
+        lat: 27.964157,
+        lng: -82.452606,
+    }},
+    ];
     var cities = ["Davie", "Fort Lauderdale", "Tampa"];
 
     var addedList = [];
     for (var i = 0; i < 3; i++) {
+      var location = Random.choice(locations);
       var person = {
         testDataSearch: true,
         'member_key': Random.id(),
         firstname: Random.choice(first_names),
         lastname: Random.choice(last_names),
         about: "Test user created for search.",
-        city: Random.choice(cities),
+        city: location.city,
+        state: location.state,
+        zipcode: location.zipcode,
         latlng: {
-          lat: 0.04 * Random.fraction() - 37.82, 
-          lng: 0.04 * Random.fraction() + 144.97,
+          lat: 0.04 * Random.fraction() + location.latlng.lat, 
+          lng: 0.04 * Random.fraction() + location.latlng.lng,
         },
       };
       // person.lat = person.latlng.lat;

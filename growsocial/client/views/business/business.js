@@ -8,7 +8,7 @@ Template.business.helpers({
       return {
         businessId: businessId,
         name: "ABC Farm Hands United",
-        pic: "/images/user-images/business-abc.jpg",
+        pic: "/images/user-images/business-abc.jpg?v=2",
         };
     } else {
       return {
