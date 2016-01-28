@@ -6,8 +6,7 @@
                 <span class="label label-default">Search for people. In Phase 1, will be able to search events, products and more.</span>
                 <!-- <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button> -->
                 <!-- <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button> -->
-                <button type="button" id="viewCurrentLocationButton" class="btn btn-default" >View map at my current location</button>
-                <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
+                <!-- <button type="button" id="viewCurrentLocationButton" class="btn btn-default" >View map at my current location</button> -->
                 {{#if currentUser}}
                     <a href="{{pathFor 'location'}}" class="btn btn-default" role="button">Set my default map location</a>
                 {{/if}}
@@ -35,6 +34,7 @@
                     {{else}}
                         <div class="padded count-results">{{resultsCount}} results found{{#if greaterMax resultsCount}}, showing max of {{maxShown}}.{{/if}}</div>
                         {{#if resultsCount}}
+                            <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
                             <!-- TODO multiple indexes, to search products and people, conditionally on filters/context -->
                             <!-- TODO pagination, more results than limit, etc. -->
                             <ul>
