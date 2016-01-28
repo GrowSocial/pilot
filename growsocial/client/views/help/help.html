@@ -1,6 +1,6 @@
 <template name="help">
     {{> helpMain}}
-    {{> faq}}
+    {{> faqTemplate}}
     {{> helpFeatures}}
     {{> homeFootr}}
    
@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-4">
 <div class="thumbnail" id="help_block" >
-    <a href="/tutorials" > <img id="featureImgHelp" src="/images/help-images/help_img1.jpg" class="image"></a>
+    <a href="" > <img id="featureImgHelp" src="/images/help-images/help_img1.jpg" class="image"  data-toggle="popover" data-html="true" data-container="body"  title="Online Chat "  data-content="For online chat help, click the green panel at the bottom. We will be online to answer questions during the pilot, 5pm to 10pm Mon to Fri, and 9am to 9pm weekends"></a>
      <div class="details">
          <p id="featureHdr2"> Online Chat Help </p>
     </div>
@@ -23,15 +23,18 @@
     </div>
 </div>
 <div class="thumbnail" id="help_block" >
-    <a href="/tutorials"> <img id="featureImgHelp" src="/images/help-images/help_img3.jpg" class="image" /></a>
+    <a href="/story"> <img id="featureImgHelp" src="/images/help-images/help_img3.jpg" class="image" /></a>
     <div class="details">
-        <p id="featureHdr2"> Walk Through Site Tutorial </p>
+        <p id="featureHdr2"> Grow Social's Story </p>
     </div>
 </div>
      </div>
 <div class="col-md-4">
     <div class="thumbnail" id="help_block">
   <a href="/tutorials"> <img src="/images/help-images/help_img4.jpg" class="image"   /></a>
+        <div class="details">
+        <p id="featureHdr2" > Scroll Down to see <br> Features and FAQ's </p>
+    </div>
   <div class="centralImg">
     <h3 text-align="center"> Tutorial Videos for GrowSocial!</h3>
     <p>Learn how to use the fast-growing network of people dedicated to local food growing and creating a sustainable economy</p>  
@@ -41,15 +44,15 @@
 </div>
 <div class="col-md-4">
     <div class="thumbnail" id="help_block" >
-        <a href="#" data-toggle="popover" data-placement="left" title="Welcome to the Site Map!" data-content="This feature will be available in the Phase 1 release"> <img id="featureImgHelp" src="/images/help-images/help_img5.jpg" class="image" /></a>
+        <a href="{{pathFor 'helpFeatures'}}#Help_Features" > <img id="linktofeatures" src="/images/help-images/help_img5.jpg" class="image" /></a>
         <div class="details"> 
-    <p id="featureHdr2"> Site Map </p>
+    <p id="featureHdr2"> Features </p>
         </div>
 </div>
     <div class="thumbnail" id="help_block" >
-     <a href="/tutorials"> <img id="featureImgHelp" src="/images/help-images/help_img6.jpg" class="image" /></a>
+     <a href="{{pathFor 'faqTemplate'}}#linktofaq"> <img id="featureImgHelp" src="/images/help-images/help_img6.jpg" class="image" /></a>
     <div class="details">
-        <p id="featureHdr2"> Community Pages Help</p>
+        <p id="featureHdr2"> FAQ's</p>
     </div>
 </div>
 
@@ -609,9 +612,9 @@
     </div>
     </div>
 </template>
-<template name="faq">
+<template name="faqTemplate">
 <div id="helptemplateContainer" class="container">
-    <h2 style = "text-align: center;">FAQ's About GrowSocial Pilot</h2>
+    <h2 id="linktofaq" style = "text-align: center;">FAQ's About GrowSocial Pilot</h2>
        
 <div class="panel-group" id="accordion">
 	<div class="panel panel-default">
