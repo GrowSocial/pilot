@@ -3,6 +3,7 @@
     <div id="#searchContainer" class="container">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
+                <span class="label label-default">Search for people. In Phase 1, will be able to search events, products and more.</span>
                 <!-- <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button> -->
                 <!-- <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button> -->
                 <button type="button" id="viewCurrentLocationButton" class="btn btn-default" >View map at my current location</button>
@@ -54,7 +55,10 @@
 </template>
 
 <template name="searchFilters">
-    <h5>Filters (optional): <span class="label label-default">People</span> <span class="label label-default">Search products in Phase 1</span></h5>
+
+    <a href="#searchFiltersControls" class="btn btn-default" data-toggle="collapse">Filters ...</a>
+    <div id="searchFiltersControls" class="collapse">  
+    <!-- to show by default: class="collapse in" -->
     
 <!--     
     <select class="category-filter disabled" disabled>
@@ -64,20 +68,22 @@
         <option value="Events">Events</option>
     </select>
  -->
-    <input type="text" name="city" class="form-control" placeholder="city...">
+        <input type="text" name="city" class="form-control" placeholder="city...">
 
-    <input type="text" name="zipcode" class="form-control" placeholder="zip code...">
-    
-    <div class="input-group">
-      <input type="text" name="range" class="form-control" aria-label="range" placeholder="range...">
-      <span class="input-group-addon" id="rangeUnits" aria-label="range units">mi</span>
-    </div><!-- /input-group -->
+        <input type="text" name="zipcode" class="form-control" placeholder="zip code...">
+        
+        <div class="input-group">
+          <input type="text" name="range" class="form-control" aria-label="range" placeholder="range...">
+          <span class="input-group-addon" id="rangeUnits" aria-label="range units">mi</span>
+        </div><!-- /input-group -->
 <!--     
     <select class="range-units">
         <option value="" selected>mi</option>
         <option value="km">km</option>
     </select>
  -->
+    </div>  <!-- searchFiltersControls -->
+    
 </template>
 
 <!-- <template name="awesomeAutosuggest"> -->
