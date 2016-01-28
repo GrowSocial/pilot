@@ -138,6 +138,10 @@ Template.search.helpers({
   resultsCount: function () {
     return PeopleIndex.getComponentDict().get('count'); // currentCount only for already shown?
   },
+  maxShown: 8,
+  greaterMax: function(numResults) {
+    return numResults > 8; 
+  },
 });
 
 Template.search.onRendered(function() {
@@ -372,9 +376,9 @@ Template.searchMap.onRendered(function() {
       if (error) {
         // okay that it's not available, use system default
         newLatLng = {lat: 26.064975195273117, lng: -80.2321028709411}; // busy traffic!
-        searchNotify('alert-info', '<p>Using default location in Davie.</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+        // searchNotify('alert-info', '<p>Using default location in Davie.</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
       } else {
-        searchNotify('alert-info', '<p>Loaded from collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+        // searchNotify('alert-info', '<p>Loaded from collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
       }
       // view on map
       if (myLocationMarker) {
@@ -389,7 +393,7 @@ Template.searchMap.onRendered(function() {
     // TODO refactor
     // use system default
     newLatLng = {lat: 26.064975195273117, lng: -80.2321028709411}; // busy traffic!
-    searchNotify('alert-info', '<p>Using default location in Davie.</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+    // searchNotify('alert-info', '<p>Using default location in Davie.</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
     // view on map
     if (myLocationMarker) {
       leafletmapp.removeLayer(myLocationMarker).closePopup();
