@@ -1,8 +1,8 @@
-/*
-.peopleContainer table {
-  border-collapse: collapse;
+.peopleContainer tbody tr td, .peopleContainer thead tr th {
+  border: none;
 }
 
+/*
 .person-row {
   cursor: pointer;
 }
