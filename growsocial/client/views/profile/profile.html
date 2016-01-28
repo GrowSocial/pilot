@@ -42,6 +42,22 @@
 
 
 
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
 <template name="profile_DESKTOP">
     <div id="headerPROFL">
         <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
@@ -49,9 +65,13 @@
         <div id="buttongroupPROFL" class="clearfix">
             {{#if myProfile}}
 
+                <!-- div id="connect" class="clearfix">
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled">   
+                        My <br />Connections
+                    </button>
+                </div --> 
                 <div id="connect" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" 
-                    data-toggle="popover" data-placement="auto" data-trigger="hover" 
+                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Connections" data-content="View connections and invites">   
                         My <br />Connections
                     </button>
@@ -62,15 +82,21 @@
                     title="Member Blog" data-content="View latest blog and archives">View Blog</button>
                 </div>
 
+
+
                 <div id="connect" class="clearfix">
-                    {{#if connectionInvoked}}
-                        {{#if connectionPending}} <p id="statusMsg">Connection<br />pending</p>
-                                         {{else}} <p id="statusMsg">Connected</p>
+                    {{#if connectionActive}}
+
+                        {{#if connectionPending}}                         
+                            <p id="statusMsg">Connection<br />pending</p>
+                        {{else}}
+                            <p id="statusMsg">Connected</p>
+
                         {{/if}}
                     {{else}}
 
                         <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
-                        data-trigger="select" title="Invitation" data-content="Sent to this member" >Connect</button>
+                        data-trigger="select" title="Invitation" data-content="Sent to this member" >Connection<br />Invite</button>
                     {{/if}}
 
                 </div> 
@@ -419,96 +445,37 @@
     *****EITHER mobile or desktop
     -->
     {{#if myProfile}}
-
-        <br />
-        <input type="button" id="edtOpenedDESK" onclick="ShowEditorDESK()" style="margin-left:10%;" value="OPEN EDITOR">
-        <br /><br /><br />
-
-            <div id="editorPROFL" class="clearfix" style="visibility:hidden;"> <h3> Profile scrub ~<br></h3>
-            {{> quickForm   id="updatePROFILE" 
-                type="update" collection="People" doc=selectProfile
-                fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
-            }} </div> <!--  -->
+        <!-- div id="primaryDiv_MOB" class="primaryContainer clearfix" -->
+            <div id="editorPROFL" class="clearfix">
+                <h3> Profile scrub ~<br></h3>
+                {{> quickForm   id="updatePROFILE" 
+                    type="update" collection="People" doc=selectProfile
+                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
+                }}
+            </div> <!--  -->
 
             <div id="editorPROFL" class="clearfix">
+                <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
 
+                {{#if there_are_items "marketItems"}}
 
-                {{#if there_are_items "marketItems"}} 
-
-                    <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
                     {{> quickForm  id="updateMARKETITEMS" 
                         type="update" collection="MarketItems" doc=myMarketItems  
                         fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
                         omitfields="vendor_key, vendorUserId,items.$.productId"  
                     }}
 
-
-                {{else}}  {{initMarketItems}}
+                {{else}} 
+                    {{initMarketItems}}
                 {{/if}}
             </div>
         <!-- /div -->
-        <script>
-        function ShowEditorDESK() {  
-            document.getElementById("editorPROFL").style.visibility = "visible";
-            document.getElementById("edtOpenedDESK").style.visibility = "hidden";
-        }
-        </script>
-      
     {{/if}}<!-- MyProfile editor -->
 
 </template><!-- template name="profile_DESKTOP" -->
 
 
-<template name="tmp">
-    <div id="editorPROFL" class="clearfix"> <h3> Profile scrub ~<br></h3>
-    {{> quickForm   id="updatePROFILE" 
-        type="update" collection="People" doc=selectProfile
-        fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
-    }} </div> <!--  -->
 
-    <div id="editorPROFL" class="clearfix">
-
-
-        {{#if there_are_items "marketItems"}} 
-
-            <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
-            {{> quickForm  id="updateMARKETITEMS" 
-                type="update" collection="MarketItems" doc=myMarketItems  
-                fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
-                omitfields="vendor_key, vendorUserId,items.$.productId"  
-            }}
-
-
-        {{else}}  {{initMarketItems}}
-        {{/if}}
-    </div>
-    <!-- /div -->
-
-
-
-
-        <br />
-    <input type="button" id="edtOpened" onclick="ShowEditor()" style="margin-left:10%;" value="OPEN EDITOR">
-    <br /><br /><br />
-    <div id="primaryDivSCRUB_MOB" class="primaryContainer clearfix" style="visibility:visible;">
-
-
-    <div id="editorPROFL_MOB" class="clearfix">  {{> quickProfileCORE}}</div>
-
-    <div id="editorPROFL_MOB" class="clearfix">
-        {{#if there_are_items "marketItems"}} {{> quickMarketItemsEDITOR}}
-        {{else}}  {{initMarketItems}}
-        {{/if}}
-    </div>
-    </div>
-
-    <script>
-    function ShowEditor9() {  
-    document.getElementById("primaryDivSCRUB_MOB").style.visibility = "visible";
-    document.getElementById("edtOpened").style.visibility = "hidden";
-    }
-    </script>
-</template>
 
 <template name="profile_MOB" >
     <div id="primaryDiv_MOB" class="primaryContainer clearfix"> <!-- for float:none centering in children -->
@@ -537,7 +504,7 @@
 
 
                 <div id="connect" class="clearfix">
-                    {{#if connectionInvoked}}
+                    {{#if connectionActive}}
 
                         {{#if connectionPending}}                         
                             <p id="statusMsg">Connection<br />pending</p>
@@ -548,7 +515,7 @@
                     {{else}}
 
                         <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
-                        data-trigger="select" title="Invitation" data-content="Sent to this member" >Connect</button>
+                        data-trigger="select" title="Invitation" data-content="Sent to this member" >Connection<br />Invite</button>
                     {{/if}}
 
                 </div> 
@@ -879,50 +846,36 @@
     *****EITHER mobile or desktop
     -->
     {{#if myProfile}}
-
-
-        <br />
-        <input type="button" id="edtOpened" onclick="ShowEditor()" style="margin-left:10%;" value="OPEN EDITOR">
-        <br /><br /><br />
-        <div id="primaryDivSCRUB_MOB" class="primaryContainer clearfix" style="visibility:hidden;">
-
-            <div id="editorPROFL_MOB" class="clearfix">  {{> quickProfileCORE}}</div>
+        <div id="primaryDiv_MOB" class="primaryContainer clearfix">
+            <div id="editorPROFL_MOB" class="clearfix">
+                <h3> Profile scrub ~<br></h3>
+                {{> quickForm   id="updatePROFILE" 
+                    type="update" collection="People" doc=selectProfile
+                    fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
+                }}
+            </div> <!--  -->
 
             <div id="editorPROFL_MOB" class="clearfix">
-                {{#if there_are_items "marketItems"}} {{> quickMarketItemsEDITOR}}
-                {{else}}  {{initMarketItems}}
+                <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
+
+                {{#if there_are_items "marketItems"}}
+
+                    {{> quickForm  id="updateMARKETITEMS" 
+                        type="update" collection="MarketItems" doc=myMarketItems  
+                        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
+                        omitfields="vendor_key, vendorUserId,items.$.productId"  
+                    }}
+
+                {{else}} 
+                    {{initMarketItems}}
                 {{/if}}
             </div>
         </div>
-
-        <script>
-        function ShowEditor() {  
-            document.getElementById("primaryDivSCRUB_MOB").style.visibility = "visible";
-            document.getElementById("edtOpened").style.visibility = "hidden";
-        }
-        </script>
-
-
     {{/if}}<!-- MyProfile editor -->
 
 </template>
 
-<template name="quickProfileCORE">
-    <h3> Profile scrub ~<br></h3>
-    {{> quickForm   id="updatePROFILE" 
-        type="update" collection="People" doc=selectProfile
-        fields="firstname,lastname,fullname,street,street2,city,state,zipcode,occupations,location,phone,website,links,facebookID,twitterID,instagramID,about"     
-    }}
-</template>
 
-<template name="quickMarketItemsEDITOR">
-    <h3><br> Market Items ~<br>* * * * * * * * * * (do not alter vendor_key or vendor user id)<br></h3>
-    {{> quickForm  id="updateMARKETITEMS" 
-        type="update" collection="MarketItems" doc=myMarketItems  
-        fields="items.$.name,items.$.description,items.$.type,items.$.salesAlert,items.$.unitType,items.$.unitPrice,items.$.currency,items.$.date_entered"  
-        omitfields="vendor_key, vendorUserId,items.$.productId"  
-    }}
-</template>
 
 
 
