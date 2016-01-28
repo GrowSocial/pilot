@@ -146,3 +146,10 @@ FlowRouter.route('/tutorials', {
     BlazeLayout.render("main", {content: "tutorials"});
   },
 });
+
+FlowRouter.route('/story', {
+  name: "story",
+  action: function() {
+    BlazeLayout.render("main", {content: "story"});
+  },
+});
