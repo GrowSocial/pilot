@@ -1,3 +1,7 @@
+.tutorialsContainer h2 {
+  text-align: center;
+}
+
 .tutorialsContainer a {
   text-decoration: underline;
 }

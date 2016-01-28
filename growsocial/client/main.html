@@ -85,6 +85,7 @@
                 <li role="separator" class="divider"></li>
                 {{ > navContactUs}}
                 {{ > navTutorials}}
+                {{ > navStory}}
                 <!-- {{ > navToggleBackground}} -->
               </ul>
             </li>
@@ -211,6 +212,10 @@
 
 <template name="navTutorials">
   <li class="{{isActiveRoute 'tutorials'}}"><a href="{{pathFor 'tutorials'}}" data-toggle="collapse" data-target=".navbar-collapse.in">Tutorials</a></li>
+</template>
+
+<template name="navStory">
+  <li class="{{isActiveRoute 'story'}}"><a href="{{pathFor 'story'}}" data-toggle="collapse" data-target=".navbar-collapse.in">GrowSocial Story</a></li>
 </template>
 
 <template name="navMyCart">
