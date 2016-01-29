@@ -19,3 +19,22 @@ $(document).ready(function(){
 Template.homeNew.onRendered(function() {
     $('[data-toggle="popover"]').popover(); 
 });
+
+Template.homeNew.onDestroyed(function() {
+    $('[data-toggle="popover"]').popover("hide"); 
+});
+
+
+Template.helpMain.onDestroyed(function() {
+    $('[data-toggle="popover"]').popover("hide"); 
+});
+
+Template.homeNew.helpers({
+  pathForProfile: function() {
+    var params = {
+      personId: Meteor.userId(),
+    };
+    var path = FlowRouter.path("profile", params);
+    return path;
+  },
+});
