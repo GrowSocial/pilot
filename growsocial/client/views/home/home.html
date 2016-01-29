@@ -90,14 +90,8 @@ This will also allow you to see the events coming in your area and schedule so t
  {{#if currentUser.profile.firstname}}
     <a href="{{pathForProfile}}"><img src="/images/main image block.png" class="image"/></a>
   {{else}}
-     <a href=""><img src="/images/main image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="left" title="Clicking the featured farm brings me to my own profile page " data-content="This will link you to your farm page."/></a>
+     <a href=""><img src="/images/main image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="left" title="Featured Farm" data-content="This will feature a particular farm or food business, you will be able to click through to their farm business page.  Your suggestions for which business can be featured are welcomed."/></a>
   {{/if}}  
-<!--    <a href="/profile"> <img src="/images/main image block.png" class="image"/></a>
-            <div class="HomecentralImg">
-            <p id="Your Profile Page">
-        <span id="txtHOME01">{{fullname}}<br /></span><span id="txtHOME02"></span>
-                </p></div>-->
-    
             <div class="HomecentralImg">
             <p id="Phoenix_Farms_Lakeland_Florida"><span id="txtHOME01">
         {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}<br />{{currentUser.profile.lastname}}{{else}}Phoenix Farms<span id="txtHOME02"> Lakeland, Florida</span>{{/if}}</span>
