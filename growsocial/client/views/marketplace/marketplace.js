@@ -111,7 +111,14 @@ Template.marketplace.events({
       vendorEmail: event.target.vendorEmail.value,
     }
 
-    Meteor.call('addCartItem', item);
+    Meteor.call('addCartItem', item, function(error, result) { 
+      $('.popoverThis').popover('hide');
+      if (error) {
+        marketNotify('alert-danger', error.message);
+      } else {
+        marketNotify('alert-info', 'Updated shopping cart.');
+      }
+    });
   },
 });
 
