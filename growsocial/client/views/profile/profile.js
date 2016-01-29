@@ -231,75 +231,13 @@ Template.profile.onCreated(function()
 
 
 Template.profile.helpers({
-  myProfile: function(){
-    //Will return NULL if no member is logged in, 
-    //            FALSE if another member is here to view selected profile
-    //            TRUE if a logged in member is navigating to their profile page
-    var mKey = FlowRouter.getParam('personId');
-    if (Accounts.userId() == mKey) { return true }  else { return false;}    
-  },
 
   selectProfile: function() {
       var mKey = FlowRouter.getParam('personId');
       var member = People.findOne({member_key: mKey}) || {};
       return member;
-    },
+    }
 
-  there_are_items: function(caller){
-      var mKey = FlowRouter.getParam('personId');
-      switch (caller)
-      {
-        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
-          break;
-        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
-          break;
-        case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
-          break;
-
-        case 'blogEntries': var count=0;
-        case 'calendarEvents': var count=0;
-        case 'memberContacts': var count=0;      
-        default: var count=0;
-      }  
-      //alert(mKey + caller + count);
-      if (count) { return true } else { return false;}
-    },
-
-  itemsOverflow: function(){
-      var mKey = FlowRouter.getParam('personId');
-      var count= MarketItems.find({vendor_key: mKey}).count();
-      if (count>5) { return true } else { return false;}
-    },
-
-  myMarketItems: function() {
-
-      var mKey = FlowRouter.getParam('personId');
-      var items = MarketItems.findOne({vendor_key: mKey}) || {};
-    //alert('myMarketItems: function() {'+ mKey );
-      return items;
-    },
-
-  initMarketItems: function(){
-
-  var mKey = FlowRouter.getParam('personId');
-  var member = People.findOne({member_key: mKey}) || {};
-  //alert("intiial MItem for " + member.fullname + Date());
-  var sData = [{vendor_key: mKey, 
-              vendorUserId: mKey,
-                vendorName: member.fullname,
-               vendorEmail: member.email,
-            testDataMarket: false,
-    items: [   {name:'Market Item', description:'', 
-                type:'',
-          salesAlert:'',
-            unitType:'',
-           unitPrice: 0,
-            currency:'',
-        date_entered: Date()
-        }]
-  }];  
-  _.each(sData, function(sItem) { MarketItems.insert(sItem);});
-  }
 
 });
 
@@ -320,124 +258,46 @@ Template.profile_DESKTOP.onCreated(function()
     );
 
 
-    //see  /server/main.js for documentation
-    //  We need to be sure Admin document is present in database
-    // If not present (first time this is run on a server without data collections
-    // initialization module ) insert record to collection People
-    // 
-    var AdminInitialized = People.find({member_key: "pseudo_0"}).count();
-
-    /*ERROR:
-    "" insert failed: MongoError: insertDocument :: caused by :: 11000 E11000 duplicate key error index: meteor.People.$c2_member_key  dup key: { : "pseudo_0" }
-
-    Will occur if the Meteor session is interrupted, and resumed while the profile page is the current browser view.
-    I believe it is because the 'People' instance has not been initialized 
-    -- which normally happens when the application commences with the localhost:3000 root path
-    Once a user navigates to 'People' from the navbar menu, 'People' is instanced.
-
-    The error : follows the test to see if the 'pseudo_o' user (admin) is present in the database. 
-    The JS returns a null as a result of :  AdminInitialized = People.find({member_key: "pseudo_0"}).count();
-    if People has not been instanced..  
-
-    This will only happen if the app starts with this template as the startup view
-    We can revise the JS here, include error trapping perhaps, or test to be sure of the state of the session.
-    OR: we turn to another approach altogether for being certain admin, 'psuedo_0' is present in database
-
-    */
-
-
-    if (AdminInitialized == 0) { 
-    // Will be TRUE if People has not been loaded until now
-    // irregardless of admin record present.
-    // Can happen if the app restarts from the profile page and will cause a record insert exception.
-    // No error handling is coded here, for now. Not sure if it is important, is not tested at deployed server
-    var sData = [
-      {
-      member_key: 'pseudo_0', 
-      email: 'admin@growsocial.com',
-      firstname:'Grow',
-      lastname: 'Social',
-      fullname:'Grow Social',
-          street:'123 Main St..', 
-          street2:'',
-          city:'Wilmington',
-          state:'DE',
-        zipcode:'02001',
-        location:'Davie, FL',
-        phone:'700 999-0000',
-        website:'www.growsocial.com',
-        links:'gg.web.site',
-        facebookID:'',
-        twitterID:'@grow',
-        instagramID:'',
-        about:"The Locavore's friend"
-      }
-    ];
-    _.each(sData, function(sItem)  { People.insert(sItem); }     
-      );
-
-    } // end if -- Admin check
-
 }); //on created 'profile'
 
 
-Template.profile_DESKTOP.events(
-{
+Template.profile_DESKTOP.events({
 
-'click .connectSelect': function()
-{ //console.log("You clicked CONNECT"); 
-  var viewedMembr = FlowRouter.getParam('personId');//alert("initial MItem for " + member.fullname + Date());
-  var loggedInMembr = Accounts.userId()
-  var count =Connections.find({member_key: viewedMembr}).count();
-  if ( count )
-      {
-        //alert("push new connection record into array within member's connections document");
-      var sData = [{ contact: [{member_id:loggedInMembr, 
-                                timestamp:Date(),
-                                descript:'invitation'
-                                }]
-                  }];
+  'click .connectSelect': function()
+  {  //console.log("You clicked CONNECT");   
+  //  event.preventDefault();
 
-  // not working , untrusted code error. Requires further code & design decisions to impliment, as well
-  //      Connections.update({  member_key: viewedMembr }, { $push: sData }        );
+    var viewedMembr = FlowRouter.getParam('personId');//alert("initial MItem for " + member.fullname + Date());
+    var loggedInMembr = Accounts.userId()//
+    //console.log("quer InvConnect as : viewedM " + viewedMembr + " : LoggedM"  + loggedInMembr)
+    if (viewedMembr == loggedInMembr) //would indicate  MEMBER VIEWING THEIR OWN PROFILE
+      { //display all connections & pending invites
 
- } else { 
-  //alert("first record, establish document with first connection record "+viewedMembr+" by "+loggedInMembr );
+       return; 
+      }
 
-        var sData = [
- { member_key: viewedMembr, 
-    contact: [ 
-      {member_id:loggedInMembr, 
-       timestamp:Date(),
-       descript:'invitation'
-      }]
-  }];
-_.each(sData, function(sItem)  { Connections.insert(sItem); }     );
- // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`Connections.insert(sData);
+    Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
 
 
-
-
-}; // if
-
-} //function
+  } //function
 
 });  //template
 
 
 
 Template.profile_DESKTOP.helpers({
-  connectionActive: function(){
+  connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
-    var count =Connections.find({member_key: viewedMembr}).count();
+    var count = Connections.find({member_key: loggedInMembr, contact:viewedMembr}).count();
+    //alert("connectionInvoked " + count);
     return count;
   },
 
   connectionPending: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
-    var pending = Connections.find({member_key: viewedMembr, "contact.descript": 'invitation'}).count();
+    var pending = Connections.find({member_key: loggedInMembr, contact:viewedMembr, descript: 'invitation'}).count();
     //alert("connectionPending " + pending);
     return pending;
   },
@@ -614,17 +474,18 @@ Template.profile_MOB.events({
 });
 
 Template.profile_MOB.helpers({
-    connectionActive: function(){
+    connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
-    var count =Connections.find({member_key: viewedMembr}).count();
+    //var count =Connections.find({member_key: viewedMembr}).count();
+    var count = Connections.find({member_key: viewedMembr, "contact.member_id":loggedInMembr}).count();
     return count;
   },
 
   connectionPending: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
-    var pending = Connections.find({member_key: viewedMembr, "contact.descript": 'invitation'}).count();
+    var pending = Connections.find({member_key: viewedMembr, "contact.member_id":loggedInMembr, "contact.descript": 'invitation'}).count();
     //alert("connectionPending " + pending);
     return pending;
   },
