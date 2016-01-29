@@ -169,7 +169,8 @@ Meteor.methods({
           "products.productId": item.productId},
 				{$inc: {
 					"products.$.quantity": (1 * multiplier), 
-					"products.$.itemTotalPrice": roundToCents(item.unitPrice * multiplier)
+					"products.$.itemTotalPrice": roundToCents(item.unitPrice * multiplier),
+					"vendorTotal": roundToCents(item.unitPrice * multiplier)
 				}},
 			);
 	},
