@@ -11,9 +11,6 @@ Template.leafButtons.events({
   }
 });
 
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
 
 
 Template.homeNew.onRendered(function() {
@@ -25,9 +22,7 @@ Template.homeNew.onDestroyed(function() {
 });
 
 
-Template.helpMain.onDestroyed(function() {
-    $('[data-toggle="popover"]').popover("hide"); 
-});
+
 
 Template.homeNew.helpers({
   pathForProfile: function() {
