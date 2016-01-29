@@ -12,7 +12,10 @@ Meteor.isClient && Template.registerHelper("Schemas", Schemas);
     testDataMarket: { type: Boolean, optional:true },
              items: { type: Array,    optional: false  },    
                'items.$': { type: Object  },
-     'items.$.productId': { type: String , optional:true},
+     'items.$.productId': { type: String , optional:true, 
+                            autoform: {type: "hidden"},
+                            autoValue: function(){ return Random.id(); },
+                            },
           'items.$.name': { type: String , optional:false},
    'items.$.description': { type: String , optional:true},
           'items.$.type': { type: String , optional:true },
@@ -20,8 +23,8 @@ Meteor.isClient && Template.registerHelper("Schemas", Schemas);
       'items.$.unitType': { type: String , optional:true },
      'items.$.unitPrice': { type: Number , optional:true, decimal: true },
       'items.$.currency': { type: String , optional:true },
-         'items.$.photo': { type: Object , optional:true },  // url
-           'items.$.pic': { type: String , optional:true },
+         'items.$.photo': { type: Object , optional:true },
+         'items.$.photo.src': { type: String , optional:true },  // url
   'items.$.date_entered': { type: Date, optional:true},
 });
 MarketItems.attachSchema(Schemas.MarketItems);

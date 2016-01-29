@@ -359,13 +359,14 @@ Template.profile_DESKTOP.helpers({
                 vendorName: member.fullname,
                vendorEmail: member.email,
             testDataMarket: false,
-    items: [   {name:'Market Item', description:'', 
-                type:'',
+    items: [   {name:'Market Item', description:'Market Item Description', 
+                type:'produce',
           salesAlert:'',
-            unitType:'',
-           unitPrice: 0,
-            currency:'',
-        date_entered: Date()
+            unitType:'pound',
+           unitPrice: 0.99,
+            currency:'USD',
+        date_entered: Date(),
+           productId: Random.id(),
         }]
   }];  
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});
@@ -545,13 +546,14 @@ Template.profile_MOB.helpers({
                 vendorName: member.fullname,
                vendorEmail: member.email,
             testDataMarket: false,
-    items: [   {name:'Market Item', description:'', 
-                type:'',
+    items: [   {name:'Market Item', description:'Market Item Description', 
+                type:'produce',
           salesAlert:'',
-            unitType:'',
-           unitPrice: 0,
-            currency:'',
-        date_entered: Date()
+            unitType:'pound',
+           unitPrice: 0.99,
+            currency:'USD',
+        date_entered: Date(),
+           productId: Random.id(),
         }]
   }];  
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});

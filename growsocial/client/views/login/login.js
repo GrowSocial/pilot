@@ -143,6 +143,25 @@ Template.register.events({
       } else {
         template.messages.set('infoMessage', 'Registered and logged in.');
 
+        Meteor.call("addNotification", {
+          targetUserId: Accounts.userId(),
+          sender: "System",
+          tag: "System",
+          subject: "Welcome to GrowSocial",
+          message: '<p>Welcome to GrowSocial, ' + firstname + '!</p><p>It is recommended to <a href="/location">set your map location</a> from the Settings menu, and then set your city, state and zipcode near the bottom of <a href="/profile/' + Accounts.userId() + '">your profile page</a>.</p><p><a href="/tutorials">Tutorials</a> and <a href="/help">Help</a> are available to help find your way around.</p>',
+        }, function(err, result) {
+          if (err) {
+            Meteor.call("addErrorLog", {
+              tag: "NewUserWelcomeNotification",
+              message: err.message,
+              errNumber: err.error,
+              email: user.email,
+              firstName: user.profile.firstname,
+              lastName: user.profile.lastname,
+            });
+          }
+        });
+
   // Introducing a new registration, create cooresponding record in Meteor.People /TEC -->
    //   alert(Accounts.userId() + '*' + firstname + "*" + lastname + "*" +user.name +"*");
         People.insert({

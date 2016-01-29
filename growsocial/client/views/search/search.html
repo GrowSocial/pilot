@@ -1,33 +1,46 @@
 
 <template name="search">
-    <div id="#searchContainer" class="container">
-        <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button>
-        <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button>
-        <button type="button" id="setMapLocationButton" class="btn btn-default" >View map at my location</button>
-        <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
-        <div id="searchNotifyDiv"></div>
-        <!-- <p>search for: {{searchText}}</p> -->
-        {{> EasySearch.Input index=peopleIndex event='enter' attributes=inputAttributes}}
-        <!-- timeout=500  -->
-
-        {{> searchFilters}}
-        
-        <hr/>
+    <div class="searchContainer container">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
+                <span class="label label-default">Search for people. In Phase 1, will be able to search events, products and more.</span>
+                <!-- <button type="button" id="addSamplePeopleButton" class="btn btn-default" >Add sample people</button> -->
+                <!-- <button type="button" id="removeSamplePeopleButton" class="btn btn-default" >Remove all sample people</button> -->
+                <!-- <button type="button" id="viewCurrentLocationButton" class="btn btn-default" >View map at my current location</button> -->
+                {{#if currentUser}}
+                    <a href="{{pathFor 'location'}}" class="btn btn-default" role="button">Set my default map location</a>
+                {{/if}}
+                <div id="searchNotifyDiv"></div>
+        
+                <form class="search-form" action="#">
+                    <div class="form-group">
+                        <div class="input-group">
+                            {{> EasySearch.Input index=peopleIndex event='enter' attributes=inputAttributes}}
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        </div><!-- /input-group -->        
+                    </div><!-- /form-group -->  
+                </form>        
+        
+                {{> searchFilters}}
+        
+        <hr/>
                 {{#EasySearch.IfInputEmpty index=peopleIndex}}
                     <div class="no-results">Enter a search word</div>
                 {{else}}
                     {{#EasySearch.IfSearching index=peopleIndex }}
                         <div>Searching ...</div>
                     {{else}}
-                        <div class="padded count-results">{{resultsCount}} results found.</div>
+                        <div class="padded count-results">{{resultsCount}} results found{{#if greaterMax resultsCount}}, showing max of {{maxShown}}.{{/if}}</div>
                         {{#if resultsCount}}
+                            <button type="button" id="updateMapButton" class="btn btn-default" >Update search results on map</button>
                             <!-- TODO multiple indexes, to search products and people, conditionally on filters/context -->
                             <!-- TODO pagination, more results than limit, etc. -->
                             <ul>
                                 {{#EasySearch.Each index=peopleIndex }}
-                                    <li>{{fullname}}{{#if city}}, {{city}}{{/if}}</li>
+                                    <!-- TODO item in list to have link to view map marker -->
+                                    <li>{{fullname}}, {{city}} {{zipcode}} <a href="/profile/{{member_key}}">(profile)</a> {{#if latlng}}(map){{/if}}</li>
                                 {{/EasySearch.Each}}
                             </ul>
                         {{/if}}
@@ -38,49 +51,46 @@
                 {{> searchMap}}
             </div> <!-- map column -->
         </div> <!-- row -->
-        <hr/>
-        <!-- {{> awesomeAutosuggest}} -->
     </div>
 </template>
 
-<template name="searchResults">
-</template>
-
 <template name="searchFilters">
-    <p>Filters:</p>
+
+    <a href="#searchFiltersControls" class="btn btn-default" data-toggle="collapse">Filters ...</a>
+    <div id="searchFiltersControls" class="collapse">  
+    <!-- to show by default: class="collapse in" -->
+    
+<!--     
     <select class="category-filter disabled" disabled>
         <option value="">All</option>
         <option value="People" selected>People</option>
         <option value="Products">Products</option>
         <option value="Events">Events</option>
     </select>
+ -->
+        <input type="text" name="city" class="form-control" placeholder="city...">
 
-    <select class="city-filter">
-        <option value="">(Any city)</option>
-        <option value="Davie">Davie</option>
-        <option value="Fort Lauderdale">Fort Lauderdale</option>
-        <option value="Tampa">Tampa</option>
+        <input type="text" name="zipcode" class="form-control" placeholder="zip code...">
+        
+        <div class="input-group">
+          <input type="text" name="range" class="form-control" aria-label="range" placeholder="range...">
+          <span class="input-group-addon" id="rangeUnits" aria-label="range units">mi</span>
+        </div><!-- /input-group -->
+<!--     
+    <select class="range-units">
+        <option value="" selected>mi</option>
+        <option value="km">km</option>
     </select>
-
-    <select class="range-filter">
-        <option value="">(Any range)</option>
-        <option value=  "805">half mile</option>
-        <option value= "1609">1 mile</option>
-        <option value= "3219">2 miles</option>
-        <option value= "8047" selected>5 miles</option>
-        <option value="16093">10 miles</option>
-        <option value="24140">15 miles</option>
-        <option value="32187">20 miles</option>
-        <option value="40233">25 miles</option>
-        <option value="48280">30 miles</option>
-    </select>
+ -->
+    </div>  <!-- searchFiltersControls -->
+    
 </template>
 
 <!-- <template name="awesomeAutosuggest"> -->
 <!-- Meteor package: easysearch:autosuggest -->
     <!-- searchIndex typeof EasySearch.Index -->
     <!-- {{> EasySearch.Autosuggest index=peopleIndex }} -->
-    <!-- bug?  repeats the suggest values to about four times each ??? is there a default create config? -->
+    <!-- bug in easy:search 2.0.6 - duplicates the suggest values, fixed in 2.0.7 (not tested by me)  -->
     <!-- bug? timeout not working for auto suggest? think it is configured differently to search -->
 <!-- </template> -->
 

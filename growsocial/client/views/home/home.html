@@ -58,17 +58,22 @@
 <template name="homeNew">
 <div id="hometemplateContainer" class="container">
 <div class="row">
-
 <div class="col-md-4">
 <div  class="thumbnail" id="member_image_block">
-   <img id="featureImg" src="/images/Member image block.png" class="image" />
+    <a href=""> <img id="featureImg" src="/images/Member image block.png" class="image"  data-toggle="popover" data-html="true" data-container="body"  title="Welcome to your Members section! "  data-content="Meet the people in your area participating in your food web and sustainable community.  See them on a map and learn who’s in your own neighborhood. Find people to learn from, share with and collaborate with.  <br><br>
+
+The members section gives you an overview of who is participating in the food web in your area. It helps you find those nearby and discover and be discovered.
+"></a>
     <div class="overlayText">
     <p id="featureHdr"> Members </p>
     </div>
 </div>
 
 <div class="thumbnail" id="events_image_block" >
-    <img id="featureImg" src="/images/events image block.png" class="image" />
+    <a href=""> <img id="featureImg" src="/images/events image block.png" class="image"  data-toggle="popover" data-container="body" data-html="true" title="Welcome to your Events! " data-content="Here you will be able to share and see relevant events happening in your community.  People looking to find activities in the area can find you. Everyone and find out where the farmers markets are, find a community garden activity or a permablitz.  <br><br>
+
+This will also allow you to see the events coming in your area and schedule so that your event doesn’t end up happening at a time when a competing event might affect attendance.  You’ll have a picture of what’s happening in the entire community around local food and sustainability.
+"></a>
     <div class="overlayText">
     <p id="featureHdr">Events</p>
     </div>
@@ -76,45 +81,51 @@
 </div>
 
 <div class="thumbnail" id="discussion_image_block" >
-    <img id="featureImg" src="/images/Discussion image block.png" class="image" />
+    <a href="/discuss"> <img id="featureImg" src="/images/Discussion image block.png" class="image"></a>
     <div class="overlayText">
     <p id="featureHdr"> Discussions </p>
     </div>
 </div>
 </div>
-    
 <div class="col-md-4">
-<div class="thumbnail" id="main_image_blockxx">
-    <img id="featureImgxx" src="/images/main image block.png" class="image" />
+<div class="thumbnail" id="main_image_block">
+    <a href=""> <img src="/images/main image block.png" class="image" /></a>
         <div class="HomecentralImg">
+            <p id="Phoenix_Farms_Lakeland_Florida">
+        <span id="txtHOME01">Phoenix Farms<br /></span><span id="txtHOME02">Lakeland, Florida</span>
+    </p>
       <p id="Main_headerx">Connect. Share. Learn. GrowSocial!</p>
     <p id="Main_header2x">Join the fast-growing network of people dedicated to local food growing and creating a sustainable economy.<br />
     </p>
-    <button type="button" id="Learn_More_button" class="btn btn-primary">Learn More</button>
-    <p id="Phoenix_Farms_Lakeland_Florida">
-        <span id="txtHOME01">Phoenix Farms<br /></span><span id="txtHOME02">Lakeland, Florida</span>
-    </p>
+    <a href="/help"><button type="button" id="Learn_More_button" class="btn btn-primary">Learn More</button></a>
+    
         </div>
     </div>
     </div>
-    
 <div class="col-md-4">
 <div class="thumbnail" id="opportunities_image_block">
-    <img id="featureImg" src="/images/opportunities image block.png" class="image" />
+    <a href="">  <img id="featureImg" src="/images/opportunities image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="left" title="Welcome to your Opportunities! " data-content="Are you looking for a job in the local food movement?  Do you need to hire someone who understands rain barrels or food forests? Do you have manure to give away or need tree mulch? Find the answers or post questions in the “opportunities” section of GrowSocial! <br><br>
+
+You can think of the opportunities section as your area’s personal Craigslist that is specific to posting around local food and sustainability employment, things to trade, services to hire, etc.  You can list your community garden, post for volunteers, etc.
+"/></a>
     <div class="overlayText">
     <p id="featureHdr">Opportunities</p>
     </div>
 </div>
 
 <div class="thumbnail" id="business_image_block">
-    <img id="featureImg" src="/images/business image block.png" class="image" />
+    <a href=""> <img id="featureImg" src="/images/business image block.png" class="image" data-toggle="popover" data-placement="left" data-html="true" data-container="body" title="Welcome to your Business Section! " data-content="This area is where you’ll find the businesses in your area that relate to local food and sustainability. These profiles allow for more information about the larger enterprises such as CSA’s, small to medium farms and multi-service enterprises.  <br><br>
+
+These pages will be the people who are working full time in some aspect of the food web. This differs from the members’ page in that members might be participating in any level, from looking for volunteer activities to teaching gardening to producing small excess for sale from their homes. 
+"/></a>
     <div class="overlayText">
     <p id="featureHdr"> Businesses</p>
     </div>
 </div>
 
 <div class="thumbnail" id="localpedia_image_block">
-    <img id="featureImg" src="/images/2015-12-26_16-58-40.jpg" class="image" />
+    <a href="">  <img id="featureImg" src="/images/2015-12-26_16-58-40.jpg" class="image" data-toggle="popover" data-placement="left" data-html="true"  data-container="body" title="Welcome to your Localpedia! " data-content="Your Localpedia is just like Wikipedia, except you can find and/or post information that is relevant to your location. Nettle, for example, is very different in Georgia than it is in South Florida.    <br><br>      Plants, soils, pests and more can vary greatly just 20 or 30 miles away. Localpedia will allow you to have specific data on your own area, developed by people from your own community and yourself. 
+"/></a>
     <div class="overlayText">
     <p id="featureHdr"> Localpedia </p>
     </div>
@@ -122,77 +133,81 @@
 </div>
 </div>
 </div>
-    </div>
+</div>
 </template>
 
 <template name="homeAbout">
-  <div class="container">
+  <div class="container" id="relativeAboutContainer">
+    <div id="garden_graphic">
+    <div id="About_block" >
       <div class="row">
-
-<div class="col-md-12">
-<div id="About_block" class="clearfix">
-    <div id="garden_graphic" class="clearfix">
-        <div id="sky" class="clearfix">
+          <div class="col-md-12" >
             <p id="About_GrowSocial"> About GrowSocial</p>
-            <p id="AboutMSG">
-            GrowSocial connects people and businesses based on where they live. We promote local food growing and sustainable economies with marketplace page options for each member along with their profile. We are a hybrid of social media and marketplace web platforms helping to create vibrant local communities.
+            <div class="blockquote" id="AboutMSG">
+           <p> GrowSocial connects people and businesses based on where they live. We promote local food growing and sustainable economies with marketplace page options for each member along with their profile. We are a hybrid of social media and marketplace web platforms helping to create vibrant local communities.
             </p>
-            <div id="profile_pic_circle" class="clearfix"></div>
+    </div>
+          </div>
+      </div>
+     <div class="row">
+        <div class="col-xs-6 col-md-6" >   
             <p id="Members">Members</p>
-            <p id="MembershipMSG">
-            Our members are the growers, producers, teachers, artisans and foodies that are the heart of your local food economy. Join the community and find your place in your local food web.  Whether you produce a little or a lot, like to eat local, buy local, or want to participate in the local food economy, GrowSocial is the place to be.
-            </p>
-             <button type="button" id="Join_GrowSocial_button" class="btn btn-primary">Join GrowSocial </button>
-            <p id="FeatureMember">
+            <div class="blockquote" id="MembershipMSG">
+            <p >Our members are the growers, producers, teachers, artisans and foodies that are the heart of your local food economy. Join the community and find your place in your local food web.  Whether you produce a little or a lot, like to eat local, buy local, or want to participate in the local food economy, GrowSocial is the place to be. </p>
+            </div>
+         <div id="Join_GrowSocial_button">
+             <a href="/login"><button type="button"  class="btn btn-primary">Join GrowSocial </button></a>
+         </div>
+        </div>
+        <div class="col-xs-6 col-md-6" >
+            <div id="profile_pic_circle"></div>
+            <div id="FeatureMember">
             <span id="txtHOME01">Anthony Anderson<br /></span>
             <span id="txtHOME02">Farmer, Beekeeper, &#x2b;2 more<br /></span>
-            <span id="txtHOME01">Fort Lauderdale, FL</span>
-            </p>
-
+            <span id="txtHOME01">Fort Lauderdale, FL</span></div>
         </div>
-
-
-
     </div>
-</div>
     </div>
-      </div>
+    </div>
     </div>
 </template>
 
-<template name="homeLocalPedia">
-  <div class="container">
-      <div class="row">
+<template name="homeLocalPedia" >
+<div class="container" id="relativeLocalPediaContainer">
+<div class="row" id="localpedia_block">
+<div class="col-xs-12 col-sm-7 col-md-7" >
+    <p id="Connect_Locally_Share_Globally_"> Connect Locally. Share Globally. </p>
+    <div class="blockquote"  id="localPediaMSG">
+   <p> Growing conditions, plants and soils and everything else related to food production in your local area. Localpedia is your Wikipedia on a local level and lets you find and share information that’s relevant to your area.
+    </p>
+    </div>
+    <div><a href=""> <button type="button" id="localpedia_button" class="btn btn-primary" data-toggle="popover" data-container="body" data-html="true" data-placement="left" title="Welcome to your Opportunities! " data-content="Are you looking for a job in the local food movement?  Do you need to hire someone who understands rain barrels or food forests? Do you have manure to give away or need tree mulch? Find the answers or post questions in the “opportunities” section of GrowSocial! <br><br>
 
-<div class="col-md-12">
-<div id="localpedia_block" class="clearfix">
-    <p id="Connect_Locally_Share_Globally_">
-    Connect Locally. Share Globally.
-    </p>
-    <p id="localPediaMSG">
-    Growing conditions, plants and soils and everything else related to food production in your local area. Localpedia is your Wikipedia on a local level and lets you find and share information that’s relevant to your area.
-    </p>
-    <button type="button" id="localpedia_button" class="btn btn-primary">View Localpedia </button>
-    <div id="localPediaMAP" class="clearfix"></div>
+You can think of the opportunities section as your area’s personal Craigslist that is specific to posting around local food and sustainability employment, things to trade, services to hire, etc.  You can list your community garden, post for volunteers, etc.
+">View Localpedia    </button></a></div>
 </div>
-
-    </div>
-      </div>
-    </div>
-
+<div class="col-xs-12 col-sm-5 col-md-5" >
+ <img id="localPediaMAP"  src="/images/localPediaMAP.png" class="img-thumbnail" /> 
+        </div>
+        </div>
+        </div>
 </template>
+
 <template name="homeFootr">
-      <div class="container">
-      <div class="row">
-
-<div class="col-md-12">
-  <div id="homefooter_background" class="clearfix">
-    <p id="GrowSocial2015">Grow Social &copy; 2015</p>
-    <p id="About_FAQ_Privacy_">
-    About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FAQ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Privacy &nbsp; &nbsp; &nbsp; &nbsp; 
-    </p>
-  </div>
-    </div>
+      <div class="container" id="relativefooterContainer">
+      <div class="row" id="homefooter_background">
+     <div class="col-sx-12 col-md-4" id="GrowSocial2015" >
+      <a href="#" >Grow Social &copy; 2015</a>
+         </div>
+  <div class="col-sx-12 col-md-2" id="About_FAQ_Privacy_">
+    <a href="#">About</a>
       </div>
+  <div class="col-sx-12 col-md-2" id="About_FAQ_Privacy_">
+    <a href="#">FAQ</a>
+      </div>
+  <div class="col-sx-12 col-md-2" id="About_FAQ_Privacy_">
+    <a href="#">Privacy</a>
+</div>
+  </div>
     </div>
 </template>

@@ -6,4 +6,5 @@ Meteor.subscribe("Pictures");
 Meteor.subscribe("Reviews");
 Meteor.subscribe("People");
 Meteor.subscribe("Comments");
+Meteor.subscribe("notifications");
 Meteor.subscribe("Connections");
