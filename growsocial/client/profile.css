@@ -153,8 +153,8 @@ clear: both;}
     top: 0px; left: 0px;
     margin-top: .75%; margin-left: 2%; margin-right: auto;
 }
-#editorPROFL,#editorPROFL_MOB {   width: 33%; margin-left: 28%; margin-top: 2.5%;
-}
+#editorPROFL,#editorMItemsPROFL,#editorMItemsPROFL_MOB,#hideShowBUTTN,#hideShowBUTTN_MItems {   
+                     width:66%; margin-left: 15%; margin-top: 2.5%; }
 #editorPROFL_MOB {   width: 480px; margin-top: 2%;margin-left: auto; margin-right: auto; float: none;
 }
 #sidebarPROFL_MOB{width: 480px; margin-top: 2%; margin-left: auto; margin-right: auto; float: none;}
