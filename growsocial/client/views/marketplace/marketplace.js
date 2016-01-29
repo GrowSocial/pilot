@@ -32,12 +32,17 @@ Template.marketplaceItem.helpers({
   },
 });
 
+Template.marketplace.onDestroyed(function() {
+  $('.popoverThis').popover('hide');
+});
+
 Template.marketplace.onRendered(function() {
   $('.popoverThis').popover({
       html: true,
       title: 'Add to Cart <a class="close">&times;</a>',
       content: $('.popoverContent').html(),
   });
+  $('.popoverThis').popover();
   
   $('.popoverThis').click(function (e) {
       e.stopPropagation();
