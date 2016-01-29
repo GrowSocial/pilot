@@ -32,12 +32,17 @@ Template.marketplaceItem.helpers({
   },
 });
 
+Template.marketplace.onDestroyed(function() {
+  $('.popoverThis').popover('hide');
+});
+
 Template.marketplace.onRendered(function() {
   $('.popoverThis').popover({
       html: true,
       title: 'Add to Cart <a class="close">&times;</a>',
       content: $('.popoverContent').html(),
   });
+  $('.popoverThis').popover();
   
   $('.popoverThis').click(function (e) {
       e.stopPropagation();
@@ -72,6 +77,46 @@ Template.marketplace.events({
         marketNotify('alert-danger', error.message);
       } else {
         marketNotify('alert-info', 'Sample products removed.');
+      }
+    });
+  },
+  'submit .addToCartForm': function(event, template) {
+    // Prevent browser from restarting
+    event.preventDefault();
+
+    //console.log('this.name = ', this.name); // aunt ruby tomato
+    //console.log('this.productId = ', this.productId); // 1
+    //console.log('this.vendorEmail = ', this.vendorEmail); // undefined
+    //console.log('event.target.quantityNum.value = ', event.target.quantityNum.value); // 17
+    //console.log("event.target.vendorEmail = ", event.target.vendorEmail); // yay
+    //console.log("event.target.vendorEmail.value = ", event.target.vendorEmail.value); // yay
+    
+    // console.log('this = ', this); // the values of the item in the each loop, but not its parent
+
+    // TODO add session id or userId
+    var item = {
+      quantity: parseInt(event.target.quantityNum.value),
+      productId: this.productId,
+      name: this.name,
+      description: this.description,
+      photo: this.photo,
+      unitType: this.unitType,
+      unitPrice: this.unitPrice,
+      currency: this.currency,
+      vendor_key: event.target.vendor_key.value,
+      vendorUserId: event.target.vendorUserId.value,
+      vendorBusinessId: event.target.vendorBusinessId.value,
+      vendorName: event.target.vendorName.value,
+      vendorLink: event.target.vendorLink.value,
+      vendorEmail: event.target.vendorEmail.value,
+    }
+
+    Meteor.call('addCartItem', item, function(error, result) { 
+      $('.popoverThis').popover('hide');
+      if (error) {
+        marketNotify('alert-danger', error.message);
+      } else {
+        marketNotify('alert-info', 'Updated shopping cart.');
       }
     });
   },
