@@ -9,7 +9,10 @@ Template.cart.helpers({
     for (var i = 0, len = valueList.length; i < len; i++) {
       total += valueList[i].vendorTotal;
     }
-    return total;
+    return Math.round(total * 100) /100;
+  },
+  roundToCents: function(value) {
+    return Math.round(value * 100) /100;
   },
 
 });
