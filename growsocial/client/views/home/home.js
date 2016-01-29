@@ -11,11 +11,25 @@ Template.leafButtons.events({
   }
 });
 
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
 
 
 Template.homeNew.onRendered(function() {
     $('[data-toggle="popover"]').popover(); 
+});
+
+Template.homeNew.onDestroyed(function() {
+    $('[data-toggle="popover"]').popover("hide"); 
+});
+
+
+
+
+Template.homeNew.helpers({
+  pathForProfile: function() {
+    var params = {
+      personId: Meteor.userId(),
+    };
+    var path = FlowRouter.path("profile", params);
+    return path;
+  },
 });
