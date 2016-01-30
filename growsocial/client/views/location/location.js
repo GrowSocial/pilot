@@ -51,7 +51,7 @@ Template.location.events({
         // TODO log the error
         locationNotify('alert-danger', error.message);
       } else {
-        locationNotify('alert-info', '<p>Loaded from collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+        locationNotify('alert-info', '<p>Loaded from storage ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
         // view on map
         if (myLocationMarker) {
           leafletmapp.removeLayer(myLocationMarker).closePopup();
@@ -82,7 +82,7 @@ Template.location.events({
         // TODO log the error
         locationNotify('alert-danger', error.message);
       } else {
-        locationNotify('alert-info', '<p>Saved to collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+        locationNotify('alert-info', '<p>Saved to storage ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
       }
     });
     
@@ -116,7 +116,7 @@ Template.locationMap.onRendered(function() {
       newLatLng = {lat: 26.064975195273117, lng: -80.2321028709411}; // busy traffic!
       locationNotify('alert-info', '<p>Using default location in Davie.</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
     } else {
-      locationNotify('alert-info', '<p>Loaded from collection ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
+      locationNotify('alert-info', '<p>Loaded from storage ...</p><p>Lat: ' + newLatLng.lat + ' </p><p>Long: ' + newLatLng.lng + '</p>');
     }
     // view on map
     if (myLocationMarker) {
