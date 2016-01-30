@@ -29,7 +29,7 @@
         
         <hr/>
                 {{#EasySearch.IfInputEmpty index=peopleIndex}}
-                    <div class="no-results">Enter a search word</div>
+                    <div class="no-results"></div>
                 {{else}}
                     {{#EasySearch.IfSearching index=peopleIndex }}
                         <div>Searching ...</div>
@@ -42,7 +42,7 @@
                             <ul>
                                 {{#EasySearch.Each index=peopleIndex }}
                                     <!-- TODO item in list to have link to view map marker -->
-                                    <li>{{fullname}}, {{city}} {{zipcode}} <a href="/profile/{{member_key}}">(profile)</a> {{#if latlng}}(map){{/if}}</li>
+                                    <li>{{fullname}}, {{city}} {{zipcode}} <a href="/profile/{{member_key}}" class="profile-link">(profile)</a> {{#if latlng}}(map){{/if}}</li>
                                 {{/EasySearch.Each}}
                             </ul>
                         {{/if}}
