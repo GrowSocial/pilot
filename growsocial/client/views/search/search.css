@@ -4,7 +4,7 @@
 /* width is set by bootstrap columns in html */
   height: 300px;
 }
-/* 
-.searchContainer > .row > div > span {
+
+.searchContainer .profile-link {
+  text-decoration: underline;
 }
-*/

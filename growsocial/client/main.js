@@ -38,6 +38,8 @@ function showTawk(toShow, countdown, foundTawk) {
 }
 
 // Only show tawk chat when route is "help"
+// TODO make this configurable per user Settings
+/* 
 Meteor.startup(function() {
   Meteor.autorun(function() {
     var routeName = FlowRouter.getRouteName(); // reactive
@@ -48,7 +50,7 @@ Meteor.startup(function() {
     }
   });
 });
-
+ */
 
 Session.setDefault('backgroundMainStyle1', true);
 // Session.setDefault('notificationCount', 4);

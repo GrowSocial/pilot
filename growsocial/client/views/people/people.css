@@ -2,6 +2,11 @@
   border: none;
 }
 
+.peopleContainer p {
+  text-indent: 30px;
+  padding-bottom: 10px;
+}
+
 /*
 .person-row {
   cursor: pointer;
