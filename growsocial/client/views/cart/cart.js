@@ -43,7 +43,7 @@ Template.cart.events({
     }
     var email = {
       to: this.vendorEmail,  // "seller@example.com",
-      from: "email@growsocial.org",
+      from: "GrowSocial Pilot Website <growsocial.org@gmail.com>",
       subject: "You have received a payment",
       text: "The following items have been paid:\n" + itemsPaid,
     }
@@ -56,6 +56,14 @@ Template.cart.events({
     
     Meteor.call('sendEmail', email);
 
+    if (Meteor.user()) {
+      email.to = Meteor.user().emails[0].address;  // "buyer@example.com",
+      email.subject = "You have made a payment";
+      email.text = "Seller: " + this.vendorName + "\nYou paid for the following: " + itemsPaid;
+    }
+    
+    Meteor.call('sendEmail', email);
+    
     // prepare notification object
     var notification = {
       targetUserId: '' + this.vendorUserId, // ensure a string
