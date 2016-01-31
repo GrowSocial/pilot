@@ -70,7 +70,8 @@ Template.cart.events({
       tag: "Order",
       imageUrl: "/images/icons/dollar.png",
       subject: "Order placed for my market items",
-      message: "The following items have been paid:\n" + itemsPaid,
+      message: "Buyer: " + Meteor.user().profile.firstname + " " +
+        Meteor.user().profile.lastname + ". The following items have been paid:\n" + itemsPaid,
     };
     var error = {};
     
