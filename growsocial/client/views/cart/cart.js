@@ -1,3 +1,11 @@
+Template.cart.onRendered(function() {
+    $('[data-toggle="popover"]').popover(); 
+});
+
+Template.cart.onDestroyed(function() {
+    $('[data-toggle="popover"]').popover("hide"); 
+});
+
 Template.cart.helpers({
   items: function() {
     return ShoppingCart.find({userId: Meteor.userId()});

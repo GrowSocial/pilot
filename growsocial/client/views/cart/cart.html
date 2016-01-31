@@ -42,13 +42,8 @@
                   <span class="itemName">Total:</span>
                   <span class="price">${{roundToCents(vendorTotal)}}</span>
                   <span class="order">
-                    <a class="payVendor">Pay this vendor</a>
+                    <a class="payVendor" data-toggle="popover" data-html="true" data-container="body" title="Payment in progress" data-placement="auto" data-content="After payment is successful, an email and a notification will be sent to the seller and the buyer.">Pay this vendor</a>
                   </span>
-                  <script>
-                    $(document).ready(function(){
-                      $('[data-toggle="popover"]').popover();
-                    });
-                  </script>
                 </li>
               </ul>
             </div>
@@ -57,7 +52,7 @@
         <li class="row totals">
           <span class="itemName">Total:</span>
           <span class="price">${{totalPrice}}</span>
-          <span class="order"> <a class="">Pay all vendors</a></span>
+          <span class="order"> <a class="" data-toggle="popover" data-html="true" data-container="body" title="Not yet available" data-placement="auto" data-trigger="hover" data-content="This will allow payment to all vendors together.">Pay all vendors</a></span>
         </li>
       </ul>
     </div>
