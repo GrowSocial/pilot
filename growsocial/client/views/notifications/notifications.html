@@ -3,7 +3,7 @@
         <h1>Notifications</h1>
         {{#if currentUser}}
             <button type="button" id="addSampleNotificationButton" class="btn btn-default" >Add sample notification</button>
-            <button type="button" id="clearMyNotificationsButton" class="btn btn-default" >Clear my notifications</button>
+            <button type="button" id="clearMyNotificationsButton" class="btn btn-default" >Clear all notifications</button>
         
             {{#unless notifyCount}}<p>No notifications.</p>{{/unless}}
             
@@ -13,17 +13,22 @@
               TODO flag message as "have read" once expanded
               TODO user can delete message -> flag as deleted in collection with deletion date
               TODO user can undelete messages, if not purged yet -->
-              <!-- TODO curtail security risk allowing html in message, sanitise user input -->
-              {{#each notifications}}
-                  <li>
-                      <img src="{{imageUrl}}" class="img-circle message-image" alt="msg">
-                      {{sender}} | {{formatTime(dateTime)}} | {{subject}} <br/>
-                      {{#if senderUserId}}{{message}}{{else}}{{{message}}}{{/if}}
-                  </li>
+              <!-- TODO curtail security risk allowing html in message, sanitise user input, including user name -->
+              {{#each note in notifications}}
+                  {{> oneNote note=note}}
               {{/each}}
             </ul>
         {{else}}
             <p>Notifications will show here when you are signed in.</p>
         {{/if}}
     </div>
+</template>
+
+<template name="oneNote">
+    <li>
+        <button class="delete">&times;</button>
+        <img src="{{note.imageUrl}}" class="img-circle message-image" alt="msg">
+        {{note.sender}} | {{formatTime(note.dateTime)}} | {{note.subject}} <br/>
+        {{#if note.senderUserId}}{{note.message}}{{else}}{{{note.message}}}{{/if}}
+    </li>
 </template>

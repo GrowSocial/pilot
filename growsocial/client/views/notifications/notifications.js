@@ -17,4 +17,7 @@ Template.notifications.events({
     event.preventDefault();
     Meteor.call('clearMyNotifications');
   },
+  "click .delete": function () {
+    Meteor.call("deleteNotification", this.note._id);
+  },
 });

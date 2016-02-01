@@ -74,5 +74,9 @@ Meteor.methods({
     
 	clearMyNotifications: function() {
     Notifications.remove({targetUserId: Accounts.userId()});
-  }
+  },
+
+	deleteNotification: function(noteId) {
+    Notifications.remove({_id: noteId, targetUserId: Accounts.userId()});
+  },
 });
