@@ -90,14 +90,9 @@
 }
 
 #Help_Tutorial_Button {
-  top: 60px; margin-left: 30%; margin-top: 2%; z-index: 30;  
+  top: 60px; margin-left: 65%; margin-top: 2%; z-index: 30;  
     
 }
 
-.popover{display: inline-block !important;}
-.popover-content{
-    color: #000000 !important;/*black color*/
-    font-size: 12px !important;
-    display: inline-block !important;
-}
+
 
