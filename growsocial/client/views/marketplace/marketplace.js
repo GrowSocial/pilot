@@ -23,12 +23,44 @@ Template.marketplace.helpers({
 });
 
 Template.marketplaceItem.helpers({
-  randomPhotoSrc: function () {
+  disclaimer: function() {
     return Random.choice([
-      "/images/user-images/AuntRubyTomato128.png",
-      // "/images/user-images/Carrots128.png",
-      // "/images/user-images/LittleGemLettuce.png",
-      ]);
+      "This product may be in imagination only.",
+      "Please read fine print carefully.",
+      "Product to be taken orally.",
+      "Keep away from non-children.",
+      "I can't believe it's not apple!",
+      "Shaken, not stirred.",
+      "Stirred, not shaken.",
+      "May your life be interesting.",
+      "Gather at Cynthia's house at 7pm for the big party.",
+    ]);
+  },
+  getItemImage: function(item) {
+    // TODO get larger image if selected item
+    if (item && item.photo && item.photo.src) {
+      return item.photo.src;
+    } else {
+      return "/images/user-images/AuntRubyTomato128.png";
+    }
+  },
+  selectedItem: function(item) {
+    // TODO selected item track by router queryParam
+    return true;
+    // if (item.productId === "LsXh4rjRPssvkmrkv") {
+      // return true;
+    // } else {
+      // return false;
+    // }
+  },
+  getVendorLink: function(vendor) {
+    if (vendor && vendor.vendorLink) {
+      return vendor.vendorLink;
+    }
+    if (vendor && vendor.vendorUserId) {
+      return "/profile/" + vendor.vendorUserId;
+    }
+    return "";
   },
 });
 
@@ -37,22 +69,22 @@ Template.marketplace.onDestroyed(function() {
 });
 
 Template.marketplace.onRendered(function() {
-  $('.popoverThis').popover({
-      html: true,
-      title: 'Add to Cart <a class="close">&times;</a>',
-      content: $('.popoverContent').html(),
-  });
+  // $('.popoverThis').popover({
+      // html: true,
+      // title: 'Add to Cart <a class="close">&times;</a>',
+      // content: $('.popoverContent').html(),
+  // });
   $('.popoverThis').popover();
   
-  $('.popoverThis').click(function (e) {
-      e.stopPropagation();
-  });
+  // $('.popoverThis').click(function (e) {
+      // e.stopPropagation();
+  // });
   
-  $(document).click(function (e) {
-      if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
-          $('.popoverThis').popover('hide');
-      }
-  });
+  // $(document).click(function (e) {
+      // if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
+          // $('.popoverThis').popover('hide');
+      // }
+  // });
 });
 
 Template.marketplace.events({
@@ -84,35 +116,37 @@ Template.marketplace.events({
     // Prevent browser from restarting
     event.preventDefault();
 
-    //console.log('this.name = ', this.name); // aunt ruby tomato
-    //console.log('this.productId = ', this.productId); // 1
-    //console.log('this.vendorEmail = ', this.vendorEmail); // undefined
-    //console.log('event.target.quantityNum.value = ', event.target.quantityNum.value); // 17
-    //console.log("event.target.vendorEmail = ", event.target.vendorEmail); // yay
-    //console.log("event.target.vendorEmail.value = ", event.target.vendorEmail.value); // yay
-    
     // console.log('this = ', this); // the values of the item in the each loop, but not its parent
-
+    // console.log('this.item = ', this.item); // 
+    // console.log('this.vendor = ', this.vendor); // 
+    // console.log('event.target = ', event.target); // 
+    // console.log('event.target.quantityNum = ', event.target.quantityNum); // 17
+    // console.log('event.target.quantityNum.value = ', event.target.quantityNum.value); // 17
+    
+    // TODO validate quantity, not negative or zero or blank
+    var parsedQty = parseInt(event.target.quantityNum.value);
+    if (!parsedQty) return;
+    
     // TODO add session id or userId
     var item = {
-      quantity: parseInt(event.target.quantityNum.value),
-      productId: this.productId,
-      name: this.name,
-      description: this.description,
-      photo: this.photo,
-      unitType: this.unitType,
-      unitPrice: this.unitPrice,
-      currency: this.currency,
-      vendor_key: event.target.vendor_key.value,
-      vendorUserId: event.target.vendorUserId.value,
-      vendorBusinessId: event.target.vendorBusinessId.value,
-      vendorName: event.target.vendorName.value,
-      vendorLink: event.target.vendorLink.value,
-      vendorEmail: event.target.vendorEmail.value,
+      quantity: parsedQty,
+      productId: this.item.productId,
+      name: this.item.name,
+      description: this.item.description,
+      photo: this.item.photo,
+      unitType: this.item.unitType,
+      unitPrice: this.item.unitPrice,
+      currency: this.item.currency,
+      vendor_key: this.vendor.vendor_key,
+      vendorUserId: this.vendor.vendorUserId,
+      vendorBusinessId: this.vendor.vendorBusinessId,
+      vendorName: this.vendor.vendorName,
+      vendorLink: this.vendor.vendorLink,
+      vendorEmail: this.vendor.vendorEmail,
     }
 
     Meteor.call('addCartItem', item, function(error, result) { 
-      $('.popoverThis').popover('hide');
+      // $('.popoverThis').popover('hide');
       if (error) {
         marketNotify('alert-danger', error.message);
       } else {

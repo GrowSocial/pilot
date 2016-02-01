@@ -8,23 +8,27 @@ Meteor.methods({
     }, {
       firstname: "Anthony",
       imageUrl: "/images/user-images/profile-anthony.jpg",
-    }, {
-      firstname: "System",
-      imageUrl: "/images/logo_icon.png",
+    // }, {
+      // firstname: "System",
+      // imageUrl: "/images/logo_icon.png",
     }]);
     
     var msg = Random.choice([{
       tag: "Message",
-      subject: "Meet me in Saint Louis",
+      subject: "(sample) Meet me in Saint Louis",
       message: "Behind the pub at seventh street.",
     }, {
       tag: "Stock",
-      subject: "Beefsteak tomato is sold out",
+      subject: "(sample) Beefsteak tomato is sold out",
       message: "Sold out today, I'm growing more, ready by next week.",
     }, {
       tag: "Reminder",
-      subject: "Community garden volunteer day tomorrow",
+      subject: "(sample) Community garden volunteer day tomorrow",
       message: "Behind the pub at seventh street.",
+    }, {
+      tag: "Reminder",
+      subject: "(sample) Party at Cynthia's house 7pm tonight",
+      message: "Bring a plate of healthy food and a happy demeanor.",
     }]);
     
     if (fromUser.firstname === "System") {
@@ -74,5 +78,9 @@ Meteor.methods({
     
 	clearMyNotifications: function() {
     Notifications.remove({targetUserId: Accounts.userId()});
-  }
+  },
+
+	deleteNotification: function(noteId) {
+    Notifications.remove({_id: noteId, targetUserId: Accounts.userId()});
+  },
 });

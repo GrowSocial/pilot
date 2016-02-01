@@ -4,6 +4,7 @@
   <!-- <input type="button" class="addSample btn btn-default" value="Add Sample Data" /> -->
   
   <div class="container cart-container">
+    <a href="/marketplace" type="button" class="btn btn-default">Marketplace</a>
     <div class="col-md-9">
       <ul>
         {{#each items}}
@@ -42,13 +43,8 @@
                   <span class="itemName">Total:</span>
                   <span class="price">${{roundToCents(vendorTotal)}}</span>
                   <span class="order">
-                    <a class="payVendor">Pay this vendor</a>
+                    <a class="payVendor" data-toggle="popover" data-html="true" data-container="body" title="Payment made" data-placement="auto" data-content="An email and a notification are being sent to the seller and the buyer.">Pay this vendor</a>
                   </span>
-                  <script>
-                    $(document).ready(function(){
-                      $('[data-toggle="popover"]').popover();
-                    });
-                  </script>
                 </li>
               </ul>
             </div>
@@ -57,26 +53,9 @@
         <li class="row totals">
           <span class="itemName">Total:</span>
           <span class="price">${{totalPrice}}</span>
-          <span class="order"> <a class="">Pay all vendors</a></span>
+          <span class="order"> <a class="" data-toggle="popover" data-html="true" data-container="body" title="Not yet available" data-placement="auto" data-trigger="hover" data-content="This will allow payment to all vendors together.">Pay all vendors</a></span>
         </li>
       </ul>
     </div>
   </div>
 </template>
-
-<template name="addQtyToCart">
-  <form class="addToCartForm">
-      Quantity:
-      <input type="number" name="quantityNum" value="1"/>
-      <!-- TODO find a better way to pass vendor details to the event handler -->
-      <input type="hidden" name="vendor_key" value="{{../vendor_key}}"/>
-      <input type="hidden" name="vendorUserId" value="{{../vendorUserId}}"/>
-      <input type="hidden" name="vendorBusinessId" value="{{../vendorBusinessId}}"/>
-      <input type="hidden" name="vendorName" value="{{../vendorName}}"/>
-      <input type="hidden" name="vendorLink" value="{{../vendorLink}}"/>
-      <input type="hidden" name="vendorEmail" value="{{../vendorEmail}}"/>
-      {{unitType}}
-      <input type="submit" class="addToCart btn btn-default" value="Add Quantity" />
-  </form>
-</template>
-

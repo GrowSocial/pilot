@@ -1,3 +1,11 @@
+Template.cart.onRendered(function() {
+    $('[data-toggle="popover"]').popover(); 
+});
+
+Template.cart.onDestroyed(function() {
+    $('[data-toggle="popover"]').popover("hide"); 
+});
+
 Template.cart.helpers({
   items: function() {
     return ShoppingCart.find({userId: Meteor.userId()});
@@ -35,7 +43,7 @@ Template.cart.events({
     }
     var email = {
       to: this.vendorEmail,  // "seller@example.com",
-      from: "email@growsocial.org",
+      from: "GrowSocial Pilot Website <growsocial.org@gmail.com>",
       subject: "You have received a payment",
       text: "The following items have been paid:\n" + itemsPaid,
     }
@@ -48,13 +56,22 @@ Template.cart.events({
     
     Meteor.call('sendEmail', email);
 
+    if (Meteor.user()) {
+      email.to = Meteor.user().emails[0].address;  // "buyer@example.com",
+      email.subject = "You have made a payment";
+      email.text = "Seller: " + this.vendorName + "\nYou paid for the following: " + itemsPaid;
+    }
+    
+    Meteor.call('sendEmail', email);
+    
     // prepare notification object
     var notification = {
       targetUserId: '' + this.vendorUserId, // ensure a string
       tag: "Order",
       imageUrl: "/images/icons/dollar.png",
       subject: "Order placed for my market items",
-      message: "The following items have been paid:\n" + itemsPaid,
+      message: "Buyer: " + Meteor.user().profile.firstname + " " +
+        Meteor.user().profile.lastname + ". The following items have been paid:\n" + itemsPaid,
     };
     var error = {};
     

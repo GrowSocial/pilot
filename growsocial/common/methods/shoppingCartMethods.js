@@ -88,7 +88,6 @@ Meteor.methods({
     		ShoppingCart.insert(order);
     	}
     	else {
-
     		// Get the product array
 	    	var completeOrder = ShoppingCart.find({
           userId: Accounts.userId(), 
@@ -178,8 +177,7 @@ Meteor.methods({
 	// Checks if vendor exists in collection
 	checkForVendor: function(_order) {
 		
-		if (ShoppingCart.findOne({userId: Accounts.userId(), vendorUserId: _order.vendorUserId}) ||
-			ShoppingCart.findOne({userId: Accounts.userId(), vendorBusinessId: _order.vendorBusinessId})) {
+		if (ShoppingCart.findOne({userId: Accounts.userId(), vendorUserId: _order.vendorUserId, vendorBusinessId: _order.vendorBusinessId})) {
 			return true;
 		}
 		return false;
