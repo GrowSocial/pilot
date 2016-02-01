@@ -60,7 +60,7 @@
 <div class="row">
 <div class="col-md-4">
 <div  class="thumbnail" id="member_image_block">
-    <a href="/people"> <img id="featureImg" src="/images/Member image block.png" class="image"></a>
+    <a href="/people"> <img id="featureImg" src="{{pickMemberImage}}" class="image"></a>
     <div class="overlayText">
     <p id="featureHdr"> Members </p>
     </div>
@@ -90,7 +90,7 @@ This will also allow you to see the events coming in your area and schedule so t
  {{#if currentUser.profile.firstname}}
     <a href="{{pathForProfile}}"><img src="/images/main image block.png" class="image"/></a>
   {{else}}
-     <a href=""><img src="/images/main image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="left" title="Featured Farm" data-content="This will feature a particular farm or food business, you will be able to click through to their farm business page.  Your suggestions for which business can be featured are welcomed."/></a>
+     <a href=""><img src="/images/main image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="auto" title="Featured Farm" data-content="This will feature a particular farm or food business, you will be able to click through to their farm business page.  Your suggestions for which business can be featured are welcomed."/></a>
   {{/if}}  
             <div class="HomecentralImg">
             <p id="Phoenix_Farms_Lakeland_Florida"><span id="txtHOME01">
@@ -104,7 +104,7 @@ This will also allow you to see the events coming in your area and schedule so t
     </div>
 <div class="col-md-4">
 <div class="thumbnail" id="opportunities_image_block">
-    <a href="">  <img id="featureImg" src="/images/opportunities image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="left" title="Welcome to your Opportunities! " data-content="Are you looking for a job in the local food movement?  Do you need to hire someone who understands rain barrels or food forests? Do you have manure to give away or need tree mulch? Find the answers or post questions in the “opportunities” section of GrowSocial! <br><br>
+    <a href="">  <img id="featureImg" src="/images/opportunities image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="auto" title="Welcome to your Opportunities! " data-content="Are you looking for a job in the local food movement?  Do you need to hire someone who understands rain barrels or food forests? Do you have manure to give away or need tree mulch? Find the answers or post questions in the “opportunities” section of GrowSocial! <br><br>
 
 You can think of the opportunities section as your area’s personal Craigslist that is specific to posting around local food and sustainability employment, things to trade, services to hire, etc.  You can list your community garden, post for volunteers, etc.
 "/></a>
@@ -114,7 +114,7 @@ You can think of the opportunities section as your area’s personal Craigslist 
 </div>
 
 <div class="thumbnail" id="business_image_block">
-    <a href=""> <img id="featureImg" src="/images/business image block.png" class="image" data-toggle="popover" data-placement="left" data-html="true" data-container="body" title="Welcome to your Business Section! " data-content="This area is where you’ll find the businesses in your area that relate to local food and sustainability. These profiles allow for more information about the larger enterprises such as CSA’s, small to medium farms and multi-service enterprises.  <br><br>
+    <a href=""> <img id="featureImg" src="/images/business image block.png" class="image" data-toggle="popover" data-placement="auto" data-html="true" data-container="body" title="Welcome to your Business Section! " data-content="This area is where you’ll find the businesses in your area that relate to local food and sustainability. These profiles allow for more information about the larger enterprises such as CSA’s, small to medium farms and multi-service enterprises.  <br><br>
 
 These pages will be the people who are working full time in some aspect of the food web. This differs from the members’ page in that members might be participating in any level, from looking for volunteer activities to teaching gardening to producing small excess for sale from their homes. While in the business section you’ll find people who have a full time business in your local food web.
 
@@ -125,7 +125,7 @@ These pages will be the people who are working full time in some aspect of the f
 </div>
 
 <div class="thumbnail" id="localpedia_image_block">
-    <a href="">  <img id="featureImg" src="/images/2015-12-26_16-58-40.jpg" class="image" data-toggle="popover" data-placement="left" data-html="true"  data-container="body" title="Welcome to your Localpedia! " data-content="Your Localpedia is just like Wikipedia, except you can find and/or post information that is relevant to your location. Nettle, for example, is very different in Georgia than it is in South Florida.    <br><br>      Plants, soils, pests and more can vary greatly just 20 or 30 miles away. Localpedia will allow you to have specific data on your own area, developed by people from your own community and yourself. 
+    <a href="">  <img id="featureImg" src="/images/2015-12-26_16-58-40.jpg" class="image" data-toggle="popover" data-placement="auto" data-html="true"  data-container="body" title="Welcome to your Localpedia! " data-content="Your Localpedia is just like Wikipedia, except you can find and/or post information that is relevant to your location. Nettle, for example, is very different in Georgia than it is in South Florida.    <br><br>      Plants, soils, pests and more can vary greatly just 20 or 30 miles away. Localpedia will allow you to have specific data on your own area, developed by people from your own community and yourself. 
 "/></a>
     <div class="overlayText">
     <p id="featureHdr"> Localpedia </p>
@@ -182,7 +182,7 @@ These pages will be the people who are working full time in some aspect of the f
    <p> Growing conditions, plants and soils and everything else related to food production in your local area. Localpedia is your Wikipedia on a local level and lets you find and share information that’s relevant to your area.
     </p>
     </div>
-    <div><a href=""> <button type="button" id="localpedia_button" class="btn btn-primary" data-toggle="popover" data-container="body" data-html="true" data-placement="left" title="Welcome to your Localpedia! " data-content="Your Localpedia is just like Wikipedia, except you can find and/or post information that is relevant to your location. Nettle, for example, is very different in Georgia than it is in South Florida.    <br><br>      Plants, soils, pests and more can vary greatly just 20 or 30 miles away. Localpedia will allow you to have specific data on your own area, developed by people from your own community and yourself. ">View Localpedia    </button></a></div>
+    <div><a href=""> <button type="button" id="localpedia_button" class="btn btn-primary" data-toggle="popover" data-container="body" data-html="true" data-placement="auto" title="Welcome to your Localpedia! " data-content="Your Localpedia is just like Wikipedia, except you can find and/or post information that is relevant to your location. Nettle, for example, is very different in Georgia than it is in South Florida.    <br><br>      Plants, soils, pests and more can vary greatly just 20 or 30 miles away. Localpedia will allow you to have specific data on your own area, developed by people from your own community and yourself. ">View Localpedia    </button></a></div>
 </div>
 <div class="col-xs-12 col-sm-5 col-md-5" >
  <img id="localPediaMAP"  src="/images/localPediaMAP.png" class="img-thumbnail" /> 
