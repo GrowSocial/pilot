@@ -178,19 +178,16 @@ clear: both;}
 
 #newsFeed1,#newsFeed2,#newsFeed3,#newsFeed5 {z-index: 45;
     float: none;clear: none;position: relative; top: 0px;left: 0px;
-    height: 280px; width: 88%;
+    height: 280px; width: 95%;
     /*background-color: rgb(255, 255, 255);*/
     background-color: rgb(245, 245, 245);
 
     border-width: 1px; 
     margin-top: 2%; margin-bottom: 2%; margin-left: auto; margin-right: auto;
 }
-#newsFeed2 { height: 335px;
-}
-#newsFeed3 { height: 280px; 
-}
-#newsFeed5 { height: 160px; 
-}
+#newsFeed2 { height: 335px;}
+#newsFeed3 { height: 280px;}
+#newsFeed5 { height: 160px;}
 
 
 /* content containers/frames ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -272,9 +269,9 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 
 
 
-#marketplaceItems,#wallItemEMPTY  {
+#marketplaceItems,#marketplaceItems_MOB,#wallItemEMPTY  {
     float: none;clear: none;
-    height: 288px; width: 88%;
+    height: 288px; width: 96%;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(145, 145, 145);
     position: relative;top: 0px; left: 0px;
@@ -282,6 +279,9 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     margin-top: 14px;   margin-left: auto;   margin-right: auto;
 }
 #wallItemEMPTY { height: 72px; margin-top: 5px; margin-bottom: 10px}
+
+
+
 
 #scrollBoxTitle{    z-index: 95;
     float: left;    clear: none;    position: relative;top: 0px;left: 0px;
@@ -301,21 +301,23 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 
 #scrollBoxItemsGroup {
     float: left;   clear: none;
-    height: auto;width: 90%;
+    height: auto;width: 95%;
     margin-left: 2%; margin-top: 7px; 
 }
-#scrollBoxItem,
-#scrollBoxItem1,#scrollBoxItem2,#scrollBoxItem3,#scrollBoxItem4,#scrollBoxItem5 {z-index: 65;
+#scrollBoxItem,#scrollBoxItem1,#scrollBoxItem2,#scrollBoxItem3,#scrollBoxItem4,#scrollBoxItem5 {z-index: 65;
+
     float: left;clear: none;position: relative;   top: 0px; left: 0px;
     height: 128px; width: 128px;    /*  height: 145px; width: 18%;*/ 
-    margin-top: 0px;  margin-left: 2%;
+    margin-top: 0px;  margin-left: 1%;
     background-color: rgb(224, 224, 224); 
 }
-#scrollBoxItem5 {  /*background-color: rgb(255, 255, 55);*/ }
-#scrollBoxItem4 {   }
-#scrollBoxItem3 {    }
-#scrollBoxItem2 {    }
-#scrollBoxItem1 { clear :both;    }
+
+#scrollBoxItem5 {margin-left: 544px;}
+#scrollBoxItem4 {margin-left: 408px;}
+#scrollBoxItem3 {margin-left: 272px;}
+#scrollBoxItem2 {margin-left: 136px;}
+#scrollBoxItem1 {margin-left: 8px;}
+
 
 #itemDesc { z-index: 79;
     float: left;clear: none;

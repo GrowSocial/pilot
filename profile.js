@@ -20,32 +20,6 @@ UI.registerHelper('reviewCount', function(context, options) {
 });
 
 
-
-/*
-UI.registerHelper('roomInBox', function(current, options) {
-
-  var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
-  
-  switch (display)
-  {
-    case 'DESKTOP': var limit=5;  break;
-    case 'MOBILE': var limit=3;  break;     
-    default: var count=0;
-  }  
-  alert(current + " roomInBox readiing limit as "+ limit);
-  if (current < limit) { return true } else { return false;}
-});
-*/
-
-
-
-
-UI.registerHelper('formatTime', function(context, options) {
-  if(context)
-    return moment(context).format('MM/DD/YYYY');
-});
-
-
 /* ~!
 The default _id field is already keyed by creation time 
 (see: how Mongo ObjectIDs are generated). 
@@ -54,6 +28,7 @@ You can just sort that in reverse order without having to add another field.
 
 
 Template.addComment.helpers({
+
 });
 Template.addComment.events({
   'submit form': function(){ event.preventDefault();
@@ -69,12 +44,31 @@ Template.addComment.events({
       });
     $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
   }
+
 });
 
 
 
 
+Template.MyMarketItems.helpers({
 
+  selectMarketItems: function() {
+    /* BIG LESSON .  find() does not work;   findOne() works. Why?
+      According to Weldon, .fetch() is needed ..  
+      but that does not qualify find() to work. Not here anyway  
+    ~
+    find() will read the DB and provide information here in the helper ;  
+    but it does not provide to a spacebars client in a template.
+    findOne() is the only way I have been able to do this.
+    */
+
+      var mKey = FlowRouter.getParam('personId');
+      var count= MarketItems.find({vendor_key: mKey}).count();
+      var items = MarketItems.findOne({vendor_key: mKey}) || {};
+    //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
+      return items;
+    },
+});
 
 
 Template.MemberReviews.onCreated(function() { var self = this;
@@ -164,6 +158,7 @@ Template.MemberReviews.helpers({
     }
 });
 
+
 Template.profile.onCreated(function() 
     { var self = this;
 
@@ -231,7 +226,10 @@ Template.profile.onCreated(function()
       );
 
     } // end if -- Admin check
+
 }); //on created 'profile'
+
+
 Template.profile.helpers({
 
   selectProfile: function() {
@@ -239,6 +237,8 @@ Template.profile.helpers({
       var member = People.findOne({member_key: mKey}) || {};
       return member;
     }
+
+
 });
 
 
@@ -248,26 +248,18 @@ Template.profile.helpers({
 //  Eventually, we should consolidate this and not repeat the functions in librbary
 //
 
-Template.profile_DESKTOP.onCreated(function() { 
-  var self = this;
+Template.profile_DESKTOP.onCreated(function() 
+    { var self = this;
 
-  self.autorun(function() 
-    { var member_Key = FlowRouter.getParam('personId');
-      self.subscribe('oneProfileRec', member_Key); 
+    self.autorun(function() 
+      { var member_Key = FlowRouter.getParam('personId');
+        self.subscribe('oneProfileRec', member_Key); 
     }
-  );
+    );
+
+
 }); //on created 'profile'
 
-Template.profile_DESKTOP.onRendered(function () {
-  /* Use the Packery jQuery plugin
-  this.$('.container').packery({
-    itemSelector: '.item',
-    gutter: 10
-  });
-*/
-
-
-});
 
 Template.profile_DESKTOP.events({
 
@@ -286,42 +278,12 @@ Template.profile_DESKTOP.events({
     Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
 
   } //function
+
 });  //template
 
+
+
 Template.profile_DESKTOP.helpers({
-
-  roomInBox: function(current)  {var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
-  
-  switch (display)
-  {
-    case 'DESKTOP': var limit=5;  break;
-    case 'MOBILE': var limit=3;  break;     
-    default: var count=0;
-  }  
-  alert(current + " roomInBox readiing limit as "+ limit);
-  if (current < limit) { return true } else { return false;}
-  },
-
-  setDisplayDESKTOP: function() {  Session.set('setDisplayClient', 'DESKTOP');  return
-  },
-
-  selectMarketItems: function() {
-    /* BIG LESSON .  find() does not work;   findOne() works. Why?
-      According to Weldon, .fetch() is needed ..  
-      but that does not qualify find() to work. Not here anyway  
-    ~
-    find() will read the DB and provide information here in the helper ;  
-    but it does not provide to a spacebars client in a template.
-    findOne() is the only way I have been able to do this.
-    */
-
-      var mKey = FlowRouter.getParam('personId');
-      var count= MarketItems.find({vendor_key: mKey}).count();
-      var items = MarketItems.findOne({vendor_key: mKey}) || {};
-    //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
-      return items;
-    },
-
   connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
@@ -408,10 +370,8 @@ Template.profile_DESKTOP.helpers({
   }];  
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});
   }
+
 });
-
-
-
 
 
 
@@ -425,10 +385,7 @@ Template.profile_MOB.onCreated(function()
   self.autorun(function() 
     { var member_Key = FlowRouter.getParam('personId');
       self.subscribe('oneProfileRec', member_Key); 
-
-    
   }
-  
   );
 
 
@@ -489,6 +446,7 @@ Template.profile_MOB.onCreated(function()
     );
 
   } // end if -- Admin check
+
 }); //on created 'profile'
 
 Template.profile_MOB.events({
@@ -496,60 +454,14 @@ Template.profile_MOB.events({
   'click .connectSelect': function(){
       console.log("clicked CONNECT button");
 
+
+
     }
+
 });
 
 Template.profile_MOB.helpers({
-  roomInBox: function(current)  {
-  var  count = Session.get('displayCount');// DESKTOP MOBILE
-
-
-  //alert(current + " roomInBox readiing limit as " + count);
-
-
-  count -=1;
-  Session.set('displayCount', count);
-  if (current < count) { return true } else { return false;}
-  },
-
-  setDisplayCount: function() {  Session.set('displayCount', 3);  return
-  },
-
-  setDisplayMOBILE: function() {  Session.set('setDisplayClient', 'MOBILE');  return
-  },
-
-  selectMarketItems: function(indice) {
-
-    //get [indice] item from the items array in MarketItems document
-    //
-    //every call repeats refresh from collection, as so is reactive
-        var mKey = FlowRouter.getParam('personId');
-
-    /* DOESN'T WORK      (see passing comments online about mixing 0& 1's)
-    var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
-      vendorUserId:0,
-      vendorBusinessId: 0,
-      vendorLink: 0,
-      vendorName: 0,
-      vendorEmail: 0,
-      testDataMarket:0,
-              items:1});
-    */
-      var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
-
-      var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document
-      var L=objArray.length // know how many items are there
-      //console.log(L);
-      //console.log(indice);
-      //console.log(objArray[0]); // to the first line of your helper.
-      return objArray[indice]
-      //another approach , if only a portion of sub-doc is needed 
-      // ::~  return {q: iArray[0].q, a1: iArray[0].a1 }
-
-    },
-
-
-  connectionInvoked: function(){
+    connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
     //var count =Connections.find({member_key: viewedMembr}).count();
@@ -608,28 +520,28 @@ Template.profile_MOB.helpers({
   myMarketItems: function() {
 
       var mKey = FlowRouter.getParam('personId');
-      var items = MarketItems.findOne({vendor_key: mKey}) || {};
+      //var items = MarketItems.findOne({vendor_key: mKey}) || {};
     //alert('myMarketItems: function() {'+ mKey );
-      return items;
+    var items = MarketItems.findOne({vendor_key: mKey});
+return _.sortBy(MarketItems.myMarketItems, function(item){ return item.date_entered; });
+     // return items;
+
+/*Template.allComments.helpers({
+  comments: function() {
+    var coll = Coll.findOne(this._id);
+    return _.sortBy(  coll.comments, function(comment) {return -comment.vcount; }    );
+  }
+});
+<template name="allComments">
+  {{#each comments}}
+    <br>{{cmt_text}}</p>
+  {{/each}}
+</template>
+
+   //   var images = Users.findOne({username: "John"}).images;
+//return _.sortBy(images, function(image){ return image.created; });
+*/
     },
-
-
-  /*Template.allComments.helpers({
-    comments: function() {
-      var coll = Coll.findOne(this._id);
-      return _.sortBy(  coll.comments, function(comment) {return -comment.vcount; }    );
-    }
-  });
-  <template name="allComments">
-    {{#each comments}}
-      <br>{{cmt_text}}</p>
-    {{/each}}
-  </template>
-
-     //   var images = Users.findOne({username: "John"}).images;
-  //return _.sortBy(images, function(image){ return image.created; });
-  */
-
 
   initMarketItems: function(){
 
@@ -652,4 +564,5 @@ Template.profile_MOB.helpers({
   }];  
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});
   }
+
 });

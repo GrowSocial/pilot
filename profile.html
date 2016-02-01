@@ -42,10 +42,7 @@
 
 
 
-
-
 <template name="profile_DESKTOP">
-
     <div id="headerPROFL">
         <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
         <img id="headerImage" src="/images/headerPicFULL-1576-.jpg" class="image" />
@@ -59,7 +56,7 @@
                         My <br />Connections
                     </button>
                 </div> 
-             {{else}}
+            {{else}}
                 <div id="blog" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Member Blog" data-content="View latest blog and archives">View Blog</button>
@@ -256,85 +253,61 @@
         {{/if}}
 
         {{#if there_are_items "marketItems"}}
-
-            <div id="marketplaceItems" class="clearfix"> <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
-            <div id="scrollBoxItemsGroup" class="clearfix">
-
-                            
-                {{#if Template.subscriptionsReady}}
-                 {{setDisplayDESKTOP}}
-                 {{#with selectMarketItems}}
-
-                    {{#each items}}
-                    {{#if  (roomInBox(@index) ) }}
-                        <div id="scrollBoxItem" class="clearfix">
-                            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                             
-                            <p id="itemDesc"> {{description}} <br />
-                                {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                                {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                                {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                            </p>
-
-                            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                        </div>
-                    {{else}}
-
-                        <!-- img id="left_arrow" src="/images/icons/left-arrow.png" class="image" / -->
-
-
-                        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
-
+                <div id="marketplaceItems" class="clearfix"> 
+                    <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+                    {{#if itemsOverflow}}
+                        <p id="view_all_">View All &gt;</p>
+                        <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
                     {{/if}}
-                    {{/each}}
-               
-                    {{/with}}
-                {{/if}}
+                    <div id="scrollBoxItemsGroup" class="clearfix"> {{> MyMarketItems}}</div>
+                    {{#if itemsOverflow}}
+                        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+                    {{/if}}
+                </div> <!--  -->
 
-            </div>
-            </div> <!-- marketplaceItems --> 
-
-            <div id="newsFeed1" class="clearfix">
-                <!--out until time avbl to debug ::Jan 2016:: div id="profile_pic_copy" class="clearfix"></div -->
-
-                <p id="newsFeedcontent"> <span id="txtSp1">Recently added items in the Marketplace:<br /></span></p>
-
-                <div id="newsfeedBox" class="clearfix">
-                    {{#if Template.subscriptionsReady}}
-                    {{#with myMarketItems}}
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+                <div id="newsFeed1" class="clearfix">
+                    <!--out until time avbl to debug ::Jan 2016:: div id="profile_pic_copy" class="clearfix"></div -->
 
                     <p id="newsFeedcontent">
-                        {{#each item in items}} 
-                            <span id="txtSp1">{{item.description}}</span>
-                            <span id="txtSp1">
-                                {{#if (item.unitType) }} Sold by:{{item.unitType}} {{/if}}
-                                {{#if (item.unitPrice) }} {{item.currency}}${{item.price}} {{/if}}
-                            </span><br />
-                            <!-- {{#if (filledBox(@index,1)) }} hits lmt=1 {{/if}} -->
-                        {{/each}}
+                      <span id="txtSp1">{{fullname}} listed new items in the Marketplace:<br /></span>
+                      <span id="txtSp">2&#x3a;08 pm</span>
                     </p>
-                    {{/with}}
-                    {{/if}}
-                    <div id="statusIcons" class="clearfix">
-                        <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                        <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
+
+
+                    <div id="newsfeedBox" class="clearfix">
+                        {{#if Template.subscriptionsReady}}
+                        {{#with myMarketItems}}
+                        <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+
+                        <p id="newsFeedcontent">
+                            {{#each item in items}} 
+                            {{#if (item.price) }}
+                            <span id="txtSp1">{{item.description}}</span>
+                            <span id="txtSp1">Sold by:{{item.unitType}}{{item.currency}}${{item.price}}</span>
+                            <span id="txtSp2">~Lorem BOO<br /></span> 
+                            {{/if}}
+                            {{/each}}
+                        </p>
+                        {{/with}}
+                        {{/if}}
+                        <div id="statusIcons" class="clearfix">
+                            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
+                        </div>
+                        
                     </div>
-                    
+
+                    <p id="newsFeedcontent">
+                        <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                    </p>
+
+                    <div id="responseIcons" class="clearfix">
+                        <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                        <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                    </div>
+
                 </div>
-
-                <!-- p id="newsFeedcontent">
-                    <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
-                </p -->
-
-                <div id="responseIcons" class="clearfix">
-                    <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-                    <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-                    <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-                </div>
-
-            </div>
 
         {{else}}
         <div id="wallItemEMPTY" class="clearfix"> 
@@ -509,12 +482,14 @@
 
 
     </div> <!-- zone00 --> 
+
+
+
 </template><!-- template name="profile_DESKTOP" -->
 
 
-
 <template name="profile_MOB" >
- <div id="primaryDiv_MOB" class="primaryContainer clearfix"> <!-- for float:none centering in children -->
+<div id="primaryDiv_MOB" class="primaryContainer clearfix"> <!-- for float:none centering in children -->
 
 
     <div id="headerPROFL_MOB">
@@ -573,10 +548,7 @@
             <img id="membPic" src="/images/user-images/noAvatar.png" class="image" />
         </div>
 
-        <!-- div id="membrName_MOB">{{fullname}}  </div -->
-        <div id="navbarPROFILE_MOB" class="clearfix">
-            <p id="membrName_MOB">{{fullname}}</p>
-        </div>
+        <div id="navbarPROFILE_MOB" class="clearfix"> <p id="membrName_MOB">{{fullname}}</p> </div>
 
         <div id="badges_MOB" class="clearfix">
 
@@ -631,160 +603,76 @@
     <div id="zone00_MOB" class="clearfix">
 
         {{#if there_are_items "marketItems"}}
-
-            
-        <div id="marketplaceItems_MOB" class="clearfix"> <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
-        <div id="scrollBoxItemsGroup" class="clearfix">
-
-                
-            {{#if Template.subscriptionsReady}}
-             {{setDisplayCount}} 
-             {{#with selectMarketItems 0}}
-
-          <!--      {{#each items}}  {{#if  (roomInBox(@index) ) }} -->
-
-                <div id="scrollBoxItem1" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
-                    <p id="itemDesc"> {{description}} <br />
-                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                        
-                    </p>
-
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                </div>
-            {{/with}}
-            {{#with selectMarketItems 1}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
-                    <p id="itemDesc"> {{description}} <br />
-                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                        
-                    </p>
-
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                </div>
-                {{/with}}  
-            {{#with selectMarketItems 2}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
-                    <p id="itemDesc"> {{description}} <br />
-                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                        
-                    </p>
-
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                </div>
-            {{/with}}
-
-<!-- {{/if}}
-                {{#if  (roomInBox(@index) ) }}
-                <div id="scrollBoxItem2" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
-                    <p id="itemDesc"> {{description}} <br />
-                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                    </p>
-
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                </div>
-                {{/if}}
-
-                {{#if  (roomInBox(@index) ) }}
-                <div id="scrollBoxItem3" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
-                    <p id="itemDesc"> {{description}} <br />
-                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                    </p>
-
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                </div>
+            <div id="marketplaceItems" class="clearfix"> 
+                <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+                {{#if itemsOverflow}}
+                    <!-- p id="view_all_">View All &gt;</p -->
+                    <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />
                 {{/if}}
 
 
--->
-
-
-                    <!-- img id="left_arrow" src="/images/icons/left-arrow.png" class="image" / -->
-                    
-
-                   
-
-          <!--      -->
-            <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
-
-            {{/if}}
-
-        </div>
-        </div> <!-- marketplaceItems -->
+                <div id="scrollBoxItemsGroup" class="clearfix"> {{> MyMarketItems}}</div>
 
 
 
-        {{#if 0}}   <!-- removing temporarily until we can rewrite for mobile & sort  by date -->
-                    <div id="newsFeed1" class="clearfix">
-                        <p id="newsFeedcontent">
-                          <span id="txtSp1">New items in the Marketplace:<br /></span>
+                {{#if itemsOverflow}}
+                    <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+                {{/if}}
+            </div> <!--  -->
 
-                        </p>
+            <div id="newsFeed1" class="clearfix">
+                <!-- div id="profile_pic_copy" class="clearfix"></div -->
+
+                <p id="newsFeedcontent">
+                  <span id="txtSp1">{{fullname}} listed a new item in the Marketplace:<br /></span>
+                </p>
 
 
-                        <div id="newsfeedBox" class="clearfix">
-                            {{#if Template.subscriptionsReady}}
-                            {{#with myMarketItems}}
-                            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
-
-                            <p id="newsFeedcontent">
-                                    {{#each item in items}} -->
-                                        <span id="txtSp1">{{item.[0].description}}<br /></span>
-                                        {{#if (item.price) }} <span id="txtSp1">{{item.currency}}${{item.price}}</span>{{/if}}
-                                        {{#if (item.unitType) }} <span id="txtSp1">by:{{item.unitType}}</span>{{/if}}
-                                     {{/each}} 
-                            </p>
-                            {{/with}}
-                            {{/if}}
-                            <div id="statusIcons" class="clearfix">
-                                <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                                <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
-                            </div>                   
-                        </div>
+                <div id="newsfeedBox" class="clearfix">
+                    {{#if Template.subscriptionsReady}}
+                    <!-- {{#with myMarketItems}} -->
+                        <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
 
                         <p id="newsFeedcontent">
-                            <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                            <!--
+                            {{#each item in items}}
+                                <span id="txtSp1">{{myMarketItems.items.description}}<br /></span>
+                                {{#if (item.price) }} <span id="txtSp1">{{item.currency}}${{item.price}}</span>{{/if}}
+                                {{#if (item.unitType) }} <span id="txtSp1">by:{{item.unitType}}</span>{{/if}}
+                                
+                            {{/each}}
+                            -->
+                            {{#each myMarketItems}}
+                                <span id="txtSp1">{{description}}<br /></span>
+                                {{#if (price) }} <span id="txtSp1">{{currency}}${{price}}</span>{{/if}}
+                                {{#if (unitType) }} <span id="txtSp1">by:{{unitType}}</span>{{/if}}
+                                
+                            {{/each}}
                         </p>
-
-                        <!-- div id="responseIcons" class="clearfix">
-                            <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
-                            <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
-                            <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
-                        </div -->
+                    <!-- {{/with}} -->
+                    {{/if}}
+                    <div id="statusIcons" class="clearfix">
+                        <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                        <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /> 
                     </div>
-        {{/if}}
+                    
+                </div>
 
+                <p id="newsFeedcontent">
+                    <span id="txtSp">1 favorite &nbsp;&#x7c; &nbsp;2 comments &nbsp;&#x7c; &nbsp;1 share</span>
+                </p>
 
-
+                <!-- div id="responseIcons" class="clearfix">
+                    <img id="ImageObject" src="/images/icons/ribbon-icon.png" class="image" />
+                    <img id="ImageObject" src="/images/icons/comment-icon.png" class="image" />
+                    <img id="ImageObject" src="/images/icons/share-icon.png" class="image" />
+                </div -->
+            </div>
 
         {{else}}
-        <div id="wallItemEMPTY" class="clearfix"> 
-            <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
-        </div> <!--  -->
+            <div id="wallItemEMPTY" class="clearfix"> 
+                <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
+            </div> <!--  -->
         {{/if}}
 
         {{#if there_are_items "calendarEvents"}}
@@ -969,6 +857,7 @@
             {{else}} <p id="scrollBoxTitle"></p><p id="view_all_">No Videos yet..</p>
             {{/if}}
         </div><!-- videOS -->
+
     </div><!-- sidebar -->
 
 
@@ -1014,73 +903,94 @@
         </div>
     {{/if}}<!-- MyProfile editor -->
 
- </div> <!-- primaryDiv_MOB -->
-</template> <!-- profile_MOB" -->
 
+
+</div> <!-- primary -->
+</template>
 
 
 
 <template name="MemberReviews">
 
     {{#if Template.subscriptionsReady}}
-    <div id="box" class="clearfix"><div id="wideHorizDivdr" class="clearfix"></div>
-        
-        <p id="sidebarHDR">REVIEWS</p>
-          <div id="ratingStars" class="clearfix">
-            <img id="star-icon" src="/images/icons/5starYellow.png" class="image" />
-          </div>  
-        <p id="txtSp22"><br />{{summrizeStats}}</p>
-        <!-- p id="view_all_">View All &gt;&gt; </p -->
-        <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
+        <div id="box" class="clearfix"><div id="wideHorizDivdr" class="clearfix"></div>
+            
+            <p id="sidebarHDR">REVIEWS</p>
+              <div id="ratingStars" class="clearfix">
+                <img id="star-icon" src="/images/icons/5starYellow.png" class="image" />
+              </div>  
+            <p id="txtSp22"><br />{{summrizeStats}}</p>
+            <!-- p id="view_all_">View All &gt;&gt; </p -->
+            <img id="horizonDividr" src="/images/icons/horizontalDivider.png" class="image" />
 
-        {{#with selectLatest_Review}}   
-            <p id="contactInfo">
-                <span id="txtSp3">{{ReviewedBy}}  said:<br /></span>
-                <span id="txtSp"> {{review_text}}</span>         
-            </p>
-            <p id="sidebarcontent">   
-                <img {{starburst(this.review_rating)}} />
-                <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
-                <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
-                <!-- span id="Read_More_">Read More ></span -->
-            </p>
-            <div id="wideHorizDivdrWHITE" class="clearfix"></div>
+            {{#with selectLatest_Review}}   
+                <p id="contactInfo">
+                    <span id="txtSp3">{{ReviewedBy}}  said:<br /></span>
+                    <span id="txtSp"> {{review_text}}</span>         
+                </p>
+                <p id="sidebarcontent">   
+                    <img {{starburst(this.review_rating)}} />
+                    <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
+                    <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
+                    <!-- span id="Read_More_">Read More ></span -->
+                </p>
+                <div id="wideHorizDivdrWHITE" class="clearfix"></div>
 
-        {{/with}}
+            {{/with}}
 
 
-        {{#if reviewCount }} <!-- coding not finished [Dec 2015]- 
-        what we want here is to have the second-most recent review display
-         if there is one in collection -->
-        {{#with selectNext_Review latestReviewID}}          
-            <p id="contactInfo">
-                <span id="txtSp3">{{ReviewedBy}}  said:</span>
-                <span id="txtSp"> {{review_text}}</span>         
-            </p>
+            {{#if reviewCount }} <!-- coding not finished [Dec 2015]- 
+                what we want here is to have the second-most recent review display
+                 if there is one in collection -->
+                {{#with selectNext_Review latestReviewID}}          
+                    <p id="contactInfo">
+                        <span id="txtSp3">{{ReviewedBy}}  said:</span>
+                        <span id="txtSp"> {{review_text}}</span>         
+                    </p>
 
-            <p id="sidebarcontent">   
-                <img {{starburst(this.review_rating)}} />
-                <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
-                <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
+                    <p id="sidebarcontent">   
+                        <img {{starburst(this.review_rating)}} />
+                        <span id="txtSp3">&nbsp;{{review_rating}} Stars</span>
+                        <span id="txtSp3">&nbsp;{{formatTime review_date}}</span>
 
-                <!-- span id="Read_More_">Read More ></span -->
-            </p>
-        {{/with}}
-        {{/if}}
+                        <!-- span id="Read_More_">Read More ></span -->
+                    </p>
+                {{/with}}
+            {{/if}}
 
-        
-
-    </div> 
+            
+        </div> 
     {{/if}} 
+
 </template>
 
+<template name="MyMarketItems">
 
+    {{#if Template.subscriptionsReady}}
 
-<template name="MyMarketItems_DESKTOP">
- 
+     {{#with selectMarketItems}}
+
+        {{#each items}} 
+        
+        <div id="scrollBoxItem" class="clearfix">
+            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" />
+            <p id="itemAlert">{{salesAlert}}<br /></p>
+            
+            <p id="itemDesc">{{description}}<br /> 
+                {{#if  (unitPrice) }} {{currency}}${{unitPrice}}<br /> {{/if}}
+                {{#if  (unitType) }} per: {{unitType}}<br />{{/if}}
+            </p>
+
+            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+        </div>
+        
+        {{/each}}
+   
+        {{/with}}
+    {{/if}}
+   
 </template>
-
-
 
 <template name="addComment">
 
