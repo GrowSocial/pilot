@@ -1,8 +1,9 @@
 <template name="marketplace">
     <div class="container marketContainer">
             <div class="row">
-        <h1>Marketplace <small><span class="label label-default">Phase&nbsp;1 will include filters and searching and scrollable panes</span></small></h1>
-        <span class="label label-default">You can create marketplace items in your profile page.</span>
+        <h1>Marketplace</h1>
+        <span class="label label-default">Create marketplace items in your profile page.</span>
+        <p>Phase&nbsp;1 will include filters and searching</p>
         <!-- <button type="button" id="addSampleProductsButton" class="btn btn-default" >Add sample products</button> -->
         <!-- <button type="button" id="removeSampleProductsButton" class="btn btn-default" >Remove all sample products</button> -->
         <div id="marketNotifyDiv"></div>
@@ -23,7 +24,7 @@
 <template name="marketplaceItem">
     <!-- TODO maybe change column size when selected, might not need to -->
     <!-- <div class={{#if selectedItem item}}"col-xs-12 col-sm-4 col-md-3 col-lg-1"{{else}}"col-xs-12 col-sm-3 col-md-2 col-lg-1"{{/if}}> -->
-    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
         <div class="thumbnail">
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
