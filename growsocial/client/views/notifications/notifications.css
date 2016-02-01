@@ -12,3 +12,7 @@
 .notification-container a {
   text-decoration: underline;
 }
+
+.notification-container ul > li {
+  padding-bottom: 1em;
+}

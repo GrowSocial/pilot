@@ -1,3 +1,7 @@
+function roundToCents(value) {
+  return Math.round(value * 100) /100; 
+}
+
 Meteor.methods({
 	// Add to shopping cart collection
 	addCartSampleItems: function() {
@@ -63,7 +67,7 @@ Meteor.methods({
 				unitType: item.unitType,
 				quantity: item.quantity,
 				unitPrice: item.unitPrice,
-				itemTotalPrice: item.quantity * item.unitPrice,
+				itemTotalPrice: roundToCents(item.quantity * item.unitPrice),
 		    }
 
 		    var vendorTotal = product.itemTotalPrice;
@@ -100,7 +104,7 @@ Meteor.methods({
 	    		if (orderProducts[i].productId == item.productId) {
 
 	    			// Calculate the item's total price and vendor total
-	    			var itp = orderProducts[i].itemTotalPrice + (item.quantity * item.unitPrice);
+	    			var itp = roundToCents(orderProducts[i].itemTotalPrice + (item.quantity * item.unitPrice));
 
 	    			// Update document with new quantity
 	     			ShoppingCart.update({
@@ -118,7 +122,7 @@ Meteor.methods({
 	    		}
 	    		else {
 	    			// Calculate the total price of the item
-	    			var itemTotalPrice = item.quantity * item.unitPrice;
+	    			var itemTotalPrice = roundToCents(item.quantity * item.unitPrice);
 
 	    			// Add the product to the array
 	    			ShoppingCart.update({
@@ -165,7 +169,8 @@ Meteor.methods({
           "products.productId": item.productId},
 				{$inc: {
 					"products.$.quantity": (1 * multiplier), 
-					"products.$.itemTotalPrice": (item.unitPrice * multiplier)
+					"products.$.itemTotalPrice": roundToCents(item.unitPrice * multiplier),
+					"vendorTotal": roundToCents(item.unitPrice * multiplier)
 				}},
 			);
 	},

@@ -33,14 +33,14 @@
                     </span>
                     
                     <span class="price">
-                      ${{unitPrice}} / Total: ${{itemTotalPrice}}
+                      ${{unitPrice}} / Total: ${{roundToCents(itemTotalPrice)}}
                       <p class="currency">{{currency}}</p>
                     </span>
                   </li>
                 {{/each}}
                 <li class="row totals">
                   <span class="itemName">Total:</span>
-                  <span class="price">${{vendorTotal}}</span>
+                  <span class="price">${{roundToCents(vendorTotal)}}</span>
                   <span class="order">
                     <a class="payVendor">Pay this vendor</a>
                   </span>
