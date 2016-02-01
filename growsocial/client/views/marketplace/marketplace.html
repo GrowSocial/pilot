@@ -33,7 +33,7 @@
                 {{#if selectedItem item}}<p>{{item.description}}</p>{{/if}}
                 <p>${{item.unitPrice}} {{item.currency}} ({{item.unitType}})</p>
                 {{#if selectedItem item}}
-                    <p>Seller: <a href="{{vendor.vendorLink}}">{{vendor.vendorName}}</a></p>
+                    <p>Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{vendor.vendorName}}</a></p>
                     {{#if currentUser}}
                         <form class="addToCartForm">
                             <label>Quantity:</label>
@@ -44,7 +44,7 @@
                             <input type="submit" class="addToCart btn btn-primary" value="Buy" />
                         </form>
                     {{else}}
-                        <p><span class="label label-default">Login to buy items.</span></p>
+                        <p><span class="label label-default">Login to buy item.</span></p>
                     {{/if}}
                     <h6><small>{{disclaimer}}</small></h6>
                 {{else}}

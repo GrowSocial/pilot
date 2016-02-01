@@ -53,6 +53,15 @@ Template.marketplaceItem.helpers({
       // return false;
     // }
   },
+  getVendorLink: function(vendor) {
+    if (vendor && vendor.vendorLink) {
+      return vendor.vendorLink;
+    }
+    if (vendor && vendor.vendorUserId) {
+      return "/profile/" + vendor.vendorUserId;
+    }
+    return "";
+  },
 });
 
 Template.marketplace.onDestroyed(function() {
