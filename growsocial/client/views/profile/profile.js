@@ -12,14 +12,77 @@ formatRevDate: function() {
 },
 */
 
+/*
+UI.registerHelper('there_are_items', function(context, options) {
+  var mKey = FlowRouter.getParam('personId');
+  var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
+  if(context) return myCount;
+
+  var mKey = FlowRouter.getParam('personId');
+  switch (context)
+  {
+    case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
+      break;
+    case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
+      break;
+    case 'marketItems': 
+      var count= MarketItems.find({vendor_key: mKey}).count();
+
+
+      var zeta=objArray.length // know how many items are there
+      Session.set('MItemCount',zeta);// save for session navigation client
+      console.log(zeta);
+      break;
+
+    case 'blogEntries': var count=0;
+    case 'calendarEvents': var count=0;
+    case 'memberContacts': var count=0;      
+    default: var count=0;
+  }  
+  //alert(mKey + context + count);
+  if (count) { return true } else { return false;}
+});
+*/
+UI.registerHelper('MItemIndice', function(current, options) {
+  var  zeta = Session.get('MItemCount');// latest pointer
+  var  indice = Session.get('MItemIndice');// latest pointer
+  
+  indice +=1;
+  Session.set('MItemIndice', indice);
+  //alert(current + " roomInBox readiing limit as "+ limit);
+  if (current < limit) { return true } else { return false;}
+});
+
+/*
+UI.registerHelper('roomInBox', function(current, options) {
+
+  var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
+  
+  switch (display)
+  {
+    case 'DESKTOP': var limit=5;  break;
+    case 'MOBILE': var limit=3;  break;     
+    default: var count=0;
+  }  
+  alert(current + " roomInBox readiing limit as "+ limit);
+  if (current < limit) { return true } else { return false;}
+});
+*/
+
+
+
+
+UI.registerHelper('formatTime', function(context, options) {
+  if(context)
+    return moment(context).format('MM/DD/YYYY');
+});
+
 // for testing , Dec 2015
 UI.registerHelper('reviewCount', function(context, options) {
   var mKey = FlowRouter.getParam('personId');
   var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
   if(context) return myCount;
 });
-
-
 /* ~!
 The default _id field is already keyed by creation time 
 (see: how Mongo ObjectIDs are generated). 
@@ -28,7 +91,6 @@ You can just sort that in reverse order without having to add another field.
 
 
 Template.addComment.helpers({
-
 });
 Template.addComment.events({
   'submit form': function(){ event.preventDefault();
@@ -44,31 +106,12 @@ Template.addComment.events({
       });
     $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
   }
-
 });
 
 
 
 
-Template.MyMarketItems.helpers({
 
-  selectMarketItems: function() {
-    /* BIG LESSON .  find() does not work;   findOne() works. Why?
-      According to Weldon, .fetch() is needed ..  
-      but that does not qualify find() to work. Not here anyway  
-    ~
-    find() will read the DB and provide information here in the helper ;  
-    but it does not provide to a spacebars client in a template.
-    findOne() is the only way I have been able to do this.
-    */
-
-      var mKey = FlowRouter.getParam('personId');
-      var count= MarketItems.find({vendor_key: mKey}).count();
-      var items = MarketItems.findOne({vendor_key: mKey}) || {};
-    //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
-      return items;
-    },
-});
 
 
 Template.MemberReviews.onCreated(function() { var self = this;
@@ -159,6 +202,7 @@ Template.MemberReviews.helpers({
 });
 
 
+
 Template.profile.onCreated(function() 
     { var self = this;
 
@@ -226,10 +270,7 @@ Template.profile.onCreated(function()
       );
 
     } // end if -- Admin check
-
 }); //on created 'profile'
-
-
 Template.profile.helpers({
 
   selectProfile: function() {
@@ -237,8 +278,6 @@ Template.profile.helpers({
       var member = People.findOne({member_key: mKey}) || {};
       return member;
     }
-
-
 });
 
 
@@ -248,18 +287,15 @@ Template.profile.helpers({
 //  Eventually, we should consolidate this and not repeat the functions in librbary
 //
 
-Template.profile_DESKTOP.onCreated(function() 
-    { var self = this;
+Template.profile_DESKTOP.onCreated(function() { 
+  var self = this;
 
-    self.autorun(function() 
-      { var member_Key = FlowRouter.getParam('personId');
-        self.subscribe('oneProfileRec', member_Key); 
+  self.autorun(function() 
+    { var member_Key = FlowRouter.getParam('personId');
+      self.subscribe('oneProfileRec', member_Key); 
     }
-    );
-
-
+  );
 }); //on created 'profile'
-
 
 Template.profile_DESKTOP.events({
 
@@ -278,12 +314,109 @@ Template.profile_DESKTOP.events({
     Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
 
   } //function
-
 });  //template
 
-
-
 Template.profile_DESKTOP.helpers({
+  there_are_items: function(caller){
+      var mKey = FlowRouter.getParam('personId');
+      switch (caller)
+      {
+        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
+          break;
+        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
+          break;
+        case 'marketItems': //var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
+        
+          /* DOESN'T WORK      (see passing comments online about mixing 0& 1's)
+          var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
+            vendorUserId:0,
+            vendorBusinessId: 0,
+            vendorLink: 0,
+            vendorName: 0,
+            vendorEmail: 0,
+            testDataMarket:0,
+                    items:1});
+          */
+          var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
+          var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document as local object
+          var count=objArray.length // know how many items are there
+          Session.set('MItemCount',count);// save for navigation client
+          Session.set('marketItemArray',objArray);// save for navigation client
+          Session.set('marketItemArrayOFFSET',0) //begin at first item
+          //console.log(count + " in Load of MarketItems");
+          //console.log(objArray); // to the first line of your helper.
+          break;
+        case 'connections': var count= Connections.find({member_key: mKey}).count();
+          break;
+        case 'blogEntries': var count=0;
+        case 'calendarEvents': var count=0;
+        case 'memberContacts': var count=0;      
+        default: var count=0;
+      }  
+      if (count) { return true } else { return false;}
+    },
+
+  displayFromOffset: function(){
+    var offset = Session.get('marketItemArrayOFFSET');
+    if (offset) { return true } else { return false;}
+
+  },
+  moreItems2Display: function(rowcount){
+    var offset = Session.get('marketItemArrayOFFSET');
+    var count = Session.get('MItemCount',count);
+    if ((offset+rowcount) >count)   { return false } else { return true;}
+  },
+
+  roomInBox: function(current)  {var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
+  
+    switch (display)
+    {
+      case 'DESKTOP': var limit=5;  break;
+      case 'MOBILE': var limit=3;  break;     
+      default: var count=0;
+    }  
+    alert(current + " roomInBox readiing limit as "+ limit);
+    if (current < limit) { return true } else { return false;}
+    },
+
+
+  selectMarketItems: function(displayOrdinal) {
+
+    //get [indice] item from the items array
+    //
+    //every call repeats refresh from collection,  reactive
+
+      var offset = Session.get('marketItemArrayOFFSET')
+      var totalCount = Session.get('MItemCount');// save for navigation client
+      var nextItem = offset + displayOrdinal
+       //     console.log("offset " + offset );
+       //     console.log("tot " + totalCount);
+       //     console.log("next" +  nextItem);
+      if ( nextItem > totalCount) { return "" }  
+      else { var myItems = Session.get('marketItemArray');// save for navigation client 
+             return myItems[nextItem];
+          } 
+
+    },
+          /*    
+      selectMarketItems: function() {
+           BIG LESSON .  find() does not work;   findOne() works. Why?
+            According to Weldon, .fetch() is needed ..  
+            but that does not qualify find() to work. Not here anyway  
+          ~
+          find() will read the DB and provide information here in the helper ;  
+          but it does not provide to a spacebars client in a template.
+          findOne() is the only way I have been able to do this.
+          
+
+            var mKey = FlowRouter.getParam('personId');
+            var count= MarketItems.find({vendor_key: mKey}).count();
+            var items = MarketItems.findOne({vendor_key: mKey}) || {};
+          //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
+            return items;
+          },
+      */
+
   connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
@@ -314,26 +447,7 @@ Template.profile_DESKTOP.helpers({
       return member;
     },
 
-  there_are_items: function(caller){
-      var mKey = FlowRouter.getParam('personId');
-      switch (caller)
-      {
-        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
-          break;
-        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
-          break;
-        case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
-          break;
-        case 'connections': var count= Connections.find({member_key: mKey}).count();
-          break;
-        case 'blogEntries': var count=0;
-        case 'calendarEvents': var count=0;
-        case 'memberContacts': var count=0;      
-        default: var count=0;
-      }  
-      //alert(mKey + caller + count);
-      if (count) { return true } else { return false;}
-    },
+
 
   itemsOverflow: function(){
       var mKey = FlowRouter.getParam('personId');
@@ -371,15 +485,7 @@ Template.profile_DESKTOP.helpers({
   }];  
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});
   }
-
 });
-
-
-
-
-
-
-
 
 
 
@@ -396,7 +502,10 @@ Template.profile_MOB.onCreated(function()
   self.autorun(function() 
     { var member_Key = FlowRouter.getParam('personId');
       self.subscribe('oneProfileRec', member_Key); 
+
+    
   }
+  
   );
 
 
@@ -457,37 +566,142 @@ Template.profile_MOB.onCreated(function()
     );
 
   } // end if -- Admin check
-
 }); //on created 'profile'
 
 Template.profile_MOB.events({
 
   'click .connectSelect': function(){
-      console.log("clicked CONNECT button");
+   //   console.log("clicked CONNECT button");
+
+    var viewedMembr = FlowRouter.getParam('personId');//alert("initial MItem for " + member.fullname + Date());
+    var loggedInMembr = Accounts.userId()//
+    //console.log("quer InvConnect as : viewedM " + viewedMembr + " : LoggedM"  + loggedInMembr)
+    if (viewedMembr == loggedInMembr) //would indicate  MEMBER VIEWING THEIR OWN PROFILE
+      { //display all connections & pending invites
+
+       return; 
+      }
+    Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
 
 
 
     }
-
 });
 
 Template.profile_MOB.helpers({
-    connectionInvoked: function(){
+  there_are_items: function(caller){
+    var mKey = FlowRouter.getParam('personId');
+    switch (caller)
+    {
+      case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
+        break;
+      case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
+        break;
+      case 'marketItems': //var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
+
+        /* DOESN'T WORK      (see passing comments online about mixing 0& 1's)
+        var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
+          vendorUserId:0,
+          vendorBusinessId: 0,
+          vendorLink: 0,
+          vendorName: 0,
+          vendorEmail: 0,
+          testDataMarket:0,
+                  items:1});
+        */
+        var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
+        var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document as local object
+        var count=objArray.length // know how many items are there
+        Session.set('MItemCount',count);// save for navigation client
+        Session.set('marketItemArray',objArray);// save for navigation client
+        Session.set('marketItemArrayOFFSET',0) //begin at first item
+        //console.log(count + " in Load of MarketItems");
+        //console.log(objArray); // to the first line of your helper.
+        break;
+      case 'connections': var count= Connections.find({member_key: mKey}).count();
+        break;
+      case 'blogEntries': var count=0;
+      case 'calendarEvents': var count=0;
+      case 'memberContacts': var count=0;      
+      default: var count=0;
+    }  
+    if (count) { return true } else { return false;}
+  },
+  displayFromOffset: function(){
+    var offset = Session.get('marketItemArrayOFFSET');
+    if (offset) { return true } else { return false;}
+
+  },
+  moreItems2Display: function(rowcount){
+    var offset = Session.get('marketItemArrayOFFSET');
+    var count = Session.get('MItemCount',count);
+    if ((offset+rowcount) >count)   { return false } else { return true;}
+  },
+
+
+  roomInBox: function(current)  {
+  var  count = Session.get('displayCount');// DESKTOP MOBILE
+
+
+  //alert(current + " roomInBox readiing limit as " + count);
+
+
+  count -=1;
+  Session.set('displayCount', count);
+  if (current < count) { return true } else { return false;}
+  },
+
+
+  selectMarketItems: function(displayOrdinal) {
+
+    //get [indice] item from the items array in MarketItems document
+    //
+    //every call repeats refresh from collection, as so is reactive
+        //var mKey = FlowRouter.getParam('personId');
+
+
+      var offset = Session.get('marketItemArrayOFFSET')
+      var totalCount = Session.get('MItemCount');// save for navigation client
+      var nextItem = offset + displayOrdinal
+       //     console.log("offset " + offset );
+       //     console.log("tot " + totalCount);
+       //     console.log("next" +  nextItem);
+      if ( nextItem > totalCount) { return "" }  
+        else { 
+
+            var myItems = Session.get('marketItemArray');// save for navigation client
+      //console.log(myItems);
+            return myItems[nextItem];
+          } 
+
+      /*
+            Session.set('MItemCount',zeta);// save for session navigation client
+
+            //console.log(L);
+            console.log(zeta);
+            console.log(objArray); // to the first line of your helper.
+            return objArray
+            //another approach , if only a portion of sub-doc is needed 
+            // ::~  return {q: iArray[0].q, a1: iArray[0].a1 }
+      */
+  },
+
+
+  connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
-    //var count =Connections.find({member_key: viewedMembr}).count();
-    var count = Connections.find({member_key: viewedMembr, "contact.member_id":loggedInMembr}).count();
+    var count = Connections.find({member_key: loggedInMembr, contact:viewedMembr}).count();
+    //alert("connectionInvoked " + count);
     return count;
   },
 
   connectionPending: function(){
     var viewedMembr = FlowRouter.getParam('personId');
     var loggedInMembr = Accounts.userId()
-    var pending = Connections.find({member_key: viewedMembr, "contact.member_id":loggedInMembr, "contact.descript": 'invitation'}).count();
+    var pending = Connections.find({member_key: loggedInMembr, contact:viewedMembr, descript: 'invitation'}).count();
     //alert("connectionPending " + pending);
     return pending;
   },
-
   myProfile: function(){
     //Will return NULL if no member is logged in, 
     //            FALSE if another member is here to view selected profile
@@ -502,25 +716,7 @@ Template.profile_MOB.helpers({
       return member;
     },
 
-  there_are_items: function(caller){
-      var mKey = FlowRouter.getParam('personId');
-      switch (caller)
-      {
-        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
-          break;
-        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
-          break;
-        case 'marketItems': var count= MarketItems.find({vendor_key: mKey}).count();
-          break;
 
-        case 'blogEntries': var count=0;
-        case 'calendarEvents': var count=0;
-        case 'memberContacts': var count=0;      
-        default: var count=0;
-      }  
-      //alert(mKey + caller + count);
-      if (count) { return true } else { return false;}
-    },
 
   itemsOverflow: function(){
       var mKey = FlowRouter.getParam('personId');
@@ -535,6 +731,24 @@ Template.profile_MOB.helpers({
     //alert('myMarketItems: function() {'+ mKey );
       return items;
     },
+
+
+  /*Template.allComments.helpers({
+    comments: function() {
+      var coll = Coll.findOne(this._id);
+      return _.sortBy(  coll.comments, function(comment) {return -comment.vcount; }    );
+    }
+  });
+  <template name="allComments">
+    {{#each comments}}
+      <br>{{cmt_text}}</p>
+    {{/each}}
+  </template>
+
+     //   var images = Users.findOne({username: "John"}).images;
+  //return _.sortBy(images, function(image){ return image.created; });
+  */
+
 
   initMarketItems: function(){
 
@@ -558,5 +772,4 @@ Template.profile_MOB.helpers({
   }];  
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});
   }
-
 });
