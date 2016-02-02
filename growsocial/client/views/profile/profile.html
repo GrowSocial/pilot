@@ -2,7 +2,9 @@
 
 <template name="profile">
 
-<head>
+<head> <!-- last upload merged to master: #145 Feb 1 2016
+            next edit due to push: post 145 -->
+
     <!-- for popups ..  Jan 2016
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -253,6 +255,7 @@
             <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
                 <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
             </div> <!-- end commentsPROFL -->
+            
         {{/if}}
 
         {{#if there_are_items "marketItems"}}
@@ -265,6 +268,9 @@
                 {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />{{/if}}
                 {{#with selectMarketItems 0}}
                 <div id="scrollBoxItem1" class="clearfix">
+
+
+
                     <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
                     <p id="itemDesc"> {{name}} <br />{{description}} <br />
                         {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
@@ -273,7 +279,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                
                 </div>
                 {{/with}}
 
@@ -287,7 +295,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                 
                 </div>
                 {{/with}}
 
@@ -301,7 +311,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                  
                 </div>
                 {{/with}}
                 
@@ -315,7 +327,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                 
                 </div>
                 {{/with}}
                 {{#with selectMarketItems 4}}
@@ -328,7 +342,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                 
                 </div>
                 {{/with}}
         
@@ -356,8 +372,9 @@
                             <span id="txtSp1">
                                 {{#if (item.unitType) }} Sold by:{{item.unitType}} {{/if}}
                                 {{#if (item.unitPrice) }} {{item.currency}}${{item.price}} {{/if}}
-                            </span><br />
-                            <!-- {{#if (filledBox(@index,1)) }} hits lmt=1 {{/if}} -->
+                            </span>
+                            <!-- a href="{{pathForMarketPlace}}"><b> *  * </b> <em> </em></a -->
+                            <br />
                         {{/each}}
                     </p>
                     {{/with}}
@@ -488,6 +505,9 @@
 
 
 
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>    
         <!-- allows a member to edit their core profile data, 
              if logged in and navigate to the profile page
         -->
@@ -690,7 +710,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                 
                 </div>
                 {{/with}}
 
@@ -704,7 +726,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                 
                 </div>
                 {{/with}}
 
@@ -718,7 +742,9 @@
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                    <a href="{{pathForMarketplace}}">
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />
+                    </a>                  
                 </div>
                 {{/with}}
 

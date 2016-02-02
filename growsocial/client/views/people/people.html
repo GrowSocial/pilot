@@ -12,7 +12,9 @@
           {{#each people}}
             <tr class="person-row">
               {{#if notAdmin}}
-              <td><a href="{{pathForProfile}}"><b> {{fullname}} * {{email}} * </b> <em> {{member_key}}</em></a></td>
+              <td>
+                <a href="{{pathForProfile}}"><b> {{fullname}} * {{email}} * </b> <em> {{member_key}}</em></a>
+              </td>
               {{/if}}
             </tr>
           {{/each}}      
