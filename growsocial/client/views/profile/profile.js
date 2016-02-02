@@ -317,12 +317,22 @@ Template.profile_DESKTOP.events({
 });  //template
 
 Template.profile_DESKTOP.helpers({
+ /*
   pathForMarketplace: function() {
 
     var path = FlowRouter.path("marketplace");
-  //  console.log(path);
+
+    //console.log(path);
     return path;
   },
+  */
+      pathForMarketplace: function() {
+
+    var path = FlowRouter.path("marketplace");
+    //console.log(path);
+    return path;
+  },
+  
   there_are_items: function(caller){
       var mKey = FlowRouter.getParam('personId');
       switch (caller)
@@ -594,12 +604,22 @@ Template.profile_MOB.events({
 });
 
 Template.profile_MOB.helpers({
-    pathForMarketplace: function() {
+ /*
+  pathForMarketplace: function() {
+
+    var path = FlowRouter.path("marketplace");
+
+    //console.log(path);
+    return path;
+  },
+  */
+      pathForMarketplace: function() {
 
     var path = FlowRouter.path("marketplace");
     //console.log(path);
     return path;
   },
+  
   there_are_items: function(caller){
     var mKey = FlowRouter.getParam('personId');
     switch (caller)
