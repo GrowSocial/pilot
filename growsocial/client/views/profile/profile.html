@@ -262,34 +262,75 @@
 
                             
                 {{#if Template.subscriptionsReady}}
-                 {{setDisplayDESKTOP}}
-                 {{#with selectMarketItems}}
+                {{#with selectMarketItems 0}}
+                <div id="scrollBoxItem1" class="clearfix">
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
+                    <p id="itemDesc"> {{description}} <br />
+                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
+                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
+                    </p>
 
-                    {{#each items}}
-                    {{#if  (roomInBox(@index) ) }}
-                        <div id="scrollBoxItem" class="clearfix">
-                            <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                             
-                            <p id="itemDesc"> {{description}} <br />
-                                {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
-                                {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                                {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                            </p>
+                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                </div>
+                {{/with}}
 
-                            <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                            <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
-                        </div>
-                    {{else}}
+                {{#with selectMarketItems 1}}
+                <div id="scrollBoxItem1" class="clearfix">
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
+                    <p id="itemDesc"> {{description}} <br />
+                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
+                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
+                    </p>
 
-                        <!-- img id="left_arrow" src="/images/icons/left-arrow.png" class="image" / -->
+                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                </div>
+                {{/with}}
 
+                {{#with selectMarketItems 2}}
+                <div id="scrollBoxItem1" class="clearfix">
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
+                    <p id="itemDesc"> {{description}} <br />
+                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
+                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
+                    </p>
 
-                        <img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />
+                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                </div>
+                {{/with}}
+                
+                {{#with selectMarketItems 3}}
+                <div id="scrollBoxItem1" class="clearfix">
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
+                    <p id="itemDesc"> {{description}} <br />
+                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
+                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
+                    </p>
 
-                    {{/if}}
-                    {{/each}}
-               
-                    {{/with}}
+                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                </div>
+                {{/with}}
+                {{#with selectMarketItems 4}}
+                <div id="scrollBoxItem1" class="clearfix">
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
+                    <p id="itemDesc"> {{description}} <br />
+                        {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
+                        {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
+                    </p>
+
+                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
+                    <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
+                </div>
+                {{/with}}
+
                 {{/if}}
 
             </div>
@@ -638,57 +679,52 @@
 
                 
             {{#if Template.subscriptionsReady}}
-             {{setDisplayCount}} 
-             {{#with selectMarketItems 0}}
-
+              
+             
+             
           <!--      {{#each items}}  {{#if  (roomInBox(@index) ) }} -->
-
+                {{#with selectMarketItems 0}}
                 <div id="scrollBoxItem1" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
                     <p id="itemDesc"> {{description}} <br />
                         {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
                         {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                        
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
                     <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
                 </div>
-            {{/with}}
-            {{#with selectMarketItems 1}}
+                {{/with}}
+
+                {{#with selectMarketItems 1}}
                 <div id="scrollBoxItem1" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
                     <p id="itemDesc"> {{description}} <br />
                         {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
                         {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                        
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
                     <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
                 </div>
-                {{/with}}  
-            {{#with selectMarketItems 2}}
+                {{/with}}
+
+                {{#with selectMarketItems 2}}
                 <div id="scrollBoxItem1" class="clearfix">
-                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
-                     
+                    <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>     
                     <p id="itemDesc"> {{description}} <br />
                         {{#if (unitType) }} Sold by: {{unitType}}<br /> {{/if}}
                         {{#if (unitPrice)}} {{currency}}${{unitPrice}} <br />{{/if}}
-                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}
-                        
+                        {{#if (date_entered)}} Listed:{{formatTime date_entered}} {{/if}}                      
                     </p>
 
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
                     <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" />              
                 </div>
-            {{/with}}
-
-<!-- {{/if}}
+                {{/with}}
+        <!-- {{/if}}
                 {{#if  (roomInBox(@index) ) }}
                 <div id="scrollBoxItem2" class="clearfix">
                     <img id="Photo_Object" src="/images/user-images/AuntRubyTomato128.png" class="image" /><p id="itemAlert">{{salesAlert}}<br /></p>
@@ -720,7 +756,7 @@
                 {{/if}}
 
 
--->
+            -->
 
 
                     <!-- img id="left_arrow" src="/images/icons/left-arrow.png" class="image" / -->
