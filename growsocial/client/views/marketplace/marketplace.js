@@ -44,6 +44,22 @@ Template.marketplaceItem.helpers({
       return "/images/user-images/AuntRubyTomato128.png";
     }
   },
+  shortName: function(item) {
+    // TODO get larger image if selected item
+    if (item && item.name) {
+      return item.name.substring(0, 30);
+    } else {
+      return "";
+    }
+  },
+  shortDescription: function(item) {
+    // TODO get larger image if selected item
+    if (item && item.description) {
+      return item.description.substring(0, 30);
+    } else {
+      return "";
+    }
+  },
   selectedItem: function(item) {
     // TODO selected item track by router queryParam
     return true;

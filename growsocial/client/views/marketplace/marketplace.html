@@ -29,19 +29,21 @@
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
             <div class="caption">
-                <h4>{{item.name}}</h4>
-                {{#if selectedItem item}}<p>{{item.description}}</p>{{/if}}
+                <h4>{{shortName(item)}}</h4>
+                {{#if selectedItem item}}<p>{{shortDescription(item)}}</p>{{/if}}
                 <p>${{item.unitPrice}} {{item.currency}} ({{item.unitType}})</p>
                 {{#if selectedItem item}}
                     <p>Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{vendor.vendorName}}</a></p>
                     {{#if currentUser}}
-                        <form class="addToCartForm">
-                            <label>Quantity:</label>
-                            <div class="input-group">
+                        <form class="form-inline addToCartForm">
+                          <div class="form-group col-container">
+                            <label class="col-xs-3 qtylabel control-label">qty:</label>
+                            <div class="input-group col-xs-9">
                                 <input type="text" name="quantityNum" class="form-control" aria-label="range" placeholder="quantity..." value="1">
                                 <span class="input-group-addon" aria-label="{{item.unitType}}">{{item.unitType}}</span>
                             </div>  <!-- /input-group -->
-                            <input type="submit" class="addToCart btn btn-primary" value="Buy" />
+                          </div>   <!-- /form-group -->
+                          <input type="submit" class="addToCart btn btn-primary" value="Buy" />
                         </form>
                     {{else}}
                         <p><span class="label label-default">Login to buy item.</span></p>
