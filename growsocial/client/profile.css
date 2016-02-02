@@ -298,12 +298,19 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 
 }
 
-
+#right_arrow,#left_arrow {z-index: 77;
+    float: left; clear: both; position: relative;top: 0px;left: 0px;
+    width: auto; max-width: 100%;height: auto;    
+    margin-top: 50px;margin-left: 2px;
+    color: rgb(0, 0, 0);
+}
+#right_arrow { clear: none;margin-left: 8px; }
 #scrollBoxItemsGroup {
     float: left;   clear: none;
-    height: auto;width: 95%;
-    margin-left: 2%; margin-top: 7px; 
-}
+    height: auto;width: 98%;
+    margin-left: 1%; margin-top: 7px; 
+/*background-color: rgb(224, 224, 24);
+*/}
 #scrollBoxItem,#scrollBoxItem1,#scrollBoxItem2,#scrollBoxItem3,#scrollBoxItem4,#scrollBoxItem5 {z-index: 65;
 
     float: left;clear: none;position: relative;   top: 0px; left: 0px;
@@ -546,13 +553,7 @@ color: rgb(0, 0, 0);
 }
 #buttonIcon{margin-top: -20px; margin-left: 4px;
 }
-#right_arrow,#left_arrow {z-index: 77;
-    float: left; clear: both; position: relative;top: 0px;left: 0px;
-    width: auto; max-width: 100%;height: auto;    
-    margin-top: 7.5%;margin-left: 1%;
-    color: rgb(0, 0, 0);
-}
-#right_arrow { clear: none; }
+
 
 
 #statusMsg, #view_all_  {z-index: 54;

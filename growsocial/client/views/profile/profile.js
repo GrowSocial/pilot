@@ -343,7 +343,7 @@ Template.profile_DESKTOP.helpers({
           Session.set('MItemCount',count);// save for navigation client
           Session.set('marketItemArray',objArray);// save for navigation client
           Session.set('marketItemArrayOFFSET',0) //begin at first item
-          console.log(count + " in Load of MarketItems");
+          //console.log(count + " in Load of MarketItems");
           //console.log(objArray); // to the first line of your helper.
           break;
         case 'connections': var count= Connections.find({member_key: mKey}).count();
@@ -356,33 +356,16 @@ Template.profile_DESKTOP.helpers({
       if (count) { return true } else { return false;}
     },
 
-    /*  there_are_items: function(caller){
-      var mKey = FlowRouter.getParam('personId');
-      switch (caller)
-      {
-        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
-          break;
-        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
-          break;
-        case 'marketItems': //var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
-          var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
-          var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document as local object
-          var count=objArray.length // know how many items are there
-          Session.set('MItemCount',count);// save for navigation client
-          console.log(count+" in MarketItems");
-          console.log(objArray); // to the first line of your helper.
-          break;
-        case 'connections': var count= Connections.find({member_key: mKey}).count();
-          break;
-        case 'blogEntries': var count=0;
-        case 'calendarEvents': var count=0;
-        case 'memberContacts': var count=0;      
-        default: var count=0;
-      }  
-      if (count) { return true } else { return false;}
-    },
+  displayFromOffset: function(){
+    var offset = Session.get('marketItemArrayOFFSET');
+    if (offset) { return true } else { return false;}
 
-    */
+  },
+  moreItems2Display: function(rowcount){
+    var offset = Session.get('marketItemArrayOFFSET');
+    var count = Session.get('MItemCount',count);
+    if ((offset+rowcount) >count)   { return false } else { return true;}
+  },
 
   roomInBox: function(current)  {var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
   
@@ -396,19 +379,12 @@ Template.profile_DESKTOP.helpers({
     if (current < limit) { return true } else { return false;}
     },
 
-  setDisplayDESKTOP: function() {  Session.set('setDisplayClient', 'DESKTOP');  return
-  },
-
-
-
 
   selectMarketItems: function(displayOrdinal) {
 
-    //get [indice] item from the items array in MarketItems document
+    //get [indice] item from the items array
     //
-    //every call repeats refresh from collection, as so is reactive
-        //var mKey = FlowRouter.getParam('personId');
-
+    //every call repeats refresh from collection,  reactive
 
       var offset = Session.get('marketItemArrayOFFSET')
       var totalCount = Session.get('MItemCount');// save for navigation client
@@ -417,11 +393,8 @@ Template.profile_DESKTOP.helpers({
        //     console.log("tot " + totalCount);
        //     console.log("next" +  nextItem);
       if ( nextItem > totalCount) { return "" }  
-        else { 
-
-            var myItems = Session.get('marketItemArray');// save for navigation client
-      //console.log(myItems);
-            return myItems[nextItem];
+      else { var myItems = Session.get('marketItemArray');// save for navigation client 
+             return myItems[nextItem];
           } 
 
     },
@@ -641,7 +614,7 @@ Template.profile_MOB.helpers({
         Session.set('MItemCount',count);// save for navigation client
         Session.set('marketItemArray',objArray);// save for navigation client
         Session.set('marketItemArrayOFFSET',0) //begin at first item
-        console.log(count + " in Load of MarketItems");
+        //console.log(count + " in Load of MarketItems");
         //console.log(objArray); // to the first line of your helper.
         break;
       case 'connections': var count= Connections.find({member_key: mKey}).count();
@@ -653,6 +626,17 @@ Template.profile_MOB.helpers({
     }  
     if (count) { return true } else { return false;}
   },
+  displayFromOffset: function(){
+    var offset = Session.get('marketItemArrayOFFSET');
+    if (offset) { return true } else { return false;}
+
+  },
+  moreItems2Display: function(rowcount){
+    var offset = Session.get('marketItemArrayOFFSET');
+    var count = Session.get('MItemCount',count);
+    if ((offset+rowcount) >count)   { return false } else { return true;}
+  },
+
 
   roomInBox: function(current)  {
   var  count = Session.get('displayCount');// DESKTOP MOBILE
@@ -666,10 +650,6 @@ Template.profile_MOB.helpers({
   if (current < count) { return true } else { return false;}
   },
 
-
-
-  setDisplayMOBILE: function() {  Session.set('setDisplayClient', 'MOBILE');  return
-  },
 
   selectMarketItems: function(displayOrdinal) {
 
@@ -703,8 +683,7 @@ Template.profile_MOB.helpers({
             //another approach , if only a portion of sub-doc is needed 
             // ::~  return {q: iArray[0].q, a1: iArray[0].a1 }
       */
-    },
-
+  },
 
 
   connectionInvoked: function(){
