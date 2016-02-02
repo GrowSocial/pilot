@@ -1,5 +1,25 @@
-.marketContainer .vendorLink {
-  text-decoration: underline;
+.marketContainer .thumbnail{
+    /* width: 300px; */
+    height: 450px;
+    overflow: hidden; /* auto; */
+}
+
+.marketContainer .thumbnail img {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.marketContainer .thumbnail .itemName {
+  /* allow two lines */
+  height: 37px;
+  overflow: hidden;
+}
+
+.marketContainer .thumbnail .itemDescription {
+  /* allow two lines */
+  height: 44px;
+  overflow: hidden;
 }
 
 .marketContainer .col-container {
@@ -9,4 +29,18 @@
 .marketContainer .form-group label {
   padding-left: 0;
   padding-top: 4px;
+}
+
+.marketContainer .thumbnail .priceLine {
+  height: 22px;
+  overflow: hidden;
+}
+
+.marketContainer .thumbnail .sellerLine {
+  height: 22px;
+  overflow: hidden;
+}
+
+.marketContainer .thumbnail .vendorLink {
+  text-decoration: underline;
 }

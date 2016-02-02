@@ -29,21 +29,26 @@
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
             <div class="caption">
-                <h4>{{shortName(item)}}</h4>
-                {{#if selectedItem item}}<p>{{shortDescription(item)}}</p>{{/if}}
-                <p>${{item.unitPrice}} {{item.currency}} ({{item.unitType}})</p>
+                <h4 class="itemName">{{shorten item.name 100}}</h4>
+                {{#if selectedItem item}}<p class="itemDescription">{{shorten item.description 100}}</p>{{/if}}
+                <p class="priceLine">${{item.unitPrice}} {{shorten item.currency 8}} ({{shorten item.unitType 117}})</p>
                 {{#if selectedItem item}}
-                    <p>Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{vendor.vendorName}}</a></p>
+                    <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{shorten vendor.vendorName 50}}</a></p>
                     {{#if currentUser}}
                         <form class="form-inline addToCartForm">
-                          <div class="form-group col-container">
-                            <label class="col-xs-3 qtylabel control-label">qty:</label>
-                            <div class="input-group col-xs-9">
-                                <input type="text" name="quantityNum" class="form-control" aria-label="range" placeholder="quantity..." value="1">
-                                <span class="input-group-addon" aria-label="{{item.unitType}}">{{item.unitType}}</span>
-                            </div>  <!-- /input-group -->
-                          </div>   <!-- /form-group -->
-                          <input type="submit" class="addToCart btn btn-primary" value="Buy" />
+                            <div class="form-group col-container">
+                                <label class="col-xs-3 qtylabel control-label">qty:</label>
+                                <div class="input-group col-xs-9">
+                                    <input type="text" name="quantityNum" class="form-control" aria-label="range" placeholder="quantity..." value="1"/>
+                                    <span class="input-group-addon" aria-label="{{shorten item.unitType 30}}">{{shorten item.unitType 17}}</span>
+                                </div>  <!-- /input-group -->
+                            </div>   <!-- /form-group -->
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <input type="submit" class="addToCart btn btn-primary" value="Buy" />
+                                </div>
+                                <div class="col-xs-7 col-xs-offset-1 alert buyAlert" role="alert"> </div>
+                            </div>
                         </form>
                     {{else}}
                         <p><span class="label label-default">Login to buy item.</span></p>
