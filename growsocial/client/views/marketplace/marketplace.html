@@ -29,8 +29,8 @@
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
             <div class="caption">
-                <h4>{{item.name}}</h4>
-                {{#if selectedItem item}}<p>{{item.description}}</p>{{/if}}
+                <h4>{{shortName(item)}}</h4>
+                {{#if selectedItem item}}<p>{{shortDescription(item)}}</p>{{/if}}
                 <p>${{item.unitPrice}} {{item.currency}} ({{item.unitType}})</p>
                 {{#if selectedItem item}}
                     <p>Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{vendor.vendorName}}</a></p>
