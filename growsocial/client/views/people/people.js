@@ -1,26 +1,19 @@
-Template.people.helpers({
+// TODO add a button on the map "back to list"
 
-/* for loading the list of 
-   profile collections from DB for viewing by logged-in member.
-*/
+Template.people.helpers({
   people: function () {
     return People.find({},{sort: {lastname: 1, firstname: 1}});
   },
   notAdmin: function(person) {
     return (person.member_key != 'pseudo_0');
   },
-
-/*  
-  used to convey which profile is selected, to profile.html
-  */
   pathForProfile: function(person) {
     var params = {
       personId: person.member_key
     };
     var path = FlowRouter.path("profile", params);
     return path;
-  }
-
+  },
 });
 
 Template.peopleMap.onCreated(function() {
@@ -67,6 +60,7 @@ Template.peopleMap.onRendered(function() {
       if (person.latlng) {
         
         // Being selective, only drawing the coords that are in Florida!
+        // TODO take this out when enabled the "local area view"
         if (person.latlng.lat >= 23.845649887659352 && 
             person.latlng.lat <= 31.615965936476076 &&
             person.latlng.lng >= -85.078125 && 
@@ -74,7 +68,7 @@ Template.peopleMap.onRendered(function() {
         
           var marker = L.marker(person.latlng);
 
-          // TODO popup to have: picture, link back to item in list
+          // TODO popup to have: profile picture, link back to item in list
           var popupText = "<b>" + person.fullname + "</b>";
           if (person.city) {
             popupText = popupText + "<br>" + person.city;
@@ -89,7 +83,7 @@ Template.peopleMap.onRendered(function() {
           peopleLatLngList.push(person.latlng);
         }
       }
-    });
+    });  // /peopleCursor.forEach
 
     // set view to include all markers on the map
     if (peopleLatLngList.length > 1) {
@@ -104,6 +98,6 @@ Template.peopleMap.onRendered(function() {
       instance.leafletmapp.setView(newLatLng, 11);
     }
     
-  });
+  });   // /autorun
 
 });
