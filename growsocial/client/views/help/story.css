@@ -1,0 +1,12 @@
+.storyContainer h2 {
+  text-align: center;
+}
+
+.storyContainer p {
+  text-indent: 30px;
+  padding-bottom: 10px;
+}
+
+.storyContainer a {
+  text-decoration: underline;
+}

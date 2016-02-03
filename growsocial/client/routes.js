@@ -38,14 +38,6 @@ FlowRouter.route('/business/:businessId', {
   },
 });
 
-/*
-FlowRouter.route('/marketplace/:productId', {
-  name: "marketplace",
-  action: function(params) {
-    BlazeLayout.render("main", {content: "marketplace"});
-  },
-});
-*/
 // '/marketplace/:productId'
 FlowRouter.route('/marketplace', {
   name: "marketplace",
@@ -53,7 +45,6 @@ FlowRouter.route('/marketplace', {
     BlazeLayout.render("main", {content: "marketplace"});
   },
 });
-
 
 FlowRouter.route('/notifications', {
   name: "notifications",
@@ -132,5 +123,33 @@ FlowRouter.route('/search', {
   name: "search",
   action: function(params, queryParams) {
     BlazeLayout.render("main", {content: "search"});
+  },
+});
+
+FlowRouter.route('/discuss', {
+  name: "discuss",
+  action: function() {
+    BlazeLayout.render("main", {content: "discuss"});
+  },
+});
+
+FlowRouter.route('/location', {
+  name: "location",
+  action: function() {
+    BlazeLayout.render("main", {content: "location"});
+  },
+});
+
+FlowRouter.route('/tutorials', {
+  name: "tutorials",
+  action: function() {
+    BlazeLayout.render("main", {content: "tutorials"});
+  },
+});
+
+FlowRouter.route('/story', {
+  name: "story",
+  action: function() {
+    BlazeLayout.render("main", {content: "story"});
   },
 });

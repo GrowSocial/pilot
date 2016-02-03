@@ -1,41 +1,76 @@
 <template name="marketplace">
-    <div id="#marketContainer" class="container">
+    <div class="container marketContainer">
+            <div class="row">
         <h1>Marketplace</h1>
-        <button type="button" id="addSampleProductsButton" class="btn btn-default" >Add sample products</button>
-        <button type="button" id="removeSampleProductsButton" class="btn btn-default" >Remove all sample products</button>
+        <span class="label label-default">Create marketplace items in your profile page.</span>
+        <p>Phase&nbsp;1 will include filters and searching</p>
+        <!-- <button type="button" id="addSampleProductsButton" class="btn btn-default" >Add sample products</button> -->
+        <!-- <button type="button" id="removeSampleProductsButton" class="btn btn-default" >Remove all sample products</button> -->
         <div id="marketNotifyDiv"></div>
-<!-- 
-        {{#if selectedProduct}}
-            <p>Selected productId: {{selectedProduct}}</p>
-        {{/if}}
- -->
-        <ul>
-        {{#each vendorList}}
-            <li>
-                <p>Vendor: {{vendorName}}</p>
-                <ul>
-                {{#each items}}
-                    {{> marketplaceItem}}
-                    <div class="popoverContent hide">
-                        {{> addQtyToCart}}
-                    </div>
-                {{/each}}
-                </ul>
-            </li>
-        {{/each}}
-        </ul>
-    </div>
+
+        </div>  <!-- row -->
+ 
+        <div class="row">
+            {{#each vendor in vendorList}}
+                {{#each item in vendor.items}}
+                    {{> marketplaceItem vendor=vendor item=item}}
+                {{/each}}  <!-- item -->
+            {{/each}}  <!-- vendor -->
+        </div>  <!-- row -->
+            
+    </div>   <!-- container -->
 </template>
 
 <template name="marketplaceItem">
-    <li>
-        <img class="marketplace-product-img" src="{{pic}}" alt="{{name}} product pic">
-        <ul>
-            <button class="popoverThis btn btn-large btn-danger" data-toggle="popover">Buy</button>
-            <li>Name: {{name}}</li>
-            <li>Description: {{description}}</li>
-            <li>Unit Price: {{unitPrice}} {{currency}} ({{unitType}})</li>
-            <li><a href="{{../vendorLink}}">Sold by: {{../vendorName}}</a></li>
-        </ul>
-    </li>
+    <!-- TODO maybe change column size when selected, might not need to -->
+    <!-- <div class={{#if selectedItem item}}"col-xs-12 col-sm-4 col-md-3 col-lg-1"{{else}}"col-xs-12 col-sm-3 col-md-2 col-lg-1"{{/if}}> -->
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+        <div class="thumbnail">
+          <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
+            <img src="{{getItemImage(item)}}" alt="tomato">
+            <div class="caption">
+                <h4>{{shortName(item)}}</h4>
+                {{#if selectedItem item}}<p>{{shortDescription(item)}}</p>{{/if}}
+                <p>${{item.unitPrice}} {{item.currency}} ({{item.unitType}})</p>
+                {{#if selectedItem item}}
+                    <p>Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{vendor.vendorName}}</a></p>
+                    {{#if currentUser}}
+                        <form class="form-inline addToCartForm">
+                          <div class="form-group col-container">
+                            <label class="col-xs-3 qtylabel control-label">qty:</label>
+                            <div class="input-group col-xs-9">
+                                <input type="text" name="quantityNum" class="form-control" aria-label="range" placeholder="quantity..." value="1">
+                                <span class="input-group-addon" aria-label="{{item.unitType}}">{{item.unitType}}</span>
+                            </div>  <!-- /input-group -->
+                          </div>   <!-- /form-group -->
+                          <input type="submit" class="addToCart btn btn-primary" value="Buy" />
+                        </form>
+                    {{else}}
+                        <p><span class="label label-default">Login to buy item.</span></p>
+                    {{/if}}
+                    <h6><small>{{disclaimer}}</small></h6>
+                {{else}}
+                    <p>{{vendor.vendorName}}</p>
+                    <p><a href="#" class="btn btn-default" role="button">Select</a></p>
+                {{/if}}
+            </div>   <!-- caption -->
+          <!-- </a> -->    <!-- thumbnail-link -->
+        </div>  <!-- thumbnail -->
+    </div>  <!-- col -->
+</template>
+
+<template name="addQtyToCart">
+  <form class="addToCartForm">
+      Quantity:
+      <input type="number" name="quantityNum" value="1"/>
+      <!-- TODO find a better way to pass vendor details to the event handler -->
+      <input type="hidden" name="vendor_key" value="{{../vendor_key}}"/>
+      <input type="hidden" name="vendorUserId" value="{{../vendorUserId}}"/>
+      <input type="hidden" name="vendorBusinessId" value="{{../vendorBusinessId}}"/>
+      <input type="hidden" name="vendorName" value="{{../vendorName}}"/>
+      <input type="hidden" name="vendorLink" value="{{../vendorLink}}"/>
+      <input type="hidden" name="vendorEmail" value="{{../vendorEmail}}"/>
+      {{unitType}}
+      <input type="submit" class="addToCart btn btn-default" value="Add Quantity" />
+  </form>
 </template>

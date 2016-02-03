@@ -1,0 +1,150 @@
+<template name="tutorials">
+    <div class="container-fluid tutorialsContainer">
+        <h2>Tutorials</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>How to return to the home page</h3>
+                <p>Click <a href="/home"><img src="/images/logo.png"/> the logo</a> on the menu to return to the home page.</p>
+                
+                <h3>How to set a map location</h3>
+                <ol>
+                    <li>Click the menu "Settings"
+                        <p>The map location page shows.</p>
+                        <p>If you haven't set the location yet, a default location shows for Davie, Florida.</p>
+                    </li>
+                    <li>Click the button "Set location from browser"
+                        <p>This asks the browser to try to find you by your internet connection.</p>
+                    </li>
+                    <li>Drag the marker to your actual location.
+                        <p>You can also zoom in and out of the map, and pan by dragging the map around.</p>
+                    </li>
+                    <li>Click the button "Save location"
+                        <p>The map coordinates in latitude and longitude are saved to your account.</p>
+                    </li>
+                </ol>
+                
+                <h3>How to set your profile</h3>
+                <p>Apologies no image uploading yet!</p>
+                <ol>
+                    <li>Click the "profile picture" with your name in the menu.
+                        <p>This takes you to your own profile page.</p>
+                        <p>On viewing your own profile the first time, a default market item is created for you.</p>
+                    </li>
+                    <li>Scroll down to the bottom of the profile page.
+                        <p>Click the button "Hide/Show Editors"</p>
+                        <p>The profile editor opens up below the button.</p>
+                        <p>Edit the fields as appropriate.  Useful fields for the pilot are:</p>
+                        <ul>
+                            <li>Firstname, Lastname, Fullname</li>
+                            <li>City</li>
+                            <li>State</li>
+                            <li>Zipcode</li>
+                            <li>Occupations - enter a very brief description of your community role in "Vocation"</li>
+                            <li>Location - "where" you are, can be region or county.</li>
+                        </ul>
+                    </li>
+                    <li>Click the button "Submit"</li>
+                </ol>
+                
+                <h3>How to set your marketplace items</h3>
+                <ol>
+                    <li>Go to your own profile</li>
+                    <li>Scroll to the bottom and click the button "Hide/Show Editors"</li>
+                    <li>Scroll to the bottom again and click the button "Hide/Show Market Items"</li>
+                    <li>Edit the fields.
+                        <p>The useful fields for the pilot are:</p>
+                        <ul>
+                            <li>Name</li>
+                            <li>Description</li>
+                            <li>Unit Type - for example "pound" means you're selling tomatoes by the pound.</li>
+                            <li>Unit price - for example, 1.59 for a pound of tomatoes.</li>
+                            <li>Currency - enter USD</li>
+                            <li>Date entered, click to choose today's date.</li>
+                        </ul>
+                    </li>
+                    <li>Scroll to the bottom and click the button "Submit"</li>
+                    <li>Click the "+" button to add another market item.</li>
+                </ol>
+
+                <h3>Sign In</h3>
+                <p>Currently we can:</p>
+                <ul>
+                    <li><a href="/register">create</a> an account</li>
+                    <li><a href="/login">login</a> to an account</li>
+                    <li><a href="/logout">logout</a> from an account</li>
+                    <li><a href="/changePassword">change the password</a></li>
+                    <li><a href="/forgotPassword">reset the password</a> which sends an email.</li>
+                </ul>
+                
+                <h3>Contact Us</h3>
+                <ol>
+                    <li>On the <a href="/contactUs">Contact Us</a> page, Enter your details, and a message, it will be stored in the database and sent to GrowSocial.</li>
+                    <li>If you are logged in, your name and email and zipcode are filled in for you.</li>
+                    <li>If you are logged in, messages you have previously sent will show at the bottom.</li>
+                </ol>
+            </div>   <!-- column -->
+            <div class="col-sm-6">
+            
+                <h3>How to find people</h3>
+                <p><a href="/people">People</a> on the menu takes you to a list of members that have joined, with some details of their location, and self-defined role in the community.</p>
+                <p>Click on one person to see their profile page.</p>
+                
+                <h3>How to purchase items</h3>
+                <ol>
+                    <li>Marketplace items are edited and added on the bottom of your profile page.  Item photos cannot yet be added.</li>
+                    <li>Once they have a price set, in the <a href="/marketplace">Marketplace page</a> the "Buy" button should allow a quantity to be entered.</li>
+                    <li>Then the <a href="/cart">shopping cart ("My Cart")</a> should show the items you've selected as an order.</li>
+                    <li>"Pay this vendor" will then send a <a href="/notifications">notification</a> and an email to the seller, as well as create a notification for yourself.</li>
+                </ol>
+                
+                <h3>Notifications</h3>
+                <ol>
+                    <li>As you receive <a href="/notifications">notifications</a>, the notification count <span class="glyphicon glyphicon-bell notify-bell notify-bell-exciting" aria-hidden="true"></span><span class="badge notify_count">1</span> increases in the menu (navigation bar).</li>
+                    <li>Clicking the notification bell in the menu shows a preview of your notifications and clicking one of them takes you to the notifications page.</li>
+                    <li>Currently notifications are sent when:</li>
+                    <ul>
+                        <li>You create a new account (you may have created a user before this was implemented),</li>
+                        <li>When an order is "paid"</li>
+                    </ul>
+                    <li>There is a button to create sample notifications, to see what they will look like.</li>
+                </ol>
+                
+                <h3>Navigation Bar</h3>
+                <p>Clicking the dog "profile picture" takes you to your own profile page, where you can edit some items.</p>
+                <p>We haven't yet added the feature to upload our own picture.</p>
+                <p>Some menu items such as "LocalPedia" are disabled, they will be featured in Phase&nbsp;1.</p>
+                
+                <h3>Search and show members on a map</h3>
+                <ol>
+                    <li>City and zipcode are edited on the bottom section of the profile page.</li>
+                    <li>At the moment, the pilot is targeted at Florida. For other regions, postal codes and kilometers will be available depending on location.</li>
+                    <li>Map location (stored as latitude and longitude) are set on the <a href="/location">Settings</a> menu.</li>
+                    <li>Once there are people with their locations set, <a href="/search">Search</a> can find them by name, and optionally filter by range / city / zipcode.</li>
+                    <li>Show search results on the map with the "Update search results on map" button.  (This will eventually be automatic).</li>
+                    <li>Click on the (profile) part of the search results to jump to that person's profile page.</li>
+                </ol>
+                
+                <h3>Working with profile</h3>
+                <ol>
+                    <li>Clicking a person's name in the <a href="/people">People page</a>, takes you to their profile page.</li>
+                    <li>The "profile scrub" is a term for a bare-bones edit interface. This will look a lot cleaner in Phase&nbsp;1</li>
+                    <li>Most fields of the market item can be edited, and new market items added.</li>
+                    <li>Profile picture and market item picture upload will be implemented at a later time.</li>
+                    <li>The "Connect" feature is how people will connect with each other, and form groups.</li>
+                    <li>To demonstrate the "Connect" feature, on someone else's profile, click the "Connect" button. An invite to connect with you will be seen by that member when they view their own profile.</li>
+                    <li>At a future date, the connect feature will be more fully implemented.</li>
+                    <li>"Comments" entered on a person's profile are stored, and in the future will be accessible by them.</li>
+                    <li>"Reviews" will be a way for people to provide feedback and rate a person's effectiveness in several categories.</li>
+                    <li>Other items will be more fully implemented in the future:</li>
+                    <ul>
+                        <li>Calendar and posting events</li>
+                        <li>Blogs</li>
+                        <li>Links to social media</li>
+                        <li>Privacy settings</li>
+                    </ul>
+                </ol>
+            </div>   <!-- column -->
+        </div>   <!-- row -->
+    </div>  <!-- container -->
+
+</template>

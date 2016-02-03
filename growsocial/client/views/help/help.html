@@ -1,79 +1,948 @@
 <template name="help">
+    {{> helpMain}}
+    {{> faqTemplate}}
+    {{> helpFeatures}}
+    {{> homeFootr}}
+   
+</template>
+<template name="helpMain">
  <div id="helptemplateContainer" class="container">
 <div class="row">
     <div class="col-md-4">
-<div id="thumbnail" >
-    <img id="featureImg2" src="/images/Member image block.png" class="img-thumbnail" />
+<div class="thumbnail" id="help_block" >
+    <a href="" > <img id="featureImgHelp" src="/images/help-images/help_img1.jpg" class="image"  data-toggle="popover" data-html="true" data-container="body"  title="Online Chat "  data-content="For online chat help, click the green panel at the bottom. We will be online to answer questions during the pilot, 5pm to 10pm Mon to Fri, and 9am to 9pm weekends"></a>
      <div class="details">
          <p id="featureHdr2"> Online Chat Help </p>
     </div>
 </div>
 
-<div id="thumbnail" >
-    <img id="featureImg2" src="/images/events image block.png" class="img-thumbnail" /> 
+<div class="thumbnail" id="help_block" >
+    <a href="/contactUs" > <img id="featureImgHelp" src="/images/help-images/help_img2.jpg" class="image" /> </a>
     <div class="details">
         <p id="featureHdr2"> Contact Us</p>
     </div>
 </div>
-<div id="thumbnail" >
-    <img id="featureImg2" src="/images/Discussion image block.png" class="img-thumbnail" />
+<div class="thumbnail" id="help_block" >
+    <a href="/story"> <img id="featureImgHelp" src="/images/help-images/help_img3.jpg" class="image" /></a>
     <div class="details">
-        <p id="featureHdr2"> Walk Through Site Tutorial </p>
+        <p id="featureHdr2"> Grow Social's Story </p>
     </div>
 </div>
      </div>
 <div class="col-md-4">
-    <div id="help_image_block" >
-    <div class="thumbnail">
-  <img src="/images/main image block.png" alt="..."   />
+    <div class="thumbnail" id="help_block">
+  <a href="/tutorials"> <img src="/images/help-images/help_img4.jpg" class="image"   /></a>
   <div class="centralImg">
-    <h3> Tutorial Videos for GrowSocial!</h3>
-    <p>Learn how to use the fast-growing network of people dedicated to local food growing and creating a sustainable economy</p>  
-      <button type="button" id="Help_Tutorial_Button" class="btn btn-primary">Tutorial Videos</button>
+    <h3 text-align="center"> Tutorials for GrowSocial!</h3>
+    <p>Learn how to use the fast-growing network of people dedicated to local food growing and creating a sustainable economy</p>   
+      <div><a href="/tutorials"><button type="button" id="Help_Tutorial_Button" class="btn btn-primary">Tutorials</button></a></div>
+       <p text-align="right" id="featureHdr2" > Scroll down to see Features </p>
   </div>  
 </div>
 </div>
-    </div>
 <div class="col-md-4">
-    <div id="thumbnail" >
-        <img id="featureImg2" src="/images/2015-12-26_16-58-40.jpg" class="img-thumbnail" />
+    <div class="thumbnail" id="help_block" >
+        <a href="#Help_Features" > <img id="featureImgHelp" src="/images/help-images/help_img5.jpg" class="image" /></a>
         <div class="details"> 
-    <p id="featureHdr2"> Site Map </p>
+    <p id="featureHdr2"> Features </p>
         </div>
 </div>
-    <div id="thumbnail" >
-     <img id="featureImg2" src="/images/opportunities image block.png" class="img-thumbnail" />
+    <div class="thumbnail" id="help_block" >
+     <a href="#linktofaq"> <img id="featureImgHelp" src="/images/help-images/help_img6.jpg" class="image" /></a>
     <div class="details">
-        <p id="featureHdr2"> Community Pages Help</p>
+        <p id="featureHdr2"> FAQ's</p>
     </div>
 </div>
 
-<div id="thumbnail" >
-      <img id="featureImg2" src="/images/business image block.png" class="img-thumbnail" />
+<div class="thumbnail" id="help_block" >
+<!--      <a href="" data-toggle="popover" data-placement="left" title="Future release feature" data-content="This feature will be available in the Phase 1 release"> </a>-->
+          <img id="featureImgHelp" src="/images/help-images/help_img7.jpg" class="image" />
     <div class="details">
-        <p id="featureHdr2"> Donate</p>
+        <p id="featureHdr2"> Donate<br><br></p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="2ZJ96HHBN3RR2">
+<input type="image" class="button" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
     </div>
   
 </div>
     </div>
      </div>
-
-
+    </div>
+</template>
+<template name="helpFeatures">
+    <div id="helptemplateContainer" class="container">
 <div class="row">
-<div id="About_block" class="clearfix">
-    <div id="garden_graphic" class="clearfix">
-        <div id="sky" class="clearfix">
-            <p id="Help_About"> About GrowSocial Pilot</p>
-            <p id="Help_Explanation">
-            Explanation of GrowSocial Pilot
-            </p>
-            <p id="Help_Features">
-            List of Features
-            </p>
-             <button id="Help_Join_Button" type="button" class="btn btn-primary">Join GrowSocial</button>
-        </div>
+ <h2 id="Help_Features"> List of Features </h2>     
+ <ul class="nav nav-tabs" data-tabs="tabs" id="feature-table">
+  <li class="active">
+      <a href="#1" data-toggle="tab">Shown in pilot</a>
+  </li>
+  <li><a href="#2" data-toggle="tab">Active in Phase 1</a>
+  </li>
+  <li><a href="#3" data-toggle="tab">Later Phase</a>
+  </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="1">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Y</td>
+            <td>Overview of what is available, and highlight new activity.</td>
+          </tr>
+          <tr>
+            <td>Member Profile</td>
+            <td>Y</td>
+            <td>Let people know what you are doing, list your produce for sale.</td>
+          </tr>
+          <tr>
+            <td>Shopping Cart</td>
+            <td>Y</td>
+            <td>Ordering products for purchase.</td>
+          </tr>
+          <tr>
+            <td>Farm Business page</td>
+            <td></td>
+            <td>Promote your farm business with its own page.</td>
+          </tr>
+          <tr>
+            <td>Small Business page</td>
+            <td></td>
+            <td>Promote your business with its own page.</td>
+          </tr>
+            <tr>
+            <td>Marketplace / Storefront</td>
+            <td>Partial</td>
+            <td>Storefront is a view of the marketplace, showing only products for a particular business or member.</td>
+          </tr>
+              <tr>
+            <td>Payment gateway</td>
+            <td></td>
+            <td>Paying for purchase online with credit card or paypal.</td>
+          </tr>
+              <tr>
+            <td>Delivery options</td>
+            <td></td>
+            <td>Delivery options.</td>
+          </tr>
+              <tr>
+            <td>Search people</td>
+            <td>Y</td>
+            <td>Find people in your area.</td>
+          </tr>
+            <tr>
+            <td>Define own location</td>
+            <td></td>
+            <td>Define on a map your own location, to be used for local searches and notifications.</td>
+          </tr>
+                    <tr>
+            <td>Search produce</td>
+            <td></td>
+            <td>Find produce in your area</td>
+          </tr>
+                        <tr>
+            <td>Login with facebook</td>
+            <td></td>
+            <td>Convenient way to login</td>
+          </tr>
+                        <tr>
+            <td>Notifications</td>
+            <td>Y</td>
+            <td>Letting you know what is happening.</td>
+          </tr>
+                        <tr>
+            <td>Discussions</td>
+            <td>Y</td>
+            <td>Discuss topics with other members on the site. Yet to add "single sign-on" and create threads.</td>
+          </tr>
+                        <tr>
+            <td>Business listings</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Privacy Settings</td>
+            <td></td>
+            <td>Choose who can see your details</td>
+          </tr>
+                        <tr>
+            <td>Ratings</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Calendar</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Business Blog</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Blogs</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community News</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Feedback</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Garage Sale</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Town Hall</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Job Opportunities</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Community Services</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Giveaways</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Wanted items</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Recreation Center</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Ourpedia / localpedia</td>
+            <td></td>
+            <td>Reference data on food and plants, edited by you and your community.</td>
+          </tr>
+               <tr>
+            <td>Local information</td>
+            <td></td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>People / Groups</td>
+            <td></td>
+            <td>Create networks of people</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="2">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+         <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Y</td>
+            <td>Overview of what is available, and highlight new activity.</td>
+          </tr>
+          <tr>
+            <td>Member Profile</td>
+            <td>Y</td>
+            <td>Let people know what you are doing, list your produce for sale.</td>
+          </tr>
+          <tr>
+            <td>Shopping Cart</td>
+            <td>Y</td>
+            <td>Ordering products for purchase.</td>
+          </tr>
+          <tr>
+            <td>Farm Business page</td>
+            <td>Y</td>
+            <td>Promote your farm business with its own page.</td>
+          </tr>
+          <tr>
+            <td>Small Business page</td>
+            <td>Y</td>
+            <td>Promote your business with its own page.</td>
+          </tr>
+            <tr>
+            <td>Marketplace / Storefront</td>
+            <td>Y</td>
+            <td>Storefront is a view of the marketplace, showing only products for a particular business or member.</td>
+          </tr>
+              <tr>
+            <td>Payment gateway</td>
+            <td>Y</td>
+            <td>Paying for purchase online with credit card or paypal.</td>
+          </tr>
+              <tr>
+            <td>Delivery options</td>
+            <td>Y</td>
+            <td>Delivery options.</td>
+          </tr>
+              <tr>
+            <td>Search people</td>
+            <td>Y</td>
+            <td>Find people in your area</td>
+          </tr>
+                       <tr>
+            <td>Define own location</td>
+            <td>Y</td>
+            <td>Define on a map your own location, to be used for local searches and notifications.</td>
+          </tr>
+                    <tr>
+            <td>Search produce</td>
+            <td>Y</td>
+            <td>Find produce in your area</td>
+          </tr>
+                        <tr>
+            <td>Login with facebook</td>
+            <td>Y</td>
+            <td>Convenient way to login</td>
+          </tr>
+                        <tr>
+            <td>Notifications</td>
+            <td>Y</td>
+            <td>Letting you know what is happening.</td>
+          </tr>
+                        <tr>
+            <td>Discussions</td>
+            <td>Y</td>
+            <td>Discuss topics with other members on the site. Yet to add "single sign-on" and create threads.</td>
+          </tr>
+                        <tr>
+            <td>Business listings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Privacy Settings</td>
+            <td>Y</td>
+            <td>Choose who can see your details</td>
+          </tr>
+                        <tr>
+            <td>Ratings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Calendar</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Business Blog</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Blogs</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community News</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Feedback</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Garage Sale</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Town Hall</td>
+            <td></td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Job Opportunities</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Community Services</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Giveaways</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Wanted items</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Recreation Center</td>
+            <td></td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Ourpedia / localpedia</td>
+            <td></td>
+            <td>Reference data on food and plants, edited by you and your community.</td>
+          </tr>
+               <tr>
+            <td>Local information</td>
+            <td></td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>People / Groups</td>
+            <td></td>
+            <td>Create networks of people</td>
+          </tr>
+           </tbody>
+           </table> 
+    </div>
+  <div class="tab-pane" id="3">
+      <table class="table table-condensed table-bordered table-striped volumes">
+         <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Y</td>
+            <td>Overview of what is available, and highlight new activity.</td>
+          </tr>
+          <tr>
+            <td>Member Profile</td>
+            <td>Y</td>
+            <td>Let people know what you are doing, list your produce for sale.</td>
+          </tr>
+          <tr>
+            <td>Shopping Cart</td>
+            <td>Y</td>
+            <td>Ordering products for purchase.</td>
+          </tr>
+          <tr>
+            <td>Farm Business page</td>
+            <td>Y</td>
+            <td>Promote your farm business with its own page.</td>
+          </tr>
+         <tr>
+            <td>Small Business page</td>
+            <td>Y</td>
+            <td>Promote your business with its own page.</td>
+          </tr>
+            <tr>
+            <td>Marketplace / Storefront</td>
+            <td>Y</td>
+            <td>Storefront is a view of the marketplace, showing only products for a particular business or member.</td>
+          </tr>
+              <tr>
+            <td>Payment gateway</td>
+            <td>Y</td>
+            <td>Paying for purchase online with credit card or paypal.</td>
+          </tr>
+              <tr>
+            <td>Delivery options</td>
+            <td>Y</td>
+            <td>Delivery options.</td>
+          </tr>
+                          <tr>
+            <td>Search people</td>
+            <td>Y</td>
+            <td>Find people in your area.</td>
+          </tr>
+            <tr>
+            <td>Define own location</td>
+            <td>Y</td>
+            <td>Define on a map your own location, to be used for local searches and notifications.</td>
+          </tr>
+                    <tr>
+            <td>Search produce</td>
+            <td>Y</td>
+            <td>Find produce in your area</td>
+          </tr>
+                        <tr>
+            <td>Login with facebook</td>
+            <td>Y</td>
+            <td>Convenient way to login.</td>
+          </tr>
+                        <tr>
+            <td>Notifications</td>
+            <td>Y</td>
+            <td>Letting you know what is happening.</td>
+          </tr>
+                        <tr>
+            <td>Discussions</td>
+            <td>Y</td>
+            <td>Discuss topics with other members on the site. Yet to add "single sign-on" and create threads.</td>
+          </tr>
+                        <tr>
+            <td>Business listings.</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Privacy Settings</td>
+            <td>Y</td>
+            <td>Choose who can see your details.</td>
+          </tr>
+                        <tr>
+            <td>Ratings</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Calendar</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Business Blog</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Blogs</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community News</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Community Feedback</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Garage Sale</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Town Hall</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                        <tr>
+            <td>Job Opportunities</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Community Services</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Giveaways</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Wanted items</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Recreation Center</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+                          <tr>
+            <td>Ourpedia / localpedia</td>
+            <td>Y</td>
+            <td>Reference data on food and plants, edited by you and your community.</td>
+          </tr>
+               <tr>
+            <td>Local information</td>
+            <td>Y</td>
+            <td></td>
+          </tr>
+               <tr>
+            <td>People / Groups</td>
+            <td>Y</td>
+            <td>Create networks of people.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </div>
-     </div>
+    
+    </div>
+    </div>
+</template>
+<template name="faqTemplate">
+<div id="helptemplateContainer" class="container">
+    <h2 id="linktofaq" style = "text-align: center;">FAQ's About GrowSocial Pilot</h2>
+       
+<div class="panel-group" id="accordion">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">What is GrowSocial about?</a>
+			</h4>
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse in">
+			<div class="panel-body">
+GrowSocial is an innovative community connection and collaborative online tool bringing us together to help elevate the local and sustainable food system. <br><br>
+
+GrowSocial will give you the tools to participate more effectively in your local food economy. You’ll be able to find and be found by people in your area. This means you finally get the big picture of your local food/sustainability and connect in ways that make everyone better. <br><br>
+
+You’ll also find more people to use your products and services because the platform itself will be promoted to the community at large so they will know how to find local food and the goods and services around local food. <br><br>
+
+Together, we raise awareness of the benefits of eating locally, help people find their local food producers and teach others how they can live more sustainably and participate in their local economy.
+
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">When will the GrowSocial platform be launched? </a>
+			</h4>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse">
+			<div class="panel-body">
+The pilot project will enable us to gather feedback on the core features planned for the platform. After the pilot project, we re-evaluate our assumptions and research, and then focus on development of the core platform.  At this time we will announce a launch date.  The launch of the first phase is projected to be in Florida and move out from there. Based on feedback, we will be developing and refining the template for the global system of GrowSocial.  
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">What can GrowSocial do for our community? </a>
+			</h4>
+		</div>
+		<div id="collapseThree" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial offers smaller producers a way to market their product, boosting the infrastructure of local food economies.  <br><br>
+The platform provides an efficient way for community members to find sources of local food or local food products. <br><br>
+
+Bringing together people on the same platform for discussion and trade in local food brings benefits such as opening the opportunity to identify and close waste loops.  <br><br>
+
+Resources, money and time can be more easily optimized with greater connection within the community.<br><br>  
+
+Sustainable food practices will be taken up more readily as we see people in our neighborhood having success with them.  <br><br>
+
+Opportunities will open up in employment as niche areas are uncovered.  Encouraging a greater proportion of spending to be local will stimulate the economy of the community.<br><br>
+
+Encouraging healthier eating will improve the overall health of communities.  Every new connection made will add to the resilience of the community, encouraging mutual support and the positive feeling of being involved in a shared goal.<br><br>
+
+The efforts of community leaders and those creating knowledge-based resources will be recognized and shared as connections between people grow stronger.<br><br>
+
+GrowSocial enables our community to reference and discuss the best practices in every community. Local information on plants, growing conditions and other location based data can be shared and searched in the platform. 
+			</div>
+		</div>
+	</div>
+    
+    <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">How does GrowSocial help build community?</a>
+			</h4>
+		</div>
+		<div id="collapseFour" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial the web site and the organization help you connect with other advocates of local and sustainable food in your community. The platform provides peer-to-peer support through your local network to help you get started and ultimately sustain your local food initiatives by also providing a venue for you to sell your products or services.
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">How does GrowSocial strengthen local communities? </a>
+			</h4>
+		</div>
+		<div id="collapseFive" class="panel-collapse collapse">
+			<div class="panel-body">
+The one thing that connects us all- food- is also the area around which much good can be created. <br><br>
+
+The people who are already participating in these activities (local food/local economy) are, for the most part, people who are passionate about sustainability and caring for the planet we live on. They are walking their talk and making changes that benefit us all. <br><br>
+
+We believe that this framework will spin off and support projects all over the globe. Those who are not yet participating in the local food/local economy will have a place to learn, connect, and redirect their purchases.
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Who will benefit from GrowSocial? </a>
+			</h4>
+		</div>
+		<div id="collapseSix" class="panel-collapse collapse">
+			<div class="panel-body">
+Everyone who is passionate about local food systems and sustainability! <br><br>
+
+Food connects us all: urban agriculturists, community farmers, community supported agriculture (CSA) groups, local artisans, small businesses, D.I.Y.ers, people who want to teach their specific skills, beekeepers, permaculturists, people seeking for information on local plants, people seeking to create community projects such as gardens, end users of local services, the undervalued resources of the communities, the communities as a whole by having a healthier population and environment, more vibrant communities and more economic activity locally. <br>
+Everyone is benefited, even those who are not yet passionate about local food systems and sustainability will have a chance to learn, connect, and redirect their purchases.
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">What does GrowSocial do for me?  </a>
+			</h4>
+		</div>
+		<div id="collapseSeven" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial will give you the tools to participate more effectively in your local food economy. You’ll be able to find and be found by people in your area.<br><br>
+
+This means you finally get the big picture of your local food/sustainability and connect in ways that make everyone better. You’ll also find more people to use your products and services because the platform itself will be promoted to the community at large as the place to go to find local food and the goods and services around local food. <br><br>
+
+Together, we raise awareness of the benefits of eating locally, help people find their local food producers and teach others how they can live more sustainably and participate in their local economy.
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">How does GrowSocial work? </a>
+			</h4>
+		</div>
+		<div id="collapseEight" class="panel-collapse collapse">
+			<div class="panel-body">
+You take a few moments to put up a profile, and if you want, a marketplace page. This makes it easy for the community to find you and your products/services.  This means we can all see each other based on where we live, and what role we play in our community. <br><br>
+
+Anyone can go to the site and search and see the whole local food network in their area. Or they can just search for something specific, like carrots or honey or rain barrels and will be given the results based on what’s closest to them.
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">What tools and features does GrowSocial offer? </a>
+			</h4>
+		</div>
+		<div id="collapseNine" class="panel-collapse collapse">
+			<div class="panel-body">
+There are many tools for you to work with, all based on where you live. Please note that the following tools won’t be accessible during the pilot testing of the platform but in phase one of the project. However, you can read here some information on hat each tool will do for you:<br><br>
+<ol type="A">
+<li>	 Localpedia- Just like Wikipedia, except you can find/post information that is relevant to your location. Nettle, for example, is very different in Georgia than it is in South Florida. Plants, soils, pests and more can vary greatly just 20 or 30 miles away. Localpedia will allow you to have specific data on your own area, developed by people from your own community and yourself. <br><br>
+</li>
+    <li> Discussions- This is where you can have big picture conversations about things happening in your community related to local and sustainable food. <br><br>
+
+You will be able to start conversations such as, “Do we want to establish a tool bank?  How do we go about creating a food hub? Do we want to start a community garden?” or whatever your community wants and needs in order to elevate your local and sustainable economy. Discussions will allow you to easily come together and find everyone passionate about local and sustainable food in your community.<br><br>
+</li>	
+<li>	Events- Here you will be able to share your relevant event happening in your community, so that people interested in what you do and offer can reach you personally. Find out where the farmers markets are, find a community garden activity or a permablitz. <br><br>
+</li>
+<li>
+	Opportunities- Are you looking for a job in the local food movement?, do you need to hire someone who understands rain barrels or food forests? Or do you have manure to give away or need tree mulch? Find the answers or post questions in the “opportunities” section of GrowSocial! 
+  </li>              </ol>
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">What’s the difference between a personal and a business profile?  </a>
+			</h4>
+		</div>
+		<div id="collapseTen" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial will connect people and businesses based on where they live. This means that you can connect with others in your community and use most of the tools that GrowSocial offers through your personal profile and marketplace. <br><br>
+
+Smaller scale producers will be able to do everything they need to do through a personal profile and marketplace page.  For example, if your only offer a few different things on a limited basis, you can do everything you need to get your offerings to the public on the profile page. <br><br>
+
+Full time business will find that the business page offers them more opportunity to highlight a lot of different products, showcase their farm/business and help people get to know their business. 
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">Will I be able to chat with people from my community in the GrowSocial platform?  </a>
+			</h4>
+		</div>
+		<div id="collapseEleven" class="panel-collapse collapse">
+			<div class="panel-body">
+Yes, eventually.  GrowSocial won’t offer chatting options in the first phase but as a work in progress, we are trying to consider everything that makes sense to you. This is your platform!
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">When does my local network become available? </a>
+			</h4>
+		</div>
+		<div id="collapseTwelve" class="panel-collapse collapse">
+			<div class="panel-body">
+Your local network will be opened when 10 or more profiles are set up in your area. GrowSocial will then reach out to your area and look for a community activator- someone who is active and known in that community- and give them the opportunity to act as the grower of that community by asking them to help and encourage their community members to sign up and create profiles.<br><br>
+
+The activator will be paid per profile set up within the first 60 days. Some activators may choose to have the money go to a local charity or as seed money to help establish a food project in their area. The activator encourages profile setting up by sharing information on their social media, groups, events and networks.
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen">How will my local network thrive and grow?</a>
+			</h4>
+		</div>
+		<div id="collapseThirteen" class="panel-collapse collapse">
+			<div class="panel-body">
+Once an area has reached 25 profiles, we begin Stage 2- getting the word out.  Each person who has a profile will be sent a package of materials to help promote their area. This package contains refrigerator magnets, bumper stickers and a sign which can be displayed in market stalls, farms, restaurants, event or wherever they would like. The web platform also has an area where users can print out flyers to give out.<br><br>
+
+Meanwhile, GrowSocial will reach out to local organizations and groups within your area to raise awareness on the budding network on the site. We will issue press releases and look for local bloggers to help spread your story. Depending on your area, we might use conventional advertising through National Public Radio or other relevant media.<br><br>
+
+Every area will have its own way of growing and its own tipping point. Our goal is to get your network thriving, sharing sustainable practices, growing the local food network, keeping your dollars local, your footprint small and your community healthy. We’re always happy to hear about any ideas you might have to help us help you. Hope to hear from you!
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen">How is GrowSocial different from Facebook?  </a>
+			</h4>
+		</div>
+		<div id="collapseFourteen" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial is different from Facebook in many ways: <br><br>
+<ol>
+<li>	GrowSocial is all based on location. When you go to GrowSocial, you’ll find the people, resources and interactions you’re looking for based on where you live. You’ll find out who has fresh local eggs for sale in your immediate area, not across the state. <br><br>
+</li>
+<li>	It’s specific to local food, local economy and sustainability. If you want to talk about who won the Oscars or what someone was wearing, go to Facebook. If you want to find out about who’s got heirloom seeds in your area or where you can get organic chicken feed, come to GrowSocial.<br><br> 
+</li>
+<li>	The features are interrelated and meant to serve you and your community. It’s your one-stop to find what you need and offer what you have to your local area. Spend less time on the computer and more time doing what you love!<br><br>
+</li>
+    </ol>
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen">Why is GrowSocial different from other sites offering similar services?  </a>
+			</h4>
+		</div>
+		<div id="collapseFifteen" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial is different and unique in its purpose. It is not just an enterprise meant to cater to the needs of the local food/sustainability network. In some way, GrowSocial intends to promote social responsibility and environmental stewardship. And more than being a venue to gather and share knowledge, it also aims to provide a place where people can get in touch and reunite with nature.<br><br>
+
+Ultimately, GrowSocial users will not just earn a sense of satisfaction in being “in the loop” but rather a sense of pride in being able to radiate positive effects “within and outside the loop.”
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen">Why don’t I have privacy settings on GrowSocial?  </a>
+			</h4>
+		</div>
+		<div id="collapseSixteen" class="panel-collapse collapse">
+			<div class="panel-body">
+GrowSocial is your public face, like a storefront or front porch.  In most places, we no longer walk our town and stop to chat with the grocer or the neighbor down the street.  GrowSocial wants to bring that back.   So anything that you would put on your profile would be something you’d be comfortable hanging up on your front porch or chatting with the grocer about. <br><br>
+
+Your profile will reflect your role in the community and help you to be found by people who need your goods, services, skills or knowledge.  
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen">Do I have to pay to join GrowSocial?  </a>
+			</h4>
+		</div>
+		<div id="collapseSeventeen" class="panel-collapse collapse">
+			<div class="panel-body">
+Nope. Everyone is welcome to join GrowSocial for free and make use of all resources available in the platform, including adding a profile, accessing the localpedia, discussions and events, and many more. 
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen">What do the badges mean? </a>
+			</h4>
+		</div>
+		<div id="collapseEighteen" class="panel-collapse collapse">
+			<div class="panel-body">
+The badges are your feedback system. In the old days, when you wanted to know who had the best tomatoes in town or who you could count on to show up when you hired them for a job you just asked your neighbors for recommendations. <br><br>
+
+GrowSocial will let you rate your interactions with people and businesses and you can also earn badges for things like volunteer hours to your community, spending your dollars in your local community and leading community initiatives. <br><br>
+
+The badge system will be available in Phase Two of GrowSocial and we’ll give you more details when we roll out that phase.
+
+			</div>
+		</div>
+	</div>
+    
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseNinteen">Is the GrowSocial platform going to be launched globally? </a>
+			</h4>
+		</div>
+		<div id="collapseNinteen" class="panel-collapse collapse">
+			<div class="panel-body">
+Absolutely! GrowSocial feels local but is global. Our goal is for the people who participate actively in the local community in every corner of the world to take ownership of the content and to feel that this is their network. 
+			</div>
+		</div>
+	</div>
+    
+</div>
+     <div><a href="/login"><button id="Help_Join_Button" type="button" class="btn btn-primary">Join GrowSocial</button></a> </div>            
+
     </div>
 </template>

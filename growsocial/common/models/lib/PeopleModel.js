@@ -85,17 +85,20 @@ PeopleIndex = new EasySearch.Index({
       let cityFilter = options.search.props.cityFilter;
       if (_.isString(cityFilter) && !_.isEmpty(cityFilter)) {
         selector.city = cityFilter;
-        // console.log('setting selector.city to cityFilter: ', cityFilter);
+      }
+      let zipcodeFilter = options.search.props.zipcodeFilter;
+      if (_.isString(zipcodeFilter) && !_.isEmpty(zipcodeFilter)) {
+        selector.zipcode = zipcodeFilter;
       }
       let rangeFilter = options.search.props.rangeFilter;
       if (rangeFilter) {
         selector["latlng.lat"] = {$gte: rangeFilter._southWest.lat, $lte: rangeFilter._northEast.lat};
         selector["latlng.lng"] = {$gte: rangeFilter._southWest.lng, $lte: rangeFilter._northEast.lng};
-        // console.log('setting selector.latlng to rangeFilter: ', rangeFilter);
-        // console.log('searchObject: ', searchObject);
-        // console.log('options: ', options);
-        // console.log('aggregation: ', aggregation);
-        // console.log('selector: ', selector);
+      }
+      if (options.search.userId) {
+        selector.member_key = {$nin: [options.search.userId, "pseudo_0"]} ; // dont include self or system user
+      } else {
+        selector.member_key = {$ne: "pseudo_0"} ; // dont include system user
       }
       return selector;
     },

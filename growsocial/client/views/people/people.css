@@ -1,3 +1,13 @@
+.peopleContainer tbody tr td, .peopleContainer thead tr th {
+  border: none;
+}
+
+.peopleContainer p {
+  text-indent: 30px;
+  padding-bottom: 10px;
+}
+
+/*
 .person-row {
   cursor: pointer;
 }
@@ -5,3 +15,4 @@
 .person-row.selected {
   background-color: #ccc;
 }
+ */
