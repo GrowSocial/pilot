@@ -2,8 +2,8 @@ Meteor.methods({
   
   addSampleNotification: function() {
 
-    // Random.choice() and .id() choose differently on client/server!
-    // TODO client side here just add a stub for the data
+    // Random.choice() and Random.id() choose differently on client/server!
+    // client side here just add a stub for the data, gets overwritten asynch by the server
     
     var fromUser;
     var msg;
@@ -73,12 +73,19 @@ Meteor.methods({
       sender: Match.Optional(String),
       senderLastName: Match.Optional(String),
       tag: String, // category / type
+      html: Match.Optional(Boolean),
       subject: String,
       message: String,
       imageUrl: Match.Optional(String),
       expireDate: Match.Optional(Date),
     });
 
+    // TODO sanitise untrusted html inputs
+    // a way to do this is pass in an object of untrusted strings to escape,
+    // then embed them in a template that has placeholders.
+    // The template would be stored on the server.
+    // Another option is to sanitise on the display side.
+    
     if (notification.tag === "System") {
       notification.imageUrl = "/images/logo_icon.png";
     }
