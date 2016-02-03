@@ -33,8 +33,9 @@ The members section gives you an overview of who is participating in the food we
   {{/if}}
   </div>  <!-- /column -->
   <div class="col-md-6">
-      <p>map here</p>
+  {{#if currentUser}}
       {{> peopleMap people=people}}
+  {{/if}}
   </div> <!-- /column -->
 
 </div> <!-- end row -->
