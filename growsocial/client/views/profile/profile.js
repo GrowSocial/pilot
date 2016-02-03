@@ -103,6 +103,25 @@ Template.addComment.events({
          comment: commentTEXT,
        timestamp: Date(),
        commentSource:"PROFILE PAGE",
+      }, function(error, commentId) {
+        console.log("commentId",commentId);
+        if (commentId) {
+          var commentNotification = {
+            targetUserId: mKey,
+            tag: "Comment",
+            subject: "Comment made on your profile page",
+            message: commentTEXT,
+          };
+          if (Meteor.userId()) {
+            commentNotification.senderUserId = Meteor.userId();
+            commentNotification.sender = Meteor.user().profile.firstname;
+            commentNotification.senderLastName = Meteor.user().profile.lastname;
+            commentNotification.imageUrl = "/images/user-images/profile-mary.jpg"; // TODO profile image of logged-in user
+          } else {
+            commentNotification.sender = "Guest";
+          }
+          Meteor.call("addNotification", commentNotification);
+        }
       });
     $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
   }
