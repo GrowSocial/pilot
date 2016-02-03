@@ -68,6 +68,7 @@ Template.cart.events({
     var notification = {
       targetUserId: '' + this.vendorUserId, // ensure a string
       tag: "Order",
+      html: true,
       imageUrl: "/images/icons/dollar.png",
       subject: "Order placed for my market items",
       message: "Buyer: " + Meteor.user().profile.firstname + " " +

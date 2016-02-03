@@ -147,6 +147,7 @@ Template.register.events({
           targetUserId: Accounts.userId(),
           sender: "System",
           tag: "System",
+          html: true,
           subject: "Welcome to GrowSocial",
           message: '<p>Welcome to GrowSocial, ' + firstname + '!</p><p>It is recommended to <a href="/location">set your map location</a> from the Settings menu, and then set your city, state and zipcode near the bottom of <a href="/profile/' + Accounts.userId() + '">your profile page</a>.</p><p><a href="/tutorials">Tutorials</a> and <a href="/help">Help</a> are available to help find your way around.</p>',
         }, function(err, result) {

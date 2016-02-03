@@ -24,4 +24,22 @@ Meteor.startup(function() {
       }}, 
       {multi: true});
   }
+
+  // add html:true for system messages
+  if (Notifications.findOne(
+  {
+    'tag': 'System', 
+    'html': {$exists: false},
+  })) {
+    console.log('notifications: adding "html:true" to "System" records');
+    Notifications.update(
+    {
+      'tag': 'System', 
+      'html': {$exists: false},
+    }, {
+      $set: { 'html': true },
+    }, {
+      multi: true
+    });
+  }
 });

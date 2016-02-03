@@ -29,6 +29,6 @@
         <button class="delete">&times;</button>
         <img src="{{note.imageUrl}}" class="img-circle message-image" alt="msg">
         {{note.sender}} | {{formatTime(note.dateTime)}} | {{note.subject}} <br/>
-        {{#if note.senderUserId}}{{note.message}}{{else}}{{{note.message}}}{{/if}}
+        {{#if note.html}}{{{note.message}}}{{else}}{{note.message}}{{/if}}
     </li>
 </template>
