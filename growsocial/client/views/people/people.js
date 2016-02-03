@@ -1,6 +1,3 @@
-var leafletmapp;
-var peopleMarkersList;
-
 Template.people.helpers({
 
 /* for loading the list of 
@@ -26,40 +23,44 @@ Template.people.helpers({
 
 });
 
-Template.peopleMap.onRendered(function() {
+Template.peopleMap.onCreated(function() {
+  const instance = this;
+  instance.peopleMarkersList = [];
+  instance.leafletmapp = {};
+});
 
+Template.peopleMap.onRendered(function() {
+  const instance = this;
+  
   //map code 
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
-  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(leafletmapp);
-  leafletmapp = L.map('peopleMap');
+  // L.tileLayer.provider('Thunderforest.Outdoors').addTo(instance.leafletmapp);
+  instance.leafletmapp = L.map('peopleMap');
   var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
   var osmAttrib='&copy; OpenStreetMap contributors';
   var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 19, attribution: osmAttrib});   
-  leafletmapp.addLayer(osm);
+  instance.leafletmapp.addLayer(osm);
 
   // map won't show much until view is set
   
-  var newLatLng = {lat: 26.064975195273117, lng: -80.2321028709411}; // busy traffic!
-  leafletmapp.setView(newLatLng, 11);
-  
   // iterate the people cursor passed into the template
-  var peopleCursor = this.data.people;
+  var peopleCursor = instance.data.people;
   
-  this.autorun(function() {
+  instance.autorun(function() {
 
     // BUG1 markers only render on first visit when part of group, so have to be re-added on re-render
     // BUG2 marker group makes markers bounce around on zoom and re-render
 
-    if (peopleMarkersList) {
+    if (instance.peopleMarkersList) {
       // clear markers - else each render rewrites new ones and leaves old ones :P
-      for (var i=0, len = peopleMarkersList.length; i < len; i++) {
-        var marker = peopleMarkersList[i];
-        leafletmapp.removeLayer(marker);
+      for (var i=0, len = instance.peopleMarkersList.length; i < len; i++) {
+        var marker = instance.peopleMarkersList[i];
+        instance.leafletmapp.removeLayer(marker);
       }
     }
 
-    peopleMarkersList = [];
+    instance.peopleMarkersList = [];
     var peopleLatLngList = [];
 
     peopleCursor.forEach(function(person) {
@@ -82,8 +83,8 @@ Template.peopleMap.onRendered(function() {
           
           // BUG markers only render on first visit when part of group
           // workaround: add them individually instead
-          marker.addTo(leafletmapp);
-          peopleMarkersList.push(marker);
+          marker.addTo(instance.leafletmapp);
+          instance.peopleMarkersList.push(marker);
           // add latlng to a list
           peopleLatLngList.push(person.latlng);
         }
@@ -91,13 +92,16 @@ Template.peopleMap.onRendered(function() {
     });
 
     // set view to include all markers on the map
-    if (peopleLatLngList.length > 0) {
+    if (peopleLatLngList.length > 1) {
       // adjust bounds for map
       var peopleBounds = L.latLngBounds(peopleLatLngList);
-      leafletmapp.fitBounds(peopleBounds);
+      instance.leafletmapp.fitBounds(peopleBounds);
+    } else if (peopleLatLngList.length === 1) {
+      instance.leafletmapp.setView(peopleLatLngList[0], 11);
     } else {
       // default view with no markers, how sad!
-      leafletmapp.setView(newLatLng, 11);
+      var newLatLng = {lat: 26.064975195273117, lng: -80.2321028709411}; // busy traffic!
+      instance.leafletmapp.setView(newLatLng, 11);
     }
     
   });
