@@ -7,7 +7,7 @@ Meteor.startup(function() {
       // abort abort, we don't have env ready?
       console.log('error from getEnv: ', error);
     } else {
-      console.log('method call to getEnv result: ',result);
+      // console.log('method call to getEnv result: ',result);
       // console.log('callback from getEnv, this: ',this);
       if (result.NODE_ENV != "production") {
         return;
