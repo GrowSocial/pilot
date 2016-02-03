@@ -2,41 +2,54 @@ Meteor.methods({
   
   addSampleNotification: function() {
 
-    var fromUser = Random.choice([{
-      firstname: "Mary",
-      imageUrl: "/images/user-images/profile-mary.jpg",
-    }, {
-      firstname: "Anthony",
-      imageUrl: "/images/user-images/profile-anthony.jpg",
-    // }, {
-      // firstname: "System",
-      // imageUrl: "/images/logo_icon.png",
-    }]);
+    // Random.choice() and .id() choose differently on client/server!
+    // TODO client side here just add a stub for the data
     
-    var msg = Random.choice([{
-      tag: "Message",
-      subject: "(sample) Meet me in Saint Louis",
-      message: "Behind the pub at seventh street.",
-    }, {
-      tag: "Stock",
-      subject: "(sample) Beefsteak tomato is sold out",
-      message: "Sold out today, I'm growing more, ready by next week.",
-    }, {
-      tag: "Reminder",
-      subject: "(sample) Community garden volunteer day tomorrow",
-      message: "Behind the pub at seventh street.",
-    }, {
-      tag: "Reminder",
-      subject: "(sample) Party at Cynthia's house 7pm tonight",
-      message: "Bring a plate of healthy food and a happy demeanor.",
-    }]);
-    
-    if (fromUser.firstname === "System") {
+    var fromUser;
+    var msg;
+    if (this.isSimulation) {
+      fromUser = {
+        firstname: " ",
+        // imageUrl: "/images/user-images/profile-mary.jpg", // TODO placeholder image
+      };
       msg = {
-        tag: "System",
-        subject: "Web site upgrade scheduled for Thursday",
-        message: "New version incoming, <a href='/help'>click here for help</a>.",
-      }
+        tag: " ",
+        subject: " ",
+        message: " ",
+      };
+    } else {
+      fromUser = Random.choice([{
+        firstname: "Mary",
+        imageUrl: "/images/user-images/profile-mary.jpg",
+      }, {
+        firstname: "Anthony",
+        imageUrl: "/images/user-images/profile-anthony.jpg",
+      }]);
+      
+     var d = function (n) { return Math.floor(Random.fraction() * n) + 1; };
+     
+      msg = Random.choice([{
+        tag: "Message",
+        subject: "(sample) Meet me in Saint Louis",
+        message: "Behind the pub at seventh street.",
+      }, {
+        tag: "Stock",
+        subject: "(sample) Beefsteak tomato is sold out",
+        message: "Sold out today, I'm growing more, ready by next week.",
+      }, {
+        tag: "Reminder",
+        subject: "(sample) Community garden volunteer day tomorrow",
+        message: "Behind the pub at seventh street.",
+      }, {
+        tag: "Reminder",
+        subject: "(sample) Party at Cynthia's house 7pm tonight",
+        message: "Bring a plate of healthy food and a happy demeanor.",
+      }, {
+        tag: "Lottery",
+        subject: "(sample) Winning lottery numbers",
+        message: "The winning lottery numbers for tonight's powerball draw will be: " + 
+          d(69) + ' ' + d(69) + ' ' + d(69) + ' ' + d(69) + ' ' + d(69) + ' ' + d(29),
+      }]);
     }
     
     var notification = {

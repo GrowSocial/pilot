@@ -44,18 +44,10 @@ Template.marketplaceItem.helpers({
       return "/images/user-images/AuntRubyTomato128.png";
     }
   },
-  shortName: function(item) {
+  shorten: function(theString,length) {
     // TODO get larger image if selected item
-    if (item && item.name) {
-      return item.name.substring(0, 30);
-    } else {
-      return "";
-    }
-  },
-  shortDescription: function(item) {
-    // TODO get larger image if selected item
-    if (item && item.description) {
-      return item.description.substring(0, 30);
+    if (theString) {
+      return theString.substring(0, length);
     } else {
       return "";
     }
@@ -136,12 +128,31 @@ Template.marketplace.events({
     // console.log('this.item = ', this.item); // 
     // console.log('this.vendor = ', this.vendor); // 
     // console.log('event.target = ', event.target); // 
+    // console.log('event.target.getElementsByClassName("buyAlert") = ', event.target.getElementsByClassName('buyAlert')); // 
     // console.log('event.target.quantityNum = ', event.target.quantityNum); // 17
     // console.log('event.target.quantityNum.value = ', event.target.quantityNum.value); // 17
     
+///// 
+                          // <div class="col-xs-7 col-xs-offset-1 alertForBuy alert alert-success" role="alert">oh yeah!</div>   alert-info  alert-success alert-danger 
+//////    
+    
+    var alertDiv = event.target.getElementsByClassName('buyAlert')[0];
+    var alertTextNode = alertDiv.childNodes[0];
+    alertDiv.classList.remove('alert-info');
+    alertDiv.classList.remove('alert-danger');
+    alertDiv.classList.remove('alert-success');
+    alertTextNode.data = " ";
+    
     // TODO validate quantity, not negative or zero or blank
     var parsedQty = parseInt(event.target.quantityNum.value);
-    if (!parsedQty) return;
+    if (!parsedQty) {
+      alertDiv.classList.add('alert-danger');
+      alertTextNode.data = "Error in quantity.";
+      return;
+    }
+
+    alertDiv.classList.add('alert-info');
+    alertTextNode.data = "Updating cart ...";
     
     // TODO add session id or userId
     var item = {
@@ -164,9 +175,15 @@ Template.marketplace.events({
     Meteor.call('addCartItem', item, function(error, result) { 
       // $('.popoverThis').popover('hide');
       if (error) {
+        alertDiv.classList.remove('alert-info');
+        alertDiv.classList.add('alert-danger');
+        alertTextNode.data = 'Error';
         marketNotify('alert-danger', error.message);
       } else {
-        marketNotify('alert-info', 'Updated shopping cart.');
+        // marketNotify('alert-success', 'Updated shopping cart.');
+        alertDiv.classList.remove('alert-info');
+        alertDiv.classList.add('alert-success');
+        alertTextNode.data = 'Updated cart.';
       }
     });
   },

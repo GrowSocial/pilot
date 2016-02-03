@@ -1,3 +1,5 @@
+// TODO Can remove these permissions when
+//      replaced all database actions on the client with method calls
 MarketItems.allow({
   insert: function () { return true;},
   update: function () { return true;},
