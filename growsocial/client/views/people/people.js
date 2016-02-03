@@ -89,7 +89,7 @@ Template.peopleMap.onRendered(function() {
     if (peopleLatLngList.length > 1) {
       // adjust bounds for map
       var peopleBounds = L.latLngBounds(peopleLatLngList);
-      instance.leafletmapp.fitBounds(peopleBounds);
+      instance.leafletmapp.fitBounds(peopleBounds, {padding: [20,20]}); // padding so markers arent on edges
     } else if (peopleLatLngList.length === 1) {
       instance.leafletmapp.setView(peopleLatLngList[0], 11);
     } else {
