@@ -2,42 +2,59 @@
 <template name="people">
 
 <div class="peopleContainer container">
-<div class="row">
+    <div class="row fill">
+        <div class="wrapper">
+            <div class="col-md-6 colA">
+                <h1>Welcome to your Members section</h1> 
+                
+                <p>Meet the people in your area participating 
+                in your food web and sustainable community.  See 
+                them on a map and learn who’s in your own neighborhood. 
+                Find people to learn from, share with and collaborate with.</p>
+                <p>The members section gives you an overview of who is 
+                participating in the food web in your area. It helps you 
+                find those nearby and discover and be discovered.</p>
+                <p>In Phase&nbsp;1, map view, profile pictures and local 
+                filters will be turned on.</p>
+                
+                <h4><span class="label label-default">Click a person to view their profile.</span></h4>
 
-  <!-- People 
-  ****************************************************************************** -->
-  <div class="col-md-6"><h1>Welcome to your Members section</h1> 
-<p>
-Meet the people in your area participating in your food web and sustainable community.  See them on a map and learn who’s in your own neighborhood. Find people to learn from, share with and collaborate with.  
-</p><p>
-The members section gives you an overview of who is participating in the food web in your area. It helps you find those nearby and discover and be discovered. 
-</p><p>In Phase&nbsp;1, map view, profile pictures and local filters will be turned on.
-</p>
-<h4><span class="label label-default">Click a person to view their profile.</span></h4>
-
-  {{#if currentUser}}
-    <table class="table">
-      <!-- <thead><tr> <td><b> Fullname * email * </b>{internal key}</td> </tr> </thead> -->
-        <tbody>       
-          {{#each person in people}}{{#if notAdmin person}}
-            <tr class="person-row">
-              
-              <td><a href="{{pathForProfile person}}"><b>{{person.fullname}}</b></a></td><td>{{person.city}} {{person.zipcode}}{{#if person.latlng}} <em>(map)</em>{{/if}}{{#if person.testDataSearch}} <em>(test user)</em>{{/if}} </td><td>{{person.occupations.[0].vocation}}</td>
-            </tr>
-              
-          {{/if}}{{/each}}      
-        </tbody>
-    </table>
-  {{else}}
-    <p>Login to see members.</p>
-  {{/if}}
-  </div>
-
-</div> <!-- end row -->
-</div> <!-- end container -->
-
-<!-- <div class="col-md-6"><h1><br>Groups</h1></div> -->
-
+                {{#if currentUser}}
+                    <table class="table">
+                        <tbody>       
+                            {{#each person in people}}
+                                {{#if notAdmin person}}
+                                    <tr class="person-row">
+                                        <td>
+                                            <!-- TODO profile picture in icon size -->
+                                            <a href="{{pathForProfile person}}">
+                                            <b>{{person.fullname}}</b></a>
+                                        </td>
+                                        <td>
+                                            {{person.city}} {{person.zipcode}}
+                                            {{#if person.latlng}} <em>(map)</em>{{/if}}
+                                            {{#if person.testDataSearch}} <em>(test user)</em>{{/if}}
+                                        </td>
+                                        <td>{{person.occupations.[0].vocation}}</td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}      
+                        </tbody>
+                    </table>
+                {{else}}
+                    <p>Login to see members.</p>
+                {{/if}}
+            </div>  <!-- /column -->
+            <div class="col-md-6 colB">
+                {{#if currentUser}}
+                    {{> peopleMap people=people}}
+                {{/if}}
+            </div> <!-- /column -->
+        </div>   <!-- /wrapper -->
+    </div> <!-- /row -->
+</div> <!-- /container -->
 </template>
 
-
+<template name="peopleMap">
+    <div id='peopleMap' class="peopleMap-container"></div>
+</template>
