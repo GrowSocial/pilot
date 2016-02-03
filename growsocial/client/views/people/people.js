@@ -64,21 +64,29 @@ Template.peopleMap.onRendered(function() {
 
     peopleCursor.forEach(function(person) {
       if (person.latlng) {
-        var marker = L.marker(person.latlng);
-
-        // TODO popup to have: picture, link back to item in list
-        var popupText = "<b>" + person.fullname + "</b>";
-        if (person.city) {
-          popupText = popupText + "<br>" + person.city;
-        }
-        marker.bindPopup(popupText);
         
-        // BUG markers only render on first visit when part of group
-        // workaround: add them individually instead
-        marker.addTo(leafletmapp);
-        peopleMarkersList.push(marker);
-        // add latlng to a list
-        peopleLatLngList.push(person.latlng);
+        // Being selective, only drawing the coords that are in Florida!
+        if (person.latlng.lat >= 23.845649887659352 && 
+            person.latlng.lat <= 31.615965936476076 &&
+            person.latlng.lng >= -85.078125 && 
+            person.latlng.lng <= -79.36523437500001) {
+        
+          var marker = L.marker(person.latlng);
+
+          // TODO popup to have: picture, link back to item in list
+          var popupText = "<b>" + person.fullname + "</b>";
+          if (person.city) {
+            popupText = popupText + "<br>" + person.city;
+          }
+          marker.bindPopup(popupText);
+          
+          // BUG markers only render on first visit when part of group
+          // workaround: add them individually instead
+          marker.addTo(leafletmapp);
+          peopleMarkersList.push(marker);
+          // add latlng to a list
+          peopleLatLngList.push(person.latlng);
+        }
       }
     });
 
