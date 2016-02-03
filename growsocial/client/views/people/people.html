@@ -31,7 +31,11 @@ The members section gives you an overview of who is participating in the food we
   {{else}}
     <p>Login to see members.</p>
   {{/if}}
-  </div>
+  </div>  <!-- /column -->
+  <div class="col-md-6">
+      <p>map here</p>
+      {{> peopleMap people=people}}
+  </div> <!-- /column -->
 
 </div> <!-- end row -->
 </div> <!-- end container -->
@@ -40,4 +44,7 @@ The members section gives you an overview of who is participating in the food we
 
 </template>
 
+<template name="peopleMap">
+    <div id='peopleMap' class="peopleMap-container"></div>
+</template>
 

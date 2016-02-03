@@ -7,6 +7,11 @@
   padding-bottom: 10px;
 }
 
+.peopleMap-container {
+/* width is set by bootstrap columns in html */
+  height: 300px;
+}
+
 /*
 .person-row {
   cursor: pointer;
