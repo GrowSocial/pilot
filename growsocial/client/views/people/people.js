@@ -1,5 +1,5 @@
-var peopleMarkersGroup;
 var leafletmapp;
+var peopleMarkersList;
 
 Template.people.helpers({
 
@@ -48,18 +48,18 @@ Template.peopleMap.onRendered(function() {
   
   this.autorun(function() {
 
-    if (peopleMarkersGroup) {
+    // BUG1 markers only render on first visit when part of group, so have to be re-added on re-render
+    // BUG2 marker group makes markers bounce around on zoom and re-render
+
+    if (peopleMarkersList) {
       // clear markers - else each render rewrites new ones and leaves old ones :P
-      // by default we don't have the group on the map, due to zooming bugs
-      // add group to map, then remove it, to clear previous markers.
-      // This makes a bouncy affect on every render, better than on every zoom!
-      peopleMarkersGroup.addTo(leafletmapp);
-      leafletmapp.removeLayer(peopleMarkersGroup);
-      peopleMarkersGroup.clearLayers();
-    } else {
-      peopleMarkersGroup = L.layerGroup();
+      for (var i=0, len = peopleMarkersList.length; i < len; i++) {
+        var marker = peopleMarkersList[i];
+        leafletmapp.removeLayer(marker);
+      }
     }
 
+    peopleMarkersList = [];
     var peopleLatLngList = [];
 
     peopleCursor.forEach(function(person) {
@@ -74,9 +74,9 @@ Template.peopleMap.onRendered(function() {
         marker.bindPopup(popupText);
         
         // BUG markers only render on first visit when part of group
-        // workaround: add them individually as well
+        // workaround: add them individually instead
         marker.addTo(leafletmapp);
-        peopleMarkersGroup.addLayer(marker);
+        peopleMarkersList.push(marker);
         // add latlng to a list
         peopleLatLngList.push(person.latlng);
       }
@@ -84,9 +84,6 @@ Template.peopleMap.onRendered(function() {
 
     // set view to include all markers on the map
     if (peopleLatLngList.length > 0) {
-      // BUG1 markers only render on first visit when part of group
-      // BUG2 marker group makes markers bounce around on zoom
-      // peopleMarkersGroup.addTo(leafletmapp);
       // adjust bounds for map
       var peopleBounds = L.latLngBounds(peopleLatLngList);
       leafletmapp.fitBounds(peopleBounds);
