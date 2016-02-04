@@ -33,7 +33,7 @@
                 {{#if selectedItem item}}<p class="itemDescription">{{shorten item.description 100}}</p>{{/if}}
                 <p class="priceLine">${{item.unitPrice}} {{shorten item.currency 8}} ({{shorten item.unitType 117}})</p>
                 {{#if selectedItem item}}
-                    <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink(vendor)}}">{{shorten vendor.vendorName 50}}</a></p>
+                    <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink vendor}}">{{shorten vendor.vendorName 50}}</a></p>
                     {{#if currentUser}}
                         <form class="form-inline addToCartForm">
                             <div class="form-group col-container">

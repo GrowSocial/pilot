@@ -62,9 +62,10 @@ Template.marketplaceItem.helpers({
     // }
   },
   getVendorLink: function(vendor) {
-    if (vendor && vendor.vendorLink) {
-      return vendor.vendorLink;
-    }
+    // TODO vendorLink is currently tainted by user entry!
+    // if (vendor && vendor.vendorLink) {
+      // return vendor.vendorLink;
+    // }
     if (vendor && vendor.vendorUserId) {
       return "/profile/" + vendor.vendorUserId;
     }
