@@ -160,26 +160,11 @@ clear: both;}
 #sidebarPROFL_MOB{width: 480px; margin-top: 2%; margin-left: auto; margin-right: auto; float: none;}
 
 
-   /*
 
-
-
-
-
-
-
-
-
-
-
-
-
-*/
 
 #newsFeed1,#newsFeed2,#newsFeed3,#newsFeed5 {z-index: 45;
     float: none;clear: none;position: relative; top: 0px;left: 0px;
-    height: 280px; width: 95%;
-    /*background-color: rgb(255, 255, 255);*/
+    height: 216px; width: 95%;
     background-color: rgb(245, 245, 245);
 
     border-width: 1px; 
@@ -195,14 +180,16 @@ clear: both;}
 */
 #newsfeedBox {
     float: left;clear: none;z-index: 50;
-    height: 160px;width: 82%; 
-    margin-top: 66px;
-    margin-left: -66%;   
+    height: 160px;width: 84%; 
+    margin-top: 40px;
+    margin-left: -60%;   
     background-color: rgb(226,226,226);
     border: 1px solid rgb(115, 115, 115);
     position: relative;top: 0px;left: 0px;
 }
 #newsFeedcontent {
+    /*background-color: rgb(235, 135, 235);    
+*/
     float: left;clear: none;
     font-size: 1em;
     width: 66%;  height: auto;
@@ -271,7 +258,7 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 
 #marketplaceItems,#marketplaceItems_MOB,#wallItemEMPTY  {
     float: none;clear: none;
-    height: 288px; width: 96%;
+    height: 292px; width: 96%;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(145, 145, 145);
     position: relative;top: 0px; left: 0px;
@@ -308,9 +295,9 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 #scrollBoxItemsGroup {
     float: left;   clear: none;
     height: auto;width: 98%;
-    margin-left: 1%; margin-top: 7px; 
-/*background-color: rgb(224, 224, 24);
-*/}
+    margin-left: 1%; margin-top: 3px; 
+/*background-color: rgb(224, 224, 24);*/
+}
 #scrollBoxItem,#scrollBoxItem1,#scrollBoxItem2,#scrollBoxItem3,#scrollBoxItem4,#scrollBoxItem5 {z-index: 65;
 
     float: left;clear: none;position: relative;   top: 0px; left: 0px;
@@ -326,9 +313,12 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
 #scrollBoxItem1 {margin-left: 8px;}
 
 
-#itemDesc { z-index: 79;
-    float: left;clear: none;
-    width: 88%; height: auto;
+#itemDesc,#itemDescShort { z-index: 79;float: left;clear: none; width: 88%; height: auto; 
+
+/* to clip for marketplace items slider display
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                              */
+white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; 
+
     text-align: left;
     font-size: 0.875em; color: black;
     /*font-style:normal;font-weight: normal;letter-spacing: normal;line-height: normal;
@@ -340,6 +330,11 @@ text-align: left;font-size: 1em;font-weight: normal;line-height: 1em;
     margin-left: 4%;margin-right: 0%;
     /*background-color: rgb(224, 224, 24);*/
 }
+#itemDescShort {width: 25%;max-width: 108px;
+
+}
+
+
 #itemAlert { z-index: 79;
     float: left;clear: none;
     width: 88%;height: auto;

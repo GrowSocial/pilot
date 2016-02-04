@@ -1,3 +1,9 @@
+/*
+
+last upload merged to master: #149 Feb 2016
+            next edit due to push: post 149
+
+            */
 
 
 UI.registerHelper('formatTime', function(context, options) {
@@ -12,37 +18,7 @@ formatRevDate: function() {
 },
 */
 
-/*
-UI.registerHelper('there_are_items', function(context, options) {
-  var mKey = FlowRouter.getParam('personId');
-  var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
-  if(context) return myCount;
 
-  var mKey = FlowRouter.getParam('personId');
-  switch (context)
-  {
-    case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
-      break;
-    case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
-      break;
-    case 'marketItems': 
-      var count= MarketItems.find({vendor_key: mKey}).count();
-
-
-      var zeta=objArray.length // know how many items are there
-      Session.set('MItemCount',zeta);// save for session navigation client
-      console.log(zeta);
-      break;
-
-    case 'blogEntries': var count=0;
-    case 'calendarEvents': var count=0;
-    case 'memberContacts': var count=0;      
-    default: var count=0;
-  }  
-  //alert(mKey + context + count);
-  if (count) { return true } else { return false;}
-});
-*/
 UI.registerHelper('MItemIndice', function(current, options) {
   var  zeta = Session.get('MItemCount');// latest pointer
   var  indice = Session.get('MItemIndice');// latest pointer
@@ -52,22 +28,6 @@ UI.registerHelper('MItemIndice', function(current, options) {
   //alert(current + " roomInBox readiing limit as "+ limit);
   if (current < limit) { return true } else { return false;}
 });
-
-/*
-UI.registerHelper('roomInBox', function(current, options) {
-
-  var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
-  
-  switch (display)
-  {
-    case 'DESKTOP': var limit=5;  break;
-    case 'MOBILE': var limit=3;  break;     
-    default: var count=0;
-  }  
-  alert(current + " roomInBox readiing limit as "+ limit);
-  if (current < limit) { return true } else { return false;}
-});
-*/
 
 
 
@@ -83,6 +43,9 @@ UI.registerHelper('reviewCount', function(context, options) {
   var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
   if(context) return myCount;
 });
+
+
+
 /* ~!
 The default _id field is already keyed by creation time 
 (see: how Mongo ObjectIDs are generated). 
@@ -93,17 +56,19 @@ You can just sort that in reverse order without having to add another field.
 Template.addComment.helpers({
 });
 Template.addComment.events({
+
   'submit form': function(){ event.preventDefault();
     var mKey = FlowRouter.getParam('personId');
     var commentTEXT = event.target.comment.value;
-      console.log(commentTEXT);
     Comments.insert({        
       member_key: mKey,
-      commentBy: Accounts.userId(),
+       commentBy: Accounts.userId(),
          comment: commentTEXT,
        timestamp: Date(),
        commentSource:"PROFILE PAGE",
-      }, function(error, commentId) {
+      },      // console.log(commentTEXT);
+
+    function(error, commentId) {
         console.log("commentId",commentId);
         if (commentId) {
           var commentNotification = {
@@ -121,15 +86,12 @@ Template.addComment.events({
             commentNotification.sender = "Guest";
           }
           Meteor.call("addNotification", commentNotification);
-        }
-      });
+      }
+
+    });
     $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
   }
 });
-
-
-
-
 
 
 
@@ -253,7 +215,9 @@ Template.profile.onCreated(function()
 
     This will only happen if the app starts with this template as the startup view
     We can revise the JS here, include error trapping perhaps, or test to be sure of the state of the session.
-    OR: we turn to another approach altogether for being certain admin, 'psuedo_0' is present in database
+    Or, design the app always resumes from the main emenu, which today it does not.
+
+    OR: from a systems design standpoint we turn to another approach altogether for being certain admin, 'psuedo_0' is present in database
 
     */
 
@@ -262,7 +226,7 @@ Template.profile.onCreated(function()
     // Will be TRUE if People has not been loaded until now
     // irregardless of admin record present.
     // Can happen if the app restarts from the profile page and will cause a record insert exception.
-    // No error handling is coded here, for now. Not sure if it is important, is not tested at deployed server
+    // No error handling is coded here, for now. 
     var sData = [
       {
       member_key: 'pseudo_0', 
@@ -319,8 +283,7 @@ Template.profile_DESKTOP.onCreated(function() {
 Template.profile_DESKTOP.events({
 
   'click .connectSelect': function()
-  {  //console.log("You clicked CONNECT");   
-  //  event.preventDefault();
+  {     //  event.preventDefault();
 
     var viewedMembr = FlowRouter.getParam('personId');//alert("initial MItem for " + member.fullname + Date());
     var loggedInMembr = Accounts.userId()//
@@ -336,23 +299,22 @@ Template.profile_DESKTOP.events({
 });  //template
 
 Template.profile_DESKTOP.helpers({
- /*
+
   pathForMarketplace: function() {
-
-    var path = FlowRouter.path("marketplace");
-
-    //console.log(path);
-    return path;
-  },
-  */
-      pathForMarketplace: function() {
-
-    var path = FlowRouter.path("marketplace");
-    //console.log(path);
+    var path = FlowRouter.path("marketplace");//console.log(path);
     return path;
   },
   
   there_are_items: function(caller){
+    /*
+    to assess documents are present in respective collections.
+    If present, 
+    and app design now includes functional use of collection,
+    use to instance session requirements as data image or properties based on appraisal of the collection.
+    Feb 2016: see marketItems, below
+
+    */
+
       var mKey = FlowRouter.getParam('personId');
       switch (caller)
       {
@@ -360,26 +322,41 @@ Template.profile_DESKTOP.helpers({
           break;
         case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
           break;
-        case 'marketItems': //var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
+        case 'marketItems': 
+        /*var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
+            Eventually can be more than one, see notes from TEC following original design release, Dec.2015
+        */
         
           /* DOESN'T WORK      (see passing comments online about mixing 0& 1's)
-          var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
-            vendorUserId:0,
-            vendorBusinessId: 0,
-            vendorLink: 0,
-            vendorName: 0,
-            vendorEmail: 0,
-            testDataMarket:0,
-                    items:1});
-          */
+            var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
+              vendorUserId:0,
+              vendorBusinessId: 0,
+              vendorLink: 0,
+              vendorName: 0,
+              vendorEmail: 0,
+              testDataMarket:0,
+                      items:1});
+            */
           var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
           var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document as local object
           var count=objArray.length // know how many items are there
           Session.set('MItemCount',count);// save for navigation client
+
+           /*in future need to manipulte, translate for profile client
+                  
+                    for(i = 0; i < count; i++){
+                      var me= objArray[i].description;
+                      if (me.length > 16) objArray[i].description="noodles" //me.substr(0,16);
+                      var me= objArray[i].name;
+                      if (me.length > 16) objArray[i].name="noodles" //me.substr(0,16);
+                      //console.log(me);       
+                    }
+            */
           Session.set('marketItemArray',objArray);// save for navigation client
+            
           Session.set('marketItemArrayOFFSET',0) //begin at first item
           //console.log(count + " in Load of MarketItems");
-          //console.log(objArray); // to the first line of your helper.
+          //console.log(objArray); 
           break;
         case 'connections': var count= Connections.find({member_key: mKey}).count();
           break;
@@ -391,28 +368,14 @@ Template.profile_DESKTOP.helpers({
       if (count) { return true } else { return false;}
     },
 
-  displayFromOffset: function(){
-    var offset = Session.get('marketItemArrayOFFSET');
+  displayFromOffset: function(){ var offset = Session.get('marketItemArrayOFFSET');
     if (offset) { return true } else { return false;}
-
   },
   moreItems2Display: function(rowcount){
     var offset = Session.get('marketItemArrayOFFSET');
     var count = Session.get('MItemCount',count);
     if ((offset+rowcount) >count)   { return false } else { return true;}
   },
-
-  roomInBox: function(current)  {var  display = Session.get('setDisplayClient');// DESKTOP MOBILE
-  
-    switch (display)
-    {
-      case 'DESKTOP': var limit=5;  break;
-      case 'MOBILE': var limit=3;  break;     
-      default: var count=0;
-    }  
-    alert(current + " roomInBox readiing limit as "+ limit);
-    if (current < limit) { return true } else { return false;}
-    },
 
 
   selectMarketItems: function(displayOrdinal) {
@@ -432,25 +395,18 @@ Template.profile_DESKTOP.helpers({
              return myItems[nextItem];
           } 
 
-    },
-          /*    
-      selectMarketItems: function() {
-           BIG LESSON .  find() does not work;   findOne() works. Why?
-            According to Weldon, .fetch() is needed ..  
-            but that does not qualify find() to work. Not here anyway  
-          ~
-          find() will read the DB and provide information here in the helper ;  
-          but it does not provide to a spacebars client in a template.
-          findOne() is the only way I have been able to do this.
-          
+      /*
+            Session.set('MItemCount',zeta);// save for session navigation client
 
-            var mKey = FlowRouter.getParam('personId');
-            var count= MarketItems.find({vendor_key: mKey}).count();
-            var items = MarketItems.findOne({vendor_key: mKey}) || {};
-          //alert('selectMarketItems: function() {'+ mKey+ "~" + count);
-            return items;
-          },
+            //console.log(L);
+            console.log(zeta);
+            console.log(objArray); // to the first line of your helper.
+            return objArray
+            //another approach , if only a portion of sub-doc is needed 
+            // ::~  return {q: iArray[0].q, a1: iArray[0].a1 }
       */
+    },
+
 
   connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
@@ -521,13 +477,6 @@ Template.profile_DESKTOP.helpers({
   _.each(sData, function(sItem) { MarketItems.insert(sItem);});
   }
 });
-
-
-
-
-
-
-
 
 
 
@@ -624,24 +573,12 @@ Template.profile_MOB.events({
 });
 
 Template.profile_MOB.helpers({
- /*
-  pathForMarketplace: function() {
 
-    var path = FlowRouter.path("marketplace");
-
-    //console.log(path);
-    return path;
-  },
-  */
-      pathForMarketplace: function() {
-
-    var path = FlowRouter.path("marketplace");
-    //console.log(path);
-    return path;
+  pathForMarketplace: function() { var path = FlowRouter.path("marketplace"); 
+    return path;//console.log(path);
   },
   
-  there_are_items: function(caller){
-    var mKey = FlowRouter.getParam('personId');
+  there_are_items: function(caller){ var mKey = FlowRouter.getParam('personId');
     switch (caller)
     {
       case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
@@ -649,17 +586,6 @@ Template.profile_MOB.helpers({
       case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
         break;
       case 'marketItems': //var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
-
-        /* DOESN'T WORK      (see passing comments online about mixing 0& 1's)
-        var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
-          vendorUserId:0,
-          vendorBusinessId: 0,
-          vendorLink: 0,
-          vendorName: 0,
-          vendorEmail: 0,
-          testDataMarket:0,
-                  items:1});
-        */
         var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
         var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document as local object
         var count=objArray.length // know how many items are there
@@ -689,27 +615,7 @@ Template.profile_MOB.helpers({
     if ((offset+rowcount) >count)   { return false } else { return true;}
   },
 
-
-  roomInBox: function(current)  {
-  var  count = Session.get('displayCount');// DESKTOP MOBILE
-
-
-  //alert(current + " roomInBox readiing limit as " + count);
-
-
-  count -=1;
-  Session.set('displayCount', count);
-  if (current < count) { return true } else { return false;}
-  },
-
-
   selectMarketItems: function(displayOrdinal) {
-
-    //get [indice] item from the items array in MarketItems document
-    //
-    //every call repeats refresh from collection, as so is reactive
-        //var mKey = FlowRouter.getParam('personId');
-
 
       var offset = Session.get('marketItemArrayOFFSET')
       var totalCount = Session.get('MItemCount');// save for navigation client
@@ -724,19 +630,7 @@ Template.profile_MOB.helpers({
       //console.log(myItems);
             return myItems[nextItem];
           } 
-
-      /*
-            Session.set('MItemCount',zeta);// save for session navigation client
-
-            //console.log(L);
-            console.log(zeta);
-            console.log(objArray); // to the first line of your helper.
-            return objArray
-            //another approach , if only a portion of sub-doc is needed 
-            // ::~  return {q: iArray[0].q, a1: iArray[0].a1 }
-      */
   },
-
 
   connectionInvoked: function(){
     var viewedMembr = FlowRouter.getParam('personId');
@@ -784,43 +678,28 @@ Template.profile_MOB.helpers({
     },
 
 
-  /*Template.allComments.helpers({
-    comments: function() {
-      var coll = Coll.findOne(this._id);
-      return _.sortBy(  coll.comments, function(comment) {return -comment.vcount; }    );
-    }
-  });
-  <template name="allComments">
-    {{#each comments}}
-      <br>{{cmt_text}}</p>
-    {{/each}}
-  </template>
-
-     //   var images = Users.findOne({username: "John"}).images;
-  //return _.sortBy(images, function(image){ return image.created; });
-  */
-
-
   initMarketItems: function(){
 
-  var mKey = FlowRouter.getParam('personId');
-  var member = People.findOne({member_key: mKey}) || {};
-  //alert("intiial MItem for " + member.fullname + Date());
-  var sData = [{vendor_key: mKey, 
-              vendorUserId: mKey,
-                vendorName: member.fullname,
-               vendorEmail: member.email,
-            testDataMarket: false,
-    items: [   {name:'Market Item', description:'Market Item Description', 
-                type:'produce',
-          salesAlert:'',
-            unitType:'pound',
-           unitPrice: 0.99,
-            currency:'USD',
-        date_entered: Date(),
-           productId: Random.id(),
-        }]
-  }];  
-  _.each(sData, function(sItem) { MarketItems.insert(sItem);});
+    var mKey = FlowRouter.getParam('personId');
+    var member = People.findOne({member_key: mKey}) || {};
+    //alert("intiial MItem for " + member.fullname + Date());
+    var sData = [{vendor_key: mKey, 
+                vendorUserId: mKey,
+                  vendorName: member.fullname,
+                 vendorEmail: member.email,
+              testDataMarket: false,
+      items: [   {name:'Market Item', description:'Market Item Description', 
+                  type:'produce',
+            salesAlert:'',
+              unitType:'pound',
+             unitPrice: 0.99,
+              currency:'USD',
+          date_entered: Date(),
+             productId: Random.id(),
+          }]
+    }];  
+    _.each(sData, function(sItem) { MarketItems.insert(sItem);});
   }
+
+
 });
