@@ -20,11 +20,22 @@
 </head>
 
 {{#if Template.subscriptionsReady}} 
+
+ {{#if userIsLoggedOn}}
     {{#with selectProfile}} 
       <div class="visible-xs visible-sm">{{> profile_MOB}} </div>
       <div class="visible-md visible-lg">{{> profile_DESKTOP}} </div>
     {{/with}}
+
+    {{else}}
+<p id="membrfunctXX">Login to view member profiles  </p>
+
+ {{/if}}
+
 {{else}} <p>Loading...</p>
+
+
+
 {{/if}}
 
 </template>
