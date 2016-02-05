@@ -32,7 +32,7 @@
                 {{/each}}  <!-- /product -->
                 <li class="row totals">
                   <span class="itemName">Total:</span>
-                  <span class="price">${{roundToCents(order.vendorTotal)}}</span>
+                  <span class="price">${{roundToCents order.vendorTotal}}</span>
                   <span class="order">
                     <a class="payVendor" data-toggle="popover" data-html="true" data-container="body" title="Payment made" data-placement="auto" data-content="An email and a notification are being sent to the seller and the buyer.">Pay this vendor</a>
                   </span>
@@ -62,7 +62,7 @@
                     </span>
                     
                     <span class="price">
-                      ${{product.unitPrice}} / Total: ${{roundToCents(product.itemTotalPrice)}}
+                      ${{product.unitPrice}} / Total: ${{roundToCents product.itemTotalPrice}}
                       <p class="currency">{{product.currency}}</p>
                     </span>
                   </li>

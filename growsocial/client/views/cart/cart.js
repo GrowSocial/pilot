@@ -26,15 +26,12 @@ Template.cart.helpers({
 });
 
 Template.cart.events({
-  // remove this
-  // ***********************************
   'click .addSample': function(event) {
     event.preventDefault();
 
     Meteor.call('addCartSampleItems');
   },
-  // ***********************************
-  // remove this
+
   // Pay to specific vendor
   'click .payVendor': function(event) {
     var order = this.order;
