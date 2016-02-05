@@ -34,7 +34,7 @@ Template.cart.events({
 
   // Pay to specific vendor
   'click .payVendor': function(event) {
-    event.preventDefault();
+    // event.preventDefault();  // oops we need the click at the moment for the popover!
     Meteor.call('payVendor',this.order);
     // TODO better response to user on error/correct payment
   },
