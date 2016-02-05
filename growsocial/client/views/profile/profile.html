@@ -21,16 +21,19 @@
 
 {{#if Template.subscriptionsReady}} 
 
- {{#if userIsLoggedOn}}
-        {{#with selectProfile}} 
-          <div class="visible-xs visible-sm">{{> profile_MOB}} </div>
-          <div class="visible-md visible-lg">{{> profile_DESKTOP}} </div>
-        {{/with}}
+    <!-- 
+        {{#if userIsLoggedOn}}
+            {{#with selectProfile}} 
+              <div class="visible-xs visible-sm">{{> profile_MOB}} </div>
+              <div class="visible-md visible-lg">{{> profile_DESKTOP}} </div>
+            {{/with}}
+        {{else}} <p id="membrfunctXX">Login to view member profiles  </p>
+     {{/if}} -->
 
-    {{else}} <p id="membrfunctXX">Login to view member profiles  </p>
-
- {{/if}}
-
+    {{#with selectProfile}} 
+      <div class="visible-xs visible-sm">{{> profile_MOB}} </div>
+      <div class="visible-md visible-lg">{{> profile_DESKTOP}} </div>
+    {{/with}}
 {{else}} <p>Loading...</p>
 
 {{/if}}
@@ -273,12 +276,13 @@
 
         {{#if there_are_items "marketItems"}}
 
-            <div id="marketplaceItems" class="clearfix"> <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
-            <div id="scrollBoxItemsGroup" class="clearfix">
+        <div id="marketplaceItems" class="clearfix"> <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+        <div id="scrollBoxItemsGroup" class="clearfix">
 
                             
-                {{#if Template.subscriptionsReady}}
-                {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />{{/if}}
+            {{#if Template.subscriptionsReady}}
+                {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollBoxReverse" />
+                {{/if}}
                 {{#with selectMarketItems 0}}
                 <div id="scrollBoxItem1" class="clearfix">
                     <a href="{{pathForMarketplace}}">
@@ -352,14 +356,15 @@
                     <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                 
                 </div>
                 {{/with}}
-        
-                    
+                          
 
-                {{#if moreItems2Display 5}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />{{/if}}
+                {{#if moreItems2Display}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollBoxAhead" />
                 {{/if}}
 
-            </div>
-            </div> <!-- marketplaceItems --> 
+            {{/if}}
+
+        </div>
+        </div> <!-- marketplaceItems --> 
 
             <div id="newsFeed1" class="clearfix">
                 <!--out until time avbl to debug ::Jan 2016:: div id="profile_pic_copy" class="clearfix"></div -->
@@ -425,9 +430,9 @@
             </div>
 
         {{else}}
-        <div id="wallItemEMPTY" class="clearfix"> 
-            <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
-        </div> <!--  -->
+            <div id="wallItemEMPTY" class="clearfix"> 
+                <p id="scrollBoxTitle"> MARKETPLACE </p><p id="view_all_">Nothing active</p>
+            </div> <!--  -->
         {{/if}}
 
         {{#if there_are_items "calendarEvents"}}
@@ -721,7 +726,8 @@
 
                 
             {{#if Template.subscriptionsReady}}
-                {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image" />{{/if}}             
+                {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollBoxReverse" />
+                {{/if}}            
                 {{#with selectMarketItems 0}}
                 <div id="scrollBoxItem1" class="clearfix">
                     <a href="{{pathForMarketplace}}">
@@ -768,7 +774,8 @@
                 {{/with}}
 
 
-                {{#if moreItems2Display 3}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image" />{{/if}}
+                {{#if moreItems2Display}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollBoxAhead" />
+                {{/if}}
             {{/if}}
 
         </div>
@@ -963,7 +970,7 @@
 
             {{/if}}
 
-            
+
             <p id="contactInfo">
                 <span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
             </p>
