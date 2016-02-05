@@ -88,6 +88,7 @@ Meteor.methods({
         ShoppingCart.insert(order);
       }
       else { // existing vendor
+        // TODO BUG not updating vendor total when update existing product with different quantity
         // Get the product array
         var completeOrder = ShoppingCart.find({
           userId: Accounts.userId(), 
