@@ -7,49 +7,9 @@
     <a href="/marketplace" type="button" class="btn btn-default">Marketplace</a>
     <div class="col-md-9">
       <ul>
-        {{#each items}}
-          <li>
-            <div class="cartOrder">
-              <div class="vendor">
-                <p>{{vendorName}}</p>
-              </div>
-              <ul class="allProducts">
-                {{#each products}}
-                  <li class="row">
-                    <span class="quantityBtns">
-                      <input type="button" class="increase btn btn-default" value="+" /><br>
-                      <input type="button" class="decrease btn btn-default" value="-" />
-                    </span>
-                    
-                    <span class="quantity">
-                      <input type="number" class="quantityVal" value="{{quantity}}" />   
-                      <p class="unitType">{{unitType}}</p>
-                    </span>
-                    
-                    <!-- <img class="itemPhoto" src="{{photo.src}}" alt="photo"> -->
-                    <span class="itemName">{{name}}</span>
-                    
-                    <span class="removeItem">
-                      <a class="glyphicon glyphicon-trash"></a>
-                    </span>
-                    
-                    <span class="price">
-                      ${{unitPrice}} / Total: ${{roundToCents(itemTotalPrice)}}
-                      <p class="currency">{{currency}}</p>
-                    </span>
-                  </li>
-                {{/each}}
-                <li class="row totals">
-                  <span class="itemName">Total:</span>
-                  <span class="price">${{roundToCents(vendorTotal)}}</span>
-                  <span class="order">
-                    <a class="payVendor" data-toggle="popover" data-html="true" data-container="body" title="Payment made" data-placement="auto" data-content="An email and a notification are being sent to the seller and the buyer.">Pay this vendor</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </li>
-        {{/each}}
+        {{#each order in orders}}
+          {{> orderDetail order=order}}
+        {{/each}}  <!-- /order -->
         <li class="row totals">
           <span class="itemName">Total:</span>
           <span class="price">${{totalPrice}}</span>
@@ -58,4 +18,52 @@
       </ul>
     </div>
   </div>
+</template>
+
+<template name="orderDetail">
+          <li>
+            <div class="cartOrder">
+              <div class="vendor">
+                <p>{{order.vendorName}}</p>
+              </div>
+              <ul class="allProducts">
+                {{#each product in order.products}}
+                  {{> lineItem order=order product=product}}
+                {{/each}}  <!-- /product -->
+                <li class="row totals">
+                  <span class="itemName">Total:</span>
+                  <span class="price">${{roundToCents(order.vendorTotal)}}</span>
+                  <span class="order">
+                    <a class="payVendor" data-toggle="popover" data-html="true" data-container="body" title="Payment made" data-placement="auto" data-content="An email and a notification are being sent to the seller and the buyer.">Pay this vendor</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </li>
+</template>
+
+<template name="lineItem">
+                  <li class="row">
+                    <span class="quantityBtns">
+                      <input type="button" class="increase btn btn-default" value="+" /><br>
+                      <input type="button" class="decrease btn btn-default" value="-" />
+                    </span>
+                    
+                    <span class="quantity">
+                      <input type="number" class="quantityVal" value="{{product.quantity}}" />   
+                      <p class="unitType">{{product.unitType}}</p>
+                    </span>
+                    
+                    <!-- <img class="itemPhoto" src="{{photo.src}}" alt="photo"> -->
+                    <span class="itemName">{{product.name}}</span>
+                    
+                    <span class="removeItem">
+                      <a class="glyphicon glyphicon-trash"></a>
+                    </span>
+                    
+                    <span class="price">
+                      ${{product.unitPrice}} / Total: ${{roundToCents(product.itemTotalPrice)}}
+                      <p class="currency">{{product.currency}}</p>
+                    </span>
+                  </li>
 </template>
