@@ -1,9 +1,15 @@
 /*
 
-last upload merged to master: #149 Feb 2016
-            next edit due to push: post 149
+last upload merged to master: #152 Feb 2016
+            next edit due to push: post 153
 
             */
+
+
+UI.registerHelper('userIsLoggedOn', function(context, options) {
+if (Meteor.userId()){ return true } else { return false;}
+
+});
 
 
 UI.registerHelper('formatTime', function(context, options) {
