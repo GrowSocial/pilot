@@ -1,61 +1,73 @@
-/*
+/* UI Helpers
 
-last upload merged to master: #152 Feb 2016
+
+ last upload merged to master: #152 Feb 2016
             next edit due to push: post 153
 
             */
 
 
-UI.registerHelper('userIsLoggedOn', function(context, options) {
-if (Meteor.userId()){ return true } else { return false;}
+  UI.registerHelper('userIsLoggedOn', function(context, options) {
+  if (Meteor.userId()){ return true } else { return false;}
 
-});
-
-
-UI.registerHelper('formatTime', function(context, options) {
-  if(context)
-    return moment(context).format('MM/DD/YYYY, hh:mm');
-});
-/* never worked ~~~~~~ see UI.registerHelper('formatTime' (in use)
-formatRevDate: function() {
-  var d = this.review_date;
-  return monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
-  //moment(date).format('MM-DD-YYYY');
-},
-*/
-
-
-UI.registerHelper('MItemIndice', function(current, options) {
-  var  zeta = Session.get('MItemCount');// latest pointer
-  var  indice = Session.get('MItemIndice');// latest pointer
-  
-  indice +=1;
-  Session.set('MItemIndice', indice);
-  //alert(current + " roomInBox readiing limit as "+ limit);
-  if (current < limit) { return true } else { return false;}
-});
+  });
 
 
 
+  UI.registerHelper('moreItems2Display', function(context, options) {
+      var offset = Session.get('marketItemArrayOFFSET');
+      var count = Session.get('MItemCount',count);
+      var limit=Session.get('marketItemArrayLIMIT')
+      //console.log("offset + count +limit"+offset + count +limit);
+      if ((offset+limit) >(count-1))   { return false } else { return true;}
 
-UI.registerHelper('formatTime', function(context, options) {
-  if(context)
-    return moment(context).format('MM/DD/YYYY');
-});
-
-// for testing , Dec 2015
-UI.registerHelper('reviewCount', function(context, options) {
-  var mKey = FlowRouter.getParam('personId');
-  var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
-  if(context) return myCount;
-});
+  });
 
 
+  UI.registerHelper('formatTime', function(context, options) {
+    if(context)
+      return moment(context).format('MM/DD/YYYY, hh:mm');
+  });
+  /* never worked ~~~~~~ see UI.registerHelper('formatTime' (in use)
+  formatRevDate: function() {
+    var d = this.review_date;
+    return monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+    //moment(date).format('MM-DD-YYYY');
+  },
+  */
 
-/* ~!
-The default _id field is already keyed by creation time 
-(see: how Mongo ObjectIDs are generated). 
-You can just sort that in reverse order without having to add another field.
+
+  UI.registerHelper('MItemIndice', function(current, options) {
+    var  zeta = Session.get('MItemCount');// latest pointer
+    var  indice = Session.get('MItemIndice');// latest pointer
+    
+    indice +=1;
+    Session.set('MItemIndice', indice);
+    //alert(current + " roomInBox readiing limit as "+ limit);
+    if (current < limit) { return true } else { return false;}
+  });
+
+
+
+
+  UI.registerHelper('formatTime', function(context, options) {
+    if(context)
+      return moment(context).format('MM/DD/YYYY');
+  });
+
+  // for testing , Dec 2015
+  UI.registerHelper('reviewCount', function(context, options) {
+    var mKey = FlowRouter.getParam('personId');
+    var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
+    if(context) return myCount;
+  });
+
+
+
+  /* ~!
+  The default _id field is already keyed by creation time 
+  (see: how Mongo ObjectIDs are generated). 
+  You can just sort that in reverse order without having to add another field.
 */
 
 
@@ -287,6 +299,37 @@ Template.profile_DESKTOP.onCreated(function() {
 }); //on created 'profile'
 
 Template.profile_DESKTOP.events({
+  'click .scrollBoxAhead': function()
+  {   Session.set('marketItemArrayLIMIT',5) //save new scroll box item limit    
+    var offset=Session.get('marketItemArrayOFFSET'); //
+    var limit=Session.get('marketItemArrayLIMIT')
+    var count=Session.get('MItemCount'); //console.log(count + "~" + offset);
+    offset=offset+1;
+    if ( (offset>(count-limit) ) ) 
+      {  //console.log(count + "~else~" + offset);
+      return false;
+      } 
+    else {   //console.log(count + " ct inc off" + offset); 
+      Session.set('marketItemArrayOFFSET',(offset)); //store new
+      return true; 
+    } 
+  }, //function
+
+  'click .scrollBoxReverse': function()
+  {     //  event.preventDefault();
+    var offset=Session.get('marketItemArrayOFFSET'); //
+    var count=Session.get('MItemCount');   //console.log(count + "~" + offset);
+    offset=offset-1;
+    if ( (offset<0) ) 
+      {  //console.log(count + "~else~" + offset);
+      return false;
+      } 
+    else { //console.log(count + " ct inc off" + offset); 
+      Session.set('marketItemArrayOFFSET',(offset)); //store new
+      return true; 
+    }
+  }, //function
+
 
   'click .connectSelect': function()
   {     //  event.preventDefault();
@@ -302,6 +345,8 @@ Template.profile_DESKTOP.events({
     Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
 
   } //function
+
+
 });  //template
 
 Template.profile_DESKTOP.helpers({
@@ -361,6 +406,7 @@ Template.profile_DESKTOP.helpers({
           Session.set('marketItemArray',objArray);// save for navigation client
             
           Session.set('marketItemArrayOFFSET',0) //begin at first item
+          //Session.set('marketItemArrayLIMIT',5) //save new scroll box item limit 
           //console.log(count + " in Load of MarketItems");
           //console.log(objArray); 
           break;
@@ -376,11 +422,6 @@ Template.profile_DESKTOP.helpers({
 
   displayFromOffset: function(){ var offset = Session.get('marketItemArrayOFFSET');
     if (offset) { return true } else { return false;}
-  },
-  moreItems2Display: function(rowcount){
-    var offset = Session.get('marketItemArrayOFFSET');
-    var count = Session.get('MItemCount',count);
-    if ((offset+rowcount) >count)   { return false } else { return true;}
   },
 
 
@@ -559,7 +600,36 @@ Template.profile_MOB.onCreated(function()
 }); //on created 'profile'
 
 Template.profile_MOB.events({
+  'click .scrollBoxAhead': function()
+  {          Session.set('marketItemArrayLIMIT',3) //save new scroll box item limit    
+    var offset=Session.get('marketItemArrayOFFSET'); //
+    var limit=Session.get('marketItemArrayLIMIT')
+    var count=Session.get('MItemCount'); //console.log(count + "~" + offset);
+    offset=offset+1;
+    if ( (offset>(count-limit) ) ) 
+      {  //console.log(count + "~else~" + offset);
+      return false;
+      } 
+    else {   //console.log(count + " ct inc off" + offset); 
+      Session.set('marketItemArrayOFFSET',(offset)); //store new
+      return true; 
+    } 
+  }, //function
 
+  'click .scrollBoxReverse': function()
+  {     //  event.preventDefault();
+    var offset=Session.get('marketItemArrayOFFSET'); //
+    var count=Session.get('MItemCount');   //console.log(count + "~" + offset);
+    offset=offset-1;
+    if ( (offset<0) ) 
+      {  //console.log(count + "~else~" + offset);
+      return false;
+      } 
+    else { //console.log(count + " ct inc off" + offset); 
+      Session.set('marketItemArrayOFFSET',(offset)); //store new
+      return true; 
+    }
+  }, //function
   'click .connectSelect': function(){
    //   console.log("clicked CONNECT button");
 
@@ -598,7 +668,8 @@ Template.profile_MOB.helpers({
         Session.set('MItemCount',count);// save for navigation client
         Session.set('marketItemArray',objArray);// save for navigation client
         Session.set('marketItemArrayOFFSET',0) //begin at first item
-        //console.log(count + " in Load of MarketItems");
+        //Session.set('marketItemArrayLIMIT',3) //save new scroll box item limit         
+        //console.log(count + " in Load of Mobile");
         //console.log(objArray); // to the first line of your helper.
         break;
       case 'connections': var count= Connections.find({member_key: mKey}).count();
@@ -614,11 +685,6 @@ Template.profile_MOB.helpers({
     var offset = Session.get('marketItemArrayOFFSET');
     if (offset) { return true } else { return false;}
 
-  },
-  moreItems2Display: function(rowcount){
-    var offset = Session.get('marketItemArrayOFFSET');
-    var count = Session.get('MItemCount',count);
-    if ((offset+rowcount) >count)   { return false } else { return true;}
   },
 
   selectMarketItems: function(displayOrdinal) {
