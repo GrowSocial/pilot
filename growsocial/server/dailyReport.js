@@ -14,7 +14,8 @@ function dailyReport() {
   console.log('Daily error report, sending to growsocial email.');
 
   try {
-    var text = "collection: ErrorLogs\n\n";
+    var text = "host: " + process.env.ROOT_URL +
+      "collection: ErrorLogs\n\n";
     // TODO keep track of _id of most recent one sent, and send from there
     // TODO format fields into something useful
     ErrorLogs.find({}, {sort: {dateTime: -1}}).forEach(function(log) {
