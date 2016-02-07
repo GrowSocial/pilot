@@ -1,17 +1,4 @@
-// (misha) Dec 2015: People collection moved to lib to load index before views
-//
-// tec, Jan 2016: but that is a problem, 
-// because Schemas won't attach now to use for Autoform
-//
 
-
-
-/* Dec 2015: schemas not implimented yet, but confirming code can be located here , 
-  to test as working once collectionsTest_02 is integrated with pilot app 
-
-
-  Jan 2016: Now we need Schemas object to use Autoform
-  **********************************************************************  */
 /*
 
 moving everything that was here down to  common\models\lib\

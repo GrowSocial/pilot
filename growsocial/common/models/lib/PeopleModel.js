@@ -41,23 +41,7 @@ Schemas.Person = new SimpleSchema({
   testDataSearch:{ type: Boolean, optional: true },
 });
 
-// for tests ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Schemas.profileEdit = new SimpleSchema({
-  email: {     type: String, optional: false,  unique: true },
-  fname: { type: String, optional: true},
-  lastname: {  type: String, optional: true},
-  fullname: {  type: String, optional: true},
-  city: {      type: String, optional: true},
-  state: {     type: String, optional: true ,
-    allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DE","FL",
-    "GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA",
-    "MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND",
-    "OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA",
-    "WA","WV","WI","WY"],
-    autoform: { afFieldInput: { firstOption: "(Select a State)"  } }
-    },
-  zipcode: {type: String, optional: true }
-});
+
 
 
 var Collections = {};
