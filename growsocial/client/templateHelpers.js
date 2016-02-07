@@ -11,7 +11,7 @@ Template.registerHelper('profilePicUrl', function(member_key) {
   if (person) {
     return person.photoUrl;
   } else {
-    return "/images/user-images/noAvatar.png";   // "/images/user-images/profile-jane.jpg";
+    return "/images/user-images/noAvatar2.jpg";   // profile-jane.jpg  noAvatar.png
   }
 });
 
