@@ -1,3 +1,16 @@
+var profilePicUrl = function(member_key) {
+  var person = null;
+  if (!member_key) member_key = Meteor.userId();
+  if (member_key)  {
+    person = People.findOne({'member_key': member_key, 'photoUrl': {$exists: true}}, {fields: {photoUrl: 1}});
+  }
+  if (person) {
+    return person.photoUrl;
+  } else {
+    return "/images/user-images/noAvatar2.jpg";   // profile-jane.jpg  noAvatar.png
+  }
+};
+
 Meteor.methods({
   
   addSampleNotification: function() {
@@ -81,13 +94,16 @@ Meteor.methods({
     });
 
     // TODO sanitise untrusted html inputs
-    // a way to do this is pass in an object of untrusted strings to escape,
-    // then embed them in a template that has placeholders.
+    // a way to do this is pass in an object of untrusted strings to escape html codes,
+    // then embed them in a html template that has placeholders.
     // The template would be stored on the server.
     // Another option is to sanitise on the display side.
     
     if (notification.tag === "System") {
       notification.imageUrl = "/images/logo_icon.png";
+    }
+    if (notification.tag === "Comment") {
+      notification.imageUrl = profilePicUrl(notification.senderUserId);
     }
     notification.dateTime = new Date();
 

@@ -1,7 +1,3 @@
-UI.registerHelper('roundToCents', function(value) {
-  if(value) return Math.round(value * 100) /100;
-});
-
 Template.cart.onRendered(function() {
     $('[data-toggle="popover"]').popover(); 
 });

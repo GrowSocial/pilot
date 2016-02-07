@@ -19,7 +19,7 @@ FlowRouter.route('/people/', {
 FlowRouter.route('/profile/:personId', {
   name: "profile",
   action: function(params) {
-    console.log("This is my profile: ", params.personId);
+    // console.log("This is my profile: ", params.personId);
     BlazeLayout.render("main", {content: "profile"});
   },
 });
@@ -151,5 +151,19 @@ FlowRouter.route('/story', {
   name: "story",
   action: function() {
     BlazeLayout.render("main", {content: "story"});
+  },
+});
+
+FlowRouter.route('/settings', {
+  name: "settings",
+  action: function() {
+    BlazeLayout.render("main", {content: "settings"});
+  },
+});
+
+FlowRouter.route('/uploads', {
+  name: "uploads",
+  action: function() {
+    BlazeLayout.render("main", {content: "uploads"});
   },
 });

@@ -5,7 +5,8 @@
 }
 
 .notification-container .message-image {
-  max-height: 43px;
+  height: 43px;
+  width: 43px;
   margin-right: 12px;
 }
 

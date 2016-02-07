@@ -1,58 +1,8 @@
 <template name="home">
-  <!-- <h1>Home Page</h1> -->
-  <!--{{> leafButtons}} -->
-
   {{> homeNew}}
   {{> homeAbout}}
   {{> homeLocalPedia}}
   {{> homeFootr}}
-  <!-- {{> centralSection}} -->
-</template>
-
-<template name="searchHome">
-  <div class="container">
-    <input id="searchText">
-    <button disabled>Search</button>
-    <button disabled>Advanced Search</button>
-  </div>
-</template>
-
-<template name="leafButtons">
-  <!-- TODO do we want bootstraps class "img-responsive" ? -->
-  <div id="homeButtonsContainer" class="container">
-    <img id="leafStemCircles" src="/images/leaves_stems_circles.svg" alt="leaves and circles">
-    <div>
-      <!-- <img id="opportunitiesTextImage" src="/images/OPPORTUNITIES.png" alt="leaves and circles"> -->
-      <!-- TODO use current user data  -->
-      {{#if currentUser}}
-        <a href="/profile/1" >
-          <img src="/images/user-images/profile-jane.jpg" class="img-circle" id="myProfileCircle" alt="Profile">
-        </a>
-      {{else}}
-        <a href="/login" >
-          <img src="/images/logo_square.png" id="myProfileCircle" alt="Login">
-        </a>
-      {{/if}}
-    </div>
-    <!-- {{> loginButtons}} -->
-  </div>
-</template>
-
-<template name="centralSection">
-  <!-- TODO Initially shows as no user, then shows for user.
-      Should have loading message instead, can we query user to see if it's ready? -->
-  {{#if Template.subscriptionsReady}}
-    {{#if currentUser}}
-      <p>Welcome {{currentUser._id}}</p>
-    {{else}}
-      <input id="username" placeholder="Username">
-      <input id="password" class="password" placeholder="Password">
-      <p>New here? Sign up and grow with us!</p>
-    {{/if}}
-  {{> loginButtons}}
-  {{else}}
-    <p>Loading...</p>
-  {{/if}}
 </template>
 
 <template name="homeNew">

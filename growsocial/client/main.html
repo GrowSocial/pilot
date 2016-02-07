@@ -134,7 +134,7 @@
 <template name="navProfilePic">
   <!-- TODO use pathFor -->
   <!-- TODO read data from collections -->
-  <li class="hidden-xs"><a href="{{pathForProfile}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="/images/user-images/profile-jane.jpg" class="img-circle navbar-img" alt="My Profile"> {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}{{else}}My Profile{{/if}}</a></li>
+  <li class="hidden-xs"><a href="{{pathForProfile}}" data-toggle="collapse" data-target=".navbar-collapse.in" class="navbar-img-a"><img src="{{profilePicUrl}}" class="img-circle navbar-profile-img" alt="My Profile"> {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}{{else}}My Profile{{/if}}</a></li>
   <li class="visible-xs"><a href="{{pathForProfile}}" data-toggle="collapse" data-target=".navbar-collapse.in">My Profile</a></li>
 </template>
 
@@ -199,7 +199,7 @@
 
 <template name="navSettings">
   <li class="disabled"><a href="#">Account</a></li>
-  <li class="{{isActiveRoute 'location'}}"><a href="/location" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
+  <li class="{{isActiveRoute 'settings'}}"><a href="/settings" data-toggle="collapse" data-target=".navbar-collapse.in">Settings</a></li>
 </template>
 
 <template name="navHelp">

@@ -86,6 +86,11 @@ body {
   max-height: 43px;
 }
 
+.navbar-profile-img {
+  height: 43px;
+  width: 43px;
+}
+
 .nav-search-button-small {
   border-style: none;
   margin-top:  5px;
@@ -115,6 +120,8 @@ body {
 }
 
 .nav-notify-dropdown-item-img {
+  height: 43px;
+  width: 43px;
   margin-right: 12px;
 }
 
@@ -127,50 +134,6 @@ body {
 #navAlertConnection {
   position: fixed;
   margin-top: 32px;
-}
-
-/* ------ Homepage ------ */
-
-#homeButtonsContainer {
-  position: relative;
-
-}
-
-#login-buttons {
-  position: absolute;
-  top: 0px;
-}
-
-#myProfileCircle {
-  position: absolute;
-  top: 30%;
-  left: 40%;
-  width: 20%;
-  height: auto;
-}
-
-#opportunitiesTextImage {
-  position: absolute;
-  top: 37%;
-  left: 74.6%;
-  width: 12%;
-  height: auto;
-}
-
-#leafStemCircles {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  height: 80%;
-}
-
-/* ------ Marketplace ------ */
-
-.marketplace-product-img {
-    height: 145px;
-    width: 145px;
 }
 
 /* ------ Profile page ------ */
