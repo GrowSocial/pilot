@@ -1,3 +1,16 @@
+var profilePicUrl = function(member_key) {
+  var person = null;
+  if (!member_key) member_key = Meteor.userId();
+  if (member_key)  {
+    person = People.findOne({'member_key': member_key, 'photoUrl': {$exists: true}}, {fields: {photoUrl: 1}});
+  }
+  if (person) {
+    return person.photoUrl;
+  } else {
+    return "/images/user-images/noAvatar2.jpg";   // profile-jane.jpg  noAvatar.png
+  }
+};
+
 Meteor.methods({
   
   addSampleNotification: function() {
@@ -88,6 +101,9 @@ Meteor.methods({
     
     if (notification.tag === "System") {
       notification.imageUrl = "/images/logo_icon.png";
+    }
+    if (notification.tag === "Comment") {
+      notification.imageUrl = profilePicUrl(notification.senderUserId);
     }
     notification.dateTime = new Date();
 
