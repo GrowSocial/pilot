@@ -39,6 +39,8 @@ Schemas.Person = new SimpleSchema({
   // lat: {type: Number, decimal: true, optional: true },
   // lng: {type: Number, decimal: true, optional: true },
   testDataSearch:{ type: Boolean, optional: true },
+  photoUrl:{ type: String, optional: true },
+  photoId:{ type: String, optional: true },
 });
 
 // for tests ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
