@@ -160,16 +160,6 @@ Template.navProfilePic.helpers({
     return path;
   },
   
-  myProfilePicUrl: function() {
-    var photo = People.findOne({'member_key': Meteor.userId(), 'photoUrl': {$exists: true}}, {fields: {photoUrl: 1}});
-    console.log('navbar profile photo?',photo);
-    if (photo) {
-      return photo.photoUrl;
-    } else {
-      return "/images/user-images/profile-jane.jpg";
-    }
-  },
-  
 });
  
 function switchBackground() {
