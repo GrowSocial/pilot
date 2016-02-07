@@ -8,3 +8,4 @@ Meteor.subscribe("People");
 Meteor.subscribe("Comments");
 Meteor.subscribe("notifications");
 Meteor.subscribe("Connections");
+Meteor.subscribe("uploads");

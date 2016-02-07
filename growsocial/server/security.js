@@ -56,3 +56,17 @@ Notifications.allow({
   update: function () { return true;},
   remove: function () { return true;}
 });
+
+Uploads.allow({
+  insert: function () { // TODO only logged-in users can insert
+    return true;
+    // if (Accounts.userId()) {  // TODO cannot user Accounts.userId() here
+      // return true;
+    // } else {
+      // return false;
+    // }
+  },
+  update: function () { return true;}, // TODO need to match the owner of the upload
+  remove: function () { return true;}, // TODO need to match the owner of the upload
+  download: function () { return true;},
+});

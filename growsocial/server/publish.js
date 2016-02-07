@@ -35,6 +35,15 @@ Meteor.publish("notifications", function () {
   }
 });
 
+// uploads
+Meteor.publish("uploads", function() { 
+  return Uploads.find({}, {
+    sort: {uploadedAt: -1}
+  },
+  // TODO temporarily returning all fields
+  );
+});
+
 // Shopping Cart
 Meteor.publish("shoppingCart", function() {
   // TODO temporarily retrieving all fields
