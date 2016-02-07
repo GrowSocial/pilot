@@ -81,8 +81,8 @@ Meteor.methods({
     });
 
     // TODO sanitise untrusted html inputs
-    // a way to do this is pass in an object of untrusted strings to escape,
-    // then embed them in a template that has placeholders.
+    // a way to do this is pass in an object of untrusted strings to escape html codes,
+    // then embed them in a html template that has placeholders.
     // The template would be stored on the server.
     // Another option is to sanitise on the display side.
     
