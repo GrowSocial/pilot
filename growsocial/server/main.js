@@ -1,5 +1,35 @@
 Meteor.startup(function () {
 
+ var AdminInitialized = People.find({member_key: "pseudo_0"}).count();
+
+  if (AdminInitialized == 0) { 
+
+  var sData = [
+    {
+    member_key: 'pseudo_0', 
+    email: 'admin@growsocial.com',
+    firstname:'Grow',
+    lastname: 'Social',
+    fullname:'Grow Social',
+        street:'123 Main St..', 
+        street2:'',
+        city:'Wilmington',
+        state:'DE',
+      zipcode:'02001',
+      location:'Davie, FL',
+      phone:'700 999-0000',
+      website:'www.growsocial.com',
+      links:'gg.web.site',
+      facebookID:'',
+      twitterID:'@grow',
+      instagramID:'',
+      about:"The Locavore's friend"
+    }
+  ];
+  _.each(sData, function(sItem)  { People.insert(sItem); }     
+    );
+  } // end if -- Admin check
+
 return; // remaining code below, for seeding test collections 
 
 

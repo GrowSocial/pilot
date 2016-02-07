@@ -123,7 +123,6 @@ Template.MemberReviews.onCreated(function() { var self = this;
   #if Template.subscriptionsReady   is never true. ?!
   self.subscribe('getLatestReviews', member_Key);
 
-
   // thisdoesn't matter either: 
   // although it does not halt @ Template.subscriptionsReady status
    self.subscribe('Member_Reviews-Set', member_Key);
@@ -295,7 +294,7 @@ Template.profile_DESKTOP.onCreated(function() {
     { var member_Key = FlowRouter.getParam('personId');
       self.subscribe('oneProfileRec', member_Key); 
     }
-  );
+  )
 }); //on created 'profile'
 
 Template.profile_DESKTOP.events({
@@ -351,6 +350,8 @@ Template.profile_DESKTOP.events({
 
 Template.profile_DESKTOP.helpers({
 
+  boxItems: [0,1,2,3,4 ],
+
   pathForMarketplace: function() {
     var path = FlowRouter.path("marketplace");//console.log(path);
     return path;
@@ -403,10 +404,8 @@ Template.profile_DESKTOP.helpers({
                       //console.log(me);       
                     }
             */
-          Session.set('marketItemArray',objArray);// save for navigation client
-            
+          Session.set('marketItemArray',objArray);// save for navigation client           
           Session.set('marketItemArrayOFFSET',0) //begin at first item
-          //Session.set('marketItemArrayLIMIT',5) //save new scroll box item limit 
           //console.log(count + " in Load of MarketItems");
           //console.log(objArray); 
           break;
@@ -529,75 +528,12 @@ Template.profile_DESKTOP.helpers({
 
 Template.profile_MOB.onCreated(function() 
   { var self = this;
-
   self.autorun(function() 
     { var member_Key = FlowRouter.getParam('personId');
       self.subscribe('oneProfileRec', member_Key); 
-
-    
-  }
-  
+  } 
   );
-
-
-  //see  /server/main.js for documentation
-  //  We need to be sure Admin document is present in database
-  // If not present (first time this is run on a server without data collections
-  // initialization module ) insert record to collection People
-  // 
-  var AdminInitialized = People.find({member_key: "pseudo_0"}).count();
-
-  /*ERROR:
-  "" insert failed: MongoError: insertDocument :: caused by :: 11000 E11000 duplicate key error index: meteor.People.$c2_member_key  dup key: { : "pseudo_0" }
-
-  Will occur if the Meteor session is interrupted, and resumed while the profile page is the current browser view.
-  I believe it is because the 'People' instance has not been initialized 
-  -- which normally happens when the application commences with the localhost:3000 root path
-  Once a user navigates to 'People' from the navbar menu, 'People' is instanced.
-
-  The error : follows the test to see if the 'pseudo_o' user (admin) is present in the database. 
-  The JS returns a null as a result of :  AdminInitialized = People.find({member_key: "pseudo_0"}).count();
-  if People has not been instanced..  
-
-  This will only happen if the app starts with this template as the startup view
-  We can revise the JS here, include error trapping perhaps, or test to be sure of the state of the session.
-  OR: we turn to another approach altogether for being certain admin, 'psuedo_0' is present in database
-
-  */
-
-
-  if (AdminInitialized == 0) { 
-  // Will be TRUE if People has not been loaded until now
-  // irregardless of admin record present.
-  // Can happen if the app restarts from the profile page and will cause a record insert exception.
-  // No error handling is coded here, for now. Not sure if it is important, is not tested at deployed server
-  var sData = [
-    {
-    member_key: 'pseudo_0', 
-    email: 'admin@growsocial.com',
-    firstname:'Grow',
-    lastname: 'Social',
-    fullname:'Grow Social',
-        street:'123 Main St..', 
-        street2:'',
-        city:'Wilmington',
-        state:'DE',
-      zipcode:'02001',
-      location:'Davie, FL',
-      phone:'700 999-0000',
-      website:'www.growsocial.com',
-      links:'gg.web.site',
-      facebookID:'',
-      twitterID:'@grow',
-      instagramID:'',
-      about:"The Locavore's friend"
-    }
-  ];
-  _.each(sData, function(sItem)  { People.insert(sItem); }     
-    );
-
-  } // end if -- Admin check
-}); //on created 'profile'
+}); //on created 
 
 Template.profile_MOB.events({
   'click .scrollBoxAhead': function()
@@ -650,6 +586,9 @@ Template.profile_MOB.events({
 
 Template.profile_MOB.helpers({
 
+  boxItems: [0,1,2  ],
+
+
   pathForMarketplace: function() { var path = FlowRouter.path("marketplace"); 
     return path;//console.log(path);
   },
@@ -688,16 +627,13 @@ Template.profile_MOB.helpers({
   },
 
   selectMarketItems: function(displayOrdinal) {
-
+    //alert(displayOrdinal);
       var offset = Session.get('marketItemArrayOFFSET')
       var totalCount = Session.get('MItemCount');// save for navigation client
       var nextItem = offset + displayOrdinal
-       //     console.log("offset " + offset );
-       //     console.log("tot " + totalCount);
-       //     console.log("next" +  nextItem);
+       //alert("next" +  nextItem);
       if ( nextItem > totalCount) { return "" }  
         else { 
-
             var myItems = Session.get('marketItemArray');// save for navigation client
       //console.log(myItems);
             return myItems[nextItem];
@@ -732,8 +668,6 @@ Template.profile_MOB.helpers({
       var member = People.findOne({member_key: mKey}) || {};
       return member;
     },
-
-
 
   itemsOverflow: function(){
       var mKey = FlowRouter.getParam('personId');

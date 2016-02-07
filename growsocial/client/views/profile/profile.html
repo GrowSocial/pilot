@@ -283,12 +283,14 @@
             {{#if Template.subscriptionsReady}}
                 {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollBoxReverse" />
                 {{/if}}
-                {{#with selectMarketItems 0}}
+
+                {{#each item in boxItems}}       
+                {{#with selectMarketItems item}}
                 <div id="scrollBoxItem1" class="clearfix">
                     <a href="{{pathForMarketplace}}">
                     <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
                     <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
+                    <p id="itemDesc"> {{name  }} </p><br />
                     <p id="itemDesc">{{description}} </p><br />
                     {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
                     {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
@@ -297,65 +299,7 @@
                     <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                
                 </div>
                 {{/with}}
-
-                {{#with selectMarketItems 1}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
-                    <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
-                    <p id="itemDesc">{{description}} </p><br />
-                    {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
-                    {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
-                    {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                 
-                </div>
-                {{/with}}
-
-                {{#with selectMarketItems 2}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
-                    <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
-                    <p id="itemDesc">{{description}} </p><br />
-                    {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
-                    {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
-                    {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                 
-                </div>
-                {{/with}}
-                
-                {{#with selectMarketItems 3}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
-                    <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
-                    <p id="itemDesc">{{description}} </p><br />
-                    {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
-                    {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
-                    {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>               
-                </div>
-                {{/with}}
-                {{#with selectMarketItems 4}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
-                    <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
-                    <p id="itemDesc">{{description}} </p><br />
-                    {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
-                    {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
-                    {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                 
-                </div>
-                {{/with}}
+                {{/each}}
                           
 
                 {{#if moreItems2Display}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollBoxAhead" />
@@ -727,13 +671,15 @@
                 
             {{#if Template.subscriptionsReady}}
                 {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollBoxReverse" />
-                {{/if}}            
-                {{#with selectMarketItems 0}}
+                {{/if}}     
+
+                {{#each item in boxItems}}       
+                {{#with selectMarketItems item}}
                 <div id="scrollBoxItem1" class="clearfix">
                     <a href="{{pathForMarketplace}}">
                     <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
                     <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
+                    <p id="itemDesc"> {{name  }} </p><br />
                     <p id="itemDesc">{{description}} </p><br />
                     {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
                     {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
@@ -742,37 +688,7 @@
                     <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                
                 </div>
                 {{/with}}
-
-                {{#with selectMarketItems 1}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
-                    <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
-                    <p id="itemDesc">{{description}} </p><br />
-                    {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
-                    {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
-                    {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                 
-                </div>
-                {{/with}}
-
-                {{#with selectMarketItems 2}}
-                <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
-                    <p id="itemAlert">{{salesAlert}}<br /></p>  
-                    <p id="itemDesc"> {{name}} </p><br />
-                    <p id="itemDesc">{{description}} </p><br />
-                    {{#if (unitType) }}<p id="itemDesc"> Sold by: {{unitType}}</p><br /> {{/if}}
-                    {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
-                    {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
-                    <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                  
-                </div>
-                {{/with}}
-
+                {{/each}}
 
                 {{#if moreItems2Display}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollBoxAhead" />
                 {{/if}}
