@@ -3,7 +3,6 @@ Template.registerHelper('roundToCents', function(value) {
 });
 
 Template.registerHelper('profilePicUrl', function(member_key) {
-  console.log('profilePicUrl member_key:', member_key);
   var person = null;
   if (!member_key) member_key = Meteor.userId();
   if (member_key)  {
