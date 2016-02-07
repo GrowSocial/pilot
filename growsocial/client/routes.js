@@ -153,3 +153,17 @@ FlowRouter.route('/story', {
     BlazeLayout.render("main", {content: "story"});
   },
 });
+
+FlowRouter.route('/settings', {
+  name: "settings",
+  action: function() {
+    BlazeLayout.render("main", {content: "settings"});
+  },
+});
+
+FlowRouter.route('/uploads', {
+  name: "uploads",
+  action: function() {
+    BlazeLayout.render("main", {content: "uploads"});
+  },
+});

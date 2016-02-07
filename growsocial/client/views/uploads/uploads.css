@@ -1,0 +1,38 @@
+.uploadsContainer {
+	padding: 30px;
+}
+
+.uploadsContainer .itemImage {
+  /* max-height: 43px; */
+  width: 200px;
+  height: 200px;
+  margin-right: 12px;
+}
+
+.uploadsContainer a {
+  text-decoration: underline;
+}
+
+.uploadsContainer ul > li {
+  padding-bottom: 1em;
+}
+
+.uploadsContainer ul > li > .delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1.2em;
+  border: none;
+  position: relative;
+}
+
+.uploadsContainer ul > li > .setProfile {
+  float: right;
+  position: relative;
+}
+
+.uploadsContainer ul > li > .unsetProfile {
+  float: right;
+  position: relative;
+  background-color: #f00;
+}

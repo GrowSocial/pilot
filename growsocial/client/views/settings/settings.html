@@ -1,0 +1,18 @@
+<template name="settings">
+    <div class="container settingsContainer">
+      {{#if currentUser}}
+        <div class="row">
+            <div class="col-sm-3 col-xs-12">
+                <a href="{{pathFor 'location'}}" class="btn btn-default" role="button">Set my map location</a>
+                <a href="{{pathFor 'uploads'}}" class="btn btn-default" role="button">Set my profile picture</a>
+                <!-- <a href="{{pathFor 'uploads'}}" class="btn btn-default" role="button">Manage my uploads</a> -->
+                <!-- <a href="{{pathFor 'storefront' currentUser}}" class="btn btn-default" role="button">Manage my products</a> -->
+            </div> <!-- column -->
+            <div class="col-sm-9 col-xs-12">
+            </div> <!-- map column -->
+        </div> <!-- row -->
+      {{else}}
+        <p>Settings available when logged in.</p>
+      {{/if}}
+    </div>
+</template>
