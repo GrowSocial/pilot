@@ -15,7 +15,7 @@ function dailyReport() {
 
   try {
     var text = "host: " + process.env.ROOT_URL +
-      "collection: ErrorLogs\n\n";
+      "\ncollection: ErrorLogs\n\n";
     // TODO keep track of _id of most recent one sent, and send from there
     // TODO format fields into something useful
     ErrorLogs.find({}, {sort: {dateTime: -1}}).forEach(function(log) {
