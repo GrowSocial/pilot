@@ -31,7 +31,7 @@
   position: relative;
 }
 
-.uploadsContainer ul > li > .unsetProfile {
+.uploadsContainer .unsetProfile {
   float: right;
   position: relative;
   background-color: #f00;

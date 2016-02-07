@@ -2,9 +2,12 @@
     <div class="container uploadsContainer">
         <h1>Uploads</h1>
         {{#if currentUser}}
-            <label for="inputFileUpload">Add new uploads</label>
+            <button class="unsetProfile button btn btn-default">Unset Profile Pic</button>
+            <label for="inputFileUpload">Add new uploads, multiple files okay</label>
             <input type="file" id="inputFileUpload" class="btn btn-default" multiple>
-        
+            
+            <hr/>
+            
             {{#unless uploadCount}}<p>No uploads.</p>{{/unless}}
             
             <ul class="list-unstyled">
@@ -19,18 +22,13 @@
 </template>
 
 <template name="uploadItem">
-        <p>url? {{upload.url}}</p>
-        <p>isImage? {{upload.isImage}}</p>
-        <p>isUploaded? {{upload.isUploaded}}</p>
-        <p>metadata.owner? {{upload.metadata.owner}}</p>
-        <p>name? {{upload.name}}</p>
-        <p>type? {{upload.type}}</p>
-        <p>size? {{upload.size}}</p>
+        <!-- <p>isUploaded? {{upload.isUploaded}}</p> -->
+        <!-- <p>metadata.owner? {{upload.metadata.owner}}</p> -->
     <li>
         <button class="delete">&times;</button>
         <!-- TODO determine if the current item is the profile pic -->
-        {{#if upload.isImage}}<button class="unsetProfile button btn btn-default">Unset Profile Pic</button><button class="setProfile button btn btn-default">Set Profile Pic</button>{{/if}}
-        <img src="{{upload.url}}" class="itemImage" alt="img">
-        {{upload.sender}} | {{formatTime(upload.dateTime)}} | {{upload.subject}} <br/>
+        {{#if upload.isImage}}<button class="setProfile button btn btn-default">Set Profile Pic</button>{{/if}}
+        <a href="{{upload.url}}" target="_blank"><img src="{{thumbnail upload}}" class="itemImage" alt="img"></a>
+        {{formatTime(upload.uploadedAt)}} | {{upload.type}} | {{upload.size}} bytes | {{upload.name}}
     </li>
 </template>

@@ -15,16 +15,25 @@ Template.uploads.helpers({
     // only manage my own uploads
     return Uploads.find({'metadata.owner': Meteor.userId()}, {sort: {uploadedAt: -1}});
   },
+  
   uploadCount: function () {
     return Uploads.find({'metadata.owner': Meteor.userId()}).count();
+  },
+});
+  
+Template.uploadItem.helpers({
+  thumbnail: function(upload) {
+    if (upload.isImage()) {
+      return upload.url();
+    } else {
+      return "/images/icons/pclip.png";
+    }
   },
 });
 
 Template.uploads.events({
   
   'change #inputFileUpload': function(event, template) {
-    console.log('input changed');
-    console.log('event.target',event.target);
     var owner = Meteor.userId();
     FS.Utility.eachFile(event, function(file) {
       Uploads.insert(file, function (err, fileObj) {
@@ -32,7 +41,7 @@ Template.uploads.events({
         if (err) {
           console.log('error ... ', err);
         } else {
-          console.log('Upload result: ', fileObj);
+          // console.log('Upload result: ', fileObj);
           // console.log('Upload result: url ', fileObj.url());
           // console.log('Upload result: isImage? ', fileObj.isImage());
           // console.log('Upload result: size', fileObj.size());
@@ -62,7 +71,6 @@ Template.uploads.events({
   },
   
   "click .setProfile": function () {
-    console.log('this.upload.url',this.upload.url());
     Meteor.call("setProfilePic", {photoUrl: this.upload.url(), photoId: this.upload._id});
   },
   
