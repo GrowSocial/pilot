@@ -77,7 +77,6 @@
 
                 </div> 
 
-
                 <div id="message" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
@@ -88,7 +87,14 @@
         </div>
 
         <div id="memberPicture" class="clearfix">
-            <img id="membPic" src="{{profilePicUrl member_key}}" class="img-circle image" />
+            {{#if myProfile}}
+                <a href="{{pathFor 'uploads'}}">
+                <img id="membPic" src="{{profilePicUrl member_key}}" class="img-circle image" 
+                data-toggle="popover" data-placement="top" data-trigger="hover" 
+                title="Profile Picture" data-content="Click to add or change picture" />
+                </a>
+            {{else}} <img id="membPic" src="{{profilePicUrl member_key}}" class="img-circle image"  />
+            {{/if}}
         </div>
 
         <p id="membrfunctXX">{{fullname}}  </p>
@@ -598,17 +604,18 @@
 
         </div>
 
-
-
-
         <div id="memberPicture_MOB" class="clearfix">
-            <img id="membPic" src="{{profilePicUrl member_key}}" class="img-circle image" />
+            {{#if myProfile}}
+                <a href="{{pathFor 'uploads'}}">
+                <img id="membPic" src="{{profilePicUrl member_key}}" class="img-circle image" 
+                data-toggle="popover" data-placement="top" data-trigger="hover" 
+                title="Profile Picture" data-content="Click to add or change picture" />
+                </a>
+            {{else}} <img id="membPic" src="{{profilePicUrl member_key}}" class="img-circle image"  />
+            {{/if}}
         </div>
 
-        <!-- div id="membrName_MOB">{{fullname}}  </div -->
-        <div id="navbarPROFILE_MOB" class="clearfix">
-            <p id="membrName_MOB">{{fullname}}</p>
-        </div>
+        <div id="navbarPROFILE_MOB" class="clearfix"> <p id="membrName_MOB">{{fullname}}</p> </div>
 
         <div id="badges_MOB" class="clearfix">
 
