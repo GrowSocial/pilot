@@ -58,17 +58,28 @@
 
 
 #memberPicture ,#memberPicture_MOB{z-index: 15;
-    float: left;clear: none; position: relative; top: 0px; left: 0px;
+    float: left;
+    clear: none; position: relative; top: 0px; left: 0px;
     height: 180px; width: 180px;margin-top: -3%; margin-left: 20%;
     background-color: rgb(242, 242, 242);
     border-top-left-radius: 50%;  border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%;
     border: 5px solid rgb(255, 255, 255);
       
 }
-#memberPicture_MOB{ z-index: 35; height: 170px; width: 170px; margin-left: auto; margin-right: auto;float: none;
-    border: 2px solid rgb(255, 255, 255);
+#memberPicture_MOB{ /*z-index: 35; height: 170px; width: 170px;*/ 
+    /*margin-left: auto;*/ 
+    margin-right: 10%;float: right;
+    /*border: 2px solid rgb(255, 255, 255);*/
     margin-top: 4%;   
 }
+#membPic { float: left; 
+    clear: none; 
+max-width: 100%;width: 178px;height: 178px;
+margin-left: -0%; margin-top: -1.627%; margin-right: 0%; 
+color: rgb(0, 0, 0);  
+}
+
+
 #membrName_MOB{  color: rgb(50,50,50); font-family: lato; 
     text-align: center;/*position:absolute;*/
     letter-spacing:2px; height: auto;   
@@ -428,11 +439,7 @@ font-family: lato;font-size: 0.875em; color: black;
 
 
 
-#membPic { float: left; clear: none; 
-max-width: 100%;width: 178px;height: 178px;
-margin-left: -0%; margin-top: -1.627%; margin-right: 0%; 
-color: rgb(0, 0, 0);  
-}
+
 
 
 
