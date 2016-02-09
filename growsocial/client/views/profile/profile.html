@@ -291,9 +291,9 @@
                 {{/if}}
 
                 {{#each item in boxItems}}       
-                {{#with selectMarketItems item}}
+                {{#with selectMarketItems item member_key}}
                 <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
+                    <a href="{{pathForStore productId}}">
                     <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
                     <p id="itemAlert">{{salesAlert}}<br /></p>  
                     <p id="itemDesc"> {{name  }} </p><br />
@@ -302,7 +302,7 @@
                     {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
                     {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                
+                    <a href="{{pathForStore productId}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                
                 </div>
                 {{/with}}
                 {{/each}}
@@ -331,7 +331,7 @@
                     <p id="itemDescShort">{{description}} </p>
                     {{#if (unitType) }}<p id="itemDescShort"> by: {{unitType}}</p> {{/if}}
                     {{#if (date_entered)}}<p id="itemDescShort"> Listed:{{formatTime date_entered}} </p>{{/if}}                   
-                    <a href="{{pathForMarketplace}}">
+                    <a href="{{pathForStore productId}}">
                         <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" style="margin-top:12px;" />
                     </a>
                     {{/with}}
@@ -341,7 +341,7 @@
                     <p id="itemDescShort"> {{name}} </p>
                     <p id="itemDescShort">{{description}} </p>
                     {{#if (date_entered)}}<p id="itemDescShort"> Listed:{{formatTime date_entered}}</p> {{/if}}  
-                    <a href="{{pathForMarketplace}}">
+                    <a href="{{pathForStore productId}}">
                         <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" style="margin-top:12px;" />
                     </a>
                     {{/with}}
@@ -351,7 +351,7 @@
                     <p id="itemDescShort"> {{name}} </p>
                     <p id="itemDescShort">{{description}} </p>
                     {{#if (date_entered)}}<p id="itemDescShort"> Listed:{{formatTime date_entered}}</p> {{/if}}  
-                    <a href="{{pathForMarketplace}}">
+                    <a href="{{pathForStore productId}}">
                         <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" style="margin-top:12px;" />
                     </a>
                     {{/with}}
@@ -361,7 +361,7 @@
                     <p id="itemDescShort"> {{name}} </p>
                     <p id="itemDescShort">{{description}} </p>
                     {{#if (date_entered)}}<p id="itemDescShort"> Listed:{{formatTime date_entered}}</p> {{/if}}  
-                    <a href="{{pathForMarketplace}}">
+                    <a href="{{pathForStore productId}}">
                         <img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" style="margin-top:12px;" />
                     </a>
                     {{/with}}
@@ -683,7 +683,7 @@
                 {{#each item in boxItems}}       
                 {{#with selectMarketItems item}}
                 <div id="scrollBoxItem1" class="clearfix">
-                    <a href="{{pathForMarketplace}}">
+                    <a href="{{pathForStore productId}}">
                     <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
                     <p id="itemAlert">{{salesAlert}}<br /></p>  
                     <p id="itemDesc"> {{name  }} </p><br />
@@ -692,7 +692,7 @@
                     {{#if (unitPrice)}} <p id="itemDesc">{{currency}}${{unitPrice}} </p><br />{{/if}}
                     {{#if (date_entered)}}<p id="itemDesc"> Listed:{{formatTime date_entered}} </p>{{/if}}                      
                     <img id="SelectFavorite" src="/images/icons/favorite-iconTRUE.png" class="image" />
-                    <a href="{{pathForMarketplace}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                
+                    <a href="{{pathForStore productId}}"><img id="SelectWatch" src="/images/icons/watch-iconTRUE.png" class="image" /></a>                
                 </div>
                 {{/with}}
                 {{/each}}

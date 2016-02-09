@@ -1,28 +1,35 @@
+// TODO on select a vendor / product:
+//     FlowRouter.setQueryParams({'v': vendor_key});
+//     FlowRouter.setQueryParams({'p': productId});
+
+
 Template.marketplace.helpers({
-  // "selectedProduct" is the currently selected product, could be none selected.
-  
-  // TODO There will also be a list of other available products,
-  // depending on whether showing general marketplace, or storefront for
-  // a particular business or a particular person.
-  
-  // pull vendor/product list from the database
   vendorList: function () { 
+    // all vendors
     return MarketItems.find();
   },
-/*
-  selectedProduct: function() {
-    var productId = FlowRouter.getParam("productId");
-    console.log("This is my selected product: ", productId);
-    if (productId && productId !== '0') {
-      return productId;
+});
+
+Template.store.helpers({
+  vendorList: function () { 
+    // particular vendor, default to "my store"
+    var vendor_key = FlowRouter.getQueryParam("v");
+    if (!vendor_key) {
+      vendor_key = Meteor.userId();
+    }
+    if (vendor_key) {
+      return MarketItems.find({'vendor_key': vendor_key});
     } else {
       return [];
     }
   },
-*/
 });
 
-Template.marketplaceItem.helpers({
+Template.productShelf.helpers({
+  // none yet
+});
+
+Template.product.helpers({
   disclaimer: function() {
     return Random.choice([
       "This product may be in imagination only.",
@@ -121,6 +128,9 @@ Template.marketplace.events({
       }
     });
   },
+});
+
+Template.product.events({
   'submit .addToCartForm': function(event, template) {
     // Prevent browser from restarting
     event.preventDefault();

@@ -26,6 +26,7 @@
               <div class="vendor">
                 <p>{{order.vendorName}}</p>
               </div>
+              <a type="button" class="btn btn-default" href="{{pathForStore order.vendorUserId}}">Store</a>
               <ul class="allProducts">
                 {{#each product in order.products}}
                   {{> lineItem order=order product=product}}

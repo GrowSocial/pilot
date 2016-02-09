@@ -21,6 +21,13 @@ Template.cart.helpers({
   },
 });
 
+Template.orderDetail.helpers({
+  pathForStore: function(vendorId) {
+    var path = FlowRouter.path("store", {}, {'v': vendorId});
+    return path;
+  },
+});
+
 Template.cart.events({
   'click .addSample': function(event) {
     event.preventDefault();

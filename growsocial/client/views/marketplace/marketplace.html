@@ -1,27 +1,45 @@
-<template name="marketplace">
+<template name="store">
     <div class="container marketContainer">
-            <div class="row">
-        <h1>Marketplace</h1>
-        <span class="label label-default">Create marketplace items in your profile page.</span>
-        <p>Phase&nbsp;1 will include filters and searching</p>
-        <!-- <button type="button" id="addSampleProductsButton" class="btn btn-default" >Add sample products</button> -->
-        <!-- <button type="button" id="removeSampleProductsButton" class="btn btn-default" >Remove all sample products</button> -->
-        <div id="marketNotifyDiv"></div>
-
+        <div class="row">
+            <h1>Store</h1>
+            <a href="/marketplace" type="button" class="btn btn-default">Marketplace</a>
+            <span class="label label-default">Create marketplace items in your profile page.</span>
+            <p>Phase&nbsp;1 will include filters and searching</p>
+            <div id="marketNotifyDiv"></div>
         </div>  <!-- row -->
  
         <div class="row">
-            {{#each vendor in vendorList}}
-                {{#each item in vendor.items}}
-                    {{> marketplaceItem vendor=vendor item=item}}
-                {{/each}}  <!-- item -->
-            {{/each}}  <!-- vendor -->
+            {{> productShelf vendors=vendorList}}
         </div>  <!-- row -->
-            
     </div>   <!-- container -->
 </template>
 
-<template name="marketplaceItem">
+<template name="marketplace">
+    <div class="container marketContainer">
+        <div class="row">
+            <h1>Marketplace</h1>
+            <span class="label label-default">Create marketplace items in your profile page.</span>
+            <p>Phase&nbsp;1 will include filters and searching</p>
+            <div id="marketNotifyDiv"></div>
+        </div>  <!-- row -->
+ 
+        <div class="row">
+            {{> productShelf vendors=vendorList}}
+        </div>  <!-- row -->
+    </div>   <!-- container -->
+</template>
+
+<template name="productShelf">
+  <div class="row">
+      {{#each vendor in vendors}}
+          {{#each item in vendor.items}}
+              {{> product vendor=vendor item=item}}
+          {{/each}}  <!-- item -->
+      {{/each}}  <!-- vendor -->
+  </div>  <!-- row -->
+</template>
+
+<template name="product">
     <!-- TODO maybe change column size when selected, might not need to -->
     <!-- <div class={{#if selectedItem item}}"col-xs-12 col-sm-4 col-md-3 col-lg-1"{{else}}"col-xs-12 col-sm-3 col-md-2 col-lg-1"{{/if}}> -->
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">

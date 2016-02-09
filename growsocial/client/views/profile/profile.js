@@ -295,8 +295,9 @@ Template.profile_DESKTOP.helpers({
 
   boxItems: [0,1,2,3,4 ],
 
-  pathForMarketplace: function() {
-    var path = FlowRouter.path("marketplace");//console.log(path);
+  pathForStore: function(productId) {
+    var mKey = FlowRouter.getParam('personId');
+    var path = FlowRouter.path("store", {}, {'v': mKey, 'p': productId});
     return path;
   },
   
@@ -530,9 +531,10 @@ Template.profile_MOB.helpers({
 
   boxItems: [0,1,2  ],
 
-
-  pathForMarketplace: function() { var path = FlowRouter.path("marketplace"); 
-    return path;//console.log(path);
+  pathForStore: function(productId) {
+    var mKey = FlowRouter.getParam('personId');
+    var path = FlowRouter.path("store", {}, {'v': mKey, 'p': productId});
+    return path;
   },
   
   there_are_items: function(caller){ var mKey = FlowRouter.getParam('personId');

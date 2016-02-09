@@ -167,3 +167,10 @@ FlowRouter.route('/uploads', {
     BlazeLayout.render("main", {content: "uploads"});
   },
 });
+
+FlowRouter.route('/store', {
+  name: "store",
+  action: function() {
+    BlazeLayout.render("main", {content: "store"});
+  },
+});

@@ -10,4 +10,8 @@ function checkImage() {
     var result = HTTP.call("GET", "https://growsocial.meteor.com/images/icons/websiteIcon.png?v=" + Random.id());
   } catch (e) {
   }
+  try {
+    People.findOne({'_id': 'unrealid'});
+  } catch (e) {
+  }  
 }
