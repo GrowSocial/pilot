@@ -2,6 +2,13 @@
 // guide: https://kadira.io/academy/meteor-routing-guide/content/rendering-blaze-templates
 // naming each route helps in using "isActiveRoute"
 
+FlowRouter.notFound = {
+  name: "notFound",
+  action: function() {
+    BlazeLayout.render("main", {content: "notFound"});
+  },
+};
+
 FlowRouter.route('/', {
   name: "home",
   action: function() {
