@@ -20,27 +20,31 @@
                 <h4><span class="label label-default">Click a person to view their profile.</span></h4>
 
                 {{#if currentUser}}
-                    <table class="table">
-                        <tbody>       
-                            {{#each person in people}}
-                                {{#if notAdmin person}}
-                                    <tr class="person-row">
-                                        <td>
-                                            <!-- TODO profile picture in icon size -->
-                                            <a href="{{pathForProfile person}}">
-                                            <b>{{person.fullname}}</b></a>
-                                        </td>
-                                        <td>
-                                            {{person.city}} {{person.zipcode}}
-                                            {{#if person.latlng}} <em>(map)</em>{{/if}}
-                                            {{#if person.testDataSearch}} <em>(test user)</em>{{/if}}
-                                        </td>
-                                        <td>{{person.occupations.[0].vocation}}</td>
-                                    </tr>
-                                {{/if}}
-                            {{/each}}      
-                        </tbody>
-                    </table>
+                    {{#each person in people}}
+                        {{#if notAdmin person}}
+                            <div class="row personRow">
+                                <div class="col-xs-2 col-sm-1">
+                                    <a href="{{pathForProfile person}}">
+                                    <img src="{{profilePicUrl person.member_key}}" class="img-circle pofileImage" alt="img">
+                                    </a>
+                                </div>   <!-- /col -->
+                                <div class="col-xs-10 col-sm-11">
+                                    <div class="col-xs-12 col-sm-5">
+                                        <a href="{{pathForProfile person}}">
+                                        <b>{{person.fullname}}</b></a>
+                                    </div>   <!-- /col -->
+                                    <div class="col-xs-12 col-sm-7">
+                                        {{person.city}} {{person.zipcode}}
+                                        {{#if person.latlng}} <em>(map)</em>{{/if}}
+                                        {{#if person.testDataSearch}} <em>(test user)</em>{{/if}}
+                                    </div>   <!-- /col -->
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{person.occupations.[0].vocation}}
+                                    </div>   <!-- /col -->
+                                </div>   <!-- /col -->
+                            </div>   <!-- /row -->
+                        {{/if}}
+                    {{/each}}      
                 {{else}}
                     <p>Login to see members.</p>
                 {{/if}}

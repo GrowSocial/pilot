@@ -7,6 +7,16 @@
   padding-bottom: 10px;
 }
 
+.peopleContainer .pofileImage {
+  height: 43px;
+  width: 43px;
+  margin-right: 12px;
+}
+
+.peopleContainer .personRow {
+  padding-bottom: 6px;
+}
+
 .peopleContainer {
   height: 100%;
 }
