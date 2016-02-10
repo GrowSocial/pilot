@@ -7,6 +7,22 @@
   padding-bottom: 10px;
 }
 
+.peopleContainer .pofileImage {
+  height: 43px;
+  width: 43px;
+  margin-right: 12px;
+}
+
+.peopleContainer .personRow {
+  padding-bottom: 6px;
+}
+
+.peopleContainer .showMapButton {
+  float: right;
+  position: relative;
+  font-size: 24px;
+}
+
 .peopleContainer {
   height: 100%;
 }

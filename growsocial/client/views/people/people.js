@@ -1,12 +1,21 @@
 // TODO add a button on the map "back to list"
 
-Template.people.helpers({
-  people: function () {
-    return People.find({},{sort: {lastname: 1, firstname: 1}});
+Template.people.events({
+  'click .showMapButton': function(event, instance) {
+    event.preventDefault();
+
+    // scroll window to map
+    var sel = $('#peopleMap')[0];
+    if (sel) sel.scrollIntoView(true);
+
+    if (this.person && this.person.latlng) {
+      // jump to person in map
+      instance.jumpto.set('person', this.person);
+    }
   },
-  notAdmin: function(person) {
-    return (person.member_key != 'pseudo_0');
-  },
+});
+
+Template.personDetail.helpers({
   pathForProfile: function(person) {
     var params = {
       personId: person.member_key
@@ -14,6 +23,25 @@ Template.people.helpers({
     var path = FlowRouter.path("profile", params);
     return path;
   },
+});
+
+Template.people.helpers({
+  people: function () {
+    return People.find({},{sort: {lastname: 1, firstname: 1}});
+  },
+  
+  notAdmin: function(person) {
+    return (person.member_key != 'pseudo_0');
+  },
+  
+  jumpto: function() {
+    return Template.instance().jumpto;
+  },
+});
+
+Template.people.onCreated(function() {
+  const instance = this;
+  instance.jumpto = new ReactiveDict(); 
 });
 
 Template.peopleMap.onCreated(function() {
@@ -29,6 +57,7 @@ Template.peopleMap.onRendered(function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
   // L.tileLayer.provider('Thunderforest.Outdoors').addTo(instance.leafletmapp);
   instance.leafletmapp = L.map('peopleMap');
+  
   var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   // var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';  // no https certificate on osm.org
   var osmAttrib='&copy; OpenStreetMap contributors';
@@ -98,6 +127,44 @@ Template.peopleMap.onRendered(function() {
       instance.leafletmapp.setView(newLatLng, 11);
     }
     
+  });   // /autorun
+
+  instance.autorun(function() {
+    // pull person chosen through reactiveDict
+    var jumptoPerson = instance.data.jumpto && instance.data.jumpto.get('person');
+    if (jumptoPerson) {
+      var jumptoLatlng = jumptoPerson.latlng;
+      
+      // find the appropriate marker
+      var jumptoMarker = null;
+      for (var i=0, len = instance.peopleMarkersList.length; i < len; i++) {
+        var marker = instance.peopleMarkersList[i];
+        // instance.leafletmapp.removeLayer(marker);
+        var mlatlng = marker.getLatLng();
+        if (mlatlng.lat === jumptoLatlng.lat && mlatlng.lng === jumptoLatlng.lng) {
+          // we have a match!
+          jumptoMarker = marker;
+          break;
+        }
+      }
+      
+      if (!jumptoMarker) {
+        // didn't find a marker, so create one
+        jumptoMarker = L.marker(jumptoLatlng);
+
+        // TODO popup to have: profile picture, link back to item in list
+        var popupText = "<b>" + jumptoPerson.fullname + "</b>";
+        if (jumptoPerson.city) {
+          popupText = popupText + "<br>" + jumptoPerson.city;
+        }
+        jumptoMarker.bindPopup(popupText);
+        jumptoMarker.addTo(instance.leafletmapp);
+      }
+      
+      // set map to look at chosen jumpto
+      instance.leafletmapp.setView(jumptoLatlng, 11);
+      jumptoMarker.openPopup();
+    }
   });   // /autorun
 
 });
