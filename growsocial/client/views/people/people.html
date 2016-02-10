@@ -18,34 +18,12 @@
                 filters will be turned on.</p>
                 
                 <h4><span class="label label-default">Click a person to view their profile.</span></h4>
+                <h4><span class="label label-default">Click map marker to show person on map.</span></h4>
 
                 {{#if currentUser}}
                     {{#each person in people}}
                         {{#if notAdmin person}}
-                            <div class="row personRow">
-                                <div class="col-xs-2 col-sm-1">
-                                    <a href="{{pathForProfile person}}">
-                                    <img src="{{profilePicUrl person.member_key}}" class="img-circle pofileImage" alt="img">
-                                    </a>
-                                </div>   <!-- /col -->
-                                <div class="col-xs-10 col-sm-11">
-                                    {{#if person.latlng}}
-                                        <span class="showMapButton glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                                        <!-- <button class="showMapButton button btn btn-default">map</button> -->
-                                    {{/if}}
-                                    <div class="col-xs-10 col-sm-5">
-                                        <a href="{{pathForProfile person}}">
-                                        <b>{{person.fullname}}</b></a>
-                                    </div>   <!-- /col -->
-                                    <div class="col-xs-12 col-sm-6">
-                                        {{person.city}} {{person.zipcode}}
-                                    </div>   <!-- /col -->
-                                    <div class="col-xs-12 col-sm-12">
-                                        {{person.occupations.[0].vocation}}
-                                        {{#if person.testDataSearch}} <em>(test user)</em>{{/if}}
-                                    </div>   <!-- /col -->
-                                </div>   <!-- /col -->
-                            </div>   <!-- /row -->
+                          {{> personDetail person=person}}
                         {{/if}}
                     {{/each}}      
                 {{else}}
@@ -54,12 +32,38 @@
             </div>  <!-- /column -->
             <div class="col-md-6 colB">
                 {{#if currentUser}}
-                    {{> peopleMap people=people}}
+                    {{> peopleMap people=people jumpto=jumpto}}
                 {{/if}}
             </div> <!-- /column -->
         </div>   <!-- /wrapper -->
     </div> <!-- /row -->
 </div> <!-- /container -->
+</template>
+
+<template name="personDetail">
+    <div class="row personRow">
+        <div class="col-xs-2 col-sm-1">
+            <a href="{{pathForProfile person}}">
+            <img src="{{profilePicUrl person.member_key}}" class="img-circle pofileImage" alt="img">
+            </a>
+        </div>   <!-- /col -->
+        <div class="col-xs-10 col-sm-11">
+            {{#if person.latlng}}
+                <span class="btn showMapButton glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            {{/if}}
+            <div class="col-xs-10 col-sm-5">
+                <a href="{{pathForProfile person}}">
+                <b>{{person.fullname}}</b></a>
+            </div>   <!-- /col -->
+            <div class="col-xs-12 col-sm-6">
+                {{person.city}} {{person.zipcode}}
+            </div>   <!-- /col -->
+            <div class="col-xs-12 col-sm-12">
+                {{person.occupations.[0].vocation}}
+                {{#if person.testDataSearch}} <em>(test user)</em>{{/if}}
+            </div>   <!-- /col -->
+        </div>   <!-- /col -->
+    </div>   <!-- /row -->
 </template>
 
 <template name="peopleMap">
