@@ -17,6 +17,12 @@
   padding-bottom: 6px;
 }
 
+.peopleContainer .showMapButton {
+  float: right;
+  position: relative;
+  font-size: 24px;
+}
+
 .peopleContainer {
   height: 100%;
 }
