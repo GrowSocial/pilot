@@ -17,6 +17,11 @@
         </li>
       </ul>
     </div>
+    <div>
+      {{#if currentUser}}
+        {{> archivedOrders}}
+      {{/if}}
+    </div>
   </div>
 </template>
 
@@ -67,4 +72,15 @@
                       <p class="currency">{{product.currency}}</p>
                     </span>
                   </li>
+</template>
+
+<template name="archivedOrders">
+  <!-- if logged in, show previous messages received from the same user -->
+  <!-- TODO if logged in as admin, option to browse all feedback // OR have an admin page for this -->
+  <h2>Completed Orders</h2>
+  <ul>
+      {{#each order in archive}}
+        <li>Seller: {{order.vendorName}}</li>
+      {{/each}}
+  </ul>
 </template>
