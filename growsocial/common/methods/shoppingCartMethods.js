@@ -304,6 +304,13 @@ Meteor.methods({
         }
       });
     }
+    
+    // TODO add order to archive, then remove from cart
+    // order.vendorName
+    ArchivedOrders.insert({
+      userId: Accounts.userId(),
+      vendorName: order.vendorName,
+    });
   },
 
 });

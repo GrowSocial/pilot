@@ -70,7 +70,13 @@ Meteor.publish("shoppingCart", function() {
 */
 });
 
-
+Meteor.publish("archivedOrders", function() {
+  if (this.userId) {
+    return ArchivedOrders.find({'userId': this.userId});
+  } else {
+    return [];
+  }
+});
 
 Meteor.publish('getLatestReviews', function(id) { check(id, String);
   var MAX_RESULTS = 2;

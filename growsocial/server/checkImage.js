@@ -11,7 +11,7 @@ function checkImage() {
   } catch (e) {
   }
   try {
-    People.findOne({'_id': 'unrealid'});
+    People.findOne({'_id': Random.id()});
   } catch (e) {
   }  
 }

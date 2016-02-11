@@ -88,3 +88,10 @@ Template.cart.events({
   },
 
 });
+
+Template.archivedOrders.helpers({
+  archive: function() {
+    return ArchivedOrders.find({userId: Meteor.userId()});
+  },
+});
+
