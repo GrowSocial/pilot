@@ -30,52 +30,80 @@
 </template>
 
 <template name="productShelf">
+<p>selected productId: {{selectedVP.productId}}</p>
   <div class="row">
       {{#each vendor in vendors}}
           {{#each item in vendor.items}}
-              {{> product vendor=vendor item=item}}
+              {{> productSummary vendor=vendor item=item}}
+              {{#if isSelected item}}
+                <div class="row">
+                </div>  <!-- row -->
+                <div id="selectedRow" class="row selectedRow">
+                  <!-- <p>SELECTED {{shorten item.name 100}}</p> -->
+                  {{> productDetail vendor=vendor item=item}}
+                </div>  <!-- row -->
+              {{/if}}
           {{/each}}  <!-- item -->
       {{/each}}  <!-- vendor -->
   </div>  <!-- row -->
 </template>
 
-<template name="product">
-    <!-- TODO maybe change column size when selected, might not need to -->
-    <!-- <div class={{#if selectedItem item}}"col-xs-12 col-sm-4 col-md-3 col-lg-1"{{else}}"col-xs-12 col-sm-3 col-md-2 col-lg-1"{{/if}}> -->
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+<template name="productSummary">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 productSummary">
         <div class="thumbnail">
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
             <div class="caption">
                 <h4 class="itemName">{{shorten item.name 100}}</h4>
-                {{#if selectedItem item}}<p class="itemDescription">{{shorten item.description 100}}</p>{{/if}}
-                <p class="priceLine">${{item.unitPrice}} {{shorten item.currency 8}} ({{shorten item.unitType 117}})</p>
-                {{#if selectedItem item}}
-                    <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink vendor}}">{{shorten vendor.vendorName 50}}</a></p>
-                    {{#if currentUser}}
-                        <form class="form-inline addToCartForm">
-                            <div class="form-group col-container">
-                                <label class="col-xs-3 qtylabel control-label">qty:</label>
-                                <div class="input-group col-xs-9">
-                                    <input type="text" name="quantityNum" class="form-control" aria-label="range" placeholder="quantity..." value="1"/>
-                                    <span class="input-group-addon" aria-label="{{shorten item.unitType 30}}">{{shorten item.unitType 17}}</span>
-                                </div>  <!-- /input-group -->
-                            </div>   <!-- /form-group -->
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <input type="submit" class="addToCart btn btn-primary" value="Buy" />
-                                </div>
-                                <div class="col-xs-7 col-xs-offset-1 alert buyAlert" role="alert"> </div>
+                <p class="itemDescription">{{shorten item.description 100}}</p>
+                <p class="priceLine">${{item.unitPrice}} {{shorten item.currency 8}} ({{shorten item.unitType 17}})</p>
+                <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink vendor}}">{{shorten vendor.vendorName 50}}</a></p>
+                <a type="button" class="btn btn-default moreButton">Show more</a>
+                <h6><small>{{disclaimer}}</small></h6>
+            </div>   <!-- caption -->
+          <!-- </a> -->    <!-- thumbnail-link -->
+        </div>  <!-- thumbnail -->
+    </div>  <!-- col -->
+</template>
+
+<template name="productDetail">
+    <div class="col-xs-12 productDetail">
+        <div class="thumbnail">
+          <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
+            <img src="{{getItemImage(item)}}" alt="tomato">
+            <div class="caption">
+                <h4 class="itemName">{{shorten item.name 1000}}</h4>
+                <p class="itemDescription">{{shorten item.description 10000}}</p>
+                <p class="priceLine">${{item.unitPrice}} {{shorten item.currency 8}} ({{shorten item.unitType 17}})</p>
+                <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink vendor}}">{{shorten vendor.vendorName 100}}</a></p>
+                <p>Order options</p>
+                <p>Delivery: pick up from farm gate, Wednesdays and Fridays, 3pm-6pm</p>
+                <p>Payment: cash on pickup, prepay here, or trade for a handful of magic beans</p>
+                {{#if currentUser}}
+                  {{#if isMyProduct vendor}}
+                    <a type="button" class="btn btn-default editButton" disabled>Edit</a>
+                    <span>Edit product will be here in Phase&nbsp;1. For now, edit in your profile page.</span>
+                  {{else}}
+                    <form class="form-inline addToCartForm">
+                        <div class="form-group col-container">
+                            <label class="col-xs-3 qtylabel control-label">qty:</label>
+                            <div class="input-group col-xs-9">
+                                <input type="text" name="quantityNum" class="form-control" aria-label="range" placeholder="quantity..." value="1"/>
+                                <span class="input-group-addon" aria-label="{{shorten item.unitType 30}}">{{shorten item.unitType 17}}</span>
+                            </div>  <!-- /input-group -->
+                        </div>   <!-- /form-group -->
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <input type="submit" class="addToCart btn btn-primary" value="Buy" />
                             </div>
-                        </form>
-                    {{else}}
-                        <p><span class="label label-default">Login to buy item.</span></p>
-                    {{/if}}
-                    <h6><small>{{disclaimer}}</small></h6>
+                            <div class="col-xs-7 col-xs-offset-1 alert buyAlert" role="alert"> </div>
+                        </div>
+                    </form>
+                  {{/if}}
                 {{else}}
-                    <p>{{vendor.vendorName}}</p>
-                    <p><a href="#" class="btn btn-default" role="button">Select</a></p>
+                    <p><span class="label label-default">Login to order item.</span></p>
                 {{/if}}
+                <h6><small>{{disclaimer}}</small></h6>
             </div>   <!-- caption -->
           <!-- </a> -->    <!-- thumbnail-link -->
         </div>  <!-- thumbnail -->

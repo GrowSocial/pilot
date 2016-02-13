@@ -1,12 +1,24 @@
-.marketContainer .thumbnail{
-    /* width: 300px; */
-    height: 450px;
-    overflow: hidden; /* auto; */
+.marketContainer .productSummary .thumbnail {
+    height: 430px;
+    overflow: hidden;
 }
 
-.marketContainer .thumbnail img {
+.marketContainer .productDetail {
+    padding-top: 15px;
+}
+
+.marketContainer .productDetail .thumbnail {
+}
+
+.marketContainer  .productSummary .thumbnail img {
     width: 200px;
     height: 200px;
+    overflow: hidden;
+}
+
+.marketContainer .productDetail .thumbnail img {
+    width: 300px;
+    height: 300px;
     overflow: hidden;
 }
 
@@ -50,4 +62,14 @@
   padding-top: 2px;
   margin-bottom: 0;
   margin-top: 4px;
+}
+
+.marketContainer .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.marketContainer .selectedRow {
+  width: 100%;
+  background-color: #0e0;
 }

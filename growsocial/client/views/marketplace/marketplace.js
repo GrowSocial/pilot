@@ -1,8 +1,3 @@
-// TODO on select a vendor / product:
-//     FlowRouter.setQueryParams({'v': vendor_key});
-//     FlowRouter.setQueryParams({'p': productId});
-
-
 Template.marketplace.helpers({
   vendorList: function () { 
     // all vendors
@@ -25,82 +20,93 @@ Template.store.helpers({
   },
 });
 
+var scrollToSelected = function() {
+  var sel = $('#selectedRow')[0];
+  if (sel) sel.scrollIntoView(false);
+}
+
+Template.productShelf.onRendered(function() {
+  const instance = this;
+  
+  // when selection changes, lag a little then jump to the selection
+  instance.autorun(function() {
+    if(FlowRouter.getQueryParam("p")) {
+      Meteor.setTimeout(scrollToSelected, 300);
+    }
+  });
+});
+
 Template.productShelf.helpers({
-  // none yet
-});
+  selectedVP: function() {
+    return {
+      vendorId: FlowRouter.getQueryParam("v"),
+      productId: FlowRouter.getQueryParam("p"),
+    };
+  },
 
-Template.product.helpers({
-  disclaimer: function() {
-    return Random.choice([
-      "This product may be in imagination only.",
-      "Please read fine print carefully.",
-      "Product to be taken orally.",
-      "Keep away from non-children.",
-      "I can't believe it's not apple!",
-      "Shaken, not stirred.",
-      "Stirred, not shaken.",
-      "May your life be interesting.",
-      "Gather at Cynthia's house at 7pm for the big party.",
-    ]);
-  },
-  getItemImage: function(item) {
-    // TODO get larger image if selected item
-    if (item && item.photo && item.photo.src) {
-      return item.photo.src;
-    } else {
-      return "/images/user-images/AuntRubyTomato128.png";
+  isSelected: function(item) {
+    if (item.productId === FlowRouter.getQueryParam("p")) {
+      return true;
     }
-  },
-  shorten: function(theString,length) {
-    // TODO get larger image if selected item
-    if (theString) {
-      return theString.substring(0, length);
-    } else {
-      return "";
-    }
-  },
-  selectedItem: function(item) {
-    // TODO selected item track by router queryParam
-    return true;
-    // if (item.productId === "LsXh4rjRPssvkmrkv") {
-      // return true;
-    // } else {
-      // return false;
-    // }
-  },
-  getVendorLink: function(vendor) {
-    // TODO vendorLink is currently tainted by user entry!
-    // if (vendor && vendor.vendorLink) {
-      // return vendor.vendorLink;
-    // }
-    if (vendor && vendor.vendorUserId) {
-      return "/profile/" + vendor.vendorUserId;
-    }
-    return "";
   },
 });
 
-Template.marketplace.onDestroyed(function() {
-  $('.popoverThis').popover('hide');
+// shared helper functions in marketplace
+
+var helperMarketGetItemImage = function(item) {
+  // TODO get larger image if selected item
+  if (item && item.photo && item.photo.src) {
+    return item.photo.src;
+  } else {
+    return "/images/user-images/AuntRubyTomato128.png";
+  }
+}
+
+var helperMarketGetVendorLink = function(vendor) {
+  // TODO vendorLink is currently tainted by user entry!
+  // if (vendor && vendor.vendorLink) {
+    // return vendor.vendorLink;
+  // }
+  if (vendor && vendor.vendorUserId) {
+    return "/profile/" + vendor.vendorUserId;
+  }
+  return "";
+}
+
+var helperMarketDisclaimer = function() {
+  return Random.choice([
+    "This product may be in imagination only.",
+    "Please read fine print carefully.",
+    "Product to be taken orally.",
+    "Keep away from non-children.",
+    "I can't believe it's not apple!",
+    "Shaken, not stirred.",
+    "Stirred, not shaken.",
+    "May your life be interesting.",
+    "Gather at Cynthia's house at 7pm for the big party.",
+  ]);
+}
+
+Template.productSummary.helpers({
+  getItemImage: helperMarketGetItemImage,
+
+  getVendorLink: helperMarketGetVendorLink,
+
+  disclaimer: helperMarketDisclaimer,
 });
 
-Template.marketplace.onRendered(function() {
-  // $('.popoverThis').popover({
-      // html: true,
-      // title: 'Add to Cart <a class="close">&times;</a>',
-      // content: $('.popoverContent').html(),
-  // });
-  $('.popoverThis').popover();
+Template.productDetail.helpers({
+  getItemImage: helperMarketGetItemImage,
   
-  // $('.popoverThis').click(function (e) {
-      // e.stopPropagation();
-  // });
+  getVendorLink: helperMarketGetVendorLink,
   
-  // $(document).click(function (e) {
-      // if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
-          // $('.popoverThis').popover('hide');
-      // }
-  // });
+  disclaimer: helperMarketDisclaimer,
+  
+  isMyProduct: function(vendor) {
+    if (vendor.vendor_key === Meteor.userId()) {
+      return true;
+    }
+  }
 });
 
 Template.marketplace.events({
@@ -130,22 +136,24 @@ Template.marketplace.events({
   },
 });
 
-Template.product.events({
+Template.productSummary.events({
+  'click .moreButton': function(event, template) {
+    // Prevent browser from restarting
+    event.preventDefault();
+    if (FlowRouter.getQueryParam('p') === this.item.productId) {
+      // already selected, scroll to selection
+      scrollToSelected();
+    } else {
+      // set queryParam to select this product, and scroll to it
+      FlowRouter.setQueryParams({'v': this.vendor.vendorUserId, 'p': this.item.productId});
+    }
+  },
+});
+
+Template.productDetail.events({
   'submit .addToCartForm': function(event, template) {
     // Prevent browser from restarting
     event.preventDefault();
-
-    // console.log('this = ', this); // the values of the item in the each loop, but not its parent
-    // console.log('this.item = ', this.item); // 
-    // console.log('this.vendor = ', this.vendor); // 
-    // console.log('event.target = ', event.target); // 
-    // console.log('event.target.getElementsByClassName("buyAlert") = ', event.target.getElementsByClassName('buyAlert')); // 
-    // console.log('event.target.quantityNum = ', event.target.quantityNum); // 17
-    // console.log('event.target.quantityNum.value = ', event.target.quantityNum.value); // 17
-    
-///// 
-                          // <div class="col-xs-7 col-xs-offset-1 alertForBuy alert alert-success" role="alert">oh yeah!</div>   alert-info  alert-success alert-danger 
-//////    
     
     var alertDiv = event.target.getElementsByClassName('buyAlert')[0];
     var alertTextNode = alertDiv.childNodes[0];
@@ -184,7 +192,6 @@ Template.product.events({
     }
 
     Meteor.call('addCartItem', item, function(error, result) { 
-      // $('.popoverThis').popover('hide');
       if (error) {
         alertDiv.classList.remove('alert-info');
         alertDiv.classList.add('alert-danger');

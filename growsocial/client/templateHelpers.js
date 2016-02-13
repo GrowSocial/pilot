@@ -15,3 +15,10 @@ Template.registerHelper('profilePicUrl', function(member_key) {
   }
 });
 
+Template.registerHelper('shorten', function(theString, length) {
+  if (theString) {
+    return theString.substring(0, length);
+  } else {
+    return "";
+  }
+});
