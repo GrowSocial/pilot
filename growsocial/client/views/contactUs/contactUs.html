@@ -5,6 +5,11 @@
       <h1>Contact Us</h1>
       <div class="row">
         <form class="col-sm-6 col-xs-10" action="#" id='contact-us-form'>
+          {{#unless currentUser}}
+            <div class="alert alert-success" role="alert">
+                Thank  you for your interest! GrowSocial is in Pilot phase and limited to invited users. Please leave us your email address and zip code and we will notify you the moment we are available in your area.
+            </div>
+          {{/unless}}
           <div class="form-group">
             <input type="text" id="name" class="form-control" placeholder="Your Name" value="{{person.fullname}}">
           </div>
