@@ -19,7 +19,9 @@
     <div class="container marketContainer">
         <div class="row">
             <h1>Marketplace</h1>
-            <a href="/store" type="button" class="btn btn-default">My store</a>
+            {{#if currentUser}}
+                <a href="/store" type="button" class="btn btn-default">My store</a>
+            {{/if}}
             <span class="label label-default">Create marketplace items in your profile page.</span>
             <p>Phase&nbsp;1 will include filters and searching</p>
             <div id="marketNotifyDiv"></div>
