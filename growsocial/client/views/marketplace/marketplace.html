@@ -3,7 +3,8 @@
         <div class="row">
             <h1>Store</h1>
             <a href="/marketplace" type="button" class="btn btn-default">Marketplace</a>
-            <span class="label label-default">Create marketplace items in your profile page.</span>
+            <a type="button" class="btn btn-default addProductButton" disabled>Add product</a>
+            <span>Add product will be here in Phase&nbsp;1. For now, add items in your profile page.</span><br/>
             <p>Phase&nbsp;1 will include filters and searching</p>
             <div id="marketNotifyDiv"></div>
         </div>  <!-- row -->
@@ -18,6 +19,7 @@
     <div class="container marketContainer">
         <div class="row">
             <h1>Marketplace</h1>
+            <a href="/store" type="button" class="btn btn-default">My store</a>
             <span class="label label-default">Create marketplace items in your profile page.</span>
             <p>Phase&nbsp;1 will include filters and searching</p>
             <div id="marketNotifyDiv"></div>
@@ -53,6 +55,7 @@
         <div class="thumbnail">
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
+            <p id="itemAlert">{{shorten item.salesAlert 100}}</p>
             <div class="caption">
                 <h4 class="itemName">{{shorten item.name 100}}</h4>
                 <p class="itemDescription">{{shorten item.description 100}}</p>
@@ -76,6 +79,7 @@
             <div class="caption">
                 <h4 class="itemName">{{shorten item.name 1000}}</h4>
                 <p class="itemDescription">{{shorten item.description 10000}}</p>
+                <p>{{item.salesAlert}}</p>
                 <p class="priceLine">${{item.unitPrice}} {{shorten item.currency 8}} ({{shorten item.unitType 17}})</p>
                 <p class="sellerLine">Seller: <a class="vendorLink" href="{{getVendorLink vendor}}">{{shorten vendor.vendorName 100}}</a></p>
                 <p>Order options</p>
@@ -83,7 +87,8 @@
                 <p>Payment: cash on pickup, prepay here, or trade for a handful of magic beans</p>
                 {{#if currentUser}}
                   {{#if isMyProduct vendor}}
-                    <a type="button" class="btn btn-default editButton" disabled>Edit</a>
+                    <a type="button" class="btn btn-default editProductButton" disabled>Edit</a>
+                    <a type="button" class="btn btn-default deleteProductButton" disabled>Delete</a>
                     <span>Edit product will be here in Phase&nbsp;1. For now, edit in your profile page.</span>
                   {{else}}
                     <form class="form-inline addToCartForm">
