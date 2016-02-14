@@ -1,6 +1,8 @@
 // TODO only load tawkto if production 
 Meteor.startup(function() {
 
+  return; // dont load tawkto at all, until we are ready to offer support
+
   // TODO dont have to load env each time, can store it in session?
   Meteor.call("getEnv", function(error, result) {
     if (error) {
