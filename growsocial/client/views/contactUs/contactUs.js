@@ -54,6 +54,7 @@ Template.contactUs.events({
       email: event.target.email.value,
       zipcode: event.target.zipcode.value,
       text: event.target.message.value,
+      mailinglist: event.target.mailinglist.checked,
     };
     Meteor.call("addContactUsMessage", message, function(error, result) {
       if (error) {
