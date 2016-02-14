@@ -300,7 +300,13 @@ Template.profile_DESKTOP.helpers({
     var path = FlowRouter.path("store", {}, {'v': mKey, 'p': productId});
     return path;
   },
-  
+  pathForMarketItem: function(productId) {
+    var mKey = FlowRouter.getParam('personId');
+    var path = FlowRouter.path("store", {}, {'v': mKey, 'p': productId});
+    return path;
+  },
+
+
   there_are_items: function(caller){
     /*
     to assess documents are present in respective collections.
@@ -418,7 +424,10 @@ Template.profile_DESKTOP.helpers({
     //            FALSE if another member is here to view selected profile
     //            TRUE if a logged in member is navigating to their profile page
     var mKey = FlowRouter.getParam('personId');
+    //  alert("in myProfile test "+Accounts.userId());
     if (Accounts.userId() == mKey) { return true }  else { return false;}    
+
+
   },
 
   selectProfile: function() {
@@ -536,7 +545,12 @@ Template.profile_MOB.helpers({
     var path = FlowRouter.path("store", {}, {'v': mKey, 'p': productId});
     return path;
   },
-  
+    pathForMarketItem: function(productId) {
+    var mKey = FlowRouter.getParam('personId');
+    var path = FlowRouter.path("store", {}, {'v': mKey, 'p': productId});
+    return path;
+  },
+
   there_are_items: function(caller){ var mKey = FlowRouter.getParam('personId');
     switch (caller)
     {

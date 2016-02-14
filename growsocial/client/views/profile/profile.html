@@ -125,8 +125,8 @@
             <p id="membrfunct"></p> <p id="membrfunct"></p>
             <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
             title="Navigation" data-content="See all Photos and Videos">PHOTOS/VIDEOS</p> 
-            <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
-            title="Navigation" data-content="Go to this member's marketplace">MARKETPLACE</p> 
+            <a href="{{pathFor 'marketplace'}}"><p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
+            title="Navigation" data-content="Go to this member's marketplace">MARKETPLACE</p> </a>
             <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
             title="Navigation" data-content="More activity for this member">MORE ▼</p>
         </div>
@@ -172,7 +172,8 @@
             </div>
 
 
-            {{#if userIsLoggedOn}}
+            
+            {{#if 0}}<!-- {{#if userIsLoggedOn}} -->
 
             <p id="contactInfo"><span id="txtSp">Email<br /></span><span id="txtSp3">{{email}}<br /></span>
             </p>
@@ -293,8 +294,17 @@
                 {{#each item in boxItems}}       
                 {{#with selectMarketItems item member_key}}
                 <div id="scrollBoxItem1" class="clearfix">
+
+                    {{#if myProfile}} <!-- if self profile, this allows upload or change picture for item -->
+                    <a href="{{pathForMarketItem productId}}">
+                        <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
+
+                    {{else}}
                     <a href="{{pathForStore productId}}">
-                    <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
+                        <img id="Photo_Object" src="/images/user-images/anyProduce128.png" class="image" /></a> 
+
+                    {{/if}}
+
                     <p id="itemAlert">{{salesAlert}}<br /></p>  
                     <p id="itemDesc"> {{name  }} </p><br />
                     <p id="itemDesc">{{description}} </p><br />
@@ -877,7 +887,7 @@
                 <img id="ContactIcon" src="/images/icons/socialIcon.png" class="image" />
             </div>
 
-            {{#if userIsLoggedOn}}
+            {{#if 0}}<!-- {{#if userIsLoggedOn}} -->
 
             <p id="contactInfo"><span id="txtSp">Email<br /></span><span id="txtSp3">{{email}}<br /></span>
             </p>
