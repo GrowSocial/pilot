@@ -8,14 +8,16 @@ Meteor.methods({
         email: message.email,
         zipcode: message.zipcode,
         text: message.text,
+        mailinglist: message.mailinglist,
         createdAt: new Date(),
         authorId: Meteor.userId(), // can be null, meaning a message from someone not logged in
       });
       
-      // send an email to ourselves containing the message
+      // send an email to growsocial containing the message
       var text = 'name: ' + message.name + 
         '\nemail: ' + message.email +
         '\nzipcode: ' + message.zipcode +
+        '\nmailing list: ' + (message.mailinglist? 'YES' : 'NO') +
         '\ntext: ' + message.text;
       var email = {
         to: "GrowSocial Pilot Coordinator <growsocial.org@gmail.com>",

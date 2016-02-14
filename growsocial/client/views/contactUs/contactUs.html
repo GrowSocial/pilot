@@ -5,6 +5,11 @@
       <h1>Contact Us</h1>
       <div class="row">
         <form class="col-sm-6 col-xs-10" action="#" id='contact-us-form'>
+          {{#unless currentUser}}
+            <div class="alert alert-success" role="alert">
+                Thank  you for your interest! GrowSocial is in Pilot phase and limited to invited users. Please leave us your email address and zip code and we will notify you the moment we are available in your area.
+            </div>
+          {{/unless}}
           <div class="form-group">
             <input type="text" id="name" class="form-control" placeholder="Your Name" value="{{person.fullname}}">
           </div>
@@ -16,6 +21,11 @@
           </div>
           <div class="form-group">
             <textarea name="message" class="form-control" required="required" placeholder="Message"></textarea>
+          </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <label><input name="mailinglist" type="checkbox" value="">Add me to the mailing list for regular updates.</label>
+            </div>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-submit" id="button-submit">Submit message</button>
