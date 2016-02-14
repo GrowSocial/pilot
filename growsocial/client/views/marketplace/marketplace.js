@@ -151,6 +151,12 @@ Template.productSummary.events({
 });
 
 Template.productDetail.events({
+  'click .closeDetail': function(event, template) {
+    // Prevent browser from restarting
+      // remove this productId from queryParam
+    FlowRouter.setQueryParams({'p': null});
+  },
+  
   'submit .addToCartForm': function(event, template) {
     // Prevent browser from restarting
     event.preventDefault();

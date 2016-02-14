@@ -67,8 +67,10 @@
 </template>
 
 <template name="productDetail">
-    <div class="col-xs-12 productDetail">
+    <!-- <div class="col-xs-12 col-sm-6 productDetail"> -->
+    <div class="col-xs-12 col-sm-6 productDetail">
         <div class="thumbnail">
+        <button type="button" class="close closeDetail" data-dismiss="thumbnail" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <!-- <a class="thumbnail-link button"> -->  <!-- TODO -->
             <img src="{{getItemImage(item)}}" alt="tomato">
             <div class="caption">

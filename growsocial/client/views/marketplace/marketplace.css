@@ -22,13 +22,13 @@
     overflow: hidden;
 }
 
-.marketContainer .thumbnail .itemName {
+.marketContainer  .productSummary .thumbnail .itemName {
   /* allow two lines */
   height: 37px;
   overflow: hidden;
 }
 
-.marketContainer .thumbnail .itemDescription {
+.marketContainer .productSummary .thumbnail .itemDescription {
   /* allow two lines */
   height: 44px;
   overflow: hidden;
@@ -43,12 +43,12 @@
   padding-top: 4px;
 }
 
-.marketContainer .thumbnail .priceLine {
+.marketContainer .productSummary .thumbnail .priceLine {
   height: 22px;
   overflow: hidden;
 }
 
-.marketContainer .thumbnail .sellerLine {
+.marketContainer .productSummary .thumbnail .sellerLine {
   height: 22px;
   overflow: hidden;
 }
