@@ -51,6 +51,8 @@
         <div id="buttongroupPROFL" class="clearfix">
             {{#if myProfile}}
 
+
+                {{#if 0}}
                 <div id="connect" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" 
                     data-toggle="popover" data-placement="auto" data-trigger="hover" 
@@ -58,12 +60,14 @@
                         My <br />Connections
                     </button>
                 </div> 
+                {{/if}}
              {{else}}
                 <div id="blog" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Member Blog" data-content="View latest blog and archives">View Blog</button>
                 </div>
 
+                {{#if 0}}
                 <div id="connect" class="clearfix">
                     {{#if connectionInvoked}}
                         {{#if connectionPending}} <p id="statusMsg">Connection<br />pending</p>
@@ -76,6 +80,7 @@
                     {{/if}}
 
                 </div> 
+                {{/if}}
 
                 <div id="message" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
@@ -573,12 +578,14 @@
 
         {{#if myProfile}}
 
+            {{#if 0}} 
             <div id="connect" class="clearfix">
                 <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                 title="Connections" data-content="View connections and invites">   
                     My <br />Connections
                 </button>
             </div> 
+            {{/if}}
 
         {{else}}
             <div id="blog" class="clearfix">
@@ -586,7 +593,7 @@
                 title="Member Blog" data-content="View latest blog and archives">View Blog</button>
             </div>
 
-
+            {{#if 0}}
             <div id="connect" class="clearfix">
                 {{#if connectionInvoked}}
 
@@ -603,7 +610,7 @@
                 {{/if}}
 
             </div> 
-
+            {{/if}}
 
             <div id="message" class="clearfix">
                 <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
