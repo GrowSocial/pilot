@@ -70,15 +70,12 @@
                 {{#if 0}}
                 <div id="connect" class="clearfix">
                     {{#if connectionInvoked}}
-                        {{#if connectionPending}} <p id="statusMsg">Connection<br />pending</p>
-                                         {{else}} <p id="statusMsg">Connected</p>
+                        {{#if connectionPending}} <p id="statusMsg">Connection<br />pending</p> {{else}} <p id="statusMsg">Connected</p>
                         {{/if}}
                     {{else}}
-
                         <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
                         data-trigger="select" title="Invitation" data-content="Sent to this member" >Connect</button>
                     {{/if}}
-
                 </div> 
                 {{/if}}
 
@@ -131,7 +128,7 @@
             <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
             title="Navigation" data-content="See all Photos and Videos">PHOTOS/VIDEOS</p> 
             <a href="{{pathFor 'marketplace'}}"><p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
-            title="Navigation" data-content="Go to this member's marketplace">MARKETPLACE</p> </a>
+            title="Navigation" data-content="Go to this member's storefront">STOREFRONT</p> </a>
             <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto right" 
             title="Navigation" data-content="More activity for this member">MORE ▼</p>
         </div>
@@ -278,13 +275,11 @@
 
     <div id="zone00" class="clearfix">
 
-        {{#if myProfile}}
-        {{else}}
-            <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
-                <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
-            </div> <!-- end commentsPROFL -->
+        <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
+            <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
+        </div> <!-- end commentsPROFL -->
             
-        {{/if}}
+        {{#if myProfile}} {{/if}}
 
         {{#if there_are_items "marketItems"}}
 
@@ -595,20 +590,12 @@
 
             {{#if 0}}
             <div id="connect" class="clearfix">
-                {{#if connectionInvoked}}
-
-                    {{#if connectionPending}}                         
-                        <p id="statusMsg">Connection<br />pending</p>
-                    {{else}}
-                        <p id="statusMsg">Connected</p>
-
-                    {{/if}}
+                {{#if connectionInvoked}} {{#if connectionPending}}  <p id="statusMsg">Connection<br />pending</p>
+                    {{else}}  <p id="statusMsg">Connected</p>{{/if}}
                 {{else}}
-
                     <button type="button" id="buttonLabels" class="btn btn-primary connectSelect" data-toggle="popover" data-placement="auto" 
                     data-trigger="select" title="Invitation" data-content="Sent to this member" >Connect</button>
                 {{/if}}
-
             </div> 
             {{/if}}
 
@@ -658,7 +645,7 @@
             <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
             title="Navigation" data-content="More about this member">ABOUT</p>
             <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
-            title="Navigation" data-content="Go to this member's marketplace">MARKET</p> 
+            title="Navigation" data-content="Go to this member's storefront">STOREFRONT</p> 
             <p id="membrfunctX_MOB" data-toggle="popover"  data-trigger="hover" data-placement="above" 
             title="Navigation" data-content="More activity for this member">MORE ▼</p>
         </div>
@@ -676,12 +663,13 @@
             <p id="sidebarcontent"><span id="txtSp1">{{location}}</span></p>
         </div> <!-- header-->
 
-        {{#if myProfile}}
-        {{else}}
-            <div id="commentsPROFL_MOB" class="clearfix"><p id="membrfunct_MOB">COMMENT</p>
-                <div id="commEntryPROFL_MOB" class="clearfix"> {{> addComment}} </div>
-            </div> <!-- end commentsPROFL -->
-        {{/if}}
+
+        <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
+            <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
+        </div> <!-- end commentsPROFL -->          
+        {{#if myProfile}} {{/if}}
+
+
     </div> <!-- headerPROFL -->
 
     <div id="zone00_MOB" class="clearfix">
