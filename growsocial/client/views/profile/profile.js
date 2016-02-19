@@ -78,17 +78,19 @@ Template.addComment.events({
   'submit form': function(){ event.preventDefault();
     var mKey = FlowRouter.getParam('personId');
     var commentTEXT = event.target.comment.value;
+    //console.log(commentTEXT);
     Comments.insert({        
-      member_key: mKey,
-       commentBy: Accounts.userId(),
-         comment: commentTEXT,
-       timestamp: Date(),
-       commentSource:"PROFILE PAGE",
-      },      // console.log(commentTEXT);
+                    member_key: mKey,
+                     commentBy: Accounts.userId(),
+                       comment: commentTEXT,
+                     timestamp: Date(),
+                     commentSource:"PROFILE PAGE",
+                    }
+      ,      // console.log(commentTEXT);
 
     function(error, commentId) {
-        console.log("commentId",commentId);
-        if (commentId) {
+        //console.log(mKey,"~",Meteor.userId());
+        if (commentId && mKey != Meteor.userId() ) {
           var commentNotification = {
             targetUserId: mKey,
             tag: "Comment",
@@ -106,8 +108,14 @@ Template.addComment.events({
           Meteor.call("addNotification", commentNotification);
       }
 
+
+
     });
+  
+  //Resoving problem where form from desktop is not reset, ;
+  //required for element 0 & 1, per two templates instance this procedure. Being sure whether which is used; clear both 
     $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
+    $('.add-post-form')[1].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor   
   }
 });
 
