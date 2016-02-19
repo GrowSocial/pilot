@@ -275,10 +275,11 @@
 
     <div id="zone00" class="clearfix">
 
+        {{#if userIsLoggedOn}}
         <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
             <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
         </div> <!-- end commentsPROFL -->
-            
+        {{/if}}  
         {{#if myProfile}} {{/if}}
 
         {{#if there_are_items "marketItems"}}
@@ -664,9 +665,11 @@
         </div> <!-- header-->
 
 
+        {{#if userIsLoggedOn}}
         <div id="commentsPROFL" class="clearfix"><p id="membrfunctX">COMMENT</p>
             <div id="commEntryPROFL" class="clearfix"> {{> addComment}} </div>
-        </div> <!-- end commentsPROFL -->          
+        </div> <!-- end commentsPROFL -->  
+        {{/if}}        
         {{#if myProfile}} {{/if}}
 
 

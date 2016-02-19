@@ -8,6 +8,7 @@
 
 
   UI.registerHelper('userIsLoggedOn', function(context, options) {
+    console.log(Meteor.userId());
   if (Meteor.userId()){ return true } else { return false;}
 
   });
@@ -89,7 +90,7 @@ Template.addComment.events({
       ,      // console.log(commentTEXT);
 
     function(error, commentId) {
-        //console.log(mKey,"~",Meteor.userId());
+        //console.log(mKey,Meteor.userId(),commentId);
         if (commentId && mKey != Meteor.userId() ) {
           var commentNotification = {
             targetUserId: mKey,
