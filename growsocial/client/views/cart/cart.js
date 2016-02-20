@@ -29,6 +29,7 @@ Template.orderDetail.helpers({
 });
 
 Template.cart.events({
+  // Add sample data
   'click .addSample': function(event) {
     event.preventDefault();
 
@@ -37,11 +38,16 @@ Template.cart.events({
 
   // Pay to specific vendor
   'click .payVendor': function(event) {
-    // event.preventDefault();  // oops we need the click at the moment for the popover!
-    Meteor.call('payVendor',this.order);
+    // Change button's appearance
+    $(event.target).css("background-color", "#F0AD4E");
+    $(event.target).text("Processing...");
+
+    // Call function to pay vendor
+    Meteor.call('payVendor', this.order);
     // TODO better response to user on error/correct payment
   },
 
+  // Increase ammount by 1
   'click .increase': function(event) {
     var item = {
       quantity: this.product.quantity,
@@ -57,6 +63,7 @@ Template.cart.events({
     Meteor.call('increaseOrDecrease', true, item);
   },
 
+  // Decrease ammount by 1
   'click .decrease': function(event) {
     var item = {
       quantity: this.product.quantity,
@@ -72,6 +79,7 @@ Template.cart.events({
     Meteor.call('increaseOrDecrease', false, item);
   },
 
+  // Remove item from list
   'click .removeItem': function(event) {
     var item = {
       quantity: this.product.quantity,

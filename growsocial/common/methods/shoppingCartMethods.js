@@ -217,11 +217,17 @@ Meteor.methods({
   },
   
   payVendor: function(order) {
+    // Hide Pay button
+    $(event.target).hide();
+    var paymentErrors = false;
+
+    // Products paid
     var itemsPaid = "";
     for (var i = 0, len = order.products.length; i < len; i++) {
       itemsPaid += "- " + order.products[i].name + " (" + order.products[i].quantity + " " + order.products[i].unitType + ")\n";
     }
     
+    // Email structure
     var email = {
       to: order.vendorEmail,  // "seller@example.com",
       from: "GrowSocial Pilot Website <growsocial.org@gmail.com>",
@@ -229,23 +235,33 @@ Meteor.methods({
       text: "The following items have been paid:\n" + itemsPaid,
     }
 
+    // If logged in, email will include buyer's name
     if (Meteor.user()) {
       email.text = "Buyer: " + Meteor.user().profile.firstname + " " +
         Meteor.user().profile.lastname + 
         ".\n" + email.text;
     }
     
-    Meteor.call('sendEmail', email);
+    // Sends the email to seller
+    Meteor.call('sendEmail', email, function(err, result) {
+      if (err) {
+        paymentErrors = true;
+      }
+    });
 
+    // If logged in, an email will be sent to the buyer
     if (Meteor.user()) {
       email.to = Meteor.user().emails[0].address;  // "buyer@example.com",
       email.subject = "You have made a payment";
       email.text = "Seller: " + order.vendorName + "\nYou paid for the following: " + itemsPaid;
+      Meteor.call('sendEmail', email, function(err, result) {
+        if (err) {
+          paymentErrors = true;
+        }
+      });
     }
     
-    Meteor.call('sendEmail', email);
-    
-    // prepare notification object
+    // Prepare notification and error objects
     var notification = {
       targetUserId: '' + order.vendorUserId, // ensure a string
       tag: "Order",
@@ -257,7 +273,7 @@ Meteor.methods({
     };
     var error = {};
     
-    // account for when buyer is not logged in
+    // Account for when buyer is not logged in
     if (Meteor.user()) {
       notification.senderUserId = Meteor.userId();
       notification.sender = Meteor.user().profile.firstname;
@@ -270,37 +286,39 @@ Meteor.methods({
       error.firstName = 'Anonymous';
     }
     
-    // console.log('first notification', notification);
-    // first notification to the seller
+    // First notification to the seller
     if (order.vendorUserId) { // no point sending a notification to a null person
       Meteor.call("addNotification", notification, function(err, result) {
+        // If Error paying vendor
         if (err) {
           error.tag = "PayVendorOrderNotification";
           error.message = err.message;
           error.errNumber = err.error;
           Meteor.call("addErrorLog", error);
+          paymentErrors = true;
         }
       });
     }
 
-    // prepare second notification    
+    // Prepare second notification    
     if (Meteor.user()) {  // only notify if logged in!
       notification.targetUserId = Meteor.userId();
       notification.senderUserId = Meteor.userId();
       notification.sender = Meteor.user().profile.firstname;
       notification.senderLastName = Meteor.user().profile.lastname;
 
-      // second notification to the buyer    
+      // Second notification to the buyer    
       notification.subject = "My order placed for market items";
       notification.sender = "System";
       notification.message = "Seller: " + order.vendorName + ".\nThe following items have been paid:\n" + itemsPaid;
-      // console.log('second notification', notification);
       Meteor.call("addNotification", notification, function(err, result) {
+        // If Error in notification
         if (err) {
           error.tag = "MyOrderNotification";
           error.message = err.message;
           error.errNumber = err.error;
           Meteor.call("addErrorLog", error);
+          paymentErrors = true;
         }
       });
     }
@@ -311,6 +329,29 @@ Meteor.methods({
       userId: Accounts.userId(),
       vendorName: order.vendorName,
     });
+
+    // Done message displayed and button removed if no errors are found
+    if (!paymentErrors) {
+      payMessage('alert-success', 'Done! You have paid for these items.');
+      $(event.target).remove();
+    }
+    // If there's an error display pay button again and error message
+    else {
+      payMessage('alert-danger', 'Oops! Something went wrong while processing the payment, please try again');
+      $(event.target).show();
+    }
+
   },
 
 });
+
+function payMessage(alertType, message, error) {
+  // Message structure
+  var div = '<div class="row"><div class="alert ' + alertType + 
+    ' alert-dismissible" role="alert">' + message + '</div></div>';
+  
+  // Insert the messagee and remove button
+  $(event.target).after(div);
+  
+  
+}
