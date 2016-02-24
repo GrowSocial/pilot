@@ -59,29 +59,29 @@ Meteor.methods({
       if (!Meteor.call('checkForVendor', item)) {
         // Create the product structure
         var product = {
-        productId: item.productId,
-        name: item.name,
-        description: item.description,
-        photo: item.photo,
-        currency: item.currency,
-        unitType: item.unitType,
-        quantity: item.quantity,
-        unitPrice: item.unitPrice,
-        itemTotalPrice: roundToCents(item.quantity * item.unitPrice),
+          productId: item.productId,
+          name: item.name,
+          description: item.description,
+          photo: item.photo,
+          currency: item.currency,
+          unitType: item.unitType,
+          quantity: item.quantity,
+          unitPrice: item.unitPrice,
+          itemTotalPrice: roundToCents(item.quantity * item.unitPrice),
         }
 
         var vendorTotal = product.itemTotalPrice;
 
         // Create the order structure
         var order = {
-        userId: Meteor.userId(),
-        vendorUserId: item.vendorUserId,
-        vendorBusinessId: item.vendorBusinessId,
-        vendorName: item.vendorName,
-        vendorLink: item.vendorLink,
-        vendorEmail: item.vendorEmail,
-        vendorTotal: vendorTotal,
-        products: [ product, ],
+          userId: Meteor.userId(),
+          vendorUserId: item.vendorUserId,
+          vendorBusinessId: item.vendorBusinessId,
+          vendorName: item.vendorName,
+          vendorLink: item.vendorLink,
+          vendorEmail: item.vendorEmail,
+          vendorTotal: vendorTotal,
+          products: [ product, ],
         }
 
         // Add to collection
@@ -216,10 +216,8 @@ Meteor.methods({
 
   },
   
-  payVendor: function(order) {
-    // Hide Pay button
-    $(event.target).hide();
-    var paymentErrors = false;
+  // Pay a specific vendor
+  payVendor: function(order, payBtn) {
 
     // Products paid
     var itemsPaid = "";
@@ -243,22 +241,14 @@ Meteor.methods({
     }
     
     // Sends the email to seller
-    Meteor.call('sendEmail', email, function(err, result) {
-      if (err) {
-        paymentErrors = true;
-      }
-    });
+    //Meteor.call('sendEmail', email);
 
     // If logged in, an email will be sent to the buyer
     if (Meteor.user()) {
       email.to = Meteor.user().emails[0].address;  // "buyer@example.com",
       email.subject = "You have made a payment";
       email.text = "Seller: " + order.vendorName + "\nYou paid for the following: " + itemsPaid;
-      Meteor.call('sendEmail', email, function(err, result) {
-        if (err) {
-          paymentErrors = true;
-        }
-      });
+      //Meteor.call('sendEmail', email);
     }
     
     // Prepare notification and error objects
@@ -295,7 +285,6 @@ Meteor.methods({
           error.message = err.message;
           error.errNumber = err.error;
           Meteor.call("addErrorLog", error);
-          paymentErrors = true;
         }
       });
     }
@@ -318,40 +307,10 @@ Meteor.methods({
           error.message = err.message;
           error.errNumber = err.error;
           Meteor.call("addErrorLog", error);
-          paymentErrors = true;
         }
       });
     }
     
-    // TODO add order to archive, then remove from cart
-    // order.vendorName
-    ArchivedOrders.insert({
-      userId: Accounts.userId(),
-      vendorName: order.vendorName,
-    });
-
-    // Done message displayed and button removed if no errors are found
-    if (!paymentErrors) {
-      payMessage('alert-success', 'Done! You have paid for these items.');
-      $(event.target).remove();
-    }
-    // If there's an error display pay button again and error message
-    else {
-      payMessage('alert-danger', 'Oops! Something went wrong while processing the payment, please try again');
-      $(event.target).show();
-    }
-
   },
 
 });
-
-function payMessage(alertType, message, error) {
-  // Message structure
-  var div = '<div class="row"><div class="alert ' + alertType + 
-    ' alert-dismissible" role="alert">' + message + '</div></div>';
-  
-  // Insert the messagee and remove button
-  $(event.target).after(div);
-  
-  
-}
