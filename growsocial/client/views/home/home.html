@@ -58,8 +58,31 @@
 <template name="homeNew">
 <div id="hometemplateContainer" class="container">
 <div class="row">
-<div class="col-md-4">
-<div  class="thumbnail" id="member_image_block">
+
+<div class="col-md-6 col-md-push-3">
+<div class="thumbnail" id="main_image_block">
+    
+ {{#if currentUser.profile.firstname}}
+    <a href="{{pathForProfile}}"><img src="/images/main image block.png"/></a>
+  {{else}}
+     <a href=""><img src="/images/main image block.png"  data-toggle="popover" data-html="true" data-container="body" data-placement="auto" title="Featured Farm" data-content="This will feature a particular farm or food business, you will be able to click through to their farm business page.  Your suggestions for which business can be featured are welcomed."/></a>
+  {{/if}}  
+    <div class="overlayText2">
+<!--    <div id="Main_headerx">-->
+      <p >Connect. Share. Learn. GrowSocial!</p>
+    <p id="Main_header2x">Join the fast-growing network of people dedicated to local food growing and creating a sustainable economy.<br />
+    </p>
+    <a href="/help"><button type="button" id="Learn_More_button" class="btn btn-primary">Learn More</button></a>
+        </div>
+            <div class="HomecentralImg">
+            <p id="Phoenix_Farms_Lakeland_Florida"><span id="txtHOME01">
+        {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}<br />{{currentUser.profile.lastname}}{{else}}Phoenix Farms<span id="txtHOME02"> Lakeland, Florida</span>{{/if}}</span>
+        </p></div>
+    
+    </div>
+    </div>
+<div class="col-md-3 col-md-pull-6 ">
+    <div  class="thumbnail" id="member_image_block">
     <a href="/people"> <img id="featureImg" src="{{pickMemberImage}}" class="image"></a>
     <div class="overlayText">
     <p id="featureHdr"> Members </p>
@@ -84,26 +107,9 @@ This will also allow you to see the events coming in your area and schedule so t
     </div>
 </div>
 </div>
-<div class="col-md-4">
-<div class="thumbnail" id="main_image_block">
-    
- {{#if currentUser.profile.firstname}}
-    <a href="{{pathForProfile}}"><img src="/images/main image block.png" class="image"/></a>
-  {{else}}
-     <a href=""><img src="/images/main image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="auto" title="Featured Farm" data-content="This will feature a particular farm or food business, you will be able to click through to their farm business page.  Your suggestions for which business can be featured are welcomed."/></a>
-  {{/if}}  
-            <div class="HomecentralImg">
-            <p id="Phoenix_Farms_Lakeland_Florida"><span id="txtHOME01">
-        {{#if currentUser.profile.firstname}}{{currentUser.profile.firstname}}<br />{{currentUser.profile.lastname}}{{else}}Phoenix Farms<span id="txtHOME02"> Lakeland, Florida</span>{{/if}}</span>
-        </p></div>
-      <p id="Main_headerx">Connect. Share. Learn. GrowSocial!</p>
-    <p id="Main_header2x">Join the fast-growing network of people dedicated to local food growing and creating a sustainable economy.<br />
-    </p>
-    <a href="/help"><button type="button" id="Learn_More_button" class="btn btn-primary">Learn More</button></a>
-    </div>
-    </div>
-<div class="col-md-4">
-<div class="thumbnail" id="opportunities_image_block">
+
+<div class="col-md-3">
+    <div class="thumbnail" id="opportunities_image_block">
     <a href="">  <img id="featureImg" src="/images/opportunities image block.png" class="image" data-toggle="popover" data-html="true" data-container="body" data-placement="auto" title="Welcome to your Opportunities! " data-content="Are you looking for a job in the local food movement?  Do you need to hire someone who understands rain barrels or food forests? Do you have manure to give away or need tree mulch? Find the answers or post questions in the “opportunities” section of GrowSocial! <br><br>
 
 You can think of the opportunities section as your area’s personal Craigslist that is specific to posting around local food and sustainability employment, things to trade, services to hire, etc.  You can list your community garden, post for volunteers, etc.
@@ -163,9 +169,9 @@ These pages will be the people who are working full time in some aspect of the f
         <div class="col-xs-6 col-md-6" >
             <div id="profile_pic_circle"></div>
             <div id="FeatureMember">
-            <span id="txtHOME01">Anthony Anderson<br /></span>
-            <span id="txtHOME02">Farmer, Beekeeper, &#x2b;2 more<br /></span>
-            <span id="txtHOME01">Fort Lauderdale, FL</span></div>
+            <span id="txtmember01">Anthony Anderson<br /></span>
+            <span id="txtmember02">Farmer, Beekeeper, &#x2b;2 more<br /></span>
+            <span id="txtmember01">Fort Lauderdale, FL</span></div>
         </div>
     </div>
     </div>

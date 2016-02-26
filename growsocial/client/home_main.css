@@ -28,41 +28,15 @@
 
 /*HomeNew styles*/
 #HomecentralImg {
-        float: left;
+    position: relative;
         width: auto;max-width: 100%; height: 100%;
         margin-left: 0%;   
         margin-top: -260px;
-        clear: none;
         color: rgb(0, 0, 0);
         margin-right: 0%;       
 }
-#main_image_block,#business_image_block,#localpedia_image_block,
-#opportunities_image_block,#events_image_block,
-#discussion_image_block,#member_image_block {
-    background-color: transparent;
-    padding: 0px;
-    border: 0px;
-}
-#featureImg {
-    margin: 0px;
-}
-.overlayText {
-    float: left;clear: none;
-    height: auto;
-    position: relative;  top: 0px; left: 0px; z-index: 90;
-    margin-top: -180px; margin-left: 6%;
-}
-.thumbnail {  
-    position:relative;
-    height: auto; 
-}
-#featureHdr{
-    font-size: 1.4em; color: rgb(255, 255, 255);
-    text-align: left;   font-weight: normal; line-height: normal;
-    font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;   
-}
 #Main_headerx {
-    float: left;
+    float: left;position: relative;
     font-size: 2em;
     width: 88%;
     height: auto;
@@ -76,9 +50,58 @@
     margin-top: 36px; margin-left: 7%;
     clear: none;
 }
+#main_image_block {
+   background-color: transparent;
+    padding: 0px;
+    border: 0px;
+/*    height: 660px;*/
+}
+#business_image_block,#localpedia_image_block,
+#opportunities_image_block,#events_image_block,
+#discussion_image_block,#member_image_block {
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+}
+#featureImg {
+    margin: 0px;
+    height: 200px;
+}
+.overlayText {
+    float: left;clear: none;
+    height: auto;
+    position: relative;  top: 0px; left: 0px; z-index: 90;
+    margin-top: -180px; margin-left: 6%;
+}
+.overlayText2 {
+    float: left;clear: none;
+    height: auto;
+    position: relative;  top: 0px; left: 0px; z-index: 90;
+/*    margin-top: -630px; */
+     margin-top:-99.9%;
+    margin-left: 6%;
+    font-size: 2em;
+    width: 88%;
+    height: auto;
+    text-align: center;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal; letter-spacing: normal;  text-decoration: none; font-family: lato;
+}
+.thumbnail {  
+    position:relative;
+    height: auto; 
+    clear:none;
+}
+#featureHdr{
+    font-size: 1.4em; color: rgb(255, 255, 255);
+    text-align: left;   font-weight: normal; line-height: normal;
+    font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;   
+}
+
 #Main_header2x {
     float: left;
-    font-size: 1.2em;
+    font-size: .6em;
     width: 88%;
     height: auto;
     text-align: center;
@@ -98,7 +121,7 @@
     left: 0px;
     z-index: 63;
     margin-top: 19px;
-    margin-left: 36.026936%;
+    margin-left: 40%;
     clear: both;
 }
 #Learn_More {
@@ -126,8 +149,8 @@
     top: 0px;
     left: 0px;
     z-index: 62;
-    margin-top: -40%;
-    margin-left: 60%;
+    margin-top: -15%;
+    margin-left: 70%;
     clear: both;
 }
 
@@ -176,11 +199,11 @@
     color: rgb(255, 255, 255);
     position: relative;
     margin-top: 200px;
-    margin-left: 20px;
+    margin-left: 100px;
     clear: none;
     font-size: 2em;
     height: auto;
-    text-align: center;font-weight: 600;line-height: normal;
+    font-weight: 600;line-height: normal;
     font-style: normal;letter-spacing: normal;
     text-decoration: none;font-family: lato;
     z-index: 31; 
@@ -202,7 +225,7 @@
     left: 0px;
     z-index: 27;
     margin-top: 5px;
-    margin-left: 20px;
+    margin-left: 100px;
     clear: none;
     overflow: auto;
 }
@@ -237,12 +260,11 @@
 #FeatureMember {
     float: left;
     font-size: 1em;
-    width: 24%;
     position: relative;
     top: 0px;
     left: 0px;
     z-index: 23;
-    margin-top: 2%; margin-left: 2%;
+    margin-top: 2%; margin-left: 10%;
     clear: none;
     height: auto;
     text-align: center;
@@ -256,6 +278,28 @@
     color: rgb(255, 255, 255);
     font-style: normal;
     font-weight: 600;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+}
+#txtmember01 {
+    float: none;
+    font-size: 1.09541em;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-decoration: none;
+    font-family: lato;
+}
+#txtmember02 {
+    float: none;
+    font-size: 1.09541em;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-weight: normal;
     letter-spacing: normal;
     text-decoration: none;
     font-family: lato;
@@ -288,7 +332,6 @@
 #relativeLocalPediaContainer {
     position: relative;
     width: auto;
-    height: 550px;
 }
 #View_Localpedia {
     float: left;
@@ -364,7 +407,7 @@
     clear: none;
 }
 #localpedia_block {
-    height: 550px;
+    height: 350px;
     background-color: rgb(237, 237, 237);
     background-size: cover;
     position: relative;
