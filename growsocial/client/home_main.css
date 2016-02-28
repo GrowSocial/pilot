@@ -54,7 +54,6 @@
    background-color: transparent;
     padding: 0px;
     border: 0px;
-/*    height: 660px;*/
 }
 #business_image_block,#localpedia_image_block,
 #opportunities_image_block,#events_image_block,
@@ -158,7 +157,7 @@
 #relativeAboutContainer {
     position: relative;
     width: auto;
-    height: 750px;
+/*    height: 750px;*/
 }
 #garden_graphic {
     position: relative;
@@ -169,10 +168,10 @@
     z-index: 18;
     background-image:url("/images/soil-sky.png");
     -webkit-background-size: 100%;
-    height: 850px; 
+/*    height: 850px; */
     width: auto; 
     max-width: 1440px; 
-    max-height: 750px;
+/*    max-height: 750px;*/
 }
 #About_GrowSocial {
     font-size: 2em;
@@ -211,7 +210,6 @@
 #MembershipMSG {
     font-size: 1.09541em;
     width: 80%;
-    height: 200px;
     text-align: left;
     font-weight: normal;
     line-height: 24px;
@@ -225,7 +223,7 @@
     left: 0px;
     z-index: 27;
     margin-top: 5px;
-    margin-left: 100px;
+    margin-left: 80px;
     clear: none;
     overflow: auto;
 }
@@ -234,6 +232,7 @@
     z-index: 25;
     margin-top: 5%;
     margin-left: 25%;
+    margin-bottom: 5%;
     clear: both;
 }
 #profile_pic_circle {
@@ -316,7 +315,7 @@
     font-family: lato;
 }
 #About_block {
-    height: 750px;
+/*    height: 750px;*/
     background-size: cover;
     position: relative;
     top: 0px;
@@ -354,12 +353,10 @@
     clear: none;
 }
 #localpedia_button {
-    background-color: rgb(18, 130, 206);
-    top: 0px;
-    left: 0px;
+/*    background-color: rgb(18, 130, 206);*/
     z-index: 9;
-    margin-top: 10%;
     margin-left: 60%;
+    object-fit: contain;
     clear: both;
 }
 #localPediaMSG {
@@ -386,6 +383,7 @@
     margin-left: 5%;
     max-width: 80%;
     max-height: 80%;
+    object-fit: contain;
      background-color: transparent;
 }
 #Connect_Locally_Share_Globally_ {
@@ -407,7 +405,6 @@
     clear: none;
 }
 #localpedia_block {
-    height: 350px;
     background-color: rgb(237, 237, 237);
     background-size: cover;
     position: relative;
@@ -482,6 +479,27 @@ float: left;
 }
 
 
-
-
-
+@media (max-width: 500px) {
+    #featureImg {
+        height: 100px;
+    }
+    .overlayText {
+        margin-top: -90px;
+    }
+    #localpedia_button {
+        margin:0;
+      margin-left:0;      
+    }
+    #featureHdr, #txtmember01, #txtmember02, #txtHOME01, #txtHOME02 {
+        font-size: .8em;
+    }
+    
+    #MembershipMSG, #AboutMSG, #Members{
+      color:black;
+      font-size: .8em;
+      width: 100%;
+      padding:0;
+      margin:0;
+      margin-left:0;
+    }
+}

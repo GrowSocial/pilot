@@ -1,10 +1,17 @@
 #centralImg {
-        float: left;
-        width: auto;max-width: 100%; height: 350px;
-        margin-left: 0%;   
-        clear: none;
-        color: rgb(0, 0, 0);
-        margin-right: 0%;      
+ float: left;clear: none;
+    height: auto;
+    position: relative;  top: 0px; left: 0px; z-index: 90;
+/*    margin-top: -630px; */
+     margin-top:-99.9%;
+    margin-left: 6%;
+    font-size: 2em;
+    width: 88%;
+    height: auto;
+    text-align: center;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    font-style: normal; letter-spacing: normal;  text-decoration: none; font-family: lato;  
 }
 #featureImgHelp{
  margin: 0px;
@@ -18,22 +25,17 @@
     background-color: transparent;
     padding: 0px;
     border: 0px;
-   
 }
 
-.thumbnail{
-    position:relative;
-    height: auto; 
-}
+
 .details {
     float: left;clear: none;height: auto;
-    position: relative;  top: 20px; left: 0px; z-index: 90;
-    margin-top: -190px; margin-left: 6%;
+    position: relative;  top: 0px; left: 0px; z-index: 90;
+    margin-top: -180px; margin-left: 6%;
 }
 
 #Help_Join_Button {
-    top: 0px; left: 0px; z-index: 90;
-    margin-top: 1%; margin-left: 25%; margin-bottom: 1%;
+    margin-left: 10%; 
 }
 
 #Help_About {
@@ -88,11 +90,26 @@
     text-align: left;   font-weight: normal; line-height: normal;
     font-style: normal; letter-spacing: normal; text-decoration: none; font-family: lato;
 }
-
+#featureImg2 {
+    margin: 0px;
+    height: 200px;
+}
 #Help_Tutorial_Button {
-  top: 60px; margin-left: 65%; margin-top: 2%; z-index: 30;  
+        margin-left: auto;
+    margin-right: auto;
+/*  top: 60px; margin-left: 65%; margin-top: 2%; z-index: 30;  */
     
 }
-
+@media (max-width: 500px) {
+    #featureImg2 {
+        height: 100px;
+    }
+    .details {
+         margin-top: -90px;
+    }
+    #featureHdr2 {
+      font-size: .8em;
+    }
+}
 
 
