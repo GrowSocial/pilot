@@ -10,10 +10,11 @@
             
             {{#unless uploadCount}}<p>No uploads.</p>{{/unless}}
             
-            <ul class="list-unstyled">
-              {{#each upload in uploads}}
-                  {{> uploadItem upload=upload}}
-              {{/each}}
+            <!-- ul class="list-unstyled"  -->
+            <ul>
+            {{#each upload in uploads}}
+                {{> uploadItem upload=upload}}
+            {{/each}}
             </ul>
         {{else}}
             <p>Uploads available when logged in.</p>
@@ -22,13 +23,37 @@
 </template>
 
 <template name="uploadItem">
-        <!-- <p>isUploaded? {{upload.isUploaded}}</p> -->
-        <!-- <p>metadata.owner? {{upload.metadata.owner}}</p> -->
-    <li>
-        <button class="delete">&times;</button>
+    <!-- <p>isUploaded? {{upload.isUploaded}}</p> -->
+    <!-- <p>metadata.owner? {{upload.metadata.owner}}</p> -->
+    <div id="fileLine">
+        <li>       
         <!-- TODO determine if the current item is the profile pic -->
-        {{#if upload.isImage}}<button class="setProfile button btn btn-default">Set Profile Pic</button>{{/if}}
-        <a href="{{upload.url}}" target="_blank"><img src="{{thumbnail upload}}" class="itemImage" alt="img"></a>
-        {{formatTime(upload.uploadedAt)}} | {{upload.type}} | {{upload.size}} bytes | {{upload.name}}
-    </li>
+        {{#if upload.isImage}}
+            <a href="{{pathForProfile}}" class="setProfileCover" 
+                style="background-color: #ffffff;">
+                <br />Set as Cover Pic
+            </a>
+            <a href="{{pathForProfile}}" class="setProfile" 
+                style="background-color: #ffffff;">
+                <br />Set as Profile Pic
+            </a>
+        {{else}}
+            <a  style="background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #809fff;">
+                <br />( future)
+            </a>  
+            <a style="background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #809fff;">
+                <br />( future)
+            </a>      
+        {{/if}}
+        <a href="{{upload.url}}" target="_blank"><img src="{{thumbnail upload}}" 
+            class="itemImage" alt="img"></a>
+        <!-- {{formatTime(upload.uploadedAt)}} | {{upload.type}} | {{upload.size}} bytes | {{upload.name}} -->
+        <span style="font-weight:normal;">
+             {{formatTime(upload.uploadedAt)}} | {{upload.type}} | {{upload.size}} bytes 
+        </span>
+        <span style="font-color:#809fff;"> {{upload.name}}  </span>
+
+        <!-- button class="delete">&times;</button -->
+        </li>
+    </div>
 </template>

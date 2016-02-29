@@ -41,6 +41,8 @@ Schemas.Person = new SimpleSchema({
   testDataSearch:{ type: Boolean, optional: true },
   photoUrl:{ type: String, optional: true },
   photoId:{ type: String, optional: true },
+  coverImageUrl:{type: String, optional: true},
+  coverImageId:{type: String, optional: true},
 });
 
 
