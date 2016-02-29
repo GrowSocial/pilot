@@ -4,9 +4,14 @@
 
 .uploadsContainer .itemImage {
   /* max-height: 43px; */
-  width: 200px;
-  height: 200px;
-  margin-right: 12px;
+  /*width: 200px; height: 200px;*/
+
+  height: auto; width: auto; 
+  max-height: 96px; max-width: 96px;
+
+  margin-right: 12px; 
+}
+.itemImage { margin-top:-20px; margin-left: 6px;margin-right: 6px;
 }
 
 .uploadsContainer a {
@@ -36,3 +41,14 @@
   position: relative;
   background-color: #f00;
 }
+
+#fileLine {
+  /*white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  */
+    text-align: left;font-size: 0.875em; color:#0049e6; font-family: lato; font-weight: bold;
+    height: 120px; 
+    border-width: 2px; border-style: solid; border-color: #809fff;
+    background-color: #e6f2ff;
+    border-bottom-style: none;
+
+  }
+

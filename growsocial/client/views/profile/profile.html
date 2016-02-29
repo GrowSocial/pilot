@@ -1,5 +1,3 @@
-
-
 <template name="profile">
 
 <head> <!-- last upload merged to master: #145 Feb 1 2016
@@ -21,15 +19,6 @@
 
 {{#if Template.subscriptionsReady}} 
 
-    <!-- 
-        {{#if userIsLoggedOn}}
-            {{#with selectProfile}} 
-              <div class="visible-xs visible-sm">{{> profile_MOB}} </div>
-              <div class="visible-md visible-lg">{{> profile_DESKTOP}} </div>
-            {{/with}}
-        {{else}} <p id="membrfunctXX">Login to view member profiles  </p>
-     {{/if}} -->
-
     {{#with selectProfile}} 
       <div class="visible-xs visible-sm">{{> profile_MOB}} </div>
       <div class="visible-md visible-lg">{{> profile_DESKTOP}} </div>
@@ -41,33 +30,103 @@
 </template>
 
 
-
-
 <template name="profile_DESKTOP">
-
+    <head>
+    <!-- http://blog.movalog.com/a/javascript-toggle-visibility/ 
+     onclick="togglevisibility('divA');togglevisibility('divB');togglevisibility('divC');togglevisibility('divD');
+     -->
+    <script type="text/javascript">
+        function toggle_visibility(id) {var e = document.getElementById(id);
+             if(e.style.display == 'block')  {  e.style.display = 'none'; e.style.zIndex="999";  }
+           else e.style.display = 'block';
+        }
+    </script>
+    </head>
     <div id="headerPROFL">
         <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
-        <img id="headerImage" src="/images/headerPicFULL-1576-.jpg" class="image" />
+        <img id="coverImage" src="{{profilecoverPicUrl member_key}}" class="image" />
+        <!-- img id="coverImage" src="/images/defaultProfileCover.jpg" class="image" / -->
+
+        <div id="coverPicSelect" class="clearfix"></div>
+        {{#if myProfile}} <button type="button" id="buttonLabels" 
+          class="btn btn-info btnStyled" onclick="toggle_visibility('coverPicBox');"
+            style="font-size: 1em; font-family: lato;  font-weight: bold; line-height: 1em;
+            margin-top:-96px; margin-left:-32px; z-order:2;">    Change <br />Cover Picture
+          </button>
+        {{/if}}
+
         <div id="buttongroupPROFL" class="clearfix">
-            {{#if myProfile}}
+        {{#if myProfile}}
 
+            <div id="coverPicBox" class="clearfix" style="display:none;" data-backdrop="false">
+            <p id="scrollBoxTitle">CLICK TO SELECT FOR COVER PHOTO</p>   
+                   
+            <div id="scrollBoxItemsGroup" class="clearfix">
 
-                {{#if 0}}
-                <div id="connect" class="clearfix">
-                    <button type="button" id="buttonLabels" class="btn btn-primary connectSelect btnStyled" 
-                    data-toggle="popover" data-placement="auto" data-trigger="hover" 
-                    title="Connections" data-content="View connections and invites">   
-                        My <br />Connections
-                    </button>
-                </div> 
+                {{#if there_are_items "graphicUploads"}}
+                          
+                {{#if displayPicFromOffset}} 
+                    <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollPicsReverse" />
                 {{/if}}
-             {{else}}
+
+       
+                <!--  these 6 divs (scrollBoxItem)  can be consolidated by restructuring 
+                with child template accepting parameter for 'item' in scroll group displayed.
+                Hard coded here for the moment.
+                -->
+                <div id="scrollBoxItem0" class="setProfileCoverPic0 clearfix"> <!-- -->
+                    <a  onclick="toggle_visibility('coverPicBox');">
+                    <img id="Photo_Object" src="{{selectPictureItems 0}}"  class="image" />
+                    </a>  <p id="itemDesc"></p><br />                                
+                </div>
+                <div id="scrollBoxItem0" class="setProfileCoverPic1 clearfix"> <!-- -->
+                    <a  onclick="toggle_visibility('coverPicBox');">
+                    <img id="Photo_Object" src="{{selectPictureItems 1}}"  class="image" />
+                    </a>  <p id="itemDesc"></p><br />                                
+                </div>
+                <div id="scrollBoxItem0" class="setProfileCoverPic2 clearfix"> <!-- -->
+                    <a  onclick="toggle_visibility('coverPicBox');">
+                    <img id="Photo_Object" src="{{selectPictureItems 2}}"  class="image" />
+                    </a>  <p id="itemDesc"></p><br />                                
+                </div>
+                <div id="scrollBoxItem0" class="setProfileCoverPic3 clearfix"> <!-- -->
+                    <a  onclick="toggle_visibility('coverPicBox');">
+                    <img id="Photo_Object" src="{{selectPictureItems 3}}"  class="image" />
+                    </a>  <p id="itemDesc"></p><br />                                
+                </div>
+                <div id="scrollBoxItem0" class="setProfileCoverPic4 clearfix"> <!-- -->
+                    <a  onclick="toggle_visibility('coverPicBox');">
+                    <img id="Photo_Object" src="{{selectPictureItems 4}}"  class="image" />
+                    </a>  <p id="itemDesc"></p><br />                                
+                </div>
+                <div id="scrollBoxItem0" class="setProfileCoverPic5 clearfix"> <!-- -->
+                    <a  onclick="toggle_visibility('coverPicBox');">
+                    <img id="Photo_Object" src="{{selectPictureItems 5}}"  class="image" />
+                    </a>  <p id="itemDesc"></p><br />                                
+                </div>
+
+
+
+                {{#if morePicItems2Display}}
+                    <img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollPicsAhead" />
+                {{/if}}
+                <a href="{{pathFor 'uploads'}}" id="scrollBoxFooter">&lt; UPLOAD MORE CHOICES&gt;</a>
+
+                {{else}}
+                <a href="{{pathFor 'uploads'}}" id="scrollBoxFooter">&lt;UPLOAD PICTURES&gt;</a>
+                {{/if}} <!-- {{#if there_are_items "graphicUploads"}} -->
+                </div>
+            </div>
+            <!-- -->
+
+
+        {{else}} <!-- for view another member's profile --> 
                 <div id="blog" class="clearfix">
                     <button type="button" id="buttonLabels" class="btn btn-primary" data-toggle="popover" data-placement="auto" data-trigger="hover" 
                     title="Member Blog" data-content="View latest blog and archives">View Blog</button>
                 </div>
 
-                {{#if 0}}
+                {{#if 0}} <!-- was connect with another member interface -->
                 <div id="connect" class="clearfix">
                     {{#if connectionInvoked}}
                         {{#if connectionPending}} <p id="statusMsg">Connection<br />pending</p> {{else}} <p id="statusMsg">Connected</p>
@@ -84,9 +143,10 @@
                     title="Message Member" data-content="Send message, member will get a notification at their dashboard">Message *</button>
                 </div>
 
-            {{/if}}
+        {{/if}}
 
         </div>
+
 
         <div id="memberPicture" class="clearfix">
             {{#if myProfile}}
@@ -101,9 +161,11 @@
 
         <p id="membrfunctXX">{{fullname}}  </p>
 
-        <div id="badges" class="clearfix">
 
-            <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
+
+        <div id="badges" class="clearfix" >
+
+            <div id="badge-frame"  data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
             title="Community Achievement" data-content="Honorary Mention"><img id="award_icon" src="/images/icons/award-icon.png" class="image" />
             </div>
             <div id="badge-frame" class="clearfix" data-toggle="popover"  data-trigger="hover"  data-placement="auto below" 
@@ -118,6 +180,7 @@
             <img id="sun_icon" src="/images/icons/sun-icon.png" class="image" />
             </div>
         </div>
+
 
         <div id="navbarPROFILE" class="clearfix">
             <p id="membrfunctX" data-toggle="popover"  data-trigger="hover" data-placement="auto top" 
@@ -173,25 +236,10 @@
                 <img id="ContactIcon" src="/images/icons/socialIcon.png" class="image" />
             </div>
 
-
-            
-            {{#if 0}}<!-- {{#if userIsLoggedOn}} -->
-
-            <p id="contactInfo"><span id="txtSp">Email<br /></span><span id="txtSp3">{{email}}<br /></span>
-            </p>
-            <p id="contactInfo"><span id="txtSp">Phone<br /></span><span id="txtSp3">{{phone}}<br /></span>
-            </p>
-            {{else}}
-
-
             <p id="contactInfo"><span id="txtSp">Email<br /></span><span id="txtSp3"><br /></span>
             </p>
             <p id="contactInfo"><span id="txtSp">Phone<br /></span><span id="txtSp3"><br /></span>
             </p>
-
-            {{/if}}
-
-
             <p id="contactInfo"><span id="txtSp">Website<br /></span><span id="txtSp3">{{website}}<br /></span>
             </p>
             <p id="contactInfo"><span id="txtSp">Links<br /></span><span id="txtSp3">{{links}}<br /></span>
@@ -284,17 +332,17 @@
 
         {{#if there_are_items "marketItems"}}
 
-        <div id="marketplaceItems" class="clearfix"> <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
-        <div id="scrollBoxItemsGroup" class="clearfix">
+         <div id="marketplaceItems" class="clearfix"> <p id="scrollBoxTitle"> MARKETPLACE ITEMS</p>  
+          <div id="scrollBoxItemsGroup" class="clearfix">
 
                             
             {{#if Template.subscriptionsReady}}
-                {{#if displayFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollBoxReverse" />
+                {{#if displayMIFromOffset}} <img id="left_arrow" src="/images/icons/left-arrow.png" class="image scrollMIReverse" />
                 {{/if}}
 
                 {{#each item in boxItems}}       
                 {{#with selectMarketItems item member_key}}
-                <div id="scrollBoxItem1" class="clearfix">
+                <div id="scrollBoxItem" class="clearfix">
 
                     {{#if myProfile}} <!-- if self profile, this allows upload or change picture for item -->
                     <a href="{{pathForMarketItem productId}}">
@@ -319,13 +367,15 @@
                 {{/each}}
                           
 
-                {{#if moreItems2Display}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollBoxAhead" />
+                {{#if moreMItems2Display}}<img id="right_arrow" src="/images/icons/right-arrow.png" class="image scrollMIAhead" />
                 {{/if}}
 
             {{/if}}
 
-        </div>
-        </div> <!-- marketplaceItems --> 
+          </div>
+         </div> <!-- marketplaceItems --> 
+
+
 
             <div id="newsFeed1" class="clearfix">
                 <!--out until time avbl to debug ::Jan 2016:: div id="profile_pic_copy" class="clearfix"></div -->
@@ -501,25 +551,6 @@
         -->
         {{#if myProfile}}
 
-            <!-- 
-            removed , 
-            *******************************************
-            Auotoform doen't work inside a container that has modified visibility via element property
-            br />
-                    <script>
-            function ShowEditorDESK() {  
-                document.getElementById("editorPROFL").style.visibility = "visible";
-                document.getElementById("edtOpenedDESK").style.visibility = "hidden";
-            }
-            </script>
-            <input type="button" id="edtOpenedDESK" onclick="ShowEditorDESK()" style="margin-left:10%;" value="OPEN EDITOR">
-            <br /><br /><br />
-
-                <div id="editorPROFL" class="clearfix" style="visibility:hidden;" --> 
-
-
-
-
             <!-- using bootstrap 'collapse' instead
             http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_collapsible&stacked=h 
             ***************************************************
@@ -569,7 +600,10 @@
 
     <div id="headerPROFL_MOB">
         <script> $(document).ready(function(){ $('[data-toggle="popover"]').popover(); }); </script>
-        <img id="headerImage_MOB" src="/images/headerPic-480.png" class="image" />
+        <!--<img id="headerImage_MOB" src="/images/headerPic-480.png" class="image" />
+                  -->
+        <img id="headerImage_MOB" src="{{profilecoverPicUrl member_key}}" class="image"
+            style="max-width:480px; max-height:228px;" />  
         <div id="buttongroupPROFL_MOB" class="clearfix">
 
         {{#if myProfile}}
@@ -1009,8 +1043,6 @@
 </template> <!-- profile_MOB" -->
 
 
-
-
 <template name="MemberReviews">
 
     {{#if Template.subscriptionsReady}}
@@ -1066,8 +1098,6 @@
 </template>
 
 
-
-
 <template name="addComment">
 
     <form class="form-horizontal add-post-form" role="form">
@@ -1077,78 +1107,3 @@
 
 </template>  
 
-
-
-
-                <!-- Schemas.Person = new SimpleSchema({
-                  member_key: {type: String, index: 1, unique: true },
-                       email: {type: String, optional: false, unique: true },
-                   firstname: {type: String, optional: true},
-                    lastname: {type: String, optional: true},
-                    fullname: {type: String, optional: true},
-                      street: {type: String, optional: true },
-                     street2: {type: String, optional: true },
-                        city: {type: String, optional: true },
-                       state: {type: String, optional: true ,
-                              allowedValues: ["AL", etc..], 
-                              autoform:{ afFieldInput: { firstOption: "(Select a State)" }}},
-                      zipcode:{ type:   String, optional: true },
-                  occupations:{ type: Array, optional: true },    
-                              'occupations.$': {          type: Object },
-                              'occupations.$.vocation': { type: String },
-                              'occupations.$.descript': { type: String , optional:true } ,
-                     location:{type: String,   optional: true },
-                        phone:{type: String,   optional: true },
-                      website:{type: String,   optional: true },
-                        links:{type: String,   optional: true },
-                   facebookID:{type: String,   optional: true },
-                    twitterID:{type: String,   optional: true },
-                  instagramID:{type: String,   optional: true },
-                        about:{type: String,   optional: true }
-                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-            -->
-<!--    Schemas.Member_Reviews = new SimpleSchema({
-    member_key:{ type: String,index: 1},
-    review_by:{ type: String, optional: true },
-    review_date:{ type: Date, optional: true },
-    review_text:{ type: String, optional: true },
-    review_rating:{ type: Number, optional: true }
-
-    
-    -->
-
-    <!--
- Schemas.MarketItems = new SimpleSchema({
-  vendor_key:{ type: String,index: 1},
-  vendorUserId: { type: String, optional:true },
-  vendorBusinessId: { type: String, optional:true },
-  vendorLink: { type: String, optional:true },
-  vendorName: { type: String, optional:true },
-  vendorEmail: { type: String, optional:true },
-  testDataMarket: { type: Boolean, optional:true },
-  items: {  type: Array,    optional: false  },    
-   'items.$': {    type: Object  },
-   'items.$.productId': {  type: String , optional:true},
-   'items.$.name': {  type: String , optional:false},
-   'items.$.description': {  type: String , optional:true},
-   'items.$.type': {         type: String , optional:true },
-   'items.$.salesAlert': {   type: String , optional:true },
-   'items.$.unitType': {     type: String , optional:true },
-   'items.$.unitPrice': {    type: Number , optional:true, decimal: true },
-    'items.$.currency': {    type: String , optional:true },
-    'items.$.photo': {       type: Object , optional:true },  // url
-    'items.$.pic': {    type: String , optional:true },
-    'items.$.date_entered': { type: Date. optional:true,}
-});
-
-Schemas.comment = new SimpleSchema({
-member_key:{ type: String,index: 1,optional: false },
-commentBy:{ type: String, optional: false },
-comment:{ type: String, optional: false },
-timestamp:{ type: Date, optional: false },
-commentSource:{ type: String, optional: false },
-
-});
-
-
--->

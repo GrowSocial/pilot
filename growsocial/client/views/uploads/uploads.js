@@ -19,7 +19,11 @@ Template.uploads.helpers({
   uploadCount: function () {
     return Uploads.find({'metadata.owner': Meteor.userId()}).count();
   },
+
+
 });
+
+
   
 Template.uploadItem.helpers({
   thumbnail: function(upload) {
@@ -29,6 +33,14 @@ Template.uploadItem.helpers({
       return "/images/icons/pclip.png";
     }
   },
+
+  pathForProfile: function() {
+    var params = { personId: Meteor.userId() };
+    var path = FlowRouter.path("profile", params);
+    return path;
+  },
+
+
 });
 
 Template.uploads.events({
@@ -71,9 +83,14 @@ Template.uploads.events({
   },
   
   "click .setProfile": function () {
+    //console.log("event helper SP ",this.upload._id)
     Meteor.call("setProfilePic", {photoUrl: this.upload.url(), photoId: this.upload._id});
   },
   
+  "click .setProfileCover": function () {
+    //console.log("event helper SPCPic ",this.upload._id)
+    Meteor.call("setProfileCoverPic", {coverImageUrl: this.upload.url(), coverImageId: this.upload._id});
+  },
   "click .unsetProfile": function () {
     Meteor.call("unsetProfilePic");
   },

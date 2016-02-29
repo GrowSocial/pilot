@@ -1,41 +1,38 @@
 /* UI Helpers
 
 
- last upload merged to master: #152 Feb 2016
-            next edit due to push: post 153
-
             */
 
 
-  UI.registerHelper('userIsLoggedOn', function(context, options) {
-    console.log(Meteor.userId());
+  UI.registerHelper('userIsLoggedOn', function(context, options) {//  console.log(Meteor.userId());
   if (Meteor.userId()){ return true } else { return false;}
-
   });
 
 
 
-  UI.registerHelper('moreItems2Display', function(context, options) {
+  UI.registerHelper('moreMItems2Display', function(context, options) {
       var offset = Session.get('marketItemArrayOFFSET');
       var count = Session.get('MItemCount',count);
       var limit=Session.get('marketItemArrayLIMIT')
       //console.log("offset + count +limit"+offset + count +limit);
       if ((offset+limit) >(count-1))   { return false } else { return true;}
 
-  });
+  }); //
 
+  UI.registerHelper('morePicItems2Display', function(context, options) {
+      var offset = Session.get('picItemArrayOFFSET');
+      var count = Session.get('picItemCount',count);
+      var limit=Session.get('marketItemArrayLIMIT')
+      //console.log("offset + count +limit"+offset + count +limit);
+      if ((offset+limit) >(count-1))   { return false } else { return true;}
+
+  });
 
   UI.registerHelper('formatTime', function(context, options) {
     if(context)
       return moment(context).format('MM/DD/YYYY, hh:mm');
   });
-  /* never worked ~~~~~~ see UI.registerHelper('formatTime' (in use)
-  formatRevDate: function() {
-    var d = this.review_date;
-    return monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
-    //moment(date).format('MM-DD-YYYY');
-  },
-  */
+
 
 
   UI.registerHelper('MItemIndice', function(current, options) {
@@ -62,14 +59,6 @@
     var myCount = Member_Reviews.find({member_key: mKey}).count() - 1;
     if(context) return myCount;
   });
-
-
-
-  /* ~!
-  The default _id field is already keyed by creation time 
-  (see: how Mongo ObjectIDs are generated). 
-  You can just sort that in reverse order without having to add another field.
-*/
 
 
 Template.addComment.helpers({
@@ -114,7 +103,7 @@ Template.addComment.events({
     });
   
   //Resoving problem where form from desktop is not reset, ;
-  //required for element 0 & 1, per two templates instance this procedure. Being sure whether which is used; clear both 
+  //required for element 0 & 1, per two templates instanced that call this procedure. Clear both 
     $('.add-post-form')[0].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor
     $('.add-post-form')[1].reset(); //http://stackoverflow.com/questions/20760368/how-to-reset-a-form-in-meteor   
   }
@@ -230,12 +219,6 @@ Template.profile.helpers({
 });
 
 
-
-
-// for now, replicating profile onCreated & helpers to impliment mobile/desktop verion; 
-//  Eventually, we should consolidate this and not repeat the functions in librbary
-//
-
 Template.profile_DESKTOP.onCreated(function() { 
   var self = this;
 
@@ -247,36 +230,105 @@ Template.profile_DESKTOP.onCreated(function() {
 }); //on created 'profile'
 
 Template.profile_DESKTOP.events({
-  //provideEdit
 
 
-  'click .scrollBoxAhead': function()
+  /* these 5 calls (setProfileCoverPic)  can be consolidated by restructuring the event trigger with a 
+     child template accepting parameter for item in group currently displayed.
+     Hard coded here for the moment.
+  */
+ 'click .setProfileCoverPic0': function () { //
+    var offset = Session.get('picItemArrayOFFSET')
+    var myItemIds = Session.get('picIdArray');// originated at 'ifThereAreItems()'
+    var myItemUrls = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+    var targetItem=offset;
+  //console.log(" event finding: ",offset,myItemIds[targetItem]) ;    
+  Meteor.call("setProfileCoverPic", {coverImageUrl: myItemUrls[targetItem], coverImageId: myItemIds[targetItem]}  );
+  },
+ 'click .setProfileCoverPic1': function () { //
+    var offset = Session.get('picItemArrayOFFSET')
+    var myItemIds = Session.get('picIdArray');// originated at 'ifThereAreItems()'
+    var myItemUrls = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+    var targetItem=offset+1;
+  //console.log(" event finding: ",offset,myItemIds[targetItem]) ;    
+  Meteor.call("setProfileCoverPic", {coverImageUrl: myItemUrls[targetItem], coverImageId: myItemIds[targetItem]}  );
+  },
+ 'click .setProfileCoverPic2': function () { //
+    var offset = Session.get('picItemArrayOFFSET')
+    var myItemIds = Session.get('picIdArray');// originated at 'ifThereAreItems()'
+    var myItemUrls = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+    var targetItem=offset+2;
+  //console.log(" event finding: ",offset,myItemIds[targetItem]) ;    
+  Meteor.call("setProfileCoverPic", {coverImageUrl: myItemUrls[targetItem], coverImageId: myItemIds[targetItem]}  );
+  },
+ 'click .setProfileCoverPic3': function () { //
+    var offset = Session.get('picItemArrayOFFSET')
+    var myItemIds = Session.get('picIdArray');// originated at 'ifThereAreItems()'
+    var myItemUrls = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+    var targetItem=offset+3;
+  //console.log(" event finding: ",offset,myItemIds[targetItem]) ;    
+  Meteor.call("setProfileCoverPic", {coverImageUrl: myItemUrls[targetItem], coverImageId: myItemIds[targetItem]}  );
+  },
+ 'click .setProfileCoverPic4': function () { //
+    var offset = Session.get('picItemArrayOFFSET')
+    var myItemIds = Session.get('picIdArray');// originated at 'ifThereAreItems()'
+    var myItemUrls = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+    var targetItem=offset+4;
+  //console.log(" event finding: ",offset,myItemIds[targetItem]) ;    
+  Meteor.call("setProfileCoverPic", {coverImageUrl: myItemUrls[targetItem], coverImageId: myItemIds[targetItem]}  );
+  },
+
+ 'click .setProfileCoverPic5': function () { //
+    var offset = Session.get('picItemArrayOFFSET')
+    var myItemIds = Session.get('picIdArray');// originated at 'ifThereAreItems()'
+    var myItemUrls = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+    var targetItem=offset+5;
+  //console.log(" event finding: ",offset,myItemIds[targetItem]) ;    
+  Meteor.call("setProfileCoverPic", {coverImageUrl: myItemUrls[targetItem], coverImageId: myItemIds[targetItem]}  );
+  },
+
+  'click .scrollMIAhead': function()
   {   Session.set('marketItemArrayLIMIT',5) //save new scroll box item limit    
     var offset=Session.get('marketItemArrayOFFSET'); //
     var limit=Session.get('marketItemArrayLIMIT')
     var count=Session.get('MItemCount'); //console.log(count + "~" + offset);
+    offset=offset+1;
+    if ( (offset>(count-limit) ) )  {  return false;  } 
+    else { Session.set('marketItemArrayOFFSET',(offset)); return true;  } 
+  }, 
+  'click .scrollMIReverse': function()
+  { //  event.preventDefault();
+    var offset=Session.get('marketItemArrayOFFSET'); 
+    var count=Session.get('MItemCount'); 
+    offset=offset-1;
+    if ( (offset<0) )  {  return false; } 
+    else {  Session.set('marketItemArrayOFFSET',(offset)); return true;  }
+  }, //function
+
+  'click .scrollPicsAhead': function()
+  {       
+    var offset=Session.get('picItemArrayOFFSET'); //
+    var limit=Session.get('picItemArrayLIMIT')
+    var count=Session.get('picItemCount'); //console.log(count + "~" + offset);
     offset=offset+1;
     if ( (offset>(count-limit) ) ) 
       {  //console.log(count + "~else~" + offset);
       return false;
       } 
     else {   //console.log(count + " ct inc off" + offset); 
-      Session.set('marketItemArrayOFFSET',(offset)); //store new
+      Session.set('picItemArrayOFFSET',(offset)); //store new
       return true; 
     } 
   }, //function
-
-  'click .scrollBoxReverse': function()
+  'click .scrollPicsReverse': function()
   {     //  event.preventDefault();
-    var offset=Session.get('marketItemArrayOFFSET'); //
-    var count=Session.get('MItemCount');   //console.log(count + "~" + offset);
+    var offset=Session.get('picItemArrayOFFSET'); //
+    var count=Session.get('picItemCount');   //console.log(count + "~" + offset);
     offset=offset-1;
     if ( (offset<0) ) 
-      {  //console.log(count + "~else~" + offset);
-      return false;
+      {  return false;
       } 
     else { //console.log(count + " ct inc off" + offset); 
-      Session.set('marketItemArrayOFFSET',(offset)); //store new
+      Session.set('picItemArrayOFFSET',(offset)); //store new
       return true; 
     }
   }, //function
@@ -296,13 +348,14 @@ Template.profile_DESKTOP.events({
     Meteor.call('inviteConnect',viewedMembr,loggedInMembr)  //successful invite
 
   } //function
-
-
 });  //template
 
 Template.profile_DESKTOP.helpers({
 
-  boxItems: [0,1,2,3,4 ],
+  uploads: function() {
+    // only manage my own uploads
+    return Uploads.find({'metadata.owner': Meteor.userId()}, {sort: {uploadedAt: -1}});
+  },
 
   pathForStore: function(productId) {
     var mKey = FlowRouter.getParam('personId');
@@ -315,101 +368,112 @@ Template.profile_DESKTOP.helpers({
     return path;
   },
 
-
+ 
   there_are_items: function(caller){
     /*
     to assess documents are present in respective collections.
     If present, 
     and app design now includes functional use of collection,
     use to instance session requirements as data image or properties based on appraisal of the collection.
-    Feb 2016: see marketItems, below
     */
 
       var mKey = FlowRouter.getParam('personId');
       switch (caller)
       {
-        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
-          break;
-        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
-          break;
+
+        case 'graphicUploads': //
+          var thisDocSet =Uploads.find({'metadata.owner': Meteor.userId(),  
+                                        $or: [{'original.type': 'image/jpeg'}, {'original.type': 'image/png'}],   
+          },
+          {sort: {uploadedAt: -1}}
+          ).fetch();
+          var count = thisDocSet.length; // know how many items are there
+
+          //console.log("data image ",thisDocSet);  //entire fetch~
+          //console.log("records to array: ",count) 
+          //console.log("0data image ",thisDocSet[0]);  
+          //console.log("0data image ",thisDocSet[1]);
+          //console.log("0 _id ",thisDocSet[0]._id);
+          //console.log("0 url() ",thisDocSet[0].url());  
+          //console.log("0 type ",thisDocSet[0].original.type);
+          //console.log("0 name ",thisDocSet[0].original.name);
+
+          var myUrls = []; 
+          var myIds = [];
+          for (var i = 0; i < count; i++) { myUrls.push(thisDocSet[i].url());  myIds.push(thisDocSet[i]._id);     
+          }
+
+          Session.set('picUrlArray',myUrls);// save for navigation client  
+          Session.set('picIdArray',myIds);// save for navigation client
+          Session.set('picItemArrayOFFSET',0) //begin at first item
+          Session.set('picItemCount',count);// save for navigation client
+         break;
+
         case 'marketItems': 
-        /*var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
-            Eventually can be more than one, see notes from TEC following original design release, Dec.2015
-        */
-        
-          /* DOESN'T WORK      (see passing comments online about mixing 0& 1's)
-            var items = MarketItems.findOne({vendor_key: mKey},{          vendor_key:0,
-              vendorUserId:0,
-              vendorBusinessId: 0,
-              vendorLink: 0,
-              vendorName: 0,
-              vendorEmail: 0,
-              testDataMarket:0,
-                      items:1});
-            */
+          /*var count= MarketItems.find({vendor_key: mKey}).count(); sould only be one per member
+              Eventually can be more than one, see notes from TEC following original design release, Dec.2015
+          */   
           var MItemDoc = MarketItems.findOne({vendor_key: mKey}) || {};
           var objArray = $.makeArray( MItemDoc.items ); //grab the necesary sub-document as local object
           var count=objArray.length // know how many items are there
           Session.set('MItemCount',count);// save for navigation client
 
-           /*in future need to manipulte, translate for profile client
-                  
-                    for(i = 0; i < count; i++){
-                      var me= objArray[i].description;
-                      if (me.length > 16) objArray[i].description="noodles" //me.substr(0,16);
-                      var me= objArray[i].name;
-                      if (me.length > 16) objArray[i].name="noodles" //me.substr(0,16);
-                      //console.log(me);       
-                    }
-            */
           Session.set('marketItemArray',objArray);// save for navigation client           
-          Session.set('marketItemArrayOFFSET',0) //begin at first item
-          //console.log(count + " in Load of MarketItems");
-          //console.log(objArray); 
+          Session.set('marketItemArrayOFFSET',0) //begin at first item 
           break;
+
+
         case 'connections': var count= Connections.find({member_key: mKey}).count();
+          break;
+        case 'pictures': var count= Member_Pictures.find({member_key: mKey}).count();
+          break;
+        case 'videos': var count= Member_Videos.find({member_key: mKey}).count(); 
           break;
         case 'blogEntries': var count=0;
         case 'calendarEvents': var count=0;
-        case 'memberContacts': var count=0;      
+        case 'memberContacts': var count=0;    
+
         default: var count=0;
       }  
       if (count) { return true } else { return false;}
     },
 
-  displayFromOffset: function(){ var offset = Session.get('marketItemArrayOFFSET');
+  displayMIFromOffset: function(){ var offset = Session.get('marketItemArrayOFFSET');
+    if (offset) { return true } else { return false;}
+  },
+ 
+
+
+  displayPicFromOffset: function(){ var offset = Session.get('picItemArrayOFFSET');
     if (offset) { return true } else { return false;}
   },
 
-
+  boxItems: [0,1,2,3,4 ], //for selectMarketItems scroll box
   selectMarketItems: function(displayOrdinal) {
-
     //get [indice] item from the items array
     //
     //every call repeats refresh from collection,  reactive
-
+      var myItems = Session.get('marketItemArray');// save for navigation client
       var offset = Session.get('marketItemArrayOFFSET')
-      var totalCount = Session.get('MItemCount');// save for navigation client
+      var totalCount = myItems.length;// Session.get('MItemCount');// save for navigation client
       var nextItem = offset + displayOrdinal
-       //     console.log("offset " + offset );
-       //     console.log("tot " + totalCount);
-       //     console.log("next" +  nextItem);
       if ( nextItem > totalCount) { return "" }  
-      else { var myItems = Session.get('marketItemArray');// save for navigation client 
-             return myItems[nextItem];
-          } 
-
+      else {   return myItems[nextItem]; } 
       /*
-            Session.set('MItemCount',zeta);// save for session navigation client
-
-            //console.log(L);
-            console.log(zeta);
-            console.log(objArray); // to the first line of your helper.
-            return objArray
             //another approach , if only a portion of sub-doc is needed 
             // ::~  return {q: iArray[0].q, a1: iArray[0].a1 }
       */
     },
+
+  selectPictureItems: function(displayOrdinal) {
+      var offset = Session.get('picItemArrayOFFSET')
+      var myItemUrl = Session.get('picUrlArray');// originated at 'ifThereAreItems()'
+      var nextItem = offset + displayOrdinal
+      var totalCount = myItemUrl.length;
+      var nextItem = offset + displayOrdinal;
+      if ( nextItem > totalCount) { return "" }  
+        else {  return myItemUrl[nextItem]; } 
+  },
 
 
   connectionInvoked: function(){
@@ -463,26 +527,26 @@ Template.profile_DESKTOP.helpers({
 
   initMarketItems: function(){
 
-  var mKey = FlowRouter.getParam('personId');
-  var member = People.findOne({member_key: mKey}) || {};
-  //alert("intiial MItem for " + member.fullname + Date());
-  var sData = [{vendor_key: mKey, 
-              vendorUserId: mKey,
-                vendorName: member.fullname,
-               vendorEmail: member.email,
-            testDataMarket: false,
-    items: [   {name:'Market Item', description:'Market Item Description', 
-                type:'produce',
-          salesAlert:'',
-            unitType:'pound',
-           unitPrice: 0.99,
-            currency:'USD',
-        date_entered: Date(),
-           productId: Random.id(),
-        }]
-  }];  
-  _.each(sData, function(sItem) { MarketItems.insert(sItem);});
-  }
+    var mKey = FlowRouter.getParam('personId');
+    var member = People.findOne({member_key: mKey}) || {};
+    //alert("intiial MItem for " + member.fullname + Date());
+    var sData = [{vendor_key: mKey, 
+                vendorUserId: mKey,
+                  vendorName: member.fullname,
+                 vendorEmail: member.email,
+              testDataMarket: false,
+      items: [   {name:'Market Item', description:'Market Item Description', 
+                  type:'produce',
+            salesAlert:'',
+              unitType:'pound',
+             unitPrice: 0.99,
+              currency:'USD',
+          date_entered: Date(),
+             productId: Random.id(),
+          }]
+    }];  
+    _.each(sData, function(sItem) { MarketItems.insert(sItem);});
+    }
 });
 
 
@@ -602,6 +666,20 @@ Template.profile_MOB.helpers({
       if ( nextItem > totalCount) { return "" }  
         else { 
             var myItems = Session.get('marketItemArray');// save for navigation client
+      //console.log(myItems);
+            return myItems[nextItem];
+          } 
+  },
+
+  selectPictureItems: function(displayOrdinal) {
+    //alert(displayOrdinal);
+      var offset = Session.get('pictureItemArrayOFFSET')
+      var totalCount = Session.get('PItemCount');// save for navigation client
+      var nextItem = offset + picdisplayOrdinal
+       //alert("next" +  nextItem);
+      if ( nextItem > totalCount) { return "" }  
+        else { 
+            var myItems = Session.get('picItemArray');// save for navigation client
       //console.log(myItems);
             return myItems[nextItem];
           } 
