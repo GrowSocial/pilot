@@ -104,13 +104,29 @@ Template.register.events({
     event.preventDefault();
 
     template.messages.set('errorMessage', null);
-    template.messages.set('infoMessage', "Registering new account ...");
 
     var email = event.target.email.value;
     var password = event.target.password.value;
     var firstname = event.target.firstname.value;
     var lastname = event.target.lastname.value;
 
+    if (!email) {
+      template.messages.set('errorMessage', 'Email cannot be blank');
+      return;
+    }
+    if (!firstname) {
+      template.messages.set('errorMessage', 'First name cannot be blank');
+      return;
+    }
+    if (!password) {
+      template.messages.set('errorMessage', 'Password name cannot be blank');
+      return;
+    }
+    if (password !== event.target.passwordAgain.value) {
+      template.messages.set('errorMessage', 'The same password needs to be entered twice');
+      return;
+    }
+    
     var user = {
       'email': email,
       password: password,
@@ -121,6 +137,7 @@ Template.register.events({
         },
       };
 
+    template.messages.set('infoMessage', "Registering new account ...");
     Accounts.createUser(user, function(err) {
       if (err) {
         console.log('createUser error message:', err.message);
