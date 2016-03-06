@@ -107,9 +107,12 @@ Template.register.events({
 
     var email = event.target.email.value;
     var password = event.target.password.value;
+    var passwordAgain = event.target.passwordAgain.value;
     var firstname = event.target.firstname.value;
     var lastname = event.target.lastname.value;
+    var pilotCode = event.target.pilotCode.value;
 
+    // basic checks
     if (!email) {
       template.messages.set('errorMessage', 'Email cannot be blank');
       return;
@@ -122,83 +125,92 @@ Template.register.events({
       template.messages.set('errorMessage', 'Password name cannot be blank');
       return;
     }
-    if (password !== event.target.passwordAgain.value) {
+    if (password !== passwordAgain) {
       template.messages.set('errorMessage', 'The same password needs to be entered twice');
       return;
     }
+    if (!pilotCode) {
+      template.messages.set('errorMessage', 'Pilot Code name cannot be blank');
+      return;
+    }
+    var result = Meteor.call("checkPilotCode", pilotCode, function(error) {
+      if (error) {
+        template.messages.set('errorMessage', error.message);
+        return;
+      }
     
-    var user = {
-      'email': email,
-      password: password,
-      profile: {
-        firstname: firstname,
-        lastname: lastname,
-        name: firstname + " " + lastname,
-        },
-      };
+      template.messages.set('infoMessage', "Registering new account ...");
+      var user = {
+        'email': email,
+        password: password,
+        profile: {
+          firstname: firstname,
+          lastname: lastname,
+          name: firstname + " " + lastname,
+          },
+        };
 
-    template.messages.set('infoMessage', "Registering new account ...");
-    Accounts.createUser(user, function(err) {
-      if (err) {
-        console.log('createUser error message:', err.message);
-        template.messages.set('infoMessage', null);
-        template.messages.set('errorMessage', err.message);
+      Accounts.createUser(user, function(err) {
+        if (err) {
+          console.log('createUser error message:', err.message);
+          template.messages.set('infoMessage', null);
+          template.messages.set('errorMessage', err.message);
 
-        // TODO log the error in the database, unless it's "unable to connect" error
-        
-        // Send error to database
-        var error = {
-          tag: "Register",
-          message: err.message,
-          errNumber: err.error,
-          email: user.email,
-          firstName: user.profile.firstname,
-          lastName: user.profile.lastname
-        }
-        Meteor.call("addErrorLog", error);
-        // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
-      } else {
-        template.messages.set('infoMessage', 'Registered and logged in.');
-
-        Meteor.call("addNotification", {
-          targetUserId: Accounts.userId(),
-          sender: "System",
-          tag: "System",
-          html: true,
-          subject: "Welcome to GrowSocial",
-          message: '<p>Welcome to GrowSocial, ' + firstname + '!</p><p>It is recommended to <a href="/location">set your map location</a> from the Settings menu, and then set your city, state and zipcode near the bottom of <a href="/profile/' + Accounts.userId() + '">your profile page</a>.</p><p><a href="/tutorials">Tutorials</a> and <a href="/help">Help</a> are available to help find your way around.</p>',
-        }, function(err, result) {
-          if (err) {
-            Meteor.call("addErrorLog", {
-              tag: "NewUserWelcomeNotification",
-              message: err.message,
-              errNumber: err.error,
-              email: user.email,
-              firstName: user.profile.firstname,
-              lastName: user.profile.lastname,
-            });
+          // TODO log the error in the database, unless it's "unable to connect" error
+          
+          // Send error to database
+          var error = {
+            tag: "Register",
+            message: err.message,
+            errNumber: err.error,
+            email: user.email,
+            firstName: user.profile.firstname,
+            lastName: user.profile.lastname
           }
-        });
+          Meteor.call("addErrorLog", error);
+          // what happens if database/internet disconnected? the app blocks! when connection restored, attempt is resumed.
+        } else {
+          template.messages.set('infoMessage', 'Registered and logged in.');
+
+          Meteor.call("addNotification", {
+            targetUserId: Accounts.userId(),
+            sender: "System",
+            tag: "System",
+            html: true,
+            subject: "Welcome to GrowSocial",
+            message: '<p>Welcome to GrowSocial, ' + firstname + '!</p><p>It is recommended to <a href="/location">set your map location</a> from the Settings menu, and then set your city, state and zipcode near the bottom of <a href="/profile/' + Accounts.userId() + '">your profile page</a>.</p><p><a href="/tutorials">Tutorials</a> and <a href="/help">Help</a> are available to help find your way around.</p>',
+          }, function(err, result) {
+            if (err) {
+              Meteor.call("addErrorLog", {
+                tag: "NewUserWelcomeNotification",
+                message: err.message,
+                errNumber: err.error,
+                email: user.email,
+                firstName: user.profile.firstname,
+                lastName: user.profile.lastname,
+              });
+            }
+          });
 
   // Introducing a new registration, create cooresponding record in Meteor.People /TEC -->
    //   alert(Accounts.userId() + '*' + firstname + "*" + lastname + "*" +user.name +"*");
-        People.insert({
-              member_key: Accounts.userId(),
-                   email: email,
-               firstname: firstname,
-                lastname: lastname,
-                fullname: firstname + " " + lastname,
-                   about: firstname + " " + lastname +
-                " has just become a member at Grow Social! "
-        });
-    // also incude an initial member review, by Grow Social, with 1 stars
-        Member_Reviews.insert({
+          People.insert({
                 member_key: Accounts.userId(),
-                review_by: "pseudo_0",
-                review_date: Date(),
-                review_text: "~ Welcome to GROW SOCIAL ~" ,
-                review_rating: 1,
-        });
+                     email: email,
+                 firstname: firstname,
+                  lastname: lastname,
+                  fullname: firstname + " " + lastname,
+                     about: firstname + " " + lastname +
+                  " has just become a member at Grow Social! "
+          });
+    // also incude an initial member review, by Grow Social, with 1 stars
+          Member_Reviews.insert({
+                  member_key: Accounts.userId(),
+                  review_by: "pseudo_0",
+                  review_date: Date(),
+                  review_text: "~ Welcome to GROW SOCIAL ~" ,
+                  review_rating: 1,
+          });
 
 /*
  // and an initial MarketItems
@@ -216,13 +228,14 @@ _.each(sData, function(sItem) { MarketItems.insert(sItem);});
 */
 
         
-        // navigate to new current user's profile page
-        var params = {
-          personId: Meteor.userId(),
-        };
-        var path = FlowRouter.path("profile", params);
-        FlowRouter.go(path);
-      }
+          // navigate to new current user's profile page
+          var params = {
+            personId: Meteor.userId(),
+          };
+          var path = FlowRouter.path("profile", params);
+          FlowRouter.go(path);
+        }
+      }); // createUser
     });
   }
 });
