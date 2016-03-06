@@ -100,9 +100,9 @@ FlowRouter.route('/logout', {
 FlowRouter.route('/register', {
   name: "register",
   action: function() {
-    // redirecting to contactUs to take no new accounts
-    // BlazeLayout.render("main", {content: "register"});
-    FlowRouter.redirect("/contactUs");
+    // No longer redirecting to contactUs to take no new accounts
+    // FlowRouter.redirect("/contactUs");
+    BlazeLayout.render("main", {content: "register"});
   },
 });
 
